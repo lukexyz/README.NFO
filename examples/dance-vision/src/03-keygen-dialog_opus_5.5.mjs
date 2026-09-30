@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Dance Vision README header: "Keygen Dialog" (03-keygen-dialog_opus_5.5).
 // Plain Node, no dependencies, fully deterministic (seeded PRNG).
-//   node examples/src/03-keygen-dialog_opus_5.5.mjs
-// writes examples/assets/03-keygen-dialog_opus_5.5.svg
+//   node examples/dance-vision/src/03-keygen-dialog_opus_5.5.mjs
+// writes examples/dance-vision/assets/03-keygen-dialog_opus_5.5.svg
 //
 // Everything is drawn in "logical pixels" (viewBox 420 x 252, shown at 2x).
 // Text is pixel-font glyphs drawn as merged-run <path>s reused with <use>:

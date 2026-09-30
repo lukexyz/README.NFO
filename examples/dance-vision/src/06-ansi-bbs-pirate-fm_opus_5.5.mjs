@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // DANCE VISION 87.87 FM: an ANSI BBS login screen crossed with a pirate radio rave flyer.
 //
-// Regenerate:  node examples/src/06-ansi-bbs-pirate-fm_opus_5.5.mjs
+// Regenerate:  node examples/dance-vision/src/06-ansi-bbs-pirate-fm_opus_5.5.mjs
 //
 // Plain Node, no dependencies, fully deterministic (seeded PRNG). Everything is drawn on a
 // 100 x 30 grid of 8 x 16 cells, like a DOS text screen, using a CP437-style bitmap font

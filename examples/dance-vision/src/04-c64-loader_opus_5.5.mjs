@@ -10,8 +10,8 @@
 // in this file (no <text>, no fonts, nothing external), and the whole show is
 // CSS step animation on one 14 s cycle, so it runs inside GitHub's <img>.
 //
-//   node examples/src/04-c64-loader_opus_5.5.mjs         regenerate the SVG
-//   node examples/src/04-c64-loader_opus_5.5.mjs --nfo   print the block-letter NFO logo
+//   node examples/dance-vision/src/04-c64-loader_opus_5.5.mjs         regenerate the SVG
+//   node examples/dance-vision/src/04-c64-loader_opus_5.5.mjs --nfo   print the block-letter NFO logo
 //
 // Plain Node, no dependencies. Randomness is a seeded PRNG, so output is stable.
 

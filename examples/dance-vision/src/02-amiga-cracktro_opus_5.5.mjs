@@ -1,6 +1,6 @@
 // Amiga cracktro README banner for Dance Vision.
 //
-//   node examples/src/02-amiga-cracktro_opus_5.5.mjs
+//   node examples/dance-vision/src/02-amiga-cracktro_opus_5.5.mjs
 //
 // Regenerates ../assets/02-amiga-cracktro_opus_5.5.svg. Plain Node, no deps,
 // deterministic (seeded PRNG). Everything is drawn on a 320x128 "lowres"

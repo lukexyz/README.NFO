@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // Green Phosphor Terminal: README header generator for dance-vision.
 //
-//   node examples/src/05-crt-terminal_opus_5.5.mjs
+//   node examples/dance-vision/src/05-crt-terminal_opus_5.5.mjs
 //
-// Writes examples/assets/05-crt-terminal_opus_5.5.svg.
+// Writes examples/dance-vision/assets/05-crt-terminal_opus_5.5.svg.
 // Plain Node, no dependencies, fully deterministic (seeded PRNG), so the art
 // can be regenerated and tweaked. Every letter is drawn from the 5x7 bitmap
 // font below as <path>/<use>; there is no <text> anywhere, so alignment is

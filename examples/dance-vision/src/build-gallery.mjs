@@ -1,5 +1,5 @@
-// Stitches the six header examples into examples/README.md (GitHub shows it when you open the folder).
-//   node examples/src/build-gallery.mjs
+// Stitches the six header examples into examples/dance-vision/README.md (GitHub shows it when you open the folder).
+//   node examples/dance-vision/src/build-gallery.mjs
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -16,11 +16,11 @@ const OPTIONS = [
 ];
 
 const parts = [
-  '# README header examples',
+  '# Dance Vision header examples',
   '',
   'Six chiptune / keygen / cracktro README headers, first made for the Dance Vision project. Each one replaces the title and pitch at the top of a README.',
   '',
-  'Each example is its own `.md` in this folder. Animated art is in `assets/`, and the generator that rebuilds it is in `src/` (`node examples/src/<option>.mjs`). Rebuild this page with `node examples/src/build-gallery.mjs`. Anchor and doc links were written for the Dance Vision repo root, so they don\'t resolve here.',
+  'Each example is its own `.md` in this folder. Animated art is in `assets/`, and the generator that rebuilds it is in `src/` (`node examples/dance-vision/src/<option>.mjs`). Rebuild this page with `node examples/dance-vision/src/build-gallery.mjs`. Anchor and doc links were written for the Dance Vision repo root, so they don\'t resolve here.',
   '',
   '| # | Option | What it is |',
   '| --- | --- | --- |',
