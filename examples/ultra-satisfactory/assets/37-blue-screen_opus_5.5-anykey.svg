@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 84" width="180" height="84" role="img" aria-labelledby="t d">
+<title id="t">The Any key</title>
+<desc id="d">A beige keyboard key with the legend Any. Pressing it opens ULTRA-SATISFACTORY live in the browser.</desc>
+<style>.k{animation:k 34s linear infinite}
+@keyframes k{0%{transform:translateY(0)}27.353%{transform:translateY(0)}27.588%{transform:translateY(5px)}28.971%{transform:translateY(5px)}29.265%{transform:translateY(0)}66.765%{transform:translateY(0)}67%{transform:translateY(5px)}68.382%{transform:translateY(5px)}68.676%{transform:translateY(0)}100%{transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>
+<rect x="3" y="12" width="174" height="70" rx="9" fill="#4d4a40"/>
+<g class="k">
+<rect x="3" y="2" width="174" height="72" rx="9" fill="#a39c84"/>
+<rect x="3" y="2" width="174" height="66" rx="9" fill="#c4bda6"/>
+<rect x="15" y="5" width="150" height="52" rx="6" fill="#ece7d6"/>
+<rect x="17" y="5" width="146" height="2" fill="#f8f5ea"/>
+<g fill="#33312b"><path transform="translate(26 9) scale(2)" d="M3 2h3v1h-3zM2 3h2v1h-2zM5 3h2v1h-2zM1 4h2v3h-2zM6 4h2v3h-2zM1 7h7v1h-7zM1 8h2v4h-2zM6 8h2v4h-2z"/><path transform="translate(44 9) scale(2)" d="M1 5h2v1h-2zM4 5h3v1h-3zM1 6h3v1h-3zM6 6h2v6h-2zM1 7h2v5h-2z"/><path transform="translate(62 9) scale(2)" d="M1 5h2v6h-2zM6 5h2v6h-2zM2 11h6v1h-6zM6 12h2v1h-2zM5 13h2v1h-2zM2 14h4v1h-4z"/></g>
+</g>
+</svg>
