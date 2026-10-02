@@ -41,8 +41,8 @@
 //     a flatten onto black, a fine-noise speckle, then feComponentTransfer
 //     tables that map brightness through a palette (the indexed-colour look).
 //     The tables are SMIL-animated, so the palette drifts: CORAL, KUMARA,
-//     LAGOON, MANGO. A last step samples one point per 4x4 cell and dilates
-//     it, so the fire is a 320 x 100 low-resolution picture; the smooth
+//     LAGOON, MANGO. A last step keeps a 2x2 sample from each 4x4 cell and
+//     dilates it, so the fire is a 320 x 100 low-resolution picture; the smooth
 //     picture sits underneath for screens too narrow for the sampling grid.
 //   * The waveform is a row of half-wave LOBES between fixed zero crossings,
 //     grouped into one path per (band, ripple zone). Each path is scaled
@@ -534,7 +534,9 @@ function buildBanner() {
   }
   css.push(finKeys(), bottleKeys(), signalKeys());
   css.push(`@keyframes nod{0%{rotate:0deg}12%{rotate:-2.4deg}60%{rotate:.4deg}100%{rotate:0deg}}`);
-  css.push(`@keyframes bob{0%{rotate:-7deg}50%{rotate:7deg}100%{rotate:-7deg}}`);
+  // the shark nods too: a dip towards the island on every beat, in time with
+  // the palm (it pivots on the waterline)
+  css.push(`@keyframes fnod{0%{rotate:0deg}14%{rotate:-9deg}62%{rotate:1.5deg}100%{rotate:0deg}}`);
   // Every animated thing is a <use> of a STATIC path, and the animation runs
   // on the <use> itself: animating inside a referenced subtree makes the
   // browser restyle every instance every frame. Echo k plays everything k*DT
@@ -544,7 +546,7 @@ function buildBanner() {
   const dly = (lag = 0) => `calc(var(--a,0s) + ${fx(lag - LOOP - AT, 3)}s)`;
   for (let b = 0; b < NB; b++) css.push(`.b${b}{animation:b${b} ${LOOP}s linear infinite}`);
   css.push(`.palm{transform-origin:${TRUNK_BASE[0]}px ${TRUNK_BASE[1]}px;animation:nod ${BEAT}s ease-out infinite;animation-delay:${dly()}}`);
-  css.push(`.fin{scale:1 0;animation:fin ${LOOP}s linear infinite,bob ${BAR / 2}s ease-in-out infinite;animation-delay:${dly()},${dly()}}`);
+  css.push(`.fin{scale:1 0;animation:fin ${LOOP}s linear infinite,fnod ${BEAT}s ease-out infinite;animation-delay:${dly()},${dly()}}`);
   css.push(`.btl{scale:0;animation:bottle ${LOOP}s linear infinite;animation-delay:${dly()}}`);
   css.push(`.sig{opacity:0;animation:sig ${LOOP}s linear infinite;animation-delay:${dly()}}`);
   css.push(`.wv{vector-effect:var(--ve,none)}`);
@@ -643,7 +645,7 @@ function buildBanner() {
 
   const EVENTS = [
     'NOTHING HAPPENING. ON SCHEDULE.',
-    'STILL NOTHING. LOVELY.',
+    'STILL NOTHING. SUN STILL UP.',
     'VISITOR: SHARK IN HEADPHONES',
     'THE SHARK NODS ON THE BEAT',
     'BOTTLE OUT. MESSAGE INSIDE.',
@@ -721,6 +723,7 @@ ${fireStill}
 <g class="ln still" filter="url(#fireStill)">${still}</g>
 <rect width="${W}" height="${H}" fill="url(#shade)"/>
 ${liveLine}
+<g class="ln still" style="--ve:non-scaling-stroke;stroke:#000;stroke-opacity:.55" stroke-width="6" transform="translate(0 ${CY})"><use href="#isl"/><use href="#palm"/></g>
 <use href="#sw" class="ln still" style="--ve:non-scaling-stroke" stroke-width="2.2" transform="translate(0 ${CY})"/>
 ${hud.join('\n')}
 </g>

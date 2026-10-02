@@ -8,12 +8,12 @@
 
 <p align="center">
   <b>Ten hours of one tiny island. Almost nothing happens, on purpose.</b><br>
-  She idles. Every so often, something happens. In between, the light changes a bit.
+  She idles. Every so often, something happens. In between, a cloud shadow drifts over.
 </p>
 
-Castaway (working title) is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly sits there nodding to the music on her headphones, and every so often something happens. A message in a bottle washes up and washes straight back out. A coconut falls on a hermit crab, and the coconut walks off with the crab wearing it. A shark in headphones nods along to the beat. It is an unofficial remake inspired by the small-island routines and visual comedy of *Johnny Castaway*, the 1992 desert-island screensaver, repainted as a sunny, hand-painted coastal anime scene. 16:9, 1080p, 30 fps, and always daytime.
+Castaway (working title) is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly idles, nodding to the music on her headphones, and every so often something happens. A message in a bottle washes up and washes straight back out. A coconut falls on a hermit crab, and the coconut walks off with the crab wearing it. A shark in headphones nods along to the beat. It is an unofficial remake inspired by the small-island routines and visual comedy of *Johnny Castaway*, the 1992 desert-island screensaver, repainted as a sunny, hand-painted coastal anime scene. 16:9, 1080p, 30 fps, and always daytime.
 
-The gags live in [activities.toml](activities.toml): more than 90 activities on four timers, from everyday routines every 2 to 5 minutes to super-rare callbacks every 3 to 6 hours, and each one waits for the next bar of the music (3 seconds) so the gags land on the beat. Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no recordings, no borrowed loops, so no third-party licence.
+The gags live in [activities.toml](activities.toml): more than 90 activities, most of them on four timers, from everyday routines every 2 to 5 minutes to super-rare callbacks every 3 to 6 hours, and each one waits for the next bar of the music (3 seconds) so the gags land on the beat. Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no recordings, no borrowed loops, so no third-party licence.
 
 ```sh
 python tools/serve.py
@@ -31,7 +31,7 @@ python tools/serve.py
 ```text
  THE TIDE TABLE · ONE PALETTE PERIOD · 12 SECONDS · 85 STEPS
  ─────────────────────────────────────────────────────────────────────────
-         index 0                                               index 84
+         index 0                                                 index 84
    0 s  │          ░░░░▒▒▒▒▓▓▓▓▓███████████████████▓▓▓▓▓▒▒▒░░░░░         │
    3 s  │▒▒▓▓▓▓▓███████████████████▓▓▓▓▓▒▒▒▒░░░░                   ░░░░▒▒│
    6 s  │██████████▓▓▓▓▒▒▒▒░░░░░                  ░░░░░▒▒▒▒▓▓▓▓██████████│
@@ -39,21 +39,21 @@ python tools/serve.py
   12 s  │          ░░░░▒▒▒▒▓▓▓▓▓███████████████████▓▓▓▓▓▒▒▒░░░░░         │
  ─────────────────────────────────────────────────────────────────────────
   The picture is a grid of numbers, worked out once and never touched
-  again. The only thing that moves is this row: the colour ring, turned
-  one step at a time. At 12 s the tide is back where it started and the
-  name is still there. The video runs on roughly the same plan, for ten
-  hours, with a coconut every few minutes.
+  again. The only thing that moves is this row: the colour ring, slowly
+  turning. At 12 s the tide is back where it started and the name is
+  still there. The video runs on roughly the same plan, for ten hours,
+  with something small happening every 2 to 5 minutes.
 ```
 
 **How the banner works.** The plasma is a sum of five sines, computed once by the banner's generator into a 320 by 90 index image (85 steps to a palette period) and embedded as a small greyscale PNG drawn with square VGA pixels. The colour comes from an SVG filter doing the old 256-colour trick: one stage adds an offset to every index, animated across one whole period every 12 seconds (four bars of the theme), and the next looks the result up in a colour table that repeats. Nothing is redrawn; the bands crawl because the table turns.
 
-**The name is pressed in, not painted on.** Inside the letters the index image holds a second copy of the plasma, half a period out of phase and nudged up and to the left, read through the same ramp lifted towards the pale end. So CASTAWAY is a raised, lighter patch of the same field, and its bands jump at every edge. A static layer adds the one-pixel highlight on the lit side and the shadow on the other. The heavy Roman capitals were drawn for this banner from polygons, ellipses and one broad-nib pen stroke (the S), then leaned back through a perspective transform and rasterised with 4 x 4 supersampling.
+**The name is pressed in, not painted on.** Inside the letters the index image holds a second copy of the plasma, half a period out of phase and nudged a few pixels down and to the right, read through the same ramp lifted towards the pale end. So CASTAWAY is a raised, lighter patch of the same field, and its bands jump at every edge. A static layer adds the one-pixel highlight on the lit side and the shadow on the other. The heavy Roman capitals were drawn for this banner from polygons, ellipses and one broad-nib pen stroke (the S), then leaned back through a perspective transform and rasterised with 4 x 4 supersampling.
 
-**The roll.** The mid-90s intros this look comes from picked their colour scheme at random every time they started. This one rolls at build time instead, from a seeded generator: seed 1992, the same seed as the video's default run, came up lagoon. The generator takes `--roll=crimson` (or green, coral, sun, violet) if you would rather have a different sea.
+**The roll.** One of the mid-90s intros this look comes from picked its colour scheme at random every time it started. This one rolls at build time instead, from a seeded generator: seed 1992, the same seed as the video's default run, came up lagoon. The generator takes `--roll=crimson` (or green, coral, sun, violet) if you would rather have a different sea.
 
 **The clock.** Ten pages of text, six seconds each, so the banner loops every 60 seconds, the same length as the theme: twenty bars, five turns of the tide, eighty nods. With reduced motion switched on, the palette stops, the first page stays put and she stops nodding. She does not seem to mind.
 
-The style is credited to Razor 1911's DOS intros #02 and #03 (code and graphics by Hetero, 1996 to 1997), where a one-hue plasma fills the screen and the group's name shows only as a displacement in it. Nothing of theirs is copied here: no letters, no sprites, no palette, no words.
+The style is credited to Razor 1911's DOS intros #02 and #03 (code by Hetero, December 1996 and January 1997), where a one-hue plasma fills the screen and the group's name shows only as a displacement in it. Nothing of theirs is copied here: no letters, no sprites, no palette, no words.
 
 </details>
 
@@ -135,14 +135,14 @@ Run `python tools/schedule.py` to check the schedule and simulate a ten-hour run
   ocean ........ also a seamless 60 s loop
   levels ....... -14 LUFS, true peak at or below -1 dBTP, adjustable in
                  master and per routine
-  heard by ..... nobody, yet. it has passed every loudness check in
-                 complete silence
+  heard by ..... nobody, yet. it has been measured to a tenth of a
+                 decibel and listened to by no one
 
  ── CREDITS ───────────────────────────────────────────────────────────────
   banner ....... the Palette Lifeguards, who watch the colours so that
                  nobody has to watch the sea
   lettering .... heavy Roman capitals, drawn for this banner, pressed in
-  sprite ....... her, fourteen pixels wide, nodding at 80 BPM
+  sprite ....... her, fifteen pixels wide, nodding at 80 BPM
   inspiration .. Johnny Castaway (1992), which belongs to its owners.
                  this is an unofficial remake, in spirit only
 

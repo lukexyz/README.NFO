@@ -30,7 +30,7 @@
 //     strip. A line that crosses a zone boundary changes colour there (the
 //     parcel's headphones do, on their way up to the lives counter).
 //   * THE ISLAND is a 3D wireframe (sand contours, palm with bark rings and
-//     fishbone fronds, two rocks, bushes, coconuts, a five-log raft) on a slow
+//     drooping fronds, two rocks, bushes, coconuts, a five-log raft) on a slow
 //     turntable: +/-26 degrees, once a minute. It is projected here at 16
 //     keyframes (one every 4 s) and played back as one SMIL path
 //     morph with Hermite keySplines, so the sway has no visible corners.
@@ -330,11 +330,14 @@ const CROWN_COCOS = [
   { off: [0.18, -0.27, 0.04], shape: cocoShape(5.6, 22) },
 ];
 
+// eight fronds of mixed age: young ones arch up, old ones hang low, so the
+// crown reads as a palm and not as an even dome (an umbrella)
 const FRONDS = Array.from({ length: 8 }, (_, i) => {
-  const az = (i / 8) * TAU + 0.21 + 0.16 * Math.sin(i * 2.3);
-  const L = 2.25 + 0.35 * Math.sin(i * 1.7 + 0.4);
-  const rise = 0.36 + 0.14 * Math.sin(i * 2.9 + 1);
-  const droop = 0.82 + 0.16 * Math.sin(i * 3.7 + 2);
+  const az = (i / 8) * TAU + 0.21 + 0.24 * Math.sin(i * 2.3);
+  const age = ((i * 3) % 8) / 7;                       // 0 young .. 1 old
+  const L = 1.8 + 0.6 * age + 0.12 * Math.sin(i * 1.7 + 0.4);
+  const rise = lerp(0.55, 0.4, age);
+  const droop = lerp(0.95, 1.35, age);
   return { az, L, rise, droop };
 });
 
@@ -367,20 +370,21 @@ function islandFrame(t) {
   });
   polys.push(left, right);
   for (let k = 1; k < N - 1; k++) polys.push([left[k], right[k]]);
-  // fronds: fishbone, rising then drooping
+  // fronds: an arching rib, and one zigzag stroke for the leaflets, which
+  // hang off it to alternate sides (rib, tip, rib, tip...)
   for (const fr of FRONDS) {
     const dir = [Math.cos(fr.az), 0, Math.sin(fr.az)];
     const side = [-Math.sin(fr.az), 0, Math.cos(fr.az)];
     const sp = (s) => [CROWN[0] + dir[0] * fr.L * s, CROWN[1] + fr.L * (fr.rise * s - fr.droop * s * s), CROWN[2] + dir[2] * fr.L * s];
-    polys.push([0, 0.25, 0.5, 0.75, 1].map((s) => P(sp(s))));
-    for (const s of [0.22, 0.4, 0.58, 0.76]) {
+    polys.push([0, 0.17, 0.34, 0.5, 0.66, 0.83, 1].map((s) => P(sp(s))));
+    const zz = [];
+    for (let k = 0; k < 9; k++) {
+      const s = 0.14 + k * 0.1, sg = k % 2 ? 1 : -1;
       const base = sp(s);
-      const l = 0.58 * (1.1 - s);
-      for (const sg of [1, -1]) {
-        const tip = [base[0] + side[0] * l * sg + dir[0] * l * 0.5, base[1] - l * 0.5, base[2] + side[2] * l * sg + dir[2] * l * 0.5];
-        polys.push([P(base), P(tip)]);
-      }
+      const l = 0.66 * Math.sin(Math.PI * (0.1 + 0.8 * s));
+      zz.push(P(base), P([base[0] + (side[0] * 0.4 * sg + dir[0] * 0.22) * l, base[1] - 0.8 * l, base[2] + (side[2] * 0.4 * sg + dir[2] * 0.22) * l]));
     }
+    polys.push(zz);
   }
   for (const c of CROWN_COCOS) polys.push(bill([CROWN[0] + c.off[0], CROWN[1] + c.off[1], CROWN[2] + c.off[2]], c.shape));
   // the raft: five logs and two lashings
@@ -933,14 +937,14 @@ function buildBanner() {
   const MSGS = [
     [0, 6, 'ALL QUIET ON THE ISLAND'],
     [6, 12, 'BOTTLE AWAY'],
-    [12, 21, 'BOTTLE BACK. NO REPLY YET'],
+    [12, 21, 'BOTTLE BACK. STILL HERS'],
     [21, 24, 'ALL QUIET'],
     [24, 30, 'DRONE INBOUND'],
     [30, 36, 'EXTRA LIFE: MORE HEADPHONES'],
     [36, 42, 'SHARK IN RANGE'],
-    [42, 48, 'SHARK NODS ON THE BEAT'],
+    [42, 48, 'THREAT LEVEL: NODDING'],
     [48, 51, 'INCOMING COCONUT'],
-    [51, 57, 'CRAB LEAVES IN NEW HAT'],
+    [51, 57, 'CRAB EQUIPS COCONUT'],
     [57, LOOP, 'ALL QUIET AGAIN'],
   ];
   const BY = 583, BS = 2.35;
@@ -1111,7 +1115,7 @@ function scopeSVG() {
   read.push(textG('E-PIANO · KALIMBA · SOFT DRUMS · VINYL CRACKLE', RX, 250, 2.5));
   read.push(textG('EVERY SOUND SYNTHESIZED FROM CODE. NO SAMPLES.', RX, 282, 2.5));
   read.push(textG('DRAWN FROM THE CHORD NAMES, NOT FROM THE FILE.', RX, 318, 2.2, 2.2, ' class="dimbox"'));
-  read.push(textG('HEARD SO FAR BY: NOBODY', RX, 340, 2.2, 2.2, ' class="dimbox"'));
+  read.push(textG('LISTENERS TO DATE: 0', RX, 340, 2.2, 2.2, ' class="dimbox"'));
   css.push(`.dimbox{opacity:.4}.lit{opacity:0}.lit0{opacity:1}`);
 
   const style = [
@@ -1128,7 +1132,7 @@ function scopeSVG() {
   const glow = (id) => `<use href="#${id}" class="h"/><use href="#${id}" class="m"/><use href="#${id}" class="c"/>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SW} ${SH}" width="${SW}" height="${SH}" role="img" aria-labelledby="t d">
 <title id="t">The Castaway theme as an XY trace</title>
-<desc id="d">A green oscilloscope trace on a graticule draws the four chords of the theme one bar at a time as closed Lissajous figures: Gm9 and Dm9 at 6:5 (root against minor third), C13 and Fmaj9 at 5:4 (root against major third). Beside it a now-playing readout: the theme, a 60-second loop at 80 BPM in F major, 20 bars of 3 seconds, ii-V-I-vi; electric piano, kalimba, soft drums and vinyl crackle, every sound synthesized from code. Drawn from the chord names, not from the file. Heard so far by nobody.</desc>
+<desc id="d">A green oscilloscope trace on a graticule draws the four chords of the theme one bar at a time as closed Lissajous figures: Gm9 and Dm9 at 6:5 (root against minor third), C13 and Fmaj9 at 5:4 (root against major third). Beside it a now-playing readout: the theme, a 60-second loop at 80 BPM in F major, 20 bars of 3 seconds, ii-V-I-vi; electric piano, kalimba, soft drums and vinyl crackle, every sound synthesized from code. Drawn from the chord names, not from the file. Listeners to date: none.</desc>
 <style>
 ${style}
 </style>

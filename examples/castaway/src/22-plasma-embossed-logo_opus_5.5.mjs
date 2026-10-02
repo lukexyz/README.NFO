@@ -34,7 +34,7 @@
 //     colours do. One period takes 12 s, four bars of the theme at 80 BPM.
 //   * The name is not drawn on top: it lives in the index data. Inside the
 //     letters a second copy of the field (half a period out of phase, nudged
-//     up and left) is drawn through a second table, the same ramp lifted
+//     down and right) is drawn through a second table, the same ramp lifted
 //     towards the pale end, so the word is a raised, lighter patch of the
 //     same plasma and its bands jump at every edge. A static third PNG adds
 //     the chiselled 1-pixel highlight, shade and drop shadow.
@@ -319,20 +319,22 @@ G.W = [
   ['+', bracket([108.7, 7], [103.5, 7], [107.7, 13])],
   ['+', bracket([115.7, 7], [124.5, 7], [114.3, 15])],
 ];
-// Y: heavy left arm, hairline right arm, heavy stem from half way down.
+// Y: heavy left arm, light right arm, the two opened wide and meeting a
+// little above half way, so that once the word leans back in perspective
+// the long upright stem still reads as one stem and not as two crossed legs.
 G.Y = [
-  ['+', poly([[5, 0], [28, 0], [57, 50], [35, 50]])],
-  ['+', poly([[73, 0], [81, 0], [56, 52], [47, 52]])],
-  ['+', rect(35, 42, 22, 58)],
-  ['+', rect(0, 0, 37, 7)],
-  ['+', bracket([9.2, 7], [0.5, 7], [14, 15])],
-  ['+', bracket([32.1, 7], [36.5, 7], [34.4, 11])],
-  ['+', rect(64, 0, 25, 7)],
-  ['+', bracket([69.5, 7], [64.5, 7], [67.5, 11])],
-  ['+', bracket([77.6, 7], [88.5, 7], [73.8, 15])],
-  ['+', rect(20, 93, 52, 7)],
-  ['+', fillet(35, 93, 7, -1, -1)],
-  ['+', fillet(57, 93, 7, 1, -1)],
+  ['+', poly([[3, 0], [26, 0], [59, 46], [36, 46]])],
+  ['+', poly([[82, 0], [91, 0], [59, 48], [48, 48]])],
+  ['+', rect(36, 38, 23, 62)],
+  ['+', rect(0, 0, 36, 7)],
+  ['+', bracket([8.02, 7], [0.5, 7], [13.76, 15])],
+  ['+', bracket([31.02, 7], [35.5, 7], [33.89, 11])],
+  ['+', rect(72, 0, 26, 7)],
+  ['+', bracket([77.04, 7], [72.5, 7], [74.21, 11])],
+  ['+', bracket([86.33, 7], [97.5, 7], [81, 15])],
+  ['+', rect(21.5, 93, 52, 7)],
+  ['+', fillet(36, 93, 7, -1, -1)],
+  ['+', fillet(59, 93, 7, 1, -1)],
 ];
 for (const k of Object.keys(G)) {
   const bbs = G[k].filter(([op]) => op === '+').map(([, s]) => s.bb);
@@ -347,7 +349,7 @@ function glyphHit(g, x, y) {
 // Lay out the word. Gaps are between ink boxes, in cap-height units; the
 // diagonal pairs tuck under each other.
 const WORD = 'CASTAWAY';
-const GAP = { CA: 3, AS: 4, ST: 4, TA: -12, AW: -13, WA: -13, AY: -12 };
+const GAP = { CA: 8, AS: 10, ST: 6, TA: -8, AW: -6, WA: -5, AY: -4 };
 const placed = [];
 let LW = 0;
 for (let i = 0; i < WORD.length; i++) {
@@ -368,7 +370,7 @@ function wordHit(u, v) {
 // ------------------------------------------------------------------ perspective
 // The word's plane (0..LW x 0..100) maps onto a trapezoid narrower at the top
 // than at the foot, so the letters lean away like a title crawl.
-const TRAP = { top: 30, foot: 88, topL: 32, topR: 288, footL: 14, footR: 306 };
+const TRAP = { top: 34, foot: 90, topL: 24, topR: 296, footL: 8, footR: 312 };
 function solve(A, b) {
   const n = b.length, M = A.map((r, i) => [...r, b[i]]);
   for (let c = 0; c < n; c++) {
@@ -434,7 +436,8 @@ function field(x, y) {
   const e = Math.sin((x - y * 1.6) / 23.0 + 2.2);
   return (0.7 * (a + b + c + d + e)) / 2.5;
 }
-// Inside the letters: the second copy, half a period out and nudged.
+// Inside the letters: the second copy, half a period out and nudged 4 px
+// right and 3 px down (sampling the field at x - 4, y - 3).
 const lifted = (x, y) => field(x - 4, y - 3) + 0.5;
 const frac = (v) => v - Math.floor(v);
 const level = (v) => Math.floor(frac(v) * STEPS) % STEPS;
@@ -458,7 +461,7 @@ function edgeVec(x, y, want) {
   for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) if ((dx || dy) && inside(x + dx, y + dy) === want) { ox += dx; oy += dy; }
   return [ox, oy];
 }
-const ST = { hi: 0.7, lo: 0.55, rim: 0.5, drop: 0.32 };
+const ST = { hi: 0.7, lo: 0.55, rim: 0.62, drop: 0.4 };
 for (let y = 0; y < PH; y++) {
   for (let x = 0; x < W; x++) {
     const k = y * W + x;

@@ -418,7 +418,9 @@ const SX = 198, SW = 448;
   const mx = SX + 10, my = TOPY + 96, mw = SW - 20, mh = 46;
   out.push(`<rect x="${mx + 0.5}" y="${my + 0.5}" width="${mw - 1}" height="${mh - 1}" rx="9" fill="#07121a" stroke="#24465a"/>`);
   defs.push(`<clipPath id="mclip"><rect x="${mx + 2}" y="${my + 2}" width="${mw - 4}" height="${mh - 4}" rx="7"/></clipPath>`);
-  out.push(`<path d="M${mx + 8} ${my + mh / 2}h${mw - 16}" stroke="#163042" stroke-dasharray="2 3"/>`);
+  // the trace sits a little below centre so it never runs through the 'master' and 'L R' labels
+  const mcy = my + mh / 2 + 3;
+  out.push(`<path d="M${mx + 8} ${mcy}h${mw - 16}" stroke="#163042" stroke-dasharray="2 3"/>`);
   for (let i = 1; i < 8; i++) out.push(`<path d="M${(mx + i * mw / 8).toFixed(1)} ${my + 6}v${mh - 12}" stroke="#10232f"/>`);
   const MP = 96;
   const mf = (u) => { const w = 2 * Math.PI * u; return 0.5 * Math.sin(w) + 0.28 * Math.sin(3 * w + 1.3 * Math.sin(w)) + 0.14 * Math.sin(7 * w + 0.6) + 0.06 * Math.sin(15 * w); };
@@ -427,9 +429,9 @@ const SX = 198, SW = 448;
     for (let x = 0; x <= width + per; x += 3) pts.push(`${x.toFixed(1)} ${(-fn((x / per + phase) % 1) * amp).toFixed(1)}`);
     return 'M' + pts.join('L');
   };
-  out.push(`<g clip-path="url(#mclip)"><g transform="translate(${mx} ${my + mh / 2})"><g class="pm">`
-    + `<path${drift(MP, 1.6)} d="${wavePts(mf, MP, mw, 15, 0.13)}" fill="none" stroke="#5f8fd0" stroke-width="1.1" opacity=".75"/>`
-    + `<path${drift(MP, 1.2)} d="${wavePts(mf, MP, mw, 17)}" fill="none" stroke="#b5dcff" stroke-width="1.3"/>`
+  out.push(`<g clip-path="url(#mclip)"><g transform="translate(${mx} ${mcy})"><g class="pm">`
+    + `<path${drift(MP, 1.6)} d="${wavePts(mf, MP, mw, 10.5, 0.13)}" fill="none" stroke="#5f8fd0" stroke-width="1.1" opacity=".75"/>`
+    + `<path${drift(MP, 1.2)} d="${wavePts(mf, MP, mw, 12)}" fill="none" stroke="#b5dcff" stroke-width="1.3"/>`
     + `</g></g></g>`);
   out.push(text('master', mx + 9, my + 5, 1, 'dm'));
   out.push(text('L', mx + mw - 22, my + 5, 1, 'dm'));
@@ -496,7 +498,10 @@ const INSTR_CH = { '00': 4, '01': 5, '02': 6, '03': 0, '04': 1 };
   };
   span(0, 3, 'chip 1: ISLE-4  the island  (lanes from activities.toml)', P.amber);
   span(4, 6, 'chip 2: LOFI-3  the theme', P.teal);
-  out.push(text('chip 3', GX + chX(7) * GS + 2, y + 1, 1, '', ` fill="${P.pcm}"`));
+  { // chip 3 is one collapsed channel wide: its name, centred over the tab, stays clear of the scopes
+    const x0 = GX + chX(7) * GS + 1, w = chW(7) * GS - 3, lab = 'PCM-0';
+    out.push(text(lab, x0 + (w - tw(lab, 1)) / 2, y + 1, 1, '', ` fill="${P.pcm}"`));
+  }
 }
 
 // --- channel tabs ---------------------------------------------------------------------------
@@ -776,7 +781,7 @@ switching(6, (s) => SECTION(barOf(s)));
   x += 12; out.push(text('/10:00:00', x, y, 1, 'tx')); x += tw('/10:00:00', 1) + 7;
   put('seed', 'dm'); put('1992', 'tx');
   put('speed', 'dm'); put('12', 'tx');
-  put('80 bpm', 'tx'); put('F major', 'tx'); put('-14 LUFS', 'tx');
+  put('tempo', 'dm'); put('80 bpm', 'tx'); put('F major', 'tx'); put('-14 LUFS', 'tx');
   put('samples', 'dm'); put('0', 'yl');
   // key legend at the right
   const leg = [['keys', P.teal], ['bass', P.amber], ['kalimba', P.coral]];

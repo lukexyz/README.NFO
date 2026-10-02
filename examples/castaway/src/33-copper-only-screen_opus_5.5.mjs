@@ -236,7 +236,9 @@ function tab(label, x, frameY) {
 }
 
 // ------------------------------------------------------------------ layout
-const HX = 7, HY = 16, HW = 306, HH = 69; // hero window (inner)
+const HX = 7, HY = 16, HW = 306, HH = 66; // hero window (inner)
+const STRIP_IN = 4; // top-strip text inset from the rule's ends (as the tabs below)
+const TAG_Y = HY + HH + 5; // tagline: four clear lines from the hero frame and the tab tops
 const WY = 103, WH = 42; // bottom windows (inner)
 const SUN = { x: 7, w: 78 };
 const ISL = { x: 93, w: 134 };
@@ -360,8 +362,8 @@ body.push(`<g>${[...TITLE].map((ch, i) => `<use href="#L${ch}" x="${TX + i * TIT
 body.push(frame(HX, HY, HW, HH));
 
 // ------------------------------------------------------------------ top strip
-body.push(`<g fill="url(#chw)">${text('MID-LINE MOVERS PRESENTS', HX, 4)}</g>`);
-body.push(`<g fill="url(#chr)">${text('ZERO BITPLANES', HX + HW - textW('ZERO BITPLANES'), 4)}</g>`);
+body.push(`<g fill="url(#chw)">${text('MID-LINE MOVERS PRESENTS', HX + STRIP_IN, 4)}</g>`);
+body.push(`<g fill="url(#chr)">${text('ZERO BITPLANES', HX + HW - STRIP_IN - textW('ZERO BITPLANES'), 4)}</g>`);
 
 // Rainbow copper lines, 8 px cells cycling through 16 hues.
 {
@@ -383,7 +385,7 @@ body.push(`<g fill="url(#chr)">${text('ZERO BITPLANES', HX + HW - textW('ZERO BI
 // ------------------------------------------------------------------ tagline
 {
   const tag = 'A TEN-HOUR LO-FI ISLAND. SHE MOSTLY WAITS.';
-  body.push(`<g fill="url(#chr)">${text(tag, HX + Math.floor((HW - textW(tag)) / 2), 89)}</g>`);
+  body.push(`<g fill="url(#chr)">${text(tag, HX + Math.floor((HW - textW(tag)) / 2), TAG_Y)}</g>`);
 }
 
 // ================================================================== SUN
@@ -422,7 +424,7 @@ body.push(`<g fill="url(#chr)">${text('ZERO BITPLANES', HX + HW - textW('ZERO BI
 // ------------------------------------------------------------------ her sprite
 const HER_COL = {
   K: '#211', h: '#842', H: '#521', p: '#fec', P: '#ca8', s: '#fca', S: '#d97', e: '#421',
-  t: '#f76', T: '#c54', c: '#edb', C: '#ba8',
+  t: '#f76', T: '#c54', c: '#eec', C: '#bb9',
 };
 const HER_HEAD = [
   '..ppppp..',
@@ -487,7 +489,8 @@ function spriteParts(rows, oy, cutBelow = Infinity) {
   }
   // A few clouds: copper can only start and stop a colour at 4 px steps.
   const cloud = new Set();
-  const cloudRuns = [[12, 3, 16], [8, 4, 28], [4, 5, 36], [60, 6, 12], [56, 7, 24], [108, 2, 12], [104, 3, 20]];
+  // (The left cloud sits below the ISLAND tab, which covers the top four lines.)
+  const cloudRuns = [[16, 7, 14], [12, 8, 26], [8, 9, 34], [62, 4, 12], [58, 5, 24], [108, 2, 12], [104, 3, 20]];
   for (const [x, y, w] of cloudRuns) for (let i = 0; i < w; i++) cloud.add(key(X + x + i, WY + y));
   out.push(`<path fill="#eff" d="${pathOf(cloud)}"/>`);
   // Sea: cyan lines whose phase is 1/distance from the horizon, palette-cycled,
@@ -513,7 +516,8 @@ function spriteParts(rows, oy, cutBelow = Infinity) {
     out.push(`<g style="animation:gl ${dur}s steps(${steps}) infinite;animation-delay:${dly(-(x / W) * dur)}"><rect x="${X + 60}" y="${WY + r}" width="4" height="1" fill="#eff"/><rect x="${X + 60 + W}" y="${WY + r}" width="4" height="1" fill="#eff"/></g>`);
   }
   // Island: a sand mound, edges in 4 px steps, one sand colour per line,
-  // foam at both ends of every line flipping on the half bar.
+  // foam at both ends of every line, alternate lines swapping colour on
+  // every beat.
   const IC = X + 76; // centre
   const ITOP = 31;
   const sandRows = [];
@@ -606,7 +610,7 @@ function spriteParts(rows, oy, cutBelow = Infinity) {
 
   // Her: a sprite pair (15 colours), standing on the sand, nodding on every
   // beat. Coral tank top, cream shorts, cream headphones, brown hair in a low
-  // bun, bare feet. Eyes closed: she is listening.
+  // bun, bare feet.
   out.push(`<g transform="translate(${IC - 18} ${WY + ITOP - 21})">${HER_SVG}</g>`);
   body.push(`<g clip-path="url(#ci)">${out.join('')}</g>`);
   body.push(frame(X, WY, W, WH));

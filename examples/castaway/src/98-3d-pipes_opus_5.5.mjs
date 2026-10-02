@@ -44,8 +44,9 @@
 //    at a time; joints pop in with visibility. Bar 20 is a block dissolve.
 //  * The loop opens six bars in (a negative delay on everything), so the
 //    first frame a visitor sees already has pipes in it.
-//  * prefers-reduced-motion holds the picture as it stands after bar 13:
-//    no growth, no dissolve, no nod.
+//  * prefers-reduced-motion holds the picture exactly as it stands after
+//    bar 13 (runs still growing then are cut in two at that point): no
+//    growth, no dissolve, no nod.
 //  * Nothing is <text>: the small lettering is a 6 x 7 pixel face (technique
 //    from the bouncing-logo generator), every glyph a <use>.
 
@@ -429,6 +430,12 @@ pipes.forEach((p, pi) => {
   }
 });
 function cut(p, i0, i1) {
+  // a run that is still growing at the end of bar 13 is cut there, so the
+  // reduced-motion still is exactly the picture after bar 13 (the later half
+  // gets a tick past STILL and is hidden with everything else that comes later)
+  for (let i = i0 + 1; i < i1; i++) {
+    if (p.cells[i].t <= STILL && p.cells[i + 1].t > STILL) { cut(p, i0, i); cut(p, i, i1); return; }
+  }
   const axisZ = p.cells[i0].c[2] !== p.cells[i1].c[2];
   if (!axisZ) { addRun(p, i0, i1); return; }
   for (let i = i0; i < i1; i += 2) addRun(p, i, Math.min(i + 2, i1));

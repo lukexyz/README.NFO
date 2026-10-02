@@ -119,7 +119,7 @@ const F5 = {
   S: '.####|#....|#....|.###.|....#|....#|####.',
   T: '#####|..#..|..#..|..#..|..#..|..#..|..#..',
   U: '#...#|#...#|#...#|#...#|#...#|#...#|.###.',
-  V: '#...#|#...#|#...#|#...#|#...#|.#.#.|..#..',
+  V: '#...#|#...#|#...#|.#.#.|.#.#.|..#..|..#..',
   W: '#...#|#...#|#...#|#.#.#|#.#.#|#.#.#|.#.#.',
   X: '#...#|#...#|.#.#.|..#..|.#.#.|#...#|#...#',
   Y: '#...#|#...#|.#.#.|..#..|..#..|..#..|..#..',
@@ -323,6 +323,8 @@ const RING = { cx: 612, cy: 250, rx: 512, ry: 116, tilt: -4, sw: 17 };
 const ORB = { cx: 612, cy: 250, rx: 556, ry: 170, tilt: -4 };
 const TITLE = { x0: 396, x1: 1012, top: 203, cap: 60 };
 const HUB = { cx: 704, cy: 250 };
+// the two lines of the OPERATOR callout (LENS.cy + 166 and + 180), padded
+const OP_LABEL = { x: 22, y: LENS.cy + 162, w: 140, h: 29 };
 
 // =================================================================== DEFS
 defs.push(
@@ -436,7 +438,7 @@ const FL = { x: 1112, y: 98 };
   const { cx, cy } = HUB;
   body.push(`<g fill="none" stroke="${C.line}">`);
   body.push(`<circle cx="${cx}" cy="${cy}" r="186" stroke-width="1.2" opacity=".75"/>`);
-  body.push(`<g transform="translate(${cx} ${cy})"><circle r="160" stroke-width="2" stroke-dasharray="2 10" pathLength="1000" style="animation:dash 60s linear infinite" opacity=".9"/></g>`);
+  body.push(`<g transform="translate(${cx} ${cy})"><circle r="160" stroke-width="2" stroke-dasharray="2 8" pathLength="1000" style="animation:dash 60s linear infinite" opacity=".9"/></g>`);
   body.push(`<circle cx="${cx}" cy="${cy}" r="214" stroke-width="1" stroke-dasharray="40 8 4 8" opacity=".55"/>`);
   body.push(`</g>`);
   // tiny numerals round the hub
@@ -448,10 +450,18 @@ const FL = { x: 1112, y: 98 };
     body.push(pxC(String(a).padStart(3, '0'), x, y - 4, 1.1, C.ink2, ' opacity=".7"'));
   }
   // tilted dashed orbits (no riders): the dashes do the orbiting
-  const orbits = [[430, 74, 9, 30, '6 7'], [560, 132, -13, 45, '1.5 6'], [300, 52, -22, 20, '10 6 2 6']];
+  // dash patterns divide pathLength 1000 exactly and periods divide 60 s, so the
+  // offset wraps with no visible jump
+  const orbits = [[430, 74, 9, 30, '6 6.5'], [560, 132, -13, 60, '1.5 6.5'], [300, 52, -22, 20, '10 6 2 7']];
+  // the OPERATOR callout label (bottom left) knocks these lines out, so the
+  // widest orbit's dashes never run through its letters
+  const k = OP_LABEL;
+  defs.push(`<mask id="mOpLbl" maskUnits="userSpaceOnUse" x="0" y="0" width="${W}" height="${H}"><rect width="${W}" height="${H}" fill="#fff"/><rect x="${k.x}" y="${k.y}" width="${k.w}" height="${k.h}" rx="4" fill="#000"/></mask>`);
+  body.push(`<g mask="url(#mOpLbl)">`);
   for (const [rx, ry, rot, dur, da] of orbits) {
     body.push(`<g transform="translate(${ORB.cx} ${ORB.cy}) rotate(${rot})"><ellipse rx="${rx}" ry="${ry}" fill="none" stroke="${C.ink2}" stroke-width="1.3" stroke-dasharray="${da}" pathLength="1000" opacity=".5" style="animation:dash ${dur}s linear infinite"/></g>`);
   }
+  body.push(`</g>`);
 }
 
 // =================================================================== ORBIT + SATELLITES
@@ -475,7 +485,7 @@ const SATS = [
 ];
 for (const [name, tag] of SATS) {
   defs.push(`<g id="i_${name}"><circle r="19" fill="url(#gDisc)" stroke="${C.ink}" stroke-width="2"/><circle r="15.5" fill="none" stroke="${C.lineLt}" stroke-width="1"/>${ICON[name]}` +
-    `<rect x="11" y="-25" width="${pxW(tag, 1) + 6}" height="11" rx="5.5" fill="${C.ink}"/>${px(tag, 14, -23, 1, '#fff')}</g>`);
+    `<rect x="10" y="-27" width="${n(pxW(tag, 1.3) + 7)}" height="13" rx="6.5" fill="${C.ink}"/>${px(tag, 13.5, -24.5, 1.3, '#fff')}</g>`);
 }
 // Keyframes: parametric ellipse (a circle seen from above at an angle), with
 // a depth scale; 120 samples, linear between.
@@ -592,9 +602,10 @@ const HORIZON = LY - 2;
   }
   let nums = '';
   for (const a of [0, 90, 180, 270]) {
-    const r = 142;
-    const c = Math.cos((a - 90) * PI / 180), s = Math.sin((a - 90) * PI / 180);
-    nums += `<g transform="rotate(${a} ${n(r * c)} ${n(r * s)})">${pxC(String(a).padStart(3, '0'), r * c, r * s - 3.5, 1.05, C.ink2)}</g>`;
+    // set 10 degrees clockwise of each pink cardinal tick, so they never overprint
+    const r = 142, at = a + 10;
+    const c = Math.cos((at - 90) * PI / 180), s = Math.sin((at - 90) * PI / 180);
+    nums += `<g transform="rotate(${at} ${n(r * c)} ${n(r * s)})">${pxC(String(a).padStart(3, '0'), r * c, r * s - 3.5, 1.05, C.ink2)}</g>`;
   }
   body.push(`<g transform="translate(${LX} ${LY})"><g style="animation:spin ${LOOP}s linear infinite"><circle r="121" fill="none" stroke="${C.ink2}" stroke-width="1.2"/><path d="${ticks}" stroke="${C.ink2}" stroke-width="1.2"/>${nums}` +
     `<path d="M0 -150V-136M0 136V150M-150 0H-136M136 0H150" stroke="${C.pink}" stroke-width="2.4"/></g></g>`);
@@ -617,9 +628,9 @@ const HORIZON = LY - 2;
   // clouds drift across, wrapping outside the glass
   const cloud = (cx, cy, s) => `<g transform="translate(${cx} ${cy}) scale(${s})"><path d="M-30 6H30C34 6 36 0 31 -3C30 -10 21 -12 16 -8C13 -16 1 -18 -4 -10C-10 -14 -20 -10 -19 -3C-26 -4 -34 4 -30 6Z" fill="#fff"/><path d="M-28 6H30" stroke="#d6ecfa" stroke-width="2"/></g>`;
   css.push(`@keyframes cloudA{0%{transform:translate(-80px,0)}100%{transform:translate(170px,0)}}`);
-  css.push(`@keyframes cloudB{0%{transform:translate(-150px,0)}100%{transform:translate(100px,0)}}`);
+  css.push(`@keyframes cloudB{0%{transform:translate(-162px,0)}100%{transform:translate(100px,0)}}`);
   g += `<g transform="translate(-80 0)" style="animation:cloudA 60s linear infinite">${cloud(LX - 40, LY - 70, 0.9)}</g>`;
-  g += `<g transform="translate(-150 0)" style="animation:cloudB 60s linear -30s infinite">${cloud(LX + 40, LY - 36, 0.6)}</g>`;
+  g += `<g transform="translate(-162 0)" style="animation:cloudB 60s linear -30s infinite">${cloud(LX + 40, LY - 36, 0.6)}</g>`;
   // sea
   g += `<rect x="${LX - 101}" y="${HORIZON}" width="202" height="${LY + 101 - HORIZON}" fill="url(#gSea)"/>`;
   g += `<path d="M${LX - 101} ${HORIZON}H${LX + 101}" stroke="#e8f8ff" stroke-width="1.2"/>`;
@@ -647,11 +658,12 @@ const HORIZON = LY - 2;
   g += shrub(IX - 50, IY - 2, 0.9) + shrub(IX + 46, IY - 3, 0.8) + shrub(IX - 14, IY - 6, 0.7);
   // rock
   g += `<path d="M${IX - 60} ${IY + 6}C${IX - 60} ${IY} ${IX - 50} ${IY - 1} ${IX - 48} ${IY + 6}Z" fill="#8d95a0"/>`;
-  // raft, off the right of the island
+  // raft, moored at the lagoon's left edge, where the glass can show all of it
   {
-    let r = `<g transform="translate(${IX + 70} ${IY + 4}) rotate(-6)">`;
+    let r = `<g transform="translate(${IX - 93} ${IY - 13}) rotate(-5)">`;
+    r += `<ellipse cx="13" cy="11" rx="16" ry="3" fill="#0b64ac" opacity=".35"/>`;
     for (let i = 0; i < 4; i++) r += `<rect x="${i * 6.4}" y="-4" width="6" height="14" rx="3" fill="${i % 2 ? '#9a5a3a' : '#b06a45'}" stroke="#5c3320" stroke-width=".8"/>`;
-    r += `<path d="M-1 0H26M-1 6H26" stroke="#e3c48a" stroke-width="1.3"/></g>`;
+    r += `<path d="M-1 0H26M-1 6H26" stroke="#e3c48a" stroke-width="1.3"/><path d="M26 3C31 4 33 8 38 9" fill="none" stroke="#e3c48a" stroke-width="1"/></g>`;
     g += r;
   }
   // palm: a tall slender trunk leaning left, crown swaying
@@ -710,17 +722,32 @@ const HORIZON = LY - 2;
   g += her;
 
   // ------------------------------------------------ events (stepped motion)
-  // 6-12 s: a message in a bottle washes in to her feet and straight back.
+  // 6-12 s: the message in a bottle. She throws it out to sea (an arc, in
+  // stepped frames, spinning), it splashes down, bobs, and washes straight
+  // back to her feet, where it stays until the bar ends. Off-glass otherwise.
   {
-    const steps = [];
-    const sx = LX + 120, sy = IY + 18, ex = HX + 10, ey = IY + 9;
-    for (let i = 0; i <= 8; i++) steps.push([6 + i * 0.375, sx + (ex - sx) * (i / 8), sy + (ey - sy) * (i / 8)]);
-    steps.push([10.5, ex, ey]);
-    for (let i = 1; i <= 4; i++) steps.push([10.5 + i * 0.375, ex + (sx - ex) * (i / 4), ey + (sy - ey) * (i / 4)]);
-    steps.push([12.01, sx, sy]);
-    const pts = [[0, sx, sy], ...steps, [60, sx, sy]].map(([t, x, y]) => [t, x - sx, y - sy]);
+    const sx = LX + 130, sy = IY + 18; // parked outside the glass
+    const hand = [HX + 8, HF - 27];
+    const sea = [HX + 74, IY + 26];
+    const feet = [HX + 10, IY + 7];
+    const abs = [
+      [0, sx, sy, -70],
+      [6, hand[0], hand[1], -20],
+      [6.375, HX + 22, HF - 46, 50],
+      [6.75, HX + 40, HF - 54, 130],
+      [7.125, HX + 58, HF - 42, 210],
+      [7.5, sea[0], sea[1], 290],
+      [7.875, sea[0], sea[1] + 1.5, 290],
+      [8.25, sea[0], sea[1], 290],
+    ];
+    for (let i = 1; i <= 6; i++) abs.push([8.25 + i * 0.375, sea[0] + (feet[0] - sea[0]) * (i / 6), sea[1] + (feet[1] - sea[1]) * (i / 6) + (i % 2 ? -1.2 : 0), 290]);
+    abs.push([12, sx, sy, -70], [60, sx, sy, -70]);
+    const pts = abs.map(([t, x, y, r]) => [t, x - sx, y - sy, ` rotate(${r}deg)`]);
     const st = kfTranslate('evBottle', LOOP, pts, 'step-end');
-    g += `<g transform="translate(${sx} ${sy})"><g${st()}><g transform="rotate(-70)"><rect x="-3" y="-5" width="6" height="11" rx="2.6" fill="#56c08a" stroke="${C.ink}" stroke-width=".8"/><rect x="-1.5" y="-8.5" width="3" height="4" fill="#56c08a" stroke="${C.ink}" stroke-width=".8"/><rect x="-1.5" y="-10.4" width="3" height="2.2" fill="#c48a52"/><rect x="-1.6" y="-2.6" width="3.2" height="6" fill="${C.cream}"/></g></g></g>`;
+    g += `<g transform="translate(${sx} ${sy})"><g${st()}><g transform="rotate(0)"><rect x="-3" y="-5" width="6" height="11" rx="2.6" fill="#56c08a" stroke="${C.ink}" stroke-width=".8"/><rect x="-1.5" y="-8.5" width="3" height="4" fill="#56c08a" stroke="${C.ink}" stroke-width=".8"/><rect x="-1.5" y="-10.4" width="3" height="2.2" fill="#c48a52"/><rect x="-1.6" y="-2.6" width="3.2" height="6" fill="${C.cream}"/></g></g></g>`;
+    // the splash where it lands, for one beat
+    css.push(`@keyframes evSplash{0%{opacity:0}${n(7.5 / 60 * 100, 3)}%{opacity:1}${n(8.25 / 60 * 100, 3)}%{opacity:0}100%{opacity:0}}`);
+    g += `<g opacity="0" style="animation:evSplash 60s step-end infinite" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><ellipse cx="${sea[0]}" cy="${sea[1] + 5}" rx="9" ry="2.6"/><path d="M${sea[0] - 6} ${sea[1] - 1}l-3 -5M${sea[0]} ${sea[1] - 3}v-6M${sea[0] + 6} ${sea[1] - 1}l3 -5"/></g>`;
   }
   // 18-24 s: a drone lowers a parcel and leaves; 24-30 s: a wave takes the box.
   {
@@ -803,7 +830,7 @@ body.push(satLayer('Front'));
   defs.push(`<g id="spk"><path d="${star(13)}" fill="#fff"/><circle r="2.2" fill="#fff"/></g>`);
   const spots = [[PILL.x + 466, PILL.y + 9, 1], [LX - 70, LY - 76, 0.9], [1050, 21, 0.75], [RING.cx + 300, RING.cy + 96, 0.9]];
   spots.forEach(([x, y, sc], i) => {
-    body.push(`<g transform="translate(${n(x)} ${n(y)}) scale(${sc})"><use href="#spk" class="sp" style="animation:twinkle ${BAR}s ease-out ${n(i * BEAT, 2)}s infinite"/></g>`);
+    body.push(`<g transform="translate(${n(x)} ${n(y)}) scale(${sc})"><use href="#spk" class="sp" style="animation:twinkle ${BAR}s ease-out ${n(i * BEAT - BAR, 2)}s infinite"/></g>`);
   });
 }
 
@@ -816,9 +843,10 @@ body.push(satLayer('Front'));
   body.push(px('SIGNAL: 1 BAR', 28, LY - 166, 1.5, C.ink));
   body.push(px('(AT THE TOP OF THE PALM)', 28, LY - 148 + 2, 1.1, C.ink2));
   // to her
-  body.push(callout(LX - 33, LY + 20, LX - 128, LY + 166, LX - 228, '', C.coral));
-  body.push(px('OPERATOR: IDLE', 26, LY + 172, 1.5, C.ink));
-  body.push(px('NODDING, ON THE BEAT', 26, LY + 186, 1.1, C.ink2));
+  // (lifted 6 above the band so the sub-line clears the SPEC SHEET tab)
+  body.push(callout(LX - 33, LY + 20, LX - 128, LY + 160, LX - 228, '', C.coral));
+  body.push(px('OPERATOR: IDLE', 26, LY + 166, 1.5, C.ink));
+  body.push(px('NODDING, ON THE BEAT', 26, LY + 180, 1.1, C.ink2));
 }
 
 // =================================================================== TOP STRIP
@@ -831,7 +859,7 @@ body.push(satLayer('Front'));
   body.push(px('SYSTEMS 2000 · ISLAND DIVISION', 104, 42, 1.2, C.ink2));
   // slogan
   body.push(tfText('THE FUTURE OF DOING NOTHING', 612, 24, 13, C.ink, { sw: 1.4, anchor: 'middle' }));
-  body.push(pxC('NOW SHOWING EVERY SO OFTEN · ON THE BAR · ON SCHEDULE', 612, 44, 1.1, C.ink2));
+  body.push(pxC('SOMETHING HAPPENS EVERY SO OFTEN · ON THE BAR · ON SCHEDULE', 612, 44, 1.1, C.ink2));
   // model pill, top right (inside the flare)
   defs.push(`<linearGradient id="gChromeP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".38" stop-color="#d9e2ec"/><stop offset=".5" stop-color="#8796ad"/><stop offset=".56" stop-color="#1a2440"/><stop offset=".7" stop-color="#6e7f99"/><stop offset="1" stop-color="#e9f0f6"/></linearGradient>`);
   body.push(`<rect x="938" y="17" width="114" height="30" rx="15" fill="url(#gChromeP)" stroke="${C.ink}" stroke-width="2"/>`);
@@ -858,7 +886,7 @@ function frame(x, y, w, h, tab, tabCol, tabInk, deco = true) {
   body.push(frame(x, y, w, h, 'SPEC SHEET', C.lime, C.ink));
   const rows = [
     ['RUNTIME', '10:00:00 · SEED 1992'],
-    ['PICTURE', '16:9 · 1080P · 30 FPS'],
+    ['PICTURE', '16:9 · 1080P · 24 FPS'],
     ['SCHEDULE', '90+ ACTIVITIES · 4 TIMERS'],
     ['THEME', '60 S LOOP, 80 BPM, F MAJOR'],
     ['SOUND', '150+ FILES, ALL FROM CODE'],
@@ -981,7 +1009,7 @@ body.push(`<rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="27" fill="no
 // =================================================================== ASSEMBLE
 const glyphDefs = [...glyphIds].map(([ch, id]) => `<path id="${id}" d="${bitmapPath(F5[ch].split('|'))}"/>`).join('');
 const title = 'CASTAWAY: a Y2K techno poster for a lo-fi island video';
-const desc = 'CASTAWAY in wide squared white capitals inside a glossy candy-blue lozenge, ringed by one chrome ring. At the left end of the lozenge a lime lens shows a tiny island in daytime: one tall palm, a raft, and a young woman in cream headphones, a coral tank top and cream shorts, nodding on the beat. Eight gag icons in circles orbit the logo. A readout cycles through the gags. Run it with python tools/serve.py and open http://127.0.0.1:8765/.';
+const desc = 'CASTAWAY in wide squared white capitals inside a glossy candy-blue lozenge, ringed by one chrome ring. At the left end of the lozenge a lime lens shows a tiny island in daytime: one tall palm, a raft, and a young woman in cream headphones, a coral tank top and cream shorts, nodding on the beat. In the lens a thrown message in a bottle washes straight back, a drone drops off a parcel, a shark in headphones swims by, a coconut lands on a hermit crab and walks off, and one bar of signal appears at the top of the palm. Eight gag icons in circles orbit the logo, and a readout names each event, sped up for the brochure. Run it with python tools/serve.py and open http://127.0.0.1:8765/.';
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">` +
   `<title id="t">${title}</title><desc id="d">${desc}</desc>` +
   `<style>${css.join('')}@media (prefers-reduced-motion: reduce){*{animation:none!important}}</style>` +

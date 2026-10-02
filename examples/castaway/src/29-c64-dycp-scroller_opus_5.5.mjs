@@ -66,9 +66,10 @@ const OUT = flag('out') ? path.resolve(flag('out')) : path.resolve(here, `../ass
 
 // ------------------------------------------------------------------ facts
 // Checked 2026-10-01 against D:/python/castaway (read-only): activities.toml
-// lists 94 activities on four timers plus chained follow-ups (so "90+"),
-// run 10:00:00 with seed 1992, starts snap to 3 s bars; media/audio holds 171
-// synthesized files (so "150+"). The banner only states the rounded figures.
+// lists 94 activities, 81 on the four timers and 13 chained (so "90+"),
+// run 10:00:00 with seed 1992, starts snap to 3 s bars; audio_catalog.json
+// lists 181 synthesized files (so "150+"). The banner only states the
+// rounded figures, which age better.
 
 // ---------------------------------------------------------------- palette
 const C = {
@@ -358,11 +359,13 @@ function buildLogo(word, panelY, patId, ramp, cls, flowCls) {
     for (let dy = -1; dy <= 1 && !hit; dy++) for (let dx = -2; dx <= 2 && !hit; dx++) if (on(x + dx, y + dy)) hit = true;
     if (hit) out.set(x, y, C.black);
   }
-  // drop shadow: the outlined shape again, 2 px right and 2 rows down
+  // drop shadow: the outlined shape again, 2 px right and 2 rows down, in
+  // the next darker palette colour of each panel stripe (purple -> blue,
+  // blue -> black), so the screen stays on the sixteen colours
   const shadow = new Canvas(W, PANEL_H);
   for (let y = 0; y < PANEL_H; y++) for (let x = 0; x < W; x++) {
     const sx = x - 2; const sy = y - 2;
-    if ((on(sx, sy) || out.get(sx, sy)) && !on(x, y) && !out.get(x, y)) shadow.set(x, y, C.black);
+    if ((on(sx, sy) || out.get(sx, sy)) && !on(x, y) && !out.get(x, y)) shadow.set(x, y, panelRow(y) === C.purple ? C.blue : C.black);
   }
   const pat = stripePattern(patId, ramp);
   logoDefs.push(pat.def);
@@ -370,7 +373,7 @@ function buildLogo(word, panelY, patId, ramp, cls, flowCls) {
   logoDefs.push(`<clipPath id="${clipId}"><path d="${cellsToPath(on, W, PANEL_H)}"/></clipPath>`);
   const fx = x0 - pat.w;
   logoBody.push(`<g transform="translate(0 ${panelY})"><g class="${cls}">`
-    + `<path fill="${C.black}" opacity="0.55" d="${cellsToPath((x, y) => !!shadow.get(x, y), W, PANEL_H)}"/>`
+    + shadow.paths()
     + `<path fill="${C.black}" d="${cellsToPath((x, y) => !!out.get(x, y), W, PANEL_H)}"/>`
     + `<g clip-path="url(#${clipId})"><rect class="${flowCls}" x="${fx}" y="0" width="${total + 2 * pat.w + 4}" height="${PANEL_H}" fill="url(#${patId})"/></g>`
     + '</g></g>');
@@ -385,9 +388,10 @@ const SPR_COL = {
   G: C.lgreen, g: C.green, w: C.white, W: C.lgrey, O: C.orange, o: C.yellow, b: C.brown,
   k: C.black, d: C.dgrey, r: C.grey, c: C.cyan, R: C.red, l: C.lred, B: C.blue, L: C.lblue,
 };
-// Expanded multicolour sprites (X and Y doubled, so one pixel is 4x2). The
-// last row of each is the waterline it floats on, just under the letters'
-// baseline. (y = pale yellow-green, the turtle's skin)
+// Expanded multicolour sprites (X and Y doubled, so one pixel is 4x2), at
+// most 10 rows so the highest crest stays inside the scroller band. The last
+// row of each is the waterline it floats on (sand for the coconut, which
+// walks), just under the letters' baseline. (y = the turtle's skin)
 const SPRITES = {
   bottle: [
     '..gGGGGGg.....',
@@ -398,17 +402,18 @@ const SPRITES = {
     '..ggggggg.....',
     'cc.cccc..ccc.c',
   ],
+  // grey tabby with a white chest, sitting on a slatted wooden crate
   cat: [
-    '.r...r....',
-    '.rrrrr....',
-    '.rGrGr....',
-    '..rwr...r.',
-    '.drwrd..r.',
-    '.rdwdrrr..',
-    'oooooooooo',
-    'ObbbbbbbbO',
-    'OOOOOOOOOO',
-    'c.ccc..cc.',
+    '.r...r.....',
+    '.rrrrr.....',
+    '.rGrGr.....',
+    '..rwr....r.',
+    '.drwrdrrr..',
+    'oooooooooo.',
+    'ObObbObbOb.',
+    'OOOOOOOOOO.',
+    'bbbbbbbbbb.',
+    'c.ccc..cc.c',
   ],
   turtle: [
     '.....GGGG.....',
@@ -418,26 +423,32 @@ const SPRITES = {
     '.yy.yyy...yyy.',
     'cc.cccc..ccc.c',
   ],
+  // facing left: a band over the head, a cup on each side, a grin, then
+  // the dorsal fin and the tail
   shark: [
-    '..........d...',
-    '...wwwww.dd...',
-    '..w.....wdd...',
-    '.rrrrrwwwrrr..',
-    'rrkrrrwWwrrrrr',
-    'rrrrrrwwwrrrrr',
-    'rwwwwrrrrrrrrr',
-    'cwccwcccwccwcc',
+    '..wwww......r...',
+    '.w....w....rr...',
+    '.w....w...rrr...',
+    '.WW.rrWW.rrrr..r',
+    'rWWrrrWWrrrrr.rd',
+    'rrrkrrrrrrrrrrd.',
+    'rwkwkwrrrrrrrrd.',
+    '.wwwwwwrrrrrr.rd',
+    'cwccwccccwccccc.',
   ],
+  // a coconut (three eyes) with a hermit crab under it: one eye on a stalk
+  // and a claw out in front, legs below, walking on sand
   coconut: [
-    '...OOOO..',
-    '..OoOOOO.',
-    '.OOObObOO',
-    '.OOOOOOOO',
-    'k.OOOOOO.',
-    'RlRRRRRRl',
-    '.R.R.R.R.',
-    'R..R.R..R',
-    'cc.ccc.cc',
+    '...bbbbb...',
+    '..bOOOOOb..',
+    '.bOoOOOOOb.',
+    '.bOObObOOb.',
+    'w.bOOOOOb..',
+    'l..bbbbb...',
+    'll.lRRRRl..',
+    'll.R.R.R.R.',
+    '..R.R.R..R.',
+    'oo.ooo.ooo.',
   ],
 };
 SPR_COL.y = C.yellow;
@@ -457,14 +468,15 @@ for (const [name, rows] of Object.entries(SPRITES)) {
 
 // ----------------------------------------------------------- the scroller
 const SCROLL = [
-  'DEPARTMENT OF BUOYANCY PRESENTS... CASTAWAY!  ~  TEN HOURS, ONE TINY ISLAND, ONE PALM,',
-  'ONE RAFT AND HER, NODDING TO HER HEADPHONES. SHE STAYS. EVERYTHING ELSE DRIFTS BY...',
+  'DEPARTMENT OF BUOYANCY PRESENTS... CASTAWAY!  ~  SHE STAYS PUT. THE REST OF THE CHARSET COMES TO HER...',
   '{bottle} A BOTTLE, WASHING STRAIGHT BACK...',
   '{cat} A CAT ON A CRATE (NAPS UP THE PALM, FLOATS OFF AGAIN)...',
   '{turtle} A SEA TURTLE, JUST VISITING...',
   '{shark} A SHARK IN HEADPHONES, ON THE BEAT...',
   '{coconut} A COCONUT, WALKING OFF WITH A HERMIT CRAB UNDER IT...',
-  '~  DYCP MEANS EVERY CHARACTER GETS ITS OWN HEIGHT. THE MAIN CHARACTER HAS PICKED HERS: SAND LEVEL.',
+  '~  TEN HOURS, ONE TINY ISLAND, ONE PALM, ONE RAFT AND HER.',
+  'DYCP MEANS EVERY CHARACTER GETS ITS OWN HEIGHT. THE MAIN CHARACTER HAS PICKED HERS: SAND LEVEL.',
+  'SHE NODS ALONG TO HER HEADPHONES AND LEAVES THE BOBBING TO THE LETTERS.',
   'NOW AND THEN SHE CLIMBS THE PALM FOR ONE BAR OF SIGNAL.',
   '~  90+ ACTIVITIES, FOUR TIMERS, EVERY GAG ON THE NEXT BAR. EVERY SOUND SYNTHESIZED FROM CODE.',
   '~  PYTHON TOOLS/SERVE.PY, THEN 127.0.0.1:8765 ... LET IT RUN.',
@@ -570,7 +582,9 @@ const raft = new Canvas(W, PIC_H);
     else if (d < 7.2) back.mc(x, y, C.yellow);
     else if (d < 8.6 && (x + y) % 2 === 0) back.mc(x, y, C.yellow);
   }
-  // cumulus along the horizon: white tops, light grey undersides
+  // cumulus along the horizon: white tops over a light grey base band
+  // (solid rows, no checker: a 2:1 checker cut by the horizon reads as
+  // scratches)
   const puffs = [
     [8, 23, 7, 5], [18, 20, 10, 7], [31, 22, 8, 5], [44, 19, 11, 8], [57, 22, 9, 5], [66, 23, 6, 3],
     [94, 23, 5, 3], [101, 21, 7, 5], [109, 23, 5, 3],
@@ -580,8 +594,7 @@ const raft = new Canvas(W, PIC_H);
     for (const [cx, cy, rx, ry] of puffs) {
       const e = ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2;
       if (e < 1) {
-        const rim = y > cy + 1 && e > 0.45;
-        back.mc(x, y, rim && ((x + y) % 2 || e > 0.8) ? C.lgrey : C.white);
+        back.mc(x, y, y >= HORIZON - 2 ? C.lgrey : C.white);
         break;
       }
     }
@@ -623,7 +636,7 @@ const raft = new Canvas(W, PIC_H);
       if (e < 1) front.mc(x, y, y < cy - ry * 0.2 && (x + y) % 2 ? C.lgreen : C.green);
     }
   };
-  bush(136, 37, 6, 2.6); bush(144, 38, 4, 2); bush(113, 39, 3, 1.6);
+  bush(136, 37, 6, 2.6); bush(144, 38, 4, 2); bush(106, 38, 3, 1.6);
   // the palm: a leaning trunk, ringed every third row
   const baseX = 135; const baseY = 38; const topX = 127; const topY = 6;
   for (let y = topY; y <= baseY; y++) {
@@ -763,7 +776,7 @@ ${logoBody.join('\n')}
 <g class="sc">${spriteUses.join('')}</g>
 ${picture}
 </g>
-<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="5" fill="none" stroke="#3a3a46" stroke-width="1" shape-rendering="geometricPrecision"/>
+<rect x=".5" y=".5" width="${W - 1}" height="${H - 1}" rx="5" fill="none" stroke="${C.dgrey}" stroke-width="1" shape-rendering="geometricPrecision"/>
 </svg>
 `;
 

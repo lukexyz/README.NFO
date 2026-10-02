@@ -11,9 +11,9 @@
   <sub>working title &middot; an unofficial remake inspired by the 1992 screensaver <i>Johnny Castaway</i> &middot; 16:9, 1080p, 30 fps &middot; always daytime</sub>
 </p>
 
-A lo-fi video in the spirit of the 10-hour streams and of a classic desert-island screensaver: one young woman, one tall palm, one raft and a lot of time. She sits in the shade with her headphones on and nods to the music, and every few minutes the schedule pulls something off the Gags menu. A message in a bottle washes straight back. A drone delivers a parcel, and the parcel is another pair of headphones. A shark in headphones nods along. A coconut lands on a hermit crab, and the crab walks off wearing it. Then she goes back to waiting, which is most of the video, on purpose. Every item on that menu works except one: **Get Rescued** is greyed out.
+A lo-fi video in the spirit of the 10-hour streams and of a classic desert-island screensaver: one young woman, one tall palm, one raft and a lot of time. She sits in the shade with her headphones on and nods to the music. Every few minutes the schedule gives her something small to do, and now and then it pulls something off the Gags menu. A message in a bottle washes straight back. A drone delivers a parcel, and the parcel is another pair of headphones. A shark in headphones nods along. A coconut lands on a hermit crab, and the crab walks off wearing it. Then she goes back to waiting, which is most of the video, on purpose. Every item on that menu is ready to go except one: **Get Rescued** is greyed out.
 
-**More than 90 activities** live in [`activities.toml`](activities.toml), on four timers from every 2 to 5 minutes to every 3 to 6 hours, and every one of them waits for the next bar of the music (every 3 seconds), so the gags land on the beat. **Every sound is synthesized from code** by [`tools/make_audio.py`](tools/make_audio.py): more than 150 files, no samples, no loops, no recordings, so no third-party licence applies.
+**More than 90 activities** live in [`activities.toml`](activities.toml): most of them on four timers, from every 2 to 5 minutes to every 3 to 6 hours, the rest set off by another activity. Every one of them waits for the next bar of the music (every 3 seconds), so the gags land on the beat. **Every sound is synthesized from code** by [`tools/make_audio.py`](tools/make_audio.py): more than 150 files, no samples, no borrowed loops, no recordings, so no third-party licence applies.
 
 **Run it**, then open <a href="http://127.0.0.1:8765/">http://127.0.0.1:8765/</a> for the live preview and the export to a YouTube-ready MP4:
 
@@ -21,7 +21,7 @@ A lo-fi video in the spirit of the 10-hour streams and of a classic desert-islan
 python tools/serve.py
 ```
 
-<sub>The banner is only a picture of a computer, so you can stop waiting for it. She won't.</sub>
+<p><sub>The banner is only a picture of a computer, so you can stop waiting for it. She won't.</sub></p>
 
 <details>
 <summary><b>Get Info</b>: Castaway</summary>
@@ -59,7 +59,7 @@ Its notebook is [`MUSING.md`](MUSING.md): what has been decided, what was tried 
 - **Delivery Drone.** It lowers a parcel and leaves. Inside: another pair of headphones.
 - **Sea Turtle Visit.** It swims in, crawls up beside her, and they both doze off.
 - **Shark in Headphones.** A fin circles the island; the shark surfaces and nods to the beat.
-- **Coconut Meets Crab.** A coconut drops on a hermit crab. The crab walks off wearing it.
+- **Crab Gets a New Shell.** A coconut drops on a hermit crab. The crab walks off wearing it.
 - **Stray Cat Visit.** A grey tabby with a white chest drifts in on a crate, climbs the palm, naps, and one day floats away again. It comes back another time.
 - **Signal Hunt.** One bar of signal, found at the top of the palm.
 - **Tour Boat.** A boatful of selfie-takers, with her in the background of every picture.
@@ -158,7 +158,7 @@ The renderer is a plain web page, [`web/index.html`](web/index.html): ES modules
 │   In development. No video has been published yet.                   │
 │                                                                      │
 │   Total time:              10:00:00                                  │
-│   Largest unused block:    about two thirds of it                    │
+│   Spent waiting:           about two thirds of it, on purpose        │
 │                                                                      │
 │   Doing something    ██████████░░░░░░░░░░░░░░░░░░░░    about 1/3     │
 │   Nodding along      ████████████████████░░░░░░░░░░    the rest      │

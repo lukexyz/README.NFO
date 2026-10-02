@@ -27,7 +27,8 @@
 // Everything named here is new and made up: the group "Idle Loop" and its membership form.
 // Castaway is Luke's own project; the jokes are about it and nothing else. The schedule
 // excerpt on page 03 is real: `python -B tools/schedule.py --show 1:00:00` in the Castaway
-// repo, seed 1992, run on 2026-10-01 (it changes as activities are added, so it is dated).
+// repo, seed 1992, run on 2026-10-01 and again on 2026-10-02 (it can change as activities are
+// added, so it is dated).
 //
 // THE OUTPUT is 7-bit ASCII inside <pre>, at most 78 columns, with <b> and <a> only. Box
 // characters appear in the title card and nowhere else. The script refuses a line wider than
@@ -144,6 +145,7 @@ const PAGES = [];
 const page = (title, lines) => PAGES.push({ title, lines });
 
 // --- 01 ------------------------------------------------------------------------------------
+// 24 fps: `[video] fps = 24` in activities.toml since 2026-10-01 (HANDOFF H1); it used to be 30.
 page('Opening words', [
   ...H1('OPENING WORDS'),
   '',
@@ -156,7 +158,7 @@ page('Opening words', [
       'coconut falls on a hermit crab and then walks off with the crab wearing ' +
       'it. Then back to nodding, which is the main part.',
     '**Castaway** is an unofficial remake, inspired by the 1992 screensaver ' +
-      'Johnny Castaway. Sunny, hand-painted, 16:9, 1080p at 30 frames a second, ' +
+      'Johnny Castaway. Sunny, hand-painted, 16:9, 1080p at 24 frames a second, ' +
       'and always daytime.'
   ),
   '',
@@ -169,9 +171,10 @@ page('Hardware requirements, and how to run it', [
   ...H1('HARDWARE REQUIREMENTS'),
   '',
   dots('To watch the preview', 'a web browser', 36),
-  dots('To export the MP4', 'a browser with WebCodecs (Chrome),', 36),
-  under('ffmpeg on the PATH, NumPy and Pillow', 36),
+  dots('To export the MP4', 'ffmpeg on the PATH, NumPy and Pillow', 36),
   under(`(the mixer lives in ${L('tools/render_demo.py')})`, 36),
+  dots('To export it quickly', 'a browser with WebCodecs, such as', 36),
+  under('Chrome (others hand the frames to ffmpeg)', 36),
   dots('To run the tools', 'Python 3.11 or newer (they read', 36),
   under('TOML with tomllib)', 36),
   dots('To enjoy it', 'ten hours, and nowhere to be', 36),
@@ -189,7 +192,7 @@ page('Hardware requirements, and how to run it', [
   ind(`2.  open ${LOCAL} for the live preview`),
   ...wrap(
     'Export from the page. The browser encodes frame-exact video (68 to 78 ' +
-      'frames a second at 1080p30 in Chrome, which is faster than the video plays), ' +
+      'frames a second at 1080p in Chrome, for a video that only needs 24), ' +
       'the server mixes the sound and joins the two into a YouTube-ready MP4.',
     { first: '3.  ', hang: 4 }
   ),
@@ -239,7 +242,8 @@ const tiers = [
 ];
 const TC = [13, 15, 13]; // tier table column widths, after the indent
 const trow = (r) => ind(r.slice(0, 3).map((c, i) => padTo(c, TC[i])).join('') + r[3]);
-// Hour one of the default run (seed 1992, simulated 2026-10-01), routines not on this page left out.
+// Hour one of the default run (seed 1992, `python -B tools/schedule.py --show 1:00:00`, re-run on
+// 2026-10-02 with 94 activities: same times as on 2026-10-01), trimmed to routines this file names.
 const hour = [
   ['0:04:09', 'Fishing', 'nibbles, nothing. the usual'],
   ['0:07:36', 'Coconut', 'eyes closed, completely content'],
@@ -282,12 +286,13 @@ page('The schedule: what happens, and how often', [
   ...H2('RELEASE LIST: HOUR ONE'),
   '',
   ...wrap('The default run is 10:00:00 with seed 1992: same seed, same video, ' +
-    'event for event. As simulated on 2026-10-01, with the routines not ' +
-    'mentioned in this file left out. The list grows every few hours.'),
+    'event for event. As simulated on 2026-10-02, trimmed to the routines ' +
+    'this file already mentions. New routines arrive every few hours, and ' +
+    'they may shuffle it.'),
   '',
-  ind(padTo('TIME', 11) + padTo('TITLE', 17) + 'NOTE'),
+  ind(padTo('TITLE', 16) + padTo('RELEASED', 11) + 'NOTE'),
   ind('-'.repeat(WRAP - IND)),
-  ...hour.map(([t, a, n]) => ind(padTo(t, 11) + padTo(a, 17) + n)),
+  ...hour.map(([t, a, n]) => ind(padTo(a, 16) + padTo(t, 11) + n)),
 ]);
 
 // --- 04 ------------------------------------------------------------------------------------
@@ -361,7 +366,7 @@ page('Credits and music information', [
   dots('Loops', 'none, except its own', MI),
   dots('Recordings', 'none', MI),
   dots('Licences', 'no third-party licence applies', MI),
-  dots('Reviews', 'none yet. Nobody has listened to it.', MI),
+  dots('Reviews', 'one so far, from the loudness meter', MI),
 ]);
 
 // --- 06 ------------------------------------------------------------------------------------
@@ -399,7 +404,7 @@ page('Scene life, and other things on the horizon', [
   '',
   ...paras(
     'Behind the activities the scene keeps a life of its own: 26 entries, ' +
-      'four always on and 22 that come round on their own timers, never more ' +
+      'four always on and 22 events that turn up now and then, never more ' +
       'than two on screen at once. The flag in the margin says how far along ' +
       'each one is. Built so far: the first two.'
   ),
@@ -416,7 +421,7 @@ page('Questions and answers', [
   ...H1('QUESTIONS AND ANSWERS'),
   '',
   ...qa('Nothing is happening. Is it broken?',
-    'No, that is the demo. Something regular is due every 2 to 5 minutes. ' +
+    'No, that is it working. Something regular is due every 2 to 5 minutes. ' +
       'Please continue to wait.'),
   ...qa('Can I skip to the good part?', 'You are in it.'),
   ...qa('When does it get dark?', 'It does not. Always daytime is a project rule.'),
@@ -430,14 +435,14 @@ page('Questions and answers', [
     'Once in a long while she spots one and waves like mad, and it sounds its ' +
       'horn back. Then it sails on. She shrugs and puts the music back on.'),
   ...qa('Is the music any good?',
-    'Unknown. Every sound is synthesized from code and nobody has listened to ' +
-      'any of it yet. The loudness meter has no complaints.'),
+    'Unknown. Every sound is synthesized from code, and when this file was ' +
+      'written nobody had listened to any of it. The loudness meter has no complaints.'),
   ...qa('Where can I watch it?',
-    `Nowhere yet: no video has been published. Run it yourself (page 02) and watch it at ${LOCAL}.`),
+    `Nowhere yet: no video has been published. Run it yourself (page 02) and watch the live preview at ${LOCAL}.`),
   ...qa('Is this the 1992 screensaver?',
     'No. An unofficial remake, inspired by the small-island routines and visual ' +
-      'comedy of Johnny Castaway, which belongs to its owners. The island, the ' +
-      'castaway, the art, the code and every sound here are new.'),
+      'comedy of Johnny Castaway, which belongs to its owners. She, the island, ' +
+      'the art, the code and every sound here are new.'),
 ]);
 
 // --- 08 ------------------------------------------------------------------------------------
@@ -572,14 +577,14 @@ if (TITLE.replace(/ /g, '') !== 'CASTAWAY') problems.push('title does not read C
 const first = [
   ...card,
   '',
-  centre('This file is nine pages long. The demo is ten hours long. Pace yourself.'),
+  centre('This file is nine pages long. The video is ten hours long. Pace yourself.'),
   '',
   ...mainIndex(),
   ...marker(1).slice(1, 4),
   ...PAGES[0].lines,
 ];
 const md = [];
-md.push(`<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit that, not this. Facts checked 2026-10-01. -->`);
+md.push(`<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit that, not this. Facts checked 2026-10-02. -->`);
 md.push('');
 md.push('<pre>');
 md.push(...block('page01', first, true));
@@ -591,7 +596,9 @@ for (const [i, p] of PAGES.entries()) {
   md.push(`<summary><b>- ${nn(i)} -</b> &nbsp;${esc(p.title)}</summary>`);
   md.push('');
   md.push('<pre>');
-  md.push(...block(`page${nn(i)}`, [...marker(i + 1).slice(1, 4), ...p.lines, '']).filter((l, k, a) => !(k === a.length - 1 && l === '')));
+  const body = [...marker(i + 1).slice(1, 4), ...p.lines];
+  while (body.length && body[body.length - 1] === '') body.pop(); // no blank line before </pre>
+  md.push(...block(`page${nn(i)}`, body));
   md.push('</pre>');
   md.push('');
   md.push('</details>');

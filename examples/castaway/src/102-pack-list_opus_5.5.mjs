@@ -25,8 +25,13 @@
 //
 // Everything named here is invented for this banner: the network (ShoalNet), the bot ([Raft]),
 // the server, every nick and host, and the greetz. Data was checked against the project on
-// 2026-10-01: activities.toml, a read-only run of tools/schedule.py (seed 1992), the audio
-// catalogue and the file sizes below. They will drift as the project grows; the page says so.
+// 2026-10-01 and re-checked on 2026-10-02 (CHECKED below): activities.toml, a read-only run of
+// `python -B tools/schedule.py` (seed 1992), media/audio/audio_catalog.json and the file sizes
+// below. They will drift as the project grows; the page dates them.
+//
+// CONTENT: only wholesome packs are listed. Activity ids that start with a3_ belong to the
+// project's swimwear outfit, so none of them is shown (the kumara gag appears through its
+// chained follow-ups instead), and neither is lighter_in_pocket, which ends in an outfit change.
 //
 // THE OUTPUT is HTML <pre> blocks with <b> and <a> only, at most 80 columns. Allowed characters:
 // printable ASCII plus a few box-drawing characters and the middle dot. The script refuses a
@@ -40,6 +45,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const SLUG = '102-pack-list_opus_5.5';
 const OUT = path.resolve(HERE, '..', `${SLUG}.md`);
 const W = 80; // window width in columns
+const CHECKED = '2026-10-02'; // the day every number below was last measured
 const problems = []; // everything the lint finds; the script refuses to write if any
 
 // ---------------------------------------------------------------------------------------------
@@ -112,43 +118,48 @@ const noteRows = (text, width) => {
 const stars = (...parts) => [B('**'), T(' '), ...parts.flatMap(seg), T(' '), B('**')];
 
 // ---------------------------------------------------------------------------------------------
-// 2. The data (checked 2026-10-01). Pack numbers are the order of [activities] in
-//    activities.toml; gets are the seed-1992 run printed by `python tools/schedule.py`;
-//    durations are the [lo, hi] range from the file, shown at their middle.
+// 2. The data (CHECKED). Pack numbers are the order of [activities] in activities.toml; gets
+//    are the seed-1992 run printed by `python -B tools/schedule.py`; durations are the
+//    [lo, hi] range from the file, shown at their middle; `max` is the file's max_per_run,
+//    which becomes iroffer's "[x of y DL left]" tag (y = max, x = max minus this run's gets).
+//    Every note paraphrases that activity's own `about` line in the file.
 // ---------------------------------------------------------------------------------------------
 const PACKS = {
   coconut_sip:           { n: 1,  gets: 29, dur: ['0:00:27', '0:00:51'], note: 'wanders into the shade and sips a coconut, eyes closed.' },
   stroll:                { n: 2,  gets: 34, dur: ['0:00:22', '0:00:42'], note: 'a slow lap to the waterline to look at the sea. and back.' },
-  jog_lap:               { n: 3,  gets: 19, dur: ['0:00:21', '0:00:38'] },
+  jog_lap:               { n: 3,  gets: 19, dur: ['0:00:21', '0:00:38'], note: 'the whole length of the island, and back. then a breather.' },
   fishing_quiet:         { n: 4,  gets: 19, dur: ['0:00:55', '0:02:17'], note: 'nibbles. nothing. the usual.' },
   sandcastle:            { n: 5,  gets: 10, dur: ['0:00:57', '0:01:54'], note: 'stays up until the tide wants it (#32).' },
   coconut_crab:          { n: 6,  gets: 1,  dur: ['0:01:11', '0:02:42'], note: 'a coconut falls on a hermit crab, who walks off wearing it.' },
   ship_passes_unseen:    { n: 9,  gets: 9,  dur: ['0:01:30', '0:02:30'], note: 'waits until she is busy, then crosses. she never looks up.' },
   message_in_bottle:     { n: 11, gets: 1,  dur: ['0:01:17', '0:02:17'], note: 'thrown out to sea. washes straight back to her feet.' },
   turtle_visit:          { n: 12, gets: 0,  dur: ['0:03:13', '0:06:06'], note: 'a sea turtle crawls up beside her. they both doze off.' },
-  tide_takes_sandcastle: { n: 32, gets: 10, dur: ['0:00:05', '0:00:08'] },
+  tide_takes_sandcastle: { n: 32, gets: 10, dur: ['0:00:05', '0:00:08'], note: 'a bigger wave rolls in. the sandcastle is gone.' },
   box_washed_away:       { n: 33, gets: 0,  dur: ['0:00:19', '0:00:36'], note: 'the empty parcel box floats off to sea.' },
-  a3_kumara_planting:    { n: 36, gets: 0,  dur: ['0:00:25', '0:00:44'], note: 'plants a kumara. it grows over the course of the video.' },
   delivery_drone:        { n: 45, gets: 0,  dur: ['0:00:39', '0:00:57'], note: 'the parcel is another pair of headphones.' },
   signal_hunt:           { n: 46, gets: 1,  dur: ['0:01:54', '0:04:10'], note: 'one bar of signal, at the very top of the palm.' },
   cat_visit:             { n: 47, gets: 5,  dur: ['0:11:04', '0:26:46'], note: 'grey tabby, white chest. arrives on a crate, climbs the palm, naps. one day it floats away. it comes back another time.' },
   shark_nod:             { n: 48, gets: 0,  dur: ['0:00:49', '0:01:17'], note: 'wears headphones. nods on the beat. not in this run.' },
-  tour_boat_selfies:     { n: 49, gets: 0,  dur: ['0:00:52', '0:01:21'], note: 'a boat of selfie-takers. she is in the background of every one.' },
+  tour_boat_selfies:     { n: 49, gets: 0,  dur: ['0:00:52', '0:01:21'], note: 'a boat of selfie-takers. she is in the background of every one. nobody offers a lift.' },
   efoil_bro:             { n: 59, gets: 0,  dur: ['0:00:30', '0:00:51'], note: 'electric hydrofoil. a big smile, a shaka, and he carves off.' },
-  fire_by_friction:      { n: 60, gets: 0,  dur: ['0:00:43', '0:01:11'] },
-  spear_fishing:         { n: 62, gets: 0,  dur: ['0:00:39', '0:01:07'] },
+  fire_by_friction:      { n: 60, gets: 0,  dur: ['0:00:43', '0:01:11'], note: 'a bow drill. one curl of smoke. a flame. a wave.' },
+  spear_fishing:         { n: 62, gets: 0,  dur: ['0:00:39', '0:01:07'], note: 'a heroic lunge. a miss. a gull drops her a fish out of pity.' },
   hammock:               { n: 68, gets: 2,  dur: ['0:01:35', '0:03:59'], note: 'one palm, no second tree. the other end goes on the raft.' },
-  lookout:               { n: 70, gets: 0,  dur: ['0:00:47', '0:01:15'], tag: '[1 of 1 DL left]', note: 'a platform up the palm, with a ladder.' },
-  rescue_almost:         { n: 78, gets: 1,  dur: ['0:01:24', '0:02:05'], tag: '[1 of 1 DL left]', note: 'she waves for rescue. it toots back. it sails on.' },
-  leave_any_time:        { n: 82, gets: 0,  dur: ['0:01:19', '0:01:59'], tag: '[1 of 1 DL left]', note: 'walks out over the water. back with an iced coffee.' },
+  lookout:               { n: 70, gets: 0,  dur: ['0:00:47', '0:01:15'], max: 1, note: 'a platform in the crown, with a ladder. the palm bends under her until it is at ground level.' },
+  rescue_almost:         { n: 78, gets: 1,  dur: ['0:01:24', '0:02:05'], max: 1, note: 'she waves for rescue. it toots back. it sails on.' },
+  leave_any_time:        { n: 82, gets: 0,  dur: ['0:01:19', '0:01:59'], max: 1, note: 'walks out over the water. back with an iced coffee.' },
   bottle_reply:          { n: 84, gets: 1,  dur: ['0:00:40', '0:01:07'], note: 'hours later, a different bottle washes up. a reply.' },
+  kumara_leafs:          { n: 85, gets: 0,  dur: ['0:00:04', '0:00:04'], note: 'hours after she plants a kumara, it has quietly grown leafy. nobody remarks on it.' },
+  kumara_flowers:        { n: 86, gets: 0,  dur: ['0:00:04', '0:00:04'], note: 'later still, a few pale lavender flowers.' },
 };
-const ACTIVITIES = 94; // [activities] entries in activities.toml on 2026-10-01
+const ACTIVITIES = 94; // [activities] entries in activities.toml on CHECKED
+for (const id of Object.keys(PACKS)) if (/^a3_|lighter/.test(id)) problems.push(`pack ${id} is not for this header`);
 
+const dlLeft = (p) => (p.max ? `[${p.max - p.gets} of ${p.max} DL left]` : undefined);
 const rowFor = (id, opts = {}) => {
   const p = PACKS[id];
   if (!p) throw new Error(`no pack ${id}`);
-  return packRow(p.n, p.gets, durStr(p.dur), id, { tag: p.tag, ...opts });
+  return packRow(p.n, p.gets, durStr(p.dur), id, { tag: dlLeft(p), ...opts });
 };
 
 // ---------------------------------------------------------------------------------------------
@@ -214,7 +225,7 @@ say(0, '--', 'Topic for #castaway is "she idles. now and then, a pack."');
 for (const r of LOGO) bot([B(r)]);
 bot([T(lpad('', Math.floor((LOGO_W - 56) / 2))), ...stars(T('a ten-hour lo-fi island, sent at 1 second per second'))]);
 bot(
-  [B('**'), T(` ${ACTIVITIES} packs `), B('**'), T('  1 of 1 slots open, Queue: 24/26,')],
+  [B('**'), T(` ${ACTIVITIES} packs `), B('**'), T('  0 of 1 slots open, Queue: 24/26,')],
   'Min: 1.0s/s, Max: 1.0s/s, Record: 1.0s/s',
 );
 bot(
@@ -259,7 +270,7 @@ const titleBar = (() => {
 })();
 const ruleTop = '─'.repeat(GUTTER - 2) + '┬' + '─'.repeat(W - GUTTER + 1);
 const ruleBot = '─'.repeat(GUTTER - 2) + '┴' + '─'.repeat(W - GUTTER + 1);
-const status = `[${clock(END)}] [ShoalNet] #castaway{5}  [xfer: island ${xferPct}% 1.0s/s ETA ${clock(36000 - END).replace(/^0/, "")}]`;
+const status = `[${clock(END)}] [2:ShoalNet/#castaway(+nt)] [xfer: island ${xferPct}% 1.0s/s ETA ${clock(36000 - END).replace(/^0/, '')}]`;
 const WINDOW = [
   [B(titleBar.trimEnd())],
   ruleTop,
@@ -286,7 +297,7 @@ const listRows = (ids) => {
 const FULL_LIST = [
   cmd('/msg [Raft] xdcc list'),
   '',
-  [B('**'), T(` ${ACTIVITIES} packs `), B('**'), T('  1 of 1 slots open, Queue: 24/26, Min: 1.0s/s, Max: 1.0s/s,')],
+  [B('**'), T(` ${ACTIVITIES} packs `), B('**'), T('  0 of 1 slots open, Queue: 24/26, Min: 1.0s/s, Max: 1.0s/s,')],
   '   Record: 1.0s/s',
   [B('**'), T(' Bandwidth Usage '), B('**'), T(' Current: 0 bars, Cap: 1 bar, Record: 1 bar')],
   '   (at the very top of the palm)',
@@ -297,7 +308,7 @@ const FULL_LIST = [
   ...listRows(['coconut_sip', 'stroll', 'jog_lap', 'fishing_quiet', 'sandcastle']),
   '',
   group('occasional', 'every 12 to 25 minutes'),
-  ...listRows(['coconut_crab', 'ship_passes_unseen', 'message_in_bottle', 'turtle_visit', 'a3_kumara_planting']),
+  ...listRows(['coconut_crab', 'ship_passes_unseen', 'message_in_bottle', 'turtle_visit']),
   '',
   group('rare', 'every 30 to 60 minutes'),
   ...listRows(['delivery_drone', 'signal_hunt', 'cat_visit', 'shark_nod', 'tour_boat_selfies', 'efoil_bro', 'fire_by_friction', 'spear_fishing', 'hammock', 'lookout']),
@@ -306,22 +317,22 @@ const FULL_LIST = [
   ...listRows(['rescue_almost', 'leave_any_time']),
   '',
   group('chained', 'never on a timer: started by another pack'),
-  ...listRows(['tide_takes_sandcastle', 'box_washed_away', 'bottle_reply']),
+  ...listRows(['tide_takes_sandcastle', 'box_washed_away', 'bottle_reply', 'kumara_leafs', 'kumara_flowers']),
   '',
-  stars(T(`${ACTIVITIES} packs in all, as of 2026-10-01. the rest are in `), A('activities.toml')),
+  stars(T(`${ACTIVITIES} packs in all, as of ${CHECKED}. the rest are in `), A('activities.toml')),
   stars(T('gets: times in the seed-1992 run. [size]: the middle of its range')),
   stars(T('every pack starts on the next bar of the music: every 3 seconds')),
   'Total Offered: 10:00:00  Total Transferred: 0B',
 ];
 
 const FILES = [
-  { p: 'tools/serve.py', b: 17162, note: 'the renderer: a web page with a live preview at http://127.0.0.1:8765/ and an export to a YouTube-ready MP4. the server mixes the sound in.' },
-  { p: 'web/index.html', b: 3775, note: 'the page itself. plain ES modules, no build step, no npm packages. frame-exact export in the browser (WebCodecs H.264).' },
+  { p: 'tools/serve.py', b: 17162, note: "the renderer's local server. it serves the page at http://127.0.0.1:8765/, mixes the sound, and joins it to the video in an MP4." },
+  { p: 'web/index.html', b: 3775, note: 'the renderer: a live preview and an export to a YouTube-ready MP4. plain ES modules, no build step, no npm packages. frame-exact export in the browser (WebCodecs H.264).' },
   { p: 'tools/schedule.py', b: 21424, note: 'validates the schedule and simulates a 10-hour run.' },
-  { p: 'activities.toml', b: 178456, note: 'every activity: its timer, its lane, its beats.' },
+  { p: 'activities.toml', b: 177924, note: 'every activity: its timer, its lane, its beats.' },
   { p: 'tools/make_audio.py', b: 136457, note: 'every sound, from code.' },
   { p: 'tools/render_demo.py', b: 95580, note: 'the older Python reference renderer. --dev renders a reel of every activity with a heads-up display.' },
-  { p: 'MUSING.md', b: 139517, note: 'decisions, lessons and notes.' },
+  { p: 'MUSING.md', b: 151150, note: 'decisions, lessons and notes.' },
 ];
 const kb = (bytes) => `${Math.round(bytes / 1024)}KB`;
 const TOOLS_LIST = [
@@ -334,7 +345,7 @@ const TOOLS_LIST = [
   ]),
   '',
   stars(T('nothing has been published yet, so every gets counter is an honest 0')),
-  stars(T('sizes as of 2026-10-01')),
+  stars(T(`sizes as of ${CHECKED}`)),
   `Total Offered: ${kb(FILES.reduce((a, f) => a + f.b, 0))}  Total Transferred: 0B`,
 ];
 
@@ -378,19 +389,28 @@ const SOUND_LIST = [
   'Total Offered: more than 150 files  Total Transferred: 0B',
 ];
 
+// Scene life ([life] in activities.toml): 26 entries, 2 built. The other 24 are the "Queue: 24/26"
+// of the summary line, and a queued entry's position is its order in the file.
+const LIFE = 26;
+const QUEUED = 24;
 const QUEUE_EVENTS = [
-  ['distant_birds', 3], ['plane_vapour_trail', 4], ['rain_shower', 5], ['whale_pod', 9],
-  ['dolphin_jump', 11], ['sailboat', 12], ['sandpipers', 21], ['gecko', 23],
+  ['light_moves', 1, 'morning to late afternoon over the run. never night.'],
+  ['distant_birds', 3], ['plane_vapour_trail', 4],
+  ['rain_shower', 5, 'a small grey cloud drags rain along the horizon. a rainbow follows.'],
+  ['whale_pod', 9], ['dolphin_jump', 11], ['sailboat', 12], ['sandpipers', 21], ['gecko', 23],
 ];
 const QUEUE = [
   cmd('/msg [Raft] xdcc queue'),
   '',
-  stars(T('Scene life: 26 entries, 4 always on and 22 timed events')),
-  stars(T('Sending now: shore_waves (always on, built)')),
-  stars(T('Sending now: cloud_shadows (always on, built)')),
-  ...QUEUE_EVENTS.map(([id, pos]) => `Queued for "${id}", in position ${pos} of 24. planned.`),
-  stars(T('16 more in the queue. estimated wait: until they are built')),
-  stars(T('the rain shower comes in daylight. it is always daytime here')),
+  stars(T(`Scene life: ${LIFE} entries, 4 always on and 22 timed events`)),
+  stars(T('Sent, and on screen: shore_waves, cloud_shadows (always on)')),
+  stars(T(`Queue: ${QUEUED}/${LIFE}. each one is waiting for its code or its art`)),
+  ...QUEUE_EVENTS.flatMap(([id, pos, note]) => [
+    `Queued for "${id}", in position ${pos} of ${QUEUED}. planned.`,
+    ...(note ? [[T(' '), B('^-'), T(' ' + note)]] : []),
+  ]),
+  stars(T(`${QUEUED - QUEUE_EVENTS.length} more in the queue. estimated wait: until they are built`)),
+  stars(T('it is always daytime here. that one is a rule, not a queue')),
 ];
 
 const WHOIS = [
@@ -448,7 +468,7 @@ const details = (summary, lines, name) => [
 const PITCH = [
   '**Castaway** (working title) is a ten-hour lo-fi video for YouTube in which almost nothing happens, on purpose. A young woman sits on a tiny island with one tall palm and a raft, nods to the music on her headphones, and waits. Every so often, on the next bar of the music, a pack lands: a coconut, a bottle that washes straight back, a stray cat on a crate, a drone delivering another pair of headphones. Then she goes back to nodding. It is an unofficial remake inspired by the small-island routines and visual comedy of *Johnny Castaway*, the 1992 desert-island screensaver, repainted sunny and hand-painted, and it is always daytime.',
   '',
-  'More than 90 activities wait their turn in [`activities.toml`](activities.toml), on four timers: every 2 to 5 minutes, 12 to 25 minutes, 30 to 60 minutes, and 3 to 6 hours. The numbers in the window are the project\'s own: the gets are how often each activity came up in the seed-1992 run on 2026-10-01 (the shark sat this one out), and the sizes are how long each one lasts. Every sound is synthesized from code by [`tools/make_audio.py`](tools/make_audio.py): no samples, no loops, no recordings. The project is in development and no video has been published, which is why the honest transfer total is 0B.',
+  `More than 90 activities wait their turn in [\`activities.toml\`](activities.toml): most on four timers (every 2 to 5 minutes, 12 to 25 minutes, 30 to 60 minutes, and 3 to 6 hours), the rest chained to follow another one. The numbers in the window are the project's own: the gets are how often each activity came up in the default seed-1992 run, simulated on ${CHECKED} (the shark sat this one out), and the sizes are how long each one lasts. Every sound is synthesized from code by [\`tools/make_audio.py\`](tools/make_audio.py): no samples, no loops, no recordings. The project is in development and no video has been published, which is why the honest transfer total is 0B.`,
   '',
   '```sh',
   'python tools/serve.py',
@@ -461,7 +481,7 @@ for (const p of PITCH) {
 }
 
 const md = [];
-md.push(`<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit that, not this. Counts checked 2026-10-01. -->`);
+md.push(`<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit that, not this. Counts checked ${CHECKED}. -->`);
 md.push('');
 md.push('<pre>');
 md.push(...block('window', WINDOW));
@@ -474,6 +494,11 @@ md.push(...details('<b>/msg [Raft] xdcc list sound</b> &nbsp;all synthesized, no
 md.push(...details('<b>/msg [Raft] xdcc list tools</b> &nbsp;the files, and how to run them', TOOLS_LIST, 'tools'));
 md.push(...details('<b>/msg [Raft] xdcc queue</b> &nbsp;scene life, waiting its turn', QUEUE, 'queue'));
 md.push(...details('<b>/whois [Raft]</b> &nbsp;credits and small print', WHOIS, 'whois'));
+
+// Lint the whole page as well (summaries and prose), not only the <pre> blocks.
+const whole = md.join('\n').replace(/<!--[^]*?-->/g, '').replace(/<[^>]+>/g, '');
+if (BANNED.test(whole)) problems.push(`page: banned word "${whole.match(BANNED)[0]}"`);
+if (/—/.test(whole)) problems.push('page: em dash');
 
 if (problems.length) {
   console.error(problems.join('\n'));

@@ -22,22 +22,22 @@
   <sub>Working title. An unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver <i>Johnny Castaway</i>. In development: no video is published yet.</sub>
 </p>
 
-**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: 16:9, 1080p, 30 fps, sunny, hand-painted, and always daytime. Mostly she nods along to her headphones. Then a message in a bottle washes up, she throws it back, and it washes straight back. A shark surfaces in headphones and nods to the same beat. A delivery drone brings a parcel, and the parcel is another pair of headphones. She could leave any time. Very rarely she walks out over the water and comes back with an iced coffee.
+**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: 16:9, 1080p, sunny, hand-painted, and always daytime. Mostly she nods along to her headphones. Then she writes a note, bottles it, throws it out to sea, and it washes straight back to her feet. A shark surfaces in headphones and nods to the same beat. A delivery drone brings a parcel, and the parcel is another pair of headphones. She could leave any time. Very rarely she walks out over the water and comes back with an iced coffee.
 
-There are more than 90 things on the menu in [activities.toml](activities.toml), on four timers, and every one of them waits for the next bar of the music, so the gags land on the beat. Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no loops, no recordings.
+There are more than 90 things on the menu in [activities.toml](activities.toml), most of them on four timers, and every one waits for the next bar of the music, so the gags land on the beat. Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no loop packs, no recordings.
 
 ```sh
 python tools/serve.py        # then open http://127.0.0.1:8765/
 python tools/schedule.py     # check the schedule, simulate a 10-hour run
 ```
 
-The page plays a live preview and exports a YouTube-ready MP4: Chrome encodes every frame exactly with WebCodecs (H.264, 68 to 78 frames a second at 1080p30), and the server mixes in the sound and joins the two. Plain ES modules, no build step, no npm.
+The page plays a live preview and exports a YouTube-ready MP4: Chrome renders every frame exactly and encodes it with WebCodecs (H.264, 68 to 78 frames a second at 1080p), and the server mixes in the sound and joins the two. Plain ES modules, no build step, no npm packages.
 
 <details>
 <summary><b>(T) Things to Do</b>: the whole menu, and how often it comes round</summary>
 <br>
 
-The scroll in the picture shows nine. [activities.toml](activities.toml) holds more than 90 (94 on 1 October 2026, and other sessions keep adding them), each with its own step-by-step beats, how long it lasts and how often it comes round. Most sit on four timers; a dozen only ever follow on from something else. Typical counts are the median of 200 simulated 10-hour runs, as the file's own header gives them:
+The scroll in the picture shows nine. [activities.toml](activities.toml) holds more than 90, each with its own step-by-step beats, how long it lasts and how often it comes round. On 2 October 2026 that was 94: 81 on four timers and 13 that only ever follow on from something else, and more keep arriving. Typical counts are the median of 200 simulated 10-hour runs, as the file's own header gives them:
 
 ```text
  TIMER         COMES ROUND EVERY       IN A 10-HOUR RUN
@@ -46,16 +46,16 @@ The scroll in the picture shows nine. [activities.toml](activities.toml) holds m
  occasional    12 to 25 minutes                    ~30
  rare          30 to 60 minutes                    ~13
  super rare    3 to 6 hours (max 3)                 ~2
- chained       right after another      the follow-ups
+ chained       right after another                 ~20
  ───────────   ─────────────────────   ────────────────
  she is busy about a third of the time, and waits the rest
 ```
 
-Every activity starts on the next bar of the theme, one every 3 seconds. Lanes let things overlap, so the sea can get on with something while she is busy with a coconut. The default run is `10:00:00` on seed `1992`, and the same seed gives the same video, event for event.
+Every activity starts on the next bar of the theme, and a bar is 3 seconds long. Lanes let things overlap, so the sea can get on with something while she is busy with a coconut. The default run is `10:00:00` on seed `1992`, and the same seed gives the same schedule, event for event.
 
 Some of what may happen while you are looking the other way:
 
-- **A message in a bottle** washes straight back to her feet. Much later, a different bottle brings a reply.
+- **A message in a bottle**: she writes it, corks it, throws it, and it washes straight back to her feet. Hours later, a different bottle brings a reply.
 - **A shark in headphones** surfaces and nods to the beat. She nods too. Nobody mentions it.
 - **A delivery drone** lowers a parcel. Inside: another pair of headphones.
 - **A sea turtle** drops by.
@@ -77,26 +77,26 @@ The scene keeps itself busy too: 26 bits of scene life, 4 always on and 22 timed
 <summary><b>(N) The noises</b>: every one of them made from code</summary>
 <br>
 
-[tools/make_audio.py](tools/make_audio.py) synthesizes all of it, more than 150 sound files, from nothing but maths: no samples, no loops, no recordings, so no third-party licence applies. The theme is a seamless 60-second loop at 80 BPM in F major (ii, V, I, vi), 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean ambience is a seamless 60-second loop as well. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and the levels can be set for the master and for each routine.
+[tools/make_audio.py](tools/make_audio.py) synthesizes all of it, more than 150 sound files, from nothing but maths: no samples, no loop packs, no recordings, so no third-party licence applies. The theme is a seamless 60-second loop at 80 BPM in F major (ii, V, I, vi), 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean ambience is a seamless 60-second loop as well. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and the levels can be set for the master and for each routine.
 
 Nobody has listened to any of it yet. The status bar says 80 BPM and means it.
 
 </details>
 
 <details>
-<summary><b>(V) View source</b>: how a RIP screen draws itself, and why it is the same island</summary>
+<summary><b>(V) View source</b>: how a RIPscrip screen draws itself, and why it is the same island</summary>
 <br>
 
-The picture is a RIPscrip screen. RIPscrip came out of TeleGrafix in 1992 or 1993 (sources disagree) and let a bulletin board send pictures as a list of drawing commands instead of characters: lines, polygons, flood fills, stroke-font text and clickable buttons, on a 640 by 350 EGA screen in sixteen fixed colours. Callers watched each picture build itself over the modem, one command at a time. Then the web arrived. Nothing here is copied from a real RIP screen, terminal, icon or font; the letters are drawn below, one straight line at a time.
+The picture is a RIPscrip screen. RIPscrip came out of TeleGrafix in 1992 or 1993 (sources disagree) and let a bulletin board send pictures as a list of drawing commands instead of ANSI character art: lines, polygons, flood fills, stroke-font text and clickable buttons, on a 640 by 350 EGA screen in sixteen fixed colours. Callers watched each picture build itself over the modem, one command at a time. Then the web arrived. Nothing here is copied from a real RIPscrip screen, terminal, icon or font; every letter is plotted by hand, one straight line at a time.
 
 The house rules, kept by the generator:
 
-- Sixteen colours. Every in-between tone is two of them in a fill pattern: a checker, a 25% dot, a wood grain. The sky is twelve dithered rings, and the wet sand is a yellow and brown checker.
+- Sixteen colours. Every in-between tone is two of them in a fill pattern: a checker, a 25% dot, a wood grain. The sky is twelve rings, nine of them dithered, and the wet sand is a yellow and brown checker.
 - Everything gets a black outline, and the outline goes down before the fill.
-- The screen is 640 by 350 and shown 1.5 times taller than wide, so the pixels are tall the way they were on a 4:3 tube.
-- Three faces: a broad-nib blackletter for the heading, a single-line plotter face for everything else on the screen (with serifs on the hotkeys), and a small bitmap face for the status bar. The title is eight hand-plotted polygons.
+- The screen is 640 by 350, and every pixel is shown half as tall again as it is wide, a touch taller than a 4:3 tube made EGA's.
+- Three faces: a broad-nib blackletter for the heading, a single-line plotter face for everything else on the screen (with serifs on the hotkeys and the button), and a small bitmap face for the status bar. The title is eight hand-plotted polygons.
 
-The minute in the picture is one pass of the theme, 20 bars, and everything moves on the beat. The bottle comes ashore one hop a beat. The shark nods when she nods. At bar 12 the pointer clicks Continue, the screen clears, and the board sends the next screen at 2400 bps. Here it is, as the generator logs it, in seconds into the minute:
+The minute in the picture is one pass of the theme, 20 bars, and everything moves on the beat. The bottle comes ashore one hop a beat. The shark nods when she nods. Twelve bars in, the pointer clicks Continue, the screen clears, and the board sends the next screen at 2400 bps. Here it is, as the generator logs it, in seconds into the minute:
 
 ```text
  RECEIVING SCREEN ............................................ 2400 BPS
@@ -110,12 +110,12 @@ The minute in the picture is one pass of the theme, 20 bars, and everything move
   41.83  LINE: the horizon
   42.13  BAR x4: the sea, darker far away
   42.73  POLY x3: a sailboat, far away
-  42.93  ELLIPSE x3, POLY x5: shallows, foam, sand, rocks
+  42.93  ELLIPSE x3, POLY x10: shallows, foam, sand, rocks
   44.64  POLY x3: bushes
-  45.24  POLY, traced; LINE x24: the trunk and its bark
+  45.24  POLY, traced; LINE x25: the trunk and its bark
   46.19  POLY x10, traced: fronds; ELLIPSE x3: coconuts
   47.64  POLY x5, traced; LINE x15: the raft, brown on yellow
-  48.59  POLY x14, traced, then filled: her
+  48.59  POLY x12, traced, then filled: her
   49.29  LINE x120: the waves
   49.49  LINE x8: two gulls
   49.69  BAR, POLY, ELLIPSE x4: the scroll and its rolls
@@ -139,7 +139,7 @@ The next screen is the same island. It always is; that is the product. The cloud
  │ ISLE WAIT BBS                                node 1 of 1, always day │
  ├──────────────────────────────────────────────────────────────────────┤
  │ SYSOP ............ SEA LEVEL (has not changed in years)              │
- │ RIP ART .......... DITHER DINGHY of FLOODFILL ATOLL                  │
+ │ SCREEN ART ....... DITHER DINGHY of FLOODFILL ATOLL                  │
  │ FONTS ............ drawn by hand, one straight line at a time        │
  │ COLOURS .......... 16, which is plenty for an island                 │
  │ SPEED ............ 2400 bps, which is plenty for an island           │

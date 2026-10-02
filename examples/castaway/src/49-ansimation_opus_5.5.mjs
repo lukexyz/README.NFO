@@ -5,12 +5,13 @@
 // (the island stage, the facts, the run line) paints in row by row at the line speed. Then the
 // stage loops a 12-bar cartoon on the soundtrack's own grid (80 BPM, 3-second bars): she nods
 // on every beat, a hermit crab walks in, a coconut lands on it on the downbeat and walks off
-// with the crab inside, a shark in headphones glides past nodding in time with her, and the
-// palm grows another coconut. A typewriter caption line narrates, and the cursor flits to
-// whatever is being redrawn before parking, blinking, at the end of the run command.
+// with the crab inside, a fin glides in and a shark surfaces below her in headphones to nod in
+// time with her, and the palm grows another coconut. A typewriter caption line narrates, and
+// the cursor flits to whatever is being redrawn before parking, blinking, at the end of the run
+// command.
 // Style: "ANSImation: the modem-speed draw-in" (catalogue entry ansi-04), after the 1990s
 // ANSI animations made for BBS modems. Every letterform, sprite and name here is original:
-// pumice, Ebb & Flow Control and the BEACHCOMM terminal are invented for this header.
+// pumice, Half Duplex and the BEACHCOMM terminal are invented for this header.
 //
 // Regenerate:  node examples/castaway/src/49-ansimation_opus_5.5.mjs
 // Writes ../assets/49-ansimation_opus_5.5.svg and ../49-ansimation_opus_5.5.md.
@@ -19,8 +20,9 @@
 // PRNG, seed 1992 like the default run). Text is an 8x16 CP437-style bitmap font drawn as
 // <use> glyphs, never <text>. Art is drawn on the half-block grid an ANSI artist works on:
 // 80 columns by 50 half-rows, so one "pixel" is half a character cell, 8x8 units. The draw-in
-// timing is honest: the generator encodes the screen as an ANSI byte stream (SGR colour codes,
-// cursor-forward for gaps, CR LF per row) and each row takes its byte count over the line speed.
+// timing follows a byte count: the generator models the screen as an ANSI stream (SGR colour
+// codes, cursor-forward for gaps, CR LF per row; it counts the bytes but writes no .ANS file) and
+// each row takes its byte count over the line speed.
 // Animation is CSS only, stepped (steps(1,end)), and honours prefers-reduced-motion by showing a
 // finished frame: the coconut has just landed.
 import fs from 'node:fs';
@@ -444,10 +446,11 @@ const BUSH = sprite([
   '.GG6GG6G',
   'G6g6g6gg',
 ]);
+// The raft: three lashed logs, staggered at the ends, moored in the shallows.
 const RAFT = outlined(sprite([
-  'nnWnnY',
-  'rrWrrn',
-  'nnWnnY',
+  '.4l44l.',
+  'nnlnnln',
+  '.rlrrl.',
 ]));
 stamp(SUN, 2, 1);
 stamp(CLOUD1, 28, 2);
@@ -456,7 +459,7 @@ for (const [x, y, v] of TRUNK) stagePut(x, y, v);
 stamp(CROWN, 0, 0);
 stamp(NUT, ...NUT_STAYS);
 stamp(BUSH, 24, 16);
-stamp(RAFT, 37, 19);
+stamp(RAFT, 35, 19);
 
 // Wave dashes on the open sea, two sets that swap on the beat, with the surf line.
 const rnd = prng(1992);
@@ -475,10 +478,10 @@ wavesA.push(...surfA);
 wavesB.push(...surfB);
 
 // Her: front on, cream headphones (band over the top, a cup each side), brown hair with the low
-// bun peeking out, eyes shut, coral tank top, cream shorts, bare feet. Two poses swapped on the
+// bun peeking out, coral tank top, cream shorts, bare feet. Two poses swapped on the
 // beat: head up, and head down into the nod.
 const HER_UP = outlined(sprite([
-  '.nnWnn.',
+  '.nWWWn.',
   'WnnnnnW',
   'WsksksW',
   '..sssn.',
@@ -492,7 +495,7 @@ const HER_UP = outlined(sprite([
 ]));
 const HER_DOWN = outlined(sprite([
   '.......',
-  '.nnWnn.',
+  '.nWWWn.',
   'WnnnnnW',
   'WsksksW',
   '..sssn.',
@@ -516,9 +519,24 @@ const NUTCRAB = [
   outlined(sprite(['W..nnn.', 'R.nYnnn', 'rrnnnnn', '...nnn.', 'R.R.R.R'])),
 ];
 const STARS = sprite(['Y.......Y', '.Y.....Y.']);
+// The shark: first just a fin (gliding left), then it surfaces facing us in cream headphones like
+// hers (band over the top, yellow cups) and grins; two surfaced poses, head up and nodding down.
+// The surfaced shark's fin sits in column SHARK_FIN_DX, so the dive can reuse the fin sprite there.
+const SHARK_HEAD = [
+  '.....dl.....',
+  '....ddll....',
+  '..WWWWWWWW..',
+  '.W.llllll.W.',
+  'YYlkllllklYY',
+  'YYllllllllYY',
+  '..lWWWWWWl..',
+  '..lkWkWkWl..',
+];
+const SHARK_FIN_DX = 3;
 const SHARK = [
-  sprite(['...WWW....', '..W.l.W...', '.WW.llWW..', '.WWlllWW..', 'CClllllldC']),
-  sprite(['..WWW.....', '.W.l.W....', 'WW.llWW...', 'WWlllWW...', 'CClllllldC']),
+  outlined(sprite(['..dl', '.ddl', 'dddl', 'Wddl', 'WCCC'])),
+  outlined(sprite(SHARK_HEAD)),
+  outlined(sprite(['', ...SHARK_HEAD])),
 ];
 
 // Static stage into the pixel layer.
@@ -532,14 +550,15 @@ put(FRAME.r1, FRAME.c0, '└' + '─'.repeat(FRAME.c1 - FRAME.c0 - 1) + '┘', D
 for (let r = FRAME.r0 + 1; r < FRAME.r1; r++) { put(r, FRAME.c0, '│', DGR); put(r, FRAME.c1, '│', DGR); }
 seg(FRAME.r0, 2, [['┤', DGR], [' the island ', WHT], ['·', DGR], [' always daytime ', YEL], ['├', DGR]]);
 {
-  const parts = [['┤', DGR], [' 1080p ', LGR], ['·', DGR], [' 30 fps ', LGR], ['·', DGR], [' seed 1992 ', LGR], ['├', DGR]];
+  // no frame rate here: the video's fps has changed before ([video] in activities.toml) and is still open
+  const parts = [['┤', DGR], [' 16:9 ', LGR], ['·', DGR], [' 1080p ', LGR], ['·', DGR], [' seed 1992 ', LGR], ['├', DGR]];
   seg(FRAME.r1, FRAME.c1 - 1 - width(parts), parts);
 }
 const FACTS = [
   ['WHAT', ['an unofficial lo-fi remake', 'of a 1992 desert-island', 'screensaver. ten hours, one', 'tiny island, one tall palm.', 'she idles. now and then, on', 'the beat, something happens.']],
   ['GAGS', ['a coconut that walks off.', 'a shark in headphones. a', 'cat on a crate. a bottle', 'that washes straight back.']],
-  ['WHEN', ['more than 90 activities on', 'four timers: every 2-5 min', 'up to every 3-6 hours.']],
-  ['SOUND', ['synthesized from code. all', 'of it. no samples, no loops.']],
+  ['WHEN', ['more than 90 activities.', 'four timers: every 2-5 min', 'up to every 3-6 hours.']],
+  ['SOUND', ['synthesized from code. all', 'of it. no samples, no mics.']],
 ];
 {
   let r = FRAME.r0;
@@ -654,8 +673,9 @@ const CAPTIONS = [
   [B(8), '» a hermit crab walks in, on the beat.'],
   [B(16) + 0.1, '» a coconut lands. on the beat. on him.'],
   [B(20), '» the crab moves into the coconut.'],
-  [B(28), '» she missed it. headphones.'],
-  [B(32), '» a shark in headphones. same playlist.'],
+  [B(28), '» she keeps nodding. it is a long video.'],
+  [B(32), '» a fin. it is in no hurry either.'],
+  [B(36), '» it surfaces in headphones. same beat.'],
   [B(44), '» the palm reloads. 9:59:24 to go.'],
 ];
 for (const [, t] of CAPTIONS) if (1 + len(t) > STG.c + STG.w) throw new Error(`caption too long: ${t}`);
@@ -690,10 +710,15 @@ const ncTrack = [[0, null], [LAND_T + 0.04, { x: NC_X0, y: NC_Y, f: 0 }]];
 for (let k = 1; k <= 22; k++) ncTrack.push([B(20) + k * HALF, { x: NC_X0 - k, y: NC_Y, f: k % 2 }]);
 ncTrack.push([B(20) + 23 * HALF, null]);
 const starTrack = [[0, null], [LAND_T + 0.04, { x: 0, y: 0, f: 0 }], [B(19.5), null]];
-const SH_X0 = SX + SPW - 1, SH_Y = SY + SPH - 5;
+// The fin comes in from the right edge on bar 8 and glides left a pixel every half beat; on bar 10
+// the shark surfaces right below her and nods with her, down on every beat, for two bars; then it sinks.
+const SH_HEAD = { x: SX + 26, y: SY + SPH - SHARK_HEAD.length };   // right below her
+const SH_FIN_Y = SY + SPH - 5;
 const sharkTrack = [[0, null]];
-for (let k = 0; k < 28; k++) sharkTrack.push([B(32) + k * HALF, { x: SH_X0 - k, y: SH_Y, f: k % 2 === 0 ? 1 : 0 }]);
-sharkTrack.push([B(46), { x: SH_X0 - 28, y: SH_Y + 2, f: 0 }], [B(46.5), { x: SH_X0 - 29, y: SH_Y + 4, f: 0 }], [B(47), null]);
+for (let k = 0; k < 16; k++) sharkTrack.push([B(28) + k * HALF, { x: SX + SPW + 1 - k, y: SH_FIN_Y, f: 0 }]);
+for (let b = 36; b < 44; b++) sharkTrack.push([B(b), { ...SH_HEAD, f: 2 }], [B(b) + HALF, { ...SH_HEAD, f: 1 }]);
+[1, 3, 5].forEach((dy, i) => sharkTrack.push([B(44 + i * 0.5), { x: SH_HEAD.x + SHARK_FIN_DX, y: SH_HEAD.y + dy, f: 0 }]));
+sharkTrack.push([B(45.5), null]);
 const hopTracks = letterSprites.map((L, i) => [[0, { x: 0, y: 0, f: 0 }], [B(i + 1), { x: 0, y: -1, f: 0 }], [B(i + 1) + HALF, { x: 0, y: 0, f: 0 }]]);
 
 // ---------------------------------------------------------------------------------------------
@@ -736,7 +761,7 @@ trackCss('cr', withFlicker(crabTrack), 2, REST_T);
 trackCss('nt', withFlicker(nutTrack), 1, REST_T);
 trackCss('nc', withFlicker(ncTrack), 2, REST_T);
 trackCss('st', starTrack, 1, REST_T);
-trackCss('sh', withFlicker(sharkTrack), 2, REST_T);
+trackCss('sh', withFlicker(sharkTrack), 3, REST_T);
 hopTracks.forEach((tk, i) => trackCss(`L${i}`, withFlicker(tk), 1, REST_T));
 swapCss('nd', 'nu', BEAT, HALF, true);        // her nod: down on the beat, up on the off-beat
 swapCss('wa', 'wb', 2 * BEAT, BEAT, false);   // wave sets A and B
@@ -902,6 +927,8 @@ console.log(`at 2400 baud the whole screen would take ${(totalBytes / 240).toFix
 // ---------------------------------------------------------------------------------------------
 const fmt = (n) => String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 const sec = (t) => (Math.round(t * 100) / 100).toString();
+const streamSecs = streamBytes / BPS;
+const pauseSecs = Math.round(T0 * 100) / 100 - Math.round(streamSecs * 100) / 100;   // the breath before and after
 function captureText() {
   const lines = [];
   lines.push(`CAPTURE.TXT · castaway.ans · 80x25 · ${totalBytes} bytes · ${BAUD} 8N1 · colour stripped`);
@@ -942,15 +969,16 @@ const ALT = 'CASTAWAY, as a 1990s ANSI animation on a black 80-column text scree
   + 'spell CASTAWAY and are already there when you arrive; the rest of the file paints in below them, row by row, behind a grey '
   + 'block cursor, while the terminal status line reads BEACHCOMM, ANSI, 9600 8N1, castaway.ans, 80x25, RECEIVING and then IDLE, '
   + 'with 80 BPM at the end. On the left, a framed stage titled the island, always daytime: a half-block pixel island with one '
-  + 'tall palm and two coconuts, a sun, clouds, a raft and a blue sea. A young woman in cream headphones, a coral tank top and '
-  + 'cream shorts stands by the palm and nods on every beat, eyes shut. A hermit crab walks in from the sea. On the downbeat a '
-  + 'coconut drops onto it with a red KLONK! and stars, and the coconut walks off on crab legs, into the sea. Later a shark fin '
-  + 'wearing headphones glides along the bottom of the frame, nodding in time with her, and the palm grows another coconut. '
+  + 'tall palm and two coconuts, a sun, clouds, a log raft and a blue sea. A young woman in cream headphones, a coral tank top '
+  + 'and cream shorts stands by the palm and nods on every beat. A hermit crab walks in from the sea. On the downbeat a '
+  + 'coconut drops onto it with a red KLONK! and stars, and the coconut walks off on crab legs, into the sea. Later a fin '
+  + 'glides in, and a grinning shark surfaces right below her in headphones and nods in time with her for two bars '
+  + 'before it sinks again, and the palm grows another coconut. '
   + 'The title letters hop one at a time to the beat. A caption line under the stage types out each event. On the right, four '
   + 'facts: an unofficial lo-fi remake of a 1992 desert-island screensaver, ten hours, one tiny island, one tall palm, she idles '
   + 'and now and then, on the beat, something happens; gags: a coconut that walks off, a shark in headphones, a cat on a crate, '
-  + 'a bottle that washes straight back; more than 90 activities on four timers, every 2 to 5 minutes up to every 3 to 6 hours; '
-  + 'sound synthesized from code, no samples, no loops. The last line is the run command: python tools/serve.py, then open '
+  + 'a bottle that washes straight back; more than 90 activities, four timers, every 2 to 5 minutes up to every 3 to 6 hours; '
+  + 'sound synthesized from code, no samples, no mics. The last line is the run command: python tools/serve.py, then open '
   + 'http://127.0.0.1:8765/.';
 
 const FENCE = '```';
@@ -966,9 +994,9 @@ const md = `<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit
   <sub>an unofficial lo-fi remake, inspired by the 1992 screensaver <i>Johnny Castaway</i> · in development · no video published yet</sub>
 </p>
 
-**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour streams: a young woman, a tiny island, one tall palm, a raft and a great deal of time. She stands about. She nods along to her headphones. Every so often, on the next bar of the music, something happens: a coconut lands on a hermit crab, who keeps it; a shark in headphones glides past, nodding to the same song; a stray cat drifts in on a crate and naps at the top of the palm. Then she goes back to standing about. The header above takes ${sec(T0)} seconds to arrive at ${BAUD} baud. The video takes ten hours. Nobody here is in a hurry.
+**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour streams: a young woman, a tiny island, one tall palm, a raft and a great deal of time. She stands about. She nods along to her headphones. Every so often, on the next bar of the music, something happens: a coconut lands on a hermit crab, who keeps it; a shark surfaces in headphones and nods along to the same beat; a stray cat drifts in on a crate and naps at the top of the palm. Then she goes back to standing about. The header above takes ${sec(T0)} seconds to arrive at ${BAUD} baud. The video takes ten hours. Nobody here is in a hurry.
 
-The happenings are booked in [activities.toml](activities.toml): more than 90 activities on four timers, regular every 2 to 5 minutes, occasional every 12 to 25, rare every 30 to 60 and super rare every 3 to 6 hours (three a run at most), plus follow-ups that only ever come after something else. A typical ten-hour run (the median of 200 simulated runs) has about 155 regular, 30 occasional, 13 rare and 2 super-rare events, and she is busy for about a third of it. Each one waits for the next bar of the music, every 3 seconds, so the gags land on the beat, like the coconut above. Lanes let them overlap, which is how a ship gets past while she is busy with a coconut (it waits until she is). The default run is 10:00:00 on seed 1992, and it is always daytime.
+The happenings are booked in [activities.toml](activities.toml): more than 90 activities, most of them on four timers (regular every 2 to 5 minutes, occasional every 12 to 25, rare every 30 to 60, super rare every 3 to 6 hours and three a run at most) and the rest follow-ups that only ever come after something else. A typical ten-hour run (the median of 200 simulated runs) has about 155 regular, 30 occasional, 13 rare and 2 super-rare events, and she is busy for about a third of it. Each one waits for the next bar of the music, every 3 seconds, so the gags land on the beat, like the coconut above. Lanes let them overlap, which is how a ship gets past while she is busy with a coconut (it waits until she is). The default run is 10:00:00 on seed 1992, and it is always daytime.
 
 Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): more than 150 sound files and no samples, loops or recordings, so no third-party licence applies. The theme is a seamless 60-second loop at 80 BPM in F major (ii-V-I-vi), 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle, and the ocean is a seamless 60-second loop too. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and the levels are adjustable in master and per routine. Nobody has listened to any of it yet. The status line already knows the tempo.
 
@@ -978,7 +1006,7 @@ python tools/schedule.py           # validate it all, simulate a 10-hour run
 python tools/render_demo.py --dev  # dev reel of every activity, with a HUD
 ${FENCE}
 
-The page at [web/index.html](web/index.html) previews live and exports a YouTube-ready MP4: the browser encodes frame-exact H.264 (WebCodecs, 68 to 78 frames a second at 1080p30 in Chrome), and the server mixes in the sound and joins the two. Plain ES modules, no build step, no npm packages. Hard cuts and stepped movement are the house style, which this header approves of. Decisions and notes live in [MUSING.md](MUSING.md).
+The page at [web/index.html](web/index.html) previews live and exports a YouTube-ready MP4: the browser encodes frame-exact H.264 (WebCodecs: 68 to 78 frames a second in Chrome, measured at 1080p30), and the server mixes in the sound and joins the two. Plain ES modules, no build step, no npm packages. Hard cuts and stepped movement are the project's motion defaults, which this header approves of. Decisions and notes live in [MUSING.md](MUSING.md).
 
 <details>
 <summary><b>CAPTURE.TXT</b>: the same screen with the colour codes stripped, and every caption it typed</summary>
@@ -992,9 +1020,9 @@ ${FENCE}
 <details>
 <summary><b>LINE SPEED</b>: why the header takes ${sec(T0)} seconds, and what the cursor is up to</summary>
 
-The generator encodes the screen as a real ANSI stream before it draws anything: half-block pixels become ▀, ▄, █ or a shade character with a foreground and a background colour, gaps become cursor-forward codes, every colour change costs an escape sequence, and each row ends in CR LF. The whole 80x25 screen comes to ${fmt(totalBytes)} bytes. The title is already up when you arrive; the other ${fmt(streamBytes)} bytes come in at ${BAUD} baud, ${fmt(BPS)} bytes a second, and each row takes exactly as long as its bytes do, so rows of sea and sand crawl and the empty ones flash past. At 2400 baud the full screen would take ${(totalBytes / 240).toFixed(1)} seconds.
+Before it draws anything, the generator works out what this screen would cost as an ANSI stream (it counts the bytes; no .ANS file is written): half-block pixels become ▀, ▄, █ or a shade character with a foreground and a background colour, gaps become cursor-forward codes, every colour change costs an escape sequence, and each row ends in CR LF. By that count the whole 80x25 screen is ${fmt(totalBytes)} bytes. The title is already up when you arrive; the other ${fmt(streamBytes)} bytes take ${sec(streamSecs)} seconds at ${BAUD} baud (${fmt(BPS)} bytes a second), and with ${sec(pauseSecs)} seconds of pauses, before and after, the screen is in at ${sec(T0)} seconds. Each row takes exactly as long as its bytes do, so rows of sea and sand crawl and the empty ones flash past. At 2400 baud the full screen would take ${(totalBytes / 240).toFixed(1)} seconds.
 
-Then it plays as a cartoon on the soundtrack's grid: 80 BPM, a beat every 0.75 seconds and a bar every 3. Sprites move by erase and redraw, with the faint flicker that comes with it. The caption line is wiped and retyped at ${TYPE_CPS} characters a second, far slower than the line could carry it, because a caption that arrives in a twentieth of a second is not much of a caption. The cursor follows the work: along the caption as it types, down with the coconut, up to the palm when it grows a new one, then back to the end of the run line, where it blinks on the beat. The cartoon loops every ${LOOP_BARS} bars (${LOOP} seconds). With reduced motion you get one finished frame: the coconut has just landed.
+Then it plays as a cartoon on the soundtrack's grid: 80 BPM, a beat every 0.75 seconds and a bar every 3. Sprites move by erase and redraw, with the faint flicker that comes with it. The caption line is wiped and retyped at ${TYPE_CPS} characters a second, far slower than the line could carry it, because a caption that arrives in about a twentieth of a second is not much of a caption. The cursor follows the work: along the caption as it types, down with the coconut, up to the palm when it grows a new one, then back to the end of the run line, where it blinks on the beat. The shark nods on the same beat as she does. Nobody told it to. The cartoon loops every ${LOOP_BARS} bars (${LOOP} seconds). With reduced motion you get one finished frame: the coconut has just landed.
 
 </details>
 
@@ -1004,16 +1032,16 @@ Then it plays as a cartoon on the soundtrack's grid: 80 BPM, a beat every 0.75 s
 ${FENCE}text
 TITLE     castaway.ans, an ANSImation for the Castaway README
 AUTHOR    pumice
-GROUP     Ebb & Flow Control
+GROUP     Half Duplex (one of us talks at a time)
 SIZE      ${totalBytes} bytes · 80x25 · 16 colours · half-block pixels
 TERMINAL  BEACHCOMM · ${BAUD} 8N1
 FONT      an 8x16 bitmap drawn for this header
 COMMENT   unofficial · inspired by a 1992 screensaver · always daytime
 ${FENCE}
 
-Greetz to the hermit crab (new address), the shark (same playlist), the cat on the crate (wherever it floated off to this time), the ship (busy waiting for her to be busy), and anyone who ever sat through ${(totalBytes / 240).toFixed(1)} seconds at 2400 baud to see a palm tree.
+Greetz to the hermit crab (new address), the shark (same beat), the cat on the crate (wherever it floated off to this time), the ship (busy waiting for her to be busy), and anyone who ever sat through ${(totalBytes / 240).toFixed(1)} seconds at 2400 baud to see a palm tree.
 
-pumice, Ebb & Flow Control and BEACHCOMM are invented for this header. The ANSImation style belongs to the 1990s BBS art scene; no group, artist, board, file or logo from it is reproduced here, and every letter, sprite and pixel is drawn new. *Johnny Castaway* and its castaway belong to their owners; Castaway is an unofficial remake inspired by it and is not affiliated with them.
+pumice, Half Duplex and BEACHCOMM are invented for this header. The ANSImation style belongs to the 1990s BBS art scene; no group, artist, board, file or logo from it is reproduced here, and every letter, sprite and pixel is drawn new. *Johnny Castaway* and its castaway belong to their owners; Castaway is an unofficial remake inspired by it and is not affiliated with them.
 
 </details>
 `;

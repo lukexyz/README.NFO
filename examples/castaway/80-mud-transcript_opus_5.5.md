@@ -7,8 +7,7 @@
                  /  .'     _.--'(@@)'--._     '.  \         .' '---' '.
                 /  /    .-'    //||\\    '-.    \  \           /  :  \
                 ' /   .'      // || \\      '.   \ '
-                  '  '       '   ||   '       '  '
-        __|__                    ||
+        __|__     '  '       '   ||   '       '  '
  ~  ~  ~\___/~  ~  ~  ~  ~  ~  ~  \\  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~  ~
                                    \\         d(-_-)b
                                     ||          /|\
@@ -20,7 +19,7 @@
                                   2  0  2  6
 
             Based on AtollMUD 0.80, by the Coconut Standards Board
-          Unofficially inspired by a 1992 desert-island screensaver
+           An unofficial homage to a 1992 desert-island screensaver
 
 What shall the tide call you? <b>visitor</b>
 Did the gulls hear that right, Visitor (Y/N)? <b>y</b>
@@ -37,11 +36,11 @@ New face. Pick a password the gulls cannot pronounce:
 <b>The Island, All of It</b>
    A scrap of warm sand barely big enough to pace on, with the sea all the
 way round, which you suspect is the point. Mostly, nothing happens here.
-Every so often, something does. It is always daytime: the management is very
-firm about this.
+Every so often, something does. It is always daytime. The management insists.
 A young woman in cream headphones is standing here, nodding to the beat.
 A tall, slender palm grows here. At the very top: one bar of signal.
 A small raft is moored here, going nowhere at 80 beats a minute.
+A green bottle lies at the waterline. It keeps coming back.
 A hand-painted sign has been pushed into the sand.
 [ Exits: <a href="activities.toml">n</a> <a href="tools/make_audio.py">e</a> <a href="tools/serve.py">s</a> <a href="MUSING.md">w</a> <a href="web/index.html">u</a> <a href="tools/render_demo.py">d</a> ]
 
@@ -58,12 +57,12 @@ The sign says:  <b>python </b><a href="tools/serve.py">tools/serve.py</a>   then
 <pre>
 10H 80M 0V &gt; <b>exits</b>
 Obvious exits:
-north - The Noticeboard  <a href="activities.toml">activities.toml</a>        every activity and its timer
-east  - The Sound Shack  <a href="tools/make_audio.py">tools/make_audio.py</a>    every sound, made from code
-south - The Jetty        <a href="tools/serve.py">tools/serve.py</a>         where the island starts
-west  - The Logbook      <a href="MUSING.md">MUSING.md</a>              decisions, lessons, notes
-up    - The Lookout      <a href="web/index.html">web/index.html</a>         the renderer, live preview
-down  - Under the Sand   <a href="tools/render_demo.py">tools/render_demo.py</a>   the older renderer, kept
+north - The Noticeboard    <a href="activities.toml">activities.toml</a>       every activity and its timer
+east  - The Sound Shack    <a href="tools/make_audio.py">tools/make_audio.py</a>   every sound, made from code
+south - The Jetty          <a href="tools/serve.py">tools/serve.py</a>        where the island starts
+west  - The Thinking Rock  <a href="MUSING.md">MUSING.md</a>             decisions, lessons, notes
+up    - The Lookout        <a href="web/index.html">web/index.html</a>        the renderer, live preview
+down  - Under the Sand     <a href="tools/render_demo.py">tools/render_demo.py</a>  the older renderer, kept
 
 Every exit is also the sea. It is that kind of island.
 </pre>
@@ -76,20 +75,23 @@ Every exit is also the sea. It is that kind of island.
 <pre>
 10H 80M 0V &gt; <b>score</b>
 You are Visitor, the Watcher of Very Small Islands.
-You have 10(10) hours left, 80(80) beats a minute and 0(0) vessels noticed.
+You have 10(10) hours left, 80(80) beats a minute and 0(0) ships spotted.
+Ships only: tour boats and hydrofoils do not count, however hard she waves.
+
 This session runs 10:00:00 on seed 1992. Everything that happens starts on
 the next bar of the music, every 3 seconds, so the gags land on the beat.
 
 <b>  timer        comes round every     in ten hours   for example</b>
   regular      2 to 5 minutes        about 155      coconuts, jogs, fishing
-  occasional   12 to 25 minutes      about 30       a bottle, the turtle
+  occasional   12 to 25 minutes      about 30       a bottle, a turtle, a ship
   rare         30 to 60 minutes      about 13       a drone, a cat, a shark
   super rare   3 to 6 hours, max 3   about 2        she could leave any time
-  chained      after something else  as needed      the tide takes a castle
+  chained      after something else  about 20       the tide takes a castle
 
 More than 90 activities in all, in <a href="activities.toml">activities.toml</a>. Counts are the median
 of 200 simulated runs; <b>python </b><a href="tools/schedule.py">tools/schedule.py</a> checks the file and runs one.
-Lanes let things overlap, so a ship can sail past while she is busy.
+Lanes let things overlap, so a ship can sail past while she is busy. The
+ship will even wait up to ten minutes for her to get busy first.
 She is busy about a third of the time and idles the rest.
 
 You are hungry. There is a coconut. You are no longer hungry.
@@ -129,12 +131,12 @@ Nobody has heard any of it yet. You cannot either: this is a text file.
 Usage:  <b>python </b><a href="tools/serve.py">tools/serve.py</a>
         then open <a href="http://127.0.0.1:8765/">http://127.0.0.1:8765/</a>
 
-The island is a web page with a live preview, and an export to a
-YouTube-ready MP4: 16:9, 1080p, 30 frames a second. Plain ES modules, no
-build step, no npm packages. It encodes frame-exact video in the browser
-(WebCodecs H.264, 68 to 78 frames a second at 1080p30 in Chrome); the server
-mixes in the sound and joins the two into one MP4. Hard cuts and stepped
-movement are the house style, much like this transcript.
+The island is a web page with a live preview and an export to a
+YouTube-ready MP4, 16:9 at 1080p. Plain ES modules, no build step, no npm
+packages. It encodes frame-exact video in the browser (WebCodecs H.264,
+measured at 68 to 78 frames a second at 1080p in Chrome); the server mixes
+in the sound and joins the two into one MP4. Hard cuts and stepped movement
+are the defaults, much like this transcript.
 
 Also on the island:
   <b>python </b><a href="tools/schedule.py">tools/schedule.py</a>          check the schedule, simulate ten hours
@@ -175,7 +177,8 @@ python tools/serve.py
   Implementor ...... whoever keeps writing <a href="MUSING.md">MUSING.md</a>
   Greater gods ..... the Tide (takes sandcastles), the Seed (1992)
   Lesser god ....... the Gull (drops her a fish, out of pity)
-  Engine ........... AtollMUD 0.80, by the Coconut Standards Board
+  Engine ........... AtollMUD 0.80, which does not exist. The island
+                     runs on plain ES modules and a little Python.
   Inspired by ...... Johnny Castaway, the 1992 desert-island screensaver.
                      This is an unofficial remake, with no affiliation.
 </pre>
@@ -183,74 +186,73 @@ python tools/serve.py
 </details>
 
 <details>
-<summary><code>10H 80M 0V &gt; wait</code> &nbsp;ten hours, abridged</summary>
+<summary><code>10H 80M 0V &gt; wait</code> &nbsp;one possible ten hours, abridged</summary>
 
 <pre>
+10H 80M 0V &gt; <b>wait</b>
+Time passes. She nods to the beat.
+
 10H 80M 0V &gt; <b>look sea</b>
 The sea goes all the way round. Small waves run up the sand and back, and
 cloud shadows drift slowly across the water. In time there will also be
 birds, planes with vapour trails, whale pods, dolphins, sailboats,
-sandpipers, a gecko and a rain shower. They have been planned. They have not
-arrived. Nobody here minds waiting.
+sandpipers, a gecko and a rain shower. They are on their way. Nobody here
+minds waiting.
 
 10H 80M 0V &gt; <b>wait</b>
-Time passes. She nods to the beat.
-
-10H 80M 0V &gt; <b>wait</b>
-Time passes. She nods to the beat.
-
-10H 80M 0V &gt; <b>wait</b>
-She sips a coconut, eyes closed, completely content.
-A ship sails along the horizon from west to east.
+She sips a coconut in the shade, eyes closed, completely content.
+A ship, which has been waiting for exactly this, sails along the horizon.
 
 9H 80M 0V &gt; <b>look ship</b>
 You do not see that here. It has gone.
 
 9H 80M 0V &gt; <b>wait</b>
 She writes a note, bottles it, and throws it into the sea.
-A bottle washes up at her feet. It is the same bottle.
+A green bottle washes up at her feet. It is the same bottle.
 
 8H 80M 0V &gt; <b>wait</b>
 She builds a sandcastle.
 A bigger wave arrives. The sandcastle leaves with it.
 
 8H 80M 0V &gt; <b>wait</b>
-A hermit crab shuffles past the palm.
+She sits against the palm with a book. A hermit crab shuffles past.
 A coconut falls from the palm, squarely onto the hermit crab.
+She peeks over her book, winces, and hides behind it.
 A coconut leaves west, slowly, on legs.
 
 7H 80M 0V &gt; <b>wait</b>
-A delivery drone arrives from above and lowers a parcel.
+A delivery drone arrives from above, lowers a parcel, and leaves up.
 She opens the parcel. It contains a pair of headphones.
 She is already wearing a pair of headphones.
-The drone leaves up.
 
 6H 80M 0V &gt; <b>wait</b>
-A stray cat arrives from the sea, riding a crate.
+A stray cat drifts in on a crate.
 The stray cat climbs the palm and falls asleep at the top,
 right next to the one bar of signal. It does not use it.
 
 5H 80M 0V &gt; <b>wait</b>
 A fin circles the island.
 A shark surfaces, wearing headphones, nodding to the same beat.
-She nods. The shark nods. The shark leaves east.
+She nods. The shark nods. The shark leaves down.
 
 4H 80M 0V &gt; <b>wait</b>
-A small tour boat pulls up. Everyone takes a selfie with her in the back.
+A small tour boat pulls up. She waves, hopefully.
+Everyone turns round and takes a selfie with her in the background.
 Nobody offers a lift. The tour boat leaves south.
 
 4H 80M 0V &gt; <b>wait</b>
 A bro on an electric hydrofoil carves in close. She runs over to wave.
-He beams, throws her a shaka, and carves away east.
+He waves back with a big smile and a shaka, and carves away east.
 She stands there with her hands in the air. Double face palm.
 
 3H 80M 0V &gt; <b>wait</b>
 A different bottle washes up. It is a reply. She smiles.
 
 2H 80M 0V &gt; <b>wait</b>
-She stands, stretches, and walks away over the water, north.
+She stands, stretches, and walks out over the water.
+She leaves east.
 The island is empty for twenty seconds.
-She arrives from the north, carrying an iced coffee, and sits back down.
+She arrives from the east, carrying an iced coffee, and sits back down.
 
 2H 80M 0V &gt; <b>ask her about that</b>
 She nods to the beat.
@@ -259,6 +261,10 @@ She nods to the beat.
 She spots a ship, at last, and waves like mad.
 The ship sounds its horn...
 ...and sails on. She shrugs, and puts the music back on.
+
+0H 80M 1V &gt; <b>wait</b>
+She jogs a lap of the island.
+Behind her, another ship sails past.
 
 0H 80M 1V &gt; <b>wait</b>
 The video ends. Somebody, somewhere, presses replay.

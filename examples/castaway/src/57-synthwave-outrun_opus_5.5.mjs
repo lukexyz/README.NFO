@@ -8,7 +8,7 @@
 // The .md beside the assets is hand-written, not generated.
 //
 // The style (catalogue entry vap-05) is the late-2000s synthwave poster: a
-// dusk sky, a big sun cut by horizontal slits that thicken toward its base,
+// deep purple sky, a big sun cut by horizontal slits that thicken toward its base,
 // a magenta wireframe floor rushing at the viewer, low-poly shapes either
 // side of the sun, a heavy italic chrome word with a sky-over-desert
 // gradient and a hard horizon line through its middle, a loose neon brush
@@ -298,7 +298,9 @@ const BRUSH = [
     [102.6, -1.6], [101.4, -1.2], [100.2, 0.6],
   ],
 ];
-const BR = { scale: 3.15, slant: 0.34, rot: -5, x: 438, y: 151, nib: 38, half: 1.55 };
+// A shallow climb, so "hours" crosses only the foot of AWAY and "golden"
+// still clears the palm crown below it.
+const BR = { scale: 3.15, slant: 0.34, rot: -2.5, x: 438, y: 150, nib: 38, half: 1.55 };
 function brushToScreen([x, y]) {
   const xs = (x - y * BR.slant) * BR.scale; const ys = y * BR.scale;
   const a = (BR.rot * Math.PI) / 180;
@@ -569,11 +571,13 @@ defs.push(`<linearGradient id="isl" x1="0" y1="258" x2="0" y2="280" gradientUnit
 defs.push(`<clipPath id="panel"><rect width="${W}" height="${H}" rx="18"/></clipPath>`);
 defs.push('<clipPath id="water"><rect x="-60" y="-80" width="120" height="80.4"/></clipPath>');
 
-// sun slits: a mask of black bars that slide down and thicken, one per bar
+// sun slits: a mask of black bars that slide down and thicken, one per bar.
+// Each starts with no height and ends wholly below the sun's base, so the
+// wrap from the bottom back to the top shows nothing at all.
 const SLITS = 6;
 const SL_T = SLITS * BAR;
-const slitY = (u) => lerp(HZ - RS * 0.6, HZ + 1, u);
-const slitH = (u) => 0.4 + 9.5 * u ** 1.55;
+const slitH = (u) => 0.02 + 10 * u ** 1.55;
+const slitY = (u) => lerp(HZ - RS * 0.6, HZ + slitH(1) / 2 + 0.4, u);
 {
   const fr = [];
   for (let i = 0; i <= 24; i++) {
@@ -881,16 +885,26 @@ const BRO = { t0: 15.6, t1: 24.6, x0: -300, x1: 1260 };
     ['f', 'M1.6 -40.3A3 3 0 1 1 1.59 -40.3Z'],
     ['f', 'M-1.8 -38.4A3.4 3.4 0 0 1 4.8 -38.6Z'], // a cap, on backwards
     ['f', 'M-1.6 -38.9L-5 -38.1L-4.8 -37.2L-1.4 -37.7Z'],
-    wave ? ['s', 'M2.2 -32.6L5.8 -36.8L6.8 -41', 2.1] : ['s', 'M2.2 -32.6L6.2 -28.8L9.6 -28.2', 2.1],
-    ...(wave ? [['s', 'M6.8 -41.4L8.4 -43.2M6.6 -41.6L5 -43.2', 0.9]] : []), // thumb and pinky out
+    wave ? ['s', 'M2.2 -32.6L5.6 -36.4L6.6 -40.2', 2.1] : ['s', 'M2.2 -32.6L6.2 -28.8L9.6 -28.2', 2.1],
   ];
+  // the shaka: a fist with the thumb out one side and the little finger out
+  // the other, shaken from the wrist twice a beat
+  const SHAKA = [
+    ['f', 'M5.3 -43.1L8.5 -43.3L8.9 -40.5L5.6 -40.1Z'],
+    ['s', 'M5.9 -42.7L4.3 -45.3', 1.15], // thumb
+    ['s', 'M8.5 -41.6L11 -42.9', 1.05], // little finger
+  ];
+  const WRIST = [6.6, -40.3];
   const shorts = '<path d="M-3.7 -24.2L3.5 -24.2L4.7 -17.2L1 -16.8L0.2 -19.4L-0.8 -16.8L-4.1 -17.2Z" fill="#17b3a5"/>';
+  const draw = (ps, stroke, extra) => ps.map(([k, d, w]) => (k === 'f'
+    ? `<path d="${d}"${stroke ? ` stroke="${stroke}" stroke-width="${extra}"` : ''}/>`
+    : `<path d="${d}" fill="none" stroke="${stroke || sil}" stroke-width="${f(w + (stroke ? extra : 0))}"/>`)).join('');
   const rider = (wave) => {
     const ps = parts2(wave);
-    const draw = (stroke, extra) => ps.map(([k, d, w]) => (k === 'f'
-      ? `<path d="${d}"${stroke ? ` stroke="${stroke}" stroke-width="${extra}"` : ''}/>`
-      : `<path d="${d}" fill="none" stroke="${stroke || sil}" stroke-width="${f(w + (stroke ? extra : 0))}"/>`)).join('');
-    return `<g stroke-linejoin="round" stroke-linecap="round" fill="${sil}">${draw(rim, 1.3)}${draw(null, 0)}</g>${shorts}<path d="M-1.8 -38.4A3.4 3.4 0 0 1 4.8 -38.6ZM-1.6 -38.9L-5 -38.1L-4.8 -37.2L-1.4 -37.7Z" fill="#ff3fa4"/><path d="M2.2 -37.4h3" stroke="#36f9f6" stroke-width="1" stroke-linecap="round"/>`;
+    const hand = wave
+      ? `<g transform="translate(${WRIST[0]} ${WRIST[1]})"><g class="shk"><g transform="translate(${-WRIST[0]} ${-WRIST[1]})" stroke-linejoin="round" stroke-linecap="round" fill="${sil}">${draw(SHAKA, rim, 1.3)}${draw(SHAKA, null, 0)}</g></g></g>`
+      : '';
+    return `<g stroke-linejoin="round" stroke-linecap="round" fill="${sil}">${draw(ps, rim, 1.3)}${draw(ps, null, 0)}</g>${hand}${shorts}<path d="M-1.8 -38.4A3.4 3.4 0 0 1 4.8 -38.6ZM-1.6 -38.9L-5 -38.1L-4.8 -37.2L-1.4 -37.7Z" fill="#ff3fa4"/><path d="M2.2 -37.4h3" stroke="#36f9f6" stroke-width="1" stroke-linecap="round"/>`;
   };
   const board = `<path d="M-0.4 -8.2L0.6 -8.2L0.8 1L-0.2 1Z" fill="${sil}" stroke="${rim}" stroke-width=".5"/><path d="M-13 -8.6C-6 -9.6 6 -9.6 13 -9.8C14.4 -9.6 14.4 -8 12.6 -7.4C5 -6.6 -6 -6.6 -12.6 -7.2C-14 -7.4 -14 -8.4 -13 -8.6Z" fill="#ff3fa4" stroke="#ffd0ef" stroke-width=".6"/><path d="M-2.4 0.4h5.4" stroke="#d8fffe" stroke-width="1" stroke-linecap="round"/>`;
   P(`<g class="bro" transform="translate(-300 300)"><g class="ride">${board}<g class="nowave">${rider(false)}</g><g class="wave" opacity="0">${rider(true)}</g></g></g>`);
@@ -899,6 +913,7 @@ const BRO = { t0: 15.6, t1: 24.6, x0: -300, x1: 1260 };
   css.push(kf('wave', [[0, 'opacity:0'], [wa - 0.001, 'opacity:0'], [wa, 'opacity:1'], [wb - 0.001, 'opacity:1'], [wb, 'opacity:0'], [LOOP, 'opacity:0']]));
   css.push(kf('nowave', [[0, 'opacity:1'], [wa - 0.001, 'opacity:1'], [wa, 'opacity:0'], [wb - 0.001, 'opacity:0'], [wb, 'opacity:1'], [LOOP, 'opacity:1']]));
   css.push(kf('ride', [[0, 'transform:translate(0px,0px)'], [BEAT / 2, 'transform:translate(0px,-.6px)'], [BEAT, 'transform:translate(0px,0px)']], BEAT));
+  css.push(kf('shk', [[0, 'transform:rotate(-14deg)'], [BEAT / 2, 'transform:rotate(14deg)'], [BEAT, 'transform:rotate(-14deg)']], BEAT));
 }
 
 // bottom: a calmer band and the stats line
@@ -940,7 +955,8 @@ P(`<rect y="350" width="${W}" height="${H - 350}" fill="url(#foot)"/>`);
 // ---------------------------------------------------------- the brush word
 {
   defs.push(`<path id="bf" d="${brushFill}"/>`, `<path id="bl" d="${brushLine}"/>`);
-  P(`<g class="neon"><use href="#bf" fill="#1a0526" transform="translate(2.4 3.2)"/><g fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#bl" stroke="#ff2fa8" stroke-opacity=".22" stroke-width="13"/><use href="#bl" stroke="#ff4fc0" stroke-opacity=".35" stroke-width="6"/></g><use href="#bf" fill="#ff5ecb"/><g fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#bl" stroke="#ff5ecb" stroke-width="2.2"/><use href="#bl" stroke="#ffe3f6" stroke-width=".9"/></g></g>`);
+  // a dark backing under the glow, so the neon reads over chrome and sky
+  P(`<g class="neon"><use href="#bl" fill="none" stroke="#1a0526" stroke-opacity=".5" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><use href="#bf" fill="#1a0526" transform="translate(2.4 3.2)"/><g fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#bl" stroke="#ff2fa8" stroke-opacity=".22" stroke-width="13"/><use href="#bl" stroke="#ff4fc0" stroke-opacity=".35" stroke-width="6"/></g><use href="#bf" fill="#ff5ecb"/><g fill="none" stroke-linecap="round" stroke-linejoin="round"><use href="#bl" stroke="#ff5ecb" stroke-width="2.2"/><use href="#bl" stroke="#ffe3f6" stroke-width=".9"/></g></g>`);
   css.push(kf('neon', [[0, 'opacity:.35'], [0.25, 'opacity:1'], [0.4, 'opacity:.45'], [0.55, 'opacity:1'], [0.8, 'opacity:.6'], [1.0, 'opacity:1'], [1.2, 'opacity:1']], 1.2));
 }
 
@@ -972,6 +988,7 @@ const style = `
 .wave{animation:wave ${LOOP}s linear infinite}
 .nowave{animation:nowave ${LOOP}s linear infinite}
 .ride{animation:ride ${BEAT}s ease-in-out infinite}
+.shk{animation:shk ${BEAT}s ease-in-out infinite}
 .shine{animation:shine 6s linear infinite}
 .tw{animation:tw ${BAR}s ease-out infinite}
 .neon{animation:neon 1.2s linear 1 both}

@@ -28,7 +28,8 @@
 //   * she nods on every beat, the waves change every bar, the surf every
 //     half bar, and a coconut falls on a hermit crab, which walks off
 //     wearing it, right past her feet;
-//   * one word flashes (about once a second, a few cells only);
+//   * one word flashes (about once a second, a few cells only): NOW on page
+//     100, and on page 200 while the crab gag is actually playing above it;
 //   * page 500 has concealed text that is revealed after a few seconds;
 //   * the header clock ticks with CSS steps(), one strip per digit, as a
 //     10-hour loop from 08:00:00 to 17:59:59 (always daytime), starting at
@@ -577,13 +578,17 @@ function drawPicture(s) {
     else if (s < 48) coco = [48, fallY[s - 44 + 1]];
     if (s >= 48 && s < 56) { wearing = true; star = s % 2 === 0; }
     if (coco) for (let dy = 0; dy < 2; dy++) for (let dx = 0; dx < 2; dx++) set(coco[0] + dx, coco[1] + dy, G, 5);
+    // It leaves by a hard cut at x 26, just past her: walking it on to the
+    // shoreline was tried, but the shore's own colour codes leave no room for
+    // it there (the encoder turns it into a solid green block).
     if (crabX !== null && crabX <= 62 && crabX >= 26) {
       const legs = s % 2;
       if (wearing) { for (let dy = 0; dy < 2; dy++) for (let dx = 0; dx < 2; dx++) set(crabX + dx, 31 + dy, G, 5); }
       else { set(crabX, 32, R, 5); set(crabX + 1, 32, R, 5); }
       set(crabX - 1 + legs, 33, R, 5); set(crabX + 2 - legs, 33, R, 5);
     }
-    if (star) { set(46, 28, W, 3); set(51, 28, W, 3); set(47, 27, W, 3); set(50, 27, W, 3); }
+    // impact lines either side of the landing, pointing down at it: \ /
+    if (star) { set(46, 28, W, 3); set(47, 29, W, 3); set(51, 28, W, 3); set(50, 29, W, 3); }
   }
 
   // --- sea marks, last, and only in cells that are plain sea: a broken
@@ -693,6 +698,9 @@ const PAGES = [
       22: indexLine('Walks out to sea. Back with coffee', 207),
       23: '{c}Every gag starts on the next bar: 3 s',
     },
+    // While gag 201 is actually happening in the picture above (the coconut
+    // lands at step 48), the page says so. Steps are absolute, within P200.
+    swap: { from: 48, to: 60, row: 23, markup: '{g}{fl}NOW{st}{w}201, live, above. She missed it.' },
   },
   {
     n: 300,
@@ -732,8 +740,8 @@ const PAGES = [
       19: '{w}      {c}soft drums, vinyl crackle',
       20: '{w}OCEAN {c}a seamless 60 s loop too',
       21: '{w}FILES {c}150+, no samples or recordings',
-      22: '{y}Q.{w}So what does it sound like?{m}[?]',
-      23: '{y}A.{w}{cn}Nobody knows. Nobody has heard it.',
+      22: '{y}Q{w} So what does it sound like?{m}[?]',
+      23: '{y}A{w}{cn}Nobody knows. Nobody\'s heard it yet.',
     },
     reveal: 16,    // steps after the page arrives
   },
@@ -775,7 +783,9 @@ function frame(s) {
   worstPicture = Math.max(worstPicture, pic.cost);
   for (let r = 0; r < pic.rows.length; r++) page[PIC_ROW0 + r] = pic.rows[r];
   // page body
-  for (const [row, markup] of Object.entries(P.rows)) put(page, +row, 0, markup);
+  const rows = { ...P.rows };
+  if (P.swap && s >= P.swap.from && s < P.swap.to) rows[P.swap.row] = P.swap.markup;
+  for (const [row, markup] of Object.entries(rows)) put(page, +row, 0, markup);
   if (P.icon) P.icon.rows.forEach((m, i) => put(page, P.icon.row + i, P.icon.col, m));
   // Fastext
   put(page, 24, 0, FASTEXT);

@@ -5,7 +5,7 @@
 //   node examples/castaway/src/62-instant-messenger_opus_5.5.mjs
 //
 // Regenerates, next to this file in ../assets/:
-//   62-instant-messenger_opus_5.5.svg    the banner (830 x 620, drawn 1:1 for an 830 px README column)
+//   62-instant-messenger_opus_5.5.svg    the banner (830 x 640, drawn 1:1 for an 830 px README column)
 // Plain Node, no dependencies, deterministic (one seeded PRNG, no clock). The .md beside the
 // assets is hand-written, not generated.
 //
@@ -755,7 +755,7 @@ function build() {
   // your own header: picture, name, status, empty personal message
   L += `<rect x="${LX + 4}" y="${LY + 28}" width="${LW - 8}" height="66" fill="url(#gHead)"/>`;
   L += dpFrame(LX + 10, LY + 34, 'dpYou', 54);
-  L += px(uib, 'you (reading a README)', LX + 72, LY + 40, C.ink, { maxW: LW - 80 });
+  L += px(uib, 'you (should be working)', LX + 72, LY + 40, C.ink, { maxW: LW - 80 });
   L += px(ui, '(Online)', LX + 72, LY + 54, C.grey) + `<use href="#bud-on" x="${LX + 72 + ui.width('(Online)') + 4}" y="${LY + 51}"/>` + px(ui, '▾', LX + 72 + ui.width('(Online)') + 19, LY + 54, C.grey);
   L += px(ui, '<Type a personal message>', LX + 72, LY + 69, '#9a9a9a', { maxW: LW - 80 });
   // search box
@@ -859,7 +859,7 @@ function build() {
     ['you', 0, 'hello?? anyone on this island?'],
     ['her', BEAT.m1, 'hi! one bar of signal up here, top of the palm {smile}'],
     ['you', BEAT.m2, 'what even is this?'],
-    ['her', BEAT.m3, 'a 10-hour lo-fi video. me, one palm, one raft and a lot of time. i nod to the music {note} and every few minutes a gag lands on the beat.'],
+    ['her', BEAT.m3, 'a 10-hour lo-fi video. me, one palm, one raft and a lot of time. i nod to the music {note}. every few minutes something happens, always on the beat.'],
     ['her', BEAT.m4, 'a drone brought me headphones. more headphones. 90+ activities so far, and every sound is made from code.'],
     ['you', BEAT.m5, 'how do i watch?'],
     ['her', BEAT.m6, 'no video yet. run python tools/serve.py then open 127.0.0.1:8765'],
@@ -881,7 +881,7 @@ function build() {
     } else {
       let top = my;
       if (m[0] !== lastWho) {
-        const who = m[0] === 'her' ? 'castaway' : 'you (reading a README)';
+        const who = m[0] === 'her' ? 'castaway' : 'you (should be working)';
         g += px(ui, `${who} says:`, tx, my, '#7b7b7b');
         top += 12;
       } else top -= 2;
@@ -907,7 +907,7 @@ function build() {
   V += `<rect x="${DPX + 2}" y="${EY}" width="104" height="${EH}" rx="4" fill="#fff" fill-opacity=".7" stroke="#a9c0e0"/>`;
   V += px(uib, 'her emoticons', DPX + 54 - uib.width('her emoticons') / 2, EY + 6, C.navy);
   const emos = [['palm', '(palm)'], ['crab', '(crab)'], ['turtle', '(turtle)'], ['bottle', '(bottle)'], ['drone', '(drone)'], ['phones', '(cans)']];
-  const cellH = Math.floor((EH - 22) / 3);
+  const cellH = Math.floor((EH - 20 - 42 - 10) / 2); // three rows: icon 30 + label at +34, 10 px clear at the bottom
   emos.forEach(([k, label], i) => {
     const cx = DPX + 2 + 26 + (i % 2) * 52, cy = EY + 20 + Math.floor(i / 2) * cellH;
     V += `<use href="#emo-${k}" transform="translate(${cx - 15} ${cy}) scale(2)"/>`;
@@ -997,6 +997,7 @@ function build() {
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Castaway: a chat window. castaway signs in from the top of her palm tree and explains the 10-hour lo-fi island video.">`
     + `<title>Castaway</title>`
+    + '<desc>An invented mid-2000s instant messenger on a sandy desktop. castaway is Away, signs in from the top of her palm with one bar of signal, explains her 10-hour lo-fi island video and how to run it (python tools/serve.py, then 127.0.0.1:8765), and goes Away again just before your nudge.</desc>'
     + `<style>${css.join('')}</style>`
     + `<defs>${defs.join('')}${ui.defs()}${uib.defs()}${kDefs()}</defs>`
     + body.join('')

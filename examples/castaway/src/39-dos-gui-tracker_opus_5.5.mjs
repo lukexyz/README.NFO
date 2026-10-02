@@ -2,7 +2,8 @@
 //
 //   node examples/castaway/src/39-dos-gui-tracker_opus_5.5.mjs
 //
-// Regenerates ../assets/39-dos-gui-tracker_opus_5.5.svg. Plain Node, no deps,
+// Regenerates ../assets/39-dos-gui-tracker_opus_5.5.svg and the About screen,
+// ../assets/39-dos-gui-tracker_opus_5.5-about.svg. Plain Node, no deps,
 // fully deterministic (no clock, no randomness: the scope noise comes from a
 // seeded PRNG). The .md beside the assets is hand-written, not generated.
 //
@@ -27,9 +28,11 @@
 //     wraps 00:00:59 -> 00:00:00 exactly when the theme does.
 //   - Channels 0-3 play the theme's own instruments (electric piano, kalimba,
 //     drums, plus the ocean ambience, which is one note that loops for the
-//     whole minute). The notes are invented, in F major, on the real bar map:
-//     keys alone for bars 0-1, drums from bar 2, kalimba from bar 6, the full
-//     tune in bars 10-15, kick and rim in the break, bars 16-19.
+//     whole minute). The notes are the theme's real score, transcribed from
+//     Castaway's tools/make_audio.py and snapped to the grid (hats and bass
+//     left out): keys alone for bars 0-1, drums from bar 2, kalimba from bar
+//     6, the full tune in bars 10-15, kick and rim in the break, bars 16-19.
+//     The chords are written as the lowest note plus an 0xy arpeggio.
 //   - Channels 4-7 are the island's lanes: her, the cat, the turtle, and
 //     whatever is out on the sea or in the sky. They are mostly dots, which is
 //     the point. This minute, the shark_nod routine plays out bar by bar with
@@ -277,11 +280,13 @@ function edges(x, y, w, h, hi, lo) {
 }
 const panel = (x, y, w, h) => rect(x, y, w, h, P.panel) + edges(x, y, w, h, P.line, P.dark);
 const well = (x, y, w, h, fill = P.ink) => rect(x, y, w, h, fill) + edges(x, y, w, h, P.dark, P.line);
-function button(x, y, w, h, label, { down = false, font = ui } = {}) {
+function button(x, y, w, h, label, { down = false, font = ui, ty } = {}) {
   let s = rect(x, y, w, h, P.btn) + edges(x, y, w, h, down ? P.btnLo : P.btnHi, down ? P.btnHi : P.btnLo);
   const lines = Array.isArray(label) ? label : [label];
   const lh = 9;
-  const top = Math.round(y + (h - lines.length * lh + 2) / 2) + (down ? 1 : 0);
+  // `ty` pins the label's top row, for a short button that must keep its
+  // descenders inside the bottom edge.
+  const top = (ty ?? Math.round(y + (h - lines.length * lh + 2) / 2)) + (down ? 1 : 0);
   lines.forEach((ln, i) => { s += textC(font, ln, x + w / 2 + (down ? 1 : 0), top + i * lh, P.ink); });
   return s;
 }
@@ -294,17 +299,37 @@ function arrowBtn(x, y, up, w = 10, h = 10) {
 }
 
 // ------------------------------------------------------------------ song data
-// Theme: F major, ii-V-I-vi, one chord a bar: Gm9 C13 FM9 Dm9 (from
-// tools/make_audio.py's description). The notes themselves are invented.
-const CHORDS = ['Gm9', 'C13', 'FM9', 'Dm9'];
-const KEYS = { Gm9: ['G-3', 'A#3', 'A-4'], C13: ['C-4', 'E-4', 'D-4'], FM9: ['F-3', 'A-3', 'G-4'], Dm9: ['D-3', 'F-3', 'E-4'] };
-const KAL = {
-  Gm9: [[0, 'D-5'], [4, 'F-5'], [6, 'G-5'], [10, 'A#5'], [12, 'A-5']],
-  C13: [[0, 'G-5'], [4, 'E-5'], [8, 'C-5'], [12, 'D-5']],
-  FM9: [[0, 'C-5'], [2, 'A-4'], [6, 'C-5'], [8, 'E-5'], [12, 'G-5']],
-  Dm9: [[0, 'F-5'], [4, 'E-5'], [6, 'D-5'], [10, 'A-4']],
-};
-const KAL_EXTRA = { Gm9: [14, 'G-5'], C13: [14, 'E-5'], FM9: [14, 'A-5'], Dm9: [14, 'C-5'] };
+// The theme's own score, transcribed from Castaway's tools/make_audio.py
+// (CHORDS, PROGRESSION, MELODY and the drum loop in render_pass) and snapped
+// to the tracker grid: 4 rows a beat, so every beat in that file (0, 0.5,
+// 1.75, 3.5 ...) lands on a whole row. The real thing swings a little late on
+// the off-beats; a tracker shows the grid. Bars there count from 1; here, as
+// in a tracker, from 0. MIDI 60 is written C-4.
+//   ii-V-I-vi in F, one chord a bar: Gm9 C13 Fmaj9 Dm9.
+const CHORDS = ['Gm9', 'C13', 'Fmaj9', 'Dm9'];
+// Rootless electric-piano voicings (MIDI) from make_audio.py.
+const VOICING = { Gm9: [58, 62, 65, 69], C13: [58, 62, 64, 69], Fmaj9: [57, 60, 64, 67], Dm9: [53, 57, 60, 64] };
+// Kalimba: (bar, beat, MIDI), bars 7-20 counted from 1, as in make_audio.py.
+const MELODY = [
+  [7, 0.5, 81], [7, 1.0, 84], [7, 1.5, 81], [7, 2.5, 79],
+  [8, 1.0, 77], [8, 1.5, 79], [8, 2.0, 81],
+  [9, 0.5, 86], [9, 1.0, 84], [9, 1.75, 81], [9, 2.5, 79],
+  [10, 1.0, 81], [10, 2.0, 79], [10, 3.0, 76],
+  [11, 0.0, 77], [11, 0.5, 81], [11, 1.0, 84], [11, 1.5, 88], [11, 2.0, 86], [11, 3.0, 84],
+  [12, 0.5, 81], [12, 1.0, 84], [12, 1.75, 86], [12, 2.5, 89], [12, 3.0, 88], [12, 3.5, 86],
+  [13, 0.0, 86], [13, 1.5, 84], [13, 2.0, 81], [13, 2.5, 82], [13, 3.0, 81], [13, 3.5, 79],
+  [14, 0.0, 79], [14, 1.5, 81], [14, 2.0, 84], [14, 2.5, 86], [14, 3.0, 88],
+  [15, 0.0, 89], [15, 2.0, 88], [15, 2.5, 84], [15, 3.0, 81],
+  [16, 0.5, 79], [16, 1.0, 81], [16, 1.5, 84], [16, 3.5, 86],
+  [17, 0.0, 86], [17, 2.0, 84],
+  [18, 0.0, 81], [18, 2.0, 79],
+  [19, 1.0, 84], [19, 2.5, 81],
+  [20, 0.0, 84], [20, 0.5, 88], [20, 1.0, 91], [20, 2.0, 89],
+];
+const NOTE_NAMES = ['C-', 'C#', 'D-', 'D#', 'E-', 'F-', 'F#', 'G-', 'G#', 'A-', 'A#', 'B-'];
+const noteName = (m) => `${NOTE_NAMES[m % 12]}${Math.floor(m / 12) - 1}`;
+const hex2 = (v) => Math.round(v * 64).toString(16).toUpperCase().padStart(2, '0'); // volume 0-64
+const hex1 = (v) => v.toString(16).toUpperCase();
 
 // Instruments 01-08 (bank one) are activities; the theme's own voices live at
 // the far end of bank two, 7A-7F.
@@ -330,32 +355,45 @@ for (let bar = 0; bar < 20; bar++) {
   const c = CHORDS[bar % 4];
   const r0 = bar * 16;
   const t0 = bar * BAR;
-  // keys: three stabs a bar, all minute
-  put(0, r0, KEYS[c][0], '7A', '28');
-  put(0, r0 + 6, KEYS[c][1], null, '20');
-  put(0, r0 + 10, KEYS[c][2], null, '18');
-  hits[0].push([t0, 1, 1.1, 0.4], [t0 + 6 * ROW_S, 0.8, 0.8, 0.4], [t0 + 10 * ROW_S, 0.7, 0.9, 0.4]);
-  // kalimba: bars 6-15, busier in the theme section (bars 10-15)
-  if (bar >= 6 && bar <= 15) {
-    const notes = [...KAL[c]];
-    if (bar >= 10) notes.push(KAL_EXTRA[c]);
-    notes.forEach(([r, n], k) => {
-      put(1, r0 + r, n, k === 0 && bar === 6 ? '7B' : null, k % 2 ? '20' : '30');
-      hits[1].push([t0 + r * ROW_S, k % 2 ? 0.7 : 1, 0.45, 0]);
-    });
-  }
-  // drums: from bar 2; kick and rim only in the break (bars 16-19)
+  // keys: the voicing struck on beat 1 (velocity 0.8) and again on the "and"
+  // of beat 3 (0.5), all minute. One channel holds one note, so it is written
+  // as the lowest note plus a tracker arpeggio (0xy) for the next two.
+  const v = VOICING[c];
+  const arp = `0${hex1(v[1] - v[0])}${hex1(v[2] - v[0])}`;
+  put(0, r0, noteName(v[0]), bar === 0 ? '7A' : null, hex2(0.8), arp);
+  put(0, r0 + 10, noteName(v[0]), null, hex2(0.5), arp);
+  hits[0].push([t0, 1, 2.4 * BEAT, 0.3], [t0 + 10 * ROW_S, 0.65, 1.4 * BEAT, 0.3]);
+  // drums: from bar 2 (bar 3 in make_audio.py). Kick and snare on the
+  // channel; the hats are left out. A fill in the last bar of each phrase;
+  // kick and rim only in the breakdown, bars 16-19.
   if (bar >= 2) {
     const brk = bar >= 16;
-    put(2, r0, 'C-4', '7C', '40');
-    put(2, r0 + 4, brk ? 'E-5' : 'D-4', brk ? '7E' : '7D', brk ? '20' : '30');
-    put(2, r0 + 8, 'C-4', '7C', '38');
-    if (!brk) put(2, r0 + 10, 'C-4', null, '20');
-    put(2, r0 + 12, brk ? 'E-5' : 'D-4', brk ? '7E' : '7D', brk ? '20' : '30');
-    hits[2].push([t0, 1, 0.3, 0], [t0 + 4 * ROW_S, brk ? 0.45 : 0.8, 0.22, 0], [t0 + 8 * ROW_S, 0.9, 0.3, 0], [t0 + 12 * ROW_S, brk ? 0.45 : 0.8, 0.22, 0]);
-    if (!brk) hits[2].push([t0 + 10 * ROW_S, 0.6, 0.2, 0]);
+    const fill = (bar + 1) % 4 === 2;
+    if (brk) {
+      put(2, r0, 'C-4', '7C', hex2(0.75));
+      put(2, r0 + 4, 'C-4', '7E', hex2(0.45));
+      put(2, r0 + 12, 'C-4', '7E', hex2(0.45));
+      hits[2].push([t0, 0.85, 0.3, 0], [t0 + 4 * ROW_S, 0.45, 0.2, 0], [t0 + 12 * ROW_S, 0.45, 0.2, 0]);
+    } else {
+      put(2, r0, 'C-4', '7C', hex2(0.95));
+      put(2, r0 + 4, 'C-4', '7D', hex2(0.75));
+      if (fill) put(2, r0 + 7, 'C-4', '7C', hex2(0.8));
+      put(2, r0 + 10, 'C-4', '7C', hex2(0.8));
+      put(2, r0 + 12, 'C-4', '7D', hex2(0.75));
+      if (fill) put(2, r0 + 15, 'C-4', '7D', hex2(0.22));
+      hits[2].push([t0, 1, 0.3, 0], [t0 + 4 * ROW_S, 0.8, 0.22, 0], [t0 + 10 * ROW_S, 0.85, 0.3, 0], [t0 + 12 * ROW_S, 0.8, 0.22, 0]);
+      if (fill) hits[2].push([t0 + 7 * ROW_S, 0.85, 0.3, 0], [t0 + 15 * ROW_S, 0.3, 0.15, 0]);
+    }
   }
 }
+// kalimba: the melody, bars 6-19 here
+MELODY.forEach(([bar1, beat, m], k) => {
+  const bar = bar1 - 1;
+  const row = bar * 16 + beat * 4;
+  const vel = (beat % 1 === 0 ? 0.75 : 0.6) * (bar1 === 20 ? 0.7 : 1);
+  put(1, row, noteName(m), k === 0 ? '7B' : null, hex2(vel));
+  hits[1].push([row * ROW_S, vel / 0.75, 0.45, 0]);
+});
 // ocean: one note, and it loops for the whole minute
 put(3, 0, 'C-4', '7F', '40');
 
@@ -530,10 +568,10 @@ function wordmark(x, capY, defsOut) {
   const cx = X + 146;
   scr.push(rect(cx, 6, 31, 29, P.btn) + edges(cx, 6, 31, 29, P.btnHi, P.btnLo));
   const FERM = ['..#####..', '.#.....#.', '#.......#', '#.......#', '.........', '....#....'];
-  scr.push(`<path fill="${P.ink}" d="${bitmapPath(FERM, cx + 11, 9)}"/>`);
-  scr.push(textC(micro, 'BY', cx + 16, 17, P.ink));
-  scr.push(textC(micro, 'FERMATA', cx + 16, 24, P.ink));
-  scr.push(textC(micro, "'26", cx + 16, 30, '#3a3a3a'));
+  scr.push(`<path fill="${P.ink}" d="${bitmapPath(FERM, cx + 11, 8)}"/>`);
+  scr.push(textC(micro, 'BY', cx + 16, 15, P.ink));
+  scr.push(textC(micro, 'FERMATA', cx + 16, 21, P.ink));
+  scr.push(textC(micro, "'26", cx + 16, 27, '#3a3a3a'));
 }
 
 // ---- counters under the logo
@@ -542,21 +580,22 @@ function wordmark(x, capY, defsOut) {
   scr.push(panel(X, 40, 180, 37));
   const row = (y, label, val, lx, vx, ax) => text(ui, label, lx, y + 1, P.white) + textR(pat, val, vx, y + 1, P.white)
     + arrowBtn(ax, y, true, 11, 9) + arrowBtn(ax + 12, y, false, 11, 9);
-  scr.push(row(43, 'BPM', '080', 116, 160, 163));
-  scr.push(row(54, 'Spd.', '06', 116, 160, 163));
-  scr.push(row(65, 'Add.', '01', 116, 160, 163));
+  scr.push(row(42, 'BPM', '080', 116, 160, 163));
+  scr.push(row(53, 'Spd.', '06', 116, 160, 163));
+  scr.push(row(64, 'Add.', '01', 116, 160, 163));
   // Ptn. shows the current pattern: a strip of 00..04 behind a one-line clip
-  scr.push(text(ui, 'Ptn.', 194, 44, P.white));
-  defs.push(`<clipPath id="ptnclip"><rect x="236" y="43" width="12" height="9"/></clipPath>`);
+  scr.push(text(ui, 'Ptn.', 194, 43, P.white));
+  defs.push(`<clipPath id="ptnclip"><rect x="236" y="42" width="12" height="9"/></clipPath>`);
   let strip = `<g class="ptn" transform="translate(0 ${-Math.floor(T0 / 12) * 10})">`;
-  for (let k = 0; k < 5; k++) strip += text(pat, `0${k}`, 237, 44 + k * 10, P.white);
+  for (let k = 0; k < 5; k++) strip += text(pat, `0${k}`, 237, 43 + k * 10, P.white);
   scr.push(`<g clip-path="url(#ptnclip)">${strip}</g></g>`);
   css.push(`.ptn{animation:ptn ${LOOP}s steps(5) infinite;animation-delay:-${T0}s}`);
   css.push(`@keyframes ptn{from{transform:translate(0,0)}to{transform:translate(0,-50px)}}`);
-  scr.push(arrowBtn(254, 43, true, 11, 9), arrowBtn(266, 43, false, 11, 9));
-  scr.push(text(ui, 'Ln.', 194, 55, P.white), textR(pat, '040', 251, 55, P.white));
-  scr.push(arrowBtn(254, 54, true, 11, 9), arrowBtn(266, 54, false, 11, 9));
-  scr.push(button(194, 65, 41, 10, 'Expd.'), button(237, 65, 41, 10, 'Srnk.'));
+  scr.push(arrowBtn(254, 42, true, 11, 9), arrowBtn(266, 42, false, 11, 9));
+  scr.push(text(ui, 'Ln.', 194, 54, P.white), textR(pat, '040', 251, 54, P.white));
+  scr.push(arrowBtn(254, 53, true, 11, 9), arrowBtn(266, 53, false, 11, 9));
+  // 12 px tall, label on the Add. baseline, 1 px clear of the panel's edge
+  scr.push(button(194, 63, 41, 12, 'Expd.', { ty: 65 }), button(237, 63, 41, 12, 'Srnk.', { ty: 65 }));
 }
 
 // ---- status strip
@@ -961,9 +1000,20 @@ console.log(`wrote ${path.relative(process.cwd(), OUT)} (${(svg.length / 1024).t
   // coconuts under the crown
   for (const [x, y] of [[68, 15], [71, 16], [73, 14]]) { set(x, y, '#6a4526'); set(x + 1, y, '#6a4526'); set(x, y + 1, '#4f321b'); set(x + 1, y + 1, '#6a4526'); }
   // the cat, asleep on the fronds: grey tabby, white chest
-  const CAT = ['.g..g...', '.gggg...', 'gwggsgsg', 'gwgsgsgg', '.ggggggg'];
-  const CATP = { g: '#8d939a', s: '#5f646b', w: '#f4f4f2' };
-  CAT.forEach((row, y) => [...row].forEach((c, x) => { if (CATP[c]) set(76 + x, 7 + y, CATP[c]); }));
+  // Ears up, eyes shut, head on its paws, striped back, tail hanging off the
+  // frond: asleep, and visibly a cat at 2 px a pixel.
+  const CAT = [
+    '.g...g.......',
+    '.gg.gg.......',
+    '.ggggg.......',
+    'gkggkgsgsgsg.',
+    'gggggsgsgsgsg',
+    '.gwwggggggggg',
+    '..ww......gs.',
+    '...........s.',
+  ];
+  const CATP = { g: '#8d939a', s: '#5f646b', w: '#f4f4f2', k: '#33373c' };
+  CAT.forEach((row, y) => [...row].forEach((c, x) => { if (CATP[c]) set(74 + x, 5 + y, CATP[c]); }));
   // her body (static): sitting in the shade, facing us. The head is its own layer.
   const HER_BODY = [
     '...sss.....',
@@ -1034,7 +1084,7 @@ console.log(`wrote ${path.relative(process.cwd(), OUT)} (${(svg.length / 1024).t
   aCss.push(`.nodhead{animation:nh ${BEAT}s step-end infinite}@keyframes nh{0%{transform:translate(0,${PX}px)}33%{transform:translate(0,0)}100%{transform:translate(0,0)}}`);
   // the cat's z, rising and fading
   const Z = ['###', '..#', '.#.', '#..', '###'];
-  const zLayer = `<g class="zz"><path fill="#ffffff" d="${bitmapPath(Z, OX + 86 * PX, OY + 2 * PX, 1)}"/></g>`;
+  const zLayer = `<g class="zz"><path fill="#ffffff" d="${bitmapPath(Z, OX + 79 * PX, OY + 3 * PX, 1)}"/></g>`;
   aCss.push('.zz{animation:zz 3s linear infinite}@keyframes zz{0%{transform:translate(0,4px);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translate(3px,-6px);opacity:0}}');
   // glints on the water: two sets swapping on the beat
   const G1 = [[22, 45], [52, 39], [96, 43], [128, 50], [146, 68], [36, 74]];

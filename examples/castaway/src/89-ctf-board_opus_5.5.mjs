@@ -165,13 +165,13 @@ function glyphPath(src) {
 }
 function layout(str, wu, track = 0) {
   const items = [];
-  let pen = 0, prev = null, prevCh = '';
+  let pen = 0, prev = null, prevCh = '', word = 0;
   for (const ch of str) {
-    if (ch === ' ') { pen += 64 + track; prev = null; prevCh = ''; continue; }
+    if (ch === ' ') { pen += 64 + track; prev = null; prevCh = ''; if (items.length) word = items[items.length - 1][2] + 1; continue; }
     const g = FONT[ch];
     if (!g) throw new Error(`no glyph for "${ch}" in "${str}"`);
     if (items.length) pen += wu + track + (prev ? SIDE[prev[2][1]] + SIDE[g[2][0]] + (KERN[prevCh + ch] || 0) : 0);
-    items.push([ch, pen]);
+    items.push([ch, pen, word]);
     pen += g[0];
     prev = g; prevCh = ch;
   }
@@ -189,14 +189,42 @@ function fitCap(str, cap, maxW, w = 0.11) {
   while (textWidth(str, cap, { w }) > maxW) cap -= 0.1;
   return r2(cap);
 }
+// Words that recur (team names, "solved", tile names in the notifications) are drawn once as
+// a <g id> of glyph uses and placed with one <use>. T() leaves a placeholder per word and
+// resolveWords() settles it at assembly, once every word's count is known; a word met only
+// once is written out letter by letter, so the glyph positions come out identical either way.
+const WORDS = new Map();
+const glyphUse = (g, x) => `<use href="#${g}"${x ? ` x="${x}"` : ''}/>`;
+let wordN = 0;
+const wordDefs = [];
+function resolveWords(str) {
+  return str.replace(/\u0001([^\u0002]*)\u0002(-?\d+)\u0003/g, (m, key, b) => {
+    const wd = WORDS.get(key);
+    const base = Number(b);
+    if (wd.n < 2) return wd.inner.map(([g, dx]) => glyphUse(g, base + dx)).join('');
+    if (!wd.id) { wd.id = `w${(wordN++).toString(36)}`; wordDefs.push(`<g id="${wd.id}">${wd.inner.map(([g, dx]) => glyphUse(g, dx)).join('')}</g>`); }
+    return `<use href="#${wd.id}"${base ? ` x="${base}"` : ''}/>`;
+  });
+}
 // Text as a scaled group of <use>. (x, y) is the baseline point named by `a` (s, m or e).
 function T(str, x, y, cap, { a = 's', w = 0.11, c = '#c9d1d9', track = 0, o = 1, extra = '' } = {}) {
   const s = cap / 140;
   const L = layout(str, w * 140, track);
   const width = L.width * s;
   const ox = a === 's' ? x : a === 'm' ? x - width / 2 : x - width;
+  const words = [];
+  for (const [ch, px, wi] of L.items) { usedGlyphs.add(ch); (words[wi] ||= []).push([gid(ch), Math.round(px)]); }
   let uses = '';
-  for (const [ch, px] of L.items) { usedGlyphs.add(ch); uses += `<use href="#${gid(ch)}"${px ? ` x="${Math.round(px)}"` : ''}/>`; }
+  for (const wd of words) {
+    if (!wd) continue;
+    const base = wd[0][1];
+    if (wd.length < 2) { uses += glyphUse(wd[0][0], base); continue; }
+    const inner = wd.map(([g, px]) => [g, px - base]);
+    const key = inner.map(([g, dx]) => `${g}${dx}`).join(',');
+    if (!WORDS.has(key)) WORDS.set(key, { n: 0, inner });
+    WORDS.get(key).n++;
+    uses += `\u0001${key}\u0002${base}\u0003`;
+  }
   return `<g class="${tcls(c, r1(w * 140))}" transform="translate(${r2(ox)} ${r2(y)}) scale(${r3(s)})"${o < 1 ? ` opacity="${o}"` : ''}${extra}>${uses}</g>`;
 }
 
@@ -206,6 +234,15 @@ function T(str, x, y, cap, { a = 's', w = 0.11, c = '#c9d1d9', track = 0, o = 1,
 // at STATIC, which is what reduced motion shows. Times are seconds into the loop. A timing
 // of HOLD keeps a key's value until the next key (a hard cut).
 const HOLD = 'step-end';
+// A keyframe offset as a percentage. Two decimals when that is exact; otherwise rounded
+// DOWN at three, so a key never lands after its true time. (Rounding 10 s of 60 up to
+// 16.67% kept the countdown's outgoing digit on screen for the very first frame.)
+const pct = (t, period) => {
+  const p = (t / period) * 100;
+  const two = Math.round(p * 100) / 100;
+  if (Math.abs(two - p) < 1e-7) return String(two);
+  return String(Math.floor(p * 1000 + 1e-7) / 1000);
+};
 const css = [];
 let animN = 0;
 const kfNames = new Map();
@@ -234,7 +271,7 @@ function anim(keys, { period = LOOP, origin = null, start = 0 } = {}) {
   const tally = {};
   for (const [, , e] of full.slice(0, -1)) tally[e || 'linear'] = (tally[e || 'linear'] || 0) + 1;
   const deft = Object.entries(tally).sort((p, q) => q[1] - p[1])[0][0];
-  const frames = full.map(([t, q, e]) => `${r2((t / period) * 100)}%{${props(q)}${(e || 'linear') !== deft ? `;animation-timing-function:${e || 'linear'}` : ''}}`).join('');
+  const frames = full.map(([t, q, e]) => `${pct(t, period)}%{${props(q)}${(e || 'linear') !== deft ? `;animation-timing-function:${e || 'linear'}` : ''}}`).join('');
   const delay = -((((-start) % period) + period) % period);
   const org = origin ? `;transform-box:fill-box;transform-origin:${origin}` : '';
   let kf = kfNames.get(frames);
@@ -335,7 +372,7 @@ const SOLVES = [
   { t: 24, tile: 'kumara', team: 'castaway', msg: 'castaway solved Plant a Kumara (+250). It will grow over the video.' },
   { t: 27, tile: 'shark', team: 'sea_sky', msg: 'sea_sky solved Shark Nod (+500). It is wearing headphones. Same beat.' },
   { t: 30, tile: 'bottle', team: 'castaway', msg: 'castaway solved Message in a Bottle (+250). It washed straight back.' },
-  { t: 33, tile: 'flowers', team: 'garden', msg: 'garden solved Kumara Flowers (+50). Nobody remarks on it.' },
+  { t: 33, tile: 'flowers', team: 'garden', msg: 'garden solved Kumara Flowers (+50). Tied with shore, who got there first. It is a plant.' },
   { t: 36, tile: 'leave', team: 'castaway', msg: 'castaway solved Leave Any Time (+1000). She could leave any time. She did.' },
   { t: 45, tile: 'crab', team: 'castaway', frozen: true, msg: 'castaway solved Coconut Crab. The coconut walked off. Hidden until the freeze lifts.' },
 ];
@@ -348,8 +385,8 @@ const MESSAGES = [
   ...SOLVES.map((s) => [s.t, s.msg]),
   [39, 'castaway is back, with an iced coffee. This has not been explained.'],
   [42, 'Scoreboard frozen. Play continues. She is idling, which is most of the contest.'],
-  [48, 'Event over at 10:00:00. Freeze lifted: the Coconut Crab counts after all (+250).'],
-  [51, 'Final standings below. The kumara would like it noted that it is a plant.'],
+  [48, 'Freeze lifted: the Coconut Crab counts after all (+250). Final standings below.'],
+  [51, 'That was ten hours of graph in 48 seconds. The countdown up top is the honest clock.'],
   [54, 'Same seed, same island, event for event. Starting again.'],
 ].sort((a, b) => a[0] - b[0]);
 
@@ -603,10 +640,11 @@ function drawHero() {
   const shrub = (x, y, k) => `<g transform="translate(${x} ${y}) scale(${k})"><path d="M-8,0 C-9,-4 -6,-6 -4,-5 C-4,-8 0,-9 1,-6 C3,-8 7,-7 6,-4 C9,-4 9,0 7,0 Z" fill="${C.frondSh}"/><path d="M-5,-1 C-5,-4 -2,-5 -1,-3 C0,-6 4,-5 3,-2 Z" fill="${C.frond}"/></g>`;
   isl += shrub(IX - 64, IY - 7, 0.9) + shrub(IX + 102, IY - 3, 0.85) + shrub(IX + 58, IY - 9, 0.7);
   isl += `<ellipse cx="${IX - 96}" cy="${IY + 5}" rx="5" ry="3" fill="#8f949a"/><ellipse cx="${IX - 97}" cy="${IY + 4}" rx="3" ry="1.6" fill="#a9aeb3"/><ellipse cx="${IX + 30}" cy="${IY + 9}" rx="4" ry="2.4" fill="#8f949a"/>`;
-  // raft
+  // raft, pulled up on the sand tip so it clears the card's right edge by about 20 px
+  const RX = IX + 96;
   let raft = '';
-  for (let i = 0; i < 6; i++) raft += `<rect x="${IX + 112 + i * 2}" y="${IY - 2 + i * 3}" width="44" height="3.4" rx="1.7" fill="${i % 2 ? C.logSh : C.log}"/>`;
-  raft += `<path d="M${IX + 122},${IY - 2} L${IX + 133},${IY + 15} M${IX + 146},${IY - 2} L${IX + 157},${IY + 15}" stroke="${C.rope}" stroke-width="1"/>`;
+  for (let i = 0; i < 6; i++) raft += `<rect x="${RX + i * 2}" y="${IY - 2 + i * 3}" width="44" height="3.4" rx="1.7" fill="${i % 2 ? C.logSh : C.log}"/>`;
+  raft += `<path d="M${RX + 10},${IY - 2} L${RX + 21},${IY + 15} M${RX + 34},${IY - 2} L${RX + 45},${IY + 15}" stroke="${C.rope}" stroke-width="1"/>`;
   isl += `<g ${anim([[0, { y: 0 }, HOLD], [1.5, { y: 0.8 }, HOLD]], { period: 3 })}>${raft}</g>`;
 
   // palm: trunk from the sand curving up and left; fronds; the rescue flag at the top
@@ -770,11 +808,13 @@ function drawHero() {
   s += `<g transform="translate(2.5 3)" opacity="0.55">${T('CASTAWAY', 34, 96, titleCap, { w: 0.21, c: '#06111f', track: 26 })}</g>`;
   s += T('CASTAWAY', 34, 96, titleCap, { w: 0.21, c: '#ffffff', track: 26 });
   const tw = textWidth('CASTAWAY', titleCap, { w: 0.21, track: 26 });
-  // LIVE chip beside the title
+  // event-status chip beside the title. Not "LIVE": nothing is streaming, and no video is
+  // out yet, so the chip tells the truth: the contest is still being built.
   const lx = 34 + tw + 18;
-  s += `<rect x="${r1(lx)}" y="65" width="44" height="18" rx="9" fill="#06111f" fill-opacity="0.55" stroke="#ffffff" stroke-opacity="0.35"/>`;
-  s += `<circle cx="${r1(lx + 11)}" cy="74" r="3.4" fill="#ff5f56" ${anim([[0, { o: 1 }, 'ease-in-out'], [1.5, { o: 0.35 }, 'ease-in-out'], [3, { o: 1 }]], { period: 3 })}/>`;
-  s += T('LIVE', lx + 18, 78, 7.5, { w: 0.18, c: '#ffffff', track: 16 });
+  const chipW = 18 + textWidth('IN DEV', 7.5, { w: 0.18, track: 16 }) + 8;
+  s += `<rect x="${r1(lx)}" y="65" width="${r1(chipW)}" height="18" rx="9" fill="#06111f" fill-opacity="0.55" stroke="#ffffff" stroke-opacity="0.35"/>`;
+  s += `<circle cx="${r1(lx + 11)}" cy="74" r="3.4" fill="#e3b341" ${anim([[0, { o: 1 }, 'ease-in-out'], [1.5, { o: 0.45 }, 'ease-in-out'], [3, { o: 1 }]], { period: 3 })}/>`;
+  s += T('IN DEV', lx + 18, 78, 7.5, { w: 0.18, c: '#ffffff', track: 16 });
   s += T('Capture the flag. There is one flag. It is on the palm.', 36, 125, 11.5, { w: 0.13, c: '#ffffff' });
   s += T('She mostly idles. Every so often a gag happens, and somebody scores.', 36, 147, 9.5, { w: 0.12, c: '#d7ecfa' });
   return `<g transform="translate(0 ${HERO_Y})"><g clip-path="url(#heroClip)">${s}</g></g>`;
@@ -826,7 +866,7 @@ function drawTile(x, y, w, h, name, pts, sv) {
     const k = anim([[0, { o: 0 }, HOLD], [t, { o: 0 }], [t + 0.25, { o: 1 }, HOLD], [off, { o: 1 }], [off + 0.5, { o: 0 }, HOLD]]);
     s += `<g ${k}><rect x="${r1(x + 0.5)}" y="${r1(y + 0.5)}" width="${r1(w - 1)}" height="${h - 1}" rx="6" fill="${C.solved}" stroke="${C.solvedLine}"/>`
       + `<circle cx="${r1(x + w - 9.5)}" cy="${y + 9.5}" r="4.4" fill="#ffffff" fill-opacity="0.92"/><path d="M${r1(x + w - 11.7)},${y + 9.7} L${r1(x + w - 10)},${y + 11.4} L${r1(x + w - 7.3)},${y + 7.7}" fill="none" stroke="${C.solved}" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>`
-      + (sv.frozen ? `<rect x="${r1(x + 5)}" y="${y + 4}" width="31" height="9" rx="4.5" fill="${C.freeze}"/>${T('frozen', x + 20.5, y + 10.7, 5.6, { a: 'm', w: 0.18, c: C.freezeInk })}` : '')
+      + (sv.frozen ? `<g ${show([[0, END]])}><rect x="${r1(x + 6)}" y="${y + h - 13}" width="31" height="9" rx="4.5" fill="${C.freeze}"/>${T('frozen', x + 21.5, y + h - 6.3, 5.6, { a: 'm', w: 0.18, c: C.freezeInk })}</g>` : '')
       + `</g>`;
     // a ring that flashes outward once on the solve
     const ring = anim([[0, { o: 0.9, s: 1 }], [0.7, { o: 0, s: 1.12 }, HOLD]], { origin: 'center', start: t });
@@ -835,7 +875,7 @@ function drawTile(x, y, w, h, name, pts, sv) {
   let cap = 9;
   while (textWidth(name, cap, { w: 0.13 }) > w - 20) cap -= 0.25;
   s += T(name, x + w / 2, y + 24, cap, { a: 'm', w: 0.13, c: C.head });
-  s += T(String(pts), x + w / 2, y + 41, 13, { a: 'm', w: 0.17, c: C.bright });
+  s += T(String(pts), x + w / 2, y + 42, 13, { a: 'm', w: 0.17, c: C.bright });
   return s;
 }
 
@@ -854,7 +894,7 @@ function drawScoreboard() {
     + `<path d="M${ix + 12},${by + 4.5} V${by + 15.5} M${ix + 7.3},${by + 7.2} L${ix + 16.7},${by + 12.8} M${ix + 16.7},${by + 7.2} L${ix + 7.3},${by + 12.8}" stroke="${C.freezeInk}" stroke-width="1.3" stroke-linecap="round"/>`
     + T('Scoreboard frozen: she is idling. Play continues.', ix + 23, by + 14, fitCap('Scoreboard frozen: she is idling. Play continues.', 8.5, iw - 30, 0.15), { w: 0.15, c: C.freezeInk }) + `</g>`;
   s += `<g ${show([[END, RESET + 1]])}><rect x="${ix}" y="${by}" width="${iw}" height="20" rx="5" fill="none" stroke="${C.solvedLine}"/>`
-    + T('Event over. Freeze lifted. Final standings:', ix + 9, by + 14, 8.5, { w: 0.15, c: '#7ee787' }) + `</g>`;
+    + T('Freeze lifted. Final standings:', ix + 9, by + 14, 8.5, { w: 0.15, c: '#7ee787' }) + `</g>`;
 
   // graph
   const gx = ix + 30, gy = y + 80, gw = iw - 30, gh = 112;
@@ -887,7 +927,9 @@ function drawScoreboard() {
   const fx = X(FREEZE) - gx;
   const curtain = anim([[0, { x: 0 }], [FREEZE, { x: fx }, HOLD], [END, { x: gw + 4 }, HOLD], [FRESH, { x: 0 }, HOLD]]);
   const linesFade = anim([[0, { o: 1 }, HOLD], [RESET, { o: 1 }], [RESET + 1.5, { o: 0 }, HOLD], [FRESH, { o: 1 }, HOLD]]);
-  s += `<g clip-path="url(#plotClip)"><g ${linesFade}>${lines}</g><g ${curtain}><rect x="${gx + 0.6}" y="${gy - 6}" width="${gw + 4}" height="${gh + 6}" fill="${C.panel}"/></g></g>`;
+  // the curtain reaches 2 px below the zero line, or the lower half of the strokes still
+  // lying on zero would peek out ahead of the clock
+  s += `<g clip-path="url(#plotClip)"><g ${linesFade}>${lines}</g><g ${curtain}><rect x="${gx + 0.6}" y="${gy - 6}" width="${gw + 4}" height="${gh + 8}" fill="${C.panel}"/></g></g>`;
   s += grid;
   // the pen: a dot per team riding the curtain edge at its current score
   const penX = anim([[0, { x: 0, o: 1 }], [FREEZE, { x: fx }, HOLD], [END, { x: gw }, HOLD], [RESET, { x: gw, o: 1 }], [RESET + 1.5, { x: gw, o: 0 }, HOLD], [FRESH, { x: 0, o: 1 }, HOLD]]);
@@ -923,14 +965,18 @@ function drawScoreboard() {
   }
   // rows move when ranks change
   const rankAt = (t) => standings(t).order;
-  for (const team of ORDER0) {
+  // SVG has no z-index, so a row climbing past others would slide underneath them. Each climb
+  // also draws a copy of the climbing row in a layer above the table, shown only while it moves.
+  let climbers = '';
+  ORDER0.forEach((team, idx) => {
     const keys = [];
+    const rises = [];
     const pos = (t) => rankAt(t).indexOf(team) * rh;
     keys.push([0, { y: pos(0) }, HOLD]);
     let last = pos(0);
     for (const ct of changeTimes) {
       const p = pos(ct);
-      if (p !== last) { keys.push([ct, { y: last }, 'ease-in-out'], [ct + 0.45, { y: p }, HOLD]); last = p; }
+      if (p !== last) { keys.push([ct, { y: last }, 'ease-in-out'], [ct + 0.45, { y: p }, HOLD]); if (p < last) rises.push(ct); last = p; }
     }
     if (last !== pos(0)) keys.push([RESET + 0.5, { y: last }, 'ease-in-out'], [RESET + 1.1, { y: pos(0) }, HOLD]);
     // scores, one text per value
@@ -938,26 +984,33 @@ function drawScoreboard() {
     let v = 0;
     vals.push([0, 0]);
     for (const sv of counted) if (sv.team === team) { v += TILE[sv.tile].pts; vals.push([sv.at, v]); }
+    const scoreT = (val) => T(String(val).replace(/\B(?=(\d{3})+$)/g, ','), x + w - 16, 15.5, 9.5, { a: 'e', w: 0.17, c: val ? C.bright : C.faint });
     let sc = '';
     vals.forEach(([t0, val], i) => {
       const t1 = i + 1 < vals.length ? vals[i + 1][0] : RESET + 1;
       const win = i === 0 ? [[0, t1], [RESET + 1, LOOP]] : [[t0, t1]];
-      sc += `<g ${show(win)}>${T(String(val).replace(/\B(?=(\d{3})+$)/g, ','), x + w - 16, 15.5, 9.5, { a: 'e', w: 0.17, c: val ? C.bright : C.faint })}</g>`;
+      sc += `<g ${show(win)}>${scoreT(val)}</g>`;
     });
     // a flash on the row when the team scores
-    let flash = '';
-    for (const [t0] of vals.slice(1)) {
-      flash += `<rect x="${ix + 22}" y="0.5" width="${iw - 22}" height="${rh - 1}" rx="3" fill="${TEAM[team].c}" ${anim([[0, { o: 0.22 }], [1.2, { o: 0 }, HOLD]], { start: t0 })}/>`;
-    }
+    const flashAt = (t0) => `<rect x="${ix + 22}" y="0.5" width="${iw - 22}" height="${rh - 1}" rx="3" fill="${TEAM[team].c}" ${anim([[0, { o: 0.22 }], [1.2, { o: 0 }, HOLD]], { start: t0 })}/>`;
+    const flash = vals.slice(1).map(([t0]) => flashAt(t0)).join('');
     const you = team === 'castaway';
     const tn = T(team, ix + 40, 15.5, 9, { w: you ? 0.17 : 0.14, c: C.head });
     const nw = textWidth(team, 9, { w: you ? 0.17 : 0.14 });
     const note = T(TEAM[team].note, ix + 40 + nw + 6, 15.5, 7.5, { w: 0.12, c: C.muted });
-    s += `<g transform="translate(0 ${r0})"><g ${anim(keys)}><rect x="${ix + 22}" y="0.5" width="${iw - 22}" height="${rh - 1}" fill="${you ? '#1d232b' : C.panel}"/>${flash}`
-      + (you ? `<rect x="${ix + 22}" y="3" width="2" height="${rh - 6}" rx="1" fill="${C.coral}"/>` : '')
-      + `<circle cx="${ix + 31}" cy="11.5" r="3.4" fill="${TEAM[team].c}"/>${tn}${note}${sc}</g></g>`;
-  }
-  return s;
+    // the row's fixed face (bar, dot, name, note) is drawn once in <defs> and placed by <use>
+    defs.push(`<g id="R${idx}">${you ? `<rect x="${ix + 22}" y="3" width="2" height="${rh - 6}" rx="1" fill="${C.coral}"/>` : ''}<circle cx="${ix + 31}" cy="11.5" r="3.4" fill="${TEAM[team].c}"/>${tn}${note}</g>`);
+    const bg = `<rect x="${ix + 22}" y="0.5" width="${iw - 22}" height="${rh - 1}" fill="${you ? '#1d232b' : C.panel}"/>`;
+    const move = anim(keys);
+    s += `<g transform="translate(0 ${r0})"><g ${move}>${bg}${flash}<use href="#R${idx}"/>${sc}</g></g>`;
+    if (rises.length) {
+      let v2 = 0;
+      const scoreAt = (t) => { v2 = 0; for (const sv of counted) if (sv.team === team && sv.at <= t) v2 += TILE[sv.tile].pts; return v2; };
+      const copies = rises.map((ct) => `<g ${show([[ct, ct + 0.45]])}>${bg}${flashAt(ct)}<use href="#R${idx}"/>${scoreT(scoreAt(ct))}</g>`).join('');
+      climbers += `<g transform="translate(0 ${r0})"><g ${move}>${copies}</g></g>`;
+    }
+  });
+  return s + climbers;
 }
 
 // ------------------------------------------------------------------------------ notifications
@@ -992,6 +1045,7 @@ const hero = drawHero();
 const board = drawBoard();
 const score = drawScoreboard();
 const foot = drawFooter();
+const [navR, heroR, boardR, scoreR, footR, defsR] = [nav, hero, board, score, foot, defs.join('')].map(resolveWords);
 
 const glyphDefs = [...usedGlyphs].sort().map((ch) => `<path id="${gid(ch)}" d="${glyphPath(FONT[ch][1])}"/>`).join('');
 defs.push(`<clipPath id="card"><rect x="0" y="0" width="${W}" height="${H}" rx="14"/></clipPath>`);
@@ -1000,13 +1054,13 @@ const tRules = [...TCLS].map(([k, n]) => { const [c, sw] = k.split('|'); return 
 const style = `[class^=t]{fill:none;stroke-linecap:round;stroke-linejoin:round}${tRules}${css.join('')}`
   + '@media (prefers-reduced-motion:reduce){*{animation:none!important}}';
 
-const alt = "Castaway, drawn as a capture-the-flag contest board. A dark navbar reads CASTAWAY ctf, with tabs for Challenges, Scoreboard, Notifications, Rules and Teams and a countdown that ends in ten hours. Under it a sunny event banner reads ISLAND CTF, 10-HOUR EDITION, SEED 1992, then CASTAWAY in big white capitals with a LIVE chip and the line: capture the flag, there is one flag, it is on the palm. On the right of the banner, a small island with one tall palm, a coral rescue flag at its top and a raft; a young woman in cream headphones, a coral tank top and cream shorts sits against the palm, nodding to the beat. Below, the challenge board: tiles grouped by the schedule's timers, Regular 100 points, Occasional 250, Rare 500, Super rare 1000 and Chained 50, with gags such as Coconut Sip, Sandcastle, Message in a Bottle, Turtle Visit, Delivery Drone, Signal Hunt, Stray Cat, Shark Nod, Leave Any Time and Tide Takes It. Over a 60-second loop, one bar of the music at a time, tiles turn green while the island acts each gag out: a coconut sip, a drone lowering a parcel, a turtle, the tide taking the sandcastle, one bar of signal at the top of the palm, a stray cat on a crate, a shark in headphones, a bottle that washes straight back, kumara flowers, and her walking off over the sea and back with an iced coffee. Beside the board, a step graph and a Place, Team, Score table for the schedule's six lanes, castaway, sea_sky, cat, turtle, shore and garden, re-ranking as they score, until an amber banner says: scoreboard frozen, she is idling, play continues.";
+const alt = "Castaway, drawn as a capture-the-flag contest board. A dark navbar reads CASTAWAY ctf, with tabs for Challenges, Scoreboard, Notifications, Rules and Teams and a real-time countdown that ends in ten hours. Under it a sunny event banner reads ISLAND CTF, 10-HOUR EDITION, SEED 1992, then CASTAWAY in big white capitals with an IN DEV chip and the line: capture the flag, there is one flag, it is on the palm. On the right of the banner, a small island with one tall palm, a coral flag at its top and a raft; a young woman in cream headphones, a coral tank top and cream shorts sits against the palm, nodding to the beat. Below, the challenge board: tiles grouped by the schedule's timers, Regular 100 points, Occasional 250, Rare 500, Super rare 1000 and Chained 50, with gags such as Coconut Sip, Sandcastle, Message in a Bottle, Turtle Visit, Delivery Drone, Signal Hunt, Stray Cat, Shark Nod, Leave Any Time and Tide Takes It. Over a 60-second loop, one bar of the music at a time, tiles turn green while the island acts each gag out: a coconut sip, a drone lowering a parcel, a turtle, the tide taking the sandcastle, one bar of signal at the top of the palm, a stray cat on a crate, a shark in headphones, a bottle that washes straight back, kumara flowers, and her walking off over the sea and back with an iced coffee. Beside the board, a step graph and a Place, Team, Score table for the schedule's six lanes, castaway, sea_sky, cat, turtle, shore and garden, re-ranking as they score, until an amber banner says: scoreboard frozen, she is idling, play continues. During the freeze a coconut drops on a hermit crab and walks off with it, and the points count once the freeze lifts.";
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${alt.replace(/"/g, '&quot;')}">`
   + `<title>Castaway: an island capture-the-flag board</title>`
   + `<style>${style}</style>`
-  + `<defs>${glyphDefs}${defs.join('')}</defs>`
-  + `<g clip-path="url(#card)"><rect x="0" y="0" width="${W}" height="${H}" fill="${C.page}"/>${nav}${hero}${board}${score}${foot}</g>`
+  + `<defs>${glyphDefs}${wordDefs.join('')}${defsR}</defs>`
+  + `<g clip-path="url(#card)"><rect x="0" y="0" width="${W}" height="${H}" fill="${C.page}"/>${navR}${heroR}${boardR}${scoreR}${footR}</g>`
   + `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="14" fill="none" stroke="${C.line}"/>`
   + `</svg>\n`;
 

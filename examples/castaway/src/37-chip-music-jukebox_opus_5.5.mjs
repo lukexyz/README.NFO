@@ -38,12 +38,14 @@
 // runs of rects and written as one <path> per colour; fonts are <path>
 // symbols placed with <use>; motion is CSS @keyframes with step timing.
 //
-// Facts used, verified read-only on 2026-10-01 in D:/python/castaway:
-// 94 activities in activities.toml (stated as "more than 90"), four timers,
-// run 10:00:00 on seed 1992, starts snap to 3 s bars; 171 sound files in
-// media/audio/audio_catalog.json (stated as "more than 150"), durations below
-// copied from that catalogue; theme 60 s, 80 BPM, F major, ii-V-I-vi, 20 bars
-// of 3 s; mix -14 LUFS, true peak at or below -1 dBTP.
+// Facts used, verified read-only on 2026-10-01 and re-measured on 2026-10-02
+// in D:/python/castaway: 94 activities in activities.toml (81 on four timers,
+// 13 chained; stated as "more than 90"), run 10:00:00 on seed 1992, starts
+// snap to 3 s bars; 181 sound files in media/audio/audio_catalog.json (stated
+// as "more than 150"), durations below copied from that catalogue (only 4 of
+// the 19 listed sounds are under a second, so nothing here says "most");
+// theme 60 s, 80 BPM, F major, ii-V-I-vi, 20 bars of 3 s; mix -14 LUFS, true
+// peak at or below -1 dBTP. Track 20 is not a sound file: it is the run.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -384,7 +386,7 @@ const TRACKS = [
   ['PHONE FINDS ONE BAR', '0:01.4', 'TOP OF THE PALM: ONE BAR!'],
   ['CAT PURR (LOOP)', '0:07.2', 'GREY TABBY. ARRIVED BY CRATE.'],
   ['SHARK SURFACES', '0:02.4', 'SHARK. HEADPHONES. NODDING.'],
-  ['SELFIE SHUTTERS', '0:03.2', 'TOUR BOAT. BACKS TO HER.'],
+  ['SELFIE SHUTTERS', '0:03.2', 'TOUR BOAT. SELFIES. NO LIFT.'],
   ['COCONUT ON CRAB', '0:00.6', 'DIRECT HIT. THE CRAB IS FINE.'],
   ['CRAB SCUTTLE (LOOP)', '0:03.0', 'THE COCONUT WALKS OFF.'],
   ['FOOTSTEPS ON WATER', '0:00.3', 'SHE COULD LEAVE ANY TIME.'],
@@ -696,15 +698,19 @@ ev(7, pixOf([
   'bBBbBBBb',
   'bbbbbbbb',
 ], { g: C.g5, G: C.g3, w: C.white, b: '#924924', B: '#b66d49' }, 10, 42, OUTLINE), { bob: true });
-// 8: shark in headphones, nodding on the beat
+// 8: the shark surfaces facing us, in headphones, nodding on the beat:
+// dorsal fin up through the headband, cream cups, a toothy grin, a waterline
 ev(8, pixOf([
-  '....w..',
-  '...wgw.',
-  '...ggg.',
-  '..gggg.',
-  '.ggggg.',
-  'fffffff',
-], { g: C.g5, w: C.cream, f: C.foam }, 102, 34), { nod: true });
+  '.....G.....',
+  '....GGg....',
+  '...bbbbb...',
+  '..bgggggb..',
+  '.ccgkgkgcc.',
+  '.ccgggggcc.',
+  '.cckWkWkcc.',
+  '...ggggg...',
+], { G: C.g4, g: C.g5, b: C.creamS, c: C.cream, k: C.black, W: C.white }, 100, 29, '#002449')
+  + pixOf(['.fffffffff.', 'f.f.....f.f'], { f: C.foam }, 100, 37), { nod: true });
 // 9: tour boat, everyone facing the other way, phones out
 ev(9, pixOf([
   '....w.......',
@@ -757,13 +763,18 @@ ev(14, pixOf([
   'wwwwwww',
   '...k...',
   'ff.k.ff',
-], { s: '#ffb692', h: '#242424', t: '#00b6b6', n: '#002492', w: C.white, k: C.g3, f: C.foam }, -10, 31, OUTLINE), { walk: 140, stride: 4, far: true });
+], { s: '#ffb692', h: '#242424', t: '#00b6b6', n: '#002492', w: C.white, k: C.g3, f: C.foam }, -10, 27, OUTLINE), { walk: 140, stride: 4, far: true });
 // 15: fire by friction
 ev(15, `<g class="fire">${pixOf(['.y.', 'yoy', 'oro', 'kkk'], { y: '#ffff24', o: '#ff9200', r: '#ff2400', k: '#6d4924' }, 54, 47)}</g>`
   + `<g class="fire2">${pixOf(['y..', '.yo', 'oyo', 'kkk'], { y: '#ffff24', o: '#ff9200', r: '#ff2400', k: '#6d4924' }, 54, 47)}</g>`
   + pixOf(['.g', 'g.', '.g'], { g: C.g6 }, 55, 42));
-// 16: kumara planted at the back of the sand, right of the palm
-ev(16, pixOf(['.l.l.', 'lLlL.', '..l..', 'dDDd.'], { l: C.leaf, L: C.leafL, d: C.sandS, D: C.sandD }, 68, 45));
+// 16: a kumara goes in on open sand between her and the palm, and the bar
+// runs as a time-lapse: dug (sand flying), sprouted, then leafy with one pale
+// lavender flower (the project's own kumara leafs, then flowers, hours apart)
+const KUM = { l: C.leafD, L: C.leafL, g: C.leaf, d: C.sandD, D: '#926d49', s: C.sandS, v: '#db92ff', V: '#ffdbff' };
+ev(16, pixOf(['s....s', '.s..s.', '......', '......', '.dDDd.', 'dDDDDd'], KUM, 52, 47), { until: 1, bob: true });
+ev(16, pixOf(['..L...', '.LgL..', '..g...', '..g...', '.dDDd.', 'dDDDDd'], KUM, 52, 47), { from: 1, until: 2 });
+ev(16, pixOf(['.V..L.', 'vLg.gL', 'lgLgl.', '.lgLg.', '.dDDd.', 'dDDDDd'], KUM, 52, 47), { from: 2 });
 // 17: sandcastle; the tide reviews it
 ev(17, pixOf([
   '.t...t.',
@@ -1046,7 +1057,7 @@ const BIG_TEXT = [
   'CASTAWAY IS NOW PLAYING.',
   'TEN HOURS OF ONE TINY ISLAND: ONE YOUNG WOMAN, ONE TALL PALM, ONE RAFT AND A LOT OF TIME.',
   'SHE IDLES AND NODS ALONG TO HER HEADPHONES. EVERY SO OFTEN SOMETHING HAPPENS, ALWAYS ON THE NEXT BAR OF THE MUSIC.',
-  'MORE THAN 90 THINGS CAN HAPPEN, ON FOUR TIMERS: EVERY 2 TO 5 MINUTES, 12 TO 25 MINUTES, 30 TO 60 MINUTES, AND 3 TO 6 HOURS.',
+  'MORE THAN 90 THINGS CAN HAPPEN, AND FOUR TIMERS DECIDE WHEN: EVERY 2 TO 5 MINUTES, 12 TO 25 MINUTES, 30 TO 60 MINUTES, OR 3 TO 6 HOURS.',
   'EVERY SOUND IS MADE FROM CODE: NO SAMPLES, NO RECORDINGS.',
   'ALWAYS DAYTIME. AN UNOFFICIAL REMAKE, INSPIRED BY A 1992 DESERT ISLAND SCREENSAVER.',
   'TO PLAY: PYTHON TOOLS/SERVE.PY, THEN OPEN 127.0.0.1:8765',
@@ -1059,7 +1070,7 @@ const SMALL_TEXT = [
   'THE THEME: 60 SECONDS, 80 BPM, F MAJOR, 20 BARS OF 3 SECONDS, LOOPED WITHOUT A SEAM',
   'MIXED TO -14 LUFS, TRUE PEAK AT OR UNDER -1 DBTP',
   'LONGEST TRACK: THE VIDEO ITSELF, 10:00:00. THE THEME FITS IN IT 600 TIMES',
-  'SHORTEST: ONE BARE FOOT ON SAND, 0:00.2',
+  'SHORTEST IN THE LIBRARY: ONE BARE FOOT ON SAND, 0:00.2',
   'REQUESTS ARE NOT TAKEN. THE TIMERS DECIDE',
 ].join('  =  ') + '  =  ';
 {
@@ -1095,7 +1106,14 @@ for (const ch of [...usedBig].sort()) {
   glyphs += `<path id="B${gid(ch)}" d="${cellsToPath((x, y) => cells.has(`${x},${y}`), 0, 0, 16, 16)}"/>`;
 }
 
-css += '@media (prefers-reduced-motion:reduce){*{animation:none!important}}';
+// Reduced motion: everything holds on the opening frame (track 01 selected,
+// the island idle), and the big scroller is parked with its first sentence,
+// CASTAWAY IS NOW PLAYING., centred under the panel instead of cut off.
+{
+  const first = BIG_TEXT.split('   *   ')[0];
+  const parked = Math.round((W - first.length * 16) / 2) - (W - 4 - 16 * 16);
+  css += `@media (prefers-reduced-motion:reduce){*{animation:none!important}.sb1{transform:translateX(${parked}px)}}`;
+}
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W * 2}" height="${H * 2}" role="img" aria-label="CASTAWAY: the island jukebox">
 <title>CASTAWAY: the island jukebox</title>

@@ -32,8 +32,9 @@
 //   * Every pose is a <path> inside one <clipPath>; each one has a stepped
 //     visibility track, so poses hard-cut on the beat (80 BPM, 0.75 s), the
 //     same way the project cuts its own frames. The two walkers (the crab,
-//     then the coconut wearing it) also step along a stepped translate track. The colour scheme cuts on
-//     every bar (3 s), well under three changes a second.
+//     then the coconut wearing it) also step along a stepped translate
+//     track. The colour scheme cuts on every bar (3 s), well under three
+//     changes a second.
 //   * 24 s loop = 8 bars of the theme: the palm dances six bars, a coconut
 //     drops on a hermit crab and walks off wearing it, then she stands and
 //     waves for rescue and the palm does the same move, much larger.
@@ -237,8 +238,9 @@ function frond(c, a, L, droop, seed) {
     const dD = unit(add(add(mul(nDn, 0.75), mul(t, 0.85)), v(0, 0.55)));
     const tipD = add(p, mul(dD, lenD));
     polys.push([tA, tB, add(tipD, mul(t, 1.2)), tipD]);
-    // upper leaflet: short, almost along the rib
-    if (i % 2 === 0) {
+    // upper leaflet: short, almost along the rib, and only now and then, so
+    // the top edge of each frond stays a clean arch rather than a hedgehog
+    if (i % 4 === 2) {
       const dU = unit(add(mul(nUp, 0.55), mul(t, 1)));
       const tipU = add(p, mul(dU, lenU));
       polys.push([tA, tB, tipU]);
@@ -629,7 +631,7 @@ css.push('@media (prefers-reduced-motion: reduce){*{animation:none!important}}')
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">
 <title id="t">CASTAWAY</title>
-<desc id="d">An island with one tall dancing palm and a small woman in headphones, cut out of crawling moire rings in clashing colours; a coconut drops on a hermit crab and walks off wearing it, then she waves for rescue and the palm does too. CASTAWAY in heavy capitals on a dark band below.</desc>
+<desc id="d">An island with one tall dancing palm and a small woman in headphones, cut out of crawling moire rings in clashing colours; a coconut drops on a hermit crab, which walks off wearing it, then she waves for rescue and the palm does too. CASTAWAY in heavy capitals on a dark band below.</desc>
 <style>${css.join('\n')}</style>
 <defs>${defs.join('\n')}</defs>
 <g clip-path="url(#panel)">

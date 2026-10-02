@@ -307,8 +307,8 @@ const P = {
 };
 // The rainbow: 24 hand-picked 12-bit hues, kept light in the blues so every
 // step stays readable on navy, then doubled to 48 steps by quantised
-// in-betweens.
-const RING24 = ['F00', 'F40', 'F70', 'FA0', 'FC0', 'FE0', 'FF0', 'CF0', '9F0', '5F2', '0F5', '0F9',
+// in-betweens. (Pure yellow, FF0, arrives as the in-between of FE0 and EF0.)
+const RING24 = ['F00', 'F40', 'F70', 'FA0', 'FC0', 'FE0', 'EF0', 'CF0', '9F0', '5F2', '0F5', '0F9',
   '0FC', '0EF', '2CF', '4AF', '69F', '88F', 'A7F', 'C6F', 'E5E', 'F4B', 'F38', 'F24'];
 const hex3 = (s) => [...s].map((h) => parseInt(h, 16));
 const RING = [];
@@ -318,6 +318,8 @@ RING24.forEach((c, i) => {
   RING.push(c12(c));
   RING.push(c12(a.map((v, j) => Math.round((v + b[j]) / 2).toString(16)).join('')));
 });
+// the README promises 48 different colours; hold it to that
+if (new Set(RING).size !== RING.length) throw new Error('the rainbow repeats a colour');
 
 // ------------------------------------------------------------------ banner geometry
 const W = 384;
@@ -517,9 +519,10 @@ const ornamentSvg = pathsByColour(new Map([...ornament(-1), ...ornament(1)]));
 // ------------------------------------------------------------------ banner: the two windows
 // Two small 16:9 windows in the grey strip, framed in the plate's chrome:
 // on the left the island itself (one tall palm, a raft, and her, nodding to
-// the music on her headphones), on the right the shark in headphones, who
-// nods along. Both nod on every beat of the theme.
-const WIN_W = 48;
+// the music on her headphones), on the right the shark, surfaced in its
+// headphones and nodding along. Both nod on every beat of the theme.
+// 49 x 32 with a 5-px frame leaves a 39 x 22 picture: 16:9 to the pixel.
+const WIN_W = 49;
 const WIN_H = 32;
 const WIN_Y = Y_STRIP + Math.round((STRIP_H - WIN_H) / 2);
 const WIN_X = [12, W - 12 - WIN_W];
@@ -528,7 +531,7 @@ const PAL = {
   e: c12('FEC'), E: c12('FFE'), b: c12('421'), h: c12('742'), s: c12('FCA'), k: c12('EB9'),
   r: c12('F75'), R: c12('C54'), w: c12('FED'), f: c12('FCA'),
   F: c12('79A'), d: c12('567'), D: c12('456'), K: c12('223'), W: c12('FFF'), o: c12('EFF'), n: c12('FFF'),
-  P: c12('A64'), p: c12('753'),
+  P: c12('A64'), p: c12('753'), N: c12('236'),
 };
 function sprite(map, rows, ox, oy) {
   rows.forEach((r, y) => [...r].forEach((ch, x) => { if (ch !== '.') map.set(key(ox + x, oy + y), PAL[ch]); }));
@@ -568,7 +571,8 @@ const HER_BODY = [
 ];
 const RAFT = ['PPPPPPP', 'ppppppp'];
 const CLOUD = ['..WW....', '.WWWWW..', 'WWWWWWWW'];
-// the fin, head-on, wearing its headphones the way a head would
+// the shark, surfaced and facing us, fin up behind, headphones on: two
+// eyes, and a grin with its teeth showing (it is enjoying the track)
 const FIN = [
   '........F........',
   '........Fd.......',
@@ -576,18 +580,19 @@ const FIN = [
   '.......FFdd......',
   '....KKKKKKKKK....',
   '...KeeeeeeeeeK...',
+  '..KeKFFKFFKddKeK.',
   '..KeKFFFFFdddKeK.',
-  '..KeKFFFFFdddKeK.',
-  '.KEEEKFFFFddKEEEK',
-  '.KEEEKFFFFddKEEEK',
-  '.KEEEKFFFFddKEEEK',
+  '.KEEEKKFFFdKKEEEK',
+  '.KEEEKFWWWWdKEEEK',
+  '.KEEEKFKKKKdKEEEK',
   '..KKKFFFFFdddKKK.',
   '..FFFFFFFFddddd..',
   '.FFFFFFFFFdddddd.',
   'FFFFFFFFFFddddddd',
 ];
-const NOTE = ['..WW', '..WW', '..W.', 'WWW.', 'WWW.'];
-const NOTE2 = ['.WWWW', '.W..W', '.W..W', 'WW.WW', 'WW.WW'];
+// music notes in deep navy, so they read against the pale sky
+const NOTE = ['..NN', '..NN', '..N.', 'NNN.', 'NNN.'];
+const NOTE2 = ['.NNNN', '.N..N', '.N..N', 'NN.NN', 'NN.NN'];
 // The scene inside a window, in window-local pixels; returns the still part
 // and the part that nods.
 function windowScene(kind) {
@@ -620,7 +625,8 @@ function windowScene(kind) {
     sprite(still, HER_BODY, ix + 18, iy + 12);
     sprite(nod, HER_HEAD, ix + 18, iy + 7);
   } else {
-    sprite(still, CLOUD, ix + 4, iy + 3);
+    // the cloud sits up and out of the way of the notes and the fin
+    sprite(still, CLOUD, ix + 21, iy + 1);
     // a far-off island on the horizon
     for (let x = 30; x <= 35; x++) still.set(key(ix + x, iy + 10), c12('7AB'));
     for (let x = 31; x <= 34; x++) still.set(key(ix + x, iy + 9), c12('7AB'));
@@ -827,7 +833,7 @@ const F8 = {
   S: ['.####.', '##..##', '##....', '.####.', '....##', '##..##', '.####.'],
   T: ['######', '..##..', '..##..', '..##..', '..##..', '..##..', '..##..'],
   U: ['##..##', '##..##', '##..##', '##..##', '##..##', '##..##', '.####.'],
-  V: ['##..##', '##..##', '##..##', '##..##', '##..##', '.####.', '..##..'],
+  V: ['##..##', '##..##', '##..##', '.#..#.', '.####.', '..##..', '..##..'],
   W: ['##...##', '##...##', '##...##', '##.#.##', '#######', '###.###', '##...##'],
   X: ['##..##', '##..##', '.####.', '..##..', '.####.', '##..##', '##..##'],
   Y: ['##..##', '##..##', '##..##', '.####.', '..##..', '..##..', '..##..'],
@@ -992,7 +998,9 @@ function textPage() {
     }
     y += h;
   }
-  const cyc = [...usedCycle].map((col) => `.c${col}{animation:cc ${cdur}s step-end ${dly(-(col % cycCols.length) * 0.25)} infinite}`);
+  // Each letter also gets its first-frame colour as a plain fill, so the line
+  // still reads (as a still rainbow) when reduced motion turns the cycle off.
+  const cyc = [...usedCycle].map((col) => `.c${col}{fill:${cycCols[col % cycCols.length]};animation:cc ${cdur}s step-end ${dly(-(col % cycCols.length) * 0.25)} infinite}`);
   css.push(cyc.join(''));
   css.push('@media (prefers-reduced-motion:reduce){*{animation:none!important}}');
   const dashSvg = [...dashByColour].map(([c, ds]) => `<path fill="${c}" d="${ds.join('')}"/>`).join('');

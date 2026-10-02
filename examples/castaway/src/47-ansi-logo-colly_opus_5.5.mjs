@@ -562,12 +562,13 @@ const HERO_LIT = HERO_RAMP.map((_, r) => (r === 7 ? { full: ['█', WHT], top: W
     : r === 9 ? { full: ['▓', CYN, BLU], top: CYN, bot: CYN } : HERO_RAMP[Math.max(0, r - 2)]));
 const WATERLINE = 7;
 
-// The palm on the A, as pixels: g light green, G green, c coconut, t trunk.
+// The palm on the A, as pixels: g light green, G green, c coconut, t trunk. Fronds arch out and
+// droop at the tips; two coconuts hang either side of the crown's heart, above the trunk.
 const PALM = [
-  '...ggg...ggg...',
-  '.gg...gGg...gg.',
-  'g....gGcGg....g',
-  '.....g.t.g.....',
+  '....ggg.ggg....',
+  '..gg..gGg..gg..',
+  '.g..ggGGGgg..g.',
+  'g..g..cGc..g..g',
   '.......t.......',
   '........t......',
   '........t......',
@@ -622,7 +623,7 @@ function buildHero() {
 
   // one tall palm (well, tall for three text rows), growing out of the pointed A
   const a2 = logo.placed[4].x;
-  const palm = sprite(PALM, { g: LGN, G: GRN, t: BRN, c: YEL }).map((k) => ({ ...k, r: k.r - PALM.length / 2, c: k.c + a2 + 4 - PALM_ROOT }));
+  const palm = sprite(PALM, { g: LGN, G: GRN, t: BRN, c: BRN }).map((k) => ({ ...k, r: k.r - PALM.length / 2, c: k.c + a2 + 4 - PALM_ROOT }));
   const crown = palm.filter((k) => k.r < -2), trunk = palm.filter((k) => k.r >= -2);   // the crown sways on the beat
 
   // the artist's tag over the first letter
@@ -1047,17 +1048,20 @@ function buildColly() {
     const cells = shadeLogo(logo, DRONE_RAMP, { accentFg: LCY });
     header(row + 1, 2, 'cw/stl', lc + logo.w + 2);
     const ox = lc * CW, oy = top * CH;
-    // rotors over the D and the E: a wide blade and a narrow one, swapped every half beat
+    // rotors over the D and the E: a short mast that stays put (the bottom half of the hub cell, so
+    // each cell is still one character in two colours), and a wide blade and a narrow one on top of
+    // it, swapped every half beat
     const d0 = logo.placed[0].x, e0 = logo.placed[4].x;
+    const masts = [d0 + 1, e0].map((x0) => ({ r: -1, c: x0 + 3, ch: '▄', fg: LGR }));
     const rotor = (frame) => [d0 + 1, e0].flatMap((x0) => (frame
       ? [...Array(7)].map((_, k) => ({ r: -1, c: x0 + k, ch: '▀', fg: LGR }))
       : [...Array(3)].map((_, k) => ({ r: -1, c: x0 + 2 + k, ch: '▀', fg: WHT }))));
-    const body = renderCells(ctx, cells, { ox, oy });
+    const body = renderCells(ctx, [...cells, ...masts], { ox, oy });
     anim.push(['dr', `${body}<g class="ra">${renderCells(ctx, rotor(1), { ox, oy })}</g><g class="rb">${renderCells(ctx, rotor(0), { ox, oy })}</g>`]);
     stack(top, COLS - 1 - len('headphones'), 'headphones');
     tagline(top + 8, [['a delivery drone', LGR], [' ..... ', DGR], ['one parcel', LGR], [' ..... ', DGR],
       ['inside it, another pair of headphones', LGR]]);
-    row = top + 9;
+    row = top + 10;
   }
   // ---- 03 SHARK ----------------------------------------------------------------------------
   cutLine(page, row);
@@ -1079,7 +1083,7 @@ function buildColly() {
     stack(top, 1, 'nod . nod . nod');
     tagline(top + 8, [['a shark in headphones', LGR], [' ..... ', DGR], ['nods on the beat', LGR], [' ..... ', DGR],
       ['same playlist, apparently', LGR]]);
-    row = top + 9;
+    row = top + 10;
   }
   // ---- 04 CRAB -----------------------------------------------------------------------------
   cutLine(page, row);
@@ -1093,19 +1097,22 @@ function buildColly() {
     const nut = [];
     for (let k = 2; k <= 7; k++) nut.push({ r: -2, c: b + k, ch: '▄', fg: BRN });
     for (let k = 1; k <= 8; k++) nut.push({ r: -1, c: b + k, ch: k === 3 || k === 6 ? '▒' : '▓', fg: BRN });
-    // eight legs, two under each letter, which swap direction every beat
+    // eight legs, two under each letter, drawn in half blocks: a thigh straight down from the
+    // letter's foot, then a shin that kinks out (splayed) or in (tucked), swapped every beat
     const legs = (f) => logo.placed.flatMap(({ x, L }) => {
-      const w = L.px[0].length;
+      const w = L.px[0].length, l = x + 1, r = x + w - 2;
       return f
-        ? [{ r: 6, c: x + 1, ch: '/', fg: LRD }, { r: 7, c: x, ch: '/', fg: RED }, { r: 6, c: x + w - 2, ch: '\\', fg: LRD }, { r: 7, c: x + w - 1, ch: '\\', fg: RED }]
-        : [{ r: 6, c: x + 1, ch: '|', fg: LRD }, { r: 7, c: x + 1, ch: '\\', fg: RED }, { r: 6, c: x + w - 2, ch: '|', fg: LRD }, { r: 7, c: x + w - 2, ch: '/', fg: RED }];
+        ? [{ r: 6, c: l, ch: '▌', fg: LRD }, { r: 7, c: l - 1, ch: '▐', fg: RED },
+          { r: 6, c: r, ch: '▐', fg: LRD }, { r: 7, c: r + 1, ch: '▌', fg: RED }]
+        : [{ r: 6, c: l, ch: '▐', fg: LRD }, { r: 7, c: l + 1, ch: '▌', fg: RED },
+          { r: 6, c: r, ch: '▌', fg: LRD }, { r: 7, c: r - 1, ch: '▐', fg: RED }];
     });
     const ox = lc * CW, oy = top * CH;
     anim.push(['cb', `${renderCells(ctx, [...nut, ...cells], { ox, oy })}<g class="la">${renderCells(ctx, legs(1), { ox, oy })}</g><g class="lb">${renderCells(ctx, legs(0), { ox, oy })}</g>`]);
     stack(top, COLS - 1 - len('click . clack'), 'click . clack');
     tagline(top + 8, [['a coconut lands on a hermit crab', LGR], [' ..... ', DGR], ['the crab keeps it', LGR],
       [' ..... ', DGR], ['walks off in it', LGR]]);
-    row = top + 9;
+    row = top + 10;
   }
   // ---- 05 BOTTLE ---------------------------------------------------------------------------
   cutLine(page, row);
@@ -1149,9 +1156,9 @@ function buildColly() {
     const holes = letters.filter((k) => k.solid).map((k) => ({ ...k, ch: ' ' }));
     anim.push(['bt', renderCells(ctx, holes, { ox: lc * CW, oy: top * CH, forceBg: true })
       + renderCells(ctx, letters.filter((k) => k.ch !== ' '), { ox: lc * CW, oy: top * CH })]);
-    tagline(top + 8, [['a bottle washes up', LGR], [' ..... ', DGR], ['goes straight back', LGR],
-      [' ..... ', DGR], ['a different one replies', LGR]]);
-    row = top + 9;
+    tagline(top + 8, [['she throws a bottle', LGR], [' ..... ', DGR], ['it washes straight back', LGR],
+      [' ..... ', DGR], ['later, a reply', LGR]]);
+    row = top + 10;
   }
   cutLine(page, row, '[ cut here ]', '[ end of colly ]');
   page.seg(row + 1, 1, [['logos', DGR], [' . ', DGR], ['wk cw lmp cnc nau', LGR], [' of ', DGR], ['strandline', LGR]]);
@@ -1179,10 +1186,10 @@ function buildColly() {
   const body = [renderCells(ctx, page.cells), ...anim.map(([k, s]) => `<g class="${k}">${s}</g>`)].join('\n');
   const title = 'The rest of the Castaway logo colly: DRONE, SHARK, CRAB and BOTTLE';
   const desc = 'Four more ANSI block-letter logos on one black 80-column page, separated by dashed cut lines with bright blue "cut here" tags, each logo tagged by a different artist of Strandline and numbered colly 02 to 05 of 05. '
-    + 'DRONE, by cw/stl: squared chrome capitals shaded white to light grey to dark grey, with light-cyan slivers in the counters and two rotors on top that flicker between a wide and a narrow blade while the whole word hovers up and down. At the right, the word headphones stacked six times and fading. Tagline: a delivery drone, one parcel, inside it, another pair of headphones. '
-    + 'SHARK, by lmp/stl: rounded capitals in light cyan, cyan and blue, where the A is a dorsal fin wearing cream headphones; the word nods down on every beat. At the left, nod . nod . nod stacked and fading. Tagline: a shark in headphones, nods on the beat, same playlist, apparently. '
-    + 'CRAB, by cnc/stl: squat, wide capitals in coral and red with yellow slivers, a brown coconut shell worn on top of the B and eight little legs underneath, two per letter, which scuttle; the word walks sideways a column per beat, four steps right and four back. At the right, click . clack stacked and fading. Tagline: a coconut lands on a hermit crab, the crab keeps it, walks off in it. '
-    + 'BOTTLE, by nau/stl: the outline variant, hollow black letters traced in underscores, slashes and pipes, coloured row by row from light green to cyan, bobbing on a hatched blue slab with dotted rules out to both edges. Tagline: a bottle washes up, goes straight back, a different one replies. '
+    + 'DRONE, by cw/stl: squared chrome capitals shaded white to light grey to dark grey, with light-cyan slivers in the counters and two rotors on short masts, their blades flickering between wide and narrow while the whole word hovers up and down. At the right, the word headphones stacked six times and fading. Tagline: a delivery drone, one parcel, inside it, another pair of headphones. '
+    + 'SHARK, by lmp/stl: rounded capitals in light cyan, cyan and blue, where the A is a dorsal fin wearing headphones; the word nods down on every beat. At the left, nod . nod . nod stacked and fading. Tagline: a shark in headphones, nods on the beat, same playlist, apparently. '
+    + 'CRAB, by cnc/stl: squat, wide capitals in coral and red with yellow slivers, a brown coconut shell worn on top of the B and eight half-block legs underneath, two per letter, kicking out and tucking in on alternate beats; the word walks sideways a column per beat, four steps right and four back. At the right, click . clack stacked and fading. Tagline: a coconut lands on a hermit crab, the crab keeps it, walks off in it. '
+    + 'BOTTLE, by nau/stl: the outline variant, hollow black letters traced in underscores, slashes and pipes, coloured row by row from light green to cyan, bobbing on a hatched blue slab with dotted rules out to both edges. Tagline: she throws a bottle, it washes straight back, later, a reply. '
     + 'The page ends with a cut line tagged end of colly, the artists wk, cw, lmp, cnc and nau of Strandline, and the line: no samples were harmed.';
   return svgDoc(ctx, COLS * CW, ROWS * CH, title, desc, css, body);
 }
@@ -1191,21 +1198,27 @@ function buildColly() {
 // The monochrome section logo in the .md (a <pre> block): a small block alphabet, each pixel two
 // columns wide, shaded row by row through the ramp. `node ... --pre` prints it for pasting.
 // ---------------------------------------------------------------------------------------------
+// Two R's, because no two letters in a colly logo are the same letter twice: the last one kicks.
 const MINI = {
   R: ['####.', '#...#', '####.', '#..#.', '#...#'],
+  R2: ['####.', '#...#', '####.', '#.#..', '#..##'],
   O: ['.###.', '#...#', '#...#', '#...#', '.###.'],
   S: ['.####', '#....', '.###.', '....#', '####.'],
   T: ['#####', '..#..', '..#..', '..#..', '..#..'],
   E: ['#####', '#....', '####.', '#....', '#####'],
 };
-function preLogo(word, ramp = ['█', '█', '▓', '▒', '░'], indent = 6) {
-  return ramp.map((sh, y) => (' '.repeat(indent) + [...word].map((ch) => [...MINI[ch][y]].map((p) => (p === '#' ? sh + sh : '  ')).join('')).join('  ')).trimEnd());
+function preLogo(keys, ramp = ['█', '█', '▓', '▒', '░'], indent = 6) {
+  return ramp.map((sh, y) => (' '.repeat(indent) + keys.map((k) => [...MINI[k][y]].map((p) => (p === '#' ? sh + sh : '  ')).join('')).join('  ')).trimEnd());
 }
-if (process.argv.includes('--pre')) {
+function rosterBlock() {
   const W = 78;
   const cut = (l, r) => `---${l}${'-'.repeat(W - 6 - len(l) - len(r))}${r}---`;
-  console.log([cut('[ cut here ]', '[ cut here ]'), ' wk/stl', ...preLogo('ROSTER', undefined, 4),
-    `${' '.repeat(W - 15)}colly 06 of 05`, cut('[ cut here ]', '[ cut here ]')].join('\n'));
+  const no = 'colly 06 of 05';
+  return [cut('[ cut here ]', '[ cut here ]'), ' wk/stl', ...preLogo(['R', 'O', 'S', 'T', 'E', 'R2'], undefined, 4),
+    `${' '.repeat(W - len(no))}${no}`, cut('[ cut here ]', '[ cut here ]')].join('\n');
+}
+if (process.argv.includes('--pre')) {
+  console.log(rosterBlock());
   process.exit(0);
 }
 
@@ -1214,4 +1227,19 @@ fs.mkdirSync(ASSETS, { recursive: true });
 for (const [name, svg] of OUT) {
   fs.writeFileSync(path.join(ASSETS, name), svg);
   console.log(`wrote assets/${name} (${(svg.length / 1024).toFixed(1)} KB)`);
+}
+
+// The .md is hand-written, except for the ROSTER logo at the top of its member list: that block
+// (from its first cut line to its second) is kept in step with preLogo() here, in place.
+{
+  const md = path.join(HERE, '..', `${SLUG}.md`);
+  if (fs.existsSync(md)) {
+    const src = fs.readFileSync(md, 'utf8');
+    const re = /(```text\n)---\[ cut here \]-+\[ cut here \]---\n wk\/stl\n[\s\S]*?\n---\[ cut here \]-+\[ cut here \]---\n/;
+    if (!re.test(src)) console.warn(`${SLUG}.md: ROSTER block not found, left as it is`);
+    else {
+      const out = src.replace(re, (m, fence) => `${fence}${rosterBlock()}\n`);
+      if (out !== src) { fs.writeFileSync(md, out); console.log(`updated the ROSTER block in ${SLUG}.md`); }
+    }
+  }
 }

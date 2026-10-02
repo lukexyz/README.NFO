@@ -21,7 +21,7 @@
 
 **Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly idles, nodding to the music on her headphones, and every so often something happens. It is an unofficial remake, inspired by the small-island routines and visual comedy of *Johnny Castaway*, the 1992 desert-island screensaver, repainted as a sunny, hand-painted coastal anime scene. 16:9, 1080p, 30 fps, always daytime.
 
-The line-up is [activities.toml](activities.toml): more than 90 activities, most of them on four timers, from a coconut every few minutes to a walk across the sea every few hours. A message in a bottle washes straight back. A shark in headphones nods along. A coconut lands on a hermit crab, and the crab leaves wearing it. Every activity starts on the next bar of the music (every 3 seconds), so the gags land on the beat. In a typical ten-hour run she is busy about a third of the time and idle for the rest, which is the point.
+The line-up is [activities.toml](activities.toml): more than 90 activities, most of them on four timers, from every 2 to 5 minutes (a coconut, a lap, some fishing) up to every 3 to 6 hours (the super-rare ones: about two a video, so don't blink). A message in a bottle washes straight back. A shark in headphones nods along. A coconut lands on a hermit crab, and the crab leaves wearing it. Every activity starts on the next bar of the music (every 3 seconds), so the gags land on the beat. In a typical ten-hour run she is busy about a third of the time and idle for the rest, which is the point.
 
 Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no loops, no recordings, so no third-party licence applies. More than 150 sound files so far, all measured, none yet heard by a human.
 
@@ -36,35 +36,35 @@ Live preview in the page, then export a YouTube-ready MP4: the browser encodes f
 <summary><b>THE FLYER</b>: stages, set times, the special guest and the small print</summary>
 
 ```text
-                     TWO CENTRES  ·  P R E S E N T S
+                      TWO CENTRES  ·  P R E S E N T S
   ═══════════════════════════════════════════════════════════════════════
-                         C  A  S  T  A  W  A  Y
+                          C  A  S  T  A  W  A  Y
          a ten-hour all-dayer  ·  one island  ·  strictly no night
   ═══════════════════════════════════════════════════════════════════════
 
-  MAIN STAGE ................................ REGULAR · every 2 to 5 min
+  MAIN STAGE ................................. REGULAR · every 2 to 5 min
     coconut sipping · fishing · jogging laps · a stroll
     a sandcastle (closing set: the tide, which takes it every time)
 
-  ARENA TWO ............................ OCCASIONAL · every 12 to 25 min
+  ARENA TWO ............................. OCCASIONAL · every 12 to 25 min
     a message in a bottle (washes straight back) · a sea turtle
     a coconut lands on a hermit crab · a ship sails past (she's busy)
     planting a kumara (it grows over the course of the video)
 
-  THE BACK ROOM ............................ RARE · every 30 to 60 min
+  THE BACK ROOM ............................... RARE · every 30 to 60 min
     a shark in headphones, nodding · a delivery drone (the parcel is
     more headphones) · the signal hunt (one bar, top of the palm)
     a stray cat on a crate · a tour boat of selfie-takers
     an e-foil bro (shaka, gone) · fire by friction · a hammock
 
-  SPECIAL GUEST ..................... SUPER RARE · every 3 to 6 hours
+  SPECIAL GUEST ......................... SUPER RARE · every 3 to 6 hours
     "she could leave any time": walks out over the water and comes
     back with an iced coffee
 
   ───────────────────────────────────────────────────────────────────────
   SOUND ......... synthesized from code: no samples, loops or recordings
   THEME ......... 60 s seamless loop · 80 BPM · F major · ii-V-I-vi
-                  electric piano · kalimba lead · soft drums · vinyl hiss
+                  electric piano · kalimba lead · soft drums · vinyl crackle
   LEVELS ........ -14 LUFS · true peak at or below -1 dBTP
                   adjustable in master and per routine
   DOORS ......... python tools/serve.py  →  http://127.0.0.1:8765/
@@ -103,9 +103,9 @@ The timers and tiers are the real ones from [activities.toml](activities.toml); 
   her own frames. The palm has never been told it is not the main act.
 ```
 
-**How the banner works.** Each set of rings is a single rectangle filled with a repeating radial gradient with hard stops. One set is used as a mask; the other is drawn once everywhere and once more inside the mask with its colours swapped, which composites to an XOR of the two: that is the moire, with no blend modes and no filters. Outside the figure the four ring cases map to three colours; inside, the same two ring sets map to two other colours, clipped by the silhouette, so the island, the palm and she read only by the change of colour. Both centres drift on slow ellipses that close every 24 seconds, so the swirls crawl and the loop has no seam.
+**How the banner works.** Each set of rings is a single rectangle filled with a repeating radial gradient with hard stops. One set is used as a mask; the other is drawn once everywhere and once more inside the mask with its colours swapped, which composites to an XOR of the two: that is the moire, with no blend modes and no filters. Outside the figure the four ring cases map to three colours; inside, the same two ring sets map to two other colours, clipped by the silhouette, so the island, the palm and she read only by the change of colour. Both centres drift on slow ellipses that close every 24 seconds, so the swirls crawl and the rings never jump at the loop point; only the story cuts back to the start, on the beat, like everything else.
 
-The palm's six poses, her four, the crab, the falling coconut and the walking coconut are paths in one clip, each with a stepped visibility track, and everything cuts on the beat. The colours cut once a bar, which keeps the whole thing far below three changes a second. With reduced motion switched on, it holds still on the first frame: palm, rings, her and the crab, all in place.
+The palm's six poses, her four, the crab, the falling coconut and the walking coconut are paths in one clip, each with a stepped visibility track, and everything cuts on the beat. The colours cut once a bar, which keeps the whole thing far below three changes a second. With reduced motion switched on, it holds still on one complete frame: palm, rings, her and the crab, all in place.
 
 The look is modelled on the early-90s Amiga rave demos that cut one traced dancer out of moire rings, above all Spaceballs' *State of the Art* (1992), credited here as the reference. No dancer, frame or name of theirs is used: the palm, the island, her, the crab and the letters were all drawn from scratch by the generator.
 

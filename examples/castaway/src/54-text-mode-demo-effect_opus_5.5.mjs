@@ -479,7 +479,7 @@ const BOTTLE = [
   [0, null], [24, 23, 31], [24.375, 21, 30], [24.75, 19, 29], [25.125, 17, 29], [25.5, 15, 30],
   [25.875, 13, 31], [26.25, 12, 32], [26.625, 11, 33],
   ...Array.from({ length: 10 }, (_, i) => [27.75 + i * BEAT, 12 + i, 33]),
-  [35.25, 22, 34], [36, 22, 35], [36.75, 22, 36], [37.5, 22, 37], [T_CUT, null],
+  [35.25, 22, 34], [36, 23, 35], [36.75, 24, 36], [T_CUT, null],
 ];
 const SPLASH = [[0, null], [26.625, 11, 32], [27.75, null]];
 
@@ -592,7 +592,7 @@ function buildLabel(S) {
   write(S, r0 + 2, null, [['SUPER RARE EVENT', WHT]], BLK, true);
   write(S, r0 + 4, null, [['she could leave any time.', YEL]], BLK, true);
   write(S, r0 + 6, null, [['(she walks out over the water)', LGR]], BLK, true);
-  caption(S, r1, null, [['usually every 3 to 6 hours', LGR]], YEL, null, true);
+  caption(S, r1, null, [['at most once in ten hours', LGR]], YEL, null, true);
 }
 
 // ================================================================================ render
@@ -715,7 +715,7 @@ const SCROLL = [
   ['·  ·  ·  ', DGR],
   ['Every gag waits for the next bar of the music, every 3 seconds, the way this scroller waits for the next character cell. ', WHT],
   ['·  ·  ·  ', DGR],
-  ['Every sound is synthesized from code: no samples, no loops, no recordings. ', LCY],
+  ['Every sound is synthesized from code: no samples, no loop libraries, no recordings. ', LCY],
   ['·  ·  ·  ', DGR],
   ['This sea was worked out once, cell by cell; since then only the colours have moved. The video is ten hours of roughly that, plus a cat. ', WHT],
   ['·  ·  ·  ', DGR],
@@ -823,10 +823,10 @@ function build() {
 
   const desc = 'CASTAWAY, as a text-mode demo screen: 80 columns by 50 rows of character cells in the 16 VGA colours, every gradient made of light, medium and dark shade characters. '
     + 'At the top, a black plate framed in double lines holds CASTAWAY in big block letters, shaded white to yellow to light red to red with a grey drop shadow, captioned crawlspace presents, 80x50, 16 colours, 1 island, and python tools/serve.py, over the tagline: she idles. every so often, something happens. '
-    + 'Below it, a light blue sky with dithered cloud streaks drifting left, a sun of yellow and white rings flowing outward, and a sea of blue, cyan and white bands rolling towards you, with rings spreading from a tiny sandy island. '
-    + 'On the island stand a tall leaning palm and a young woman in cream headphones, a coral top and cream shorts, nodding on every beat; a raft floats beside it. '
+    + 'Below it, a light blue sky with dithered cloud streaks drifting left, a sun of yellow and white rings flowing outward, and a sea of blue and cyan bands with light cyan crests rolling towards you, and lagoon rings of cyan and white spreading out from a tiny sandy island. '
+    + 'On the island stand a tall leaning palm and a young woman in cream headphones, a coral tank top and cream shorts, nodding on every beat; a raft floats beside it. '
     + 'At 0:24 she throws a message in a bottle out to the left; it lands with a splash and drifts straight back to her feet, one cell per beat. '
-    + 'Once a minute the screen hard-cuts for two bars to a red and gold checkered tunnel with a label: part two, super rare event, she could leave any time, she walks out over the water, usually every 3 to 6 hours. '
+    + 'Once a minute the screen hard-cuts for two bars to a red and gold checkered tunnel with a label: part two, super rare event, she could leave any time, she walks out over the water, at most once in ten hours. '
     + 'Then it cuts back, and she is standing there with an iced coffee. '
     + `Along the bottom row a scroller moves one character at a time: ${scr.text.replace(/[·\s]{4,}/g, ' ... ').replace(/\s+/g, ' ').trim()}`;
 

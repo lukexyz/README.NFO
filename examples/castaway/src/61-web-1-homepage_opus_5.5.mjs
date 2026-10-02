@@ -50,11 +50,13 @@ const outFile = (suffix = '') => path.join(ASSETS, `${SLUG}${suffix}.svg`);
 const SHEET = (process.argv.find((a) => a.startsWith('--sheet=')) || '').slice(8);
 
 // ------------------------------------------------------------------ facts
-// Checked 2026-10-01 against D:/python/castaway (read-only): activities.toml
-// has more than 90 activities (94 that evening) on four timers: regular 2-5
-// min, occasional 12-25 min, rare 30-60 min, super rare 3-6 h; run 10:00:00,
-// seed 1992; starts snap to 3 s bars. tools/make_audio.py: 80 BPM, F major,
-// 20 bars of 3 s = a 60 s theme; more than 150 sound files. 1080p, 30 fps.
+// Checked 2026-10-02 against D:/python/castaway (read-only): activities.toml
+// has more than 90 activities (94 that day: 81 on four timers, 13 chained
+// follow-ups), so the copy says "most of them on four timers". The timers:
+// regular 2-5 min, occasional 12-25 min, rare 30-60 min, super rare 3-6 h;
+// run 10:00:00, seed 1992 ("same seed, same schedule": tools/schedule.py);
+// starts snap to 3 s bars. tools/make_audio.py: 80 BPM, F major, 20 bars of
+// 3 s = a 60 s theme; more than 150 sound files (181 that day). 1080p, 30 fps.
 
 const BEAT = 0.75;
 const BAR = 4 * BEAT;
@@ -1172,7 +1174,11 @@ const MARQUEE = [
   ['#ff66ff', '*** '],
   ['#ffff00', 'she nods to the music, and every so often something happens, always on the beat '],
   ['#00ffff', '*** '],
-  ['#ffffff', 'more than 90 activities on four timers '],
+  ['#ffffff', 'more than 90 activities, most of them on four timers '],
+  ['#ff66ff', '*** '],
+  ['#ffff00', 'she is busy about a third of the time. the rest is nodding '],
+  ['#00ffff', '*** '],
+  ['#ffffff', 'if nothing is happening, it is working '],
   ['#ff66ff', '*** '],
   ['#ffff00', 'every sound is synthesized from code: no samples, no loops, no recordings '],
   ['#00ffff', '*** '],
@@ -1227,16 +1233,27 @@ function lamp(x, y, on) {
   }
   return p;
 }
-// black matte under text that sits on the starfield: every empty neighbour
-// of a lit pixel goes black, so no star touches a letter
-// (drawn as one solid dilated shape underneath: it merges into long runs)
+// black matte under text that sits on the starfield, so no star touches a
+// letter: one black box per line of text, 1 px bigger than its ink all round
+// (a box per line costs a few bytes; a pixel-exact halo cost kilobytes, and
+// on a black page the two look the same)
 function matted(p) {
-  const m = new Pix();
+  const rows = new Map();
   for (const k of p.m.keys()) {
     const x = KX(k); const y = KY(k);
-    for (let j = -1; j <= 1; j++) for (let i = -1; i <= 1; i++) m.set('#000000', x + i, y + j);
+    const r = rows.get(y) || [Infinity, -Infinity];
+    rows.set(y, [Math.min(r[0], x), Math.max(r[1], x)]);
   }
-  return { svg: () => m.svg() + p.svg() };
+  const ys = [...rows.keys()].sort((a, b) => a - b);
+  let m = '';
+  for (let i = 0; i < ys.length;) {
+    let j = i;
+    let [x0, x1] = rows.get(ys[i]);
+    while (j + 1 < ys.length && ys[j + 1] - ys[j] <= 2) { j++; x0 = Math.min(x0, rows.get(ys[j])[0]); x1 = Math.max(x1, rows.get(ys[j])[1]); }
+    m += `<rect x="${x0 - 1}" y="${ys[i] - 1}" width="${x1 - x0 + 3}" height="${ys[j] - ys[i] + 3}"/>`;
+    i = j + 1;
+  }
+  return { svg: () => m + p.svg() };
 }
 const place = (p, x, y) => { const q = new Pix(); for (const [k, c] of p.m) q.set(c, KX(k) + x, KY(k) + y); return q; };
 
@@ -1408,6 +1425,8 @@ function stripSvg() {
   return svgDoc(W, H, 2, 'Pardon our sand: this island is under construction', 'A strip of marching yellow and black hazard stripes with an amber lamp flashing at each end of a black plate that reads PARDON OUR SAND: THIS ISLAND IS UNDER CONSTRUCTION.', css, o);
 }
 
+// shown at 1x (40x20) in the list, like a NEW! GIF dropped into a line of
+// text: small enough not to push the line apart
 function newSvg() {
   const css = new Css('n');
   const W = 40;
@@ -1448,8 +1467,8 @@ const BUTTONS = [
     frameIt(p);
     p.rect('#c0c0c0', 1, 1, 27, 4); p.rect('#000080', 2, 2, 3, 2); p.rect('#808080', 1, 5, 27, 1);
     p.rect('#000000', 1, 6, 27, 24);
-    drawText(p, TINY, '>', 4, 9, '#00ff00');
-    drawText(p, TINY, 'SERVE', 9, 9, '#00ff00');
+    drawText(p, TINY, '>', 3, 9, '#00ff00');
+    drawText(p, TINY, 'SERVE', 8, 9, '#00ff00');
     drawText(p, TINY, '8765', 4, 17, '#00aa00');
     bands(p, 28, 1, 59, 29, ['#001a80', '#0029a3', '#0033cc', '#1a4de0', '#3366ff']);
     p.rect('#000000', 28, 1, 1, 29);
@@ -1460,7 +1479,7 @@ const BUTTONS = [
     const cur = new Pix(); cur.rect('#00ff00', 4, 25, 3, 2);
     return g(css.frame(2 * BEAT, 2, 0), cur.svg());
   }),
-  button('activities', '90+ ACTIVITIES ON 4 TIMERS', '88x31 button: a clock face whose hand jumps a quarter turn every beat, then 90+ ACTIVITIES ON 4 TIMERS on purple.', (p, css) => {
+  button('activities', '90+ ACTIVITIES, ON THE BEAT', '88x31 button: a clock face whose hand jumps a quarter turn every beat, then 90+ ACTIVITIES, ON THE BEAT, on purple.', (p, css) => {
     frameIt(p);
     bands(p, 1, 1, 86, 29, ['#2a0055', '#3d006b', '#520080', '#660099', '#7a00a3', '#8f00ad']);
     p.ellipse('#000000', 14.5, 15.5, 11, 11);
@@ -1477,7 +1496,7 @@ const BUTTONS = [
     hands.forEach(([x, y], i) => { const q = new Pix(); q.line('#000000', 14, 15, x, y); q.set('#ff0066', 14, 15); o += g(css.frame(4 * BEAT, 4, i), q.svg()); });
     shadowText(p, SERIF, '90+', 30, 1, '#ffff00', '#000000');
     shadowText(p, TINY, 'ACTIVITIES', 30, 15, '#ffffff', '#1a0033');
-    shadowText(p, TINY, 'ON 4 TIMERS', 30, 23, '#00ffff', '#1a0033');
+    shadowText(p, TINY, 'ON THE BEAT', 30, 23, '#00ffff', '#1a0033');
     return o;
   }),
   button('synth', '100% SYNTH, NO SAMPLES', '88x31 button: a green oscilloscope trace rolling on a black screen, then 100% SYNTH, NO SAMPLES.', (p, css) => {
@@ -1553,7 +1572,7 @@ const BUTTONS = [
     drawText(p, TINY, '30 FPS 16:9', 28, 23, '#800000');
     return g(css.frame(4 * BEAT, 2, 0), led.svg());
   }),
-  button('seed', 'SEED 1992: SAME SEED, SAME VIDEO', '88x31 button in green: two dice that wobble but never change their faces, then SEED 1992, SAME SEED, SAME VIDEO.', (p, css) => {
+  button('seed', 'SEED 1992: SAME SEED, SAME RUN', '88x31 button in green: two dice that wobble but never change their faces, then SEED 1992, SAME SEED, SAME RUN.', (p, css) => {
     frameIt(p);
     bands(p, 1, 1, 86, 29, ['#003d1f', '#004d26', '#005c2e', '#006b36', '#007a3d']);
     const die = (q, x, y, face) => {
@@ -1570,10 +1589,10 @@ const BUTTONS = [
       die(q, 13 - f, 15, 6);
       o += g(css.frame(2 * BEAT, 2, f), q.svg());
     }
-    shadowText(p, TINY, 'SEED', 30, 3, '#ffffff', '#002010');
-    shadowText(p, SANS, '1992', 30, 10, '#ffff00', '#002010', { bold: true });
-    shadowText(p, TINY, 'SAME SEED,', 30, 19, '#ccffcc', '#002010');
-    shadowText(p, TINY, 'SAME VIDEO', 30, 25, '#ccffcc', '#002010');
+    shadowText(p, TINY, 'SEED', 30, 6, '#ffffff', '#002010');
+    shadowText(p, SANS, '1992', 48, 4, '#ffff00', '#002010', { bold: true });
+    shadowText(p, TINY, 'SAME SEED,', 30, 15, '#ccffcc', '#002010');
+    shadowText(p, TINY, 'SAME RUN', 30, 22, '#ccffcc', '#002010');
     return o;
   }),
   button('daytime', 'ALWAYS DAYTIME', '88x31 button in sky blue: a yellow sun whose rays turn, then ALWAYS DAYTIME, NO NIGHTS.', (p, css) => {

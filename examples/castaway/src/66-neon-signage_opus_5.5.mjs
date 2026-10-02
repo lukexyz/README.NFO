@@ -75,6 +75,9 @@ const OPEN = { x0: 404, x1: 556, y0: 166, y1: FL }; // the daylight at the end
 const floorX = (y, side) => VPX + ((side < 0 ? OPEN.x0 : OPEN.x1) - VPX) * (y - HZ) / (FL - HZ);
 const BEAT = 0.75;
 const LOOP = 27;
+// The video's frame rate, from [video] fps in castaway/activities.toml (it
+// moved from 30 to 24 on 2026-10-01; check it there before regenerating).
+const FPS = 24;
 
 // ----------------------------------------------------------------- helpers
 const f = (n, d = 1) => {
@@ -191,6 +194,7 @@ const SF = {
   '%': [[[0.4, 6], [3.6, 0]], [[0.8, 0.8], [0.8, 0.8]], [[3.2, 5.2], [3.2, 5.2]]],
   '♪': [[[2.6, 4.8], [2.6, 0], [4, 1.2], [4, 2.4]], [[2.6, 4.8], [1.8, 6], [0.8, 6], [0.4, 5.2], [1.2, 4.4], [2.6, 4.8]]],
   '_': [[[0, 6.6], [4, 6.6]]],
+  '~': [[[0, 3.6], [0.9, 2.7], [2, 3.2], [3.1, 3.5], [4, 2.6]]],
   '→': [[[0, 3], [4, 3]], [[2.4, 1.4], [4, 3], [2.4, 4.6]]],
   '←': [[[4, 3], [0, 3]], [[1.6, 1.4], [0, 3], [1.6, 4.6]]],
   ' ': [],
@@ -377,7 +381,7 @@ const filters = [];
 let fid = 0;
 // Draw a glass-tube sign: shadow on the backing, blurred halo, coloured
 // tube, pale inner and white-hot core. geometry is stored once in <defs>.
-function neon(d, col, { w = 4.6, halo = 10, blur = 5, box, shadow = true, cls = '', unlit = false } = {}) {
+function neon(d, col, { w = 4.6, halo = 10, blur = 5, box, shadow = true, cls = '', unlit = false, under = '' } = {}) {
   const id = `n${fid++}`;
   defs.push(`<path id="${id}" d="${d}"/>`);
   const [bx0, by0, bx1, by1] = box;
@@ -388,6 +392,7 @@ function neon(d, col, { w = 4.6, halo = 10, blur = 5, box, shadow = true, cls = 
   if (shadow) s += `<use href="#${id}" class="sh" stroke-width="${f2(w)}" transform="translate(2.5 3.5)"/>`;
   s += `<g class="${cls}">`;
   s += `<g filter="url(#f${id})"><use href="#${id}" class="${col}H" stroke-width="${f2(halo * 2.2)}" opacity=".32"/><use href="#${id}" class="${col}H" stroke-width="${f2(halo)}"/></g>`;
+  s += under; // anything that sits between the glow and the glass (standoffs)
   s += `<use href="#${id}" class="${col}T" stroke-width="${f2(w)}"/>`;
   s += `<use href="#${id}" class="${col}I" stroke-width="${f2(w * 0.48)}"/>`;
   s += `<use href="#${id}" class="core" stroke-width="${f2(w * 0.2)}"/>`;
@@ -462,8 +467,9 @@ function background() {
 // ------------------------------------------------- the daylight at the end
 // The sea at noon, seen past the quay: sky, a few clouds, the island with
 // one tall palm and a raft, glints on the water, and her.
-function herFigure(view, legs) {
-  // 32 units tall, feet at (0, 0). view: 'front' | 'back'. legs: 0 | 1 | 2
+function herFigure(view, legs, cup) {
+  // 32 units tall, feet at (0, 0). view: 'front' | 'back'. legs: 0 | 1 | 2.
+  // cup: whether she has the iced coffee yet (only on the way back).
   const L = legs === 1 ? [-1.2, 0] : legs === 2 ? [0, -1.2] : [0, 0];
   let s = '';
   // legs and feet
@@ -472,10 +478,17 @@ function herFigure(view, legs) {
   s += `<path d="M-4.2 -15.6h8.4l.4 5.2h-4.1l-.5-1.4-.5 1.4h-4.1z" fill="${C.shorts}"/>`;
   // tank top
   s += `<path d="M-3.9 -23.2h7.8l.3 7.8h-8.4z" fill="${C.top}"/>`;
-  // arms; the cup is held on the viewer's right
-  s += `<path d="M-5.8 -22.6h1.9v8.6h-1.9zM3.9 -22.6h1.9v5.4l1.6 1.4-1.1 1.2-2.4-2.2z" fill="${C.skin}"/>`;
-  // iced coffee: clear cup, coffee, a white lid and straw
-  s += `<path d="M5.6 -19.6h3.6l-.5 5h-2.6z" fill="#9c6a45"/><path d="M5.3 -20.4h4.2v.9h-4.2z" fill="#f4f1ea"/><path d="M7.4 -20.4l.7-2.8" stroke="#f4f1ea" stroke-width=".7"/>`;
+  // arms. With the coffee, one arm is bent to hold it in her left hand:
+  // on the viewer's right from the front, on the viewer's left from behind.
+  let arms = '';
+  if (cup) {
+    arms += `<path d="M-5.8 -22.6h1.9v8.6h-1.9zM3.9 -22.6h1.9v5.4l1.6 1.4-1.1 1.2-2.4-2.2z" fill="${C.skin}"/>`;
+    // iced coffee: clear cup, coffee, a white lid and straw
+    arms += `<path d="M5.6 -19.6h3.6l-.5 5h-2.6z" fill="#9c6a45"/><path d="M5.3 -20.4h4.2v.9h-4.2z" fill="#f4f1ea"/><path d="M7.4 -20.4l.7-2.8" stroke="#f4f1ea" stroke-width=".7"/>`;
+  } else {
+    arms += `<path d="M-5.8 -22.6h1.9v8.6h-1.9zM3.9 -22.6h1.9v8.6h-1.9z" fill="${C.skin}"/>`;
+  }
+  s += view === 'back' && cup ? `<g transform="scale(-1 1)">${arms}</g>` : arms;
   // neck and head
   s += `<path d="M-1 -24.2h2v1.4h-2z" fill="${C.skin}"/>`;
   s += `<circle cx="0" cy="-27.6" r="4" fill="${view === 'back' ? C.hair : C.skin}"/>`;
@@ -523,7 +536,8 @@ function opening() {
   s += `<ellipse cx="${IX}" cy="${IY}" rx="33" ry="5.2" fill="#efd59a"/>`;
   s += `<ellipse cx="${IX - 3}" cy="${IY - 1.2}" rx="24" ry="3" fill="#f8e8bf"/>`;
   s += `<path d="M${IX - 20} ${IY - 1}q3-6 8-1q4-5 7 0q3-3 5 1z" fill="#3f9c4c"/><path d="M${IX + 15} ${IY - 1}q3-5 6-1q2-3 5 1z" fill="#57b558"/>`;
-  s += `<path d="M${IX + 37} ${IY + 4}l17-1.6 .9 3.4-17 1.6z" fill="#9a5b3c"/><path d="M${IX + 38} ${IY + 5.4}l16-1.5" stroke="#6e3c26" stroke-width=".7"/>`;
+  // the raft, pulled up off the left shore (out of her way to the quay)
+  s += `<path d="M${IX - 57} ${IY + 2.4}l17 1.6-.9 3.4-17-1.6z" fill="#9a5b3c"/><path d="M${IX - 56} ${IY + 4.2}l16 1.5" stroke="#6e3c26" stroke-width=".7"/>`;
   // palm: a tall, slender, slightly curved trunk with segments, then fronds
   const tr = [[IX + 11, IY - 1], [IX + 13, IY - 22], [IX + 9, IY - 44], [IX + 1, IY - 64]];
   const trunk = `M${tr[0][0]} ${tr[0][1]}C${tr[1][0]} ${tr[1][1]} ${tr[2][0]} ${tr[2][1]} ${tr[3][0]} ${tr[3][1]}`;
@@ -541,13 +555,15 @@ function opening() {
   s += `<path d="${fr}" fill="#3a9a47"/>`;
   s += `<path d="${fronds.map(([dx, dy]) => `M${cx} ${cy}Q${f(cx + dx * 0.55)} ${f(cy + dy * 0.55 - 7)} ${f(cx + dx)} ${f(cy + dy)}`).join('')}" stroke="#8fd662" stroke-width=".8" fill="none"/>`;
   s += `<circle cx="${cx + 1}" cy="${cy + 1.8}" r="1.9" fill="#6b4a2a"/><circle cx="${cx - 1.4}" cy="${cy + 2.2}" r="1.6" fill="#7a5532"/>`;
-  // her: five poses, one shown at a time, moved in steps
+  // her: six poses, one shown at a time, moved in steps. She leaves empty-
+  // handed and comes back with the coffee.
   s += `<g class="her">`;
-  s += `<g class="p0">${herFigure('front', 0)}</g>`;
-  s += `<g class="p1">${herFigure('front', 1)}</g>`;
-  s += `<g class="p2">${herFigure('front', 2)}</g>`;
-  s += `<g class="p3">${herFigure('back', 1)}</g>`;
-  s += `<g class="p4">${herFigure('back', 2)}</g>`;
+  s += `<g class="p0">${herFigure('front', 0, false)}</g>`;
+  s += `<g class="p1">${herFigure('front', 1, false)}</g>`;
+  s += `<g class="p2">${herFigure('front', 2, false)}</g>`;
+  s += `<g class="p3">${herFigure('back', 1, true)}</g>`;
+  s += `<g class="p4">${herFigure('back', 2, true)}</g>`;
+  s += `<g class="p5">${herFigure('front', 0, true)}</g>`;
   s += `</g>`;
   s += `</g>`;
   // quay edge and the building corners framing the view
@@ -563,7 +579,8 @@ const S_HOME = 0.3;
 const scaleAt = (y) => S_HOME * (y - HZ) / (HOME[1] - HZ);
 function herState(t) {
   const step = 0.375;
-  if (t < 6 || t >= 21) return { x: HOME[0], y: HOME[1], pose: 0 };
+  if (t < 6) return { x: HOME[0], y: HOME[1], pose: 0 };
+  if (t >= 21) return { x: HOME[0], y: HOME[1], pose: 5 };
   if (t < 12) {
     const n = Math.floor((t - 6) / step); // 0..15
     const u = (n + 1) / 16;
@@ -576,21 +593,22 @@ function herState(t) {
 }
 function herCss() {
   const move = [];
-  const vis = [[], [], [], [], []];
+  const NP = 6;
+  const vis = Array.from({ length: NP }, () => []);
   for (let k = 0; k <= 72; k++) {
     const t = k * 0.375;
     const st = herState(t % LOOP);
     if (st) move.push([t, `transform:translate(${f(st.x)}px,${f(st.y)}px) scale(${f(scaleAt(st.y), 3)})`]);
     else move.push([t, `transform:translate(${f(QUAY[0] + 40)}px,${f(QUAY[1])}px) scale(.5)`]);
-    for (let p = 0; p < 5; p++) vis[p].push([t, `opacity:${st && st.pose === p ? 1 : 0}`]);
+    for (let p = 0; p < NP; p++) vis[p].push([t, `opacity:${st && st.pose === p ? 1 : 0}`]);
   }
   // drop repeated frames
   const squash = (frames) => frames.filter((fr, i) => i === 0 || i === frames.length - 1 || fr[1] !== frames[i - 1][1]);
   css.push(kf('herMove', squash(move)));
   vis.forEach((v, p) => css.push(kf(`herP${p}`, squash(v))));
   css.push(`.her{transform:translate(${HOME[0]}px,${HOME[1]}px) scale(${S_HOME});animation:herMove ${LOOP}s steps(1,end) infinite}`);
-  css.push('.p1,.p2,.p3,.p4{opacity:0}');
-  for (let p = 0; p < 5; p++) css.push(`.p${p}{animation:herP${p} ${LOOP}s steps(1,end) infinite}`);
+  css.push('.p1,.p2,.p3,.p4,.p5{opacity:0}');
+  for (let p = 0; p < NP; p++) css.push(`.p${p}{animation:herP${p} ${LOOP}s steps(1,end) infinite}`);
 }
 
 // ------------------------------------------------------------ main sign
@@ -637,11 +655,25 @@ function mainSign() {
   // maker's plate, bottom right
   out += `<rect x="${x1 - 112}" y="${y1 - 15}" width="98" height="9" rx="1.5" fill="#1b2a2e"/>`;
   out += `<path d="${textD('SALTGLASS NEON · 1992', x1 - 108, y1 - 12.6, 4.2, { track: 1.6 })}" class="lbl" stroke="#7f9aa0"/>`;
-  out += `<path d="${textD('UNIT CW-01 · 30 FPS · 1080P', x0 + 16, y1 - 12.6, 4.2, { track: 1.6 })}" class="lbl" stroke="#5f7a80"/>`;
+  out += `<path d="${textD(`UNIT CW-01 · ${FPS} FPS · 1080P`, x0 + 16, y1 - 12.6, 4.2, { track: 1.6 })}" class="lbl" stroke="#5f7a80"/>`;
+  // standoffs: the little posts that hold each tube off the panel, two per
+  // letter, peeking out between the glass and its shadow
+  const POSTS = { C: [[38, 0], [38, 80]], A: [[0, 64], [56, 64]], S: [[40, 0], [18, 80]], T: [[10, 0], [28, 66]], W: [[0, 30], [80, 30]], Y: [[0, 8], [28, 66]] };
+  let posts = '';
+  [...word].forEach((ch, i) => {
+    for (const [px, py] of POSTS[ch]) {
+      const cx = ends[i][0] + px * s + 1.6;
+      const cy = top + py * s + 2.2;
+      posts += `M${f(cx)} ${f(cy)}h0`;
+    }
+  });
+  const postSvg = `<path d="${posts}" stroke="#0a1214" stroke-width="5" stroke-linecap="round"/><path d="${posts}" stroke="#4a646b" stroke-width="3" stroke-linecap="round"/>`;
   const box = [x0, y0, x1, y1];
-  out += neon(lit, 'pk', { w: 5.6, halo: 13, blur: 6, box, cls: 'wob1' }).svg;
+  out += neon(lit, 'pk', { w: 5.6, halo: 13, blur: 6, box, cls: 'wob1', under: postSvg }).svg;
   out += neon(flick, 'pk', { w: 5.6, halo: 13, blur: 6, box: [x0 + 300, top + 30, x0 + 380, top + 50], cls: 'flick', unlit: true }).svg;
-  reflect.push(`<path d="${lit}${flick}" stroke="${C.pinkT}" stroke-width="9" fill="none"/>`);
+  // the reflection of the bad tube flickers with it
+  reflect.push(`<path d="${lit}" stroke="${C.pinkT}" stroke-width="9" fill="none"/>`);
+  reflect.push(`<path d="${flick}" class="flick" stroke="${C.pinkT}" stroke-width="9" fill="none"/>`);
   return out;
 }
 
@@ -731,18 +763,23 @@ function billboard() {
   f2s += `<g class="wave"><path d="${wv}" stroke="${C.cyanT}" stroke-width="2" fill="none"/></g>`;
   f2s += `<path d="M0 76H${w}" stroke="#2b3a66" stroke-width=".8"/>`;
   f2s += `<path d="${textD('80 BPM · F MAJOR · ii-V-I-vi · 60 S LOOP', w / 2, 104, 5, { align: 'center', track: 1.8 })}" class="bbt" stroke="${C.ambT}" stroke-width=".95"/>`;
-  f2s += `<path d="${textD('NO SAMPLES · NO LOOPS · NO RECORDINGS', w / 2, 118, 5, { align: 'center', track: 1.8 })}" class="bbt" stroke="#c9d4ff" stroke-width=".95"/>`;
+  f2s += `<path d="${textD('NO SAMPLES · NO STOCK LOOPS · NO RECORDINGS', w / 2, 118, 5, { align: 'center', track: 1.8 })}" class="bbt" stroke="#c9d4ff" stroke-width=".95"/>`;
   f2s += `<path d="${textD('tools/make_audio.py', w / 2, 130.5, 5, { align: 'center', track: 1.8 })}" class="bbt" stroke="#8f9fd8" stroke-width=".9"/>`;
   // frame 3: the four timers
   let f3 = `<rect width="${w}" height="${h}" fill="url(#bbAmber)"/>`;
   f3 += `<path d="${textD('90+ ACTIVITIES', w / 2, 10, 11, { align: 'center', wide: 1.1, track: 1.8 })}" class="bbt" stroke="#1a1208" stroke-width="2"/>`;
-  f3 += `<path d="${textD('ON FOUR TIMERS · EACH ONE STARTS ON THE NEXT BAR', w / 2, 27, 4.2, { align: 'center', track: 1.7 })}" class="bbt" stroke="#3d2a10" stroke-width=".85"/>`;
-  const rows = [['REGULAR', 'EVERY 2-5 MIN', 0.92], ['OCCASIONAL', 'EVERY 12-25 MIN', 0.62], ['RARE', 'EVERY 30-60 MIN', 0.42], ['SUPER RARE', 'EVERY 3-6 HOURS', 0.16]];
-  rows.forEach(([a, b, k], i) => {
+  f3 += `<path d="${textD('MOST ON FOUR TIMERS · BARS: EVENTS PER 10-HOUR RUN', w / 2, 27, 4.2, { align: 'center', track: 1.7 })}" class="bbt" stroke="#3d2a10" stroke-width=".85"/>`;
+  // Bars to scale: the medians of 200 simulated runs, from the header of
+  // castaway/activities.toml. Super rare gets a stub, which is the point.
+  const rows = [['REGULAR', 'EVERY 2-5 MIN', 155], ['OCCASIONAL', 'EVERY 12-25 MIN', 30], ['RARE', 'EVERY 30-60 MIN', 13], ['SUPER RARE', 'EVERY 3-6 HOURS', 2]];
+  const barMax = w - 28 - 34;
+  rows.forEach(([a, b, n], i) => {
     const ry = 44 + i * 21;
+    const bw = Math.max(1.6, (barMax * n) / 155);
     f3 += `<path d="${textD(a, 14, ry, 6, { track: 1.8 })}" class="bbt" stroke="#1a1208" stroke-width="1.15"/>`;
     f3 += `<path d="${textD(b, w - 14, ry, 6, { align: 'right', track: 1.8 })}" class="bbt" stroke="#1a1208" stroke-width="1.15"/>`;
-    f3 += `<rect x="14" y="${ry + 9}" width="${f((w - 28) * k)}" height="3.2" fill="#1a1208"/><rect x="14" y="${ry + 9}" width="${w - 28}" height="3.2" fill="none" stroke="#1a1208" stroke-width=".6" opacity=".5"/>`;
+    f3 += `<rect x="14" y="${ry + 9}" width="${f(bw)}" height="3.2" fill="#1a1208"/>`;
+    f3 += `<path d="${textD(`~${n}`, 14 + bw + 4, ry + 8.4, 4.4, { track: 1.6 })}" class="bbt" stroke="#3d2a10" stroke-width=".9"/>`;
   });
   f3 += `<path d="${textD('SHE IS BUSY ABOUT A THIRD OF THE TIME', w / 2, 131, 4.6, { align: 'center', track: 1.7 })}" class="bbt" stroke="#3d2a10" stroke-width=".9"/>`;
   out += `<g class="bb1">${f1}</g><g class="bb2">${f2s}</g><g class="bb3">${f3}</g>`;
@@ -884,9 +921,12 @@ function street() {
   // daylight spilling down the wet street from the far end
   out += `<path d="M${OPEN.x0} ${FL}H${OPEN.x1}L${f(fx1)} ${H}H${f(fx0)}Z" fill="url(#spill)"/>`;
   // reflections: everything above, mirrored about the quay line, squashed,
-  // smeared down by a vertical-only blur
-  const k = 0.5;
-  out += `<g clip-path="url(#cFloor)"><g mask="url(#mRefl)"><g filter="url(#fRefl)" opacity=".7"><g transform="translate(0 ${f(FL * (1 + k))}) scale(1 ${-k})">`;
+  // smeared down by a vertical-only blur. The squash is chosen so the whole
+  // CASTAWAY reflection, blur and all, lands on the street above the bottom
+  // edge (the mask fades the last stretch out) instead of being cut off by
+  // the frame.
+  const k = 0.4;
+  out += `<g clip-path="url(#cFloor)"><g mask="url(#mRefl)"><g filter="url(#fRefl)" opacity=".82"><g transform="translate(0 ${f(FL * (1 + k))}) scale(1 ${-k})">`;
   out += `<rect x="${OPEN.x0 + 4}" y="${OPEN.y0}" width="${OPEN.x1 - OPEN.x0 - 8}" height="${HZ - OPEN.y0}" fill="#8fd2f2" opacity=".75"/>`;
   out += `<rect x="${OPEN.x0 + 4}" y="${HZ}" width="${OPEN.x1 - OPEN.x0 - 8}" height="${FL - HZ}" fill="#2ba4cc" opacity=".7"/>`;
   out += reflect.join('');
@@ -895,7 +935,7 @@ function street() {
   const rnd = mulberry32(80);
   // ripples: broken dashes, close together at the far end and further
   // apart near the viewer, as perspective would have them
-  const rip = (n) => {
+  const ripples = (n) => {
     let d = '';
     for (let i = 0; i < n; i++) {
       const u = (i + 0.2 + rnd() * 0.6) / n;
@@ -910,8 +950,8 @@ function street() {
     }
     return d;
   };
-  out += `<g class="ripA"><path d="${rip(14)}" stroke="${C.floor}" stroke-width="1.6" opacity=".62"/></g>`;
-  out += `<g class="ripB"><path d="${rip(12)}" stroke="${C.floor}" stroke-width="1" opacity=".5"/></g>`;
+  out += `<g class="wetA"><path d="${ripples(14)}" stroke="${C.floor}" stroke-width="1.6" opacity=".62"/></g>`;
+  out += `<g class="wetB"><path d="${ripples(12)}" stroke="${C.floor}" stroke-width="1" opacity=".5"/></g>`;
   // sun glare on the puddles nearest the far end
   out += `<path d="M436 352h14M492 356h22M526 350h9M458 362h12M500 371h16" stroke="#e9fbff" stroke-width="1.1" stroke-linecap="round" class="glare"/>`;
   out += `</g>`;
@@ -1014,10 +1054,10 @@ const style = [
   kf('rainB', [[0, 'transform:translateY(0)'], [0.4, 'transform:translateY(150px)']], 0.4),
   '.spl{fill:none;stroke:#bfe6ee;stroke-width:.8;opacity:0;transform-box:fill-box;transform-origin:center;animation:spl 1.4s ease-out infinite}',
   kf('spl', [[0, 'opacity:.75;transform:scale(.2)'], [1, 'opacity:0;transform:scale(1)']], 1),
-  '.ripA{animation:ripA 5s ease-in-out infinite alternate}',
-  kf('ripA', [[0, 'transform:translate(-5px,0)'], [5, 'transform:translate(5px,.6px)']], 5),
-  '.ripB{animation:ripB 3.5s ease-in-out infinite alternate}',
-  kf('ripB', [[0, 'transform:translate(4px,.5px)'], [3.5, 'transform:translate(-4px,0)']], 3.5),
+  '.wetA{animation:wetA 5s ease-in-out infinite alternate}',
+  kf('wetA', [[0, 'transform:translate(-5px,0)'], [5, 'transform:translate(5px,.6px)']], 5),
+  '.wetB{animation:wetB 3.5s ease-in-out infinite alternate}',
+  kf('wetB', [[0, 'transform:translate(4px,.5px)'], [3.5, 'transform:translate(-4px,0)']], 3.5),
   ...css,
   // reduced motion: one complete, readable frame
   '@media (prefers-reduced-motion:reduce){*{animation:none!important}.rainA,.rainB{opacity:.6}}',
@@ -1048,13 +1088,13 @@ grad.push(`<pattern id="ledOff" width="1.86" height="1.86" patternUnits="userSpa
 grad.push(`<pattern id="hazard" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="12" fill="#151208"/></pattern>`);
 grad.push(`<clipPath id="cOpen"><rect x="${OPEN.x0}" y="${OPEN.y0}" width="${OPEN.x1 - OPEN.x0}" height="${OPEN.y1 - OPEN.y0}"/></clipPath>`);
 grad.push(`<clipPath id="cFloor"><path d="M${OPEN.x0} ${FL}H${OPEN.x1}L${f(floorX(H, 1))} ${H}H${f(floorX(H, -1))}Z"/></clipPath>`);
-grad.push(`<linearGradient id="reflFade" x1="0" y1="${FL}" x2="0" y2="${H}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/><stop offset="1" stop-color="#fff" stop-opacity=".8"/></linearGradient>`);
+grad.push(`<linearGradient id="reflFade" x1="0" y1="${FL}" x2="0" y2="${H}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#fff" stop-opacity=".85"/><stop offset=".8" stop-color="#fff" stop-opacity=".8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>`);
 grad.push(`<mask id="mRefl" maskUnits="userSpaceOnUse" x="0" y="${FL}" width="${W}" height="${H - FL}"><rect x="0" y="${FL}" width="${W}" height="${H - FL}" fill="url(#reflFade)"/></mask>`);
 grad.push(`<clipPath id="cAll"><rect width="${W}" height="${H}" rx="14"/></clipPath>`);
 grad.push(`<filter id="fRefl" filterUnits="userSpaceOnUse" x="${OPEN.x0 - 300}" y="${FL - 10}" width="${OPEN.x1 - OPEN.x0 + 600}" height="${H - FL + 20}"><feGaussianBlur stdDeviation=".9 7"/></filter>`);
 
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="CASTAWAY in neon">`
-  + `<title>CASTAWAY</title>`
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="CASTAWAY in pink neon over a rain-wet alley at noon, with the island at the far end">`
+  + `<title>CASTAWAY: neon signs in a rain-wet alley at noon, with the island at the far end</title>`
   + `<style>${style}</style>`
   + `<defs>${grad.join('')}${filters.join('')}${defs.join('')}</defs>`
   + `<g clip-path="url(#cAll)">`

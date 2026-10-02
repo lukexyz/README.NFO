@@ -19,11 +19,11 @@
   <a href="MUSING.md"><kbd>NOTES</kbd></a>
 </p>
 
-Castaway is a stationary-frame video for YouTube, built to run for ten hours the way the lofi streams do. On a very small island with one tall palm and a raft, a young woman in cream headphones nods to the music. Every so often something happens: her message in a bottle washes straight back, a drone delivers a parcel that turns out to be another pair of headphones, a shark in headphones nods along on the beat, a coconut lands on a hermit crab and the crab walks off wearing it. Then nothing happens for a while. That part is on purpose. Sunny, hand-painted coastal anime, 16:9, 1080p at 30 fps, and always daytime.
+Castaway is a stationary-frame video for YouTube, built to run for ten hours the way the lofi streams do. On a very small island with one tall palm and a raft, a young woman in cream headphones nods to the music. Every so often something happens: her message in a bottle washes straight back, a drone delivers a parcel that turns out to be another pair of headphones, a shark in headphones nods along on the beat, a coconut lands on a hermit crab and the crab walks off wearing it. Then nothing happens for a while. That part is on purpose. Sunny, hand-painted coastal anime, 16:9, 1080p at 24 fps, and always daytime.
 
 The pad up there has the schedule printed on its fourth column. **More than 90 activities** in [activities.toml](activities.toml) wait on four timers: **A** regular, every 2 to 5 minutes; **B** occasional, every 12 to 25; **C** rare, every 30 to 60; **D** super rare, every 3 to 6 hours. Each one starts on the next bar of the music, every 3 seconds, so the gags land on the beat, the same way the keys do.
 
-**Every sound is synthesized from code** by [tools/make_audio.py](tools/make_audio.py): no samples, no loops, no recordings, so no third-party licence applies. The pad agrees. Each key is two sine waves, and the traces on its scope are worked out from the real frequencies.
+**Every sound is synthesized from code** by [tools/make_audio.py](tools/make_audio.py): no samples, no borrowed loops, no recordings, so no third-party licence applies. The pad agrees. Each key is two sine waves, and the traces on its scope are worked out from the real frequencies.
 
 ```sh
 python tools/serve.py
@@ -63,7 +63,7 @@ That is the renderer: a web page with a live preview and an export to a YouTube-
  └────────────────────────────────────────────────────────────────────────┘
 ```
 
-The real schedule does not take requests. When a timer goes off it picks by weight from whatever is free, and the everyday routines fill the gaps: coconut sipping, fishing, jogging laps, a sandcastle that the tide takes, waving for rescue, and a kumara planted early that grows over the course of the video. The scene keeps itself busy as well: shore waves and drifting cloud shadows are built; distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are planned.
+The real schedule does not take requests. When a timer goes off it picks by weight from whatever is free. The regular timer brings the everyday routines: coconut sipping, fishing, jogging laps, a sandcastle that the tide takes. The rarer timers bring the rest, from waving for rescue to planting a kumara that grows over the course of the video. The scene keeps itself busy as well: shore waves and drifting cloud shadows are built; distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are planned.
 
 </details>
 
@@ -78,7 +78,7 @@ The real schedule does not take requests. When a timer goes off it picks by weig
 | <kbd>C</kbd> | rare | 30 to 60 minutes | about 13 |
 | <kbd>D</kbd> | super rare | 3 to 6 hours | about 2 (at most 3 a run) |
 
-Plus the chained follow-ups, which no timer starts: the tide that comes for the sandcastle, the reply to the bottle, and so on. The typical counts are the median of 200 simulated runs, as the file's own header says. She is busy about a third of the time and idles for the rest. Lanes let things overlap, so the ship can sail past while she is busy with a coconut. Every start waits for the next bar of the theme (3 seconds). The default run is 10:00:00 with seed 1992: same seed, same video, gag for gag.
+Plus the chained follow-ups, which no timer starts: the tide that comes for the sandcastle, the reply to the bottle, and so on. The typical counts are the median of 200 simulated runs, as the file's own header says. She is busy about a third of the time and idles for the rest. Lanes let things overlap, so the ship can sail past while she is busy with a coconut. Every start waits for the next bar of the theme (3 seconds). The default run is 10:00:00 with seed 1992: same seed, same schedule, gag for gag.
 
 On the old military telephone network, the A to D keys set the priority of a call. Here they set how rare the gag is. D is the rarest. Please hold.
 
@@ -115,7 +115,7 @@ python tools/schedule.py           # check the schedule, simulate a 10-hour run
 python tools/render_demo.py --dev  # a dev reel of every activity, with a HUD
 ```
 
-[tools/serve.py](tools/serve.py) serves [the renderer](web/index.html), which exports frame-exact video in the browser (WebCodecs H.264, 68 to 78 frames a second at 1080p30 in Chrome); the server then mixes the sound and joins the two into an MP4. [tools/schedule.py](tools/schedule.py) validates [activities.toml](activities.toml) and simulates a run. [tools/render_demo.py](tools/render_demo.py) is the older Python reference renderer. Hard cuts and stepped movement are the motion defaults, which the pad approves of: its lamps have never once faded. The diary of decisions is [MUSING.md](MUSING.md).
+[tools/serve.py](tools/serve.py) serves [the renderer](web/index.html), which exports frame-exact video in the browser (WebCodecs H.264, timed at 68 to 78 frames a second at 1080p30 in Chrome); the server then mixes the sound and joins the two into an MP4. [tools/schedule.py](tools/schedule.py) validates [activities.toml](activities.toml) and simulates a run. [tools/render_demo.py](tools/render_demo.py) is the older Python reference renderer. Hard cuts and stepped movement are the motion defaults, which the pad approves of: its lamps have never once faded. The diary of decisions is [MUSING.md](MUSING.md).
 
 </details>
 
@@ -127,22 +127,24 @@ python tools/render_demo.py --dev  # a dev reel of every activity, with a HUD
  \   SPACE BAR HANGS UP THE LINE     /
       \   CTRL-S PUTS IT ON HOLD  /
 
+         THE IDLE BOX: COMPLETE
+         PLANS FOR TEN HOURS OF
+         ALMOST NOTHING AT ALL
 
-THIS BULLETIN HAS BEEN TAKEN FROM THE
-CASTAWAY FILES OF 2026-10-01. MANY
-THANKS TO NOBODY, WHO HAS NOT HEARD THE
-MUSIC YET EITHER.
-                   ENJOY,
-                     SYSOP OF THE
-                     ONE BAR EXCHANGE
+ POSTED TO THE ONE BAR EXCHANGE FROM
+THE CASTAWAY FILES, 2026-10-01. NO
+REVIEWS OF THE MUSIC: NOBODY HAS
+LISTENED TO IT YET.
+                   HANG LOOSE,
+                     THE SYSOP
                      127.0.0.1:8765
 
- THIS BULLETIN WILL DEAL ONLY WITH ONE
-ISLAND, ONE PALM, ONE RAFT AND ONE
-YOUNG WOMAN IN CREAM HEADPHONES. SHE
-IDLES. SHE NODS. EVERY SO OFTEN
-SOMETHING HAPPENS, ON THE BEAT. THEN IT
-STOPS HAPPENING. TEN HOURS OF THIS.
+ PARTS LIST: ONE ISLAND. ONE PALM. ONE
+RAFT. ONE YOUNG WOMAN IN CREAM
+HEADPHONES. SHE IDLES. SHE NODS. EVERY
+SO OFTEN SOMETHING HAPPENS, ON THE
+BEAT. THEN IT STOPS HAPPENING. REPEAT
+FOR TEN HOURS.
 
  MORE THAN 90 ACTIVITIES, FOUR TIMERS,
 ONE SEED (1992). EVERY SOUND MADE FROM

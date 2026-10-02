@@ -32,9 +32,13 @@
 // lines of ordinary Markdown prose. The script refuses a line wider than 78 columns, a character
 // outside printable ASCII, a tab or trailing whitespace.
 //
-// FACTS: counts are those of D:/python/castaway on 2026-10-01 (activities.toml: 94 activities,
-// 81 on four timers and 13 chained; 26 scene-life entries; median counts of 200 simulated runs
-// as quoted in that file's header). Re-check them before reusing this header later.
+// FACTS: counts are those of D:/python/castaway on AS_OF below (activities.toml: 94 activities,
+// 81 on four timers and 13 chained; [life]: 4 always-on effects and 22 timed events; 181 files
+// in media/audio/audio_catalog.json, quoted as "150+"; the per-tier counts are the medians of
+// 200 simulated runs quoted in activities.toml's own header). The frame rate is 24 fps since the
+// 2026-10-01 decision recorded in MUSING.md and activities.toml [video]; render_demo.py, the
+// frozen reference renderer, still renders at 30, so its row is labelled by its 2-minute demo
+// cut instead. Re-check all of this before reusing the header later.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -83,33 +87,24 @@ function mulberry32(a) {
   };
 }
 
-// A character canvas with a bold flag per cell, for the banners that are drawn rather than typed.
-function canvas(w, h) {
-  const ch = Array.from({ length: h }, () => Array(w).fill(' '));
-  const bold = Array.from({ length: h }, () => Array(w).fill(false));
-  const put = (r, c, s, b = true) => {
-    [...s].forEach((x, i) => {
-      if (x === '\u0000') return; // a hole: leave what is under it
-      ch[r][c + i] = x;
-      bold[r][c + i] = b && x !== ' ';
-    });
-  };
-  const fill = (r, c0, c1, x, b = false) => {
-    for (let c = c0; c <= c1; c++) if (ch[r][c] === ' ') { ch[r][c] = x; bold[r][c] = b; }
-  };
-  const rows = () =>
-    ch.map((row, r) => {
-      let out = '', on = false;
-      row.forEach((x, c) => {
-        const b = bold[r][c];
-        if (b && !on) { out += '\u0001'; on = true; }
-        if (!b && on && x !== ' ') { out += '\u0002'; on = false; }
-        out += x;
-      });
-      if (on) out += '\u0002';
-      return out.replace(/ +(\u0002?)$/, '$1').replace(/ +(\u0002)$/, '$1');
-    });
-  return { put, fill, rows };
+// Two drawings of the same size laid one over the other, for the banners that are drawn rather
+// than typed: the silhouette (printed bold) wins wherever it has ink, the scenery (plain) shows
+// through everywhere else.
+function layered(silhouette, scenery) {
+  const S = art(silhouette), P = art(scenery);
+  return Array.from({ length: Math.max(S.length, P.length) }, (_, r) => {
+    const s = S[r] || '', p = P[r] || '';
+    let out = '', on = false;
+    for (let c = 0; c < Math.max(s.length, p.length); c++) {
+      const b = (s[c] || ' ') !== ' ';
+      const x = b ? s[c] : p[c] || ' ';
+      if (b && !on) { out += '\u0001'; on = true; }
+      if (!b && on && x !== ' ') { out += '\u0002'; on = false; }
+      out += x;
+    }
+    if (on) out += '\u0002';
+    return out.replace(/ +(\u0002?)$/, '$1');
+  });
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -172,40 +167,47 @@ function wordmark(word) {
 // ---------------------------------------------------------------------------------------------
 // 2. The banners. Each returns an array of lines. island() is the silhouette genre: the palm,
 //    the island and the sun filled solid with one capital letter (C, for the name), with a
-//    small lowercase c where a shape only half covers a cell.
+//    small lowercase c where a shape only half covers a cell, and ' . _ for the edges.
 // ---------------------------------------------------------------------------------------------
 function island() {
-  const k = canvas(77, 14);
-  const { put, fill } = k;
-  // the palm's crown: two upper fronds arching over, two outer fronds drooping to the tips,
-  // two inner fronds drooping either side of the trunk
-  put(0, 19, '_cCCCCCCCCc_'); put(0, 34, '_cCCCCCCCCc_');
-  put(1, 15, '_cCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCc_');
-  put(2, 12, "_cCCC''"); put(2, 26, '_cCCCCCCCCCCCCc_'); put(2, 48, "''CCCc_");
-  put(3, 10, "_CC''"); put(3, 22, "_cCCC''"); put(3, 31, 'CC'); put(3, 39, "''CCCc_"); put(3, 52, "''CC_");
-  put(4, 9, "CC'"); put(4, 20, "_CCC'"); put(4, 30, 'oCCo'); put(4, 43, "'CCC_"); put(4, 55, "'CC");
-  put(5, 8, "C'"); put(5, 19, "CC'"); put(5, 30, 'CC'); put(5, 46, "'CC"); put(5, 57, "'C");
-  put(6, 7, "'"); put(6, 18, "C'"); put(6, 29, 'CC'); put(6, 48, "'C"); put(6, 59, "'");
-  put(7, 17, "'"); put(7, 28, 'CC'); put(7, 50, "'");
-  put(8, 27, 'CC');
-  put(9, 26, 'CCC');
-  // the sun, and two gulls
-  put(0, 62, '\\   |   /', false); put(1, 62, '.cCCCCCc.'); put(2, 57, '--', false);
-  put(2, 61, 'CCCCCCCCCCC'); put(2, 74, '--', false); put(3, 62, "'CCCCCCC'"); put(4, 62, '/   |   \\', false);
-  put(0, 51, 'v', false); put(1, 55, 'v', false);
-  // a ship on the horizon, minding its own business
-  put(5, 67, '|\\', false); put(6, 67, '|_\\', false); put(7, 63, '\\_____/', false);
-  // her: headphones, and nodding (you will have to take the nodding on trust)
-  put(9, 37, '{o}');
-  put(10, 13, '__cccccccccccCCCCcccccccc');
-  put(10, 38, '/|\\'); put(10, 41, 'cccccc__');
-  put(11, 6, '_ccCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCcc_');
-  put(11, 54, '[=|=|=|=|=]', false);
-  put(12, 5, 'cCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCc');
-  fill(12, 1, 4, '~'); fill(12, 54, 76, '~');
-  put(13, 3, '~~~  ~~~~~~   ~~~~  ~~~~~~~~   ~~~  /| ~~~~~~   ~~~~~  ~~~~~~~   ~~~~  ~~', false);
-  fill(7, 0, 76, '_');
-  return [...k.rows(), '', ...wordmark('CASTAWAY').map(B)];
+  // The silhouette, printed bold: a palm whose two upper fronds arch out from a notch over the
+  // trunk and droop to their tips, two lower fronds hanging either side of the coconuts (oCCo),
+  // a trunk leaning down to the sand, the island, the sun, and her: {o} is a head between two
+  // headphone cups, /|\ is the rest of her, nodding (you will have to take the nodding on trust).
+  const silhouette = String.raw`
+               _.cCCCCCCc._       _.cCCCCCCc._
+          _.cCCCCCCCCCCCCCCCc.  .cCCCCCCCCCCCCCCCc._          .cCCCCCc.
+       .cCCCCC''       ''CCCCCccCCCCC''       ''CCCCCc.      CCCCCCCCCCC
+     .CCCC'          _.ccCCCCCCCCCCcc._          'CCCC.       'CCCCCCC'
+    CCC'          .cCCCC'' oCCo ''CCCCc.          'CCC
+   CC'          .CCC''      CCC     ''CCC.          'CC
+   C'          CCC'         CCC        'CCC          'C
+   '          CC'          CCC           'CC          '
+              C'          CCC              'C
+              '          CCCC        {o}    '
+            __.ccccccccccCCCCCCcccccc/|\ccccccc.__
+      _.ccCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCcc._
+    cCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCc
+`;
+  // The scenery, plain: sun rays, two gulls, the horizon with a ship on it (minding its own
+  // business), the raft, the sea, and a fin that has every right to be there.
+  const scenery = String.raw`
+                                                  v           \   |   /
+                                                       v
+                                                         --               --
+
+                                                              /   |   \
+                                                                   |\
+                                                                   |_\
+_______________________________________________________________\_____/_______
+
+
+
+                                                           [=|=|=|=|=]
+~~~~                                                      ~~~~~~~~~~~~~~~~~~~
+   ~~~  ~~~~~~   ~~~~  ~~~~~~~~   ~~~  /| ~~~~~~   ~~~~~  ~~~~~~~   ~~~~  ~~
+`;
+  return [...layered(silhouette, scenery), '', ...wordmark('CASTAWAY').map(B)];
 }
 
 // cowsay's grammar (a bubble of underscores and hyphens, angle-bracket ends, a two-backslash
@@ -289,7 +291,7 @@ function cat() {
         ( -.- )  z z z
          )   (            the cat has the console today.
     .---(_)-(_)----.      it arrived on a crate. it will leave on a crate.
-    |  THIS WAY UP |      nobody can say when. not even the schedule.
+    |  THIS WAY UP |      it has not said when.
     |______________|
   ~~~~~~~~~~~~~~~~~~~~~~`);
 }
@@ -315,8 +317,14 @@ function statsBlock(first, rest) {
     ...rest.map((r) => `+ -- --=[ ${pad(r, inner)} ]`),
   ];
 }
-const STATS = statsBlock(`${B('castaway')} (working title) - in development - 2026-10-01`, [
-  '94 activities - 81 on four timers - 13 chained follow-ups',
+// The counts that drift. Re-measure them (read-only) before regenerating:
+//   cd D:/python/castaway && python -B -c "import tomllib; d=tomllib.load(open('activities.toml','rb'));
+//     from collections import Counter; print(Counter(a['tier'] for a in d['activities'].values()))"
+const AS_OF = '2026-10-02';
+const ACT = { timed: 81, chained: 13 };
+ACT.total = ACT.timed + ACT.chained;
+const STATS = statsBlock(`${B('castaway')} (working title) - in development - ${AS_OF}`, [
+  `${ACT.total} activities - ${ACT.timed} on four timers - ${ACT.chained} chained follow-ups`,
   '10 h: ~155 regular - ~30 occasional - ~13 rare - ~2 super rare',
   '26 scene-life entries - 4 always on - 22 timed events',
   '150+ sounds - all synthesized from code - 0 samples',
@@ -333,7 +341,7 @@ const top = [
   '',
   `[*] Start the island:  python ${SERVE}`,
   `[*] Then open:         ${LOCAL}  (live preview, MP4 export)`,
-  `[*] Banner ${DATED[DATE] ? 'of the day' : `${pickIndex + 1} of ${BANNERS.length}`}, drawn with seed ${SEED}. On 1 April the cat gets the console.`,
+  `[*] Banner ${DATED[DATE] ? 'of the day' : `${pickIndex + 1} of ${BANNERS.length}`}, drawn with seed ${SEED}. The cat has booked 1 April.`,
   '',
   `${PROMPT}_`,
 ];
@@ -342,21 +350,12 @@ const top = [
 // 4. The scan report: the island as the host, the project's numbers as ports, its files as the
 //    services, and the details hanging in the pipe gutter.
 // ---------------------------------------------------------------------------------------------
+// Listed in port order, as a scanner would. Every port number is one of the project's own:
+// 0 nights, 1 bar of signal, 80 bpm, the activity count, the 120-second demo cut, the default
+// seed, the year in the log, and the port tools/serve.py really listens on.
 const PORTS = [
-  { port: '8765/http', state: 'open', service: ['tools/serve.py', 'tools/serve.py'], version: 'web renderer, preview + export',
-    gutter: [
-      `page:   ${L('web/index.html', 'web/index.html')}, plain ES modules, no build step, no npm`,
-      'export: frame-exact H.264 via WebCodecs, 68-78 fps at 1080p30 (Chrome)',
-      'mux:    the server mixes the sound and joins the two into an MP4',
-    ] },
-  { port: '1992/seed', state: 'open', service: ['tools/schedule.py', 'tools/schedule.py'], version: 'validates, simulates 10 hours',
-    gutter: [
-      'regular     every 2-5 min    ~155 a run   coconut, fishing, a jog',
-      'occasional  every 12-25 min   ~30 a run   turtle, bottle, a crab',
-      'rare        every 30-60 min   ~13 a run   drone, shark, the cat',
-      'super rare  every 3-6 hours    ~2 a run   she strolls off over the water',
-      'every start snaps to the next bar of the music (every 3 s)',
-    ] },
+  { port: '0/night', state: 'closed', service: ['night', null], version: 'always daytime (house rule)' },
+  { port: '1/bar', state: 'filtered', service: ['signal', null], version: 'only at the very top of the palm' },
   { port: '80/bpm', state: 'open', service: ['tools/make_audio.py', 'tools/make_audio.py'], version: 'theme in F major, ii-V-I-vi',
     gutter: [
       'theme:  seamless 60 s loop, 20 bars of exactly 3 s',
@@ -365,12 +364,27 @@ const PORTS = [
       'levels: -14 LUFS, true peak <= -1 dBTP; master + per routine',
       'heard:  not yet. nobody has listened to any of it.',
     ] },
-  { port: '94/toml', state: 'open', service: ['activities.toml', 'activities.toml'], version: 'every routine and its timer' },
-  { port: '30/fps', state: 'open', service: ['tools/render_demo.py', 'tools/render_demo.py'], version: '--dev: every routine + HUD' },
-  { port: '1/log', state: 'open', service: ['MUSING.md', 'MUSING.md'], version: 'what holds now, and why' },
-  { port: '1/bar', state: 'filtered', service: ['signal', null], version: 'only at the very top of the palm' },
-  { port: '0/night', state: 'closed', service: ['night', null], version: 'always daytime (house rule)' },
+  { port: `${ACT.total}/toml`, state: 'open', service: ['activities.toml', 'activities.toml'], version: 'every routine and its timer' },
+  { port: '120/demo', state: 'open', service: ['tools/render_demo.py', 'tools/render_demo.py'], version: 'the 2-min demo cut; --dev reel' },
+  { port: '1992/seed', state: 'open', service: ['tools/schedule.py', 'tools/schedule.py'], version: 'validates, simulates 10 hours',
+    gutter: [
+      'regular     every 2-5 min    ~155 a run   coconut, fishing, a jog',
+      'occasional  every 12-25 min   ~30 a run   turtle, bottle, a crab',
+      'rare        every 30-60 min   ~13 a run   drone, shark, the cat',
+      'super rare  every 3-6 hours    ~2 a run   she strolls off over the water',
+      'every start snaps to the next bar of the music (every 3 s)',
+    ] },
+  { port: '2026/log', state: 'open', service: ['MUSING.md', 'MUSING.md'], version: 'what holds now, and why' },
+  { port: '8765/http', state: 'open', service: ['tools/serve.py', 'tools/serve.py'], version: 'web renderer, preview + export',
+    gutter: [
+      `page:   ${L('web/index.html', 'web/index.html')}, plain ES modules, no build step, no npm`,
+      'export: frame-exact H.264 via WebCodecs, 68-78 frames/s at 1080p (Chrome)',
+      'mux:    the server mixes the sound and joins the two into an MP4',
+    ] },
 ];
+const PORT_NUMS = new Set(PORTS.map((p) => p.port.split('/')[0]));
+if (PORT_NUMS.size !== PORTS.length) throw new Error('two rows share a port number');
+const NOT_SHOWN = 65536 - PORTS.length; // ports 0 to 65535
 function scanReport() {
   const C1 = 12, C2 = 10, C3 = 22;
   const out = [
@@ -379,7 +393,7 @@ function scanReport() {
     '',
     `shorescan report for ${B('the-island')} (one palm, one raft, no harbour)`,
     'Island is up (0.75s latency: one nod per beat at 80 bpm).',
-    `Not shown: ${65536 - PORTS.length} closed ports (desert island: nothing docks here)`,
+    `Not shown: ${NOT_SHOWN} closed ports (desert island: nothing docks here)`,
     '',
     `${'PORT'.padEnd(C1)}${'STATE'.padEnd(C2)}${'SERVICE'.padEnd(C3)}VERSION`,
   ];
@@ -479,17 +493,21 @@ function leet(s, r) {
 }
 function joke() {
   const r = mulberry32(SEED + 1);
+  const row = (port) => {
+    const p = PORTS.find((x) => x.port === port);
+    return `${p.port.padEnd(11)}${p.state.padEnd(10)}${p.service[0]}`;
+  };
   const src = [
     'shorescan report for the-island (one palm, one raft, no harbour)',
     'Island is up (0.75s latency: one nod per beat)',
-    'Not shown: 65528 closed ports',
+    `Not shown: ${NOT_SHOWN} closed ports`,
     '',
-    'PORT       STATE     SERVICE',
-    '8765/http  open      tools/serve.py',
-    '80/bpm     open      tools/make_audio.py',
-    '0/night    closed    night',
+    `${'PORT'.padEnd(11)}${'STATE'.padEnd(10)}SERVICE`,
+    row('0/night'),
+    row('80/bpm'),
+    row('8765/http'),
     '',
-    'shorescan done: 1 island (1 castaway up) watched in 36000.00 seconds',
+    `shorescan done: 1 island (1 castaway up) watched in ${(10 * 3600).toFixed(2)} seconds`,
   ];
   return [`${PROMPT}set OUTPUT l33t`, 'OUTPUT => l33t', `${PROMPT}scan the-island --all-day`, '', ...src.map((l) => leet(l, r))];
 }
@@ -513,7 +531,7 @@ const md = [
   '',
   pre('top', top),
   '',
-  '**Castaway** (working title) is a ten-hour lo-fi video for YouTube in which almost nothing happens, on purpose. A young woman, a tiny island, one tall palm, a raft and a great deal of time. She idles, nodding to the music on her headphones, and every few minutes, exactly on the next bar, something happens: her message in a bottle washes straight back, a sea turtle crawls up for a nap, a drone delivers more headphones. An unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver Johnny Castaway. Sunny, hand-painted, always daytime, 1080p at 30 fps, and every sound is synthesized from code. In development: no video has been published yet.',
+  '**Castaway** (working title) is a ten-hour lo-fi video for YouTube in which almost nothing happens, on purpose. A young woman, a tiny island, one tall palm, a raft and a great deal of time. She idles, nodding to the music on her headphones, and every few minutes, exactly on the next bar, something happens: her message in a bottle washes straight back, a sea turtle crawls up for a nap, a drone delivers more headphones. An unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver Johnny Castaway. Sunny, hand-painted, always daytime, 1080p at 24 fps, and every sound is synthesized from code. In development: no video has been published yet.',
   '',
   pre('scan', scanReport()),
   '',
@@ -525,7 +543,7 @@ const md = [
   '</details>',
   '',
   '<details>',
-  '<summary><b>banner</b>: the rest of the rotation (one is drawn per build; the cat only turns up on 1 April)</summary>',
+  '<summary><b>banner</b>: the rest of the rotation (the generator draws one by seed; the cat has booked 1 April)</summary>',
   '',
   pre('banners', otherBanners()),
   '',
@@ -543,7 +561,9 @@ const md = [
   '',
   'This header borrows the start-up habits of security-tool consoles: a banner drawn at random, a block of counts with every closing bracket in one column, and a port-scan report with script output hanging in a gutter of pipes. Nothing here scans anything. The host is the island in the video, the ports are the project\'s own numbers, every service is one of its own files, and the only address on the page is `127.0.0.1`, your own machine, where `tools/serve.py` listens. The scanner, the prompt and the banners were made up for Castaway.',
   '',
-  'Castaway is an unofficial remake inspired by the 1992 screensaver Johnny Castaway, which belongs to its owners. Counts are as of 2026-10-01; the schedule grows every few hours, so trust `python tools/schedule.py` over this page.',
+  'The banner rotation is real, but it lives in the script that writes this header, not in Castaway: a seeded generator picks one of four banners (seed 1992, like the video\'s default run, draws the island), and asking it for 1 April hands the console to the cat.',
+  '',
+  `Castaway is an unofficial remake inspired by the 1992 screensaver Johnny Castaway, which belongs to its owners. Counts are as of ${AS_OF}; the schedule grows every few hours, so trust \`python tools/schedule.py\` over this page.`,
   '',
   '</details>',
   '',

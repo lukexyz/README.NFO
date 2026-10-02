@@ -48,8 +48,9 @@
 //     The minute (the length of the theme's loop, 20 bars of 3 s):
 //       0 s   CASTAWAY and its tagline are locked, from the first frame
 //       14 s  the rain washes the letters away, head by head
-//       20 s  the rain writes the island instead: sun, clouds, horizon, the
-//             palm, the sand, a raft, and her (three glyphs tall, her head
+//       20 s  the rain writes the island instead: sun, clouds, horizon, a
+//             band of blue sea, the palm, the sand, a raft, and her (three
+//             glyphs tall, her head
 //             nodding on every beat). Under the island the rain was already
 //             full of shells, starfish and palms.
 //       28 s  a coconut drops from the palm, lands on a hermit crab on the bar
@@ -341,11 +342,12 @@ const tagCells = (text) => {
 
 // ---------------------------------------------------------------------------
 // The island: a mosaic of locked cells. Masses (sun, clouds, palm, sand,
-// raft, her) are lit tiles holding the cell's own rain glyph; lines (the
-// horizon, waves, foam) are drawn glyphs on the dark.
+// raft, her, the calm sea) are lit tiles holding the cell's own rain glyph;
+// lines (waves and foam on sea tiles, the horizon on the dark) are drawn
+// glyphs.
 // ---------------------------------------------------------------------------
 const HUE = {
-  title: { hue: '#ffb238', ink: '#fff7e2', tile: 'pillow', lum: 0.7, edge: 0.55 },
+  title: { hue: '#ffb238', ink: '#fff7e2', tile: 'pillow', lum: 0.86, edge: 0.6 },
   tag: { hue: '#1a5d58', ink: '#eafff9', tile: 'flat' },
   sun: { hue: '#ffcc3a', ink: '#fff7cf', tile: 'pillow', lum: 0.82 },
   cloud: { hue: '#b9dcef', ink: '#ffffff', tile: 'pillow' },
@@ -359,8 +361,10 @@ const HUE = {
   top: { hue: '#ff7a5c', ink: '#fff0e6', tile: 'pillow' },
   shorts: { hue: '#e8d6b0', ink: '#fffaf0', tile: 'pillow' },
   horizon: { ink: '#a6ecff', tile: 'none' },
-  sea: { ink: '#45bdf0', tile: 'none' },
-  foam: { ink: '#dcf9ff', tile: 'none' },
+  sea: { hue: '#2489b5', ink: '#6fd3ff', tile: 'flat' },
+  foam: { hue: '#2489b5', ink: '#e2fbff', tile: 'flat' },
+  // the calm sea between the waves: the cell's own rain glyph, locked dim
+  seaf: { hue: '#2489b5', ink: '#236f96', tile: 'flat' },
 };
 // full-cell line glyphs (16 x 20) for the island
 const LINE = {
@@ -416,6 +420,18 @@ for (let r = 6; r <= 12; r++) {
     const p = (r === 6 ? 0.09 : 0.15) * Math.min(1, edge + 0.3);
     const near = [-1, 1].some((d) => pic.get(`${c + d},${r}`)?.hue === 'sea');
     if (!near && R() < p) paint(c, r, 'sea', R() < 0.5 ? 'sea' : 'seaSmall');
+  }
+}
+// ...and the rest of the sea locks too, as a calm blue band with a ragged
+// edge, so the island reads at a glance. Its own PRNG leaves the field as is.
+{
+  const RS = rng(1406);
+  for (let r = 6; r <= 12; r++) {
+    const c0 = 6 + Math.floor(RS() * 3), c1 = 68 - Math.floor(RS() * 3);
+    for (let c = c0; c <= c1; c++) {
+      if (pic.has(`${c},${r}`) || (c === HER.c && r >= HER.r && r <= HER.r + 2)) continue;
+      paint(c, r, 'seaf');
+    }
   }
 }
 
@@ -506,6 +522,17 @@ for (let r = 0; r < ROWS; r++) {
     field[r].push(g);
   }
 }
+// how much of the field is island pictograms, for the key's subtitle (kept
+// honest: the words come from the count, and an odd share stops the build)
+const PICTO_SHARE = (() => {
+  const set = new Set(PICTO_LIST);
+  let n = 0;
+  for (const row of field) for (const g of row) if (set.has(g)) n++;
+  return n / (ROWS * COLS);
+})();
+const PICTO_SHARE_WORD = [['THREE', 1 / 3], ['FOUR', 1 / 4], ['FIVE', 1 / 5], ['SIX', 1 / 6]]
+  .find(([, k]) => Math.abs(PICTO_SHARE - k) < 0.02)?.[0];
+if (!PICTO_SHARE_WORD) throw new Error(`picto share ${PICTO_SHARE.toFixed(3)} has no plain word`);
 const fieldPolys = [];
 for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) fieldPolys.push(...shift(field[r][c], c * CW + 2, r * CH + 2));
 
@@ -633,7 +660,14 @@ function buildBanner() {
   css.push(`@keyframes kt{0%{opacity:0}${pct(T_TITLE_HOLD)}{opacity:1}}@keyframes ki{0%{opacity:1}${pct(T_ISLE_HOLD)}{opacity:0}}`);
   css.push(`.t{animation:kt 60s steps(1,end) infinite}.i{animation:ki 60s steps(1,end) infinite;opacity:0}`);
   const usedHues = new Set(['title', 'tag']);
-  const cell = (layer, hue, id, at, c, r) => { usedHues.add(hue); return `<use href="#${id}" class="${layer} h-${hue} ${dcls(delayFor(at))}" x="${c * CW}" y="${r * CH}"/>`; };
+  // each cell is a <use>; its hue (tile fill and ink) is inherited from a
+  // group per hue, which keeps the file small
+  const cell = (layer, hue, id, at, c, r) => { usedHues.add(hue); return { hue, s: `<use href="#${id}" class="${layer} ${dcls(delayFor(at))}" x="${c * CW}" y="${r * CH}"/>` }; };
+  const byHue = (cells) => {
+    const groups = new Map();
+    for (const { hue, s } of cells) { if (!groups.has(hue)) groups.set(hue, []); groups.get(hue).push(s); }
+    return [...groups].map(([hue, list]) => `<g class="h-${hue}">${list.join('')}</g>`).join('');
+  };
   const titleU = titleCells.map(({ c, r }) => cell('t', 'title', glyphSym(field[r][c]), titleOff(c, r), c, r));
   const letterSym = (ch) => symbol('L' + ch, letterPolys(ch, 0, 0));
   const tagAU = tagCells(TAG_A).map(({ ch, c, r }) => cell('t', 'tag', letterSym(ch), titleOff(c, r), c, r));
@@ -655,9 +689,14 @@ function buildBanner() {
   defs.push(`<g id="zl">${tileOf('shorts')}${HER_LEGS}</g>`);
   const CRABC = '#ff7a52';
   defs.push(`<g id="zc">${tileOf('sand')}${art(CRABC, [[[4, 12], [12, 12], [14, 15], [12, 18], [4, 18], [2, 15], [4, 12]], [[3, 13], [1, 9], [3, 6]], [[1, 9], [4, 9]], [[13, 13], [15, 9], [13, 6]], [[15, 9], [12, 9]], [[6, 12], [6, 10]], [[10, 12], [10, 10]]])}</g>`);
-  const hatNut = (dy) => art('#ffdcb6', shift([[[5, 4], [11, 4], [14, 8], [14, 13], [2, 13], [2, 8], [5, 4]], [[6, 8], [7, 8]], [[9, 8], [10, 8]]], 0, dy));
-  defs.push(`<g id="zw1">${tileOf('sand')}${hatNut(0)}${art(CRABC, [[[3, 13], [1, 17], [2, 19]], [[13, 13], [15, 17], [14, 19]], [[6, 13], [5, 19]], [[10, 13], [11, 19]]])}</g>`);
-  defs.push(`<g id="zw2">${tileOf('sand')}${hatNut(1)}${art(CRABC, [[[3, 14], [2, 18], [0, 19]], [[13, 14], [14, 18], [16, 19]], [[6, 14], [6, 19]], [[10, 14], [10, 19]]])}</g>`);
+  // the crab in its new hat: a filled brown coconut dome (three eyes, as
+  // coconuts have) over an orange crab, claws out either side, legs stepping
+  const hatNut = (dy) =>
+    `<path fill="#6a3d1e" stroke="#ffdcb6" d="${pathD(shift([[[3, 12], [3, 8], [6, 4], [10, 4], [13, 8], [13, 12], [3, 12]]], 0, dy))}"/>` +
+    art('#ffdcb6', shift([[[6, 7], [6.6, 7]], [[9.4, 7], [10, 7]], [[8, 9.4], [8, 10]]], 0, dy));
+  const crabUnder = (legs) => art(CRABC, [[[3, 13], [13, 13]], [[3, 13], [1, 12]], [[1, 12], [0, 9]], [[1, 12], [2.5, 9.5]], [[13, 13], [15, 12]], [[15, 12], [16, 9]], [[15, 12], [13.5, 9.5]], ...legs]);
+  defs.push(`<g id="zw1">${tileOf('sand')}${crabUnder([[[4, 13], [2, 17]], [[6, 13], [5, 18]], [[10, 13], [11, 18]], [[12, 13], [14, 17]]])}${hatNut(0)}</g>`);
+  defs.push(`<g id="zw2">${tileOf('sand')}${crabUnder([[[4, 13], [3, 18]], [[6, 13], [6.5, 17]], [[10, 13], [9.5, 17]], [[12, 13], [13, 18]]])}${hatNut(1)}</g>`);
   defs.push(`<g id="zn">${tileOf('nut')}${art('#ffdcb6', [[[5, 4], [11, 4], [14, 8], [14, 13], [11, 17], [5, 17], [2, 13], [2, 8], [5, 4]], [[6, 8], [7, 8]], [[9, 8], [10, 8]], [[7, 12], [9, 12]]])}</g>`);
   ['hair', 'top', 'shorts', 'sand', 'nut'].forEach((h) => usedHues.add(h));
 
@@ -704,7 +743,7 @@ function buildBanner() {
 
   defs.push(`<path id="F" d="${pathD(fieldPolys)}"/>`);
   defs.push(`<clipPath id="cp"><rect width="${W}" height="${H}" rx="14"/></clipPath>`);
-  defs.push(`<radialGradient id="pl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${BG}" stop-opacity=".66"/><stop offset=".7" stop-color="${BG}" stop-opacity=".45"/><stop offset="1" stop-color="${BG}" stop-opacity="0"/></radialGradient>`);
+  defs.push(`<radialGradient id="pl" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="${BG}" stop-opacity=".52"/><stop offset=".7" stop-color="${BG}" stop-opacity=".34"/><stop offset="1" stop-color="${BG}" stop-opacity="0"/></radialGradient>`);
   defs.push(`<linearGradient id="ev" x2="0" y2="1"><stop offset="0" stop-color="${BG}"/><stop offset=".1" stop-color="${BG}" stop-opacity="0"/><stop offset=".88" stop-color="${BG}" stop-opacity="0"/><stop offset="1" stop-color="${BG}"/></linearGradient>`);
 
   css.unshift(
@@ -712,13 +751,13 @@ function buildBanner() {
     `.fh{fill:none;stroke:#fff;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;opacity:.16}`,
     `.w{opacity:0;fill:#000;stroke:#fff;stroke-width:1.6;stroke-linecap:square}`,
     `.t,.i{stroke-width:1.8;stroke-linecap:square}`,
-    `.h-horizon,.h-sea,.h-foam{stroke-linecap:round;stroke-linejoin:round}`,
+    `.h-horizon use,.h-sea use,.h-foam use{stroke-linecap:round;stroke-linejoin:round}`,
     `.z path{stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}`,
   );
   for (const [s, cls] of delays) css.push(`.${cls}{animation-delay:${s}}`);
   css.push(`@media (prefers-reduced-motion:reduce){*{animation:none!important}.gl{display:none}}`);
 
-  const alt = 'CASTAWAY, written in digital rain: fixed columns of glyphs on a dark lagoon panel, lit by falling white heads with aqua tails, stop on bright amber glyphs that spell the name, over the line SHE IDLES. EVERY SO OFTEN, SOMETHING HAPPENS. Then the rain washes the letters away and writes an island in coloured glyphs: sun, clouds, horizon, one tall palm, sand, a raft and her, three glyphs tall, nodding. A coconut drops on a hermit crab, which walks off wearing it, over the line EVERY GULL, WAVE AND KALIMBA NOTE IS CODE. Then the rain writes CASTAWAY back.';
+  const alt = 'CASTAWAY, written in digital rain: fixed columns of glyphs on a dark lagoon panel, lit by falling white heads with aqua tails, stop on bright amber glyphs that spell the name, over the line SHE IDLES. EVERY SO OFTEN, SOMETHING HAPPENS. Then the rain washes the letters away and writes an island in coloured glyphs: sun, clouds, horizon, a band of blue sea, one tall palm, sand, a raft and her, three glyphs tall, in cream headphones, a coral tank top and cream shorts, nodding. A coconut drops on a hermit crab, which walks off wearing it, over the line EVERY GULL, WAVE AND KALIMBA NOTE IS CODE. Then the rain writes CASTAWAY back.';
   return [
     `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${alt}">`,
     `<title>${alt}</title>`,
@@ -734,11 +773,11 @@ function buildBanner() {
     `<rect width="${W}" height="${H}" fill="${BG}" style="mix-blend-mode:lighten"/>`,
     `<rect x="${4 * CW}" width="${(COLS - 8) * CW}" height="${H}" fill="url(#pl)"/>`,
     `<rect width="${W}" height="${H}" fill="url(#ev)"/>`,
-    titleU.join(''),
+    byHue(titleU),
     glint,
-    tagAU.join(''),
-    isleU.join(''),
-    tagBU.join(''),
+    byHue(tagAU),
+    byHue(isleU),
+    byHue(tagBU),
     `<g class="z">${special.join('')}</g>`,
     `</g>`,
     `<rect x=".75" y=".75" width="${W - 1.5}" height="${H - 1.5}" rx="13.5" fill="none" stroke="#1b4a47" stroke-width="1.5"/>`,
@@ -800,7 +839,8 @@ function buildKey() {
   css.push(`.ka{fill:none;stroke:#ffcf7a;stroke-width:2.6;stroke-linecap:square}.kb{fill:none;stroke:#7fd9c9;stroke-width:1.5;stroke-linecap:square}`);
   // heading
   body.push(`<path class="ka" d="${pathD(textPolys('READING THE RAIN', X0, 30, 1.6))}"/>`);
-  body.push(`<path class="kb" d="${pathD(textPolys('ABOUT ONE GLYPH IN FOUR IS SOMETHING FROM THE ISLAND.', X0, 68, 0.8))}"/>`);
+  // the share is measured on the banner's field below (picto cells / all cells)
+  body.push(`<path class="kb" d="${pathD(textPolys(`ABOUT ONE GLYPH IN ${PICTO_SHARE_WORD} IS SOMETHING FROM THE ISLAND.`, X0, 68, 0.8))}"/>`);
   // a short column of rain at the top right: tail to head
   const ramp = ['#0b4743', '#13806f', RAMP.body, RAMP.bright, '#ffffff'];
   const rampGlyphs = [CODE[3], DIGITS[5], PICTO.palm, CODE[22], PICTO.coconut];

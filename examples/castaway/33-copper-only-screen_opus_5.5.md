@@ -19,7 +19,7 @@
   <kbd>$FFFF,$FFFE</kbd> the end of every copper list
 </p>
 
-A stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly idles, nodding to the music on her headphones, and every so often something happens. A message in a bottle washes straight back. A shark in headphones nods to the beat. A coconut falls on a hermit crab, and the coconut walks off with the crab wearing it. It is an unofficial remake inspired by the small-island routines and visual comedy of *Johnny Castaway*, the 1992 desert-island screensaver, repainted as a sunny, hand-painted coastal anime scene. 16:9, 1080p, 30 fps, and always daytime.
+A stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly idles, nodding to the music on her headphones, and every so often something happens. A message in a bottle washes straight back. A shark in headphones nods to the beat. A coconut falls on a hermit crab, and the coconut walks off with the crab wearing it. It is an unofficial remake inspired by the small-island routines and visual comedy of *Johnny Castaway*, the 1992 desert-island screensaver, repainted as a sunny, hand-painted coastal anime scene. 16:9 at 1080p, and always daytime.
 
 More than 90 activities live in [activities.toml](activities.toml), on four timers: regular every 2 to 5 minutes, occasional every 12 to 25, rare every 30 to 60, super rare every 3 to 6 hours. Each one waits for the next bar of the music before it starts, so the gags land on the beat, and lanes let two things happen at once. Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no loops, no recordings, so no third-party licence. Nobody has heard it yet. A meter has, and reports -14 LUFS.
 
@@ -28,12 +28,12 @@ python tools/serve.py
 # then open http://127.0.0.1:8765/
 ```
 
-The page previews the island live and exports a YouTube-ready MP4: the browser encodes frame-exact H.264 with WebCodecs, then the server mixes the sound and joins the two. Plain ES modules, no build step, no npm packages. Still in development, and nothing is published: no video, no link. To watch her wait, run it.
+The page previews the island live and exports a YouTube-ready MP4: the browser encodes frame-exact H.264 with WebCodecs, and the server mixes in the sound. Plain ES modules, no build step, no npm packages. Still in development: no video is published and there is no link. To watch her wait, run it.
 
 <details>
 <summary><b>THE COPPER LIST</b>: the island in two words, and her day in the same two words</summary>
 
-On an Amiga, the copper is a tiny co-processor that knows two useful instructions. WAIT until the video beam reaches a given spot on the screen. MOVE a value into a register, such as the background colour. A copper-only screen is a picture made of nothing else: no bitmap, no pixels behind it, just a very long list of colour changes timed to the beam. This is the island in the banner, written that way.
+On an Amiga, the copper is a tiny co-processor with three instructions, and a copper screen gets by on two of them. WAIT until the video beam reaches a given spot on the screen. MOVE a value into a register, such as the background colour. A copper-only screen is a picture made of nothing else: no bitmap, no pixels behind it, just a very long list of colour changes timed to the beam. This is the island in the banner, written that way.
 
 ```text
  ; ISLAND.COP: one island, no bitplanes. COLOR00 is the background colour.
@@ -71,7 +71,7 @@ That last line is how every copper list ends: wait for a beam position the scree
           WAIT  $ffff,$fffe              ; she could leave any time
 ```
 
-**The maths.** At 80 BPM a bar is 3 seconds, so a ten-hour video has 12,000 bar lines. In a typical run (the median of 200 simulated runs) about 200 of them start something, plus a few chained follow-ups. The rest are a WAIT. She is busy about a third of the time and perfectly content the rest of it.
+**The maths.** At 80 BPM a bar is 3 seconds, so a ten-hour video has 12,000 bar lines. In a typical run (the median of 200 simulated runs) about 200 of them start something, plus the chained follow-ups those set off. The other 11,800 or so are a WAIT. She is busy about a third of the time and perfectly content the rest of it.
 
 </details>
 
@@ -81,9 +81,9 @@ That last line is how every copper list ends: wait for a beam position the scree
 Copper-only screens were a 1990 Amiga party trick. Colour can change on every scanline but only every few pixels along one, so everything on them is wide and short, and each effect sat in its own window with a thin light frame. This banner keeps both rules.
 
 - **The top window** is soft diagonal bands in four 16-step ramps: palm green, sand, sea and foam. It is 39 columns, each 8 pixels wide and filled with one 64-colour hard-stop gradient, each column 4 scanlines out of step with the last. That offset is the whole diagonal. The lot rolls down one scanline per step: 128 steps in 12 seconds, which is four bars of the theme.
-- **SUN** is a diamond of nested colour, blue core to red edge, pulsing outward. A copper cannot really do circles, so the sun is a diamond. It does not seem to mind. Every cell gets a level (four per 8-pixel column, one per line from the centre), cells of one level share a class, and all 32 classes cycle the same palette, each one step behind the last: palette cycling, with no script.
-- **ISLAND** is one colour per line for the sky, a sea of cyan lines whose phase is one over the distance from the horizon (so the crests come in and spread out), sand whose edges only move in four-pixel steps, foam that flips on every beat, a raft that bobs once a bar, and a palm whose trunk is the classic twisted ribbon: one stripe per line, red-tan and grey, swayed and twisted by two shared keyframe tracks.
-- **LANES** is red, green and blue bars sliding across each other. Where they cross, red and green make yellow, green and blue make cyan, red and blue make magenta. In [activities.toml](activities.toml), lanes are what let two things happen at once: her lane, the sea and sky, the shore, the cat, the turtle. This is what that looks like to a copper.
+- **SUN** is a diamond of nested colour, blue core to red edge, pulsing outward. A copper changes colour only every 8 pixels along a line, so circles come out lumpy and the sun is a diamond. It does not seem to mind. Every cell gets a level (four per 8-pixel column, one per line from the centre), cells of one level share a class, and all 32 classes cycle the same palette, each one step behind the last: palette cycling, with no script.
+- **ISLAND** is one colour per line for the sky, a sea of cyan lines whose phase is one over the distance from the horizon (so the crests come in and spread out), sand whose edges only move in four-pixel steps, foam that flips on every beat, a raft that bobs once a bar, and a palm whose trunk is the classic twisted ribbon: one bar per line, in red-tan and grey stripes, swayed and twisted by two shared keyframe tracks.
+- **LANES** is red, green and blue bars sliding across each other. Where they cross, red and green make yellow, green and blue make cyan, red and blue make magenta. In [activities.toml](activities.toml), lanes are what let two things happen at once: her lane, the sea and sky, the shore, the cat, the turtle and the kumara patch. This is what that looks like to a copper.
 
 **The sprites.** The title is eight hardware sprites, one letter each. The Amiga has exactly eight sprites and CASTAWAY has exactly eight letters, which is the closest this project has come to fate. Each one is 16 pixels wide and three colours, recoloured on every line. She is two attached sprites (15 colours), reused further down the screen once the title has finished with them, and she nods once per beat. Sprites are not bitplanes, so she counts. The small text is where the banner bends the rules.
 
@@ -119,7 +119,7 @@ The style is credited to *Copper Master* by Angels and *Look! No bitplanes* by R
                                          ; a dev reel of every activity
  ; THEME.COP
           ; 60 s seamless loop, 80 BPM, F major, ii-V-I-vi, 20 bars of 3 s
-          ; electric piano, kalimba lead, soft drums, vinyl noise
+          ; electric piano, kalimba lead, soft drums, vinyl crackle
           ; mix at -14 LUFS, true peak at or below -1 dBTP; levels adjust
           ; in master and per routine. The ocean is a 60 s loop as well.
           ; Default run: 10:00:00, seed 1992.

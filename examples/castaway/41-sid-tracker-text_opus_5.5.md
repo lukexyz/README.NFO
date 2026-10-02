@@ -14,7 +14,7 @@
  <b>08</b> --- 00 000 <b>08</b> --- 00 000 <b>08</b> G-2 3D 000 Pulse Speed     PURRING    04 NAP
  09 --- 00 000 09 --- 00 000 09 C-2 3E 000 Pulse Limit Min 1:30:00    05 HOP ON
  10 --- 00 000 10 --- 00 000 10 F-2 3F 000 Pulse Limit Max 1 CAT      06 FLOAT
- 11 --- 00 000 11 --- 00 000 11 D-2 3D 000 Filter To Use   GREY TABBY 07 FF 00
+ 11 --- 00 000 11 --- 00 000 11 D-2 3D 000 Filter To Use   GREY TABBY 07 FF 01
  <b>12</b> --- 00 000 <b>12</b> --- 00 000 <b>12</b> G-2 3D 000
  13 --- 00 000&gt;13 C-4 0D CA7&lt;13 C-2 3E 000 <b>FILTER NUM. 01</b>  ON THE KEYS
  14 --- 00 000 14 --- 00 000 14 F-2 3F 000 Filt Control    E.PIANO ONLY
@@ -32,7 +32,7 @@
 
 **Castaway** (working title) is a ten-hour lo-fi video for YouTube in which almost nothing happens, on purpose. A young woman, a tiny island, one tall palm, a raft and her headphones. She idles, nodding along, and every so often, always on the next bar of the music, something happens. A bottle she throws washes straight back. A drone delivers a parcel, and the parcel is more headphones. A shark surfaces in headphones and nods to the same beat. It is an unofficial remake inspired by the 1992 screensaver *Johnny Castaway*: sunny, hand-painted and always daytime. In development, with nothing published yet.
 
-Who turns up, and when, is [activities.toml](activities.toml): more than 90 activities on four timers, from *regular* (every 2 to 5 minutes) to *super rare* (every 3 to 6 hours, three at most). She is busy about a third of the time. The rest is rests. Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py), with no samples, loops or recordings, which is how a SID chip would have wanted it. The theme is a seamless 60-second loop at 80 BPM in F major, 20 bars of exactly 3 seconds: one pattern up there. Nobody has listened to it yet, so the tracker is reserving judgement.
+Who turns up, and when, is [activities.toml](activities.toml): more than 90 activities, most of them on four timers, from *regular* (every 2 to 5 minutes) to *super rare* (every 3 to 6 hours, three at most). She is busy about a third of the time, and the rest of it is `--- 00 000`, the most relaxing thing a tracker can say. Every sound, more than 150 so far, is synthesized from code by [tools/make_audio.py](tools/make_audio.py), with no samples and no recordings, which is how a SID chip would have wanted it. The theme is a seamless 60-second loop at 80 BPM in F major, 20 bars of exactly 3 seconds: one pattern up there. Nobody has listened to it yet, which is why the status line says STOPPED.
 
 ```sh
 python tools/serve.py        # then open http://127.0.0.1:8765/
@@ -87,7 +87,7 @@ python tools/schedule.py     # validate the schedule, simulate a 10-hour run
 17  <b>TIDE</b>              shore     follows every sandcastle
 18  <b>BOTTLE REPLY</b>      her       hours later, a different bottle. a reply
 ── <b>the theme</b> · channel 3, one chord a bar ────────────────────────────────────
-3D  <b>MINOR 9 ARP</b>       chn 3     Gm9 and Dm9
+3D  <b>MINOR 9 ARP</b>       chn 3     Gm9, Dm9. the real e.piano plays them as chords
 3E  <b>DOMINANT 13 ARP</b>   chn 3     C13
 3F  <b>MAJOR 9 ARP</b>       chn 3     Fmaj9
 ──────────────────────────────────────────────────────────────────────────────
@@ -112,7 +112,7 @@ visitor shares channel 2, and they have agreed to take turns.
              rare         every 30 to 60 min    about 13
              super rare   every 3 to 6 hours    about 2, 3 at most
              chained      after another one     the tide, the reply
-<b>her lane</b>     busy about a third of the time. the rest is rests
+<b>her lane</b>     busy about a third of the time. otherwise --- 00 000
 <b>counts</b>       the median of 200 simulated runs, as the top of the file says
 <b>the file</b>     <a href="activities.toml">activities.toml</a>: more than 90 activities, their beats, how long
              each lasts and how often it comes round

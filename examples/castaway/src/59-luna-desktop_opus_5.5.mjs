@@ -27,13 +27,14 @@
 // only wraps at 10:00:00, which is how long a run lasts.
 //
 // Nothing is copied from a real desktop: no logos, no flag, no wallpaper photograph, no real
-// fonts. The hill, the clouds, the icons, the palm-and-sun emblem and both fonts are drawn in
-// this file. The letters are this file's own humanist monoline sans (one stroke font, two
-// weights), drawn as <path> strokes, so there is no <text> anywhere.
+// fonts. The hill, the clouds, the icons, the palm-and-sun emblem and the font are drawn in
+// this file. The letters are this file's own humanist monoline sans (one stroke font in a few
+// weights): each glyph is a stroked <path> defined once and placed with <use>, so there is no
+// <text> anywhere.
 //
 // Motion: CSS keyframes only. Hard cuts and stepped movement for her, the palm and the props
 // (the project's own motion defaults); smooth only for things that fly or float. The main
-// loop is 30 s (10 bars). Reduced motion stops everything on the 9.35 s frame: the drone has
+// loop is 30 s (10 bars). Reduced motion stops everything on the 9.5 s frame: the drone has
 // just dropped the parcel and the "Found New Hardware" balloon is up.
 
 import fs from 'node:fs';
@@ -208,22 +209,51 @@ function textPath(str, x, y, cap, { a = 's', w = 0.11, track = 0 } = {}) {
   return { d: L.items.map(([src, gx]) => placeGlyph(src, ox + gx * s, y, s)).join(''), width, x0: ox, sw: cap * w, glyphs };
 }
 const textWidth = (str, cap, opts = {}) => textPath(str, 0, 0, cap, opts).width;
-function T(str, x, y, cap, { c = '#000', o = 1, shadow = null, ...opts } = {}) {
-  const t = textPath(str, x, y, cap, opts);
-  let out = '';
-  if (shadow) out += `<path class="t" d="${t.d}" transform="translate(${shadow[0]} ${shadow[1]})" stroke="${shadow[2]}"${shadow[3] < 1 ? ` stroke-opacity="${shadow[3]}"` : ''} stroke-width="${r2(t.sw)}"/>`;
-  out += `<path class="t" d="${t.d}" stroke="${c}"${o < 1 ? ` stroke-opacity="${o}"` : ''} stroke-width="${r2(t.sw)}"/>`;
-  return out;
+// Running text is set from glyphs defined once (in font units) and placed with <use>, one
+// scaled group per run, so each letter's outline is written into the file only once. The
+// stroke weight is given in font units too, so it scales with the run. A shadowed run is
+// defined in <defs> and drawn twice: once offset in the shadow colour, once on top.
+const usedGlyphs = new Set();
+let runCount = 0;
+const glyphId = (ch) => (/[A-Za-z0-9]/.test(ch) ? `g${ch}` : `gu${ch.codePointAt(0)}`);
+function glyphDefs() {
+  return [...usedGlyphs].sort().map((ch) => `<path id="${glyphId(ch)}" d="${placeGlyph(FONT[ch][1], 0, 0, 1)}"/>`).join('');
 }
-function wrap(str, cap, maxW, opts = {}) {
-  const words = str.split(' ');
-  const lines = [];
-  let cur = '';
-  for (const w of words) {
-    const next = cur ? `${cur} ${w}` : w;
-    if (cur && textWidth(next, cap, opts) > maxW) { lines.push(cur); cur = w; } else cur = next;
+function T(str, x, y, cap, { c = '#000', o = 1, shadow = null, a = 's', w = 0.11, track = 0 } = {}) {
+  const s = cap / 140;
+  const L = layout(str, w * 140, track);
+  const width = L.width * s;
+  const ox = a === 's' ? x : a === 'm' ? x - width / 2 : x - width;
+  const uses = L.items.map(([, gx, ch]) => {
+    usedGlyphs.add(ch);
+    const ux = r1(gx);
+    return `<use href="#${glyphId(ch)}"${ux === '0' ? '' : ` x="${ux}"`}/>`;
+  }).join('');
+  const id = `tr${runCount++}`;
+  const run = `<g${shadow ? ` id="${id}"` : ''} transform="translate(${r2(ox)} ${r2(y)}) scale(${+s.toFixed(6)})">${uses}</g>`;
+  const ink = `stroke="${c}"${o < 1 ? ` stroke-opacity="${o}"` : ''}`;
+  let out = `<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="${r2(w * 140)}">`;
+  if (shadow) {
+    defsExtra.push(run);
+    out += `<use href="#${id}" transform="translate(${shadow[0]} ${shadow[1]})" stroke="${shadow[2]}"${shadow[3] < 1 ? ` stroke-opacity="${shadow[3]}"` : ''}/>`;
+    out += `<use href="#${id}" ${ink}/>`;
+  } else {
+    out += `<g ${ink}>${run}</g>`;
   }
-  if (cur) lines.push(cur);
+  return `${out}</g>`;
+}
+// Greedy word wrap; a "|" in the string forces a break.
+function wrap(str, cap, maxW, opts = {}) {
+  const lines = [];
+  for (const para of str.split('|')) {
+    let cur = '';
+    for (const w of para.split(' ')) {
+      const next = cur ? `${cur} ${w}` : w;
+      if (cur && textWidth(next, cap, opts) > maxW) { lines.push(cur); cur = w; } else cur = next;
+    }
+    if (cur) lines.push(cur);
+  }
+  for (const ln of lines) if (textWidth(ln, cap, opts) > maxW) throw new Error(`line too wide: ${ln}`);
   return lines;
 }
 
@@ -232,7 +262,7 @@ function wrap(str, cap, maxW, opts = {}) {
 // class plus an inline style holding the frame at STATIC, which is what reduced motion shows.
 // Times are seconds into the animation; `start` shifts the whole track with a negative delay.
 const LOOP = 30;
-const STATIC = 9.35;
+const STATIC = 9.5;
 const css = [];
 function track(name, keys, { period = LOOP, start = 0 } = {}) {
   if (keys[0][0] !== 0) throw new Error(`${name}: first key must be at 0`);
@@ -620,16 +650,18 @@ const TRAY_PHONES = 864;
 // Each balloon is up for about five seconds of its six-second slot, popping up with a slight
 // scale from the tip of its tail, which points at the headphones in the tray.
 const BALLOONS = [
-  ['info', 'Nothing is happening', 'She is idle about two thirds of the time. This is normal. No action is required.'],
-  ['device', 'Found New Hardware', 'Headphones (another pair), delivered by drone. Your new hardware is installed and ready to use.'],
+  ['info', 'Nothing is happening', 'She is idle about two thirds|of the time. This is normal.|No action is required.'],
+  ['device', 'Found New Hardware', 'Headphones (another pair), by drone. Your new hardware is installed and ready to use.'],
   ['shield', 'Hermit crab at risk', 'A coconut is directly above it. Recommended action: none.'],
-  ['mail', '1 new message', 'A message in a bottle has washed up. It is the one she just sent.'],
-  ['audio', 'New audio device', 'Shark (wearing headphones). It nods once a beat, 80 times a minute.'],
+  ['mail', '1 new message', 'A message in a bottle has|washed up. It is the one|she just sent.'],
+  ['audio', 'New audio device', 'Shark, wearing headphones.|Nods once a beat:|80 times a minute.'],
 ];
 function balloons() {
   const o = [];
   const ax = TRAY_PHONES - 2, ay = TB + 12;
-  const x0 = 742, x1 = 992, y1 = TB - 20, r = 9;
+  // x0 keeps the balloon clear of the Export MP4 button and the preview's edge (both end at
+  // 746): it overlaps only the window's right-hand frame, as a tray balloon would.
+  const x0 = 756, x1 = 992, y1 = TB - 20, r = 9;
   BALLOONS.forEach(([icon, title, body], k) => {
     const lines = wrap(body, 10, x1 - x0 - 28);
     const hgt = 46 + lines.length * 16;
@@ -879,7 +911,7 @@ function gags() {
     + '<path d="M-3,2.5 L-4,7.5 M3,2.5 L4,7.5" stroke="#39404d" stroke-width=".8"/>';
   const hanging = `<g ${track('hang', [[0, { o: 1 }, HOLD], [8.8, { o: 0 }, HOLD], [29.95, { o: 1 }]])}><g transform="translate(0 18.5)">${box(true)}</g></g>`;
   o.push(`<g ${track('parcel', [[0, { x: 276, y: 264, o: 0 }, HOLD], [8.8, { x: 276, y: 264, o: 1 }, 'cubic-bezier(.55,0,1,.45)'], [9.06, { x: 276, y: 292 }], [9.14, { y: 289.5 }], [9.24, { y: 292 }], [11, { x: 276, y: 292, r: 0 }, 'ease-in'], [11.7, { x: 285, y: 306, r: 18, o: 1 }], [12, { x: 288, y: 311, r: 24, o: 0 }, HOLD]])}>${box(true)}</g>`);
-  o.push(`<g ${track('drone', [[0, { x: 700, y: 24, o: 0 }, HOLD], [6.2, { x: 690, y: 28, o: 1 }, 'ease-out'], [8, { x: 276, y: 214 }, 'ease-in-out'], [8.6, { x: 276, y: 245.5 }], [9, { x: 276, y: 245.5 }, 'ease-in'], [9.4, { x: 276, y: 228 }, 'ease-in'], [10.8, { x: -60, y: 30, o: 1 }, HOLD], [10.9, { x: -60, y: 30, o: 0 }]])}><g transform="scale(1.15)">${drone}${hanging}</g></g>`);
+  o.push(`<g ${track('drone', [[0, { x: 700, y: 24, o: 0 }, HOLD], [6.2, { x: 690, y: 28, o: 1 }, 'ease-out'], [8, { x: 276, y: 214 }, 'ease-in-out'], [8.6, { x: 276, y: 245.5 }], [9, { x: 276, y: 245.5 }, 'ease-in-out'], [9.6, { x: 276, y: 160 }, 'ease-in'], [11, { x: -60, y: 40, o: 1 }, HOLD], [11.1, { x: -60, y: 40, o: 0 }]])}><g transform="scale(1.15)">${drone}${hanging}</g></g>`);
 
   // 12-18 s: a hermit crab walks up; the coconut lands on it; it leaves wearing the coconut
   const legs = (poseB) => {
@@ -916,6 +948,8 @@ const defsExtra = [];
 function banner() {
   css.length = 0;
   defsExtra.length = 0;
+  usedGlyphs.clear();
+  runCount = 0;
   const parts = [];
   parts.push(`<g clip-path="url(#panel)">`);
   parts.push(wallpaper());
@@ -930,7 +964,7 @@ function banner() {
   const style = `.t{fill:none;stroke-linecap:round;stroke-linejoin:round}${css.join('')}@media (prefers-reduced-motion:reduce){*{animation:none!important}}`;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="ttl">`
     + '<title id="ttl">Castaway: a mid-2000s blue-and-green desktop. A browser window titled Castaway shows the island live preview at 127.0.0.1:8765 while tray balloons report each gag.</title>'
-    + `<defs>${defs()}<clipPath id="panel"><rect width="${W}" height="${H}" rx="14"/></clipPath>${defsExtra.join('')}</defs>`
+    + `<defs>${defs()}${glyphDefs()}<clipPath id="panel"><rect width="${W}" height="${H}" rx="14"/></clipPath>${defsExtra.join('')}</defs>`
     + `<style>${style}</style>`
     + parts.join('')
     + '</svg>';

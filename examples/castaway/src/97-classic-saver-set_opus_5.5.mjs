@@ -172,8 +172,19 @@ const UI = {
   '~': '.....|.....|.#..#|#.##.|.....|.....|.....',
 };
 const SPACE = 3;
+// Smearing a row one pixel right closes every one-pixel gap, which turns m, w
+// and v into solid blocks. A bold face of the era got its own cuts for those
+// letters, so these are drawn by hand, two-pixel stems with the gaps kept open.
+const UI_BOLD = {
+  m: '........|........|#######.|##.##.##|##.##.##|##.##.##|##.##.##',
+  w: '........|........|##....##|##.##.##|##.##.##|##.##.##|.##..##.',
+  v: '.......|.......|##...##|##...##|.##.##.|.##.##.|..###..',
+  r: '.....|.....|##.##|####.|##...|##...|##...',
+  k: '##....|##....|##..##|##.##.|####..|##.##.|##..##',
+};
 
 function glyphRows(ch, bold) {
+  if (bold && UI_BOLD[ch]) return UI_BOLD[ch].split('|');
   const src = UI[ch];
   if (!src) throw new Error(`no glyph for ${JSON.stringify(ch)}`);
   let rows = src.split('|');
@@ -442,28 +453,6 @@ function rasterTitle(word) {
   while (t1 > 0 && !grid[t1].some(Boolean)) t1--;
   return { grid: grid.slice(t0, t1 + 1), W, capTop: top + t0 };
 }
-// 1-pixel black halo so lines passing behind never touch the letters
-function halo(grid) {
-  const h = grid.length + 2;
-  const w = grid[0].length + 2;
-  const out = [];
-  for (let y = 0; y < h; y++) {
-    const row = [];
-    for (let x = 0; x < w; x++) {
-      let on = false;
-      for (let dy = -1; dy <= 1 && !on; dy++)
-        for (let dx = -1; dx <= 1 && !on; dx++) {
-          const gy = y - 1 + dy;
-          const gx = x - 1 + dx;
-          if (gy >= 0 && gy < grid.length && gx >= 0 && gx < grid[0].length && grid[gy][gx]) on = true;
-        }
-      row.push(on);
-    }
-    out.push(row);
-  }
-  return out;
-}
-
 // ---------------------------------------------------------------- Mystify
 const SW = 1200; // saver screen
 const SH = 560;
@@ -475,6 +464,9 @@ const BY = [14, 466]; // the marquee lane below is left alone
 const COPIES = 8; // head + trail
 const LAG = 0.09; // seconds between trail copies
 const STILL_T = 9.4; // reduced-motion frame: the ship, mid-crossing
+// The loop opens one bar into the ship (still on a bar line), so the first
+// frame is a picture and its caption rather than a tangle behind the title.
+const PHASE = 9;
 
 const rot = (pts, cx, cy, deg) => {
   const a = (deg * Math.PI) / 180;
@@ -508,8 +500,10 @@ const GAGS = [
     shape(tau) {
       const cx = 936 - 10 * tau;
       const cy = 394 - 7 * nod(tau);
-      const body = [[cx - 70, cy - 25], [cx + 34, cy - 25], [cx + 34, cy + 25], [cx - 70, cy + 25]];
-      const neck = [[cx + 34, cy - 8], [cx + 86, cy - 8], [cx + 86, cy + 8], [cx + 34, cy + 8]];
+      // body, then shoulders and neck as one tapering quad: a bottle, not a
+      // USB stick (two plain rectangles read as the latter)
+      const body = [[cx - 74, cy - 25], [cx + 22, cy - 25], [cx + 22, cy + 25], [cx - 74, cy + 25]];
+      const neck = [[cx + 22, cy - 25], [cx + 98, cy - 7], [cx + 98, cy + 7], [cx + 22, cy + 25]];
       const ang = -22 + 6 * nod(tau);
       return [rot(body, cx, cy, ang), rot(neck, cx, cy, ang)];
     },
@@ -606,34 +600,70 @@ function idlePath(ta, xa, tb, xb, lo, hi, speed, dir) {
   return keys;
 }
 
+// value of a short list of [t, v] keys at time t (no wrapping)
+function evalKeys(keys, t) {
+  for (let i = 1; i < keys.length; i++) {
+    if (t <= keys[i][0]) {
+      const [ta, va] = keys[i - 1];
+      const [tb, vb] = keys[i];
+      return tb === ta ? vb : va + ((vb - va) * (t - ta)) / (tb - ta);
+    }
+  }
+  return keys[keys.length - 1][1];
+}
+// How "Mystify" one polygon looks over an idle stretch: the real saver's
+// quads are big and open, so reward the shorter side of the bounding box and
+// punish the moments the four corners line up into a thin sliver.
+function openness(polyKeys, ta, tb) {
+  let sum = 0;
+  let thin = 0;
+  let n = 0;
+  for (let t = ta + 0.5; t < tb - 0.5; t += 0.1) {
+    const pts = polyKeys.map((v) => [evalKeys(v[0], t), evalKeys(v[1], t)]);
+    const xs = pts.map((q) => q[0]);
+    const ys = pts.map((q) => q[1]);
+    const m = Math.min(Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys));
+    sum += Math.min(m, 260);
+    if (m < 90) thin++;
+    n++;
+  }
+  return n ? sum / n - (400 * thin) / n : 0;
+}
+const CANDIDATES = 24; // seeded tries per idle stretch; the most open one wins
+
 // piecewise-linear keyframes for every coordinate of both polygons
 function buildMystify() {
-  const tracks = []; // [poly][vertex][axis] -> [[t, v], ...] over [GAGS[0].t0, +L]
+  // [poly][vertex][axis] -> [[t, v], ...] over [GAGS[0].t0, +L]
+  const tracks = [0, 1].map(() => [0, 1, 2, 3].map(() => [[], []]));
   for (let p = 0; p < 2; p++) {
-    tracks.push([]);
-    for (let v = 0; v < 4; v++) {
-      tracks[p].push([]);
-      for (let ax = 0; ax < 2; ax++) {
-        const keys = [];
-        const [lo, hi] = ax === 0 ? BX : BY;
-        for (let g = 0; g < GAGS.length; g++) {
-          const gag = GAGS[g];
-          for (const tau of gag.times || beats(gag.bars)) keys.push([gag.t0 + tau, gag.shape(tau)[p][v][ax]]);
-          const next = GAGS[(g + 1) % GAGS.length];
-          const tb = next.t0 + (g === GAGS.length - 1 ? L : 0);
-          const ta = holdEnd(gag);
-          const xa = gag.shape(gag.bars * BAR)[p][v][ax];
-          const xb = next.shape(0)[p][v][ax];
-          const speed = ax === 0 ? rr(130, 300) : rr(80, 200);
-          // corners of one polygon head off in different directions, so the
-          // shape opens up into a big Mystify quad instead of drifting as a clump
-          const dir = ax === 0 ? (v % 2 ? 1 : -1) * (g % 2 ? 1 : -1) : ((v >> 1) % 2 ? 1 : -1) * (p ? 1 : -1);
-          keys.push(...idlePath(ta, xa, tb, xb, lo, hi, speed, dir));
-        }
-        keys.push([GAGS[0].t0 + L, GAGS[0].shape(0)[p][v][ax]]);
-        tracks[p][v].push(keys);
+    for (let g = 0; g < GAGS.length; g++) {
+      const gag = GAGS[g];
+      for (let v = 0; v < 4; v++)
+        for (let ax = 0; ax < 2; ax++)
+          for (const tau of gag.times || beats(gag.bars)) tracks[p][v][ax].push([gag.t0 + tau, gag.shape(tau)[p][v][ax]]);
+      const next = GAGS[(g + 1) % GAGS.length];
+      const tb = next.t0 + (g === GAGS.length - 1 ? L : 0);
+      const ta = holdEnd(gag);
+      let best = null;
+      for (let c = 0; c < CANDIDATES; c++) {
+        const cand = [0, 1, 2, 3].map((v) =>
+          [0, 1].map((ax) => {
+            const [lo, hi] = ax === 0 ? BX : BY;
+            const xa = gag.shape(gag.bars * BAR)[p][v][ax];
+            const xb = next.shape(0)[p][v][ax];
+            const speed = ax === 0 ? rr(130, 300) : rr(120, 240);
+            // corners of one polygon head off in different directions, so the
+            // shape opens up into a big Mystify quad instead of drifting as a clump
+            const dir = ax === 0 ? (v % 2 ? 1 : -1) * (g % 2 ? 1 : -1) : ((v >> 1) % 2 ? 1 : -1) * (p ? 1 : -1);
+            return [[ta, xa], ...idlePath(ta, xa, tb, xb, lo, hi, speed, dir), [tb, xb]];
+          }),
+        );
+        const score = openness(cand, ta, tb);
+        if (!best || score > best.score) best = { score, cand };
       }
+      for (let v = 0; v < 4; v++) for (let ax = 0; ax < 2; ax++) tracks[p][v][ax].push(...best.cand[v][ax].slice(1, -1));
     }
+    for (let v = 0; v < 4; v++) for (let ax = 0; ax < 2; ax++) tracks[p][v][ax].push([GAGS[0].t0 + L, GAGS[0].shape(0)[p][v][ax]]);
   }
   return tracks;
 }
@@ -688,11 +718,15 @@ function buildMain() {
   const tw = T.grid[0].length * PX;
   const tx = Math.round((SW - tw) / 2 / PX) * PX;
   const ty = 96;
-  const haloRects = mergeGrid(halo(T.grid));
-  const titleRects = mergeGrid(T.grid);
+  // the letters are drawn once, in title pixels; a 1-pixel black halo (the
+  // same letters stamped at the eight neighbouring offsets) keeps the lines
+  // passing behind from ever touching them
+  const titleDef = `<g id="ttl">${rectsSvg(mergeGrid(T.grid))}</g>`;
+  const halo8 = [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]];
   const titleSvg =
-    `<g class="px" fill="${C.black}">${rectsSvg(haloRects, PX, tx - PX, ty - PX)}</g>` +
-    `<g class="px" fill="${C.title}">${rectsSvg(titleRects, PX, tx, ty)}</g>`;
+    `<g class="px" transform="translate(${tx} ${ty}) scale(${PX})">` +
+    `<g fill="${C.black}">${halo8.map(([dx, dy]) => `<use href="#ttl" x="${dx}" y="${dy}"/>`).join("")}</g>` +
+    `<use href="#ttl" fill="${C.title}"/></g>`;
   const titleBottom = ty + T.grid.length * PX;
 
   // subtitle in an opaque text cell, the way GDI painted text
@@ -711,10 +745,11 @@ function buildMain() {
     const cols = hues[p].join(';');
     for (let k = COPIES - 1; k >= 0; k--) {
       const op = f2(1 - (k / COPIES) * 0.86);
-      const begin = k === 0 ? '0s' : `${f2(k * LAG - L)}s`;
+      const b0 = k * LAG - PHASE;
+      const begin = `${f2(b0 > 0 ? b0 - L : b0)}s`;
       const beginC = k === 0 ? '0s' : `${f2(k * LAG - HUE_PERIOD)}s`;
       anim +=
-        `<polygon opacity="${op}" stroke="${hues[p][0]}" points="${ptsAt(tracks[p], -k * LAG)}">` +
+        `<polygon opacity="${op}" stroke="${hues[p][0]}" points="${ptsAt(tracks[p], PHASE - k * LAG)}">` +
         `<animate attributeName="points" dur="${L}s" begin="${begin}" repeatCount="indefinite" keyTimes="${keyTimes}" values="${values}"/>` +
         `<animate attributeName="stroke" dur="${HUE_PERIOD}s" begin="${beginC}" repeatCount="indefinite" values="${cols}"/>` +
         `</polygon>`;
@@ -739,7 +774,8 @@ function buildMain() {
     const body = `<g fill="${C.black}">${bg}</g>${lines}`;
     const on = g.t0 / L;
     const off = (holdEnd(g) + 0.4) / L;
-    caps += `<g opacity="0"><animate attributeName="opacity" dur="${L}s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;${+on.toFixed(5)};${+off.toFixed(5)}" values="0;1;0"/>${body}</g>`;
+    const shown = PHASE >= g.t0 && PHASE < holdEnd(g) + 0.4;
+    caps += `<g opacity="${shown ? 1 : 0}"><animate attributeName="opacity" dur="${L}s" begin="${f2(-PHASE)}s" repeatCount="indefinite" calcMode="discrete" keyTimes="0;${+on.toFixed(5)};${+off.toFixed(5)}" values="0;1;0"/>${body}</g>`;
     if (g.key === 'ship') capStill = body;
   }
 
@@ -748,7 +784,7 @@ function buildMain() {
   const MQ_S = 4;
   const mqText =
     'Castaway  ♪  a lo-fi island video, ten hours long  ♪  she idles, nodding to the music on her headphones  ♪  ' +
-    'every 2 to 5 minutes something happens, always on the next bar  ♪  more than 90 activities on four timers  ♪  ' +
+    'every 2 to 5 minutes something happens, always on the next bar  ♪  more than 90 activities, most of them on four timers  ♪  ' +
     'every sound is synthesized from code  ♪  python tools/serve.py, then open http://127.0.0.1:8765/  ♪  always daytime  ♪  ';
   const mq = font.text(mqText, 0, 0, 1, C.marquee, { bold: true });
   const mqW = (mq.w + 1) * MQ_S; // one full period in screen units
@@ -773,6 +809,7 @@ function buildMain() {
   const defs =
     `<clipPath id="scr"><rect x="0" y="0" width="${SW}" height="${SH}" rx="18"/></clipPath>` +
     `<clipPath id="mqclip"><rect x="8" y="${MQ_Y - 12}" width="${SW - 16}" height="${9 * MQ_S + 20}"/></clipPath>` +
+    titleDef +
     font.defs();
 
   const svg =

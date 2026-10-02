@@ -51,10 +51,12 @@ const OUT = path.resolve(here, `../assets/${SLUG}.svg`);
 
 // ------------------------------------------------------------------ facts
 // Checked 2026-10-01 against D:/python/castaway (read-only): activities.toml
-// holds 94 activities (so "more than 90"), four timers (regular 2-5 min,
-// occasional 12-25 min, rare 30-60 min, super rare 3-6 h), run 10:00:00, seed
-// 1992, starts snapped to 3 s bars; the theme is 80 BPM, F major, one seamless
-// 60 s loop; every sound is synthesized by tools/make_audio.py.
+// holds 94 activities (81 on the four timers, 13 chained follow-ups; so "more
+// than 90"), four timers (regular 2-5 min, occasional 12-25 min, rare 30-60
+// min, super rare 3-6 h), run 10:00:00, seed 1992, starts snapped to 3 s bars,
+// and [video] fps = 24 (the user's decision of 2026-10-01; it was 30 before).
+// The theme is 80 BPM, F major, one seamless 60 s loop, and the only music
+// file; audio_catalog.json lists 181 files, all made by tools/make_audio.py.
 
 // ------------------------------------------------------------------ canvas
 const W = 320;
@@ -64,18 +66,20 @@ const BEAT = BAR / 4;
 const PIC_LOOP = 8 * BAR; // 24 s
 
 // vertical layout (scanlines)
-const LOGO_Y = 4; // logo letters: 32 px tall
-const SUB_Y = 45; // subtitle, small font
+const LOGO_Y = 6; // logo letters: 32 px tall, 5 px of raster above the edge
+const RULE_Y = LOGO_Y + 38; // yellow-over-orange rule under the logo band
+const SUB_Y = RULE_Y + 5; // subtitle, small font, 3 px clear of the rule
 const PX = 9; // picture origin
-const PY = 58;
+const PY = 62;
 const PW = 120;
 const PH = 88;
 const COL_X = 140; // key list column
-const PLATE_Y = 55;
-const KEYS_Y = 84;
+const PLATE_Y = 59;
+const PLATE_H = 28;
+const KEYS_Y = PLATE_Y + PLATE_H + 4;
 const KEY_PITCH = 9;
-const SCROLL_TOP = 153; // raster band behind the scroller
-const SCROLL_Y = 162; // scroller glyph top (with its 1 px edge)
+const SCROLL_TOP = 157; // raster band behind the scroller
+const SCROLL_Y = 163; // scroller glyph top (with its 1 px edge)
 
 // ----------------------------------------------------------------- helpers
 const n = (v) => (Number.isInteger(v) ? String(v) : String(+v.toFixed(3)));
@@ -389,19 +393,19 @@ function rasterGradient(id, colorOf) {
 defs.push(rasterGradient('rTop', (lv) => st(Math.round((lv * 5) / 7), 0, 0)));
 // behind the scroller: full red, with a touch of blue in the dark half
 defs.push(rasterGradient('rBot', (lv) => st(lv, 0, lv < 3 ? 1 : 0)));
-defs.push(`<clipPath id="cTop"><rect x="0" y="0" width="${W}" height="43"/></clipPath>`);
+defs.push(`<clipPath id="cTop"><rect x="0" y="0" width="${W}" height="${RULE_Y + 1}"/></clipPath>`);
 defs.push(`<clipPath id="cBot"><rect x="0" y="${SCROLL_TOP}" width="${W}" height="${H - SCROLL_TOP}"/></clipPath>`);
 css.push(`.roll{animation:roll ${BAR}s steps(${RP}) infinite}`);
 css.push(`.rollb{animation:roll ${BAR}s steps(${RP}) infinite reverse}`);
 css.push(`@keyframes roll{from{transform:translateY(0)}to{transform:translateY(-${RP}px)}}`);
 
 body.push(`<rect width="${W}" height="${H}" rx="6" fill="${BLACK}"/>`);
-body.push(`<g clip-path="url(#cTop)"><rect class="roll" x="0" y="0" width="${W}" height="${43 + RP}" fill="url(#rTop)"/></g>`);
+body.push(`<g clip-path="url(#cTop)"><rect class="roll" x="0" y="0" width="${W}" height="${RULE_Y + 1 + RP}" fill="url(#rTop)"/></g>`);
 body.push(`<g clip-path="url(#cBot)"><rect class="rollb" x="0" y="${SCROLL_TOP - RP}" width="${W}" height="${H - SCROLL_TOP + 2 * RP}" fill="url(#rBot)"/></g>`);
 
 // raster rules: 2 scanlines of yellow over orange under each band edge
 const rule = (y) => `<rect x="0" y="${y}" width="${W}" height="1" fill="${st(7, 6, 1)}"/><rect x="0" y="${y + 1}" width="${W}" height="1" fill="${st(6, 3, 0)}"/>`;
-body.push(rule(42));
+body.push(rule(RULE_Y));
 body.push(rule(SCROLL_TOP - 2));
 
 // ---- the logo: gradient fill, top highlight, bottom shade, dark edge, shadow
@@ -501,7 +505,7 @@ defs.push(rowGradient('tO', 0, [st(7, 7, 3), st(7, 6, 1), st(7, 5, 0), st(7, 4, 
   const x0 = COL_X;
   const y0 = PLATE_Y;
   const w = 176;
-  const h = 24;
+  const h = PLATE_H;
   const g = makeGrid(w, h);
   for (let y = 0; y < h; y++) {
     for (let x = 0; x < w; x++) {
@@ -523,31 +527,38 @@ defs.push(rowGradient('tO', 0, [st(7, 7, 3), st(7, 6, 1), st(7, 5, 0), st(7, 4, 
   body.push(gridPaths(g, w, h, x0, y0));
   // engraved label: dark letters with a light lip underneath
   const lab = (s, lx, ly) => smallText(s, lx, ly + 1, st(7, 7, 7)) + smallText(s, lx, ly, st(1, 1, 2));
-  body.push(lab('MENU', x0 + 12, y0 + 4));
-  body.push(lab('DISK', x0 + 12, y0 + 13));
+  // (3 px of plate above MENU and below DISK's lip, 2 px between the lines)
+  body.push(lab('MENU', x0 + 14, y0 + 5));
+  body.push(lab('DISK', x0 + 14, y0 + 15));
   // the number: big orange figures with a dark drop shadow
   const num = '1992';
   const nx = x0 + w - 14 - smallWidth(num, 2);
-  body.push(smallText(num, nx + 2, y0 + 5 + 2, st(1, 0, 0), 2));
-  body.push(smallText(num, nx, y0 + 5, 'url(#tO)', 2));
-  // a small label between: seed
-  body.push(smallText('SEED', x0 + 56, y0 + 9, st(2, 2, 3)));
+  const ny = y0 + Math.round((h - 16) / 2);
+  body.push(smallText(num, nx + 2, ny + 2, st(1, 0, 0), 2));
+  body.push(smallText(num, nx, ny, 'url(#tO)', 2));
+  // a small label between: seed (14 px clear of the label and the number)
+  body.push(smallText('SEED', x0 + 58, y0 + Math.round((h - 7) / 2), st(2, 2, 3)));
 }
 
 // ---- the key list
 {
+  // Every label starts in the same column (6), so the dot leaders take up
+  // the slack: five dots after a number key, one after SPACE. Labels are at
+  // most 16 characters, which ends them 6 px short of the screen edge.
+  const LABEL_COL = 6;
   const rows = [
     ['1', 'WATCH HER WAIT', 'tY'],
     ['2', 'TEN-HOUR SIM', 'tY'],
-    ['3', 'SYNTH: NO SAMPLES', 'tY'],
+    ['3', 'SOUND FROM CODE', 'tY'],
     ['4', 'DEV REEL', 'tY'],
-    ['0', '50/60 HZ? 30 FPS', 'tB'],
+    ['0', '50/60 HZ? 24 FPS', 'tB'],
     ['SPACE', 'READ DOC FILE', 'tB'],
     ['M', 'MUSIC: SAME TUNE', 'tB'],
   ];
   rows.forEach(([key, label, kg], i) => {
     const y = KEYS_Y + i * KEY_PITCH;
-    const dots = key.length > 1 ? '..' : '...';
+    const dots = '.'.repeat(LABEL_COL - key.length);
+    if (COL_X + (LABEL_COL + label.length) * SMALL_PITCH - 2 > W - 6) throw new Error(`key label too wide: ${label}`);
     let x = COL_X;
     body.push(smallText(key, x, y, `url(#${kg})`));
     x += key.length * SMALL_PITCH;
@@ -909,6 +920,10 @@ css.push('@media (prefers-reduced-motion: reduce){.roll,.rollb,.wb,.scr,.cy,.bob
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${W} ${H}" width="${W * 3}" height="${H * 3}" shape-rendering="crispEdges">`
   + '<title>CASTAWAY: menu disk 1992</title>'
+  + '<desc>An imaginary Atari ST style menu screen for Castaway, a ten-hour lo-fi island video:'
+  + ' a wobbling orange slab logo over rolling red rasters, a dithered picture of a tiny sunny island'
+  + ' where she sits nodding by the palm while a bottle drifts in and straight back out, a key list'
+  + ' of the project\'s own tools, and a big pink scroller along the bottom.</desc>'
   + `<style>${css.join('')}</style>`
   + `<defs>${defs.join('')}</defs>`
   + `<clipPath id="cAll"><rect width="${W}" height="${H}" rx="6"/></clipPath>`

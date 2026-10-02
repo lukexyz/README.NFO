@@ -121,15 +121,15 @@ function sprite(c, x0, y0, rows, halo = 0) {
   }
   rows.forEach((row, y) => [...row].forEach((ch, x) => { if (ch === '#') c.put(x0 + x, y0 + y, 1); }));
 }
-// A panel: a one-dot frame with rounded corners round the whole canvas.
-function panel(w, h) {
-  const c = new Dots(w, h);
-  for (let x = 2; x < w - 2; x++) { c.put(x, 0); c.put(x, h - 1); }
-  for (let y = 2; y < h - 2; y++) { c.put(0, y); c.put(w - 1, y); }
-  for (const [x, y] of [[1, 1], [w - 2, 1], [1, h - 2], [w - 2, h - 2]]) c.put(x, y);
-  return c;
+// Set a layer into the canvas: clear a halo of r dots round every dot of it (only where
+// where(x, y) allows), then draw it.
+function inset(c, layer, r, where = () => true) {
+  for (let y = 0; y < c.h; y++) for (let x = 0; x < c.w; x++) {
+    if (!layer.get(x, y)) continue;
+    for (let dy = -r; dy <= r; dy++) for (let dx = -r; dx <= r; dx++) if (where(x + dx, y + dy) && !layer.get(x + dx, y + dy)) c.put(x + dx, y + dy, 0);
+  }
+  for (let y = 0; y < c.h; y++) for (let x = 0; x < c.w; x++) if (layer.get(x, y)) c.put(x, y, 1);
 }
-
 // ---------------------------------------------------------------- wordmark font
 // Centre lines of a bold rounded sans, in a w x h box, for a stroke of radius r.
 const GLYPH = {
@@ -185,15 +185,16 @@ const HER = [
 ];
 const GULL = ['##...##', '..#.#..', '...#...'];
 // Lane icons, two Braille lines (8 dots) tall, standing on the lane's waterline.
-const SHIP = ['...##......', '..#........', '...##......', '...##.#....', '.#########.', '###########', '.#########.'];
+const SHIP = ['..##.....', '.#.......', '..##.....', '..##.#...', '#########', '#########', '.#######.'];
 const CAT = ['#...#....', '##.##....', '#####....', '.###...#.', '.####..#.', '.#####.#.', '.######..'];
-const CASTLE = ['#.#...#.#', '###.#.###', '#########', '#########', '####.####', '###...###', '###...###'];
+const CASTLE = ['#...#', '##.##', '#####', '#####', '#####', '##.##', '##.##'];
 const BARS = ['.........#', '......#..#', '......#..#', '...#..#..#', '...#..#..#', '##.#..#..#', '##.#..#..#'];
 
 // ---------------------------------------------------------------- the hero
 // 144 x 68 dots = 72 cells x 17 rows. Whatever has to read at a glance is solid (title, sun,
-// palm, her, raft), the sand is a checkerboard, and sky and sea are left to the grid, with the
-// swell drawn as a few bold strokes.
+// palm, her, raft) and set in with a clear halo, the sand is a checkerboard, the sky is left
+// to the plot-paper grid, and the sea is a stack of sine plots, so the two halves of the
+// picture read differently at the same one-dot-a-cell floor.
 const HW = 144, HH = 68, HORIZON = 34;
 function hero() {
   const c = new Dots(HW, HH);
@@ -220,17 +221,14 @@ function hero() {
   sprite(c, 54, 22, GULL);
   sprite(c, 63, 25, GULL);
 
-  // the horizon, and the swell as bold strokes that grow towards us
+  // the horizon, and the sea as a stack of sine plots, one per character row, each a little
+  // longer and taller than the one behind it: perspective, drawn the way a dot plotter draws
   for (let x = 0; x < HW; x++) c.put(x, HORIZON);
-  const crest = (x0, y, L) => {
-    const amp = 0.5 + (y - HORIZON) * 0.05;
-    for (let i = 0; i <= L; i++) {
-      const yy = y - amp * Math.sin((Math.PI * i) / L);
-      c.put(x0 + i, yy);
-      c.put(x0 + i, yy + 1);
-    }
-  };
-  for (const [x, y, L] of [[6, 39, 6], [30, 38, 5], [50, 41, 6], [16, 45, 9], [42, 48, 8], [2, 53, 10], [26, 57, 12], [52, 62, 10], [6, 64, 12], [124, 39, 6], [136, 45, 6]]) crest(x, y, L);
+  for (let cy = Math.ceil((HORIZON + 2) / 4); cy < HH / 4; cy++) {
+    const k = (cy * 4 - HORIZON) / (HH - HORIZON); // 0 at the horizon, 1 at the front
+    const amp = 0.45 + 1.05 * k, len = 9 + 22 * k, ph = cy * 1.7;
+    for (let x = 0; x < HW; x++) c.put(x, cy * 4 + 1.5 + amp * Math.sin((2 * Math.PI * x) / len + ph) - 0.5);
+  }
 
   // a ship on the horizon, far off to the left, minding its own business
   sprite(c, 3, 29, ['....#.....', '...###....', '.#######..', '#########.', '.#######..'], 1);
@@ -245,19 +243,21 @@ function hero() {
   ring(c, I[0], I[1], IRX - 0.8, IRY - 0.8, 10, 170, 0.8);
   ring(c, I[0], I[1], IRX, IRY, 180, 360, 0.8);
 
-  // the palm: tall, slightly curved trunk, notched bark
+  // the palm: tall, slightly curved trunk with notched bark, and a crown of slim solid leaves,
+  // each cut free of the one below. Drawn on its own layer, then set into the scene with a
+  // one-dot halo so the sea lines stop short of it.
   const B = [108, 58], T = [99, 30], K = [111, 43];
+  const tree = new Dots(HW, HH);
   quad(B, K, T, 90).forEach(([x, y], i) => {
     const r = 2.1 - (i / 91) * 0.9;
-    c.fill((px, py) => Math.abs(px - x) < 4 && Math.abs(py - y) < 4 && Math.hypot(px + 0.5 - x, py + 0.5 - y) <= r);
+    tree.fill((px, py) => Math.abs(px - x) < 4 && Math.abs(py - y) < 4 && Math.hypot(px + 0.5 - x, py + 0.5 - y) <= r);
   });
   for (let y = T[1] + 4; y < B[1] - 1; y += 3) {
     let xl = 0;
-    while (xl < HW && !c.get(xl, y)) xl++;
-    c.put(xl, y, 0);
-    c.put(xl + 1, y, 0);
+    while (xl < HW && !tree.get(xl, y)) xl++;
+    tree.put(xl, y, 0);
+    tree.put(xl + 1, y, 0);
   }
-  // crown: slim solid leaves along explicit centre lines, each cut free of the one below
   const LEAVES = [
     [[1, -1], [-5, -4], [-12, -5], [-19, -3], [-25, 1], [-29, 7]],
     [[0, 1], [-6, 2], [-12, 5], [-16, 10], [-18, 15]],
@@ -290,14 +290,15 @@ function hero() {
     }
     for (let y = 0; y < HH; y++) for (let x = 0; x < HW; x++) if (mine.get(x, y)) crown.put(x, y, 1);
   });
-  for (let y = 0; y < HH; y++) for (let x = 0; x < HW; x++) if (crown.get(x, y)) c.put(x, y, 1);
+  for (let y = 0; y < HH; y++) for (let x = 0; x < HW; x++) if (crown.get(x, y)) tree.put(x, y, 1);
   const NUTS = [[97.5, 31.5], [101, 32], [99.2, 34]];
-  for (const [x, y] of NUTS) c.fill(inEllipse(x, y, 1.9, 1.9), () => 0);
-  for (const [x, y] of NUTS) c.fill(inEllipse(x, y, 1.3, 1.3));
+  for (const [x, y] of NUTS) tree.fill(inEllipse(x, y, 1.9, 1.9), () => 0);
+  for (const [x, y] of NUTS) tree.fill(inEllipse(x, y, 1.3, 1.3));
+  inset(c, tree, 1, (x, y) => y < B[1] - 3);
 
   // her, by the palm, nodding along
   const HX = 74, HY = 40;
-  sprite(c, HX, HY, HER, 1);
+  sprite(c, HX, HY, HER, 2);
 
   // the raft, pulled up on the right: solid logs, two lashings
   c.fill((x, y) => x >= 127 && y >= 56 && y <= 67, () => 0);
@@ -353,11 +354,13 @@ const EVENTS = [
   'oodr rog0 rolu coq9 rotc rozf Rp1r rp7i op93 rpcl rpgc rpl0 rpol cprc rpt0 opvu rpy0',
   'rq1u rq99 rqhf rqmc rqpu rqy3 or0r Rr1l rr2c rr9l crgu rrhi rroo',
 ].join(' ').split(' ').map((t) => [t[0], parseInt(t.slice(1), 36)]);
+// ship_passes_unseen, and the one ship she does see (rescue_almost, super rare, 5:14:06)
 const SHIPS = [[1458, 148], [3501, 137], [6270, 106], [8622, 118], [12225, 110], [14469, 137], [19014, 123], [29853, 106], [32727, 121]];
 const CATS = [[2646, 1565], [10599, 1360], [19830, 1343], [26610, 1259], [35049, 1054]];
 const CASTLES = [3642, 6564, 13443, 15276, 16590, 18009, 23253, 30450, 32670, 34029];
 const TIDES = [4077, 8247, 14814, 15804, 17745, 18498, 23922, 32049, 33384, 35598];
 const SIGNAL = [22044, 155];
+const SEEN = 18846;
 // Median of 200 simulated 10-hour runs, from the header of activities.toml.
 const TIERS = [['regular', 155, 'every 2 to 5 min'], ['occasional', 30, 'every 12 to 25 min'], ['rare', 13, 'every 30 to 60 min'], ['super rare', 2, 'every 3 to 6 h']];
 // tools/make_audio.py, MELODY: (bar, beat, MIDI) for the kalimba, bars 7 to 20 of 20.
@@ -384,33 +387,36 @@ const busyShare = (a, b) => {
   return busy / (b - a);
 };
 const BUSY_TOTAL = busyShare(0, RUN);
+// Ships that crossed while she had something on (any overlap with her lane).
+const SHIPS_BUSY = SHIPS.filter(([s, d]) => HER_RUN.some(([a, b]) => a < s + d && a + b > s)).length;
 
 // ---------------------------------------------------------------- charts
 const PW = 144; // every panel is as wide as the hero: 72 cells
 const COLS = PW - 4; // inside the frame and a one-dot margin
 const colOf = (t) => 2 + Math.min(COLS - 1, Math.floor((t / RUN) * COLS));
 
-// The whole run as a skyline: one solid bar per cell (8 min 34 s), as tall as the rarest thing
-// that started in it. Everyday routines and follow-ups barely clear the floor; gags stand up,
-// taller the rarer their timer. Under the floor, a tick for every hour.
-const SPIKE = { r: 2, c: 2, o: 6, R: 10, S: 14 };
+// The whole run as a skyline at full dot resolution: one column of dots per 4 min 10 s, two
+// to a character cell, as tall as the rarest thing that started in it. Everyday routines and
+// follow-ups barely clear the floor; gags stand up, taller the rarer their timer. Under the
+// floor, a dotted rule with a tick for every hour.
+const SPIKE = { r: 4, c: 4, o: 8, R: 12, S: 16 };
 function eventChart(h = 20) {
   const c = new Dots(PW, h);
-  const base = h - 3, bars = PW / 2;
-  const tall = new Array(bars).fill(0);
+  const base = h - 5, cols = PW; // the floor is the last dot row of the next-to-last line
+  const tall = new Array(cols).fill(0);
   for (const [tier, t] of EVENTS) {
-    const i = Math.min(bars - 1, Math.floor((t / RUN) * bars));
-    tall[i] = Math.max(tall[i], Math.min(SPIKE[tier], base));
+    const i = Math.min(cols - 1, Math.floor((t / RUN) * cols));
+    tall[i] = Math.max(tall[i], Math.min(SPIKE[tier], base + 1));
   }
-  tall.forEach((n, i) => { for (let k = 0; k < n; k++) { c.put(i * 2, base - k); c.put(i * 2 + 1, base - k); } });
-  for (let x = 0; x < PW; x++) c.put(x, base + 1, 0);
-  for (let hr = 0; hr <= 10; hr++) { const x = Math.min(PW - 1, Math.round((hr * PW) / 10)); c.put(x, base + 2); c.put(x, base + 1); }
+  tall.forEach((n, i) => { for (let k = 0; k < n; k++) c.put(i, base - k); });
+  for (let x = 0; x < PW; x += 2) c.put(x, base + 2);
+  for (let hr = 0; hr <= 10; hr++) { const x = Math.min(PW - 1, Math.round((hr * (PW - 1)) / 10)); c.put(x, base + 2); c.put(x, base + 3); c.put(x, base + 4); }
   return c;
 }
 // How tall each column of the seismograph is, 0..1, for the three-symbol demo.
 function spikeValues(n) {
   const v = new Array(n).fill(0);
-  for (const [tier, t] of EVENTS) { const i = Math.min(n - 1, Math.floor((t / RUN) * n)); v[i] = Math.max(v[i], SPIKE[tier] / 14); }
+  for (const [tier, t] of EVENTS) { const i = Math.min(n - 1, Math.floor((t / RUN) * n)); v[i] = Math.max(v[i], SPIKE[tier] / 16); }
   return v;
 }
 
@@ -418,7 +424,15 @@ function spikeValues(n) {
 function laneRow(marks, icon) {
   const c = new Dots(PW, 8);
   for (let x = 0; x < PW; x += 2) c.put(x, 7);
-  for (const t of marks) sprite(c, Math.max(0, Math.min(PW - icon[0].length, colOf(t) - Math.floor(icon[0].length / 2))), 0, icon, 1);
+  // Icons sit centred on their start time; one that would land on the icon before it is
+  // nudged right until there is a dot of space (the log below has the exact times).
+  let next = 0;
+  for (const t of [...marks].sort((a, b) => a - b)) {
+    const w = icon[0].length;
+    const x = Math.min(PW - w, Math.max(next, colOf(t) - Math.floor(w / 2)));
+    sprite(c, x, 0, icon, 1);
+    next = x + w + 1;
+  }
   return c;
 }
 
@@ -440,8 +454,10 @@ function melodyChart() {
 
 // ---------------------------------------------------------------- the same graph, three ways
 // Font coverage decides the symbols in a real terminal: Braille for full resolution, block
-// characters at half of it, and three plain symbols for a bare console.
-function blockRows(cols = 70, rows = 2) {
+// characters for less, and three plain symbols for a bare console. Quadrant blocks would give
+// 2 x 2 a cell, but GitHub's Windows font has none (they fall back at 12.76 px a cell), so
+// this uses the half blocks it does have, 1 x 2 a cell.
+function blockRows(cols = 72, rows = 2) {
   const v = spikeValues(cols), out = [];
   for (let r = 0; r < rows; r++) {
     let s = '';
@@ -453,7 +469,7 @@ function blockRows(cols = 70, rows = 2) {
   }
   return out;
 }
-function ttyRow(cols = 70) {
+function ttyRow(cols = 72) {
   return spikeValues(cols).map((x) => (x >= 0.7 ? '|' : x >= 0.4 ? '^' : '_')).join('');
 }
 
@@ -487,7 +503,7 @@ const COL = {
   skyTop: '#3f97dc', skyLow: '#bfe6f7', sun: '#fff1b8', sunRim: '#ffd666', cloud: '#ffffff', cloudLow: '#d6e8f5',
   seaFar: '#2276c4', seaNear: '#1fb3c4', crest: '#d8f4fb', foam: '#f2fbff', sand: '#f4d9a4', sandLow: '#e4bd7c',
   bush: '#4c9a43', trunk: '#a8653f', bark: '#7b452a', leaf: '#3f9d3d', leafLit: '#6cc24b', nut: '#6e4a2b',
-  ship: '#56616c', log: '#a66b3e', logGap: '#6f4024', title: '#fff8e8', titleShade: '#ff7f6b',
+  ship: '#56616c', log: '#b07444', logDark: '#8c5531', logGap: '#5e3720', title: '#fff8e8', titleShade: '#ff7f6b',
 };
 function heroColour() {
   const c = new Pix(HW, HH);
@@ -537,13 +553,15 @@ function heroColour() {
   }
   for (const [x, y] of [[97.5, 31.5], [101, 32], [99.2, 34]]) c.fill(inEllipse(x, y, 1.5, 1.5), COL.nut);
   for (let k = 0; k < 4; k++) {
-    for (let x = 131 - k; x < HW; x++) { c.put(x, 58 + k * 2, COL.log); c.put(x, 59 + k * 2, COL.log); }
+    for (let x = 131 - k; x < HW; x++) { c.put(x, 58 + k * 2, k % 2 ? COL.logDark : COL.log); c.put(x, 59 + k * 2, k % 2 ? COL.logDark : COL.log); }
   }
   for (const x of [135, 140]) for (let y = 57; y <= 66; y++) c.put(x - (y - 57) / 2, y, COL.logGap);
   c.layer = 6;
-  const H = 18, R = 1.75, GAP = 2, LEFT = 24;
-  const probe = wordmark('CASTAWAY', 0, 0, H, 2.0, GAP);
-  const wm = wordmark('CASTAWAY', Math.round(LEFT + (HW - LEFT - probe.width) / 2), 1, H, R, GAP);
+  // A touch smaller and tighter than the dot version, so that with its shadow it clears the
+  // top and right edges of the picture and the cloud below it.
+  const H = 16, R = 1.75, GAP = 1, LEFT = 24;
+  const probe = wordmark('CASTAWAY', 0, 0, H, R, GAP);
+  const wm = wordmark('CASTAWAY', Math.round(LEFT + (HW - 2 - LEFT - probe.width) / 2), 2, H, R, GAP);
   const shade = wm.lines.map((pl) => pl.map(([x, y]) => [x + 2, y + 2]));
   stroke(c, shade, R, () => COL.titleShade);
   stroke(c, wm.lines, R, () => COL.title);
@@ -572,11 +590,12 @@ function halve(c) {
 // top, cream shorts, bare feet.
 const HER_COLOURS = { p: '#f3ead7', h: '#6b4226', s: '#e9b48e', t: '#ff7f6b', c: '#efe2c6' };
 const HER_PIX = [
-  '.ppppp.',
-  'pp.h.pp',
-  'pp.s.pp',
-  '.h.s...',
+  '..ppp..',
+  '.phhhp.',
+  '.psssp.',
+  '..hsh..',
   '.ttttt.',
+  's.ttt.s',
   's.ttt.s',
   '..ccc..',
   '..c.c..',
@@ -587,7 +606,7 @@ const TINT = ['#3fb950', '#7fc34a', '#c3c63f', '#d29922', '#e8743a', '#f85149'];
 function truecolorSvg() {
   const PX = 10, X0 = 20, Y0 = 20, IW = (HW / 2) * PX, IH = (HH / 2) * PX;
   const img = halve(heroColour());
-  HER_PIX.forEach((row, y) => [...row].forEach((ch, x) => { if (ch !== '.') img[20 + y][37 + x] = HER_COLOURS[ch]; }));
+  HER_PIX.forEach((row, y) => [...row].forEach((ch, x) => { if (ch !== '.') img[19 + y][37 + x] = HER_COLOURS[ch]; }));
   // runs of one colour per pixel row become one path per colour
   const byCol = new Map();
   img.forEach((row, y) => {
@@ -610,15 +629,16 @@ function truecolorSvg() {
       if (!chart.get(x, y)) continue;
       const cx = Math.floor(x / 2), cy = Math.floor(y / 4);
       const px = X0 + copy * IW + cx * PX + 2.75 + (x % 2) * 4.5, py = CY0 + cy * 20 + 3.5 + (y % 4) * 4.3;
-      const t = Math.min(TINT.length - 1, Math.max(0, Math.floor(((chart.h - 4 - y) / (chart.h - 6)) * TINT.length)));
-      dotsByTint[t].push(`M${px.toFixed(2)} ${py.toFixed(2)}m-1.6 0a1.6 1.6 0 1 0 3.2 0a1.6 1.6 0 1 0 -3.2 0`);
+      const t = Math.min(TINT.length - 1, Math.max(0, Math.floor(((chart.h - 5 - y) / 16) * TINT.length)));
+      // a zero-length line with round caps draws a 3.2 px dot in a few bytes
+      dotsByTint[t].push(`M${+px.toFixed(2)} ${+py.toFixed(1)}h0`);
     }
   }
-  const dots = dotsByTint.map((d, i) => (d.length ? `<path fill="${TINT[i]}" d="${d.join('')}"/>` : '')).join('\n');
+  const dots = dotsByTint.map((d, i) => (d.length ? `<path stroke="${TINT[i]}" stroke-width="3.2" stroke-linecap="round" d="${d.join('')}"/>` : '')).join('\n');
   const W = IW + 2 * X0, Hh = CY0 + CH + 20;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${Hh}" width="${W}" height="${Hh}" role="img" aria-labelledby="t d">
 <title id="t">Castaway, in colour, in half blocks and Braille</title>
-<desc id="d">The CASTAWAY title over the island at two pixels per character cell, in colour, and under it the event chart of one 10-hour run in Braille dots, tinted green to red by height, scrolling left one cell at a time.</desc>
+<desc id="d">The CASTAWAY title over the island at two pixels per character cell, in colour, and under it the event chart of one simulated 10-hour run in Braille dots, tinted green to red by height, scrolling left one cell at a time.</desc>
 <style>
 .scroll{animation:scroll 36s steps(72) infinite}
 @keyframes scroll{to{transform:translateX(-${IW}px)}}
@@ -684,11 +704,11 @@ const top = pre([
   `${M}${B('CASTAWAY')} · ten hours on one tiny island, one tall palm, one raft`,
   `${M}she idles. every so often, something happens. mostly, the lines stay flat.`,
   '',
-  `${M}┌ events · one simulated 10-hour run, seed 1992 · the rarer, the taller`,
+  `${M}╭─ events · one simulated 10-hour run, seed 1992 · the rarer, the taller`,
   ...art(eventChart()),
-  `${M}└ ${EVENTS.length} events. she is busy ${busy} of the run and nodding along for ${idle}.`,
+  `${M}╰─ ${EVENTS.length} events. she is busy ${busy} of the run and nodding along for ${idle}.`,
   '',
-  `${M}┌ events per 10-hour run, by timer · median of 200 simulated runs`,
+  `${M}╭─ events per 10-hour run, by timer · median of 200 simulated runs`,
   ...TIERS.map(([name, n, every]) => meter(name, n, 155, 30, `~${n}`, every)),
   meter('samples', 0, 1, 30, 0, 'every sound is code'),
   '',
@@ -706,45 +726,48 @@ const LOG = [
   [11055, 'a message in a bottle. it washes straight back.'],
   [12963, 'a coconut lands on a hermit crab. later, the coconut leaves.'],
   [14469, 'a ship. she is not even busy. headphones.'],
+  [SEEN, 'a ship, and she spots it! waves like mad. it honks. it sails on.'],
+  [19014, 'another ship, not 3 minutes later. she is out jogging.'],
   [21906, 'a different bottle washes up. it is a reply. she smiles.'],
   [22044, 'one bar of signal, at the top of the palm.'],
   [35049, 'the cat again. same crate.'],
-  [RUN, `end of run. ${CASTLES.length} sandcastles, 0 standing. 0 ships seen.`],
+  [RUN, `end of run. 0 sandcastles standing. ${SHIPS.length + 1} ships, 1 seen, 0 stopped.`],
 ];
 const log = pre([
   `${M}lulltop --log · seed 1992 · simulated 2026-10-01 · ${HER_RUN.length} things she did`,
   '',
-  `${M}┌ ships · ${SHIPS.length} crossed the horizon, ${SHIPS.length - 1} of them while she was busy`,
-  ...art(laneRow(SHIPS.map(([s]) => s), SHIP)),
-  `${M}┌ the cat · ${CATS.length} visits on a crate · 1:49:40 on the island in all`,
+  `${M}╭─ ships · ${SHIPS.length + 1} sailed past · ${SHIPS.length} unseen, ${SHIPS_BUSY} of those while she was busy`,
+  ...art(laneRow([...SHIPS.map(([s]) => s), SEEN], SHIP)),
+  `${M}╭─ the cat · ${CATS.length} visits on a crate · 1:49:40 on the island in all`,
   ...art(laneRow(CATS.map(([s]) => s), CAT)),
-  `${M}┌ sandcastles · ${CASTLES.length} built · ${TIDES.length} taken by the tide · standing now: 0`,
+  `${M}╭─ sandcastles · ${CASTLES.length} built · ${TIDES.length} taken by the tide · standing now: 0`,
   ...art(laneRow(CASTLES, CASTLE)),
-  `${M}┌ signal · 0 bars, except for ${Math.floor(SIGNAL[1] / 60)} min ${SIGNAL[1] % 60} s at the top of the palm`,
+  `${M}╭─ signal · 0 bars all run, except 1 at the top of the palm at ${hms(SIGNAL[0])}`,
   ...art(laneRow([SIGNAL[0]], BARS)),
-  `${M}└ 0:00:00 on the left, 10:00:00 on the right`,
+  `${M}╰─ 0:00:00 on the left, 10:00:00 on the right`,
   '',
   ...LOG.map(([t, what]) => `${M}${hms(t).padStart(8)}  ${what}`),
 ]);
 
 const sound = pre([
-  `${M}lulltop --sound · ${A('tools/make_audio.py')} · samples 0 · loops 0 · recordings 0`,
+  `${M}lulltop --sound · ${A('tools/make_audio.py')} · samples 0 · recordings 0`,
   '',
-  `${M}┌ kalimba lead · bars 7 to 20 of the 60 s theme · E5 up to G6`,
+  `${M}╭─ kalimba lead · bars 7 to 20 of the 60 s theme · E5 up to G6`,
   ...art(melodyChart()),
-  `${M}└ dotted lines: Gm9 · C13 · Fmaj9 · Dm9 come round again, every 4 bars`,
+  `${M}╰─ dotted lines: Gm9 · C13 · Fmaj9 · Dm9 come round again, every 4 bars`,
   '',
   `${M}tempo ...... 80 bpm, F major, ii-V-I-vi, 20 bars of exactly 3 s`,
   `${M}players .... electric piano, kalimba, soft drums, vinyl crackle`,
   `${M}the sea .... its own seamless 60 s loop`,
   `${M}loudness ... -14 LUFS, true peak at or below -1 dBTP`,
   `${M}levels ..... a master, and one per routine`,
+  `${M}licences ... none needed. nothing in it came from anyone else.`,
   `${M}heard by ... nobody yet. the plot is all we have.`,
 ]);
 
 const symbols = pre([
   `${M}lulltop --symbols braille`,
-  ...art(eventChart(16)),
+  ...art(eventChart()),
   '',
   `${M}lulltop --symbols block`,
   ...blockRows().map((r) => M + r),
@@ -759,7 +782,7 @@ ${top}
 
 **Castaway** (working title) is a ten-hour lo-fi video for YouTube in which almost nothing happens, on purpose. A young woman sits on a very small island with one tall palm, a raft and her headphones, nodding to the music, and every so often something happens: a message in a bottle washes straight back, a coconut lands on a hermit crab and later walks off with the crab inside, a stray cat drifts in on a crate, climbs the palm and naps. It is an unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver *Johnny Castaway*, repainted as a sunny, hand-painted coastal scene. 16:9, 1080p, 30 fps, and it is always daytime.
 
-[\`activities.toml\`](activities.toml) lists more than 90 activities, most of them on four timers, from a coconut every few minutes to "she could leave any time", which some videos never get to see. Every one of them waits for the next bar of the music, so the gags land on the beat. Every sound is synthesized from code by [\`tools/make_audio.py\`](tools/make_audio.py): no samples, no loops, no recordings. The charts above were plotted from the project's own numbers on 2026-10-01, one simulated run with the default seed. By the time you read this the schedule will have grown, which is more than can be said for the sandcastles.
+[\`activities.toml\`](activities.toml) lists more than 90 activities, most of them on four timers. The busiest fires every 2 to 5 minutes (a coconut, a lap, a bit of fishing); the slowest fires at most three times a run and is shared by six set pieces, such as "she could leave any time", which the run plotted here never got to. Every one of them waits for the next bar of the music, so the gags land on the beat. Every sound is synthesized from code by [\`tools/make_audio.py\`](tools/make_audio.py): no samples, no stock loops, no recordings, so no licence to worry about. The charts above were plotted from the project's own numbers on 2026-10-01, one simulated run with the default seed. By the time you read this the schedule will have grown, which is more than can be said for the sandcastles.
 
 \`\`\`sh
 python tools/serve.py      # then open http://127.0.0.1:8765/
@@ -787,12 +810,12 @@ ${sound}
 
 ${symbols}
 
-Terminal plotters pick their symbols by what the font can draw: Braille gives 2 x 4 dots a cell, block characters give half of that, and a bare console gets three plain symbols. The same 10 hours, three times.
+Terminal plotters pick their symbols by what the font can draw: Braille gives 2 x 4 dots a cell, half blocks give 1 x 2, and a bare console gets three plain symbols. The same 10 hours, three times.
 
 Given colour, a cell can also hold two square pixels, an upper-half block in one colour over a background in another. Text on GitHub has no colour, so that version has to be a picture: the island at half the resolution of the one at the top, and the chart tinted by height the way terminal monitors do it, scrolling one cell at a time.
 
 <p align="center">
-  <img src="assets/55-braille-dot-graphics_opus_5.5-truecolor.svg" width="760" alt="The same Castaway picture in colour, two square pixels to a character cell: the title CASTAWAY in cream with a coral shadow beside a yellow sun, white clouds, a small ship on the horizon, a blue sea, and a sand island with one tall palm, two bushes and a raft. She stands by the palm in cream headphones, a coral tank top and cream shorts. Below, the events of one simulated 10-hour run as Braille dots, green near the floor, yellow and red higher up, scrolling slowly to the left.">
+  <img src="assets/55-braille-dot-graphics_opus_5.5-truecolor.svg" width="760" alt="The same Castaway picture in colour, two square pixels to a character cell: the title CASTAWAY in cream with a coral shadow beside a yellow sun, white clouds, a small ship on the horizon, a blue sea, and a sand island with one tall palm, two bushes and a raft. She stands by the palm, brown-haired and barefoot, in cream headphones, a coral tank top and cream shorts. Below, the events of one simulated 10-hour run as Braille dots, green for everyday routines, then yellow and orange, up to one red super-rare event, scrolling slowly to the left.">
 </p>
 
 </details>
@@ -804,7 +827,7 @@ Given colour, a cell can also hold two square pixels, an upper-half block in one
 
 Everything above is text. Each Braille character is a 2 x 4 grid of dots, so the island picture is 144 x 68 dots in 72 characters by 17 lines, drawn by a script in plain Node and written out one character at a time.
 
-Two rules keep it lined up in fonts nobody controls. A picture line holds Braille and nothing else, and it never uses the empty Braille cell, because on Windows that one character is narrower than the other 255 and would pull the rest of its line out of place. A cell with nothing in it gets a single dot instead, which is why a faint grid sits behind everything, like plot paper. On Windows the Braille also comes out a little wider than the plain text beside it. It is meant to.
+Two rules keep it lined up in fonts nobody controls. A picture line holds Braille and nothing else, and it never uses the empty Braille cell, because on Windows that one character is narrower than the other 255 and would pull the rest of its line out of place. A cell with nothing in it gets a single dot instead, which is why a faint grid sits behind everything, like plot paper. On Windows the Braille also comes out about a third wider than the plain text beside it, because it borrows its dots from another font. It is meant to.
 
 Screen readers announce Braille as Braille, which here would be nonsense, so every name and number in the charts is also written out in plain text next to them.
 

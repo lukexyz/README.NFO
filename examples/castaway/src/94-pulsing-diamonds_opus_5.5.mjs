@@ -9,7 +9,7 @@
 // Plain Node, no dependencies, no clock, no Math.random: one seeded PRNG, so
 // every run writes the same bytes.
 //
-// The style is the first home music visualiser, the 1977 Atari Video Music
+// The style is the first commercial music visualiser, the 1977 Atari Video Music
 // (model C240): a box between the stereo and the TV that turned the left and
 // right channels into a two-part diamond on black, repeated across the screen
 // in a regular array, in flat saturated TV colours, swelling and shrinking with
@@ -279,7 +279,7 @@ function cellColours(c, r, hue) {
 
 // The light box only knows how to draw diamonds, so when it tries to draw the
 // island's one tall palm, the palm is made of diamonds too: a curved stack of
-// small ones for the segmented trunk, long thin ones for the fronds. Drawn on
+// small ones for the segmented trunk, long bent ones for the drooping fronds. Drawn on
 // the one big island in bar 4, in palm green, swelling with the inner diamond.
 const PALM = TV[2];
 function palm(Hi) {
@@ -297,14 +297,29 @@ function palm(Hi) {
     const hx = Hi * 0.085 * (1 - 0.3 * t), hy = Hi * 0.105;
     d += poly([[x + hx, y], [x, y - hy], [x - hx, y], [x, y + hy]]);
   }
-  // fronds: a long diamond from the crown to each tip
-  const tips = [[-1.04, 0.3], [-0.9, -0.28], [-0.4, -0.6], [0.3, -0.62], [0.92, -0.28], [1.06, 0.28], [0.2, 0.52], [-0.46, 0.5]];
-  for (const [tx, ty] of tips) {
-    const ex = top[0] + tx * Hi, ey = top[1] + ty * Hi;
-    const dx = ex - top[0], dy = ey - top[1], L = Math.hypot(dx, dy);
-    const nx = -dy / L, ny = dx / L, w = Hi * 0.09;
-    const mx = top[0] + dx * 0.42, my = top[1] + dy * 0.42;
-    d += poly([[top[0], top[1]], [mx + nx * w, my + ny * w], [ex, ey], [mx - nx * w, my - ny * w]]);
+  // fronds: one long bent diamond each, from the crown over the top of its
+  // arch and down to a drooping tip. [tip x, tip y, arch x, arch y], relative
+  // to the crown, in Hi; the arch point bends the diamond's upper corner.
+  const FRONDS = [
+    [-1.06, 0.44, -0.5, -0.36],
+    [-0.9, 0.0, -0.38, -0.5],
+    [-0.4, -0.34, -0.12, -0.66],
+    [0.44, -0.3, 0.16, -0.66],
+    [0.94, 0.04, 0.42, -0.5],
+    [1.08, 0.48, 0.56, -0.34],
+    [-0.36, 0.54, -0.3, 0.06],
+    [0.32, 0.58, 0.28, 0.08],
+  ];
+  for (const [tx, ty, qx, qy] of FRONDS) {
+    const tip = [top[0] + tx * Hi, top[1] + ty * Hi];
+    const ctl = [top[0] + qx * Hi, top[1] + qy * Hi];
+    const mid = quad(top, ctl, tip, 0.46);
+    const dx = tip[0] - top[0], dy = tip[1] - top[1], L = Math.hypot(dx, dy);
+    // unit normal pointing to the arch side
+    let nx = -dy / L, ny = dx / L;
+    if ((ctl[0] - top[0]) * nx + (ctl[1] - top[1]) * ny < 0) { nx = -nx; ny = -ny; }
+    const w = Hi * 0.085;
+    d += poly([top, [mid[0] + nx * w, mid[1] + ny * w], tip, [mid[0] - nx * w * 0.9, mid[1] - ny * w * 0.9]]);
   }
   return d;
 }
@@ -395,11 +410,16 @@ function knob(cx, cy, { setting, setting2, ticks = 11 }) {
     parts.push(`<path class="ptr ${showClass(BAR_EVENT)}" d="${pointer(setting2)}"/>`);
   }
 }
-// a group label under one or two knobs, with the two ends of its scale
+// The small faceplate legends (scale ends, L/R, bank names, the lamp) share the
+// button captions' cap height, so they stay readable at README width.
+const SMALL = 11;
+// a group label under a pair of knobs, with the two ends of its scale either
+// side of it, a word space away
 function knobLabel(xa, xb, y, label, lo, hi) {
-  ink(text(label, (xa + xb) / 2, y, 11, { anchor: 'middle' }), 't11');
-  ink(text(lo, xa - 30, y + 1.5, 9, { anchor: 'start' }), 't8');
-  ink(text(hi, xb + 30, y + 1.5, 9, { anchor: 'end' }), 't8');
+  const mid = (xa + xb) / 2, half = measure(label, 11) / 2, gap = 11;
+  ink(text(label, mid, y, 11, { anchor: 'middle' }), 't11');
+  ink(text(lo, mid - half - gap, y, SMALL, { anchor: 'end' }), 't8');
+  ink(text(hi, mid + half + gap, y, SMALL, { anchor: 'start' }), 't8');
 }
 
 function button(x, y, w, h, { icon, litWindows, litColour = C.coral, always = false }) {
@@ -416,10 +436,10 @@ function button(x, y, w, h, { icon, litWindows, litColour = C.coral, always = fa
 }
 
 function bracket(x0, x1, y, label) {
-  const tw = measure(label, 9, 1.7);
+  const tw = measure(label, SMALL, 1.7);
   const mx = (x0 + x1) / 2;
   parts.push(`<path class="rule" d="M${f(x0)} ${f(y + 8)}L${f(x0)} ${f(y + 3)}L${f(mx - tw / 2 - 8)} ${f(y + 3)}M${f(mx + tw / 2 + 8)} ${f(y + 3)}L${f(x1)} ${f(y + 3)}L${f(x1)} ${f(y + 8)}"/>`);
-  ink(text(label, mx, y - 1.5, 9, { anchor: 'middle' }), 't9');
+  ink(text(label, mx, y + 3 - SMALL / 2, SMALL, { anchor: 'middle' }), 't9');
 }
 
 function faceplate() {
@@ -451,22 +471,22 @@ function faceplate() {
 
   // ---- middle: five knobs (gain = SWELL, contour = SHORE, colour = SUN)
   const ky = FP.y + 60;
-  const K = [472, 542, 650, 720, 822];
+  const K = [472, 542, 650, 720, 818];
   knob(K[0], ky, { setting: 0.74 });
   knob(K[1], ky, { setting: 0.62 });
   knob(K[2], ky, { setting: 1 });
   knob(K[3], ky, { setting: 0.3 });
   knob(K[4], ky, { setting: 1, setting2: 0 });
   // L and R over the pairs: the left channel drives the outer diamond, the right the inner
-  [[K[0], 'L'], [K[1], 'R'], [K[2], 'L'], [K[3], 'R']].forEach(([x, ch]) => ink(text(ch, x, FP.y + 7, 9, { anchor: 'middle' }), 't9b'));
-  knobLabel(K[0], K[1], ky + 44, 'SWELL', 'CALM', 'BIG');
-  knobLabel(K[2], K[3], ky + 44, 'SHORE', 'SAND', 'ROCK');
-  ink(text('SUN', K[4], ky + 44, 11, { anchor: 'middle' }), 't11');
-  ink(text('ONE', K[4] - 31, ky + 23, 9, { anchor: 'end' }), 't8');
-  ink(text('ALL', K[4] + 31, ky + 23, 9, { anchor: 'start' }), 't8');
+  [[K[0], 'L'], [K[1], 'R'], [K[2], 'L'], [K[3], 'R']].forEach(([x, ch]) => ink(text(ch, x, FP.y + 6, SMALL, { anchor: 'middle' }), 't9b'));
+  knobLabel(K[0], K[1], ky + 42, 'SWELL', 'CALM', 'BIG');
+  knobLabel(K[2], K[3], ky + 42, 'SHORE', 'SAND', 'ROCK');
+  ink(text('SUN', K[4], ky + 42, 11, { anchor: 'middle' }), 't11');
+  ink(text('ONE', K[4] - 31, ky + 22, SMALL, { anchor: 'end' }), 't8');
+  ink(text('ALL', K[4] + 31, ky + 22, SMALL, { anchor: 'start' }), 't8');
 
   // ---- right: the shape bank
-  const BX = 892, BP = 70, BW = 52, BH = 40, BY = FP.y + 28;
+  const BX = 894, BP = 70, BW = 52, BH = 40, BY = FP.y + 28;
   bracket(BX - 2, BX + 3 * BP + BW + 2, FP.y + 10, 'SHAPE');
   const icons = {
     island: (cx, cy) => `<path fill="${C.ink}" d="${diamond(13, 10)}" transform="translate(${cx} ${cy})"/>`,
@@ -487,13 +507,13 @@ function faceplate() {
   const PX = LX + 27 + measure('SANDGLASS', 12, 2.4) + 16 + measure('MODEL 80', 12, 1.7) + 22;
   parts.push(`<path fill="${C.ink}" d="${circ(PX, FP.y + 25, 5.5)}"/>`);
   parts.push(`<path class="${animClass(OUTER.map((v, i) => [i * BEAT, v >= 0.86 ? 1 : 0.35]), 'opacity')}" fill="${C.coral}" d="${circ(PX, FP.y + 25, 4)}"/>`);
-  ink(text('80 BPM', PX + 12, FP.y + 20.5, 9), 't8');
+  ink(text('80 BPM', PX + 12, FP.y + 25 - SMALL / 2, SMALL), 't8');
 
   // ---- lower row: the repeat bank, with the tagline spelled across it
   const WORDS = ['SHE', 'IDLES.', 'THEN,', 'EVERY', 'SO', 'OFTEN,', 'SOMETHING', 'HAPPENS.'];
   const NUMS = ['1', '2', '3', '5', '1', '2', '4', '8'];
   const LIT_IDLE = [3, 5], LIT_EVENT = [0, 4];
-  const RY = yDiv + 22, RW = 24, RH = 18, CAP = 13;
+  const RY = yDiv + 26, RW = 24, RH = 18, CAP = 13;
   // each button sits just left of its word; space the pairs evenly over the row
   const items = WORDS.map((w, i) => ({ w, n: NUMS[i], tw: measure(w, CAP, 1.7) }));
   const gap = 10, x0 = 50, x1 = 1150;
@@ -510,8 +530,8 @@ function faceplate() {
     x += RW + gap + it.tw + space;
   });
   // ACROSS over the first four, DOWN over the last four
-  bracket(pos[0], pos[3] + RW + gap + items[3].tw, RY - 16, 'ACROSS');
-  bracket(pos[4], pos[7] + RW + gap + items[7].tw, RY - 16, 'DOWN');
+  bracket(pos[0], pos[3] + RW + gap + items[3].tw, RY - 15, 'ACROSS');
+  bracket(pos[4], pos[7] + RW + gap + items[7].tw, RY - 15, 'DOWN');
 }
 
 // ------------------------------------------------------------------ assemble
@@ -524,10 +544,10 @@ function build() {
     `.t12b{stroke:${C.ink};stroke-width:2.1}`,
     `.t12m{stroke:${C.ink2};stroke-width:1.7}`,
     `.t11{stroke:${C.ink};stroke-width:1.6}`,
-    `.t9{stroke:${C.ink2};stroke-width:1.35}`,
-    `.t8{stroke:${C.ink2};stroke-width:1.2}`,
+    `.t9{stroke:${C.ink2};stroke-width:1.5}`,
+    `.t8{stroke:${C.ink2};stroke-width:1.5}`,
     `.t8b{stroke:${C.ink};stroke-width:1.4}`,
-    `.t9b{stroke:${C.ink};stroke-width:1.5}`,
+    `.t9b{stroke:${C.ink};stroke-width:1.6}`,
     `.tword{stroke:${C.ink};stroke-width:2}`,
     `.tick{fill:none;stroke:${C.ink};stroke-width:1.5;stroke-linecap:round}`,
     `.rule{fill:none;stroke:${C.ink2};stroke-width:1.2}`,
@@ -584,14 +604,19 @@ function buildHours() {
   const PAD = 14, X0 = S.x + PAD, XW = S.w - 2 * PAD;
   const xAt = (min) => X0 + (min / 600) * XW;
   const ROWS = [
-    { name: 'REGULAR', every: 'EVERY 2 TO 5 MIN', n: 155, h: 74, col: TV[3], inner: null },
-    { name: 'OCCASIONAL', every: 'EVERY 12 TO 25 MIN', n: 30, h: 76, col: TV[1], inner: TV[4] },
-    { name: 'RARE', every: 'EVERY 30 TO 60 MIN', n: 13, h: 84, col: TV[0], inner: TV[3] },
-    { name: 'SUPER RARE', every: 'EVERY 3 TO 6 HOURS', n: 2, h: 102, col: TV[5], inner: TV[2] },
+    // pop: how far a diamond swells as the sweep passes, [first step, second
+    // step], chosen so that no row's swell is cut off by the top or bottom of
+    // the screen (rows in the middle may overlap their neighbours for a moment)
+    { name: 'REGULAR', every: 'EVERY 2 TO 5 MIN', n: 155, h: 74, col: TV[3], inner: null, pop: [1.25, 1.12] },
+    { name: 'OCCASIONAL', every: 'EVERY 12 TO 25 MIN', n: 30, h: 76, col: TV[1], inner: TV[4], pop: [1.6, 1.25] },
+    { name: 'RARE', every: 'EVERY 30 TO 60 MIN', n: 13, h: 84, col: TV[0], inner: TV[3], pop: [1.5, 1.22] },
+    { name: 'SUPER RARE', every: 'EVERY 3 TO 6 HOURS', n: 2, h: 102, col: TV[5], inner: TV[2], pop: [1.2, 1.08] },
   ];
   const out = [], lab = [], hcss = [];
-  hcss.push(`@keyframes pop{0%{transform:scale(1.7)}2%{transform:scale(1.3)}4%,100%{transform:scale(1)}}`);
-  hcss.push(`.p{animation:pop ${T}s step-end infinite}`);
+  ROWS.forEach((row, ri) => {
+    hcss.push(`@keyframes pop${ri}{0%{transform:scale(${row.pop[0]})}2%{transform:scale(${row.pop[1]})}4%,100%{transform:scale(1)}}`);
+    hcss.push(`.p${ri}{animation:pop${ri} ${T}s step-end infinite}`);
+  });
   hcss.push(`@keyframes sweep{0%{transform:translateX(0)}100%{transform:translateX(${XW}px)}}`);
   hcss.push(`.sw{animation:sweep ${T}s linear infinite}`);
   hcss.push(`@keyframes swo{0%,100%{opacity:0}1%,99%{opacity:.5}}`);
@@ -619,10 +644,10 @@ function buildHours() {
       } else if (row.n > 5) {
         d1 = diamond(15, row.h / 2 - 10); d2 = diamond(7.5, (row.h / 2 - 10) * 0.5, 0.2);
       } else {
-        d1 = diamond(34, row.h / 2 - 8); d2 = diamond(17, (row.h / 2 - 8) * 0.5, 0.2);
+        d1 = diamond(31, row.h / 2 - 12); d2 = diamond(15.5, (row.h / 2 - 12) * 0.5, 0.2);
       }
       const delay = `${f((m / 600) * T)}s`;
-      out.push(`<g transform="translate(${f(x)} ${f(cy)})"><g class="p" style="animation-delay:${delay}"><path fill="${row.col}" d="${d1}"/>${d2 ? `<path fill="${row.inner}" d="${d2}"/>` : ''}</g></g>`);
+      out.push(`<g transform="translate(${f(x)} ${f(cy)})"><g class="p${ri}" style="animation-delay:${delay}"><path fill="${row.col}" d="${d1}"/>${d2 ? `<path fill="${row.inner}" d="${d2}"/>` : ''}</g></g>`);
     }
     // the label column
     const ly = cy - 18;

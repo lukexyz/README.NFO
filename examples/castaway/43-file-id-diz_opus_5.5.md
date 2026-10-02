@@ -9,20 +9,20 @@
 :| |  | __ | \_  \| || __ || || || __ |\_ _/:
 :| |__| || |  _| || || || |\    /| || | | | :
 :\___||_||_| |___/|_||_||_| \/\/ |_||_| |_| :
-: \___\\_\\_\ \___\\_\\_\\_\ \/\/ \_\\_\ \_\:
 &lt;~~~~~~~~~~[ ONEBAR PRESENTS ]~~~~~~~~ zZ ~~&gt;
 CASTAWAY: NOTHING HAPPENS ON SCHEDULE [01/10]
 : A TEN-HOUR LO-FI ISLAND VIDEO FOR YOUTUBE :
+: ALL SOUND FROM CODE.  REQUIRES: TEN HOURS :
 </pre>
 
-<b>Castaway</b> (working title) · a ten-hour lo-fi island video · in development<br>
-<sub>its FILE_ID.DIZ: 45 columns by 10 lines, no high ASCII, as the spec asked. one line per hour.</sub>
+<p><b>Castaway</b> (working title) · a ten-hour lo-fi island video · in development<br>
+<sub>The FILE_ID.DIZ: 45 columns by 10 lines and no high ASCII, as the guidelines asked. One line per hour.</sub></p>
 
 </div>
 
-**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly idles, nodding along to the music in her cream headphones, and every so often something happens. It is an unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver *Johnny Castaway*, painted sunny and coastal: 16:9, 1080p, 30 fps, and always daytime.
+**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly idles, nodding along to the music in her cream headphones, and every so often something happens. It is an unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver *Johnny Castaway*, painted sunny and coastal: 16:9, 1080p, and always daytime.
 
-**Nothing happens, on schedule.** [activities.toml](activities.toml) books more than 90 activities, most of them on four timers: something everyday every 2 to 5 minutes, something occasional every 12 to 25, something rare every 30 to 60, and every 3 to 6 hours, something super rare. A bottle she throws washes straight back. A drone lowers a parcel: another pair of headphones. A coconut lands on a hermit crab, and the crab walks off wearing it. Every activity starts on the next bar of the music, every 3 seconds, so even the gags arrive on the beat.
+**Nothing happens, on schedule.** [activities.toml](activities.toml) books more than 90 activities, most of them on four timers: an everyday routine every 2 to 5 minutes, a small gag every 12 to 25, a set piece every 30 to 60, and every 3 to 6 hours, something super rare. A bottle she throws washes straight back. A drone lowers a parcel: another pair of headphones. A coconut lands on a hermit crab, and the crab walks off wearing it. Every activity starts on the next bar of the music, every 3 seconds, so even the gags arrive on the beat.
 
 **Every sound is synthesized from code** by [tools/make_audio.py](tools/make_audio.py): more than 150 files, with no samples, no borrowed loops and no recordings among them. The theme is a seamless 60-second loop at 80 BPM in F major. Nobody has heard any of it yet, which is very on brand.
 
@@ -42,30 +42,30 @@ python tools/schedule.py    # check the schedule, simulate a 10-hour run
    3h   :| |  | __ | \_  \| || __ || || || __ |\_ _/:   logo. she nods
    4h   :| |__| || |  _| || || || |\    /| || | | | :   logo. she nods
    5h   :\___||_||_| |___/|_||_||_| \/\/ |_||_| |_| :   logo, last of it
-   6h   : \___\\_\\_\ \___\\_\\_\\_\ \/\/ \_\\_\ \_\:   the logo's shadow
-   7h   &lt;~~~~~~~~~~[ ONEBAR PRESENTS ]~~~~~~~~ zZ ~~&gt;   the crew takes a bow
-   8h   CASTAWAY: NOTHING HAPPENS ON SCHEDULE [01/10]   the title, at last
-   9h   : A TEN-HOUR LO-FI ISLAND VIDEO FOR YOUTUBE :   the plot
-  10h             (end of tape. it loops.)
+   6h   &lt;~~~~~~~~~~[ ONEBAR PRESENTS ]~~~~~~~~ zZ ~~&gt;   the crew takes a bow
+   7h   CASTAWAY: NOTHING HAPPENS ON SCHEDULE [01/10]   the title, at last
+   8h   : A TEN-HOUR LO-FI ISLAND VIDEO FOR YOUTUBE :   the plot
+   9h   : ALL SOUND FROM CODE.  REQUIRES: TEN HOURS :   system requirements
+  10h       (end of file. she is still nodding.)
 </pre>
 
-FILE_ID.DIZ was invented by Clark Development for its PCBDescribe utility: a description 45 columns wide and 10 lines tall, with no high ASCII and no formatting, please. This card has no high ASCII. The logo is formatting; nobody is perfect.
+FILE_ID.DIZ was invented by Clark Development for its PCBDescribe utility, and the shareware guidelines that grew up around it asked for a description up to 10 lines of 45 characters, with no high ASCII and no centring or formatting, please. This card has no high ASCII. The logo is formatting and the last two lines are centred; nobody is perfect.
 
-The video is ten hours long, so the card runs one line per hour. Six of the ten are logo, which is roughly the video's own ratio: she is busy about a third of the time and idling the rest. The counter, `[01/10]`, is disk 01 of 10. Disks 02 to 10 are the same island, later.
+The video is ten hours long, so the card runs one line per hour. Six of the ten are logo, which is roughly the video's own ratio: she is busy about a third of the time and idling the rest. The counter, `[01/10]`, is disk 01 of 10. Disks 02 to 10 are the same island, later. The system requirements are accurate.
 
 </details>
 
 <details>
 <summary><b>FILE_ID.DIZ, BLOCK VARIANT</b> · the theme's card, with a message in the gaps</summary>
 
-<p align="center"><img src="assets/43-file-id-diz_opus_5.5-block.svg" width="784" alt="The Castaway theme's own FILE_ID.DIZ, in a DOS file viewer: light grey on black, 45 columns by 10 lines. 80BPM in solid half-block letters fills the top seven lines, and every empty cell around and inside the letters is a dimmer capital letter. Read in order, the capitals say: Every sound is made from code. No samples, no recordings. The ocean loops every minute. Nobody has heard any of it yet. Respect to the shark for keeping time. zZ of ONEBAR. Below the logo: CASTAWAY OST: THEME.WAV, 60 S LOOP .. [01/20]; 80 BPM. F MAJOR. II-V-I-VI. 20 BARS OF 3 S; SYNTHESIZED FROM CODE.  ONEBAR / zZ. The viewer's status line reads FILE_ID.DIZ 45 X 10, READ THE GAPS, and an inverse-video cursor reads the hidden message out, one letter at a time."></p>
+<p align="center"><img src="assets/43-file-id-diz_opus_5.5-block.svg" width="784" alt="The Castaway theme's own FILE_ID.DIZ, in a DOS file viewer: light grey on black, 45 columns by 10 lines. 80BPM in solid half-block letters fills the top seven lines, and every empty cell around and inside the letters is a dimmer capital letter. Read in order, the capitals say: Every sound is made from code. No samples, no recordings. The ocean loops every minute. Nobody has heard any of it yet. Respect to the shark for keeping time. zZ of ONEBAR. Below the logo: CASTAWAY OST: THE THEME, 60 S LOOP [01/20]; 80 BPM. F MAJOR. II-V-I-VI. 20 BARS OF 3 S; SYNTHESIZED FROM CODE.  ONEBAR / zZ. The viewer's status line reads FILE_ID.DIZ 45 X 10, READ THE GAPS. An inverse-video cursor reads the hidden message out, one letter at a time, and every letter it has read turns bright white, until the whole message stands out from the gaps; then it starts again."></p>
 
-The other way to fill 45 by 10: solid half-block letters, and every empty cell a capital, so the background is text and can hide a message. Block letters do not survive GitHub's code-block line spacing, so this one is drawn, cell by cell, as a DOS file viewer would show it. Its counter, `[01/20]`, is bar 01 of the theme's 20: the theme is a seamless 60-second loop of 20 bars of exactly 3 seconds, at 80 BPM in F major, a ii-V-I-vi progression with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean is a seamless 60-second loop too. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and every level can be set in master and per routine.
+The other way to fill 45 by 10: solid half-block letters, and every empty cell a capital, so the background is text and can hide a message. Block letters do not survive GitHub's code-block line spacing, so this one is drawn, cell by cell, as a DOS file viewer would show it, with a cursor that reads the gaps for you and leaves the message lit behind it. Its counter, `[01/20]`, is bar 01 of the theme's 20: the theme is a seamless 60-second loop of 20 bars of exactly 3 seconds, at 80 BPM in F major, a ii-V-I-vi progression with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean is a seamless 60-second loop too. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and every level can be set in master and per routine.
 
 </details>
 
 <details>
-<summary><b>FILE AREA 2: GAGS</b> · every gag as an upload, each with its own counter</summary>
+<summary><b>FILE AREA 2: GAGS</b> · 26 of the gags as uploads, each with its own counter</summary>
 
 <pre>
 FILE AREA 2: GAGS                  26 files. 1 island. as of 10-01-26
@@ -140,12 +140,12 @@ Each gag is an activity in [activities.toml](activities.toml); the Every column 
 <details>
 <summary><b>THE SMALL PRINT</b> · how it renders, what is built, greetz</summary>
 
-- **The renderer** is a web page, [web/index.html](web/index.html), served by [tools/serve.py](tools/serve.py) at http://127.0.0.1:8765/ with a live preview and an export to a YouTube-ready MP4. Plain ES modules, no build step, no npm packages. The browser encodes frame-exact H.264 with WebCodecs, 68 to 78 frames a second at 1080p30 in Chrome, and the server mixes the sound and joins the two. Hard cuts and stepped movement are the motion defaults.
+- **The renderer** is a web page, [web/index.html](web/index.html), served by [tools/serve.py](tools/serve.py) at http://127.0.0.1:8765/ with a live preview and an export to a YouTube-ready MP4. Plain ES modules, no build step, no npm packages. The browser encodes frame-exact H.264 with WebCodecs (68 to 78 frames a second in Chrome, measured at 1080p30), and the server mixes the sound and joins the two. Hard cuts and stepped movement are the motion defaults.
 - **The schedule** is checked by [tools/schedule.py](tools/schedule.py), which also simulates a 10-hour run. [tools/render_demo.py](tools/render_demo.py) `--dev` renders a dev reel of every activity with a heads-up display (the older Python reference renderer).
-- **Her:** a young woman with brown hair in a loose low bun, cream headphones, a coral tank top, cream shorts and bare feet. On this card she does not appear at all. The card is 45 columns; she is busy.
+- **Her:** a young woman with brown hair in a loose low bun and cream headphones. She does not appear on this card at all: 45 columns is not enough island.
 - **Scene life:** 26 entries. Built so far: shore waves and drifting cloud shadows. On the way: distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower.
 - **Status:** in development. No video has been published and there is no public link. The working log is [MUSING.md](MUSING.md).
-- **Greetz** to the hermit crab (the coconut suits you), the grey tabby (see you next crate), the shark (respect for the timekeeping), the turtle, the drone, the tour boat, the bro on the hydrofoil, whoever wrote back, and every ship, which we are assured were there.
+- **Greetz** to the hermit crab (the coconut suits you), the grey tabby (see you next crate), the shark (respect for the timekeeping), the turtle, the drone, the tour boat, the bro on the hydrofoil, whoever wrote back, and the ships, which we are assured were there.
 - **Credits:** card, logo, listing and block letters by zZ of ONEBAR, a crew named after the one bar of signal at the top of the palm and the one bar of music that every gag waits for. zZ is asleep. ONEBAR and zZ are made up.
 
 <sub>Castaway is an unofficial remake inspired by the 1992 screensaver <i>Johnny Castaway</i>, which belongs to its owners; this project is not affiliated with them. Clark Development, PCBDescribe and FILE_ID.DIZ are named only to explain the format.</sub>

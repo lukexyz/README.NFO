@@ -19,15 +19,19 @@
 // up once a beat under a fixed current-row band.
 //
 // One loop is 60 s, exactly one pass of the project's 60-second theme (20 bars of 3 s, 80
-// rows of one beat), so every counter wraps where the music really does:
-//   bar 1   the ocean loop retriggers, she idles, the cat is asleep up the palm; the theme
-//           channel shows the real chord roots, one per bar (ii-V-I-vi in F)
-//   bar 7   (18 s) a fin: the sea-and-sky channel starts, its pan dot circles the island
-//   bar 9   (24 s) the shark surfaces in headphones; its level meter and pan dot now nod in
-//           exact sync with hers
-//   bar 15  (42 s) note off; it swims away
+// rows of one beat), so every counter wraps where the music really does. The minute staged
+// is leave_any_time (instrument 20 in the README's list), which pays off the ESC hint:
+//   bar 1     the ocean loop retriggers, she idles and nods; the theme channel shows the real
+//             chord roots, one per bar (ii-V-I-vi in F)
+//   bar 3     (6 s, row 8) she stands and stretches: one long note
+//   bar 4     (9 s, row 12) she walks off over the water: footsteps, the volume column
+//             falling, her pan dot stepping right and out of the window
+//   bar 8     (21 s, row 28) note off. Channel 01 is silent for 27 rows (20.25 s: the
+//             routine's twenty empty seconds, as near as rows allow). The song carries on.
+//   row 55    (41.25 s) she walks back in from the right with an iced coffee
+//   row 67    (50.25 s) she sits, sips and explains nothing; on row 0 she is nodding again
 // The theme meter follows the real arrangement (intro, groove, theme, breakdown).
-// Reduced motion: everything pauses on the 30 s frame (shark and her, nodding together).
+// Reduced motion: everything pauses on the 30 s frame (her channel empty, the song playing).
 //
 // Regenerate:  node examples/castaway/src/40-text-mode-tracker_opus_5.5.mjs
 // Plain Node, no dependencies, deterministic (no clock, no randomness).
@@ -40,13 +44,31 @@ const SLUG = '40-text-mode-tracker_opus_5.5';
 const OUT = path.join(HERE, '..', 'assets', `${SLUG}.svg`);
 
 // ---------------------------------------------------------------------------------------------
-// Geometry: an 80-column screen of 8x8 cells (the tracker's own text mode), 38 rows tall.
+// Geometry: an 80-column screen of 8x8 cells (the tracker's own text mode), 42 rows tall.
 // ---------------------------------------------------------------------------------------------
 const COLS = 80, ROWS = 42, CW = 8, CH = 8, BZ = 10, MG = 5;   // bezel, tan margin
-const SW = COLS * CW, SH = ROWS * CH;
+// Rows the layout refers to across sections.
+const HR = 2;                     // header fields, rows HR..HR+4
+const LT = 13, LH = 14;           // logo top row, height in rows
+const WR = LT + LH + 2;           // first row of the Info Page windows (8 channel rows)
+const AR = WR + 9;                // the line under the windows
+// Leading: extra pixels above a row, so stacked lines of the 8x8 face (whose descenders use
+// the cell's last pixel row) do not touch. The header fields get room for a padded box and a
+// line of tan between boxes; the channel windows get two pixels a line, and their padded box
+// keeps its old clearance from the logo above and the line below.
+const LEAD = new Map();
+for (let r = HR + 1; r <= HR + 4; r++) LEAD.set(r, 5);
+for (let r = WR; r <= WR + 7; r++) LEAD.set(r, 2);
+LEAD.set(AR, 2);
+const YOFF = [0];
+for (let r = 1; r <= ROWS; r++) YOFF[r] = YOFF[r - 1] + CH + (LEAD.get(r) || 0);
+const SW = COLS * CW, SH = YOFF[ROWS];
 const VBW = SW + (BZ + MG) * 2, VBH = SH + (BZ + MG) * 2;
 const X = (c) => c * CW;
-const Y = (r) => r * CH;
+const Y = (r) => {
+  if (!(r in YOFF)) throw new Error(`row ${r} is off the screen`);
+  return YOFF[r];
+};
 
 const LOOP = 60;          // seconds: one pass of the theme
 const BEAT = 0.75;        // 80 BPM
@@ -190,9 +212,10 @@ const ink = (fill, body, extra = '') => (body ? `<g fill="${fill}"${extra}>${bod
 const rect = (x, y, w, h, fill, extra = '') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}"${extra}/>`;
 
 // A black inset over cells c0..c1 x r0..r1, with the tan school's edges: brown on the top and
-// left, cream on the bottom and right, one pixel outside the black.
-function inset(c0, r0, c1, r1, fill = P.black) {
-  const x = X(c0), y = Y(r0), w = X(c1 + 1) - x, h = Y(r1 + 1) - y;
+// left, cream on the bottom and right, one pixel outside the black. `pad` pixels of black above
+// and below keep capitals and descenders off the edges.
+function inset(c0, r0, c1, r1, pad = 1, fill = P.black) {
+  const x = X(c0), y = Y(r0) - pad, w = X(c1 + 1) - x, h = Y(r1) + CH + pad - y;
   return rect(x, y, w, h, fill)
     + rect(x - 1, y - 1, w + 1, 1, P.brown) + rect(x - 1, y, 1, h, P.brown)
     + rect(x, y + h, w + 1, 1, P.cream) + rect(x + w, y - 1, 1, h + 1, P.cream);
@@ -227,7 +250,7 @@ function stepAnim(period, n, step) {
 // A counter: a column of strings in a clipping viewport, stepping through `values` evenly.
 function ticker(col, row, width, values, period, fill) {
   const cls = stepAnim(period, values.length, CH);
-  const lines = values.map((v, i) => txt(0, i, v)).join('');
+  const lines = values.map((v, i) => txt(0, 0, v, 0, i * CH)).join('');
   return `<svg x="${X(col)}" y="${Y(row)}" width="${X(width)}" height="${CH}"><g class="${cls}" fill="${fill}">${lines}</g></svg>`;
 }
 const pad = (n, w) => String(n).padStart(w, '0');
@@ -235,14 +258,36 @@ const pad = (n, w) => String(n).padStart(w, '0');
 // ---------------------------------------------------------------------------------------------
 // The story of the minute (see the header comment). Times in seconds.
 // ---------------------------------------------------------------------------------------------
-const SHARK_IN = 18, SHARK_UP = 24, SHARK_OFF = 42, SHARK_GONE = 45;
+// leave_any_time, by row (one row = one beat = 0.75 s). Its real beats in activities.toml:
+// stands and stretches, walks away across the water, the island sits empty for twenty
+// seconds, walks back with an iced coffee, sits, sips, explains nothing. Compressed to fit.
+const R_STRETCH = 8, R_WALK = 12, R_GONE = 28, R_BACK = 55, R_SIT = 67;
+const T = (row) => row * BEAT;
+const T_STRETCH = T(R_STRETCH), T_WALK = T(R_WALK), T_GONE = T(R_GONE), T_BACK = T(R_BACK), T_SIT = T(R_SIT);
+
+// A class that is visible only between t0 and t1 (seconds) in every loop.
+const during = (t0, t1) => holdAnim(LOOP, t0 === 0
+  ? [[0, 'opacity:1'], [t1, 'opacity:0']]
+  : [[0, 'opacity:0'], [t0, 'opacity:1'], [t1, 'opacity:0']]);
+const herHere = holdAnim(LOOP, [[0, 'opacity:1'], [T_GONE, 'opacity:0'], [T_BACK, 'opacity:1']]);
+const herGone = holdAnim(LOOP, [[0, 'opacity:0'], [T_GONE, 'opacity:1'], [T_BACK, 'opacity:0']]);
+
+// Her Info Page line, phase by phase (each fits the 28-cell column).
+const HER_PHASES = [
+  [0, T_STRETCH, 'idle_music_nod'],
+  [T_STRETCH, T_WALK, 'leave_any_time (stretches)'],
+  [T_WALK, T_GONE, 'leave_any_time (over water)'],
+  [T_GONE, T_BACK, 'leave_any_time (elsewhere)'],
+  [T_BACK, T_SIT, 'leave_any_time (iced coffee)'],
+  [T_SIT, LOOP, 'leave_any_time (no comment)'],
+];
 
 // Lanes as channels. tab: the tab text above each letter; info: the Info Page line.
 const CH8 = [
-  { tab: 'Her', lane: 'Her', act: 'idle_music_nod', on: true, alt: 'shark_nod (nodding back)' },
-  { tab: 'Cat', lane: 'Cat', act: 'cat_visit (up the palm)', on: true },
+  { tab: 'Her', lane: 'Her', her: true },
+  { tab: 'Cat', lane: 'Cat', act: '', on: false },
   { tab: 'Turtle', lane: 'Turtle', act: '', on: false },
-  { tab: 'Sea+Sky', lane: 'Sea+Sky', act: 'shark_nod (in headphones)', on: false, shark: true },
+  { tab: 'Sea+Sky', lane: 'Sea+Sky', act: '', on: false },
   { tab: 'Shore', lane: 'Shore', act: '', on: false },
   { tab: 'Garden', lane: 'Garden', act: '', on: false },
   { tab: 'Theme', lane: 'Theme', act: 'castaway_lofi_theme_loop_60s', on: true },
@@ -264,7 +309,6 @@ const TITLE_LINE = 'Unhurried Tracker v1.992, (C) 2026 Copra Software. All rows 
 black.push(txt(Math.floor((COLS - TITLE_LINE.length) / 2), 0, TITLE_LINE));
 
 // Rows 2-6: the header fields.
-const HR = 2;
 black.push(labelR(9, HR, 'Song Name'), labelR(9, HR + 1, 'File Name'), labelR(9, HR + 2, 'Order'),
   labelR(9, HR + 3, 'Pattern'), labelR(9, HR + 4, 'Row'));
 body.push(inset(11, HR, 36, HR), inset(11, HR + 1, 27, HR + 1), inset(11, HR + 2, 17, HR + 4));
@@ -287,12 +331,13 @@ black.push(labelR(49, HR, 'Instrument'), labelR(49, HR + 1, 'Speed/Tempo'), labe
   labelR(49, HR + 3, 'Run'));
 body.push(inset(51, HR, 77, HR), inset(51, HR + 1, 57, HR + 1), inset(51, HR + 2, 54, HR + 2),
   inset(51, HR + 3, 58, HR + 3));
-yellow.push(txt(51, HR, '02 Kalimba (synthesized)'), txt(51, HR + 1, '024'), txt(55, HR + 1, '080'),
+// The selected instrument: number 20 in the README's Instrument List, the one this minute plays.
+yellow.push(txt(51, HR, '20 leave_any_time'), txt(51, HR + 1, '024'), txt(55, HR + 1, '080'),
   txt(51, HR + 2, '1992'), txt(51, HR + 3, '10:00:00'));
 brown.push(txt(54, HR + 1, '/'));
-// FreeMem / FreeEMS become the sound budget.
+// FreeMem / FreeEMS become the sound budget, values right-aligned on column 77.
 black.push(txt(62, HR + 3, 'Samples'), txt(62, HR + 4, 'Synthesized'));
-black.push(txt(76 - 1, HR + 3, '0k'), txt(74, HR + 4, '150+'));
+black.push(labelR(77, HR + 3, '0k'), labelR(77, HR + 4, '150+'));
 
 // Row 8: the status line. Values in cream, some of them ticking.
 const SR = 8;
@@ -339,7 +384,6 @@ const LETTERS = {
     '..####..', '...##...', '...##...', '...##...', '...##...', '...##...', '...##...'],
 };
 const WORD = 'CASTAWAY';
-const LT = 13, LH = 14;           // logo top row, height in rows
 const LC0 = 6, LSTRIDE = 9;       // first letter column; 8 cells + 1 gap
 const BAND = 6;                   // current-row band, logo row index
 const NUMC = 2;                   // row-number column (3 digits)
@@ -417,13 +461,16 @@ function bevelPaths() {
 // Pattern data for the 80-row loop: channel index -> { row: 7-char cell }.
 // Empty cells are drawn as the dot texture. Notes: the theme channel carries the theme's real
 // chord roots, one per bar, ii-V-I-vi in F (Gm9, C13, Fmaj9, Dm9 over bass roots G2, C2, F2,
-// D2 in tools/make_audio.py); the ocean loop retriggers on row 0; the shark (instrument 12 in
-// the README's list) arrives on bar 7 and gets a note off on bar 15. shark_nod uses two lanes,
-// sea and sky and hers, so her channel takes the same notes; otherwise it stays empty, because
-// she is idling.
+// D2 in tools/make_audio.py); the ocean loop retriggers on row 0. Her channel plays instrument
+// 20 (leave_any_time in the README's list): a note at full volume (64) for the stretch, the
+// volume column falling as her footsteps head off over the water, a note off, 27 empty rows,
+// then a quiet note as she walks back in and the volume rising again. Idling has no notes.
 const NOTES = {
-  0: { 24: 'C-512··', 56: '===····' },
-  3: { 24: 'C-512··', 32: 'C-51240', 56: '===····' },
+  0: {
+    [R_STRETCH]: 'C-52064', [R_WALK]: '·····48', [R_WALK + 4]: '·····32', [R_WALK + 8]: '·····16',
+    [R_WALK + 12]: '·····08', [R_GONE]: '===····',
+    [R_BACK]: 'C-52008', [R_BACK + 4]: '·····32', [R_BACK + 8]: '·····64',
+  },
   6: {},
   7: { 0: 'C-5····' },
 };
@@ -456,7 +503,7 @@ const noteUses = [];
       const cx = X(letterCol(c));
       if (cx > x) dotRects += `<rect x="${x}" y="${LY0 + k * CH}" width="${cx - x}" height="${CH}"/>`;
       x = cx + X(7);
-      noteUses.push(txt(letterCol(c), LT + k, NOTES[c][r]));
+      noteUses.push(txt(letterCol(c), 0, NOTES[c][r], 0, LY0 + k * CH));
     });
     if (x < LX1) dotRects += `<rect x="${x}" y="${LY0 + k * CH}" width="${LX1 - x}" height="${CH}"/>`;
   }
@@ -486,15 +533,13 @@ logo.push('</g>');
 logo.push(bevelPaths());
 
 // Channel tabs above the letters (brown tabs; cream text while the channel is sounding).
-const sharkOn = holdAnim(LOOP, [[0, 'opacity:0'], [SHARK_IN, 'opacity:1'], [SHARK_GONE, 'opacity:0']]);
-const sharkOff = holdAnim(LOOP, [[0, 'opacity:1'], [SHARK_IN, 'opacity:0'], [SHARK_GONE, 'opacity:1']]);
 CH8.forEach((ch, i) => {
   const c = letterCol(i);
   body.push(rect(X(c), Y(LT - 1), X(8), CH, P.brown));
   const tc = c + Math.floor((8 - ch.tab.length) / 2);
-  if (ch.shark) {
-    body.push(ink(P.ink, txt(tc, LT - 1, ch.tab), ` class="${sharkOff}"`));
-    body.push(ink(P.cream, txt(tc, LT - 1, ch.tab), ` class="${sharkOn}"`));
+  if (ch.her) {
+    body.push(ink(P.cream, txt(tc, LT - 1, ch.tab), ` class="${herHere}"`));
+    body.push(ink(P.ink, txt(tc, LT - 1, ch.tab), ` class="${herGone}"`));
   } else (ch.on ? cream : black).push(txt(tc, LT - 1, ch.tab));
 });
 
@@ -504,7 +549,7 @@ CH8.forEach((ch, i) => {
   const n = 16 + LH;
   const nums = (fill) => {
     let s = '';
-    for (let k = 0; k < n; k++) s += txt(NUMC, LT + k, pad((((k - BAND) % 16) + 16) % 16, 3));
+    for (let k = 0; k < n; k++) s += txt(NUMC, 0, pad((((k - BAND) % 16) + 16) % 16, 3), 0, LY0 + k * CH);
     return `<g class="${rnCls}" fill="${fill}">${s}</g>`;
   };
   body.push(rect(X(NUMC) - 2, bandY, X(3) + 4, CH, P.brownDk));
@@ -515,32 +560,31 @@ CH8.forEach((ch, i) => {
 // ---------------------------------------------------------------------------------------------
 // The Info Page windows: level meters, what each channel is playing, pan dots.
 // ---------------------------------------------------------------------------------------------
-const WR = LT + LH + 2;           // first channel row
 const VU0 = 4, VU1 = 23, IN0 = 25, IN1 = 62, PN0 = 64, PN1 = 78;
-body.push(inset(VU0, WR, VU1, WR + 7), inset(IN0, WR, IN1, WR + 7), inset(PN0, WR, PN1, WR + 7));
+const WH = Y(WR + 7) + CH - Y(WR);   // the eight channel lines, leading included
+body.push(inset(VU0, WR, VU1, WR + 7, 2), inset(IN0, WR, IN1, WR + 7, 2), inset(PN0, WR, PN1, WR + 7, 2));
 
 // Channel numbers on the tan: cream while sounding, brown when silent.
 CH8.forEach((ch, i) => {
   const s = pad(i + 1, 2);
-  if (ch.shark) {
-    body.push(ink(P.brown, txt(1, WR + i, s), ` class="${sharkOff}"`));
-    body.push(ink(P.cream, txt(1, WR + i, s), ` class="${sharkOn}"`));
+  if (ch.her) {
+    body.push(ink(P.cream, txt(1, WR + i, s), ` class="${herHere}"`));
+    body.push(ink(P.brown, txt(1, WR + i, s), ` class="${herGone}"`));
   } else (ch.on ? cream : brown).push(txt(1, WR + i, s));
 });
 
-// Info lines: lane in cream, what it is playing in green; silent lanes are dots.
+// Info lines: lane in cream, what it is playing in green; silent lanes are dots. Her line
+// changes with each phase of the routine; while she is away it stays, dimmed.
 CH8.forEach((ch, i) => {
   const r = WR + i;
   const lane = ch.lane.padEnd(9, ' ');
-  if (ch.shark) {
-    body.push(ink(P.brown, txt(IN0 + 1, r, lane), ` class="${sharkOff}"`));
-    body.push(ink(P.greenDim, txt(IN0 + 10, r, '·'.repeat(8)), ` class="${sharkOff}"`));
-    body.push(ink(P.cream, txt(IN0 + 1, r, lane), ` class="${sharkOn}"`));
-    body.push(ink(P.green, txt(IN0 + 10, r, ch.act), ` class="${sharkOn}"`));
-  } else if (ch.alt) {
-    cream.push(txt(IN0 + 1, r, lane));
-    body.push(ink(P.green, txt(IN0 + 10, r, ch.act), ` class="${sharkOff}"`));
-    body.push(ink(P.green, txt(IN0 + 10, r, ch.alt), ` class="${sharkOn}"`));
+  if (ch.her) {
+    body.push(ink(P.cream, txt(IN0 + 1, r, lane), ` class="${herHere}"`));
+    body.push(ink(P.brown, txt(IN0 + 1, r, lane), ` class="${herGone}"`));
+    HER_PHASES.forEach(([t0, t1, s]) => {
+      if (s.length > IN1 - (IN0 + 10) + 1) throw new Error(`info line too long: ${s}`);
+      body.push(ink(t0 === T_GONE ? P.greenDim : P.green, txt(IN0 + 10, r, s), ` class="${during(t0, t1)}"`));
+    });
   } else if (ch.on) {
     cream.push(txt(IN0 + 1, r, lane));
     green.push(txt(IN0 + 10, r, ch.act));
@@ -566,64 +610,64 @@ function envAnim(frames) {
 }
 css.push('.env{transform-origin:' + MX + 'px 0px}');
 const meters = [];
-function meter(i, pumpCls, envCls) {
+function meter(i, pumpCls, envCls, visCls) {
   const y = Y(WR + i);
   let cover = `<rect x="${MX}" y="${y}" width="2000000" height="${CH}" fill="${P.black}"/>`;
   cover = `<g class="${pumpCls}">${cover}</g>`;
   if (envCls) cover = `<g class="env ${envCls}">${cover}</g>`;
-  meters.push(rect(MX, y + 1, ML, 6, 'url(#tk)') + cover);
+  const m = rect(MX, y + 1, ML, 6, 'url(#tk)') + cover;
+  meters.push(visCls ? `<g class="${visCls}">${m}</g>` : m);
 }
-// Her: nodding, one pump per beat.
-const herPump = pumpAnim(BEAT, pumpCurve, 0.62, 0.0);
-meter(0, herPump, null);
-// Cat: asleep, a slow purr (one breath per bar).
-meter(1, pumpAnim(BAR, [0.22, 0.24, 0.26, 0.27, 0.27, 0.26, 0.24, 0.22], 1, 0), null);
-// Sea+Sky: silent, then a fin (small, slow), then the same pump as hers, then gone.
-meter(3, herPump, envAnim([[0, 0.001], [SHARK_IN, 0.35], [SHARK_UP, 1], [SHARK_OFF, 0.6], [43.5, 0.3], [SHARK_GONE, 0.001]]));
+// Her, one meter per phase of the minute, each shown only during its own phase:
+// nodding, one pump per beat (idle, and gently again once she has sat down with the coffee)
+meter(0, pumpAnim(BEAT, pumpCurve, 0.62, 0.0), null, during(0, T_STRETCH));
+meter(0, pumpAnim(BEAT, pumpCurve, 0.4, 0.0), null, during(T_SIT, LOOP));
+// the stretch: one long note that swells over the bar (6 s is a whole number of bars)
+meter(0, pumpAnim(BAR, [0.34, 0.5, 0.62, 0.72, 0.8, 0.86, 0.9, 0.9], 1, 0), null, during(T_STRETCH, T_WALK));
+// footsteps on the water, one per beat, fading out as she walks off and in as she walks back
+const steps = pumpAnim(BEAT, [0.46, 0.34, 0.24, 0.17, 0.12, 0.09, 0.07, 0.05], 1, 0);
+meter(0, steps, envAnim([[0, 1], [T_WALK + 3, 0.8], [T_WALK + 6, 0.6], [T_WALK + 9, 0.4]]), during(T_WALK, T_GONE));
+meter(0, steps, envAnim([[0, 0.4], [T_BACK + 3, 0.6], [T_BACK + 6, 0.8]]), during(T_BACK, T_SIT));
+meters.push(rect(MX, Y(WR) + 1, 1, 6, P.greenDim, ` class="${herGone}"`));
 // Theme: on the beat, at the real arrangement's levels: intro (keys only) 0-6 s, groove 6-30,
 // theme 30-48, breakdown 48-60 (kick and rim only).
 meter(6, pumpAnim(BEAT, pumpCurve, 0.5, 0.0), envAnim([[0, 0.55], [6, 0.82], [30, 1], [48, 0.66]]));
 // Ocean: a slow swell, one wave every six seconds.
 meter(7, pumpAnim(6, [0.34, 0.4, 0.46, 0.5, 0.52, 0.5, 0.45, 0.39], 1, 0), null);
 // Silent lanes: the cover sits at the left edge.
-[2, 4, 5].forEach((i) => meters.push(rect(MX, Y(WR + i) + 1, 1, 6, P.greenDim)));
-meters.push(rect(MX, Y(WR + 3) + 1, 1, 6, P.greenDim, ` class="${sharkOff}"`));
-body.push(`<svg x="${X(VU0)}" y="${Y(WR)}" width="${X(VU1 + 1 - VU0)}" height="${Y(8)}" viewBox="${X(VU0)} ${Y(WR)} ${X(VU1 + 1 - VU0)} ${Y(8)}">${meters.join('')}</svg>`);
+[1, 2, 3, 4, 5].forEach((i) => meters.push(rect(MX, Y(WR + i) + 1, 1, 6, P.greenDim)));
+body.push(`<svg x="${X(VU0)}" y="${Y(WR)}" width="${X(VU1 + 1 - VU0)}" height="${WH}" viewBox="${X(VU0)} ${Y(WR)} ${X(VU1 + 1 - VU0)} ${WH}">${meters.join('')}</svg>`);
 
 // Pan dots: one small tan square per sounding channel, at its place across the island.
 const PX0 = X(PN0) + 4, PL = X(PN1 + 1) - 4 - PX0 - 5;
 const panX = (p) => Math.round(PX0 + p * PL);
 const nod = holdAnim(BEAT, [[0, 'transform:translateY(1px)'], [BEAT * 0.375, 'transform:translateY(0px)']]);
 const dot = (x, i, extra = '') => `<rect x="${x}" y="${Y(WR + i) + 2}" width="5" height="4" fill="${P.tan}"${extra}/>`;
-body.push(`<g class="${nod}">${dot(panX(0.68), 0)}</g>`);   // her, at home right of the palm
-body.push(dot(panX(0.42), 1));                                // the cat, up the palm
 body.push(dot(panX(0.5), 6));                                 // the theme, centre
 body.push(dot(panX(0.08), 7) + dot(panX(0.92), 7));           // the ocean, both sides
 {
-  // The shark: circles once per bar as a fin, then parks beside her and nods on her beat.
-  const frames = [[0, `transform:translateX(${panX(1.08) - panX(0)}px)`]];
-  for (let t = SHARK_IN; t < SHARK_UP; t += BEAT) {
-    const a = ((t - SHARK_IN) / BAR) * Math.PI * 2;
-    frames.push([t, `transform:translateX(${panX(0.5 + 0.46 * Math.cos(a)) - panX(0)}px)`]);
-  }
-  frames.push([SHARK_UP, `transform:translateX(${panX(0.86) - panX(0)}px)`]);
-  for (let t = SHARK_OFF; t < SHARK_GONE; t += BEAT) {
-    frames.push([t, `transform:translateX(${panX(0.86 + (0.3 * (t - SHARK_OFF + BEAT)) / (SHARK_GONE - SHARK_OFF)) - panX(0)}px)`]);
-  }
-  frames.push([SHARK_GONE, `transform:translateX(${panX(1.08) - panX(0)}px)`]);
+  // Her: at home right of the palm, nodding; a step right per beat as she walks off over the
+  // water and out of the window; a step left per beat as she walks back in with the coffee.
+  const HOME = 0.68, OFF = 1.12;
+  const at = (p) => `transform:translateX(${panX(p) - panX(0)}px)`;
+  const frames = [[0, at(HOME)]];
+  const nOut = R_GONE - R_WALK, nIn = R_SIT - R_BACK;
+  for (let k = 0; k < nOut; k++) frames.push([T(R_WALK + k), at(HOME + ((OFF - HOME) * (k + 1)) / nOut)]);
+  frames.push([T_GONE, at(OFF)]);
+  for (let k = 0; k < nIn; k++) frames.push([T(R_BACK + k), at(OFF - ((OFF - HOME) * (k + 1)) / nIn)]);
+  frames.push([T_SIT, at(HOME)]);
   const move = holdAnim(LOOP, frames);
-  body.push(`<svg x="${X(PN0)}" y="${Y(WR)}" width="${X(PN1 + 1 - PN0)}" height="${Y(8)}" viewBox="${X(PN0)} ${Y(WR)} ${X(PN1 + 1 - PN0)} ${Y(8)}">`
-    + `<g class="${move}"><g class="${nod}">${dot(panX(0), 3)}</g></g></svg>`);
+  body.push(`<svg x="${X(PN0)}" y="${Y(WR)}" width="${X(PN1 + 1 - PN0)}" height="${WH}" viewBox="${X(PN0)} ${Y(WR)} ${X(PN1 + 1 - PN0)} ${WH}">`
+    + `<g class="${move}"><g class="${nod}">${dot(panX(0), 0)}</g></g></svg>`);
 }
 
 // Under the windows: channel count, the master level (the project's real loudness target), and
 // the speed joke; then the way in, as two value boxes like the header fields.
-const AR = WR + 9;
 black.push(txt(1, AR, 'Active Channels:'), txt(20, AR, '(8)'), txt(26, AR, 'Global Volume:'),
   txt(52, AR, 'Speed 24: one row a beat'));
 cream.push(txt(41, AR, '-14 LUFS'));
-body.push(ink(P.cream, txt(18, AR, '4'), ` class="${sharkOff}"`));
-body.push(ink(P.cream, txt(18, AR, '5'), ` class="${sharkOn}"`));
+body.push(ink(P.cream, txt(18, AR, '3'), ` class="${herHere}"`));
+body.push(ink(P.cream, txt(18, AR, '2'), ` class="${herGone}"`));
 const KR = AR + 2;
 black.push(labelR(10, KR, 'Play'), labelR(42, KR, 'then open'));
 body.push(inset(12, KR, 32, KR), inset(44, KR, 65, KR));
@@ -658,16 +702,16 @@ const defs = `<defs>${glyphDefs}`
   + `<clipPath id="lg"><path d="${clipD}"/></clipPath></defs>`;
 
 css.unshift('svg{shape-rendering:crispEdges}');
-// Reduced motion: hold the 30 s frame (bar 11: the shark up and nodding, the theme at full).
+// Reduced motion: hold the 30 s frame (bar 11: her channel empty, the theme at full).
 css.push('@media (prefers-reduced-motion:reduce){*{animation-play-state:paused!important;animation-delay:-30s!important}}');
 
 const TITLE = 'CASTAWAY, as the Info Page of a DOS text-mode tracker';
 const DESC = 'An invented 1990s tracker screen in tan, black and green. The word CASTAWAY is the '
   + 'pattern view: eight letter-shaped channel windows (her, the cat, the turtle, sea and sky, the '
   + 'shore, the garden, the theme, the ocean) with rows of mostly empty cells stepping up once a beat '
-  + 'at 80 BPM. Below, level meters, what each channel is playing, and pan dots: a shark arrives, '
-  + 'surfaces in headphones and nods in sync with her, then leaves. Play: python tools/serve.py, then '
-  + 'open http://127.0.0.1:8765/.';
+  + 'at 80 BPM. Below, level meters, what each channel is playing, and pan dots. This minute, channel '
+  + '01 stretches, walks off over the water, goes silent for 27 rows while the theme plays on, and '
+  + 'walks back with an iced coffee. Play: python tools/serve.py, then open http://127.0.0.1:8765/.';
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VBW} ${VBH}" width="${VBW}" height="${VBH}" role="img" aria-labelledby="t d">`
   + `<title id="t">${TITLE}</title><desc id="d">${DESC}</desc>`

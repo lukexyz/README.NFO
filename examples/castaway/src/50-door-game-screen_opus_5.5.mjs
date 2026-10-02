@@ -26,7 +26,7 @@
 // Plain Node, no dependencies, deterministic (no clock; the only randomness is a seeded PRNG,
 // seed 1992, the project's default run seed). Text is drawn from a CP437-style 8x16 bitmap font
 // as <use> glyphs, never <text>. Animation is CSS only, stepped, on the soundtrack's grid:
-// 80 BPM = one beat every 0.75 s, a bar every 3 s; screens cut on bar lines; the loop is 36 s.
+// 80 BPM = one beat every 0.75 s, a bar every 3 s; screens cut on bar lines; the loop is 39 s (13 bars).
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -39,7 +39,9 @@ const OUT_MD = path.join(HERE, '..', `${SLUG}.md`);
 
 // ---------------------------------------------------------------------------------------------
 // Facts used on screen, checked read-only against D:/python/castaway on 2026-10-01:
-//   activities.toml: 94 activities (81 timed + 13 chained); the README says "more than 90".
+//   activities.toml: 94 activities (81 on the four timers + 13 chained); the README says
+//   "more than 90", most on four timers, the rest follow-ups. [video] fps = 24 (since
+//   2026-10-01, MUSING.md "Current state"), so the README says 24 fps, not 30.
 //   tiers: regular 2-5 min, occasional 12-25 min, rare 30-60 min, super rare 3-6 h (max 3 a run).
 //   typical 10-hour run (the file's own header, medians of 200 simulated runs): about 155
 //   regular, 30 occasional, 13 rare and 2 super-rare events, plus chained follow-ups.
@@ -47,6 +49,8 @@ const OUT_MD = path.join(HERE, '..', `${SLUG}.md`);
 //   message_in_bottle: "it washes straight back to her feet"; bottle_reply comes 1-3 hours
 //   later, a different bottle. hammock: "looks around for a second tree. There isn't one."
 //   media/audio/audio_catalog.json: 181 files; the README says "more than 150".
+//   fishing_quiet: "Fishes from the shore" (so the menu says shore, not raft).
+// Re-checked by the reviewer on 2026-10-02: still 94 activities and 181 sound files.
 // ---------------------------------------------------------------------------------------------
 
 // Seeded PRNG (mulberry32), seed 1992.
@@ -72,16 +76,16 @@ const PAL = ['#000000', '#0000AA', '#00AA00', '#00AAAA', '#AA0000', '#AA00AA', '
 const [BLK, BLU, GRN, CYN, RED, MAG, BRN, LGR, DGR, LBL, LGN, LCY, LRD, LMG, YEL, WHT] = PAL.map((_, i) => i);
 
 const BEAT = 0.75, BAR = 3;
-const LOOP = 36;                               // 12 bars
+const LOOP = 39;                               // 13 bars
 // The session, in seconds. Every cut lands on a bar line.
 const T = {
   islandAt: 9,                                 // title for 3 bars, then the location screen
   storyAt: 24,                                 // location for 5 bars, then the story screen
-  titleAt: LOOP - BEAT,                        // story for ~4 bars, then the title redraws
+  titleAt: LOOP - BEAT,                        // story for ~5 bars, then the title redraws
   draw: BEAT,                                  // a screen paints top to bottom in one beat
   keyAt: 22.5,                                 // the key typed at the location prompt
 };
-const beatAt = (k) => T.storyAt + T.draw + k * BEAT;   // story-screen beats, k = 0..13
+const beatAt = (k) => T.storyAt + T.draw + k * BEAT;   // story-screen beats, k = 0..17
 
 // ---------------------------------------------------------------------------------------------
 // CP437-style 8x16 bitmap font. Rows are '#'/'.' strings, placed from row `top` of the cell.
@@ -393,7 +397,7 @@ const mirror = (rows) => rows.map((r) => [...r].reverse().join(''));
 const stamp = (cv, spr, ox, oy) => { for (let y = 0; y < spr.h; y++) for (let x = 0; x < spr.w; x++) if (spr.px[y][x] != null) setPx(cv, ox + x, oy + y, spr.px[y][x]); };
 
 // ---------------------------------------------------------------------------------------------
-// Animation: CSS keyframes on the 36 s loop, all stepped. A class per distinct timeline.
+// Animation: CSS keyframes on the 39 s loop, all stepped. A class per distinct timeline.
 // The base (non-animated) style of everything is its state at t = 0, so with reduced motion
 // the screen rests on the complete title.
 // ---------------------------------------------------------------------------------------------
@@ -558,8 +562,9 @@ function titleScreen(G, P, A) {
   for (const [x, y] of [[59, 39], [58, 40], [59, 41], [60, 41], [77, 40], [78, 39], [76, 41], [75, 41], [61, 41], [74, 41]]) setPx(isl, x, y, WHT);
   // a scrap of green at the back of the sand
   for (const [x, y, c] of [[64, 38, GRN], [65, 38, LGN], [73, 38, GRN], [74, 38, LGN], [72, 38, GRN]]) setPx(isl, x, y, c);
-  // the raft, moored on the right: logs end on, lashed
-  stamp(isl, sprite(['.n.n.n.n', 'ntntntnt', 'dddddddd']), 72, 40);
+  // the raft, moored on the right: logs end on, lashed; it stops two columns short of the
+  // screen's right edge so it reads as floating, not cut off by the frame
+  stamp(isl, sprite(['.n.n.n', 'ntntnt', 'dddddd']), 72, 40);
   palm(isl, 70, 38, 67, 13);
   const herBody = canvas(COLS, ROWS * 2);
   stamp(herBody, sprite(HER_BODY), 60, 31);
@@ -665,7 +670,7 @@ function islandScreen(G, A) {
   story.forEach((l, i) => S.mk(4 + i, 1, l, GRN, 78));
   const choices = [
     ['(W)ait for something', '(C)oconut: have one', '(P)alm: climb for signal'],
-    ['(N)od to the beat', '(F)ish off the raft', '(K)umara: still growing'],
+    ['(N)od to the beat', '(F)ish from the shore', '(K)umara: still growing'],
     ['(B)ottle: send the note', '(S)andcastle vs tide', 'Ha(m)mock: find 2nd tree'],
     ['(J)og a short lap', 'Wave for (R)escue', '(L)eave (any time)'],
     ['(V)iew stats', '(?) Help', '(Q)uit to the board'],
@@ -749,7 +754,9 @@ function storyScreen(G, P, A) {
     'It is in no hurry. Neither are you...',
   ];
   N1.forEach((l, i) => S.mk(B1.r + 1 + i, 35, l, GRN, 78));
-  N2.forEach((l, i) => S.mk(B2.r + 2 + i, 35, l, GRN, 78));
+  // the second paragraph prints only when the bottle comes back into the story
+  const S2 = new Screen('story, part 2');
+  N2.forEach((l, i) => S2.mk(B2.r + 2 + i, 35, l, GRN, 78));
   const sEnd = S.mk(22, 1, '{n}Bottles thrown {Y}1{n}  ·  Bottles back {Y} {n}  ·  Replies: due in a few hours', BRN, 78);
   const backCol = 1 + vis('Bottles thrown 1  ·  Bottles back ').length;
   const pEnd = S.mk(24, 1, '{M}[Press any key to keep waiting]', LMG, 78);
@@ -795,10 +802,12 @@ function storyScreen(G, P, A) {
   flight.forEach(([x, y, ly], i) => bank.push([emitPixels(P, bottle(x, y, ly, false), o1.x, o1.y), [[at(2 + i), at(3 + i)]]]));
   const splash = canvas(VW, VH); stamp(splash, sprite(['W.W.W', '.WfW.']), 24, HZ1);
   bank.push([emitPixels(P, splash, o1.x, o1.y), [[at(6), at(7)]]]);
-  const bobs = [];
-  for (let k = 7; at(k) < END; k++) bobs.push([at(k), Math.min(at(k + 1), END)]);
-  bank.push([emitPixels(P, bottle(26, HZ1 + 1, 0, true), o1.x, o1.y), bobs.filter((_, i) => i % 2 === 0)]);
-  bank.push([emitPixels(P, bottle(26, HZ1, 0, true), o1.x, o1.y), bobs.filter((_, i) => i % 2 === 1)]);
+  // it bobs for two beats, shrinks to a dot on the horizon, and leaves the story; only then
+  // does it start back in the second vignette (one bottle, never in two places at once)
+  bank.push([emitPixels(P, bottle(26, HZ1 + 1, 0, true), o1.x, o1.y), [[at(7), at(8)]]]);
+  bank.push([emitPixels(P, bottle(26, HZ1, 0, true), o1.x, o1.y), [[at(8), at(9)]]]);
+  const dot = canvas(VW, VH); setPx(dot, 28, HZ1, LGN);
+  bank.push([emitPixels(P, dot, o1.x, o1.y), [[at(9), at(10)]]]);
 
   // Vignette 2: the water's edge; the bottle rides a wave in and stops at her feet.
   const HZ2 = 6;
@@ -817,10 +826,10 @@ function storyScreen(G, P, A) {
   bank.push([emitPixels(P, her2b, o2.x, o2.y), null]);
   const nod = A.raw('nod', `0%{transform:translateY(${PX}px)}50%{transform:translateY(0)}`, 'transform:translateY(0);', BEAT);
   bank.push([`<g class="${nod}">${emitPixels(P, her2h, o2.x, o2.y)}</g>`, null]);
-  // the way back, starting the beat after the splash: far out, riding the foam in, then
-  // lying on the sand by her feet
+  // the way back, starting the beat after it left the first vignette: far out, riding the
+  // foam in, then lying on the sand by her feet
   const back = [[1, 7], [5, 8], [9, 9], [12, 10], [15, 11], [19, 12]];
-  const startK = 7;
+  const startK = 10;
   back.forEach(([x, y], i) => {
     const home = i === back.length - 1;
     const c = bottle(x, y, 1, !home);
@@ -837,7 +846,8 @@ function storyScreen(G, P, A) {
   const cursor = `<g class="${blink}"><rect class="f${WHT}" x="${pEnd * CW + 1}" y="${24 * CH + 12}" width="7" height="3"/></g>`;
   const pieces = bank.map(([svg, win]) => (win ? `<g class="${A.show(win)}">${svg}</g>` : svg)).join('');
   void sEnd;
-  return pieces + S.svg(G) + zero + one + cursor;
+  const part2 = `<g class="${A.show([[at(startK), END]])}">${S2.svg(G)}</g>`;
+  return pieces + S.svg(G) + part2 + zero + one + cursor;
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -906,7 +916,7 @@ function buildStats() {
   r++;
   S.mk(r++, 1, '{G}Paths to {Y}:{C} Palm {G}-{C} Raft {G}-{C} Shallows {G}-{C} ({B}Reef{C}) {G}-{C} ({B}Horizon{C}) {G}-{C} ({B}Iced coffee{C})', LGN, 78);
   r++;
-  S.mk(r++, 1, '{M}Commerce report for the {Y}Timer Exchange{M}: the schedule, in activities.toml', LMG, 78);
+  S.mk(r++, 1, '{M}Trading today at the {Y}Timer Exchange{M}: the schedule, from activities.toml', LMG, 78);
   const cols = [1, 15, 26, 46, 62];
   const head = ['Timer', 'Status', 'Every', 'In 10 hours', 'Most a run'];
   head.forEach((t, i) => S.mk(r, cols[i], `{W}${t}`, WHT));
@@ -949,7 +959,7 @@ function buildStats() {
     [[0, -1], [-1, -2], [-2, -2]], [[1, -1], [2, -2], [3, -2]],
   ]);
   stamp(cv, sprite(['nnn', 'ddd']), 20, 10);                                    // the raft
-  for (const [x, y] of [[12, 8, 0]]) { setPx(cv, x, y - 1, BRN); setPx(cv, x, y, LRD); }  // her, small, by the palm
+  setPx(cv, 12, 6, BRN); setPx(cv, 12, 7, LRD); setPx(cv, 12, 8, LEGEND.w);           // her, small, by the palm
   const art = emitPixels(P, cv, (BX.c + 1) * CW, (BX.r + 1) * CH);
   const blink = A.raw('blink', '0%{opacity:1}50%{opacity:0}', 'opacity:1;', BEAT);
   const cursor = `<g class="${blink}"><rect class="f${WHT}" x="${pEnd * CW + 1}" y="${r * CH + 12}" width="7" height="3"/></g>`;
@@ -986,7 +996,7 @@ function buildMd() {
     '',
     menuLine('tools/serve.py', '(S)erve the island', 'python tools/serve.py, then 127.0.0.1:8765'),
     menuLine('web/index.html', '(W)eb page', 'the renderer: live preview, MP4 export'),
-    menuLine('activities.toml', '(A)ctivities', 'more than 90 of them, on four timers'),
+    menuLine('activities.toml', '(A)ctivities', 'more than 90: four timers, plus follow-ups'),
     menuLine('tools/schedule.py', '(C)heck the schedule', 'validate it, simulate a ten-hour run'),
     menuLine('tools/make_audio.py', '(M)ake the sound', 'every sound, synthesized from code'),
     menuLine('tools/render_demo.py', '(D)ev reel', 'every activity in a row, with a HUD'),
@@ -1044,7 +1054,7 @@ function buildMd() {
 
 **Castaway** is a stationary-frame lo-fi video for YouTube: one young woman, one tiny island, one tall palm, a raft and a great deal of time. Mostly she idles, nodding along to her headphones. Every so often, on the next bar of the music, something happens. She throws a bottle out to sea and it comes straight back. A delivery drone brings her another pair of headphones. A shark in headphones nods along to the same beat. Then nothing happens for a while, beautifully, which is the main thing it does.
 
-More than 90 activities are booked in [activities.toml](activities.toml) on four timers, from every 2 to 5 minutes down to once every 3 to 6 hours, and every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no loops, no recordings. It is always daytime. Your move:
+More than 90 activities are booked in [activities.toml](activities.toml), most of them on four timers that go off anywhere from every 2 to 5 minutes to once every 3 to 6 hours, and the rest as follow-ups. Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no stock loops, no recordings. It is always daytime. Your move:
 
 \`\`\`sh
 python tools/serve.py     # then open http://127.0.0.1:8765/
@@ -1056,7 +1066,7 @@ ${menu}
 <summary><b>(V)iew stats</b> · the island in the space-trader manner: sector, paths, and the timer report</summary>
 
 <p align="center">
-  <img src="assets/${SLUG}-stats.svg" width="832" alt="A space-trader style sector screen. Sector 1992 in The Island. Port: Timer Exchange, Class 0, sells events. Moored: one raft, one tall palm, one of her. Passing: one ship, on schedule, unseen. Weather: sunny, it is always daytime here. Radio: 80 BPM, F major, a 60-second loop. Paths to: Palm, Raft, Shallows, and the unexplored Reef, Horizon and Iced coffee. A commerce report for the Timer Exchange: regular, every 2 to 5 minutes, about 155 in ten hours; occasional, every 12 to 25 minutes, about 30; rare, every 30 to 60 minutes, about 13; super rare, every 3 to 6 hours, about 2, at most 3 a run; chained, waiting, after another one, follow-ups. A brown status line: busy about a third of the run, idle the rest, every start on the next bar. A magenta prompt: orders, 9:59:51 left, sector 1992, question mark for help.">
+  <img src="assets/${SLUG}-stats.svg" width="832" alt="A space-trader style sector screen. Sector 1992 in The Island. Port: Timer Exchange, Class 0, sells events. Moored: one raft, one tall palm, one of her. Passing: one ship, on schedule, unseen. Weather: sunny, it is always daytime here. Radio: 80 BPM, F major, a 60-second loop. Paths to: Palm, Raft, Shallows, and the unexplored Reef, Horizon and Iced coffee. Trading today at the Timer Exchange: regular, every 2 to 5 minutes, about 155 in ten hours; occasional, every 12 to 25 minutes, about 30; rare, every 30 to 60 minutes, about 13; super rare, every 3 to 6 hours, about 2, at most 3 a run; chained, waiting, after another one, follow-ups. A brown status line: busy about a third of the run, idle the rest, every start on the next bar. A magenta prompt: orders, 9:59:51 left, sector 1992, question mark for help.">
 </p>
 
 The numbers are the schedule's own. In a typical ten-hour run (the median of 200 simulated runs) that is about 155 regular, 30 occasional, 13 rare and 2 super-rare events, plus the chained follow-ups, and she is busy about a third of the time. Lanes let things overlap, so a ship can sail past while she is busy with a coconut, and every activity starts on the next bar of the music (every 3 seconds), so the gags land on the beat. The sector number is the default seed: the default run is 10:00:00 on seed 1992.
@@ -1073,11 +1083,11 @@ ${news}
 <details>
 <summary><b>(?) Help</b> · how the door works, the sound, credits and the small print</summary>
 
-**The video.** 16:9, rendered at 1080p and 30 fps, and always daytime: night scenes are against the rules here. Shore waves and drifting cloud shadows are built; distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are planned.
+**The video.** 16:9, 1080p at 24 fps, and always daytime: night scenes are against the rules here. Shore waves and drifting cloud shadows are built; distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are planned.
 
-**The renderer** is a web page with live preview: \`python tools/serve.py\`, then open http://127.0.0.1:8765/. Plain ES modules, no build step, no npm packages. It exports frame-exact video in the browser (WebCodecs H.264, 68 to 78 frames a second at 1080p30 in Chrome), and the server mixes in the sound and joins the two into a YouTube-ready MP4. \`python tools/schedule.py\` validates the schedule and simulates a ten-hour run; \`python tools/render_demo.py --dev\` renders a dev reel of every activity with a heads-up display (the older Python reference renderer). Hard cuts and stepped movement are the defaults, which is also how this header moves.
+**The renderer** is a web page with live preview: \`python tools/serve.py\`, then open http://127.0.0.1:8765/. Plain ES modules, no build step, no npm packages. It exports frame-exact video in the browser (WebCodecs H.264, 68 to 78 frames a second at 1080p in Chrome, well ahead of real time), and the server mixes in the sound and joins the two into a YouTube-ready MP4. \`python tools/schedule.py\` validates the schedule and simulates a ten-hour run; \`python tools/render_demo.py --dev\` renders a dev reel of every activity with a heads-up display (the older Python reference renderer). Hard cuts and stepped movement are the defaults, which is also how this header moves.
 
-**The sound** is all synthesized from code by [tools/make_audio.py](tools/make_audio.py), more than 150 sound files and counting, with no samples, loops or recordings, so no third-party licence applies. The theme is a seamless 60-second loop at 80 BPM in F major (ii-V-I-vi): 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean ambience is a seamless 60-second loop too. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and levels are adjustable in master and per routine. Nobody has listened to any of it yet. It is on the list, just after waiting.
+**The sound** is all synthesized from code by [tools/make_audio.py](tools/make_audio.py), more than 150 sound files and counting, with no samples, stock loops or recordings, so no third-party licence applies. The theme is a seamless 60-second loop at 80 BPM in F major (ii-V-I-vi): 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean ambience is a seamless 60-second loop too. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and levels are adjustable in master and per routine. Nobody has listened to any of it yet. It is on the list, just after waiting.
 
 <pre>
  CASTAWAY door ............ Windward Doorworks

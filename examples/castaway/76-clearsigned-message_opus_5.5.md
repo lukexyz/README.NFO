@@ -27,13 +27,14 @@ SHA-256 of everything that happens between gags:
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 the castaway
-top of the palm, one bar of signal
+castaway@bottle.invalid (mail to it comes straight back too)
 Thursday, 1 October 2026
 -----BEGIN PGP SIGNATURE-----
+Version: hand-rolled in plain Node (no gpg, no npm)
 Comment: signed at the top of the palm, where there is one bar
 Comment: comments are not covered by the signature. this one may lie
 
-wsIWBAEWCAJnBQJqvi8gwZ8UAAAAAAAVAkFsb2dvQG9uZS1wYWxtLmludmFsaWSD
+wsIWBAEWCAJnBQJqvi8gwZ8UAAAAAAATAkNsb2dvQGJvdHRsZS5pbnZhbGlkg5lZ
 +++MMMMMMMMMMMM++++MMMMMMMMMM++++++MMMMMMMMMMMM++MMMMMMMMMMMMMM+
 +MMM+++++++++++++MMM++++++++MMM++MMM++++++++++++++++++MMMM++++++
 +MMM+++++++++++++MMMMMMMMMMMMMM++++MMMMMMMMMM+++++++++MMMM++++++
@@ -46,10 +47,10 @@ wsIWBAEWCAJnBQJqvi8gwZ8UAAAAAAAVAkFsb2dvQG9uZS1wYWxtLmludmFsaWSD
 +MMM++++++++MMM++MMM++MMMM++MMM++MMM++++++++MMM+++++++MMMM++++++
 +MMM++++++++MMM+++MMMM++++MMMM+++MMM++++++++MMM+++++++MMMM++++++
 +++++++++++++++almost+nothing+happens+on+purpose++++++++++++++++
-ACEWIQQm+EVQU1nwAZSg3TX2cEubJCSkmAkQ9nBLmyQkpJjSqwD+K6rtZ+Eg/U+b
-BWt9UvN65PWFWjnFGysq+MW0dg/OYnQA/3HPIJYH93l+ntx5Y3VFwoF7cZBykpJV
-fxNR2fI6DkIK
-=n3sM
+ACEWIQQm+EVQU1nwAZSg3TX2cEubJCSkmAkQ9nBLmyQkpJi2VAD/aB0LVCQn3MDv
+x+eDDGSDVWvq8hn7OZ0+1NnkZ/3SnywBAOQz7aQ2wDTA98/8aaPgf64dO7ihwKee
+VI3aarcKzJkP
+=gOLn
 -----END PGP SIGNATURE-----
 ```
 
@@ -73,7 +74,7 @@ gpg --import README.md            # the Palm Notary's key, further down
 sed -n '/^-----BEGIN PGP SIGNED/,/^-----END/p' README.md | gpg --verify
 ```
 
-What GnuPG 2.4.9 printed on 1 October 2026:
+What GnuPG 2.4.9 printed:
 
 ```
 gpg: Signature made Thu Oct  1 10:00:00 2026 GMT
@@ -84,18 +85,18 @@ gpg:          There is no indication that the signature belongs to the owner.
 Primary key fingerprint: 26F8 4550 5359 F001 94A0  DD35 F670 4B9B 2424 A498
 ```
 
-Good signature, from a key nobody should trust. Both of those are correct. Now change one word of the letter and run it again: BAD signature. Change a `Comment:` line instead and it still verifies, because armour headers are not signed. That is why the second one warns you about the first.
+Good signature, from a key nobody should trust. Both of those are correct. Now change one word of the letter and run it again: BAD signature. Change a `Comment:` line instead and it still verifies, because armour headers are not signed. The second comment is owning up to exactly that.
 
 </details>
 
 <details>
-<summary><b>The fine print</b>: seven tells that this went through a real signer</summary>
+<summary><b>The fine print</b>: seven tells that this really was signed</summary>
 
 1. **`- - this bottle goes out`** is dash-escaping. Every line of the letter that starts with a hyphen gets a `- ` in front, so no line of text can ever pass itself off as a `-----BEGIN` line. GnuPG takes it off again before it checks.
 2. **`Hash: SHA256`**, then exactly one blank line, then the letter. Trailing spaces are not signed, and every line ending is signed as CR LF, whatever your system uses.
-3. **The logo is inside the signature, and it is signed.** Base64 is only letters, digits, `+` and `/`, so any 64 of them decode to 48 bytes. Those bytes sit in a notation packet in the signature's hashed area, placed so they start a line of their own, and they armour straight back into the picture. `gpg --verify-options show-notations --verify` lists it as `logo@one-palm.invalid`, "not human readable", which is fair.
-4. **`=` and four characters** close the block: a CRC-24 of the armour, there to catch a mangled copy, not a forger.
-5. **The `Comment:` lines** sit outside the signature. The first one may even be true.
+3. **The logo is inside the signature, and it is signed.** Base64 is only letters, digits, `+` and `/`, so any 64 of them decode to 48 bytes. Those bytes sit in a notation subpacket in the signature's hashed area, placed so they start a line of their own, and they armour straight back into the picture. Add `--verify-options show-notations` to the check and gpg lists it as `logo@bottle.invalid`, "not human readable", which is fair.
+4. **`=` and four characters** close the block: a CRC-24 of the bytes under the base64, there to catch a mangled copy, not a forger.
+5. **The `Version:` and `Comment:` lines** sit outside the signature. In the 1990s the `Version:` line named the program that made the block; no OpenPGP program made this one, so it says what did. The first comment may even be true.
 6. **The SHA-256 in the letter** is the hash of an empty file. Check it: `printf '' | sha256sum`.
 7. **The key is a demo.** Its secret half is the SHA-256 of a sentence anyone can read: `Castaway demo key. The palm notary signs anything. Seed 1992. Trust nobody.` That is why it signs with a straight face and proves nothing about who wrote the letter.
 
@@ -137,20 +138,21 @@ The sound comes from [tools/make_audio.py](tools/make_audio.py), more than 150 f
 
 ```
 -----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: hand-rolled in plain Node (no gpg, no npm)
 Comment: Palm Notary, demo key. stand back from the screen a bit
 
 xjMEar2igBYJKwYBBAHaRw8BAQdAAWeeHkeugNn2NzBj1oWaEGaQNa8BAQfSerjo
 hfihkTfNFlBhbG0gTm90YXJ5IChkZW1vIGtleSnCw3kEExYIA8oFAmq+LyACGwPC
-/xQAAAAAABkDnXBvcnRyYWl0QG9uZS1wYWxtLmludmFsaWRbkIQHrr0bD7ZDFkJ6
-++++++++++++++++++++++MMM+++++++++++++++++++++++++OOOO++++++++++
+/xQAAAAAABcDn3BvcnRyYWl0QGJvdHRsZS5pbnZhbGlkW5CEB669Gw+2QxZCeoD/
+++++++++++++++++++++++MMMM++++++++++++++++++++++++OOOO++++++++++
 +++++++++++++++++++MMM+++++++++++++++++++++++++OOOOOOOOOO+++++++
-++++++++MMMMMMMM++MMM++++MMMMMMMMMMMMMM+++++++OOOOOOOOOOOO++++++
-++++MMMMM+ll+MMMMMMMM+MMMMMM++++l+++l++MMM+++++OOOOOOOOOO+++++++
-++MMl+ll+ll+MMMMMMMMMMMMMMMMMMM+++++++++l++M++++OOOOOOOO+oooo+++
-+M+l+++++MMMMM++++M00M00+++++MMMMM+++++++++++++++++++ooooooooooo
-+++++++MMll+++++++000800+++++++lllMM+++++++++++++++++ooooooooooo
-++++++MMl++++++++++++8888+++++++++llMM++++++++++++++++++++++++++
-+++++Ml+++++++++++++++888+++++++++++lM++++++++++++++++++++++++++
++++++++MMMMMMMMM++MMM++++MMMMMMMMMMMMMM+++++++OOOOOOOOOOOO++++++
+++++MMMMM++++MMMMMMMMMMMMMMM++++++++++MMMMM++++OOOOOOOOOO+++++++
+++MMM+++++++MMMMMMMMMMMMMMMMMMM++++++++++++MM+++OOOOOOOO+oooo+++
++M+++++++MMMMMM+++M00M00+++++MMMMMM++++++++++++++++++ooooooooooo
++++++++MMM++++++++000800++++++++++MMM++++++++++++++++ooooooooooo
++++++MMM+++++++++++++8888+++++++++++MM++++++++++++++++++++++++++
+++++MM++++++++++++++++888++++++++++++MM+++++++++++++++++++++++++
 +++++++++++++++++++++++888++++++++++++++++++++++++++++++++++++++
 +++++++++++++++++++++++888++++++++++++++++++++++++++++++++++++++
 ++++++++++++++++++++++++888+++++++++++++++++++++++++++++++++++++
@@ -161,10 +163,10 @@ hfihkTfNFlBhbG0gTm90YXJ5IChkZW1vIGtleSnCw3kEExYIA8oFAmq+LyACGwPC
 wwwwwwwwwmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmwwwwwwHHHHHHwwwwwwwwwww
 vvvvvvvvvvvvvvvvvvmmmmmmmmmmmmmmvvvvvvvvvvvvvvvvvvvvvvvvvivvvvvv
 wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
-ACEWIQQm+EVQU1nwAZSg3TX2cEubJCSkmAkQ9nBLmyQkpJhcyAEA+eQ65bIze4f3
-irCgwDuNPsAB7JhCx4JgWNm2g7A1ewsA/15JwVxNdC8dC3I9xihZlzIiLv41tfq4
-7iBI06IiXaEF
-=OQeK
+ACEWIQQm+EVQU1nwAZSg3TX2cEubJCSkmAkQ9nBLmyQkpJhIqwD9GUTz/Xxhqaew
+6tt8yS+a20sMHmMb18hoJUuJjMpNE4gBANxsUsslJN/axenQYdh5nfvBO+Xg2rMu
+vAEJB0xzpVoB
+=S7fL
 -----END PGP PUBLIC KEY BLOCK-----
 ```
 

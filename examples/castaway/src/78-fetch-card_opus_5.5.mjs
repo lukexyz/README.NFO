@@ -438,18 +438,20 @@ const FIELDS = [
   ['Packages', '90+ (toml), 150+ (wav)'],
   ['Shell', 'coconut, worn by a hermit crab'],
   ['Resolution', '1920x1080 @ 24 fps'],
-  ['DE', 'Daytime (always. house rule)'],
+  ['DE', 'Daytime (always, by house rule)'],
   ['WM', 'shore waves, cloud shadows'],
   ['Theme', 'hand-painted coastal [lo-fi]'],
   ['Terminal', 'web/index.html (preview)'],
   ['CPU', 'Castaway (1) @ 80 BPM'],
   ['GPU', 'WebCodecs H.264 (in browser)'],
   ['Memory', '~200 / 600 min (busy)'],
-  ['Disk', '0 samples, 0 loops, all code'],
+  // neofetch prints the mount in brackets: "Disk (/): 37G / 228G (17%)". The sound lives in
+  // media/audio, every file of it made by tools/make_audio.py. (Not "0 loops": the theme IS a loop.)
+  ['Disk (/audio)', '0 samples, all code'],
   ['Song', 'F major, ii-V-I-vi, 60 s loop'],
   ['Local IP', '1 bar (top of the palm)'],
   ['Missed', null],
-  ['Now', 'idling. nodding to the beat'],
+  ['Now', 'idling, nodding to the beat'],
 ];
 const TITLE_USER = 'castaway', TITLE_HOST = 'island';
 const INFO_ROWS = 2 + FIELDS.length + 1 + 2;       // title, rule, fields, gap, two swatch rows
@@ -591,8 +593,9 @@ function preview() {
   // clouds drift right; the jump at the end of each lap is off-screen
   const cloud = (s) => `<path d="M0 ${10 * s}h${46 * s}a${7 * s} ${7 * s} 0 0 0-${9 * s}-${9 * s}a${10 * s} ${10 * s} 0 0 0-${19 * s}-${3 * s}a${8 * s} ${8 * s} 0 0 0-${15 * s} ${4 * s}a${6 * s} ${6 * s} 0 0 0-${3 * s} ${8 * s}z" fill="#fff" opacity=".92"/>`;
   const drift = smoothAnim([[0, 'transform:translateX(-80px)'], [T, `transform:translateX(${w + 20}px)`]]);
-  o += `<g transform="translate(0 22)"><g class="${drift}" style="animation-delay:-8s">${cloud(1)}</g></g>`;
-  o += `<g transform="translate(0 50)"><g class="${drift}" style="animation-delay:-26s">${cloud(0.7)}</g></g>`;
+  // (lane below the address pill, so a passing cloud never shows as a flat stub under it)
+  o += `<g transform="translate(0 37)"><g class="${drift}" style="animation-delay:-8s">${cloud(1)}</g></g>`;
+  o += `<g transform="translate(0 56)"><g class="${drift}" style="animation-delay:-26s">${cloud(0.7)}</g></g>`;
   o += `<rect y="${HZ}" width="${w}" height="${h - HZ}" fill="url(#psea)"/>`;
   o += `<path d="M0 ${HZ + 0.5}H${w}" stroke="#d8f3fb" stroke-width="1" opacity=".8"/>`;
   // sparkles on the water, on the beat
@@ -797,7 +800,7 @@ function scheduleWidget() {
   for (const [name, every, med, k, [a, b]] of TIERS) {
     o += textLine(x, y, [[name.padEnd(11), 'fg'], ['every ' + every, 'dim']]);
     o += textLine(x + sw - 4 * CW, y, [[('~' + med).padStart(4), k, 'b']]);
-    y += CH + 2;
+    y += CH + 5;                                         // descenders end at +17.7: keep g and p off the strip
     strips.push(y);
     const gaps = Array.from({ length: med + 1 }, () => a + rnd() * (b - a));
     const total = gaps.reduce((s, g) => s + g, 0);
@@ -805,14 +808,14 @@ function scheduleWidget() {
     for (let i = 0; i < med; i++) { acc += gaps[i]; d += `M${f1(x + acc / total * sw)} ${y}v12`; }
     o += `<rect x="${x}" y="${y}" width="${sw}" height="12" rx="2" fill="#fffaf0" opacity=".7"/>`;
     o += `<path d="${d}" class="${S(k)}" stroke-width="${med > 100 ? 1 : 1.6}"/>`;
-    y += 12 + 9;
+    y += 12 + 8;
   }
   // the playhead: where each rerun's uptime sits in the 10 hours
   const jUp = 2 + FIELDS.findIndex(([k2]) => k2 === 'Uptime');
   GAGS.forEach((g, n) => {
     const px = f1(x + g.min / 600 * sw);
     const cls = visCls(CARD_BREAKS(jUp), (t) => variantAt(t, jUp) === n);
-    const marks = strips.map((sy) => `M${px} ${sy - 2.5}v17`).join('');
+    const marks = strips.map((sy) => `M${px} ${sy - 1.5}v15`).join('');
     o += `<path d="${marks}" class="${S('fg')} ${cls ?? 'gone'}" stroke-width="2" stroke-linecap="round"/>`;
   });
   o += textLine(x, y, [['busy ~1/3, idle the rest', 'dim']]);
@@ -902,8 +905,9 @@ function buildSvg() {
 <clipPath id="panel"><rect width="${W}" height="${H}" rx="16"/></clipPath>
 ${glyphDefs}
 </defs>`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="ttl">
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="ttl dsc">
 <title id="ttl">Castaway: islandfetch, a system-info card for a lo-fi island, on a sunny desktop</title>
+<desc id="dsc">A terminal prints an ASCII palm, sun, island and raft over the word CASTAWAY, beside castaway@island and rows such as OS: Castaway (working title) lo-fi, CPU: Castaway (1) @ 80 BPM, Disk (/audio): 0 samples, all code, and Now: idling. Every nine seconds it is run again and reports the gag you just missed in the live preview: a sea turtle, a shark in headphones, a parcel drone, a crab wearing a coconut.</desc>
 <style>
 ${style}
 </style>
@@ -951,7 +955,7 @@ function textCard() {
   return lines.join('\n');
 }
 
-const ALT = 'Castaway, as a screenshot of a sunny desktop. In a cream-coloured terminal the command islandfetch prints a system-info card: on the left, an ASCII emblem of a palm tree, the sun, a sandy island, a raft and the sea, above the word CASTAWAY in capitals built from letters; on the right, castaway@island over a hyphen rule and a column of fields, among them OS: Castaway (working title) lo-fi, Kernel: 1992 (same seed, same video), CPU: Castaway (1) @ 80 BPM, Disk: 0 samples, 0 loops, all code, Missed: a crab, wearing a coconut, and Now: idling. nodding to the beat, then two strips of colour swatches. Every nine seconds the card is run again; only Uptime and Missed ever change. Beside it, a live preview at 127.0.0.1:8765 shows a young woman in cream headphones, a coral tank top and cream shorts sitting under the palm and nodding to the beat, while a sea turtle visits, a shark in headphones glides past, a drone drops off a parcel, and a coconut lands on a crab and walks away with it. Below the preview, a music visualiser for the theme (F major, 80 BPM), a schedule widget with four timers across ten hours, and under the card, a terminal running python tools/serve.py.';
+const ALT = 'Castaway, as a screenshot of a sunny desktop. In a cream-coloured terminal the command islandfetch prints a system-info card: on the left, an ASCII emblem of a palm tree, the sun, a sandy island, a raft and the sea, above the word CASTAWAY in capitals built from letters; on the right, castaway@island over a hyphen rule and a column of fields, among them OS: Castaway (working title) lo-fi, Kernel: 1992 (same seed, same video), CPU: Castaway (1) @ 80 BPM, Disk (/audio): 0 samples, all code, Missed: a crab, wearing a coconut, and Now: idling, nodding to the beat, then two strips of colour swatches. Every nine seconds the card is run again; only Uptime and Missed ever change. Beside it, a live preview at 127.0.0.1:8765 shows a young woman in cream headphones, a coral tank top and cream shorts sitting under the palm and nodding to the beat, while a sea turtle visits, a shark in headphones glides past, a drone drops off a parcel, and a coconut lands on a crab and walks away with it. Below the preview, a music visualiser for the theme (F major, 80 BPM), a schedule widget with four timers across ten hours, and under the card, a terminal running python tools/serve.py.';
 
 const MD = `<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit that, not this. -->
 
@@ -968,7 +972,7 @@ const MD = `<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit
 
 **Castaway** (working title) is a stationary-frame lo-fi video for YouTube, in the spirit of the 10-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She sits in the shade with her headphones on, nodding to the beat. Every so often, something happens. You will probably miss it.
 
-Up there, somebody keeps running \`islandfetch\` to check on her. **Now: idling**, every single time. Meanwhile, in the preview in the corner, a sea turtle drops by, a shark in headphones nods past, a drone delivers more headphones and a coconut lands on a crab, which leaves wearing it, and each rerun reports the one you just missed. More than 90 activities wait on four timers, from every 2 to 5 minutes to every 3 to 6 hours, and each one starts on the next bar of the music, so the gags land on the beat. Every sound is synthesized from code: no samples, no loops, no recordings.
+Up there, somebody keeps running \`islandfetch\` to check on her. **Now: idling**, every single time. Meanwhile, in the preview in the corner, a sea turtle drops by, a shark in headphones nods past, a drone delivers more headphones and a coconut lands on a crab, which leaves wearing it, and each rerun reports the one you just missed. More than 90 activities take turns, most on four timers (every 2 to 5 minutes, up to every 3 to 6 hours) and the rest as follow-ups, and each one starts on the next bar of the music, so the gags land on the beat. Every sound is synthesized from code: no samples, no recordings, no third-party licences.
 
 \`\`\`sh
 python tools/serve.py       # then open http://127.0.0.1:8765/
@@ -1003,7 +1007,7 @@ ${textCard()}
 | **OS** | Castaway, working title. A stationary-frame lo-fi video for YouTube, in 16:9. In development: no video is out yet. |
 | **Host** | The whole set: one tiny island, one tall palm, one raft. Sunny, hand-painted, coastal anime by way of lo-fi. |
 | **Kernel** | The seed. The default run is 10:00:00 with seed 1992: same seed, same video, event for event. |
-| **Uptime** | How far into the ten hours we are. Each rerun up there jumps ahead; nothing much happened in between. |
+| **Uptime** | How far into the ten hours we are. The four reruns up there are staged snapshots: each one jumps ahead, and nothing much happens in between. |
 | **Packages** | [\`activities.toml\`](activities.toml) holds more than 90 activities, and [\`tools/make_audio.py\`](tools/make_audio.py) writes more than 150 sound files. Both numbers keep going up. |
 | **Shell** | The coconut that falls on a hermit crab. The crab keeps it and walks off inside. |
 | **Resolution** | 1920x1080, 24 frames a second (the \`[video]\` table in \`activities.toml\`, as of 2026-10-01). |
@@ -1013,11 +1017,11 @@ ${textCard()}
 | **CPU** | One castaway, at 80 BPM. Every activity starts on the next bar of the theme, every 3 seconds. |
 | **GPU** | Frame-exact H.264 encoded in the browser with WebCodecs; the server mixes the sound and joins the two into an MP4. |
 | **Memory** | She is busy about a third of the time and idling the rest. The idling is the point. |
-| **Disk** | Every sound is synthesized from code: no samples, loops or recordings, so no third-party licence applies. |
-| **Song** | The theme: a seamless 60-second loop at 80 BPM in F major (ii-V-I-vi), 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl ticks and pops. Mixed to -14 LUFS, true peak at or below -1 dBTP, with levels adjustable in the master and per routine. Nobody has listened to it yet, so no review is offered. |
+| **Disk (/audio)** | Every sound is synthesized from code by [\`tools/make_audio.py\`](tools/make_audio.py): no samples, no ready-made loops, no recordings, so no third-party licence applies. |
+| **Song** | The theme: a seamless 60-second loop at 80 BPM in F major (ii-V-I-vi), 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle. Mixed to -14 LUFS, true peak at or below -1 dBTP, with levels adjustable in the master and per routine. No review of how it sounds is offered here. |
 | **Local IP** | The signal hunt: one bar of signal, at the very top of the palm. |
 | **Missed** | Whatever just happened while you were reading this. |
-| **Now** | Idling. Nodding to the beat. |
+| **Now** | Idling, nodding to the beat. Most of the ten hours look exactly like this, on purpose. |
 
 </details>
 

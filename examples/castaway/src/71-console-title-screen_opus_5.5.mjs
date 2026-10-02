@@ -44,8 +44,9 @@
 //   * Timing is the theme's: 80 BPM, 0.75 s a beat, 3 s a bar. The banner
 //     loops every 30 s (ten bars): title card, a hard cut to the demo card at
 //     15 s, a hard cut back at 27 s with the logo dropping in, and the loop
-//     lands on the opening frame. The start prompt blinks once a beat and a
-//     half; nothing larger than a few tiles changes faster than that.
+//     lands on the opening frame. The start prompt blinks every two beats
+//     (on for one, off for one); nothing larger than a few tiles changes
+//     faster than that.
 //   * prefers-reduced-motion stops everything on the opening title frame.
 
 import fs from 'node:fs';
@@ -659,7 +660,7 @@ const LEGS = [
   '.....ss..ss.....',
   '.....ss..ss.....',
   '.....ss..ss.....',
-  '....kss..sss....',
+  '.....ss..sss....',
 ];
 const herHead = spriteImage(HEAD, HER_MAP);
 const herBody = spriteImage(BODY, HER_MAP);
@@ -1007,6 +1008,12 @@ function drop(t0, x, yFrom, yTo, f, g = 420) {
   return out;
 }
 
+// The most colours on screen at once: the cycling entry adds one more
+// whenever it shows a colour nothing else on the card is using.
+function peakColours(set) {
+  return Math.max(...CYCLE.seq.map((c) => new Set([...set, c]).size));
+}
+
 // ------------------------------------------------------------------ title card
 function buildTitle() {
   const bg = new Grid();
@@ -1097,8 +1104,8 @@ function buildTitle() {
   ].join('');
   const colours = new Set([BACKDROP]);
   for (const g of [bg, logo, blink, wavesA, wavesB]) for (const [, , c] of g) colours.add(c);
-  for (const img of [herHead, herBody, herLegs, FIN_TOP, FIN_RING, ...WALKER]) for (const [, , c] of img) colours.add(c);
-  return { svg, zp, tiles, load, colours: colours.size };
+  for (const img of [herHead, herBody, herLegs, FIN_TOP, FIN_RING, ...WALKER, ...GULL]) for (const [, , c] of img) colours.add(c);
+  return { svg, zp, tiles, load, colours: peakColours(colours) };
 }
 
 // ------------------------------------------------------------------ demo card
@@ -1116,23 +1123,29 @@ function buildDemo() {
   clouds(cl, [[40, 44, 4], [48, 42, 5], [56, 44, 4]]);
   sea(bg, 96);
   island(bg, 140, 132, 74, 9);
-  // her sandcastle (the tide has not come for it yet)
+  // her sandcastle (the tide has not come for it yet): two crenellated
+  // towers with window slits, a lower wall between them and an arched door.
+  // Its top stands against the sea, so the outline only shows on the sand.
+  // # sand, n navy (shade, slit, door)
   const castle = [
-    '....#.#.#....',
-    '....#####....',
-    '#.#.#####.#.#',
-    '#############',
-    '#############',
-    '#############',
-    '#####nnn#####',
-    '#####nnn#####',
+    '#.#.#.....#.#.#',
+    '####n.....####n',
+    '##n#n.....##n#n',
+    '##n#n.#.#.##n#n',
+    '####n#########n',
+    '####n##n######n',
+    '####n#nnn#####n',
+    '####n#nnn#####n',
+    '####n#nnn#####n',
+    '####n#nnn#####n',
   ];
+  const CW = castle[0].length;
   const inCastle = (i, j) => castle[j]?.[i] !== undefined && castle[j][i] !== '.';
   for (let j = -1; j <= castle.length; j++) {
-    for (let i = -1; i <= 13; i++) {
-      const X = 104 + i;
-      const Y = 122 + j;
-      if (inCastle(i, j)) bg.set(X, Y, castle[j][i] === 'n' || !inCastle(i + 1, j) ? NAVY : SAND);
+    for (let i = -1; i <= CW; i++) {
+      const X = 102 + i;
+      const Y = 118 + j;
+      if (inCastle(i, j)) bg.set(X, Y, castle[j][i] === 'n' ? NAVY : SAND);
       else if (inCastle(i - 1, j) || inCastle(i + 1, j) || inCastle(i, j + 1) || inCastle(i, j - 1)) bg.set(X, Y, NAVY);
     }
   }
@@ -1161,7 +1174,7 @@ function buildDemo() {
     ['THE CASTAWAY IS LISTENING.', 'NOTHING ELSE IS HAPPENING.'],
     ['A COCONUT FALLS.', 'IT LANDS ON A HERMIT CRAB.'],
     ['THE CRAB IS WEARING IT NOW.', 'THEY WALK OFF TOGETHER.'],
-    ['NOBODY SCORED. AS PLANNED.', 'NEXT: IN 2 TO 5 MINUTES.'],
+    ['NOBODY SCORED. AS PLANNED.', 'THE NEXT ONE IS ON A TIMER.'],
   ];
   const pageGrids = pages.map((lines) => lines.map((s, j) => {
     const g = new Grid();
@@ -1261,7 +1274,7 @@ function buildDemo() {
   const colours = new Set([BACKDROP]);
   for (const g of [bg, wavesA, ...pageGrids.flat()]) for (const [, , c] of g) colours.add(c);
   for (const img of [herHead, herBody, herLegs, ...CRAB, ...WALKER, COCONUT, STAR]) for (const [, , c] of img) colours.add(c);
-  return { svg, zp, tiles, load, colours: colours.size, clips: clips.join('') };
+  return { svg, zp, tiles, load, colours: peakColours(colours), clips: clips.join('') };
 }
 
 // ------------------------------------------------------------------ panels
@@ -1289,8 +1302,18 @@ function leftPanel() {
       s += panelText(String(i), 8, y + 1, PANEL_DIM);
       pal.forEach((c, j) => {
         const x = 20 + j * 24;
-        swatch(c, x, y, !sprite && i === CYCLE.pal && j + 1 === CYCLE.slot);
-        s += panelText(hx(c), x + 2, y + 12, PANEL_DIM);
+        const cyc = !sprite && i === CYCLE.pal && j + 1 === CYCLE.slot;
+        swatch(c, x, y, cyc);
+        if (!cyc) {
+          s += panelText(hx(c), x + 2, y + 12, PANEL_DIM);
+          return;
+        }
+        // the cycling entry's number follows its colour
+        for (const u of [...new Set(CYCLE.seq)]) {
+          const fr = CYCLE.seq.map((v, k) => [k * CYCLE.step, v === u ? 1 : 0]);
+          const cls = periodic('opacity', CYCLE.step * CYCLE.seq.length, fr, fr[0][1]);
+          s += `<g class="${cls}">${panelText(hx(u), x + 2, y + 12, PANEL_DIM)}</g>`;
+        }
       });
     });
   };
@@ -1332,7 +1355,9 @@ function rightPanel(title, demo) {
   for (let k = 0; k < 4; k++) {
     const x = x0 + 8 + k * 20;
     s += `<rect x="${x}" y="198" width="14" height="8" fill="none" stroke="${PANEL_DIM}" stroke-width="1"/>`;
-    const on = periodic('opacity', BAR, [[0, k === 0 ? 1 : 0], [k * BEAT, 1], [(k + 1) * BEAT, 0]].filter((f, i, a) => i === 0 || f[0] !== a[0][0] || true), k === 0 ? 1 : 0);
+    const fr = k === 0 ? [[0, 1], [BEAT, 0]] : [[0, 0], [k * BEAT, 1]];
+    if ((k + 1) * BEAT < BAR && k > 0) fr.push([(k + 1) * BEAT, 0]);
+    const on = periodic('opacity', BAR, fr, k === 0 ? 1 : 0);
     s += `<rect class="${on} c${hx(LBLUE)}" x="${x + 2}" y="200" width="10" height="4"/>`;
   }
   usedFills.add(LBLUE);
@@ -1382,6 +1407,18 @@ const size = writeSvg(OUT_MAIN, 448, 240,
   'An 8-bit console style title screen for Castaway, a lo-fi island video: a sand and gold tile logo reading CASTAWAY whose T is a palm tree, a menu with a coconut cursor, a blinking PUSH START and the command python tools/serve.py, then a demo card where a coconut falls on a hermit crab and walks off with it.');
 console.log(`main: ${OUT_MAIN} ${(size / 1024).toFixed(1)} KB; title tiles ${m.title.tiles}, colours ${m.title.colours}, spr/line ${m.title.load}; demo tiles ${m.demo.tiles}, colours ${m.demo.colours}, spr/line ${m.demo.load}`);
 
+// The page is hand-written but quotes these counts: say so if they drift.
+{
+  const md = path.resolve(here, '../71-console-title-screen_opus_5.5.md');
+  const page = fs.existsSync(md) ? fs.readFileSync(md, 'utf8') : '';
+  const words = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'];
+  const want = [
+    `needs ${m.title.tiles} unique tiles and the demo screen ${m.demo.tiles},`,
+    `the busiest line carries ${words[Math.max(m.title.load, m.demo.load)]}.`,
+  ];
+  for (const w of want) if (page && !page.includes(w)) console.warn(`warning: the .md should say "${w}"`);
+}
+
 // ------------------------------------------------------------------ sound test card
 // The cartridge's other screen. Same font, same palettes, same zone rule;
 // the backdrop entry is switched to navy for this screen, as a game would.
@@ -1393,20 +1430,21 @@ function buildSound() {
   for (const [x, y] of big) for (let a = 0; a < 2; a++) for (let b = 0; b < 2; b++) bg.set(48 + x * 2 + a + 1, 16 + y * 2 + b + 1, BROWN);
   for (const [x, y] of big) for (let a = 0; a < 2; a++) for (let b = 0; b < 2; b++) bg.set(48 + x * 2 + a, 16 + y * 2 + b, GOLD);
   for (let x = 16; x < 240; x++) bg.set(x, 40, LBLUE);
+  // one blank tile row between groups; stacked lines carry no descenders
   text(bg, 'BGM 01', 24, 56, WHITE);
   text(bg, 'ISLAND THEME', 88, 56, WHITE);
-  text(bg, '60 S LOOP, 80 BPM', 88, 64, LBLUE);
-  text(bg, 'F MAJOR, ii-V-I-vi', 88, 72, LBLUE);
-  text(bg, 'SE 150+', 24, 88, WHITE);
-  text(bg, 'ALL MADE BY CODE', 88, 88, LBLUE);
+  text(bg, '60 S LOOP  80 BPM', 88, 72, LBLUE);
+  text(bg, 'F MAJOR  ii-V-I-vi', 88, 80, LBLUE);
+  text(bg, 'SE 150+', 24, 96, WHITE);
+  text(bg, 'ALL MADE BY CODE', 88, 96, LBLUE);
   const chans = ['E.PIANO', 'KALIMBA', 'DRUMS', 'CRACKLE', 'OCEAN'];
-  chans.forEach((c, i) => text(bg, c, 24, 104 + i * 8, WHITE));
-  text(bg, 'SAMPLES USED       0', 24, 152, WHITE);
-  text(bg, 'LOUDNESS    -14 LUFS', 24, 160, WHITE);
-  text(bg, 'PEAK MAX    -1 dBTP', 24, 168, WHITE);
-  text(bg, 'LISTENERS SO FAR   0', 24, 184, WHITE);
-  text(bg, '(THE SHARK IS', 24, 192, LBLUE);
-  text(bg, ' PRETENDING)', 24, 200, LBLUE);
+  const MY = 112;
+  chans.forEach((c, i) => text(bg, c, 24, MY + i * 8, WHITE));
+  text(bg, 'SAMPLES USED       0', 24, 160, WHITE);
+  text(bg, 'LOUDNESS    -14 LUFS', 24, 168, WHITE);
+  text(bg, 'PEAK MAX    -1 dBTP', 24, 176, WHITE);
+  text(bg, 'LISTENERS SO FAR   0', 24, 192, WHITE);
+  text(bg, '(THE SHARK IS PRETENDING)', 24, 200, LBLUE);
   text(bg, 'tools/make_audio.py', 24, 224, LBLUE);
   // level meters: ten segments a channel, lit light blue, the top two white
   const segs = [];
@@ -1414,7 +1452,7 @@ function buildSound() {
   chans.forEach((c, i) => {
     for (let k = 0; k < 10; k++) {
       const x = 104 + k * 8;
-      const y = 104 + i * 8;
+      const y = MY + i * 8;
       for (let a = 0; a < 6; a++) for (let b = 0; b < 6; b++) meters.set(x + a, y + b, k >= 8 ? WHITE : LBLUE);
       bg.set(x + 2, y + 5, LBLUE);
       bg.set(x + 3, y + 5, LBLUE);
@@ -1447,7 +1485,10 @@ function buildSound() {
   const legA = periodic('opacity', 0.25, [[0, 1], [0.125, 0]], 1);
   const legB = periodic('opacity', 0.25, [[0, 0], [0.125, 1]], 0);
   const cursor = `<g transform="translate(8 54)"><g class="${legA}">${paint(WALKER[0], null)}</g><g class="${legB}">${paint(WALKER[1], null)}</g></g>`;
-  const fin = `<g transform="translate(200 186)"><g class="${nod}">${paint(FIN_TOP, null)}</g><g transform="translate(0 12)">${paint(FIN_RING, null)}</g></g>`;
+  // the shark sits beside the loudness figures, out of everyone's way
+  const SX = 208;
+  const SY = 178;
+  const fin = `<g transform="translate(${SX} ${SY})"><g class="${nod}">${paint(FIN_TOP, null)}</g><g transform="translate(0 12)">${paint(FIN_RING, null)}</g></g>`;
   // notes drift up from the shark, one a bar, two pixels a step
   let notes = '';
   for (let k = 0; k < 2; k++) {
@@ -1456,7 +1497,7 @@ function buildSound() {
     fr.push([3 * BEAT, tr(4 * k, 0)]);
     const mv = periodic('transform', BAR * 2, fr.map(([t, v]) => [t + k * BAR, v]).sort((a, b) => a[0] - b[0]), tr(4 * k, 0));
     const vis = periodic('opacity', BAR * 2, k ? [[0, 0], [BAR, 1], [BAR + 3 * BEAT, 0]] : [[0, 1], [3 * BEAT, 0]], k ? 0 : 1);
-    notes += `<g transform="translate(${212 + 6 * k} 172)"><g class="${vis}"><g class="${mv}">${paint(NOTE, null)}</g></g></g>`;
+    notes += `<g transform="translate(${SX + 12 + 6 * k} ${SY - 14})"><g class="${vis}"><g class="${mv}">${paint(NOTE, null)}</g></g></g>`;
   }
   const svg = `<rect width="256" height="240" class="c${hx(NAVY)}"/>${paint(bg, zp)}${msvg}${cursor}${fin}${notes}`;
   usedFills.add(NAVY);

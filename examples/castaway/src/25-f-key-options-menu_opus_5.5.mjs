@@ -59,9 +59,11 @@ const DEBUG = (process.argv.find((a) => a.startsWith('--debug=')) || '').slice(8
 
 // ------------------------------------------------------------------ facts
 // Checked 2026-10-01 against D:/python/castaway (read-only): activities.toml
-// has 93 activities; tiers regular 2-5 min, occasional 12-25 min, rare 30-60
-// min, super rare 3-6 h; run 10:00:00, seed 1992; starts snap to 3 s bars.
-// tools/make_audio.py: 80 BPM, 20 bars of 3 s = a 60 s theme; 171 WAVs.
+// has 94 activities (81 on timers, 13 chained); tiers regular 2-5 min,
+// occasional 12-25 min, rare 30-60 min, super rare 3-6 h; run 10:00:00,
+// seed 1992; starts snap to 3 s bars. tools/make_audio.py: 80 BPM, 20 bars
+// of 3 s = a 60 s theme; media/audio/audio_catalog.json lists 181 files.
+// Counts drift, so the art only says "150+ SOUNDS" and "MORE THAN 90".
 
 // ------------------------------------------------------------------ canvas
 const W = 480;
@@ -310,7 +312,7 @@ function big(ch) {
   return BIG.get(ch);
 }
 const BIG_GAP = 2;
-const BIG_SPACE = 10;
+const BIG_SPACE = 8;
 const bigAdvance = (ch) => (ch === ' ' ? BIG_SPACE : big(ch).w + BIG_GAP);
 // white at the top, through pink, to violet: one colour per pixel row,
 // as a userSpaceOnUse gradient, so it sticks to each glyph wherever it moves
@@ -342,8 +344,8 @@ const LIST_X = (W - LIST_COLS * 8) / 2; // 48
 const MSG_Y = 203;
 const HINT_Y = 219;
 const SCROLL_MID = 247;
-const SCROLL_L = 20;
-const SCROLL_R = 460;
+const SCROLL_L = 18;
+const SCROLL_R = 462;
 
 // panel (the island, top left) and starfish (top right)
 const PX = 8;
@@ -480,8 +482,8 @@ function buildLogo() {
 const ROWS = [
   { key: 'F1', d: 'UNLIMITED DAYLIGHT', st: 'ON', k: 'on', wish: 'OFF', msg: 'LOCKED. NO NIGHT SCENES: IT IS A PROJECT RULE.' },
   { key: 'F2', d: 'SOMETHING HAPPENS', st: 'SOON-ISH', k: 'val', wish: 'NOW?', msg: 'EVERY 2-5 MINUTES. THE RAREST, EVERY 3-6 HOURS.' },
-  { key: 'F3', d: 'SHIP NOTICES HER', st: 'OFF', k: 'off', wish: 'ON', msg: 'HEADPHONES ON, COCONUT IN HAND. IT SAILS ON.' },
-  { key: 'F4', d: 'SAMPLES AND LOOPS', st: 'NONE', k: 'off', wish: 'ONE?', msg: '150+ SOUNDS, EVERY ONE SYNTHESIZED FROM CODE.' },
+  { key: 'F3', d: 'SHIP STOPS FOR HER', st: 'OFF', k: 'off', wish: 'ON', msg: 'HEADPHONES ON, COCONUT IN HAND. IT SAILS ON.' },
+  { key: 'F4', d: 'SAMPLES OR RECORDINGS', st: 'NONE', k: 'off', wish: 'ONE?', msg: '150+ SOUNDS, EVERY ONE SYNTHESIZED FROM CODE.' },
   { key: 'F5', d: 'GAGS LAND ON THE BEAT', st: 'ON', k: 'on', wish: 'OFF', msg: 'EACH ONE WAITS FOR THE NEXT BAR. A BAR IS 3 S.' },
   { key: 'F6', d: 'PHONE SIGNAL', st: '1 BAR', k: 'val', wish: '2 BARS', msg: 'ONE BAR, AT THE VERY TOP OF THE PALM.' },
   { key: 'F7', d: 'HEADPHONE DELIVERY', st: 'BY DRONE', k: 'val', wish: 'MORE?', msg: 'THE PARCEL IS ANOTHER PAIR OF HEADPHONES.' },
@@ -569,12 +571,14 @@ function sprite(layer, rows, x0, y0, mirror = false) {
 }
 // her, sitting cross-legged, facing us; the head is a separate sprite so it
 // can nod on the beat
+// a thin tan band over the top, bright cups at the ears, so the cream
+// reads as headphones and not as a hood
 const HEAD = [
-  '....cccc....',
-  '...chhhhc...',
-  '..chhHHhhc..',
-  '.cChhhhhhCc.',
-  '.cChessehCc.',
+  '....CCCC....',
+  '...ChhhhC...',
+  '..ChhHHhhC..',
+  '.cchhhhhhcc.',
+  '.cchessehcc.',
   '.cChsssshCc.',
   '...hsSSsh...',
   '...h.ss.h...',
@@ -605,11 +609,11 @@ const HOLD_COFFEE = [
 ];
 // standing, side on, facing right; two leg frames
 const STAND = [
-  '..cccc..',
-  '.chhhhc.',
-  'hhchhhhh',
-  'hCChhhss',
-  'hCChsses',
+  '..CCCC..',
+  '.ChhhhC.',
+  'hhChhhhh',
+  'hcchhhss',
+  'hcchsses',
   '.hhhssss',
   '..hhsss.',
   '....ss..',
@@ -929,9 +933,9 @@ function starfishFrames(frames, scale) {
 
 // =================================================================== SCROLLER
 const SCROLL_TEXT = 'ATOLL ORDER PRESENTS CASTAWAY +10 * A TEN-HOUR LO-FI ISLAND VIDEO IN WHICH ALMOST NOTHING HAPPENS, ON PURPOSE * '
-  + 'SHE SITS ON A VERY SMALL ISLAND, NODDING TO HER HEADPHONES, AND EVERY SO OFTEN SOMETHING HAPPENS, ALWAYS ON THE NEXT BAR OF THE MUSIC * '
-  + 'MORE THAN 90 ACTIVITIES, FOUR TIMERS, ONE PALM * EVERY SOUND IS SYNTHESIZED FROM CODE: NO SAMPLES, NO LOOPS, NO RECORDINGS * '
-  + 'WE PRESSED ALL TEN KEYS. NOTHING MOVED. THAT IS THE FEATURE * START: PYTHON TOOLS/SERVE.PY, THEN OPEN 127.0.0.1:8765 * '
+  + 'SHE NODS ALONG TO HER HEADPHONES, AND EVERY SO OFTEN SOMETHING HAPPENS, ALWAYS ON THE NEXT BAR OF THE MUSIC * '
+  + 'MORE THAN 90 ACTIVITIES, FOUR TIMERS, ONE PALM * EVERY SOUND IS SYNTHESIZED FROM CODE: NO SAMPLES, NO RECORDINGS * '
+  + 'WE PRESSED ALL TEN KEYS. NINE FLIPPED STRAIGHT BACK. THE TENTH WENT FOR AN ICED COFFEE * START: PYTHON TOOLS/SERVE.PY, THEN OPEN 127.0.0.1:8765 * '
   + 'HELLO TO THE SEA TURTLE, THE SHARK IN HEADPHONES, THE GREY TABBY AND THE HERMIT CRAB IN HIS NEW COCONUT * ';
 const SPEED = 40; // lowres px per second
 const AMP = 6;
@@ -1099,9 +1103,13 @@ function build() {
   css.push(`.nod{animation:nod ${BEAT}s step-end infinite}@keyframes nod{0%{transform:translateY(1px)}33.33%{transform:translateY(0)}}`);
   css.push(`.fa,.fb{animation:fa ${2 * BEAT}s step-end infinite}.fb{opacity:0;animation-delay:-${BEAT}s}@keyframes fa{0%{opacity:1}50%{opacity:0}}`);
   css.push(`.raft{animation:raft ${2 * BAR}s step-end infinite}@keyframes raft{0%{transform:translateY(0)}50%{transform:translateY(1px)}}`);
-  css.push(`.cl{animation:cl ${LOOP * 2}s steps(${IW + 40}) infinite;transform:translate(-20px,9px)}.cl2{animation-delay:-${LOOP}s;animation-name:cl2}`
-    + `@keyframes cl{from{transform:translate(-20px,9px)}to{transform:translate(${IW + 20}px,9px)}}`
-    + `@keyframes cl2{from{transform:translate(-20px,20px)}to{transform:translate(${IW + 20}px,20px)}}`);
+  // clouds drift low, under the crown's top, so they pass behind the trunk
+  // and the hanging fronds (higher up they peeked through the crown like
+  // snow); the base transforms are where they rest for reduced motion
+  const CLA = 24; const CLB = 31;
+  css.push(`.cl{animation:cl ${LOOP * 2}s steps(${IW + 40}) infinite;transform:translate(3px,${CLA}px)}.cl2{animation-delay:-${LOOP}s;animation-name:cl2;transform:translate(70px,${CLB}px)}`
+    + `@keyframes cl{from{transform:translate(-20px,${CLA}px)}to{transform:translate(${IW + 20}px,${CLA}px)}}`
+    + `@keyframes cl2{from{transform:translate(-20px,${CLB}px)}to{transform:translate(${IW + 20}px,${CLB}px)}}`);
   // ship: crosses during F3 while she sips a coconut
   css.push(`.ship{transform:translateX(-16px);animation:ship ${LOOP}s linear infinite}`
     + `@keyframes ship{0%,${pc(t3 + BEAT)}{transform:translateX(-16px);animation-timing-function:steps(${IW + 16})}${pc(t3 + ROW_T - BEAT / 2)},to{transform:translateX(${IW}px)}}`);
@@ -1161,7 +1169,12 @@ function build() {
   }
   kf += `to{transform:translate(${X_OUT}px,${n(sineY(X_OUT))}px)}`;
   css.push(`.anim>use{animation:sc ${n(T)}s linear infinite}@keyframes sc{${kf}}`);
-  const START_X = 30; // where the first glyph sits on the first frame
+  // the first frame (and the reduced-motion still) shows the whole opening
+  // line, centred: ATOLL ORDER PRESENTS CASTAWAY +10
+  const OPEN = SCROLL_TEXT.slice(0, SCROLL_TEXT.indexOf(' *'));
+  const openW = [...OPEN].reduce((acc, ch) => acc + bigAdvance(ch), 0) - BIG_GAP;
+  if (openW > SCROLL_R - SCROLL_L - 2) throw new Error(`scroller opening is ${openW} px wide`);
+  const START_X = Math.round((SCROLL_L + SCROLL_R) / 2 - openW / 2);
   const t0 = (X_IN - START_X) / SPEED;
   let off = 0;
   let anim = '';
@@ -1190,7 +1203,7 @@ function build() {
   css.push('@media (prefers-reduced-motion:reduce){*{animation:none!important}.anim{display:none}.still{display:inline}}');
 
   const titleTxt = 'CASTAWAY +10: a ten-hour lo-fi island video, shown as a PC options menu with ten F-key toggles, every one locked';
-  const desc = 'A purple-to-blue options screen. ATOLL ORDER presents CASTAWAY +10 in slanted letters, each with its own cycling rainbow, beside a little daylight window on the island: one tall palm, a raft, and her in cream headphones and a coral top, nodding on the beat. A pink faceted starfish turns at the right. Ten function keys are listed with bracketed states: unlimited daylight on, something happens soon-ish, ship notices her off, samples and loops none, gags land on the beat on, phone signal 1 bar, headphone delivery by drone, bottle stays away off, leave the island any time, random seed 1992. A magenta bar steps down one option every two bars of music and presses its key; the state flips for one beat and flips back. Only F9 works: she walks off over the water and returns with an iced coffee. Yellow level meters jump in the bottom corners, the instruction line reads ENTER: python tools/serve.py, ESC: see F9, and a sine scroller runs underneath.';
+  const desc = 'A purple-to-blue options screen. ATOLL ORDER presents CASTAWAY +10 in slanted letters, each with its own cycling rainbow, beside a little daylight window on the island: one tall palm, a raft, and her in cream headphones, a coral tank top and cream shorts, nodding on the beat. A pink faceted starfish turns at the right. Ten function keys are listed with bracketed states: unlimited daylight on, something happens soon-ish, ship stops for her off, samples or recordings none, gags land on the beat on, phone signal 1 bar, headphone delivery by drone, bottle stays away off, leave the island any time, random seed 1992. A magenta bar steps down one option every two bars of music and presses its key; the state flips for one beat and flips back. Only F9 works: she walks off over the water and returns with an iced coffee. Yellow level meters jump in the bottom corners, the instruction line reads ENTER: python tools/serve.py, ESC: see F9, and a pink sine scroller opens with ATOLL ORDER PRESENTS CASTAWAY +10.';
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W * 2}" height="${H * 2}" role="img" aria-labelledby="t d">`
     + `<title id="t">${titleTxt}</title><desc id="d">${desc}</desc>`

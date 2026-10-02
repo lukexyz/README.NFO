@@ -27,7 +27,8 @@
 //     row above and below each frame so scaling never bleeds a neighbour in.
 //     The frames are stored out of order: a greedy chain plus 2-opt puts each
 //     frame next to the one it most resembles, because deflate only looks
-//     about one frame back (this takes the strip from ~140 KB to under 90).
+//     32 KB back, about two frames (this takes the strip from ~140 KB to
+//     under 90).
 //     A step-end CSS keyframe list slides the strip one frame at a time.
 //   * FLIP. Touching the rock rolls the whole view 180 degrees with CSS, scaled
 //     up mid-roll so the corners never show. The frames themselves are always
@@ -366,39 +367,36 @@ const FACE_TEX = {
 const BRICK_M = chain(BRICK), WOOD_M = chain(WOOD), CEIL_M = chain(CEIL);
 const FACE_M = Object.fromEntries(Object.entries(FACE_TEX).map(([k, t]) => [k, chain(t)]));
 
-// Sprites. The crab wears a coconut (seen from behind); two leg frames.
-const CRAB_MAP = { o: col('#4a2c14'), b: col('#8a5a30'), c: col('#c08a52'), r: col('#ff6a3d'), d: col('#b8401f'), k: BLACK, w: WHITE, x: col('#1c120b') };
-const CRAB_LEGS = [[
-  '...r..r..r....r..r..r...',
-  '..r..r..r......r..r..r..',
-], [
-  '..r..r..r......r..r..r..',
-  '...r..r..r....r..r..r...',
-]];
-const CRAB = CRAB_LEGS.map((legs) => {
-  const rows = [
-    '.......k........k.......',
-    '.......kr......rk.......',
-    '........r......r........',
-    '........oooooooo........',
-    '......oobbbbbbbboo......',
-    '.....obcccbbbbbbbbo.....',
-    '....obccbbbbbobbbbbo....',
-    '....obcbbbbbbbbbbobo....',
-    '.rr.obbbbbobbbbbbbbo.rr.',
-    'r..robbbbbbbbbobbbbor..r',
-    '.r.oobbbbbbbbbbbbbboo.r.',
-    '....oooooooooooooooo....',
-    ...legs,
-  ];
-  const t = tex(26, 16, () => T_);
-  trows(t, rows, CRAB_MAP, 1, 1);
+// Sprites. The crab wears a coconut, two leg frames. A
+// coconut reads by being round, tan and three-holed, so it is all three: a
+// shaded sphere in a warmer, lighter brown than the floorboards, with its
+// three pores. Eyes on stalks and claws poke out at the sides.
+const CRAB_MAP = { o: col('#5a3216'), b: col('#a8682f'), c: col('#d49a5e'), f: col('#7c4520'), p: col('#2e1a0c'), r: col('#ff6a3d'), k: BLACK, w: WHITE, x: col('#1c120b') };
+const CRAB_W = 26, CRAB_H = 20;
+const CRAB = [0, 1].map((step) => {
+  const t = tex(CRAB_W, CRAB_H, () => T_);
+  const CX = 13, CY = 8.6, RX = 8.6, RY = 8.1;
+  const inside = (u, v) => ((u + 0.5 - CX) / RX) ** 2 + ((v + 0.5 - CY) / RY) ** 2 <= 1;
+  for (let v = 0; v < CRAB_H; v++) for (let u = 0; u < CRAB_W; u++) {
+    if (!inside(u, v)) continue;
+    const edge = !inside(u - 1, v) || !inside(u + 1, v) || !inside(u, v - 1) || !inside(u, v + 1);
+    const dx = (u + 0.5 - CX) / RX, dy = (v + 0.5 - CY) / RY;
+    const lit = -0.55 * dx - 0.65 * dy + 0.5 * Math.sqrt(Math.max(0, 1 - dx * dx - dy * dy));
+    t.d[v * CRAB_W + u] = edge ? CRAB_MAP.o : lit > 0.62 ? CRAB_MAP.c : lit > -0.05 ? CRAB_MAP.b : CRAB_MAP.f;
+  }
+  // the three pores
+  for (const [u, v] of [[10, 5], [14, 5], [12, 9]]) trect(t, u, v, 2, 2, CRAB_MAP.p);
+  // eyes on stalks, claws and legs (the legs swap between the two frames)
+  const side = (rows, ox) => trows(t, rows, CRAB_MAP, ox, 6);
+  side(['wk.', 'ww.', '.r.', '..r', '..r', 'rr.', 'r.r', '.r.'], 1);
+  side(['.kw', '.ww', '.r.', 'r..', 'r..', '.rr', 'r.r', '.r.'], 22);
+  trows(t, step ? ['..r..r..r......r..r..r..', '...r..r..r....r..r..r...'] : ['...r..r..r....r..r..r...', '..r..r..r......r..r..r..'], { r: CRAB_MAP.r }, 1, 17);
   // a dark outline, so it reads on the floorboards
-  const o = tex(26, 16, (u, v) => tget(t, u, v));
-  for (let v = 0; v < 16; v++) for (let u = 0; u < 26; u++) {
+  const o = tex(CRAB_W, CRAB_H, (u, v) => tget(t, u, v));
+  for (let v = 0; v < CRAB_H; v++) for (let u = 0; u < CRAB_W; u++) {
     if (tget(t, u, v) !== T_) continue;
-    const n = [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([a, b]) => { const x = u + a, y = v + b; return x >= 0 && y >= 0 && x < 26 && y < 16 && tget(t, x, y) !== T_; });
-    if (n) o.d[v * 26 + u] = CRAB_MAP.x;
+    const n = [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([a, b]) => { const x = u + a, y = v + b; return x >= 0 && y >= 0 && x < CRAB_W && y < CRAB_H && tget(t, x, y) !== T_; });
+    if (n) o.d[v * CRAB_W + u] = CRAB_MAP.x;
   }
   return o;
 });
@@ -524,6 +522,13 @@ function poseAt(tk) {
     return { x: lerp(s.from.x, s.to.x, u), y: lerp(s.from.y, s.to.y, u), a: lerp(s.from.a, s.to.a, u) };
   }
 }
+// The touch: the first tick the walker is (nearly) inside the rock. From then
+// on the rock is gone (that close, it would only be a big grey wall)
+// and the world starts to roll over.
+const ROCK_TOUCH = (() => {
+  for (let tk = 0; tk < TICKS; tk++) { const p = poseAt(tk); if (Math.hypot(p.x - (ROCK.x + 0.5), p.y - (ROCK.y + 0.5)) < 0.4) return tk; }
+  throw new Error('the walker never touches the rock');
+})();
 // time spent moving (the sun only bobs while the frames are moving anyway)
 function moveClock(tk) { let m = 0; for (const s of segs) { if (s.kind.length !== 1) continue; m += Math.max(0, Math.min(tk, s.t1) - s.t0); } return m; }
 
@@ -621,9 +626,9 @@ function render(tk) {
   }
   // the crab
   const crab = crabAt(t);
-  if (crab) billboard(crab.x, crab.y, 0, 0.32, 0.52, CRAB[crab.moving ? tk % 2 : 0]);
+  if (crab) billboard(crab.x, crab.y, 0, (0.5 * CRAB_H) / CRAB_W, 0.5, CRAB[crab.moving ? tk % 2 : 0]);
   // the rock: a squashed icosahedron, spinning, flat-shaded
-  if (tk < FLIP.t0 + 1) drawRock(img, zbuf, toCam, sy, t, cam);
+  if (tk < ROCK_TOUCH) drawRock(img, zbuf, toCam, sy, t, cam);
   // the sun at the exit, translucent. It is only ever seen after the flip,
   // so it is drawn upside down, which the roll turns the right way up.
   const bob = 0.035 * Math.sin((moveClock(tk) / FPS) * Math.PI * 2 * 0.8);
@@ -689,7 +694,7 @@ for (let tk = 0; tk < TICKS; tk++) {
 }
 if (PAL.length > 256) throw new Error(`palette too big: ${PAL.length}`);
 // Order the frames in the strip so that each one looks as much as possible
-// like the one before it: deflate can only look back 32 KB, about one frame,
+// like the one before it: deflate can only look back 32 KB, about two frames,
 // and frames a whole cell apart in a uniform corridor are nearly identical.
 // The film keyframes just point at wherever each frame ended up.
 const ORDER = (() => {
@@ -805,7 +810,7 @@ function titleSvg(word, x0, y0, cell) {
   let line = '';
   for (let y = 0; y <= 5; y++) { let x = 0; while (x < cx) { if (!hseg.some(([a, b]) => a === x && b === y)) { x++; continue; } let e = x; while (hseg.some(([a, b]) => a === e && b === y)) e++; line += `M${x0 + x * cell} ${y0 + y * cell}H${x0 + e * cell}`; x = e; } }
   for (let x = 0; x <= cx; x++) { let y = 0; while (y < 5) { if (!vseg.some(([a, b]) => a === x && b === y)) { y++; continue; } let e = y; while (vseg.some(([a, b]) => a === x && b === e)) e++; line += `M${x0 + x * cell} ${y0 + y * cell}V${y0 + e * cell}`; y = e; } }
-  return { fill, line, width: cx * cell };
+  return { fill, line, width: (cx - 1) * cell }; // no trailing gap
 }
 
 // ------------------------------------------------------------------ map
@@ -847,7 +852,7 @@ function crabKeys() {
 }
 
 // ------------------------------------------------------------------ assemble
-const flipT0 = (FLIP.t0 + 1) / FPS, flipT1 = (FLIP.t1 - 1) / FPS;
+const flipT0 = ROCK_TOUCH / FPS, flipT1 = (FLIP.t1 - 1) / FPS;
 function flipKeys() {
   const ks = [`0%,${pct(flipT0)}{transform:translate(320px,200px) rotate(0deg) scale(1) translate(-320px,-200px)}`];
   const n = 12;
@@ -875,10 +880,13 @@ const stillTick = Math.round(STATIC_T * FPS);
 const stillPose = poseAt(stillTick);
 const stillCrab = crabAt(STATIC_T);
 
-const TC = 9; // title cell
+// The title is as wide as the map below it (and centred on the panel, like
+// the map), so it no longer crowds the divider.
+const TC = 8.5; // title cell
 const title = titleSvg('CASTAWAY', 0, 0, TC);
-const TX = 640 + (320 - title.width) / 2, TY = 22;
-const brickPattern = `<pattern id="bk" patternUnits="userSpaceOnUse" width="18" height="9" x="${TX}" y="${TY}"><rect width="18" height="9" fill="#d6ccbb"/><path fill="#ab3f2a" d="M0 1h8v3.5H0zM9 1h8v3.5H9zM-4.5 5.5h8v3.5h-8zM4.5 5.5h8v3.5h-8zM13.5 5.5h8v3.5h-8z"/><path fill="#c65a3e" d="M9 1h8v1H9zM-4.5 5.5h8v1h-8zM13.5 5.5h8v1h-8z"/><path fill="#8e2f1f" d="M4.5 8h8v1h-8zM0 3.5h8v1H0z"/></pattern>`;
+const TX = 640 + (320 - title.width) / 2, TY = 24;
+// two brick courses a cell, drawn for a 9-unit cell and scaled to fit
+const brickPattern = `<pattern id="bk" patternUnits="userSpaceOnUse" width="18" height="9" patternTransform="translate(${r2(TX)} ${TY}) scale(${r3(TC / 9)})"><rect width="18" height="9" fill="#d6ccbb"/><path fill="#ab3f2a" d="M0 1h8v3.5H0zM9 1h8v3.5H9zM-4.5 5.5h8v3.5h-8zM4.5 5.5h8v3.5h-8zM13.5 5.5h8v3.5h-8z"/><path fill="#c65a3e" d="M9 1h8v1H9zM-4.5 5.5h8v1h-8zM13.5 5.5h8v1h-8z"/><path fill="#8e2f1f" d="M4.5 8h8v1h-8zM0 3.5h8v1H0z"/></pattern>`;
 
 const css = `
 .film{transform:translateY(${frameY(frameAtTick(stillTick))}px);animation:film ${T}s step-end infinite}
@@ -906,7 +914,7 @@ const css = `
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 ${AT !== null ? `*{animation-delay:-${AT}s!important;animation-play-state:paused!important}` : ''}`.trim();
 
-const ALT = 'CASTAWAY, as a 1990s 3D maze screensaver. On the left, a first-person walk through a pixelated maze with red brick walls, a wooden floor and pale speckled ceiling tiles. A hermit crab wearing a coconut does a little sidestep in the corridor, then runs on ahead, down a long corridor past a life ring to a framed sign on the far wall that reads CASTAWAY, 10:00:00. The walker follows the right-hand wall past a painting of a tiny island with one palm and a young woman in headphones, then towards a poster of a shark in headphones, where a grey polyhedron rock spins in mid-air. It touches the rock and the whole view rolls upside down. Now following the left-hand wall, it turns away from the exit, a translucent smiling sun one corridor away, walks into a dead end with a picture of a bottle and a U-turn arrow, comes straight back, and walks into the sun, and the maze starts again. On the right, the overlay map in thin white lines: a blue triangle walking and leaving a blue trail, a red start, a green smiling exit, a spinning white triangle for the rock, still white triangles for the pictures, and an orange dot for the crab, which reaches the exit first. Above the map, CASTAWAY in brick letters and the line: an island is a maze with one room. Below it, a legend and HAND ON WALL: RIGHT, which turns to LEFT after the rock, then SEED 1992, ALWAYS DAYTIME.';
+const ALT = 'CASTAWAY, as a 1990s 3D maze screensaver. On the left, a first-person walk through a pixelated maze of red brick walls, wooden floorboards and pale speckled ceiling tiles. A hermit crab wearing a coconut does a little sidestep, then scuttles ahead down a long corridor, past two life rings, to a framed sign on the far wall that reads CASTAWAY, 10:00:00. Keeping its right hand on the wall, the walker passes a painting of a tiny island with one palm and a young woman in headphones, then heads for a poster of a shark in headphones, where a grey polyhedron rock spins in mid-air. It touches the rock and the whole view rolls upside down. Now on the left-hand wall, it walks to within one cell of the exit, a translucent smiling sun, then turns away into a dead end with a picture of a bottle and a U-turn arrow, comes straight back and walks into the sun, and the maze starts again. On the right, the overlay map in thin white lines: a blue triangle walking and leaving a blue trail, a red start, a green smiling exit, a spinning white triangle for the rock, small white triangles for the pictures, and an orange dot for the crab, which reaches the exit first. Above the map, CASTAWAY in brick letters and the line: an island is a maze with one room. Below it, a legend, HAND ON WALL: RIGHT, which turns to LEFT after the rock, and SEED 1992, ALWAYS DAYTIME.';
 
 const P = [];
 P.push(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">`);

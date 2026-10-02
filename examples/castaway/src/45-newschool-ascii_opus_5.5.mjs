@@ -52,9 +52,15 @@ const COLS = 78;
 
 // Counts that move as the project grows, checked read-only in D:/python/castaway on AS_OF:
 //   python -B -c "import tomllib; print(len(tomllib.load(open('activities.toml','rb'))['activities']))"
-//   find media/audio -name '*.wav' | wc -l
+//   python -B -c "import json; print(len(json.load(open('media/audio/audio_catalog.json'))['files']))"
 // The copy says "more than 90" and "more than 150" so it ages well; re-check before use.
-const AS_OF = '2026-10-01';
+// Also checked then: [video] fps = 24 (a user decision of 2026-10-01, in MUSING.md), the lanes
+// (castaway, cat, turtle, sea_sky, shore, garden) and 31 gags on the rare timer.
+const AS_OF = '2026-10-02';
+const ACTIVITIES = 94; // of which DEV_ONLY have status = "dev_only" and never come up in a run
+const DEV_ONLY = 4;
+const SOUND_FILES = 181;
+const FPS = 24;
 
 // ---------------------------------------------------------------------------------------------
 // 1. Distance-field toolkit. Design units: x = columns, y = rows * K.
@@ -161,15 +167,16 @@ const GLYPH = {
   C: { w: 13, parts: arc(7, 10, 4.5, 7.6, 38, 324, [[38, 2.8], [60, 2.4], [90, 2.4], [180, 2.9], [270, 2.4], [300, 2.4], [324, 2.7]]) },
   A: { w: 14, parts: [{ poly: [[7, 0.2], [13.7, 13], [13.7, 19.8], [0.3, 19.8], [0.3, 13]], round: 0.3 }],
     holes: [{ poly: [[7, 7.0], [9.0, 11.6], [5.0, 11.6]], round: 0.6 }, { poly: [[5.0, 15.8], [9.0, 15.8], [9.0, 22], [5.0, 22]], round: 0.6 }] },
-  S: { w: 13, parts: path3([[11.0, 5.2, 2.0], [10.2, 2.8, 2.3], [7.5, 2.3, 2.4], [4.5, 2.4, 2.4], [2.5, 4.4, 2.5], [2.7, 7.0, 2.5],
-    [5.0, 9.0, 2.4], [8.4, 10.6, 2.4], [10.4, 12.8, 2.5], [10.4, 15.8, 2.5], [8.4, 17.6, 2.4], [5.0, 17.6, 2.4], [2.8, 16.2, 2.2], [2.4, 14.8, 1.9]]), k: 0.5 },
+  S: { w: 13, parts: path3([[11.1, 5.6, 1.8], [10.7, 3.7, 2.1], [9.0, 2.4, 2.4], [6.4, 2.2, 2.4], [4.0, 2.7, 2.4], [2.6, 4.8, 2.5],
+    [3.0, 7.3, 2.5], [5.4, 9.1, 2.4], [8.4, 10.6, 2.4], [10.4, 12.8, 2.5], [10.4, 15.8, 2.5], [8.4, 17.6, 2.4], [5.0, 17.6, 2.4], [2.8, 16.2, 2.2], [2.4, 14.8, 1.9]]), k: 0.5 },
   T: { w: 12, parts: [{ poly: [[0.9, 0.9], [11.1, 0.9], [11.1, 3.2], [0.9, 3.2]], round: 0.9 }, { seg: [6, 3, 2.4, 6, 17.6, 2.4] }], k: 1.2 },
   W: { w: 18, parts: [
     { seg: [2.4, 2.2, 2.2, 5.0, 17.8, 2.2] }, { seg: [9, 6.0, 1.8, 5.0, 17.8, 2.2] },
     { seg: [9, 6.0, 1.8, 13.0, 17.8, 2.2] }, { seg: [15.6, 2.2, 2.2, 13.0, 17.8, 2.2] }] },
   Y: { w: 14, parts: [{ seg: [2.6, 2.4, 2.3, 7, 10.5, 2.4] }, { seg: [11.4, 2.4, 2.3, 7, 10.5, 2.4] }, { seg: [7, 10, 2.5, 7, 17.6, 2.4] }] },
-  G: { w: 13, parts: [...arc(7, 10, 4.5, 7.6, 38, 345, [[38, 2.8], [60, 2.4], [90, 2.4], [180, 2.9], [270, 2.4], [345, 2.4]]),
-    { seg: [7.4, 11.4, 2.0, 11.3, 11.4, 2.2] }, { seg: [11.3, 11.4, 2.3, 11.3, 15.2, 2.4] }] },
+  // G starts its arc higher than C and drops its bar lower, so the mouth stays open at eight rows
+  G: { w: 13, parts: [...arc(7, 10, 4.5, 7.6, 50, 350, [[50, 2.6], [90, 2.4], [180, 2.9], [270, 2.4], [350, 2.4]]),
+    { seg: [8.2, 12.0, 1.9, 11.3, 12.0, 2.1] }, { seg: [11.3, 12.0, 2.2, 11.3, 15.2, 2.3] }] },
   I: { w: 6, parts: [{ seg: [3, 2.4, 2.6, 3, 17.6, 2.6] }] },
   O: { w: 14, parts: arc(7, 10, 4.6, 7.6, 0, 360, [[0, 2.6], [90, 2.4], [180, 2.6], [270, 2.4], [360, 2.6]], 28) },
   U: { w: 14, parts: [{ seg: [2.6, 2.4, 2.4, 2.6, 12, 2.5] }, { seg: [11.4, 2.4, 2.4, 11.4, 12, 2.5] },
@@ -179,8 +186,8 @@ const GLYPH = {
     ...arc(6.5, 10, 4.9, 7.6, 90, -90, [[90, 2.4], [0, 2.6], [-90, 2.4]], 16)] },
   R: { w: 14, parts: [{ seg: [2.6, 2.4, 2.4, 2.6, 17.6, 2.4] }, { seg: [2.6, 2.4, 2.4, 7, 2.4, 2.4] }, { seg: [2.6, 10.4, 2.3, 7, 10.4, 2.3] },
     ...arc(7, 6.4, 4.2, 4.0, 90, -90, [[90, 2.4], [0, 2.5], [-90, 2.3]], 12), { seg: [7, 10.4, 2.3, 11.4, 17.6, 2.5] }] },
-  V: { w: 14, parts: [{ poly: [[0.3, 0.2], [13.7, 0.2], [7, 19.8]], round: 0.3 }],
-    holes: [{ poly: [[4.6, -3], [9.4, -3], [7, 9.0]], round: 0.6 }] },
+  // V as two swelling strokes rather than a notched wedge: at eight rows the wedge came out lopsided
+  V: { w: 14, parts: [{ seg: [2.6, 2.4, 2.5, 7, 17.4, 2.5] }, { seg: [11.4, 2.4, 2.5, 7, 17.4, 2.5] }], k: 0.6 },
   E: { w: 12, parts: [{ poly: [[0.3, 0.3], [11.7, 0.3], [11.7, 4.4], [5.4, 4.4], [5.4, 7.8], [10.2, 7.8], [10.2, 12.2], [5.4, 12.2],
     [5.4, 15.6], [11.7, 15.6], [11.7, 19.7], [0.3, 19.7]], round: 0.3 }] },
 };
@@ -325,13 +332,17 @@ function mainPiece() {
       const d = hyp(c + 0.5 - sun.cx, (r + 0.5) * K - sun.cy) / sun.r;
       return d < 0.42 ? '$' : d < 0.62 ? 'S' : d < 0.8 ? 'I' : d < 0.93 ? 'i' : ';';
     } });
-  // The word, in two lines: CAST up top, AWAY below it and to the right.
-  S.word('CAST', 1, 0, [0, -1, 1]);
+  // The word, in two lines: CAST up top, AWAY below it and to the right. The first A sits a
+  // column clear of the C and carves a wider gap out of it, so the C's lower tail keeps its own
+  // shape and stops short of the A's crossbar instead of reading as a G joined to the A.
+  const cast = S.objs.length;
+  S.word('CAST', 1, 0, [-1, -1, 0]);
+  S.objs[cast + 1].gap = 2.0; // the A
   S.word('AWAY', 21, 11, 1);
   const grid = renderScene(S, 23);
   // A calm strip of sea under everything, and the signature set into it.
   seaStrip(grid, [[21, 0.55], [22, 1]], 1992);
-  const sig = ' brine/sargasso . o1.1o.2o26 ';
+  const sig = ' brine/sgso . o1.1o.2o26 ';
   stamp(grid, [sig], COLS - sig.length - 2, 22, 'txt', true);
   // The bottom-left corner holds a few lowercase lines, set ragged left along the A's slope.
   POEM.forEach(([text, row]) => {
@@ -402,30 +413,31 @@ function islandPiece() {
   // island and trunk in one shape, so the trunk grows out of the sand with a fillet
   const trunk = [[40, 29, 2.3], [39.4, 25, 2.1], [37.8, 21, 1.9], [35.6, 17.5, 1.8], [33.4, 14.2, 1.7], [31.6, 12.2, 1.6]];
   S.shape({ parts: [{ ell: [34, 34.2, 22, 6.2], k: 0 }, ...path3(trunk)], clip: [0, -10, 78, 31.8], k: 1.6 }, 'palm', 1.0);
-  // the crown: every leaf in one shape, so leaves part where they part and never carve each other
-  const C0 = [31, 11.2];
-  const leafR = (big) => (t) => 0.35 + big * Math.pow(Math.sin(Math.PI * t), 0.75);
-  const leaves = [
-    [[[23, 5.6], [14, 5.0], [8, 8.4], [5.6, 13.4]], 1.7],    // long, left, drooping
-    [[[39, 5.6], [48, 5.0], [54, 8.4], [56.4, 13.4]], 1.7],  // long, right
-    [[[25, 2.4], [18.5, 1.0], [14, 3.0]], 1.3],              // high, left
-    [[[37, 2.2], [43.5, 0.8], [48.5, 2.8]], 1.3],            // high, right
-    [[[25.4, 10.6], [21, 14], [19.4, 19]], 1.3],             // hanging, left
-    [[[36.6, 10.6], [41, 14], [42.6, 19]], 1.3],             // hanging, right
+  // the crown: every frond in one shape, so fronds part where they part and never carve each
+  // other. Two long fronds arch out (the right one higher) with leaflets hanging from their
+  // undersides; two short ones hang down either side of the trunk. Earlier, fuller crowns read
+  // as an umbrella: the gaps between fronds are what make it a palm.
+  const C0 = [31, 10.4];
+  const frondR = (big) => (t) => 0.3 + big * Math.pow(Math.sin(Math.PI * Math.pow(t, 0.7)), 0.8);
+  const fronds = [
+    [[[25.6, 4.8], [17.4, 3.4], [10.4, 6.0], [6.0, 11.8]], 1.6, -1], // upper left, arching low
+    [[[27.4, 13.6], [23.4, 16.6], [20.6, 21.2]], 1.2, 0],          // lower left, hanging
+    [[[36.4, 3.2], [44.4, 1.2], [51.8, 3.4], [57.0, 8.6]], 1.6, 1],  // upper right, arching high
+    [[[36.6, 12.6], [41.8, 15.2], [45.2, 20.0]], 1.2, 0],          // lower right, clear of the trunk
   ];
   const parts = [];
-  leaves.forEach(([pts, big], n) => {
-    const leaf = spline([C0, ...pts], leafR(big));
-    parts.push(...leaf);
-    if (n > 1) return;
-    // the two long leaves get a fringe of leaflets hanging from their undersides
-    const out = n === 0 ? -1 : 1;
-    for (const i of [7, 9, 11, 13, 15, 17, 19]) {
-      const [x0, y0, r0] = leaf[i].seg;
-      parts.push({ seg: [x0, y0 + r0 * 0.5, 0.6, x0 + out * 0.9, y0 + r0 + 2.2, 0.3], k: 0.2 });
+  fronds.forEach(([pts, big, out]) => {
+    const f = spline([C0, ...pts], frondR(big), 28);
+    parts.push(...f);
+    if (!out) return;
+    // leaflets, longest mid-frond
+    for (const i of [8, 11, 14, 17, 20, 23]) {
+      const [x0, y0, r0] = f[i].seg;
+      const len = 2.0 + 1.2 * Math.sin((Math.PI * (i - 6)) / 20);
+      parts.push({ seg: [x0, y0 + r0 * 0.4, 0.55, x0 + out * 1.2, y0 + r0 + len, 0.25], k: 0.2 });
     }
   });
-  parts.push({ ell: [30.0, 13.4, 1.5, 1.3] }, { ell: [32.8, 13.6, 1.5, 1.3] }); // coconuts
+  parts.push({ ell: [29.8, 12.6, 1.4, 1.3] }, { ell: [32.6, 12.8, 1.4, 1.3] }); // coconuts
   S.shape({ parts, k: 0.3 }, 'palm', 1.0);
   for (const o of S.objs) o.box = o.box || [-1e9, -1e9, 1e9, 1e9];
   const grid = renderScene(S, ROWS);
@@ -489,9 +501,9 @@ const md = `<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit
 
 ${pre(html(art))}
 
-**Castaway** (working title) is a ten-hour lo-fi video for YouTube in which a young woman sits on a very small island with one tall palm and a raft, nods to the music on her headphones, and waits. Every so often something happens. Then she goes back to nodding. It is an unofficial remake inspired by the small-island routines and visual comedy of *Johnny Castaway*, the 1992 desert-island screensaver: an oldschool idea, redrawn newschool, sunny, hand-painted and always daytime.
+**Castaway** (working title) is a ten-hour lo-fi video for YouTube in which a young woman sits on a very small island with one tall palm and a raft, nods to the music on her headphones, and waits. Every so often something happens. Then she goes back to nodding. It is an unofficial remake inspired by the small-island routines and visual comedy of *Johnny Castaway*, the 1992 desert-island screensaver: an oldschool idea, made new, sunny, hand-painted and always daytime.
 
-More than 90 activities take turns, most of them on four timers that go off anywhere from every couple of minutes to once every few hours. A message in a bottle washes straight back. A drone delivers a parcel, and the parcel is another pair of headphones. A shark in headphones nods along. A coconut falls on a hermit crab, then walks off with the crab wearing it. Every gag starts on the next bar of the music, so it lands on the beat. Ten hours is 12,000 bars, and she is busy for about a third of them.
+About 90 activities take turns, most of them on four timers that go off anywhere from every couple of minutes to once every few hours. A message in a bottle washes straight back. A drone delivers a parcel, and the parcel is another pair of headphones. A shark in headphones nods along. A coconut falls on a hermit crab, then walks off with the crab wearing it. Every gag starts on the next bar of the music, so it lands on the beat. Ten hours is 12,000 bars, and she is busy for about a third of them.
 
 The header above is drawn with ${thousands(DOLLARS)} dollar signs, and none of them went on samples: every sound, from the kalimba to the vinyl crackle to the sea, is synthesized from code by [tools/make_audio.py](tools/make_audio.py), so no third-party licence applies.
 
@@ -499,14 +511,14 @@ ${FENCE}sh
 python tools/serve.py      # then open http://127.0.0.1:8765/
 ${FENCE}
 
-<sub>The renderer is a web page with a live preview that exports a YouTube-ready MP4. In development: no video has been published yet. She is used to waiting.</sub>
+<p><sub>The renderer is a web page with a live preview that exports a YouTube-ready MP4. In development: no video has been published yet. She is used to waiting.</sub></p>
 
 <details>
 <summary><b>the set</b>: one island, one palm, one raft, and her</summary>
 
 ${pre([...html(islandPiece()), '', ...textLines(`
   the whole cast, to scale. she is the lowercase i. the frame is 16:9,
-  1080p at 30 frames a second, it is always daytime, and the camera never
+  1080p at ${FPS} frames a second, it is always daytime, and the camera never
   moves: everything that happens, happens in this one shot.`)])}
 
 </details>
@@ -515,9 +527,11 @@ ${pre([...html(islandPiece()), '', ...textLines(`
 <summary><b>gags</b>: what interrupts the nodding, inked by rarity</summary>
 
 ${pre([...html(title('GAGS')), '', ...textLines(String.raw`
-  the rarer it is, the more ink it gets:
-    i every 2 to 5 min     I every 12 to 25 min    S every 30 to 60 min
-    $ every 3 to 6 hours   ; only ever straight after another
+  the rarer it is, the more ink it gets. the mark is the timer that
+  picks it:
+    i goes off every 2 to 5 min       I every 12 to 25 min
+    S every 30 to 60 min              $ every 3 to 6 hours, 3 a run at most
+    ; no timer: only ever straight after another
 
   $  she could leave any time    walks out over the water and comes back
                                  with an iced coffee. the island says nothing
@@ -539,7 +553,10 @@ ${pre([...html(title('GAGS')), '', ...textLines(String.raw`
                                  the crab wearing it
   I  kumara                      planted once, grows over the video
   i  everyday                    coconut sipping, fishing, jogging laps, and
-                                 a sandcastle that the tide takes`)])}
+                                 a sandcastle that the tide takes
+
+  the S timer has far more gags than turns, so most S gags sit out any
+  given ten hours. they wait. everyone here waits.`)])}
 
 </details>
 
@@ -552,20 +569,22 @@ ${pre([...html(title('WAIT')), '', ...textLines(`
 
   tier        comes round every       typical run
 ${chart}
-                                            one mark is five events
+                                            one mark is about five events
 
   typical is the median of 200 simulated runs, as {activities.toml} says.
-  more than 90 activities (94 on ${AS_OF}). she is busy about a third of
-  the time and idles for the rest: nodding, mostly.
+  it lists more than 90 activities (${ACTIVITIES} on ${AS_OF}, ${DEV_ONLY} of them for
+  development only). she is busy about a third of the time and idles for
+  the rest: nodding, mostly.
 
   lanes let things overlap. she has one; the cat, the turtle, the sea and
-  sky, and the shore each have their own. so a visit from the cat can go
-  on for a while, and she gets on with her day around it.
+  sky, the shore and the kumara patch each have their own. so a visit
+  from the cat can go on for a while, and she gets on with her day
+  around it.
 
   scene life: 26 entries, 4 always on and 22 timed. shore waves and
   drifting cloud shadows are in; distant birds, planes with vapour trails,
-  whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower
-  are on the way.
+  whale pods, dolphins, sailboats, sandpipers, a gecko, a rain shower and
+  a nest in the palm that has chicks hours later are on the way.
 
   python {tools/schedule.py}       validates it all, simulates a 10-hour run`)])}
 
@@ -576,9 +595,9 @@ ${chart}
 
 ${pre([...html(title('SOUND')), '', ...textLines(`
   samples ........ 0     every sound is synthesized from code by
-  loops .......... 0     {tools/make_audio.py}, so no third-party licence
-  recordings ..... 0     applies. more than 150 files (181 on ${AS_OF}),
-  licences ....... 0     and counting.
+  loop packs ..... 0     {tools/make_audio.py}, so no third-party licence
+  recordings ..... 0     applies. more than 150 files (${SOUND_FILES} on ${AS_OF}),
+  licences owed .. 0     and counting.
 
   the theme       a seamless 60-second loop at 80 BPM in F major: ii-V-I-vi,
                   20 bars of exactly 3 seconds, on electric piano, a kalimba
@@ -602,11 +621,12 @@ ${pre([...html(title('RUN')), '', ...textLines(`
                                 a dev reel of every activity with a heads-up
                                 display (the older Python reference renderer)
 
-  {web/index.html} is plain ES modules: no build step, no npm packages. the
-  browser encodes frame-exact H.264 with WebCodecs, 68 to 78 frames a second
-  at 1080p30 in Chrome, and the server mixes in the sound and joins the two
-  into one MP4. hard cuts and stepped movement are the motion defaults. the
-  notes, the decisions and the lessons live in {MUSING.md}.`)])}
+  the page, {web/index.html}, is plain ES modules: no build step, no npm
+  packages. the browser encodes frame-exact H.264 with WebCodecs (timed at
+  68 to 78 frames a second at 1080p30 in Chrome), and the server mixes in
+  the sound and joins the two into one MP4. hard cuts and stepped movement
+  are the motion defaults. the notes, the decisions and the lessons live
+  in {MUSING.md}.`)])}
 
 </details>
 
@@ -622,17 +642,17 @@ ${pre([...html(title('WAVE')), '', ...textLines(`
   every single time.
 
   castaway is an unofficial remake inspired by johnny castaway, the 1992
-  screensaver. it has its own character, art and music, and no connection
-  to that screensaver or to its owners.
+  screensaver. it has its own character, art and music, and is not
+  affiliated with that screensaver or with its owners.
 
   the header is drawn in the manner of 1990s pc newschool ascii: letters
   poured from dollar signs, corners rounded with d, b, Y and P, edges
   softened with punctuation, and texture in the ramp ; i I S $. every
   letter, the sun, the palm and the waves were drawn for this file, and
-  sargasso, sgso and brine are made up. ${thousands(DOLLARS)} dollar signs up top, and not
-  one of them was spent.
+  sargasso (sgso for short) and brine are made up. ${thousands(DOLLARS)} dollar signs up
+  top, and not one of them was spent.
 
-                                         brine/sargasso . o1.1o.2o26`)])}
+                                         brine/sgso . o1.1o.2o26`)])}
 
 </details>
 `;

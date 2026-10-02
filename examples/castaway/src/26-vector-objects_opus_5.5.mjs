@@ -67,7 +67,7 @@ const LOOP = 60;             // s, the theme's loop
 const BAR = 3;               // s, one bar at 80 BPM
 const BEAT = BAR / 4;
 const TAU = Math.PI * 2;
-const CREW = 'TIDEPOOL POLYGON SOCIETY';
+const CREW = 'ROCKPOOL POLYGON SOCIETY';
 
 const n = (v, d = 2) => String(+(+v).toFixed(d));
 const n1 = (v) => n(v, 1);
@@ -179,7 +179,7 @@ function pixText(str, x, y, u, { anchor = 'start', fill = '#fff', shadow = INK, 
   const x0 = anchor === 'middle' ? x - w / 2 : anchor === 'end' ? x - w : x;
   const id = `t${lineId++}`;
   defsText += `<g id="${id}" transform="translate(${n(x0)} ${n(y)}) scale(${u})">${pixLine(str, u)}</g>`;
-  const shadowUse = shadow ? `<use href="#${id}" x="${n(sh * u)}" y="${n(sh * u)}" fill="${shadow}"${typeof shadow === 'string' && shadow.length > 7 ? '' : ''}/>` : '';
+  const shadowUse = shadow ? `<use href="#${id}" x="${n(sh * u)}" y="${n(sh * u)}" fill="${shadow}"/>` : '';
   return { svg: `<g${cls ? ` class="${cls}"` : ''}>${shadowUse}<use href="#${id}" fill="${fill}"/></g>`, x0, w };
 }
 
@@ -426,7 +426,7 @@ function titleSvg() {
 const PAGES = [
   ['TEN HOURS. ONE ISLAND. ONE PALM.', 'SHE IDLES, NODDING TO THE MUSIC.', 'EVERY SO OFTEN, SOMETHING', 'HAPPENS. ALWAYS ON THE NEXT BAR.'],
   ['A BOTTLE WASHES STRAIGHT BACK.', 'A DRONE DELIVERS... HEADPHONES.', 'A STRAY CAT NAPS UP THE PALM.', 'A COCONUT WALKS OFF WITH A CRAB.'],
-  ['90+ ACTIVITIES ON FOUR TIMERS:', '2-5 MIN, 12-25, 30-60, 3-6 HOURS', 'BUSY A THIRD OF THE TIME.', 'IDLE THE OTHER TWO. ON PURPOSE.'],
+  ['90+ ACTIVITIES. FOUR TIMERS:', '2-5 MIN, 12-25, 30-60, 3-6 HOURS', 'BUSY ABOUT A THIRD OF THE TIME.', 'IDLE THE OTHER TWO. ON PURPOSE.'],
   ['EVERY SOUND IS MADE FROM CODE.', 'NO SAMPLES, LOOPS OR RECORDINGS.', '80 BPM, F MAJOR, KALIMBA LEAD.', 'MIXED TO -14 LUFS. HEARD: NOT YET'],
   ['> python tools/serve.py', '> open http://127.0.0.1:8765/', 'LIVE PREVIEW. EXPORT AN MP4.', 'THEN WAIT. THAT IS THE VIDEO.'],
 ];
@@ -519,12 +519,12 @@ const strips = stripsSvg();
 const subtitle = pixText('A TEN-HOUR LO-FI ISLAND VIDEO (WORKING TITLE)', TITLE.cx, 160, 2, { anchor: 'middle', fill: SAND, sh: 1 });
 
 // ripples: one ring born on every bar, spreading for four bars (the plain field's only motion)
-const RIP = { n: 4, r: 440, born: 78 };
+const RPL = { n: 4, r: 440, born: 78 };
 let ripples = '';
-for (let i = 0; i < RIP.n; i++) ripples += `<circle class="rp" r="${RIP.r}" style="animation-delay:${del(i * BAR, RIP.n * BAR)}"/>`;
+for (let i = 0; i < RPL.n; i++) ripples += `<circle class="rp" r="${RPL.r}" style="animation-delay:${del(i * BAR, RPL.n * BAR)}"/>`;
 const css = [
-  `@keyframes rp{0%{transform:scale(${n(RIP.born / RIP.r, 3)});opacity:0}6%{opacity:1}100%{transform:scale(1);opacity:0}}`,
-  `.rp{animation:rp ${RIP.n * BAR}s cubic-bezier(.2,.6,.4,1) infinite;fill:none;stroke:#fff;stroke-opacity:.22;stroke-width:5}`,
+  `@keyframes rp{0%{transform:scale(${n(RPL.born / RPL.r, 3)});opacity:0}6%{opacity:1}100%{transform:scale(1);opacity:0}}`,
+  `.rp{animation:rp ${RPL.n * BAR}s cubic-bezier(.2,.6,.4,1) infinite;fill:none;stroke:#fff;stroke-opacity:.22;stroke-width:5}`,
   `@keyframes bob{0%{transform:translateY(0px)}12%{transform:translateY(4px)}100%{transform:translateY(0px)}}`,
   `.bob{animation:bob ${BEAT}s ease-out infinite;animation-delay:${del(0, BEAT)}}`,
   `@keyframes sh{0%{transform:scale(1)}12%{transform:scale(1.05)}100%{transform:scale(1)}}`,
@@ -540,7 +540,7 @@ const pixDefs = [...usedPix].map((ch) => `<path id="${gid(ch)}" d="${pixPath(ch)
 // outline in currentColor, core in the inherited stroke (styles reach <use> clones only by inheritance)
 const dotDefs = [...usedDot].map((ch) => { const d = dotPath(ch); return `<g id="${did(ch)}"><path stroke="currentColor" stroke-width="1.42" d="${d}"/><path stroke-width=".84" d="${d}"/></g>`; }).join('');
 
-const ALT = 'CASTAWAY as a demoscene vector-object intro on a sky-to-lagoon blue field. A translucent two-tone crystal (white and coral pink, 24 faces) tumbles on the left, dipping on every beat, with a ring of dotted letters turning round its middle that tells the gags: she idles, a bottle washes straight back, a shark in headphones nods along, she walks out over the water and comes back with an iced coffee. Its caption: FIG. 1: A COCONUT, ROUGHLY. 24 FACES. On the right the title CASTAWAY in shaded sand-coloured balls floats on a slow wave and, once a minute, flips letter by letter; under it A TEN-HOUR LO-FI ISLAND VIDEO (WORKING TITLE) and a text writer typing five pages about the island, the gags, the four timers, the sound made from code, and how to run it: python tools/serve.py, then open http://127.0.0.1:8765/. Along the top: TIDEPOOL POLYGON SOCIETY PRESENTS, 80 BPM beat lights and a bar counter; bottom right: EVERY SOUND SYNTHESIZED FROM CODE.';
+const ALT = 'CASTAWAY as a demoscene vector-object intro on a sky-to-lagoon blue field. A translucent two-tone crystal (white and coral pink, 24 faces) tumbles on the left, dipping on every beat, with a ring of dotted letters turning round its middle that tells the gags: she idles, a bottle washes straight back, a shark in headphones nods along, she walks out over the water and comes back with an iced coffee. Its caption: FIG. 1: A COCONUT, ROUGHLY. 24 FACES. On the right the title CASTAWAY in shaded sand-coloured balls floats on a slow wave and, once a minute, flips letter by letter; under it A TEN-HOUR LO-FI ISLAND VIDEO (WORKING TITLE) and a text writer typing five pages about the island, the gags, the four timers, the sound made from code, and how to run it: python tools/serve.py, then open http://127.0.0.1:8765/. Along the top: ROCKPOOL POLYGON SOCIETY PRESENTS, 80 BPM beat lights and a bar counter; bottom right: EVERY SOUND SYNTHESIZED FROM CODE.';
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">
 <title id="t">CASTAWAY</title>
 <desc id="d">${ALT}</desc>
@@ -729,11 +729,11 @@ usedPix.clear();
     body += pixText(pr.name, cx, 190, 2, { anchor: 'middle', fill: SAND, sh: 1 }).svg;
   });
   const head = pixText('THE INVENTORY, AS VECTOR OBJECTS', 26, 18, 2, { fill: CREAM, sh: 1 }).svg
-    + pixText('NOTHING ON THE ISLAND ACTUALLY SPINS.', PW - 26, 18, 2, { anchor: 'end', fill: CREAM, sh: 1 }).svg;
+    + pixText('TURNTABLES NOT INCLUDED IN THE VIDEO.', PW - 26, 18, 2, { anchor: 'end', fill: CREAM, sh: 1 }).svg;
   const pdefs = [...usedPix].map((ch) => `<path id="${gid(ch)}" d="${pixPath(ch)}"/>`).join('');
   const psvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${PW} ${PH}" width="${PW}" height="${PH}" role="img" aria-labelledby="t d">
 <title id="t">The inventory, as vector objects</title>
-<desc id="d">Six things from the island drawn as white wireframes, each turning slowly on a dashed turntable: a bottle with a rolled message inside, a slatted crate, a parcel tied with string and a bow, a pair of headphones, an iced coffee with a straw, and a sandcastle with a flag. Header: THE INVENTORY, AS VECTOR OBJECTS. NOTHING ON THE ISLAND ACTUALLY SPINS.</desc>
+<desc id="d">Six things from the island drawn as white wireframes, each turning slowly on a dashed turntable: a bottle with a rolled message inside, a slatted crate, a parcel tied with string and a bow, a pair of headphones, an iced coffee with a straw, and a sandcastle with a flag. Header: THE INVENTORY, AS VECTOR OBJECTS. TURNTABLES NOT INCLUDED IN THE VIDEO.</desc>
 <style>.gl{fill:none;stroke:#fff;stroke-opacity:.18;stroke-width:4.5;stroke-linejoin:round;stroke-linecap:round}.ln{fill:none;stroke:#fff;stroke-width:1.3;stroke-linejoin:round;stroke-linecap:round}.ws{display:none}@media (prefers-reduced-motion:reduce){.wa{display:none}.ws{display:inline}}</style>
 <defs>
 <linearGradient id="fld" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="${PH}">${stops(FIELD)}</linearGradient>

@@ -63,6 +63,17 @@ const BLANK0 = 25.7, BLANK1 = 26.1, UNBLANK = 27.0; // screens fade out, come ba
 const RESET = 26.5;           // counters and tracks reset while blank
 const tm = (min) => RUN0 + min / RATE; // simulated minute -> loop second
 
+// When things happen in the replayed run, in simulated minutes. The placing
+// is made up (the board says so); the totals on screen 3 are the real ones.
+// Screen 1 (the island) and screen 2 (the Pacific) share one timeline, and
+// the BUSY lamp is built from it, so the ship only ever crosses while she
+// is busy fishing.
+const ISLE = {
+  turtle: 90, sandcastle: 160, tide: 215, hydrofoil: 260, coconut: 330,
+  fishing: 400, signal: 490, kumara: 545,
+};
+const SHIP = 410;             // sets out once she is fishing
+
 // colours: flat and saturated, one per kind of thing
 const C = {
   coast: '#3fa9ff',
@@ -302,17 +313,22 @@ for (const b of BEZ) {
 // ---------------------------------------------------------------------------
 // Caption strip: the name, and the board's own labels
 // ---------------------------------------------------------------------------
-push(P(textD('CASTAWAY', 640, 88, 56, { sp: 4.6, align: 'center' }), 'cw w5'));
-push(P(textD('A TEN-HOUR LO-FI ISLAND VIDEO. ALMOST NOTHING HAPPENS.', 640, 110, 10, { sp: 3.2, align: 'center' }), 'cy w1'));
-push(P(textD('LOW STAKES COMMAND', 40, 46, 13, { sp: 3.4 }), 'cw w2'));
-push(P(textD('BIG BOARD · 3 SCREENS', 40, 68, 10), 'cd w1'));
-push(P(textD('STATUS: EXTREMELY CALM', 40, 88, 10), 'cy w1'));
-push(P(textD('RUN 10:00:00', 1240, 46, 13, { sp: 3.4, align: 'right' }), 'cw w2'));
-push(P(textD('SEED 1992 · 1080P30', 1240, 68, 10, { align: 'right' }), 'cd w1'));
-push(P(textD('ALWAYS DAYTIME', 1240, 88, 10, { align: 'right' }), 'cy w1'));
-BACK.push(`<path d="${textD('CASTAWAY', 640, 88, 56, { sp: 4.6, align: 'center' })}" fill="none" stroke="#dfeaff" stroke-opacity=".045" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>`);
+// The whole strip sits 6 px higher than it first did, so the tagline ends
+// about 11 px clear of the wall frame instead of crowding the screens.
+const CAPY = (y) => y - 6;
+push(P(textD('CASTAWAY', 640, CAPY(88), 56, { sp: 4.6, align: 'center' }), 'cw w5'));
+push(P(textD('A TEN-HOUR LO-FI ISLAND VIDEO. ALMOST NOTHING HAPPENS.', 640, CAPY(110), 10, { sp: 3.2, align: 'center' }), 'cy w1'));
+push(P(textD('LOW STAKES COMMAND', 40, CAPY(46), 13, { sp: 3.4 }), 'cw w2'));
+push(P(textD('BIG BOARD · 3 SCREENS', 40, CAPY(68), 10), 'cd w1'));
+push(P(textD('STATUS: EXTREMELY CALM', 40, CAPY(88), 10), 'cy w1'));
+push(P(textD('RUN 10:00:00', 1240, CAPY(46), 13, { sp: 3.4, align: 'right' }), 'cw w2'));
+// no frame rate here on purpose: the project moved from 30 to 24 fps on
+// 2026-10-01 ([video] in activities.toml), and may move again
+push(P(textD('SEED 1992 · 16:9 · 1080P', 1240, CAPY(68), 10, { align: 'right' }), 'cd w1'));
+push(P(textD('ALWAYS DAYTIME', 1240, CAPY(88), 10, { align: 'right' }), 'cy w1'));
+BACK.push(`<path d="${textD('CASTAWAY', 640, CAPY(88), 56, { sp: 4.6, align: 'center' })}" fill="none" stroke="#dfeaff" stroke-opacity=".045" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>`);
 // thin rules either side of the name
-push(P(polyD([[[272, 58], [398, 58]], [[882, 58], [1008, 58]]]), 'cd w0'));
+push(P(polyD([[[272, CAPY(58)], [398, CAPY(58)]], [[882, CAPY(58)], [1008, CAPY(58)]]]), 'cd w0'));
 
 // screen header bars
 const header = (s, n, title, right) => {
@@ -493,9 +509,10 @@ const ISL = proj(-155, -6);
 sp(P(polyD([[[ISL[0] - 7, ISL[1]], [ISL[0] - 3, ISL[1]]], [[ISL[0] + 3, ISL[1]], [ISL[0] + 7, ISL[1]]], [[ISL[0], ISL[1] - 7], [ISL[0], ISL[1] - 3]], [[ISL[0], ISL[1] + 3], [ISL[0], ISL[1] + 7]]]), 'cy w1'));
 sp(P(polyD([[ISL]]), 'cy w3'));
 sp(`<circle class="cy w1 ring ${pulseAt([0.2, 3, 6, 9, 12, 15, 18, 21, 24].map((t) => t + 0.0), 2.2, 1.4)}" cx="${r1(ISL[0])}" cy="${r1(ISL[1])}" r="6"/>`);
-sp(P(polyD([[[ISL[0] + 9, ISL[1] - 2], [ISL[0] + 62, ISL[1] - 8]]]), 'cy w0'));
-sp(P(textD('THE ISLAND', ISL[0] + 68, ISL[1] - 4, 10), 'cy w1'));
-sp(P(textD('(POSITION VAGUE)', ISL[0] + 68, ISL[1] + 10, 9), 'cd w1'));
+// label tucked in beside the crosshair so it ends well short of the South
+// American coast (it used to run into Peru)
+sp(P(textD('THE ISLAND', ISL[0] + 20, ISL[1] + 1, 10), 'cy w1'));
+sp(P(textD('POSITION VAGUE', ISL[0] + 20, ISL[1] + 15, 9), 'cd w1'));
 
 // tracks: [name, sim minute, kind, from/to, label, label offset]
 const quad = (a, b, lift) => {
@@ -547,12 +564,13 @@ const ev = (min, track, endLabel, labelAt, labelTxt, dur = 1.1, color = 'cr') =>
     const back = quad([ISL[0], ISL[1] + 10], tour, -0.22).slice(1);
     ev(280, [[...a, ...loop, ...back]], true, [tour[0] - 96, tour[1] + 6], 'TOUR BOAT', 1.6);
   }
-  const cafe = proj(-135, -28);
-  ev(355, [quad(ISLN, cafe, 0.22), quad(cafe, ISLN, 0.22)], false, [cafe[0] + 9, cafe[1] + 12], 'COFFEE?', 1.4, 'cc');
+  // out over the water and back: a thin lens heading south, clear of the label
+  const cafe = proj(-152, -32);
+  ev(355, [quad(ISLN, cafe, 0.15), quad(cafe, ISLN, -0.15)], false, [cafe[0] + 9, cafe[1] + 12], 'COFFEE?', 1.4, 'cc');
   arrive.push(tm(355) + 1.4);
   const s0 = proj(151.5, -34), s1 = proj(-71.6, -33);
   const lane = quad(s0, s1, -0.12);
-  ev(410, [lane], true, [lane[10][0] - 18, lane[10][1] + 20], 'SHIP', 2.6, 'cy');
+  ev(SHIP, [lane], true, [lane[10][0] - 18, lane[10][1] + 20], 'SHIP', 2.6, 'cy');
   const reply = proj(-105.3, 20.5);
   ev(470, [wiggle(reply, ISLN, 5, 4, 11)], true, [reply[0] - 12, reply[1] + 24], 'REPLY', 1.8, 'co');
   arrive.push(tm(470) + 1.8);
@@ -613,7 +631,7 @@ const ICL = { x0: SL.x0 + 10, x1: SL.x1 - 10 };
   sp(P(polyD(fr), 'cp w1'));
   sp(P(polyD([[PM]]), 'cp w3'));
   // the signal: one bar, at the very top of the palm
-  sp(`<circle class="cw w1 ring ${pulseAt([tm(455), tm(455) + 0.8, tm(455) + 1.6], 3, 0.8)}" cx="${r1(PM[0])}" cy="${r1(PM[1])}" r="3.4"/>`);
+  sp(`<circle class="cw w1 ring ${pulseAt([tm(ISLE.signal), tm(ISLE.signal) + 0.8, tm(ISLE.signal) + 1.6], 3, 0.8)}" cx="${r1(PM[0])}" cy="${r1(PM[1])}" r="3.4"/>`);
   // the raft, moored east
   const RF = [IC[0] + 86, IC[1] + 10];
   const rot = (x, y, a = -0.14) => [RF[0] + x * Math.cos(a) - y * Math.sin(a), RF[1] + x * Math.sin(a) + y * Math.cos(a)];
@@ -630,13 +648,13 @@ const ICL = { x0: SL.x0 + 10, x1: SL.x1 - 10 };
   // sandcastle, then the tide
   const SC0 = [IC[0] - 40, IC[1] + 13];
   const sc = [[[SC0[0] - 4, SC0[1] + 4], [SC0[0] - 4, SC0[1] - 3], [SC0[0] - 2, SC0[1] - 3], [SC0[0] - 2, SC0[1] - 1], [SC0[0], SC0[1] - 1], [SC0[0], SC0[1] - 3], [SC0[0] + 2, SC0[1] - 3], [SC0[0] + 2, SC0[1] - 1], [SC0[0] + 4, SC0[1] - 1], [SC0[0] + 4, SC0[1] + 4], [SC0[0] - 4, SC0[1] + 4]], [[SC0[0], SC0[1] - 3], [SC0[0], SC0[1] - 8], [SC0[0] + 3, SC0[1] - 7], [SC0[0], SC0[1] - 6]]];
-  const tSC = tm(160), tTide = tm(215);
+  const tSC = tm(ISLE.sandcastle), tTide = tm(ISLE.tide);
   sp(P(polyD(sc), `cw w1 gone ${aClass(KF([[0, 'opacity:0'], [tSC - 0.01, 'opacity:0'], [tSC, 'opacity:1'], [tTide + 0.5, 'opacity:1'], [tTide + 0.9, 'opacity:0'], [T, 'opacity:0']]))}`));
   const tide = [];
   for (let i = 0; i <= 16; i++) tide.push([SC0[0] - 24 + i * 2.6, SC0[1] + 13 + Math.sin(i * 0.9) * 2]);
   sp(P(polyD([tide]), `cb w2 gone ${aClass(KF([[0, 'opacity:0;transform:translate(0,0)'], [tTide - 0.01, 'opacity:0;transform:translate(0,0)'], [tTide, 'opacity:1;transform:translate(0,0)'], [tTide + 1, 'opacity:1;transform:translate(4px,-14px)'], [tTide + 1.5, 'opacity:0;transform:translate(6px,-18px)'], [T, 'opacity:0;transform:translate(0,0)']]))}`));
   // coconut: falls from the palm, then walks off with a crab inside
-  const tCo = tm(385);
+  const tCo = tm(ISLE.coconut);
   const coPath = spline([[PM[0], PM[1]], [PM[0] + 5, PM[1] + 9], [PM[0] + 15, PM[1] + 16], [PM[0] + 28, PM[1] + 20], [PM[0] + 40, PM[1] + 27]], 5);
   sp(PL(polyD([coPath]), `cy w1 dr ${drawAt(tCo, 1.6)}`));
   const coEnd = coPath[coPath.length - 1];
@@ -645,11 +663,11 @@ const ICL = { x0: SL.x0 + 10, x1: SL.x1 - 10 };
   sp(`<circle class="cr w1 dash2" cx="${IC[0]}" cy="${IC[1]}" r="100"/>`);
   sp(`<g class="orbit"><g class="bob"><path class="cr w2" d="${polyD([[[IC[0] - 5, IC[1] - 97], [IC[0] + 2, IC[1] - 107], [IC[0] + 6, IC[1] - 97], [IC[0] - 5, IC[1] - 97]]])}"/></g></g>`);
   // turtle: comes in from the south, visits the shore, leaves
-  const tTu = tm(90);
+  const tTu = tm(ISLE.turtle);
   const tu = spline([[ICL.x0, 424], [58, 430], [82, 414], [96, 386], [114, 356], [132, 336], [146, 330], [152, 340], [142, 349], [129, 344], [122, 362], [110, 392], [100, 420], [96, 446]], 6);
   sp(PL(polyD([tu]), `cg2 w1 dr ${drawAt(tTu, 2.2)}`));
   // hydrofoil: carves across the top, fast
-  const tHy = tm(310);
+  const tHy = tm(ISLE.hydrofoil);
   const hy = spline([[ICL.x1, 192], [300, 172], [258, 184], [216, 166], [172, 180], [128, 166], [84, 178], [ICL.x0, 170]], 6);
   sp(PL(polyD([hy]), `cr w1 dr ${drawAt(tHy, 0.9)}`));
   // labels on the chart, with leaders
@@ -679,10 +697,10 @@ const TICK = [];
   const evs = [
     [52, 'DRONE DELIVERY. PARCEL CONTENTS: HEADPHONES.'],
     [125, 'BOTTLE THROWN. BOTTLE WASHED STRAIGHT BACK.'],
-    [195, 'A CRATE DRIFTED IN. CONTENTS: ONE GREY TABBY.'],
+    [195, 'A CRATE DRIFTED IN. ON TOP: ONE GREY TABBY.'],
     [280, 'TOUR BOAT. SELFIES TAKEN. NO LIFT OFFERED.'],
     [355, 'SHE WALKED OUT OVER THE WATER. BACK WITH ICED COFFEE.'],
-    [410, 'A SHIP CROSSED THE HORIZON. SHE WAS BUSY.'],
+    [SHIP, 'A SHIP CROSSED THE HORIZON. SHE WAS BUSY.'],
     [470, 'A DIFFERENT BOTTLE WASHED UP. IT IS A REPLY.'],
     [530, 'THE CAT FLOATED OFF. IT COMES BACK ANOTHER DAY.'],
   ];
@@ -701,17 +719,18 @@ const TICK = [];
   TICK.push(P(polyD([[[SC.x0 + 10, SCR_Y1 - 30], [SC.x1 - 10, SCR_Y1 - 30]]]), 'cg w0'));
   // island screen
   const rev = [
-    [90, 'A SEA TURTLE VISITS.'],
-    [160, 'SANDCASTLE BUILT.'],
-    [215, 'THE TIDE TOOK IT.'],
-    [310, 'HYDROFOIL. SHAKA RECEIVED.'],
-    [385, 'COCONUT FELL. CRAB WEARS IT.'],
-    [455, 'SIGNAL: 1 BAR. TOP OF PALM.'],
-    [540, 'KUMARA: A BIT TALLER.'],
+    [ISLE.turtle, 'A SEA TURTLE VISITS.'],
+    [ISLE.sandcastle, 'SANDCASTLE BUILT.'],
+    [ISLE.tide, 'THE TIDE TOOK IT.'],
+    [ISLE.hydrofoil, 'HYDROFOIL. SHAKA RECEIVED.'],
+    [ISLE.coconut, 'COCONUT FELL. CRAB WEARS IT.'],
+    [ISLE.fishing, 'FISHING. NO BITES. VERY BUSY.'],
+    [ISLE.signal, 'SIGNAL: 1 BAR. TOP OF PALM.'],
+    [ISLE.kumara, 'KUMARA: A BIT TALLER.'],
   ];
   const lx = SL.x0 + 14;
   const ll = [];
-  ll.push(['ALL QUIET. SHE IS NODDING.', [[0, tm(90)], [27.2, T + 0.01]]]);
+  ll.push(['ALL QUIET. SHE IS NODDING.', [[0, tm(ISLE.turtle)], [27.2, T + 0.01]]]);
   rev.forEach(([m, s], i) => ll.push([s, [[tm(m), i + 1 < rev.length ? tm(rev[i + 1][0]) : RUN1]]]));
   ll.push(['STILL QUIET. STILL NODDING.', [[RUN1, BLANK0 + 0.2]]]);
   ll.push(['CHART CLEARED.', [[BLANK0 + 0.2, 27.2]]]);
@@ -845,11 +864,26 @@ const digitStops = (changes, place, base = 10) => {
   });
   sp(P(textD('MEDIAN OF 200 SIMULATED RUNS', x0, 424, 9), 'cd w1'));
   sp(P(polyD([[[x0, 434], [x1, 434]]]), 'cg w0'));
-  // status lamps: idle most of the time, busy during the gags
-  // she is busy for each gag; the ship waits until she is, then crosses
-  const busyW = [52, 125, 195, 280, 355, 470, 530].map((m) => [tm(m) - 0.2, tm(m) + 1.6]);
-  busyW.push([tm(402), tm(410) + 3]);
+  // status lamps: IDLE most of the time, BUSY while she is doing something.
+  // The schedule's own figure is "busy about a third of the time", so the
+  // windows below add up to about a third of the replay (8.5 s of 24 s,
+  // checked at build time). The ship waits until she is fishing, then
+  // crosses, and she stays busy until it has gone.
+  const busyW = [
+    [tm(52) + 1.0, 0.8],            // opens the parcel (more headphones)
+    [tm(125) - 0.1, 1.0],           // writes the note, throws the bottle
+    [tm(ISLE.sandcastle), 1.0],     // builds the sandcastle
+    [tm(ISLE.hydrofoil), 0.6],      // runs over to wave at the hydrofoil
+    [tm(355) - 0.1, 1.3],           // walks out over the water for a coffee
+    [tm(ISLE.fishing), tm(SHIP) + 2.6 - tm(ISLE.fishing)], // fishing; the ship
+    [tm(ISLE.signal) - 0.1, 0.8],   // climbs the palm for one bar
+  ].map(([a, d]) => [a, a + d]);
   busyW.sort((a, b) => a[0] - b[0]);
+  {
+    const busy = busyW.reduce((s, [a, b]) => s + (b - a), 0) / (RUN1 - RUN0);
+    if (busy < 0.3 || busy > 0.38) throw new Error(`BUSY lamp lit ${(busy * 100).toFixed(0)}% of the run, not about a third`);
+    for (let i = 1; i < busyW.length; i++) if (busyW[i][0] <= busyW[i - 1][1]) throw new Error('BUSY windows overlap');
+  }
   const busyOn = aClass(KF([[0, 'opacity:.18'], ...busyW.flatMap(([a, b]) => [[a - 0.01, 'opacity:.18'], [a, 'opacity:1'], [b - 0.01, 'opacity:1'], [b, 'opacity:.18']]), [T, 'opacity:.18']]));
   const idleOn = aClass(KF([[0, 'opacity:1'], ...busyW.flatMap(([a, b]) => [[a - 0.01, 'opacity:1'], [a, 'opacity:.18'], [b - 0.01, 'opacity:.18'], [b, 'opacity:1']]), [T, 'opacity:1']]));
   sp(P(textD('SHE IS', x0, 456, 10), 'cd w1'));

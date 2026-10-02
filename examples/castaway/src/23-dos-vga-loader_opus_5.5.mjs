@@ -57,10 +57,11 @@ const OUT = path.resolve(here, `../assets/${SLUG}.svg`);
 
 // ------------------------------------------------------------------ facts
 // Verified 2026-10-01 against D:/python/castaway (read-only): 94 activities
-// in activities.toml (the header says "more than 90"); 171 synthesized sound
-// files under media/audio (it says "more than 150"); four tier timers;
-// starts snap to 3 s bars; run 10:00:00, seed 1992; tools/serve.py serves
-// http://127.0.0.1:8765/.
+// in activities.toml, 81 of them on the four tier timers and 13 chained
+// follow-ups (the header says "more than 90", "most on four timers"); 181
+// synthesized sound files in media/audio/audio_catalog.json (it says "more
+// than 150"); starts snap to 3 s bars; run 10:00:00, seed 1992; the hammock
+// is a rare-tier activity; tools/serve.py serves http://127.0.0.1:8765/.
 
 // ------------------------------------------------------------------ canvas
 const W = 320; // mode 13h width; the SVG scales the pixels up
@@ -311,14 +312,16 @@ const CY = PLATE.y + PLATE.h / 2;
 
 // ================================================= 2. bars behind the plate
 const BAR_TOP = PLATE.y - 2;
+let BARS_SVG = '';
 const BAR_BOT = PLATE.y + PLATE.h - 7;
 {
   defs.push(rowGradient('cbP', 0, PURPLE), rowGradient('cbO', 0, ORANGE), rowGradient('cbB', 0, BLUE));
-  const bars = ['cbB', 'cbO', 'cbP']
+  // Drawn twice (here, and dimmed inside the plate) rather than through
+  // <use>, so the swing never depends on a browser animating a <use> clone.
+  BARS_SVG = ['cbB', 'cbO', 'cbP']
     .map((id, i) => `<g class="cb cb${i}"><rect width="${W}" height="9" fill="url(#${id})"/></g>`)
     .join('');
-  defs.push(`<g id="bars">${bars}</g>`);
-  body.push(`<use href="#bars"/>`);
+  body.push(`<g>${BARS_SVG}</g>`);
   css.push(`@keyframes sw{from{transform:translateY(${BAR_TOP}px)}to{transform:translateY(${BAR_BOT}px)}}`);
   css.push(`.cb{animation:sw ${BAR}s ease-in-out infinite alternate}`);
   css.push(`.cb0{transform:translateY(${BAR_TOP}px)}.cb1{animation-delay:-.45s;transform:translateY(${BAR_TOP + 5}px)}.cb2{animation-delay:-.9s;transform:translateY(${BAR_TOP + 15}px)}`);
@@ -374,7 +377,7 @@ body.push(smallLine(PRESENTS, PRES_Y, 'pr', ramp([[0, '#ffffff'], [3, '#e8ecff']
   parts.push(`<rect x="${X0 + FRAME}" y="${IY}" width="${PW - 2 * FRAME}" height="${IH}" fill="url(#pf)"/>`);
   // the copper bars show through the plate, dimmed, behind the letters
   defs.push(`<clipPath id="pin"><rect x="${X0 + FRAME}" y="${IY}" width="${PW - 2 * FRAME}" height="${IH}"/></clipPath>`);
-  parts.push(`<g clip-path="url(#pin)" opacity=".32"><use href="#bars"/></g>`);
+  parts.push(`<g clip-path="url(#pin)" opacity=".32">${BARS_SVG}</g>`);
   // rivets in the four corners of the frame face
   const rivet = (cx, cy) => `<rect x="${cx - 1}" y="${cy - 1}" width="3" height="3" fill="${q('#7a7a8c')}"/><rect x="${cx - 1}" y="${cy - 1}" width="2" height="1" fill="#fff"/><rect x="${cx - 1}" y="${cy}" width="1" height="1" fill="${q('#d8d8e8')}"/><rect x="${cx + 1}" y="${cy}" width="1" height="2" fill="${q('#2a2a34')}"/><rect x="${cx}" y="${cy + 1}" width="1" height="1" fill="${q('#2a2a34')}"/>`;
   parts.push(rivet(X0 + 4, Y0 + 4), rivet(X1 - 5, Y0 + 4), rivet(X0 + 4, Y1 - 5), rivet(X1 - 5, Y1 - 5));
@@ -469,6 +472,9 @@ const HAM_TRACK = 1;
   const TX0 = Math.round((W - tw) / 2);
   const TX1 = TX0 + tw;
   const yTop = (x) => HAM_Y + Math.round(SAG * Math.sin((Math.PI * (x - TX0 + 0.5)) / (tw)));
+  // the cloth's top rope: three rows above the letters, so two rows of dark
+  // keyline keep it off their tops
+  const ropeY = (x) => yTop(Math.min(Math.max(x, TX0), TX1 - 1)) - 3;
   // rows of the glyphs, each its own colour
   const rows = Array.from({ length: 7 }, () => new Grid(W, H));
   let x = TX0;
@@ -494,7 +500,8 @@ const HAM_TRACK = 1;
     const sx = x0 < x1 ? 1 : -1; const sy = y0 < y1 ? 1 : -1;
     let err = dx + dy;
     for (;;) {
-      rope.set(x0, y0);
+      // a straight string never dips below the curved top rope over the text
+      if (x0 < TX0 - 1 || x0 > TX1 || y0 <= ropeY(x0)) rope.set(x0, y0);
       if (x0 === x1 && y0 === y1) break;
       const e2 = 2 * err;
       if (e2 >= dy) { err += dy; x0 += sx; }
@@ -505,11 +512,11 @@ const HAM_TRACK = 1;
   const ringL = PLATE.x + 10;
   const ringR = PLATE.x + PLATE.w - 11;
   for (const f of [0, 7, 15]) {
-    line(ringL, ringY, TX0 + f, yTop(TX0 + f) - 2);
-    line(ringR, ringY, TX1 - 1 - f, yTop(TX1 - 1 - f) - 2);
+    line(ringL, ringY, TX0 + f, ropeY(TX0 + f));
+    line(ringR, ringY, TX1 - 1 - f, ropeY(TX1 - 1 - f));
   }
-  // the cloth's top edge, one rope line just above the letters
-  for (let xx = TX0 - 1; xx <= TX1; xx++) rope.set(xx, yTop(Math.min(Math.max(xx, TX0), TX1 - 1)) - 2);
+  // the cloth's top edge, one rope line above the letters
+  for (let xx = TX0 - 1; xx <= TX1; xx++) rope.set(xx, ropeY(xx));
   const rkey = new Grid(W, H);
   for (let y = 0; y < H; y++) for (let xx = 0; xx < W; xx++) if (!rope.get(xx, y) && !all.get(xx, y) && (rope.get(xx, y - 1) || rope.get(xx - 1, y))) rkey.set(xx, y);
   body.push(`<path fill="#000" d="${gridPath(key)}${gridPath(rkey)}"/>`);
@@ -537,7 +544,7 @@ const HAM_TRACK = 1;
     '.hhh...CCCCCCCCCWWWWWSSSSSSSSS',
   ];
   const HEAD_COLS = 8; // columns that lift with the beat
-  const top = yTop(Math.round(W / 2)) - 2 - BODY.length; // rests on the cloth edge
+  const top = ropeY(Math.round(W / 2)) - BODY.length; // rests on the cloth edge
   const bx = Math.round(W / 2) - 16;
   const layers = { head: {}, rest: {} };
   BODY.forEach((row, r) => [...row].forEach((ch, k) => {
@@ -577,9 +584,9 @@ const SCROLL_TEXT = [
   'CASTAWAY',
   'TEN HOURS OF ONE TINY ISLAND, ONE TALL PALM, ONE RAFT AND ONE YOUNG WOMAN IN HEADPHONES.',
   'SHE IDLES. SHE NODS TO THE MUSIC. EVERY SO OFTEN, SOMETHING HAPPENS. THEN SHE IDLES SOME MORE. %',
-  'MORE THAN 90 ACTIVITIES ON FOUR TIMERS: SOMETHING SMALL EVERY 2 TO 5 MINUTES, LIKE A COCONUT &, A VISITOR NOW AND THEN, LIKE THE SEA TURTLE, A SET PIECE ONCE IN A WHILE, LIKE THE SHARK IN HEADPHONES, AND ONCE IN A VERY LONG WHILE SHE WALKS OUT OVER THE WATER AND COMES BACK WITH AN ICED COFFEE.',
+  'MORE THAN 90 ACTIVITIES, MOST OF THEM ON FOUR TIMERS: SOMETHING SMALL EVERY 2 TO 5 MINUTES, LIKE A COCONUT &, A VISITOR NOW AND THEN, LIKE THE SEA TURTLE, A SET PIECE ONCE IN A WHILE, LIKE THE SHARK IN HEADPHONES, AND ONCE IN A VERY LONG WHILE SHE WALKS OUT OVER THE WATER AND COMES BACK WITH AN ICED COFFEE.',
   'EVERY GAG WAITS FOR THE NEXT BAR OF THE MUSIC, SO IT LANDS ON THE BEAT. *',
-  'THIS LOADER IS SILENT, LIKE A LOT OF THE OLD ONES. THE VIDEO HAS MORE THAN 150 SOUNDS, ALL SYNTHESIZED FROM CODE, AND NOBODY HAS HEARD ONE YET. SO, SILENT IN A DIFFERENT WAY.',
+  'THIS LOADER IS SILENT, LIKE A LOT OF THE OLD ONES. CASTAWAY HAS MORE THAN 150 SOUNDS, ALL SYNTHESIZED FROM CODE, AND NOBODY HAS HEARD ONE YET. SO, SILENT IN A DIFFERENT WAY.',
   'NO PIXEL OF THE BACKGROUND MOVES: ONLY THE PALETTE TURNS. A STATIONARY FRAME WITH THINGS GOING ON. THAT IS ALSO THE VIDEO.',
   'THIS SCROLL STEPS FOUR PIXELS AT A TIME, BECAUSE HARD CUTS AND STEPPED MOVEMENT ARE THE HOUSE STYLE.',
   'OUR BOARD HAS ONE BAR OF SIGNAL. IT IS AT THE TOP OF THE PALM.',
@@ -637,16 +644,17 @@ const SC_Y = SB_Y + 5;
 
 // ======================================================= 9. orange + key line
 // The period loaders asked for a key before the game started. This one has
-// nothing to start: the waiting is the feature.
+// nothing to start, and she is in no hurry: the waiting is the feature.
 body.push(`<rect y="${ORANGE_Y}" width="${W}" height="7" fill="url(#ob)"/>`);
 body.push(`<rect y="${ORANGE_Y + 7}" width="${W}" height="${BOTBAR - ORANGE_Y - 7}" fill="#000"/>`);
-body.push(smallLine('PRESS ANY KEY WHEN READY TO WAIT', KEY_Y, 'ky', ramp([[0, '#fff4c8'], [7, '#e8a040']], 8), 'blink'));
+const PROMPT = 'PRESS ANY KEY. SHE WILL GET ROUND TO IT.';
+body.push(smallLine(PROMPT, KEY_Y, 'ky', ramp([[0, '#fff4c8'], [7, '#e8a040']], 8), 'blink'));
 css.push(`@keyframes bl{0%{opacity:1}50%{opacity:.45}}.blink{animation:bl ${2 * BEAT}s step-end infinite}`);
 
 // ================================================================ assemble
 css.push('@media (prefers-reduced-motion:reduce){*{animation:none!important}}');
 const TITLE = 'CASTAWAY: an early DOS VGA loader screen';
-const DESC = `${PRESENTS}. CASTAWAY in chrome capitals (sky over a strip of sea over sand) on a grey bevelled plate, over palette-cycled blue diamonds, with a hammock made of the words "${HAM_TEXT}" and a young woman lying in it, nodding to her headphones. A giant scroller below.`;
+const DESC = `${PRESENTS}. CASTAWAY in chrome capitals (sky over a strip of sea over sand) on a grey bevelled plate, over palette-cycled blue diamonds, with a hammock made of the words "${HAM_TEXT}" and a young woman lying in it, nodding to her headphones. A giant scroller below, and at the bottom: ${PROMPT}`;
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W * 3}" height="${H * 3}" shape-rendering="crispEdges" role="img" aria-labelledby="t d">
 <title id="t">${TITLE}</title><desc id="d">${DESC}</desc>
 <style>${css.join('\n')}</style>

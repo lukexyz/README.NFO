@@ -13,7 +13,7 @@
 
 Castaway is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly idles, nodding to the music on her headphones, and every so often something happens. A message in a bottle washes straight back. A delivery drone drops a parcel, and the parcel is another pair of headphones. A coconut falls on a hermit crab, and then the coconut walks off. It is sunny, hand-painted coastal anime, 16:9 at 1080p, and it is always daytime, by rule.
 
-More than 90 activities live in [activities.toml](activities.toml), on four timers: everyday routines every 2 to 5 minutes, up to super-rare callbacks every 3 to 6 hours. They run on six **lanes**, so things can overlap, and that is what the pipes above are: her, the sea and sky, the turtle, the cat, the shore and the kumara patch, one pipe each, passing in front of and behind one another. Everything starts on the next bar of the music, every 3 seconds, so the gags land on the beat (so do the pipes). Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no loops, no recordings.
+More than 90 activities live in [activities.toml](activities.toml), on four timers: everyday routines every 2 to 5 minutes, up to super-rare callbacks every 3 to 6 hours. They run on six **lanes**, so things can overlap, and that is what the pipes above are: her, the sea and sky, the turtle, the cat, the shore and the kumara patch, one pipe each, passing in front of and behind one another. Everything starts on the next bar of the music, every 3 seconds, so the gags land on the beat (so do the pipes). Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no borrowed loops, no recordings.
 
 ```sh
 python tools/serve.py
@@ -52,9 +52,9 @@ python tools/serve.py
 
 **The idea.** The island has no plumbing. The schedule, it turns out, does. Each lane in [activities.toml](activities.toml) is a track that one thing can be busy on at a time: her, the cat, the turtle, the sea and sky, the shore, the kumara patch. Two lanes can be busy at once, which is how a ship gets past while she is up to her elbows in a coconut. In the banner every lane is a pipe colour, and the pipes keep to the same rules as the video: a new one may only start on a bar line, and her pipe is busy one bar in three and idle the rest, because she is.
 
-**The loop.** Sixteenth notes at 80 BPM are 0.1875 s, which is about the speed the old screensaver grew at, so every pipe gains one segment per sixteenth. Twenty bars of 3 s make 60 s, the length of the theme, so the banner loops when the music would. Nineteen bars of growing, one bar of dissolving, and round again. The banner opens six bars in, so nobody has to watch an empty screen first.
+**The loop.** Sixteenth notes at 80 BPM are 0.1875 s, a sensible pace for a pipe with nowhere to be, so every pipe gains one segment per sixteenth. Twenty bars of 3 s make 60 s, the length of the theme, so the banner loops when the music would. Nineteen bars of growing, one bar of dissolving, and round again. The banner opens six bars in, so nobody has to watch an empty screen first.
 
-**The plumbing.** A generator walks six lanes through a grid of cells eight layers deep, seen through a real perspective camera, so near pipes are fat and far ones thin. Each straight run is one SVG path whose round cross-section is shaded by a gradient worked out from a light, a diffuse term and a white specular highlight; each joint is a sphere shaded the same way. Which piece is drawn over which is decided properly: any two pieces sit in different grid cells, so a flat plane separates them, and the side of the plane with the eye on it wins. That gives a list of "this goes over that" for every overlap, which is sorted in one pass. Growth is a stepped stroke dash, one segment at a time, with no smooth sliding: hard cuts and stepped movement are the house style of the video too. No script, no fonts, no filters, about 140 KB. With reduced motion switched on it holds still on the picture as it stands after bar 13.
+**The plumbing.** A generator walks six lanes through a grid of cells eight layers deep, seen through a real perspective camera, so near pipes are fat and far ones thin. Each straight piece is one SVG path whose round cross-section is shaded by a gradient worked out from a light, a diffuse term and a white specular highlight; each joint is a sphere shaded the same way. Which piece is drawn over which is decided properly: pieces of different pipes never share a grid cell, so a flat plane separates them, and the side of the plane with the eye on it wins. That gives a list of "this goes over that" for every overlap, which is sorted in one pass. Growth is a stepped stroke dash, one segment at a time, with no smooth sliding: hard cuts and stepped movement are the house style of the video too. No script, no fonts, no filters, about 140 KB. With reduced motion switched on it holds still on the picture exactly as it stands after bar 13.
 
 **The name** is built from the same ivory plumbing, ball fittings at every tee and open end, and she sits on the second A nodding at 80 BPM: 80 nods a loop, and not one missed. In the original screensaver the rare joint was a teapot. Here it is a coconut, and it turns up once every loop, because a 1 in 1,000 coconut is a coconut nobody sees.
 
@@ -98,7 +98,7 @@ python tools/serve.py
  default run: 10:00:00, seed 1992. always daytime
 ```
 
-Run `python tools/schedule.py` to check the schedule and simulate a ten-hour run, lane by lane. Around the island, 26 bits of scene life keep the frame breathing: shore waves and drifting cloud shadows are built, and distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are planned.
+Run `python tools/schedule.py` to check the schedule and simulate a ten-hour run; its timeline shows which lanes each event takes. Around the island, more than two dozen bits of scene life are lined up to keep the frame breathing. Two are built so far, shore waves and drifting cloud shadows; distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are among the ones still planned.
 
 </details>
 
@@ -129,8 +129,8 @@ Run `python tools/schedule.py` to check the schedule and simulate a ten-hour run
                    lead, soft drums, vinyl crackle
    ocean ......... also a seamless 60 s loop
    everything .... more than 150 sound files, all made from code. no
-                   samples, loops or recordings, so no third-party
-                   licence applies
+                   samples, sample loops or recordings, so no
+                   third-party licence applies
    levels ........ -14 LUFS, true peak at or below -1 dBTP; a master
                    level and one per routine
    heard by ...... nobody yet. so far only the loudness meter has an

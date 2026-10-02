@@ -26,16 +26,20 @@
 // costs a few thousand tiny rectangles, not ten thousand glyph copies. Pass 2 (the overstrike)
 // is the same thing nudged by half a pixel. Ink density varies by row through a static mask.
 //
-// How the animation works (one loop, LOOP seconds, all CSS step keyframes):
-//   hold   the finished sheet sits still with the typing head parked under it (t = 0, so the
+// How the animation works (one loop, LOOP seconds, all CSS step keyframes). The typing head
+// never moves up or down: it sits on the print line at the foot of the sheet and the paper
+// moves past it, as on a real teleprinter.
+//   hold   the finished sheet sits still with the head parked at column 0 (t = 0, so the
 //          first frame a visitor sees is the whole picture, name included);
 //   feed   the paper advances: the sheet steps up and out of view, blank paper follows;
-//   print  the sheet is typed again from the top, one pass per slot: each line is struck once,
-//          and if it has dark cells the head returns and strikes it again, a moment later.
+//   print  the sheet is typed again from its first row, one pass per slot, the paper stepping
+//          up a line before each new row: each line is struck once, and if it has dark cells
+//          the head returns (a bare carriage return, no line feed) and strikes it again.
 // Each print pass is revealed by a mask: a rectangle covering the finished rows plus a
 // rectangle sweeping the current row in column steps. Rows change at 2% into a slot, while the
 // sweep is at column 0; finished rows are committed at 92%, while the sweep is at full width,
-// so no frame ever shows a gap. The loop ends exactly in the state it began in.
+// so no frame ever shows a gap. The last row printed is the sheet's last row, so the paper
+// ends exactly where it began and the loop has no jump.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -301,7 +305,7 @@ const CLOUDS = [
   { base: 86, circles: [[774, 74, 16], [804, 58, 26], [840, 66, 20], [866, 78, 12]] },
 ];
 const ISL = { cx: 470, cy: 370, rx: 300, ry: 34 };
-const PALM = { base: [606, 362], ctrl: [664, 232], top: [584, 72] };
+const PALM = { base: [606, 362], ctrl: [664, 240], top: [584, 100] };   // crown clear of the top edge
 const TRUNK = bez2(PALM.base, PALM.ctrl, PALM.top, 48);
 const FRONDS = (() => {
   // angle (deg, 0 = right, 90 = up), length, droop
@@ -332,15 +336,18 @@ function picScene(x, y) {
   if (y < HOR) {
     // sky: a faint field at the top that clears toward the horizon
     k = 0.3 * (1 - smooth(0, HOR - 14, y)) + 0.02;
-    // the sun: a bare disc with a ring, its rays cut through the sky field as bare paper
+    // the sun: a bare disc in a heavy ring, a band of bare paper round it, then eight short
+    // typed rays
     const ds = Math.hypot(x - SUN[0], y - SUN[1]);
     if (ds < SUN[2]) k = 0;
-    else if (ds < SUN[2] + 5) { f = 'line'; k = 0.8; }
-    else if (ds < SUN[2] + 12) k = 0;
-    else if (ds < SUN[2] + 52) {
+    else if (ds < SUN[2] + 7) { f = 'line'; k = 1; }
+    else if (ds < SUN[2] + 13) k = 0;
+    else if (ds < SUN[2] + 46) {
       const a = Math.atan2(y - SUN[1], x - SUN[0]);
       const m = Math.abs((((a / (Math.PI * 2)) * 8 + 100.5) % 1) - 0.5);
-      if (m * ds * 0.785 < 6.5) k = 0;
+      const off = m * ds * 0.785;                     // distance from the nearest ray's centre line
+      if (off < 3 && ds > SUN[2] + 18) { f = 'line'; k = 0.9; }
+      else if (off < 9) k = 0;
     }
     // clouds: bare paper with a shaded underside and an outline
     for (const c of CLOUDS) {
@@ -414,7 +421,7 @@ function picScene(x, y) {
     if (d < w) { f = 'leaf'; k = d < 1.6 && t > 0.1 && t < 0.9 ? 0.15 : 0.92; }
   }
   // coconuts
-  for (const [cx, cy] of [[570, 88], [590, 92], [579, 102]]) if (Math.hypot(x - cx, y - cy) < 8) { f = 'dark'; k = 1; }
+  for (const [cx, cy] of [[570, 116], [590, 120], [579, 130]]) if (Math.hypot(x - cx, y - cy) < 8) { f = 'dark'; k = 1; }
   return { k, f, red };
 }
 
@@ -438,11 +445,13 @@ function letterBody(ch, x, y) {
     case 'C':
       return (rrect(x, y, 0, 0, w, h, 17) && !(x > S2 && y > B1 && y < h - B1)) || (x > w - S2 && ((y > B1 && y < 2 * B1) || (y > h - 2 * B1 && y < h - B1)));
     case 'A': {
-      const outer = inPoly(x, y, [[0, h], [13, 0], [w - 13, 0], [w, h]]);
-      if (!outer) return false;
-      const inner = inPoly(x, y, [[S2, h], [13 + S2 - 2, B1], [w - 13 - S2 + 2, B1], [w - S2, h]]);
-      const bar = y > 4 * B1 && y < 5 * B1;
-      return !inner || bar;
+      // an arch on two upright legs, bar on row 4: every stem sits on whole columns, so the
+      // converter only has to finish the two rounded shoulders (slanted legs typed as ragged
+      // punctuation and the three A's stopped reading)
+      if (!rrect(x, y, 0, 0, w, h + 40, 17) || y > h) return false;
+      const counter = x > S2 && x < w - S2 && y > B1 && y < 4 * B1;
+      const gap = x > S2 && x < w - S2 && y > 5 * B1;
+      return !counter && !gap;
     }
     case 'S': {
       if (!rrect(x, y, 0, 0, w, h, 17)) return false;
@@ -452,17 +461,18 @@ function letterBody(ch, x, y) {
     case 'T':
       return y < B1 || (x > (w - S2) / 2 && x < (w + S2) / 2);
     case 'W': {
-      const legL = inPoly(x, y, [[0, 0], [S2, 0], [S2 + 10, h], [10, h]]);
-      const legR = inPoly(x, y, [[w, 0], [w - S2, 0], [w - S2 - 10, h], [w - 10, h]]);
-      const inL = inPoly(x, y, [[10, h], [S2 + 10, h], [w / 2 + 2, 2.6 * B1], [w / 2 - S2 + 6, 2.6 * B1]]);
-      const inR = inPoly(x, y, [[w - 10, h], [w - S2 - 10, h], [w / 2 - 2, 2.6 * B1], [w / 2 + S2 - 6, 2.6 * B1]]);
-      return legL || legR || inL || inR;
+      // two upright legs and a middle stem rising from a rounded foot
+      if (!rrect(x, y, 0, -40, w, h, 17) || y < 0) return false;
+      const c1 = x > S2 && x < 4 * CW && y < h - B1;
+      const c2 = x > 6 * CW && x < w - S2 && y < h - B1;
+      const notch = x >= 4 * CW && x <= 6 * CW && y < 2 * B1;
+      return !c1 && !c2 && !notch;
     }
     case 'Y': {
-      const armL = inPoly(x, y, [[0, 0], [S2 + 1, 0], [w / 2 + CW, 3.6 * B1], [w / 2 - CW, 3.6 * B1]]);
-      const armR = inPoly(x, y, [[w, 0], [w - S2 - 1, 0], [w / 2 - CW, 3.6 * B1], [w / 2 + CW, 3.6 * B1]]);
-      const stem = x > w / 2 - CW && x < w / 2 + CW && y > 3 * B1;
-      return armL || armR || stem;
+      // a cup on a stem
+      const cup = rrect(x, y, 0, -40, w, 4 * B1, 17) && y >= 0 && !(x > S2 && x < w - S2 && y < 3 * B1);
+      const stem = x > 3 * CW && x < 5 * CW && y >= 3 * B1;
+      return cup || stem;
     }
   }
   return false;
@@ -605,7 +615,12 @@ function buildSheet() {
   const band = convert(bandScene, COLS, BAND_ROWS, CW, CH);
   const pic = convert(picScene, COLS, PIC_ROWS, CW, CH);
   // hand-typed touches, as the operators did: birds over the sea
-  for (const [r, c, ch] of [[1, 22, 'V'], [2, 26, 'V'], [1, 30, 'V'], [9, 88, 'V'], [10, 92, 'V']]) pic[r][c] = { a: ch, b: null, red: false };
+  // (each with a space either side, so it reads against the typed sky)
+  for (const [r, c] of [[1, 22], [2, 26], [1, 30], [9, 88], [10, 92]]) {
+    pic[r][c - 1] = { a: ' ', b: null, red: false };
+    pic[r][c] = { a: 'V', b: null, red: false };
+    pic[r][c + 1] = { a: ' ', b: null, red: false };
+  }
   // and her, typed by hand: too small for the converter, so every character is chosen
   overlay(pic, HER_ART, HER_AT[0], HER_AT[1], Math.round(HOR / CH));
   const rows = [];
@@ -699,12 +714,24 @@ function buildSvg(sheet) {
   const TOP = Y0;
   const BIG = SHEET_H + 40;
 
-  // feed: the content steps up and out over the first 80% of the feed, the masks empty at 85%,
-  // and the content returns home at 95%, already invisible.
+  // The head never moves up or down: it sits at the foot of the sheet, on the last row, and the
+  // paper moves past it, as on a real teleprinter.
+  // feed: the finished sheet steps up and out over the first 80% of the feed, the masks empty at
+  // 85%, and at 95% the (now invisible) sheet drops so that row 0 sits on the print line.
+  // print: before each row's first pass the paper steps up so that row is on the print line; a
+  // blank row is a second line feed. The overstrike pass is a bare carriage return: no feed.
+  // The last row printed is the last row of the sheet, so the paper ends exactly where it began.
+  const onLine = (r) => ty((NR - 1 - r) * CH);
   const feedSteps = Math.ceil((VB_H - TOP + 4) / CH);
   const feedK = [[0, ty(0)]];
   for (let i = 1; i <= feedSteps; i++) feedK.push([HOLD + (FEED * 0.8 * i) / feedSteps, ty(-i * CH)]);
-  feedK.push([HOLD + FEED * 0.95, ty(0)]);
+  feedK.push([HOLD + FEED * 0.95, onLine(0)]);
+  let lastR = -1;
+  passes.forEach(({ r }, i) => {
+    if (r !== lastR) feedK.push([PRINT0 + i + 0.02, onLine(r)]);
+    lastR = r;
+  });
+  if (lastR !== NR - 1) throw new Error('the last row printed must be the last row of the sheet');
   feedK.push([NSLOT, ty(0)]);
 
   // done-rows rectangles (D) and current-row sweepers (R) for the two passes
@@ -714,21 +741,17 @@ function buildSvg(sheet) {
     m.D.push([HOLD + FEED * 0.85, ty(0)]);
     m.R.push([HOLD + FEED * 0.85, ty(-3 * CH)]);
   }
-  const gyK = [[0, ty(NR * CH)]];
   const hvK = [[0, 'opacity:0'], [PRINT0, 'opacity:1']];
   passes.forEach(({ r, p }, i) => {
     const s = PRINT0 + i;
     const m = p === 1 ? M1 : M2;
     m.R.push([s + 0.02, ty(r * CH)]);
     m.D.push([s + 0.92, ty((r + 1) * CH)]);
-    gyK.push([s + 0.02, ty((r + 1) * CH)]);
   });
-  // after the last pass: commit everything, park the head below the sheet
+  // after the last pass: commit everything and park the head
   for (const m of [M1, M2]) { m.D.push([NSLOT - 0.04, ty(BIG)]); }
-  gyK.push([NSLOT - 0.04, ty(NR * CH)]);
   hvK.push([NSLOT - 0.04, 'opacity:0']);
   for (const m of [M1, M2]) { m.D.push([NSLOT, ty(BIG)]); m.R.push([NSLOT, ty(NR * CH)]); }
-  gyK.push([NSLOT, ty(NR * CH)]);
   hvK.push([NSLOT, 'opacity:0']);
   const hpK = hvK.map(([s, v]) => [s, v === 'opacity:0' ? 'opacity:1' : 'opacity:0']);
 
@@ -743,9 +766,9 @@ function buildSvg(sheet) {
 .ir{fill:none;stroke:#c23b2e;stroke-width:${SW};stroke-linecap:round;stroke-linejoin:round}
 .an{animation-duration:${f3(LOOP)}s;animation-iteration-count:infinite;animation-timing-function:step-end}
 .fd{animation-name:fd}.d1{animation-name:d1}.d2{animation-name:d2}.r1{animation-name:r1}.r2{animation-name:r2}
-.gy{animation-name:gy}.hv{animation-name:hv}.hp{animation-name:hp}
+.hv{animation-name:hv}.hp{animation-name:hp}
 .sx{animation:sx ${TS}s step-end infinite}
-${kf('fd', feedK)}${kf('d1', M1.D)}${kf('d2', M2.D)}${kf('r1', M1.R)}${kf('r2', M2.R)}${kf('gy', gyK)}${kf('hv', hvK)}${kf('hp', hpK)}${sweepK}
+${kf('fd', feedK)}${kf('d1', M1.D)}${kf('d2', M2.D)}${kf('r1', M1.R)}${kf('r2', M2.R)}${kf('hv', hvK)}${kf('hp', hpK)}${sweepK}
 @media (prefers-color-scheme:dark){.pm{stop-color:#e8e3d6}.pe{stop-color:#d9d2bf}}
 @media (prefers-reduced-motion:reduce){.an,.sx{animation:none!important}}`;
 
@@ -792,7 +815,7 @@ ${kf('fd', feedK)}${kf('d1', M1.D)}${kf('d2', M2.D)}${kf('r1', M1.R)}${kf('r2', 
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VB_W} ${VB_H}" width="${VB_W}" height="${VB_H}" role="img" aria-label="CASTAWAY, a radioteletype picture of the island being typed">
 <title>CASTAWAY: a teletype picture of one island, one palm and one raft</title>
-<desc>A sheet of teletype paper. A transmission header; the name CASTAWAY left as bare paper in a solid ground of overstruck capitals; a typed telegram; a tonal picture made only of capitals and punctuation: a banded sky with a bare sun, two clouds, birds and a distant sailboat; the sea; a small island with one tall palm and a raft; and her, typed by hand from behind, in headphones, her top struck in red; then a sign-off. A typing head under a card guide prints it line by line, striking the dark lines twice; then the paper feeds and it starts again.</desc>
+<desc>A sheet of teletype paper. A transmission header; the name CASTAWAY left as bare paper in a solid ground of overstruck capitals; a typed telegram; a tonal picture made only of capitals and punctuation: a banded sky with a ringed sun and its rays, two clouds, birds and a distant sailboat; the sea; a small island with one tall palm and a raft; and her, typed by hand from behind, in headphones, her top struck in red; then a sign-off. A typing head at the foot of the sheet prints it line by line, striking the dark lines twice, and the paper steps up after every line; then the paper feeds out and it starts again.</desc>
 <style>${css}</style>
 <defs>
 <clipPath id="panel"><rect width="${VB_W}" height="${VB_H}" rx="14"/></clipPath>
@@ -813,7 +836,7 @@ ${defs}
 <g mask="url(#m2)" opacity=".8"><g transform="translate(${f2(X0 + MIS[0])} ${f2(TOP + MIS[1])}) scale(${CW} ${CH})">${pathsFor(2)}</g></g>
 </g>
 </g>
-<g class="an gy" transform="translate(0 ${NR * CH})"><g transform="translate(0 ${f1(TOP + 1)})">
+<g transform="translate(0 ${NR * CH})"><g transform="translate(0 ${f1(TOP + 1)})">
 <rect x="0" y="0" width="${VB_W}" height="${GUIDE_H}" fill="#5d7480" opacity=".13"/>
 <path d="M0 .5H${VB_W}" stroke="#c23b2e" stroke-width="1" opacity=".55"/>
 <path d="${ticks}" stroke="#4d5b62" stroke-width=".7" opacity=".7"/>
@@ -902,7 +925,7 @@ function buildTextCopy() {
 
 // ------------------------------------------------------------------ the README header (markdown)
 function buildMarkdown(textCopy) {
-  const alt = 'CASTAWAY, typed on a sheet of teletype paper. At the top a transmission header: ZCZC PIX001, PRIORITY NONE, FM TOP FROND RELAY, TO ALL SHIPS: PLEASE STOP, then a row of RY test letters. Below it the name CASTAWAY in tall capitals left as bare paper in a solid block of overstruck M and W, and a typed telegram: 10 HOURS OF ONE ISLAND STOP SHE NODS STOP EVERY SO OFTEN SOMETHING HAPPENS STOP, each STOP in red. Then a tonal picture made only of capitals and punctuation: a banded sky with a bare sun and its rays, two fair-weather clouds, a few birds and a distant sailboat; a sea of wave-shaped runs of letters; a small island with one tall ringed palm, bushes and a raft moored at the east end; and her, typed by hand from behind, looking out to sea: headphone cups either side of her dark hair, a low bun, a coral top struck in red, cream shorts, bare feet. The sign-off reads: ISLAND REPORT ENDS STOP SENT FROM TOP OF PALM (1 BAR) STOP 2026-10-01 STOP 73 NNNN. A typing head under a card guide with a column scale types the sheet line by line, going over the dark lines a second time; then the paper feeds up and it starts again.';
+  const alt = 'CASTAWAY, typed on a sheet of teletype paper. At the top a transmission header: ZCZC PIX001, PRIORITY NONE, FM TOP FROND RELAY, TO ALL SHIPS: PLEASE STOP, then a row of RY test letters. Below it the name CASTAWAY in tall capitals left as bare paper in a solid block of overstruck M and W, and a typed telegram: 10 HOURS OF ONE ISLAND STOP SHE NODS STOP EVERY SO OFTEN SOMETHING HAPPENS STOP, each STOP in red. Then a tonal picture made only of capitals and punctuation: a banded sky with a ringed sun and its rays, two fair-weather clouds, a few birds and a distant sailboat; a sea of wave-shaped runs of letters; a small island with one tall ringed palm, bushes and a raft moored at the east end; and her, typed by hand from behind, looking out to sea: headphone cups either side of her dark hair, a low bun, a coral top struck in red, cream shorts, bare feet. The sign-off reads: ISLAND REPORT ENDS STOP SENT FROM TOP OF PALM (1 BAR) STOP 2026-10-01 STOP 73 NNNN. A typing head on a card guide with a column scale sits at the foot of the sheet and types it line by line, going over the dark lines a second time, while the paper steps up a line at a time; then the paper feeds out and it starts again.';
   return `<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit that, not this. -->
 
 <p align="center">
@@ -918,9 +941,9 @@ function buildMarkdown(textCopy) {
 
 Castaway (working title) is a stationary-frame lo-fi video for YouTube, the ten-hour kind you leave on: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly idles, nodding to the music on her headphones. Every so often something happens. Then she goes back to nodding. It is an unofficial remake inspired by the small-island routines and visual comedy of Johnny Castaway, the 1992 desert-island screensaver, repainted in sunny, hand-painted coastal lo-fi: 16:9, 1080p at 30 fps, and always daytime. In development; no video is out yet.
 
-**The traffic so far.** A message in a bottle washes straight back; a different bottle later brings a reply. A drone delivers a parcel, and the parcel is another pair of headphones. A coconut falls on a hermit crab, and the crab walks off wearing it. The only signal on the island is one bar, at the top of the palm, which is where this picture was sent from. [activities.toml](activities.toml) schedules more than 90 activities on four timers, from every few minutes to every few hours, and every one starts on the next bar of the music, every 3 seconds, so the gags land on the beat.
+**The traffic so far.** A message in a bottle washes straight back; a different bottle later brings a reply. A drone delivers a parcel, and the parcel is another pair of headphones. A coconut falls on a hermit crab, and the crab walks off wearing it. The only signal on the island is one bar, at the top of the palm, which is where this picture was sent from. [activities.toml](activities.toml) lists more than 90 activities: most come round on four timers, from every few minutes to every few hours, and the rest only ever follow on from another one. Every one starts on the next bar of the music, every 3 seconds, so the gags land on the beat.
 
-**Every sound is synthesized from code** by [tools/make_audio.py](tools/make_audio.py): more than 150 files and not one sample, loop or recording, so no third-party licence applies. Nobody has listened to it yet, and this station only receives pictures.
+**Every sound is synthesized from code** by [tools/make_audio.py](tools/make_audio.py): more than 150 files and not one sample, stock loop or recording, so no third-party licence applies. Nobody has listened to it yet, and this station only receives pictures.
 
 \`\`\`sh
 python tools/serve.py        # then open http://127.0.0.1:8765/
@@ -950,20 +973,22 @@ Single strike only: a code block cannot type over itself, so the dark parts are 
 MSG 01  BOTTLE THROWN STOP BOTTLE WASHED STRAIGHT BACK STOP
 MSG 02  DIFFERENT BOTTLE ARRIVED STOP IT CONTAINED A REPLY STOP
 MSG 03  DRONE DELIVERED A PARCEL STOP CONTENTS: MORE HEADPHONES STOP
-MSG 04  SEA TURTLE VISITED STOP NO FURTHER BUSINESS STOP
+MSG 04  SEA TURTLE CAME ASHORE STOP BOTH DOZED OFF STOP
 MSG 05  CAT ARRIVED ON A CRATE STOP CLIMBED PALM STOP NAPPED STOP
-MSG 06  CAT FLOATED AWAY ON THE CRATE STOP CAME BACK ANOTHER DAY STOP
+MSG 06  CAT FLOATED AWAY ON THE CRATE STOP CAME BACK ANOTHER TIME STOP
 MSG 07  SIGNAL FOUND: ONE BAR, TOP OF PALM STOP THIS PICTURE SENT FROM THERE
 MSG 08  SHARK IN HEADPHONES NODDING ON THE BEAT STOP NO CAUSE FOR ALARM STOP
-MSG 09  TOUR BOAT PASSED STOP SELFIES TAKEN STOP SHE WAVED STOP BOAT LEFT STOP
+MSG 09  TOUR BOAT PULLED UP STOP SELFIES TAKEN STOP NOBODY OFFERED A LIFT STOP
 MSG 10  COCONUT FELL ON A HERMIT CRAB STOP CRAB LEFT WEARING COCONUT STOP
 MSG 11  SHE WALKED OUT OVER THE WATER STOP CAME BACK WITH AN ICED COFFEE STOP
-MSG 12  HYDROFOIL BRO WAVED SHAKA STOP CARVED OFF STOP
-MSG 13  FIRE BY FRICTION STOP HAMMOCK STOP LOOKOUT UP THE PALM STOP
-MSG 14  KUMARA PLANTED STOP IT GROWS OVER THE VIDEO STOP WILL ADVISE STOP
-MSG 15  SANDCASTLE BUILT STOP TIDE TOOK SANDCASTLE STOP
-MSG 16  SHIP SIGHTED STOP NOT BY HER STOP SHE WAS BUSY WITH A COCONUT STOP
-MSG 17  NOTHING HAPPENED STOP NOTHING HAPPENED STOP SHE NODDED STOP
+MSG 12  HYDROFOIL BRO CARVED IN STOP SHE WAVED STOP SHAKA STOP CARVED OFF STOP
+MSG 13  FIRE BY FRICTION STOP FLAME CAUGHT STOP WAVE PUT IT OUT STOP
+MSG 14  HAMMOCK WOVEN STOP NO SECOND TREE STOP OTHER END TIED TO RAFT STOP
+MSG 15  LOOKOUT BUILT IN PALM STOP PALM BENT STOP LOOKOUT NOW AT GROUND LEVEL
+MSG 16  KUMARA PLANTED STOP IT GROWS OVER THE VIDEO STOP WILL ADVISE STOP
+MSG 17  SANDCASTLE BUILT STOP TIDE TOOK SANDCASTLE STOP
+MSG 18  SHIP SIGHTED STOP NOT BY HER STOP SHE WAS BUSY WITH A COCONUT STOP
+MSG 19  NOTHING HAPPENED STOP NOTHING HAPPENED STOP SHE NODDED STOP
 \`\`\`
 
 Coconut sipping, fishing, jogging laps, spear fishing and waving for rescue come round between those, and in between everything she idles. The scene keeps itself busy too: shore waves and drifting cloud shadows are built, and distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are planned.
@@ -999,7 +1024,7 @@ python tools/render_demo.py --dev   # every activity in turn, with a HUD
 - **Sound.** The theme is a seamless 60-second loop at 80 BPM in F major: a ii-V-I-vi, 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle, all synthesized. The ocean is its own seamless 60-second loop. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and levels are adjustable in master and per routine.
 - **Video.** The browser export runs at 68 to 78 frames a second at 1080p30 in Chrome. Hard cuts and stepped movement are the motion defaults, which suits a machine that moves one character at a time. [web/index.html](web/index.html) is the page; [tools/render_demo.py](tools/render_demo.py) is the older Python reference renderer.
 - **Unofficial.** Castaway is inspired by Johnny Castaway (1992). That screensaver, its castaway and its publishers belong to their owners, and this project is not affiliated with any of them.
-- **This header.** A radioteletype picture, the way amateurs typed them: capitals, digits and a little punctuation, tone from the weight of the letters, and the dark lines struck twice with a bare carriage return between. The scene was painted as shades of grey and transcribed cell by cell by a script that picks the letter whose weight and shape fit best; she was too small for that, so she was typed by hand. TOP FROND RELAY and its operator are invented, and there is no call sign. ZCZC and NNNN open and close a message, RY is the tuning test, 73 means best regards.
+- **This header.** A radioteletype picture, the way amateurs typed them: capitals, digits and a little punctuation, tone from the weight of the letters, and the dark lines struck twice with a bare carriage return between, while the paper steps up past a head that stays put. The scene was painted as shades of grey and transcribed cell by cell by a script that picks the letter whose weight and shape fit best; she was too small for that, so she was typed by hand. TOP FROND RELAY and its operator are invented, and there is no call sign. ZCZC and NNNN open and close a message, RY is the tuning test, 73 means best regards.
 
 </details>
 `;

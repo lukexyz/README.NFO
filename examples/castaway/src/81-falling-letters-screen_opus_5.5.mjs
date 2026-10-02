@@ -6,7 +6,7 @@
 // black, where the characters drop out of their lines one by one, fall a row at a time and pile
 // up along the bottom. Only the visual idea is borrowed. Nothing here is code from, or a copy
 // of, any real program: the text, the font, the island and the people on it are drawn for this
-// banner, and the thing that misbehaves is this project's own directory listing.
+// banner, and the thing that misbehaves is this project's own readme, typed out at the prompt.
 //
 // Regenerate:  node examples/castaway/src/81-falling-letters-screen_opus_5.5.mjs
 //              (add --debug to print the settled heap as text)
@@ -28,8 +28,9 @@
 //              fills in tile by tile, and a palm grows out of the top
 //   bars 8-12  she walks in over the water with an iced coffee and idles under the palm
 //   bar 13     palette fade to black
-//   bar 14     the screen is printed again, as it was
-// The title stays put throughout. The resting frame (prefers-reduced-motion) is the island.
+//   bars 13-14 the screen is printed again, a line per 16th note, as it was
+// The title stays put throughout. The resting frame (prefers-reduced-motion) is the intact
+// screen at 1 s, before anything lets go.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -65,7 +66,7 @@ const AT = {
   walk: 21.0, // she walks in from the right, over the water
   fade: 36.0, // palette fade, eight steps over two beats
   black: 37.5,
-  reprint: 38.25, // the screen comes back, a line per 32nd note
+  reprint: 38.25, // the screen comes back, a line per 16th note
   reset: 30.0, // (hidden) every letter goes home
 };
 const REST = 1.0; // the frame shown with reduced motion: the screen, intact
@@ -592,11 +593,13 @@ if (DEBUG) console.log(`letter keyframes: ${kfs.join('').length} bytes`);
 // ---------------------------------------------------------------------------------------------
 const HORIZON = 18; // the far sea starts at this row; the near water (and the shallows) at WL
 const seaAt = (r) => ['#5DB1EA', '#4B9FE0', '#3D8ED4', '#3480C9', '#2C72BC', '#2565AF', '#1F58A1'][r - HORIZON];
-// the heap under water: turquoise shallows just under the surface, fading into the deep
-// LAGOON[k][depth]: k steps from turquoise towards the sea colour of that row
+// the heap under water: turquoise shallows just under the surface round the island, fading
+// with depth and, a cell at a time, with distance from the beach (f: 0 at the beach, 1 at the
+// far end of the heap in that row), so that where the heap ends it is the open sea's own
+// colour (no seams) and the letters out there only just show
 const mix = (a, b, t) => `#${[1, 3, 5].map((i) => Math.round(parseInt(a.slice(i, i + 2), 16) * (1 - t) + parseInt(b.slice(i, i + 2), 16) * t).toString(16).padStart(2, '0')).join('')}`;
-const LAGOON = [0, 0.3, 0.55, 0.75, 0.88].map((t) => Array.from({ length: ROWS - WL }, (_, d) => d).map((d) => mix('#4FCAD0', seaAt(WL + d), Math.min(1, t + d * 0.12))));
-const LAGOON_INK = LAGOON.map((row, k) => row.map((bg, d) => mix(bg, '#FFFFFF', 0.32 - k * 0.05 - d * 0.03)));
+const lagoonBg = (r, f) => { const b = [0, 0.42, 0.79][r - WL]; return mix('#4FCAD0', seaAt(r), b + (1 - b) * f); };
+const lagoonInk = (r, f) => mix(lagoonBg(r, f), '#FFFFFF', 0.07 + (0.25 - 0.08 * (r - WL)) * (1 - f));
 const seaRowAt = (r) => AT.sea + (ROWS - 1 - r) * TICK;
 const sandRowAt = (r) => AT.sand + (WL - 1 - r) * TICK;
 
@@ -605,20 +608,28 @@ const seaLayer = (() => {
   let out = '';
   for (let r = ROWS - 1; r >= HORIZON; r--) {
     const cv = new Canvas(SW, CH);
-    const inks = [];
+    const inks = new Map(); // ink colour -> glyph uses
+    // how far the submerged heap runs out from the beach on either side, in this row
+    let lEnd = shoreL, rEnd = shoreR;
+    while (lEnd >= 0 && isHeap(r, lEnd)) lEnd--;
+    while (rEnd < COLS && isHeap(r, rEnd)) rEnd++;
+    const spanL = shoreL - lEnd, spanR = rEnd - shoreR;
     for (let c = 0; c < COLS; c++) {
       if (r < WL && isHeap(r, c)) continue;
       if (isHeap(r, c)) {
         // the heap under water: turquoise shallows round the island, fading into the deep with
         // depth and with distance from the beach; the letters still legible through it
         const away = c <= shoreL ? shoreL + 1 - c : c >= shoreR ? c - shoreR + 1 : 0;
-        const k = Math.min(LAGOON.length - 1, (r - WL) + Math.floor(away / 3));
-        cv.rect(c * CW, 0, CW, CH, LAGOON[k][r - WL]);
-        (inks[k] ??= []).push(useG(heap.get(r * COLS + c).ch, c * CW, 0));
+        const span = c <= shoreL ? spanL : spanR;
+        const f = away === 0 ? 0 : span ? Math.min(1, away / span) : 1;
+        cv.rect(c * CW, 0, CW, CH, lagoonBg(r, f));
+        const inkHex = lagoonInk(r, f);
+        if (!inks.has(inkHex)) inks.set(inkHex, []);
+        inks.get(inkHex).push(useG(heap.get(r * COLS + c).ch, c * CW, 0));
       } else cv.rect(c * CW, 0, CW, CH, seaAt(r));
     }
     if (r === HORIZON) for (let x = 0; x < SW; x++) if (!isHeap(r, Math.floor(x / CW))) cv.set(x, 0, '#D6F1FF');
-    const ink = inks.map((list, k) => (list ? fillG(LAGOON_INK[k][r - WL], list.join('')) : '')).join('');
+    const ink = [...inks].map(([hex, list]) => fillG(hex, list.join(''))).join('');
     out += show([[seaRowAt(Math.max(r, WL)), T]], `<g transform="translate(0 ${r * CH})">${cv.toSvg()}${ink}</g>`);
   }
   return out;
@@ -763,7 +774,7 @@ const palmLayer = (() => {
 
 // ---------------------------------------------------------------------------------------------
 // Her. Small and simple: brown hair in a loose low bun, cream headphones, coral tank top,
-// cream shorts, bare feet, and an iced coffee. 12 x 44 pixels.
+// cream shorts, bare feet, and an iced coffee. 12 x 34 pixels.
 // ---------------------------------------------------------------------------------------------
 const HER_KEY = {
   h: C.hair, H: C.hairHi, k: C.skin, K: C.skinDk, c: C.phone, C: C.phoneDk, e: C.eye,

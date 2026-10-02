@@ -32,7 +32,7 @@
 //
 // Everything named here is invented: the Tideline Desk (the zine's staff), and the
 // departments Washback, Table of Tides, Tidewrack (with its "In the offing" box), Signal and
-// Noise and Running Aground, and the Palm Top, the sponsor "board" at the top of the palm
+// Noise and Running Aground, and the Frond Office, the sponsor "board" at the top of the palm
 // with one bar of signal. The wordmark letterforms, the palm logo and the cat are drawn for
 // this header (the face has rounded parenthesis terminals on C, S, T and Y).
 // Castaway is Luke's own project; the jokes are about it and nothing else.
@@ -51,13 +51,22 @@ const OUT = path.resolve(HERE, '..', `${SLUG}.md`);
 const W = 75; // the page width of every file in the issue
 
 // ---------------------------------------------------------------------------------------------
-// 0. Facts this issue quotes, in one place (checked against D:/python/castaway on 2026-10-01).
+// 0. Facts this issue quotes, in one place (checked against D:/python/castaway on 2026-10-02).
 // ---------------------------------------------------------------------------------------------
 const FILES = 8; // files in the issue: the visible header plus seven folds
 const hex = (n, pad = 2) => '0x' + n.toString(16).padStart(pad, '0');
 const RUN_SECONDS = 10 * 3600; // 10:00:00
 const SEED = 1992;
-const ACTIVITIES_ON_DATE = 94; // len(activities) on 2026-10-01, read with tomllib
+// The issue date is the day the counts below were last read (the "release" of the zine).
+const DATE_LONG = 'October 2, 2026';
+const DATE_SHORT = 'Oct 2nd 2026';
+const DATE_ISO = '2026-10-02';
+// len(activities) on DATE_ISO, read with tomllib (81 on the four timers + 13 chained). The
+// count grows every few hours, so the text leads with "more than ACTIVITIES_FLOOR" and dates
+// the exact figure.
+const ACTIVITIES_ON_DATE = 94;
+const ACTIVITIES_FLOOR = 90;
+const SOUNDS_FLOOR = 150; // media/audio/audio_catalog.json lists 181 files on DATE_ISO
 const TIERS = [
   // name, every (min, max) in seconds, words, median per 10 h (200 simulated runs)
   ['regular', 120, 300, '2 to 5 min', 155],
@@ -354,7 +363,7 @@ const file01 = [
     'Luke, for the Tideline Desk',
     'c/o the top of the palm (one bar, on a good day)',
     null,
-    'October 1, 2026 (daytime, as always)',
+    `${DATE_LONG} (daytime, as always)`,
     null,
   ]),
   '',
@@ -378,8 +387,9 @@ const file01 = [
   '',
   ...para(
     `An unofficial remake inspired by the 1992 screensaver Johnny Castaway. Sunny, ` +
-      `hand-painted, always daytime, and every sound synthesized from code. In development: ` +
-      `nothing is published yet, so this issue is early. The rest of it is paperwork.`,
+      `hand-painted and always daytime, with more than ${hex(ACTIVITIES_FLOOR)} ` +
+      `(${ACTIVITIES_FLOOR}) activities on four timers and every sound synthesized from ` +
+      `code. Still in development. The rest of this issue is paperwork.`,
   ),
   '',
   `    $ python ${SERVE}        then open ${LOCAL}`,
@@ -437,8 +447,8 @@ const file02 = [
   ...letter(
     2,
     'Does anything actually happen?',
-    'Yes. Every 2 to 5 minutes, something small. Every 12 to 25, something odd. About once ' +
-      'an hour, a set piece. Every 3 to 6 hours, something big. She is busy about a third of ' +
+    'Yes. Every 2 to 5 minutes, something small. Every 12 to 25, something odd. A bit more ' +
+      'than once an hour, a set piece. Every 3 to 6 hours, something big. She is busy about a third of ' +
       `the time, and the other two thirds are the point. See file ${hex(3)}.`,
   ),
   ...letter(
@@ -482,7 +492,7 @@ const tierRows = TIERS.map(([name, lo, hi, words, per]) => {
   return '  ' + name.padEnd(12) + span.padEnd(18) + words.padEnd(14) + `~${hex(per)}`.padEnd(7) + `(${per})`;
 });
 const file03 = [
-  `---[  ${NAME}   Volume 0x00, Issue 0x01, Oct 1st 2026, file ${hex(3)} of ${hex(FILES)}`,
+  `---[  ${NAME}   Volume 0x00, Issue 0x01, ${DATE_SHORT}, file ${hex(3)} of ${hex(FILES)}`,
   '',
   '',
   '-------------------------[  **Table of Tides: The Schedule, in Hex**',
@@ -492,9 +502,10 @@ const file03 = [
   '',
   '',
   ...para(
-    `Everything she and her visitors can do lives in ${L('activities.toml')}: ` +
-      `${hex(ACTIVITIES_ON_DATE)} activities on 2026-10-01 (${ACTIVITIES_ON_DATE}, and more ` +
-      'arrive every few hours). Each tier keeps its own timer. When one goes off, an activity ' +
+    `Everything she and her visitors can do lives in ${L('activities.toml')}: more than ` +
+      `${hex(ACTIVITIES_FLOOR)} (${ACTIVITIES_FLOOR}) activities, ${hex(ACTIVITIES_ON_DATE)} ` +
+      `(${ACTIVITIES_ON_DATE}) at the count on ${DATE_ISO}, and more arrive every few ` +
+      'hours. Each tier keeps its own timer. When one goes off, an activity ' +
       'from that tier is picked by weight, from those free to go. If two tiers are due at ' +
       'once, the rarer one wins.',
   ),
@@ -512,7 +523,7 @@ const file03 = [
     '  ',
   ),
   '',
-  h('Notes from the tide office'),
+  h('Footnotes, in the sand'),
   '',
   ...wrap(
     `Every activity starts on the next bar of the music: every ${hex(3)} seconds. The gags ` +
@@ -520,8 +531,9 @@ const file03 = [
     72, '    ', '  - ',
   ),
   ...wrap(
-    'Lanes let things overlap. She has one lane; the cat, the turtle, the sea and sky, and ' +
-      'the shore each have their own. So a ship can cross while she is busy with a coconut. ' +
+    'Lanes let things overlap. She has one lane; the cat, the turtle, the sea and sky, the ' +
+      'shore and the kumara patch each have their own. So a ship can cross while she is ' +
+      'busy with a coconut. ' +
       'The ship waits for her to get busy first. It has manners.',
     72, '    ', '  - ',
   ),
@@ -545,7 +557,7 @@ const file03 = [
   '',
   ...hexdump(hourBytes),
   '',
-  '  2e "." idle, nodding   72 "r" regular   6f "o" occasional   52 "R" rare',
+  '  2e "." nothing new   72 "r" regular   6f "o" occasional   52 "R" rare',
 ];
 
 // ---------------------------------------------------------------------------------------------
@@ -576,14 +588,18 @@ const file04 = [
       'bottle brings a reply. Correspondence is open.'),
   ...item(2, 'PARCEL DELIVERED BY AIR',
     'A delivery drone lowers a parcel. Inside: another pair of headphones.'),
-  ...item(3, 'TURTLE, VISITING', 'A sea turtle comes ashore. No further business.'),
+  ...item(3, 'TURTLE, VISITING',
+    'A sea turtle swims in and crawls up beside her, and they both doze off. Meeting ' +
+      'adjourned.'),
   ...item(4, 'CAT, ARRIVING BY CRATE',
     `A grey tabby with a white chest. Climbs the palm. Naps. See file ${hex(5)}.`),
   ...item(5, 'SIGNAL LOCATED',
     'One bar, at the very top of the palm. She has to climb for it. This issue was sent ' +
       'from there.'),
   ...item(6, 'SHARK, IN HEADPHONES', 'A shark surfaces wearing headphones and nods to the beat.'),
-  ...item(7, 'TOURISM', 'A tour boat of selfie-takers passes. She is in all of them.'),
+  ...item(7, 'TOURISM',
+    'A small tour boat pulls up and everyone takes a selfie. She is in the background of ' +
+      'all of them. Nobody offers a lift.'),
   ...item(8, 'COCONUT LEAVES ISLAND ON FOOT',
     'A coconut falls on a hermit crab. Then the coconut walks off, with the crab wearing it.'),
   ...item(9, 'SHE COULD LEAVE ANY TIME',
@@ -592,9 +608,11 @@ const file04 = [
   ...item(11, 'BUSHCRAFT',
     'Fire by friction. A hammock. A lookout up the palm. Spear fishing.'),
   ...item(12, 'AGRICULTURE', 'She plants a kumara. It grows over the course of the video.'),
-  ...item(13, 'EVERYDAY',
-    'Coconut sipping, fishing, jogging laps, waving for rescue, and a sandcastle that the ' +
-      'tide takes.'),
+  ...item(13, 'RESCUE, ALMOST',
+    'She finally spots a ship and waves like mad. It sounds its horn back. Then it sails ' +
+      'on. She puts the music back on.'),
+  ...item(14, 'EVERYDAY',
+    'Coconut sipping, fishing, jogging laps, and a sandcastle that the tide takes.'),
   h('In the offing'),
   '',
   ...para(
@@ -634,7 +652,7 @@ const file05 = [
       ['Handle', 'none on file. does not come when called'],
       ['Coat', 'grey tabby, white chest'],
       ['Arrived', 'on a crate, by sea'],
-      ['Address', 'the top of the palm'],
+      ['Address', 'up the palm'],
       ['Hobbies', 'climbing the palm, napping, floating away'],
       ['Departure', 'one day, on the crate, unannounced'],
       ['Returns', 'another time'],
@@ -646,7 +664,7 @@ const file05 = [
   h('Questions'),
   '',
   '  Q: Favourite place on the island?',
-  '  A: The top of the palm.',
+  '  A: Up the palm.',
   '',
   '  Q: Least favourite thing about it?',
   '  A: People climbing up there for one bar of signal.',
@@ -661,7 +679,7 @@ const file05 = [
 const t06 = 'Signal and Noise: Every Sound, From Code';
 const file06 = [
   `${NAME}, File #${hex(6)} of ${hex(FILES)}`,
-  'Volume 0x00, Issue 0x01, Released: October 1, 2026',
+  `Volume 0x00, Issue 0x01, Released: ${DATE_LONG}`,
   '',
   '',
   centre(`**${t06}**`),
@@ -701,19 +719,20 @@ const file06 = [
 
 // ---------------------------------------------------------------------------------------------
 // 12. File 0x07: Running Aground, opened the 1985 way: a sponsor board's logo, its number
-//     and speed, then "Presents....". The board is the top of the palm.
+//     and speed, then "Presents....". The board is the Frond Office, at the top of the palm,
+//     and its speed is the only one the island has: one bar.
 // ---------------------------------------------------------------------------------------------
-const PALMTOP = art(String.raw`
+const BOARD = art(String.raw`
               _.---._    _.---._
-          _.-'  _.-' \  / '-._  '-._        T H E   P A L M   T O P
-        .'   .-'      \/      '-.   '.      =======================
-       '    '         ||         '    '     one bar, if you climb
-                      ||                    sysop: the cat, when present
+          _.-'  _.-' \  / '-._  '-._      T H E   F R O N D   O F F I C E
+        .'   .-'      \/      '-.   '.    ===============================
+       '    '         ||         '    '   at the top of the palm. climb.
+                      ||                  sysop: the cat, when present
         ~~~~~~~~~~~~~(__)~~~~~~~~~~~~~`);
 const file07 = [
-  ...PALMTOP,
+  ...BOARD,
   '',
-  centre('127.0.0.1:8765 . local calls only . open daytime hours'),
+  centre('127.0.0.1:8765 . one bar . local calls only . daytime hours'),
   '',
   centre('Presents....'),
   '',
@@ -775,7 +794,7 @@ const file08 = [
   centre(RULE20),
   '',
   centre(spaced('ISSUE') + '   ' + spaced('0x01')),
-  centre('October 1, 2026'),
+  centre(DATE_LONG),
   centre(RULE20),
   '',
   '',
@@ -853,7 +872,7 @@ for (const [n, , lines] of FOLDS) check(lines, `file${hex(n)}`);
 const pre = (lines) => ['<pre>', ...lines.map(html), '</pre>'];
 
 const md = [
-  `<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit that, not this. Counts checked 2026-10-01. -->`,
+  `<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit that, not this. Counts checked ${DATE_ISO}. -->`,
   '',
   ...pre(file01),
   '',

@@ -18,14 +18,14 @@ python tools/serve.py      # then open http://127.0.0.1:8765/
 python tools/schedule.py   # check the schedule, simulate a 10-hour run
 ```
 
-Amiga description logos were often drawn while an upload ran, in whatever time that took. This one was drawn while waiting for something to happen, which on this island takes two to five minutes. Every thirty seconds the tide takes it and the cursor draws it back. That is roughly the plot.
+Amiga description logos started out as something to draw while an upload ran, in whatever time that took. This one was drawn while waiting for something to happen, which on this island takes two to five minutes. Every thirty seconds the tide takes it and the cursor draws it back. That is roughly the plot.
 
 <details>
 <summary><b>[-shh.-]</b> the description, as text</summary>
 
 <br>
 
-The banner's logo as the text file it is, ready to sit under a file name on a board. It was drawn for Topaz, the Amiga's screen font, where an underscore runs straight into the slash beside it and stacked slashes make one unbroken line. A browser's code font leaves gaps between the rows, which is why the banner is an SVG: there every character is one stroke in an 8 by 16 cell, so the joins close.
+The banner's logo as the text file it is, ready to sit under a file name on a board. It was drawn for Topaz, the Amiga's screen font, which is spaced so tightly that an underscore runs straight into the slash beside it. A browser's code font leaves gaps between the characters and the rows, which is why the banner is an SVG: there every character is one stroke in an 8 by 16 cell, so the joins close.
 
 <pre>
                                        __ _ __
@@ -62,7 +62,7 @@ Once the island had a logo, everyone on it wanted one.
 <summary><b>the schedule</b>: more than 90 activities, four timers, every start on the bar</summary>
 
 <pre>
-<a href="activities.toml">activities.toml</a> lists more than 90 activities (94 on 2026-10-01),
+<a href="activities.toml">activities.toml</a> lists more than 90 activities (94 on 2026-10-02),
 each with its beats, how long it lasts and how often it comes round.
 
 timer          comes round every       in a typical 10-hour run
@@ -143,8 +143,8 @@ respect ... to a certain 1992 desert-island screensaver, for showing that
             is an unofficial homage with its own character, art and music,
             and no affiliation with it or its owners.
             to the amiga description-logo artists of 1992 to 1994, who
-            drew whole words from ten different characters while the
-            modem ran. the style is theirs. every letter here is new.
+            drew whole words from a handful of characters while an
+            upload ran. the style is theirs. every letter here is new.
 
 credits ... logo, letters and palm by shorehand (shh.) of pending ink.
             the artist, the tag and the crew exist only in this file.

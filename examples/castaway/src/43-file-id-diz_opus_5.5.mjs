@@ -5,8 +5,9 @@
 // examples/castaway/assets/43-file-id-diz_opus_5.5-block.svg. Edit this file, not those.
 //
 // The style: the FILE_ID.DIZ, the stamp-sized description that BBS software pulled out of an
-// upload and printed in the file list. Clark Development's PCBDescribe allowed 10 lines of 45
-// characters and asked for no high ASCII and no formatting; from about 1993 the release groups
+// upload and printed in the file list. Clark Development made it for PCBDescribe; the shareware
+// guidance around it allowed 10 lines of 45 characters and asked for no high ASCII and no
+// centring or formatting; from about 1993 the release groups
 // squeezed a logo, a rule with a tag in it, a title line and a disk counter into that space
 // anyway. Three manners are drawn here: the outline logo (underscore roofs, slash walls), the
 // framed card (colon columns either side, arrow rules), and the block variant, in which every
@@ -129,27 +130,11 @@ function setOutline(word, kern) {
   return rows.map((r) => Array.from({ length: w }, (_, i) => r[i] || ' ').join(''));
 }
 
-// The plinth: the bottom row again, one column to the right, every wall turned into a
-// backslash. It reads as the letters' depth, or as their shadow on the water. The W stands on
-// two points (\/\/) rather than a floor, so its points are repeated as they are.
-function plinth(bottom) {
-  const out = Array(bottom.length).fill(' ');
-  for (let x = 0; x + 1 < bottom.length; x++) {
-    const c = bottom[x];
-    const tip = (c === '\\' && bottom[x + 1] === '/') || (c === '/' && bottom[x - 1] === '\\');
-    if (c === '_') out[x + 1] = '_';
-    else if (tip) out[x + 1] = c;
-    else if (c !== ' ') out[x + 1] = '\\';
-  }
-  if (bottom[bottom.length - 1] !== ' ') throw new Error('plinth would fall off the card');
-  return out.join('');
-}
-
-// A and S get a column of air between them; S, T and A share walls.
+// A and S get a column of air between them; S, T and A share walls. Six rows, the most the
+// format's logos ever took, so the card keeps room for a rule and three text lines.
 const LOGO = setOutline('CASTAWAY', [0, -1, 1, 1, 0, 0, 0]);
 const LOGO_W = LOGO[0].length;
 if (LOGO_W !== DIZ_W - 2) throw new Error(`logo is ${LOGO_W} wide; the card has room for ${DIZ_W - 2}`);
-const PLINTH = plinth(LOGO[OUT_H - 1]);
 
 // ---------------------------------------------------------------------------------------------
 // 2. The card. Every line is exactly 45 columns and ends in ink, so it centres as one block.
@@ -176,12 +161,14 @@ const RULE = (() => {
   return `<${rep('~', left)}${label}${rep('~', mid)}${tag}~~>`;
 })();
 
+// Logo, one rule, then the title line with its counter and two centred lines: the layout
+// the format settled on. The last line is the one every DIZ had room for: what it needs.
 const CARD = [
   ...LOGO.map((r) => `:${r}:`),
-  `:${PLINTH}:`,
   RULE,
   'CASTAWAY: NOTHING HAPPENS ON SCHEDULE [01/10]',
   `:${centreIn('A TEN-HOUR LO-FI ISLAND VIDEO FOR YOUTUBE', DIZ_W - 2)}:`,
+  `:${centreIn('ALL SOUND FROM CODE.  REQUIRES: TEN HOURS', DIZ_W - 2)}:`,
 ];
 
 function checkCard(lines, name) {
@@ -205,15 +192,16 @@ const HOUR_NOTES = [
   'logo. she nods',
   'logo. she nods',
   'logo, last of it',
-  "the logo's shadow",
   'the crew takes a bow',
   'the title, at last',
   'the plot',
+  'system requirements',
 ];
+if (HOUR_NOTES.length !== DIZ_H) throw new Error('one note per hour');
 const SPEC = [
   `        ${RULER}`,
   ...CARD.map((l, i) => `  ${String(i).padStart(2)}h   ${l}   ${HOUR_NOTES[i]}`),
-  `  10h   ${centreIn('(end of tape. it loops.)', DIZ_W)}`.replace(/\s+$/, ''),
+  `  10h   ${centreIn('(end of file. she is still nodding.)', DIZ_W)}`.replace(/\s+$/, ''),
 ];
 
 // ---------------------------------------------------------------------------------------------
@@ -453,7 +441,7 @@ const HIDDEN_CAPS = HIDDEN.join('').toUpperCase().replace(/[^A-Z]/g, '');
 
 // Text rows under the logo: title with the counter (bar 01 of the theme's 20), then two lines.
 const BLOCK_TEXT = [
-  counterLine('CASTAWAY OST: THEME.WAV, 60 S LOOP', '01/20'),
+  counterLine('CASTAWAY OST: THE THEME, 60 S LOOP', '01/20'),
   centreIn('80 BPM. F MAJOR. II-V-I-VI. 20 BARS OF 3 S', DIZ_W),
   centreIn('SYNTHESIZED FROM CODE.  ONEBAR / zZ', DIZ_W),
 ];
@@ -463,7 +451,7 @@ const STATUS = (() => {
   const r = 'READ THE GAPS ';
   return l + rep(' ', DIZ_W - l.length - r.length) + r;
 })();
-const BLOCK_ALT = `The Castaway theme's own FILE_ID.DIZ, in a DOS file viewer: light grey on black, 45 columns by 10 lines. 80BPM in solid half-block letters fills the top seven lines, and every empty cell around and inside the letters is a dimmer capital letter. Read in order, the capitals say: ${HIDDEN.join(' ')} Below the logo: ${BLOCK_TEXT.map((t) => t.trim()).join('; ')}. The viewer's status line reads FILE_ID.DIZ 45 X 10, READ THE GAPS, and an inverse-video cursor reads the hidden message out, one letter at a time.`;
+const BLOCK_ALT = `The Castaway theme's own FILE_ID.DIZ, in a DOS file viewer: light grey on black, 45 columns by 10 lines. 80BPM in solid half-block letters fills the top seven lines, and every empty cell around and inside the letters is a dimmer capital letter. Read in order, the capitals say: ${HIDDEN.join(' ')} Below the logo: ${BLOCK_TEXT.map((t) => t.trim().replace(/ \.+ /, ' ')).join('; ')}. The viewer's status line reads FILE_ID.DIZ 45 X 10, READ THE GAPS. An inverse-video cursor reads the hidden message out, one letter at a time, and every letter it has read turns bright white, until the whole message stands out from the gaps; then it starts again.`;
 
 function buildBlockSvg() {
   const cells = blockCells();
@@ -477,8 +465,9 @@ function buildBlockSvg() {
   const PADY = 1;
   const W = (DIZ_W + PADX * 2) * CW;
   const statusY = (DIZ_H + PADY * 2) * CH;
-  const H = statusY + CH + 8;
+  const H = statusY + CH + PADY * CH;
   const fg = '#b4b4b4';
+  const hi = '#f4f4f4'; // high-intensity white, for letters already read
   const bg = '#08090c';
 
   // block pixels (8 x 8 half cells) as merged runs
@@ -537,6 +526,12 @@ function buildBlockSvg() {
   for (let k = 0; k < HOLD_END; k++) seq.push(slots[slots.length - 1]);
   const dur = +(seq.length * STEP).toFixed(3);
   const vals = seq.map(([r, c]) => `${c * CW},${r * CH}`).join(';');
+  // What has been read so far lights up: every row above the cursor in full, and its own row
+  // up to and including the cursor's cell. Two clip rectangles, stepped with the cursor.
+  const readAbove = seq.map(([r]) => r * CH).join(';');
+  const readRowY = seq.map(([r]) => r * CH).join(';');
+  const readRowW = seq.map(([, c]) => (c + 1) * CW).join(';');
+  const step = (attr, values) => `<animate attributeName="${attr}" calcMode="discrete" dur="${dur}s" repeatCount="indefinite" values="${values}"/>`;
 
   // the status bar text, inverse video (set before the glyph table is written out)
   if (STATUS.length !== DIZ_W) throw new Error('status line width');
@@ -551,17 +546,19 @@ function buildBlockSvg() {
 <desc id="d">${esc(BLOCK_ALT)}</desc>
 <style>
 .ink{fill:${fg}}
-.dim{fill:${fg};opacity:.66}
+.dim{fill:${fg};opacity:.62}
+.hi{fill:${hi}}
 .inv{fill:${bg}}
-@media (prefers-reduced-motion: reduce){.cursor{display:none}}
+@media (prefers-reduced-motion: reduce){.cursor,.read{display:none}}
 </style>
-<defs>${glyphDefs}<rect id="cur" width="${CW}" height="${CH}"><animateTransform attributeName="transform" type="translate" calcMode="discrete" dur="${dur}s" repeatCount="indefinite" values="${vals}"/></rect><clipPath id="cc"><use href="#cur"/></clipPath></defs>
+<defs>${glyphDefs}<g id="msg">${filler}</g><rect id="cur" width="${CW}" height="${CH}"><animateTransform attributeName="transform" type="translate" calcMode="discrete" dur="${dur}s" repeatCount="indefinite" values="${vals}"/></rect><clipPath id="cc"><use href="#cur"/></clipPath><clipPath id="rd"><rect width="${DIZ_W * CW}" height="0">${step('height', readAbove)}</rect><rect height="${CH}" width="${CW}">${step('y', readRowY)}${step('width', readRowW)}</rect></clipPath></defs>
 <rect width="${W}" height="${H}" rx="10" fill="${bg}"/>
 <g transform="translate(${ox} ${oy})">
 <path class="ink" d="${blockPath}"/>
-<g class="dim">${filler}</g>
+<use href="#msg" class="dim"/>
+<use href="#msg" class="hi read" clip-path="url(#rd)"/>
 <g class="ink">${textRows}</g>
-<g class="cursor"><use href="#cur" class="ink"/><g class="inv" clip-path="url(#cc)">${filler}</g></g>
+<g class="cursor"><use href="#cur" class="hi"/><use href="#msg" class="inv" clip-path="url(#cc)"/></g>
 </g>
 <g transform="translate(${ox} ${statusY})"><rect width="${statusW}" height="${CH}" class="ink"/><g class="inv">${statusText}</g></g>
 </svg>
@@ -584,14 +581,14 @@ const md = `<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit
 
 ${pre(CARD)}
 
-<b>Castaway</b> (working title) · a ten-hour lo-fi island video · in development<br>
-<sub>its FILE_ID.DIZ: 45 columns by 10 lines, no high ASCII, as the spec asked. one line per hour.</sub>
+<p><b>Castaway</b> (working title) · a ten-hour lo-fi island video · in development<br>
+<sub>The FILE_ID.DIZ: 45 columns by 10 lines and no high ASCII, as the guidelines asked. One line per hour.</sub></p>
 
 </div>
 
-**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly idles, nodding along to the music in her cream headphones, and every so often something happens. It is an unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver *Johnny Castaway*, painted sunny and coastal: 16:9, 1080p, 30 fps, and always daytime.
+**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly idles, nodding along to the music in her cream headphones, and every so often something happens. It is an unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver *Johnny Castaway*, painted sunny and coastal: 16:9, 1080p, and always daytime.
 
-**Nothing happens, on schedule.** [activities.toml](activities.toml) books more than 90 activities, most of them on four timers: something everyday every 2 to 5 minutes, something occasional every 12 to 25, something rare every 30 to 60, and every 3 to 6 hours, something super rare. A bottle she throws washes straight back. A drone lowers a parcel: another pair of headphones. A coconut lands on a hermit crab, and the crab walks off wearing it. Every activity starts on the next bar of the music, every 3 seconds, so even the gags arrive on the beat.
+**Nothing happens, on schedule.** [activities.toml](activities.toml) books more than 90 activities, most of them on four timers: an everyday routine every 2 to 5 minutes, a small gag every 12 to 25, a set piece every 30 to 60, and every 3 to 6 hours, something super rare. A bottle she throws washes straight back. A drone lowers a parcel: another pair of headphones. A coconut lands on a hermit crab, and the crab walks off wearing it. Every activity starts on the next bar of the music, every 3 seconds, so even the gags arrive on the beat.
 
 **Every sound is synthesized from code** by [tools/make_audio.py](tools/make_audio.py): more than 150 files, with no samples, no borrowed loops and no recordings among them. The theme is a seamless 60-second loop at 80 BPM in F major. Nobody has heard any of it yet, which is very on brand.
 
@@ -605,9 +602,9 @@ python tools/schedule.py    # check the schedule, simulate a 10-hour run
 
 ${pre(SPEC)}
 
-FILE_ID.DIZ was invented by Clark Development for its PCBDescribe utility: a description 45 columns wide and 10 lines tall, with no high ASCII and no formatting, please. This card has no high ASCII. The logo is formatting; nobody is perfect.
+FILE_ID.DIZ was invented by Clark Development for its PCBDescribe utility, and the shareware guidelines that grew up around it asked for a description up to 10 lines of 45 characters, with no high ASCII and no centring or formatting, please. This card has no high ASCII. The logo is formatting and the last two lines are centred; nobody is perfect.
 
-The video is ten hours long, so the card runs one line per hour. Six of the ten are logo, which is roughly the video's own ratio: she is busy about a third of the time and idling the rest. The counter, \`[01/10]\`, is disk 01 of 10. Disks 02 to 10 are the same island, later.
+The video is ten hours long, so the card runs one line per hour. Six of the ten are logo, which is roughly the video's own ratio: she is busy about a third of the time and idling the rest. The counter, \`[01/10]\`, is disk 01 of 10. Disks 02 to 10 are the same island, later. The system requirements are accurate.
 
 </details>
 
@@ -616,12 +613,12 @@ The video is ten hours long, so the card runs one line per hour. Six of the ten 
 
 <p align="center"><img src="${SVG_REF}" width="784" alt="${attr(BLOCK_ALT)}"></p>
 
-The other way to fill 45 by 10: solid half-block letters, and every empty cell a capital, so the background is text and can hide a message. Block letters do not survive GitHub's code-block line spacing, so this one is drawn, cell by cell, as a DOS file viewer would show it. Its counter, \`[01/20]\`, is bar 01 of the theme's 20: the theme is a seamless 60-second loop of 20 bars of exactly 3 seconds, at 80 BPM in F major, a ii-V-I-vi progression with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean is a seamless 60-second loop too. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and every level can be set in master and per routine.
+The other way to fill 45 by 10: solid half-block letters, and every empty cell a capital, so the background is text and can hide a message. Block letters do not survive GitHub's code-block line spacing, so this one is drawn, cell by cell, as a DOS file viewer would show it, with a cursor that reads the gaps for you and leaves the message lit behind it. Its counter, \`[01/20]\`, is bar 01 of the theme's 20: the theme is a seamless 60-second loop of 20 bars of exactly 3 seconds, at 80 BPM in F major, a ii-V-I-vi progression with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean is a seamless 60-second loop too. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and every level can be set in master and per routine.
 
 </details>
 
 <details>
-<summary><b>FILE AREA 2: GAGS</b> · every gag as an upload, each with its own counter</summary>
+<summary><b>FILE AREA 2: GAGS</b> · ${GAGS.length} of the gags as uploads, each with its own counter</summary>
 
 ${pre(LISTING)}
 
@@ -632,12 +629,12 @@ Each gag is an activity in [activities.toml](activities.toml); the Every column 
 <details>
 <summary><b>THE SMALL PRINT</b> · how it renders, what is built, greetz</summary>
 
-- **The renderer** is a web page, [web/index.html](web/index.html), served by [tools/serve.py](tools/serve.py) at http://127.0.0.1:8765/ with a live preview and an export to a YouTube-ready MP4. Plain ES modules, no build step, no npm packages. The browser encodes frame-exact H.264 with WebCodecs, 68 to 78 frames a second at 1080p30 in Chrome, and the server mixes the sound and joins the two. Hard cuts and stepped movement are the motion defaults.
+- **The renderer** is a web page, [web/index.html](web/index.html), served by [tools/serve.py](tools/serve.py) at http://127.0.0.1:8765/ with a live preview and an export to a YouTube-ready MP4. Plain ES modules, no build step, no npm packages. The browser encodes frame-exact H.264 with WebCodecs (68 to 78 frames a second in Chrome, measured at 1080p30), and the server mixes the sound and joins the two. Hard cuts and stepped movement are the motion defaults.
 - **The schedule** is checked by [tools/schedule.py](tools/schedule.py), which also simulates a 10-hour run. [tools/render_demo.py](tools/render_demo.py) \`--dev\` renders a dev reel of every activity with a heads-up display (the older Python reference renderer).
-- **Her:** a young woman with brown hair in a loose low bun, cream headphones, a coral tank top, cream shorts and bare feet. On this card she does not appear at all. The card is 45 columns; she is busy.
+- **Her:** a young woman with brown hair in a loose low bun and cream headphones. She does not appear on this card at all: 45 columns is not enough island.
 - **Scene life:** 26 entries. Built so far: shore waves and drifting cloud shadows. On the way: distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower.
 - **Status:** in development. No video has been published and there is no public link. The working log is [MUSING.md](MUSING.md).
-- **Greetz** to the hermit crab (the coconut suits you), the grey tabby (see you next crate), the shark (respect for the timekeeping), the turtle, the drone, the tour boat, the bro on the hydrofoil, whoever wrote back, and every ship, which we are assured were there.
+- **Greetz** to the hermit crab (the coconut suits you), the grey tabby (see you next crate), the shark (respect for the timekeeping), the turtle, the drone, the tour boat, the bro on the hydrofoil, whoever wrote back, and the ships, which we are assured were there.
 - **Credits:** card, logo, listing and block letters by zZ of ONEBAR, a crew named after the one bar of signal at the top of the palm and the one bar of music that every gag waits for. zZ is asleep. ONEBAR and zZ are made up.
 
 <sub>Castaway is an unofficial remake inspired by the 1992 screensaver <i>Johnny Castaway</i>, which belongs to its owners; this project is not affiliated with them. Clark Development, PCBDescribe and FILE_ID.DIZ are named only to explain the format.</sub>

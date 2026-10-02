@@ -750,7 +750,7 @@ layers.push(`<g clip-path="url(#qv)">${qv.join('')}${front.join('')}</g>`);
     [16.5, 'Off it goes. Out to sea...'],
     [19.5, '...and back it comes.'],
     [21.0, 'It washed straight back.'],
-    [24.0, 'A coconut in the shade. Eyes shut.'],
+    [24.0, 'Sipping a coconut. Eyes shut. Busy.'],
     [27.0, 'A ship sails past. She never sees it.'],
     [36.0, 'A coconut. A hermit crab. Gravity.'],
     [38.25, 'He walks off wearing it.'],
@@ -782,11 +782,35 @@ layers.push(`<g clip-path="url(#qv)">${qv.join('')}${front.join('')}</g>`);
 }
 
 // ---------------------------------------------------------------------------------------------
-// F6: the Move dialog, then its progress box. Grey, double frame, solid black shadow.
+// F6: the Move dialog, then its progress box. Grey, double frame, and a text-mode drop shadow:
+// the cells it falls on keep their characters but turn dark grey on black (attribute 08), so
+// the C:\ISLAND listing and the panel's right frame still show through it, dimmed.
 // ---------------------------------------------------------------------------------------------
 const MOVE = { key: 15.0, go: 16.5, done: 19.5 };
-function dialog(r, c, w, h, title) {
+// One row of the C:\ISLAND listing as the 39 characters of columns 0-38 (frame column blank).
+const listLine = (row) => {
+  const { name, lasts, tier } = rowText(DIRS.ISLAND[row - LIST0]);
+  return ` ${name}│${lasts}│${tier}`;
+};
+function shadow(r, c, w, h) {
+  // Two columns down the right side (rows r+1 .. r+h), one row along the bottom (row r+h).
   let out = `<path class="k" d="M${(c + w) * CW} ${(r + 1) * CH}h${2 * CW}v${h * CH}h${-w * CW}v${-CH}h${(w - 2) * CW}z"/>`;
+  let dim = '';
+  for (let row = r + 1; row <= r + h; row++) {
+    const from = row === r + h ? c + 2 : c + w;
+    const s = [...listLine(row)].slice(from, Math.min(c + w + 2, LC1)).join('');
+    if (s.trim()) dim += text(row, from, s);
+  }
+  out += ink('d', dim);
+  // The panel's right double line (column LC1), where the shadow crosses it.
+  if (c + w + 1 >= LC1) {
+    const y0 = (r + 1) * CH, hh = h * CH, x = LC1 * CW;
+    out += `<path class="d" d="M${x + 1} ${y0}h2v${hh}h-2zM${x + 4} ${y0}h2v${hh}h-2z"/>`;
+  }
+  return out;
+}
+function dialog(r, c, w, h, title) {
+  let out = shadow(r, c, w, h);
   out += cells('l', r, c, w, h) + dframe('k', r + 1, c + 2, r + h - 2, c + w - 3);
   const tc = c + Math.floor((w - len(title) - 2) / 2);
   out += cells('l', r + 1, tc, len(title) + 2) + ink('k', text(r + 1, tc + 1, title));
@@ -841,7 +865,7 @@ css.push('@media (prefers-reduced-motion:reduce){*{animation:none!important}}');
 
 const glyphDefs = [...glyphIds].filter(([ch]) => ch !== ' ').map(([ch, id]) => `<path id="${id}" d="${glyphPath(FONT.get(ch))}"/>`).join('');
 const TITLE = 'CASTAWAY: C:\\ISLAND in a twin-panel file manager';
-const DESC = 'Castaway, a ten-hour lo-fi island video, drawn as a blue twin-panel DOS file manager. The left panel lists the island as files with their real durations and tiers; the right panel is a Quick View that draws the file under the cursor as a half-block picture of the island and acts it out.';
+const DESC = 'Castaway, a ten-hour lo-fi island video, drawn as a blue twin-panel DOS file manager. The left panel lists the island as files, with durations and tiers from the schedule; the right panel is a Quick View that draws the file under the cursor as a half-block picture of the island and acts it out.';
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VBW} ${VBH}" width="${VBW}" height="${VBH}" role="img" aria-labelledby="t d">`
   + `<title id="t">${TITLE}</title><desc id="d">${DESC}</desc>`
   + `<style>${css.join('')}</style>`

@@ -2,8 +2,12 @@
 // Plain Node, no dependencies, deterministic. Run:
 //   node examples/castaway/src/38-sample-list-board_opus_5.5.mjs
 // It rewrites examples/castaway/38-sample-list-board_opus_5.5.md. Edit this file, not that.
-//   --verify   also checks every activity id, def name and sample length against the
-//              castaway project at D:/python/castaway (read-only), if that folder exists.
+//   --verify   also checks the facts in the slots against the castaway project at
+//              D:/python/castaway (read-only), if that folder exists: every activity id
+//              and its timer, that each gag really cues the sound beside it (and the ship
+//              cues none), every def name and signature, which def writes each WAV, each
+//              WAV's length at 48 kHz, the four timers, the default run, and that there
+//              are still more than 90 activities and more than 150 sound files.
 //
 // The style: a MOD file has a 20-character song name and 31 sample slots of exactly 22
 // characters, and since players showed those names to the listener, composers used them
@@ -27,7 +31,9 @@
 //   * CAST and AWAY are block-pixel lettering, one word per list, so they read across.
 //   * the picture is split the same way: she is in the instrument list, the ship is in
 //     the sample list. She will not see it.
-// Ids, defs and numbers were read from D:/python/castaway on 2026-10-01.
+// Ids, defs and numbers were read from D:/python/castaway on 2026-10-01 and checked
+// again on 2026-10-02 (94 activities, 181 sound files). The frame rate is left out on
+// purpose: it moved from 30 to 24 fps on 2026-10-01 and may move again.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -120,23 +126,24 @@ const word = (w) => {
   return blocks(rows.map((r) => '.'.repeat(l) + r + '.'.repeat(SLOT - width - l)));
 };
 
-// The picture, 22 x 16 pixels a side. Left: the palm, her (headphones on, eyes shut,
-// busy with the music), the raft with its scrap of sail, the sand. Right: open sea, the
+// The picture, 22 x 16 pixels a side. Left: the palm, her sitting on the sand
+// (headphones on, hands on her knees, busy with the music), the raft with its scrap of
+// sail, the sand. Right: open sea, the
 // sun, a gull and a ship going past, bow first. The waves run through both.
 const ISLAND = [
   '..........###..###....',
   '.......###...##...###.',
   '.....##.....####.....#',
-  '....#......#.##.#.....',
-  '...#......#..##..#....',
-  '..........#..##...#...',
-  '..#####......##.......',
-  '.#.....#....##.....#..',
-  '##.###.##...##.....##.',
-  '##.###.##...##.....###',
-  '...###.....##......#..',
-  '....#......##......#..',
-  '..#####...###......#..',
+  '...........#.##.#.....',
+  '..#####...#..##..#....',
+  '.#.....#..#..##...#...',
+  '##.###.##....##.......',
+  '##.###.##...##.....#..',
+  '...###......##.....##.',
+  '....#.......##.....###',
+  '..#####....##......#..',
+  '.#.###.#...##......#..',
+  '.#######..###......#..',
   '################.#####',
   '#.#.#.#.#.#.#.#.#.#.#.',
   '.#.#.#.#.#.#.#.#.#.#.#',
@@ -262,10 +269,20 @@ const SAMPLES = [
   '{http://127.0.0.1:8765/|http://127.0.0.1:8765/}',
 ];
 
+// The footer counts what a reader sees: a gag is an activity id, a sound is a def with a
+// length, an empty slot is one with nothing visible in it (a blank row of sky counts),
+// and everything else (lettering, pictures, rules, # lines, links) is a message.
+const GAG = /^(reg|occ|rare|super):[a-z0-9_]+$/;
 const all = [...INSTRUMENTS, ...SAMPLES];
-const sounds = SAMPLES.filter((s) => typeof s !== 'string').length;
-const empties = all.filter((s) => s === EMPTY).length;
-const messages = all.length - sounds - empties;
+const kind = (s) => {
+  if (typeof s !== 'string') return 'sound';
+  const v = visible(s);
+  if (GAG.test(v)) return 'gag';
+  return v.trim() === '' ? 'empty' : 'message';
+};
+const tally = { gag: 0, sound: 0, message: 0, empty: 0 };
+for (const s of all) tally[kind(s)]++;
+if (tally.gag + tally.sound + tally.message + tally.empty !== 2 * SLOTS) fail('slot tally does not add up');
 
 const MAIN = [
   ...board({
@@ -274,7 +291,8 @@ const MAIN = [
   }),
   '',
   ' timers  reg 2-5 min · occ 12-25 min · rare 30-60 min · super 3-6 hours',
-  ` ${all.length} slots: ${sounds} sounds, ${messages} messages at 0 frames, ${empties} empty. no slot 32.`,
+  ` ${all.length} slots: ${tally.gag} gags, ${tally.sound} sounds, ${tally.message} messages at 0 frames, ${tally.empty} empty.`,
+  ' no slot 32.',
 ];
 
 // ================================================================== fold: the timers
@@ -310,9 +328,9 @@ const TIMERS_L = [
   msg('turtle, sea & sky,'),
   msg('shore and garden.'),
   rule('*-*'),
-  msg('check it, and run'),
-  msg('ten simulated'),
-  msg('hours, with'),
+  msg('default run: ten'),
+  msg('hours, seed 1992.'),
+  msg('check & simulate:'),
   mid('{tools/schedule.py|tools/schedule.py}'),
 ];
 const BUSY = '█'.repeat(7) + '▄'.repeat(SLOT - 7);   // a third of 22, rounded; idle sits low
@@ -320,10 +338,10 @@ const TIMERS_R = [
   rule('*=*'),
   msg('a typical run'),
   rule('*=*'),
-  msg('seed 1992, ten'),
-  msg('hours: the median'),
-  msg('of 200 simulated'),
-  msg('runs. a block = 10'),
+  msg('ten hours, as the'),
+  msg('median of 200'),
+  msg('simulated runs.'),
+  msg('one block = 10'),
   EMPTY,
   `${bar(RUN.reg, 10)} ~${RUN.reg}`,
   `${bar(RUN.occ, 10)} ~${RUN.occ}`,
@@ -399,7 +417,7 @@ const THEME_R = [
   msg('beats 2 and 4'),
   msg('breakdown, w/ kick'),
   msg('16ths from bar 11'),
-  msg('crackle, -26 db'),
+  msg('pops, hiss, -26 db'),
   rule('*=*'),
   msg('mix: -14 lufs,'),
   msg('true peak at or'),
@@ -484,10 +502,10 @@ const GREETS_R = [
   rule('*-*'),
   EMPTY,
   msg('always daytime.'),
-  msg('16:9 1080p 30 fps'),
-  msg('exported in the'),
-  msg('browser, frame by'),
-  msg('frame, as an mp4.'),
+  msg('16:9 at 1080p.'),
+  msg('browser: frames.'),
+  msg('server: the sound.'),
+  msg('out comes an mp4.'),
   rule('*=*'),
   ...blocks(BOTTLE),
 ];
@@ -503,7 +521,7 @@ const md = `<!-- Header ${SLUG} for Castaway. Generated by src/${SLUG}.mjs: edit
 
 ${pre(MAIN)}
 
-**Castaway** (working title) is a ten-hour lo-fi video for YouTube in which almost nothing happens, on purpose: one young woman, one tiny island, one tall palm, one raft and a great deal of time. She sits under the palm in cream headphones, nodding to the music. It is an unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver *Johnny Castaway*, repainted sunny, coastal and hand-painted: 16:9, 1080p, 30 fps, and always daytime.
+**Castaway** (working title) is a ten-hour lo-fi video for YouTube in which almost nothing happens, on purpose: one young woman, one tiny island, one tall palm, one raft and a great deal of time. Mostly she idles in cream headphones, nodding to the music. It is an unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver *Johnny Castaway*, done sunny and hand-painted in a coastal anime look: 16:9 at 1080p, and always daytime.
 
 Every so often, on the next bar of the music, something happens. More than 90 activities live in [activities.toml](activities.toml), most of them on four timers, from everyday things every few minutes (a spot of fishing, a sandcastle) to a super-rare stroll out across the water and back with an iced coffee: she could leave any time. In between, a bottle washes straight back, a drone delivers more headphones, a hermit crab walks off wearing a coconut and a shark in headphones nods along. A ship goes by as well. It makes no sound, and her eyes are shut.
 
@@ -515,7 +533,7 @@ python tools/serve.py      # then open http://127.0.0.1:8765/
 
 The page plays the run live and exports a YouTube-ready MP4: the browser encodes frame-exact H.264 and the server mixes in the sound. Plain ES modules, no build step, no npm packages.
 
-<sub>In development: no video has been published yet, and nobody has heard the sound. Both are on the list.</sub>
+<p><sub>In development: no video has been published yet, and nobody has heard the sound. Both are on the list.</sub></p>
 
 <details>
 <summary><b>how to read the list</b>: two lists, 31 slots each, 22 characters a slot</summary>
@@ -560,27 +578,76 @@ if (process.argv.includes('--verify')) {
   if (!fs.existsSync(toml) || !fs.existsSync(py)) {
     console.log('verify: castaway project not found, skipped');
   } else {
-    const t = fs.readFileSync(toml, 'utf8');
-    const p = fs.readFileSync(py, 'utf8');
-    for (const s of INSTRUMENTS.map(visible)) {
-      const m = s.match(/^(reg|occ|rare|super):([a-z0-9_]+)$/);
-      if (m && !t.includes(`[activities.${m[2]}]`)) fail(`verify: no activity ${m[2]}`);
-    }
+    const lf = (f) => fs.readFileSync(f, 'utf8').replace(/\r\n/g, '\n');
+    const t = lf(toml);
+    const p = lf(py);
+    // One activity's own table, up to the next top-level table.
+    const block = (id) => {
+      const i = t.indexOf(`\n[activities.${id}]`);
+      if (i < 0) fail(`verify: no activity ${id}`);
+      const j = t.slice(i + 1).search(/\n\[(?!activities\.[a-z0-9_]+\.)/);
+      return t.slice(i, j < 0 ? undefined : i + 1 + j);
+    };
+    const routine = (id) => {
+      const f = path.join(PROJECT, 'web', 'js', 'routines', `${id}.js`);
+      return fs.existsSync(f) ? lf(f) : '';
+    };
+    const TIER = { reg: 'regular', occ: 'occasional', rare: 'rare', super: 'super_rare' };
+    // Each gag: real id, on the timer its prefix says, and (when a sound sits beside it) it
+    // really cues that sound, in activities.toml or in its web routine.
+    INSTRUMENTS.forEach((s, i) => {
+      const m = visible(s).match(GAG);
+      if (!m) return;
+      const id = visible(s).split(':')[1];
+      const b = block(id);
+      const tier = (b.match(/^tier\s*=\s*"([a-z_]+)"/m) || [])[1];
+      if (tier !== TIER[m[1]]) fail(`verify: ${id} is ${tier}, not ${TIER[m[1]]}`);
+      const r = SAMPLES[i];
+      if (typeof r !== 'string') {
+        if (!b.includes(`"${r.wav}"`) && !routine(id).includes(`"${r.wav}"`)) fail(`verify: ${id} never cues ${r.wav}`);
+      } else if (r === EMPTY) {
+        // The silent slot: the gag cues no sound anywhere.
+        if (/\bsfx\b/.test(b) || /\.cue\(/.test(routine(id))) fail(`verify: ${id} cues a sound, its slot should not be empty`);
+      }
+    });
     for (const s of [...SAMPLES.map(nameOf), ...THEME_L].map(visible)) {
       const m = s.match(/^def ([a-z0-9_]+)/);
       const exact = s.includes('(');   // a cut name only has to match the start of a def
       if (m && !new RegExp(`^def ${m[1]}${exact ? '\\(' : ''}`, 'm').test(p)) fail(`verify: no def ${m[1]}`);
+      // A def shown whole, signature and all, must be the real signature.
+      if (m && s.endsWith(':') && !p.includes(`\n${s}\n`)) fail(`verify: signature differs: ${s}`);
     }
     for (const s of SAMPLES.filter((x) => typeof x !== 'string')) {
+      const def = s.name.match(/^def ([a-z0-9_]+)/)[1];
+      if (!new RegExp(`"${s.wav}": \\((?:lambda: )?${def}[a-z0-9_]*[,(]`).test(p)) fail(`verify: ${s.wav} is not made by ${def}`);
       const b = fs.readFileSync(path.join(PROJECT, 'media', 'audio', 'sfx', `${s.wav}.wav`));
-      // 16-bit PCM: frames = data bytes / (2 * channels). Walk the chunks to find data.
+      // 16-bit PCM at 48 kHz: frames = data bytes / (2 * channels). Walk the chunks to find data.
       const ch = b.readUInt16LE(22);
+      if (b.readUInt32LE(24) !== 48000 || b.readUInt16LE(34) !== 16) fail(`verify: ${s.wav} is not 16-bit 48 kHz`);
       let o = 12;
       while (o < b.length && b.toString('ascii', o, o + 4) !== 'data') o += 8 + b.readUInt32LE(o + 4);
       const frames = b.readUInt32LE(o + 4) / (2 * ch);
       if (frames !== s.frames) fail(`verify: ${s.wav} is ${frames} frames, not ${s.frames}`);
     }
-    console.log('verify: every activity id, def name and length matches');
+    // The timers, the counts the prose rounds down to, and the run.
+    for (const [k, a, b] of [['regular', '0:02:00', '0:05:00'], ['occasional', '0:12:00', '0:25:00'],
+      ['rare', '0:30:00', '1:00:00'], ['super_rare', '3:00:00', '6:00:00']]) {
+      if (!new RegExp(`\\[tiers\\.${k}\\]\\s*every = \\["${a}", "${b}"\\]`).test(t)) fail(`verify: tier ${k} changed`);
+    }
+    const table = (name) => {   // a top-level table's own lines, up to the next table
+      const i = t.indexOf(`\n[${name}]\n`);
+      if (i < 0) fail(`verify: no table [${name}]`);
+      const j = t.indexOf('\n[', i + 1);
+      return t.slice(i, j < 0 ? undefined : j);
+    };
+    if (!/^max_per_run = 3\b/m.test(table('tiers.super_rare'))) fail('verify: super rare is no longer 3 a run');
+    const run = table('run');
+    if (!/^length = "10:00:00"/m.test(run) || !/^seed = 1992\b/m.test(run)) fail('verify: the default run changed');
+    const acts = (t.match(/^\[activities\.[a-z0-9_]+\]\s*$/gm) || []).length;
+    const cat = JSON.parse(fs.readFileSync(path.join(PROJECT, 'media', 'audio', 'audio_catalog.json'), 'utf8'));
+    if (acts <= 90) fail(`verify: ${acts} activities, not more than 90`);
+    if (cat.files.length <= 150) fail(`verify: ${cat.files.length} sound files, not more than 150`);
+    console.log(`verify: ids, tiers, cues, defs, signatures and lengths match (${acts} activities, ${cat.files.length} sound files)`);
   }
 }
 

@@ -63,6 +63,7 @@ const COLS = 80, ROWS = 25, CW = 8, CH = 16;
 // 450 -> 7200 Hz over the first 6 s and closes through the last 12 s, every 60 s.
 const BAR_SECS = 3;
 const PATTERN_ROWS = 20;
+const RUN_SECS = 10 * 3600; // activities.toml [run] length = "10:00:00"
 const CHORD_CELLS = [ // [chord, root as a tracker note, instrument holding the chord shape]
   ['Gm9', 'G-2', '3D'],
   ['C13', 'C-2', '3E'],
@@ -185,7 +186,9 @@ function buildScreen(mode) {
     ['Pulse Speed', 'PURRING', '04 NAP'],
     ['Pulse Limit Min', '1:30:00', '05 HOP ON'],
     ['Pulse Limit Max', '1 CAT', '06 FLOAT'],
-    ['Filter To Use', 'GREY TABBY', '07 FF 00'],
+    // FF xx is a table jump: FF 00 would stop the table, FF 01 goes back to step 01, because
+    // the cat comes back another time.
+    ['Filter To Use', 'GREY TABBY', '07 FF 01'],
   ];
   INSTR.forEach(([label, value, step], i) => {
     if (value.length > 10 || step.length > 10) throw new Error(`instrument row too wide: ${value} / ${step}`);
@@ -316,7 +319,7 @@ const INSTRUMENT_GROUPS = [
     ['18', 'BOTTLE REPLY', 'her', 'hours later, a different bottle. a reply'],
   ]],
   ['the theme', 'channel 3, one chord a bar', [
-    ['3D', 'MINOR 9 ARP', 'chn 3', 'Gm9 and Dm9'],
+    ['3D', 'MINOR 9 ARP', 'chn 3', 'Gm9, Dm9. the real e.piano plays them as chords'],
     ['3E', 'DOMINANT 13 ARP', 'chn 3', 'C13'],
     ['3F', 'MAJOR 9 ARP', 'chn 3', 'Fmaj9'],
   ]],
@@ -341,11 +344,12 @@ function f7Screen() {
 // F6: how ten hours are arranged.
 function f6Screen() {
   const out = [];
-  out.push(headLine('F6  ORDERLIST', `subtune 00: 10:00:00, seed 1992, ${PASS === 176 ? '600' : '?'} positions`));
+  const passes = RUN_SECS / (PATTERN_ROWS * BAR_SECS); // 600: one pass of the theme a minute
+  out.push(headLine('F6  ORDERLIST', `subtune 00: 10:00:00, seed 1992, ${passes} positions`));
   out.push(T(RULE));
   const row = (label, text) => out.push(J(PAD(B(label), 13), text));
   const more = (text) => out.push(J(' '.repeat(13), text));
-  row('the theme', 'one pattern of 20 rows, played 600 times, then RST00. no seam');
+  row('the theme', `one pattern of 20 rows, played ${passes} times, then RST00. no seam`);
   row('a row', 'one bar: 3 s at 80 BPM. every activity starts on one, so every gag');
   more('lands on the beat');
   row('four timers', J(PAD('regular', 13), PAD('every 2 to 5 min', 22), 'about 155 a run'));
@@ -353,7 +357,7 @@ function f6Screen() {
   more(J(PAD('rare', 13), PAD('every 30 to 60 min', 22), 'about 13'));
   more(J(PAD('super rare', 13), PAD('every 3 to 6 hours', 22), 'about 2, 3 at most'));
   more(J(PAD('chained', 13), PAD('after another one', 22), 'the tide, the reply'));
-  row('her lane', 'busy about a third of the time. the rest is rests');
+  row('her lane', 'busy about a third of the time. otherwise --- 00 000');
   row('counts', 'the median of 200 simulated runs, as the top of the file says');
   row('the file', J(A('activities.toml', 'activities.toml'), ': more than 90 activities, their beats, how long'));
   more('each lasts and how often it comes round');
@@ -654,13 +658,16 @@ function buildMd() {
     + 'inspired by the 1992 screensaver *Johnny Castaway*: sunny, hand-painted and always daytime. In '
     + 'development, with nothing published yet.');
   md.push('');
-  md.push('Who turns up, and when, is [activities.toml](activities.toml): more than 90 activities on four '
-    + 'timers, from *regular* (every 2 to 5 minutes) to *super rare* (every 3 to 6 hours, three at most). '
-    + 'She is busy about a third of the time. The rest is rests. Every sound is synthesized from code by '
-    + '[tools/make_audio.py](tools/make_audio.py), with no samples, loops or recordings, which is how a '
+  // activities.toml on 2026-10-01: 94 activities, 81 on the four timers and 13 chained.
+  // media/audio/audio_catalog.json on 2026-10-01: 181 sound files.
+  md.push('Who turns up, and when, is [activities.toml](activities.toml): more than 90 activities, most '
+    + 'of them on four timers, from *regular* (every 2 to 5 minutes) to *super rare* (every 3 to 6 hours, '
+    + 'three at most). She is busy about a third of the time, and the rest of it is `--- 00 000`, the '
+    + 'most relaxing thing a tracker can say. Every sound, more than 150 so far, is synthesized from code '
+    + 'by [tools/make_audio.py](tools/make_audio.py), with no samples and no recordings, which is how a '
     + 'SID chip would have wanted it. The theme is a seamless 60-second loop at 80 BPM in F major, 20 bars '
-    + 'of exactly 3 seconds: one pattern up there. Nobody has listened to it yet, so the tracker is '
-    + 'reserving judgement.');
+    + 'of exactly 3 seconds: one pattern up there. Nobody has listened to it yet, which is why the status '
+    + 'line says STOPPED.');
   md.push('');
   md.push('```sh');
   md.push('python tools/serve.py        # then open http://127.0.0.1:8765/');

@@ -29,7 +29,7 @@
 //     ones small and dim, near ones big and bright), and every bob exists
 //     twice, once on a layer behind the island and once in front, each copy
 //     only showing its own half of the lap. So the chain passes behind the
-//     palm and in front of her, which one fixed paint order could not do.
+//     palm and then in front of it, which one fixed paint order could not do.
 //   * Bobs move in whole Amiga pixels: each axis is ONE shared step-end
 //     keyframe track, pre-quantised here, and a bob is just that track with
 //     its own animation-delay (the "each ball follows the one ahead" chain).
@@ -63,7 +63,7 @@ const OUT = arg('out') ? path.resolve(arg('out')) : path.resolve(here, '../asset
 // ------------------------------------------------------------------ screen
 const S = 3;            // real px per virtual (Amiga lo-res) pixel
 const VW = 320;
-const VH = 124;
+const VH = 130;         // a little extra floor so the tagline is not on the edge
 const W = VW * S;
 const H = VH * S;
 const BEAT = 0.75;      // 80 BPM
@@ -135,7 +135,7 @@ function colourPaths(groups) {
 const RULE1 = 3;        // top rainbow rule (row)
 const RULE2 = 79;       // bottom rainbow rule
 const LOGO_Y = 84;      // logo strip top
-const TAG_Y = 114;      // tagline glyph top
+const TAG_Y = 116;      // tagline glyph top: 4 px under the logo's shadow, 6 px of floor
 const AX = 160;         // the axis everything turns about
 const Y0 = 68;          // island disc centre (screen row)
 const TILT = 0.18;      // how far we look down on the disc
@@ -224,9 +224,16 @@ const T1 = 60 / 11;                  // 5.4545 s: 11 of these per 60 s, 5 laps
 const A = 104;
 const K = 3;
 const B = 14;
-const YC = 33;
+const YC = 30;                       // high enough that the near side clears her face
 const NB = 30;
-const GAPT = 0.15;                   // seconds between bobs
+// Seconds between bobs. 0.3 s x 30 bobs = 9 s of the 12 s lap, so any single
+// frame shows three quarters of the figure of eight as separate balls (front
+// loop big, back loop small), with a gap between the head and the coconut.
+const GAPT = 0.3;
+// Where the chain is at t = 0 (seconds into its motion): picked so the first
+// frame (and the reduced-motion still) shows a whole S of the eight, the palm
+// and the coconut tagging along at the back.
+const CHAIN0 = 3.6;
 const NS = SIZES.length;
 const sizeAt = (u) => Math.min(NS - 1, Math.floor(((Math.cos(2 * Math.PI * u) + 1) / 2) * NS));
 function quantTrack(name, P, f, prop) {
@@ -249,7 +256,7 @@ quantTrack('Y', T1, (u) => Math.round(B * Math.sin(2 * Math.PI * u)), ty);
 quantTrack('Z', LAP, (u) => Math.round(K * Math.cos(2 * Math.PI * u)), ty);
 for (let s = 0; s < NS; s++) quantTrack(`s${s}`, LAP, (u) => (sizeAt(u) === s ? 1 : 0), (v) => `opacity:${v}`);
 for (let i = 0; i < NB; i++) {
-  css.push(`.p${i}{animation-delay:${dly(-i * GAPT, LAP)}}.q${i}{animation-delay:${dly(-i * GAPT, T1)}}`);
+  css.push(`.p${i}{animation-delay:${dly(CHAIN0 - i * GAPT, LAP)}}.q${i}{animation-delay:${dly(CHAIN0 - i * GAPT, T1)}}`);
 }
 function chainLayer(sizes) {
   const out = [];
@@ -595,7 +602,7 @@ const TAGS = [
   'SHE IDLES. EVERY SO OFTEN, SOMETHING HAPPENS.',
   'A TEN-HOUR LO-FI ISLAND VIDEO. ALWAYS DAYTIME.',
   '29 BOBS AND A COCONUT. NOBODY HAS SAID A WORD.',
-  'MORE THAN 90 GAGS, EACH ONE ON THE NEXT BAR.',
+  'MORE THAN 90 ACTIVITIES, EACH ON THE NEXT BAR.',
   'THE PALM TURNS. THE BOBS ORBIT. SHE NODS.',
   'EVERY SOUND IS SYNTHESIZED FROM CODE.',
   'SOMETHING IS HAPPENING. PLEASE STAY CALM.',

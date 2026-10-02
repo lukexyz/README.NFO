@@ -153,6 +153,8 @@ Z .######. .....##. ....##.. ...##... ..##.... .##..... .######. ........
 * ........ .##..##. ..####.. ######## ..####.. .##..##. ........ ........
 ' ...##... ...##... ..##.... ........ ........ ........ ........ ........
 ! ...##... ...##... ...##... ...##... ........ ........ ...##... ........
+( ....##.. ...##... ..##.... ..##.... ..##.... ...##... ....##.. ........
+) ..##.... ...##... ....##.. ....##.. ....##.. ...##... ..##.... ........
 `;
 for (const line of FONT_SRC.trim().split('\n')) {
   const [key, ...rows] = line.trim().split(/\s+/);
@@ -240,15 +242,22 @@ const BUSHES = [
   [13, 23, '♣♠', 5], [13, 26, '♣', 13],
 ];
 
-// Her: 4 cells wide, 8 tall, facing us. Cream headphones (a band arching over
-// brown hair, a round cup either side), coral tank top, cream shorts, bare feet.
+// Her: 4 cells wide, 8 tall, facing us. Big headphones (the band arches over
+// her brown hair from cup to cup, a round cup at each ear), coral tank top,
+// shorts, bare feet. The C64 has no cream: the headphones are white and the
+// shorts its pale yellow (white shorts on a block that size read as a nappy).
 const HER_X = 9, HER_Y = 6;
 const HER = art(
-  ['.╭╮.', '.▟▙.', '●██●', '▐██▌', '▐██▌', '▝██▘', '.▌▐.', '.▌▐.'],
-  ['.11.', '.99.', '1881', '8aa8', '8aa8', '8778', '.88.', '.88.']);
-// Music leaking out of the headphones: arcs either side of her head.
-const ARCS = art(['╭....╮', '╰....╯'], ['1....1', '1....1']);
+  ['╭──╮', '│▟▙│', '●██●', '▐██▌', '▐██▌', '▝██▘', '.▌▐.', '.▌▐.'],
+  ['1111', '1991', '1881', '8aa8', '8aa8', '8778', '.88.', '.88.']);
+// Music leaking out of the headphones: on every beat a pair of brackets sits
+// beside the cups, then steps one cell further out, then is gone.
+const ARCS_NEAR = art(['(....)'], ['1....1']);
+const ARCS_FAR = art(['(......)'], ['1......1']);
 
+// A sea turtle: a light green head low at the front, a green domed shell.
+const TURTLE_L = art(['▗▟█▙'], ['d555']);
+const TURTLE_R = art(['▟█▙▖'], ['555d']);
 const SAILBOAT = art(['.◢.', '▗▄▖'], ['.1.', '222']);
 const RAFT = art(['█████'], ['98889']);
 const GULL_UP = art(['╲╱'], ['11']);
@@ -267,7 +276,8 @@ const ISLAND_X = 6;
 // Foam under the island: white scallops on the shallows (cyan), two frames
 // that swap every half bar.
 const FOAM_X = 6, FOAM_W = 28;
-const FOAM = ['╰╯_╰─╯_╰╯__╰╯╰╯_╰─╯__╰╯_╰╯╰╯_', '_╰╯_╰─╯_╰╯╰╯__╰╯_╰─╯╰╯__╰─╯╰'];
+const FOAM = ['╰╯_╰─╯_╰╯__╰╯╰╯_╰─╯__╰╯_╰╯╰╯', '_╰╯_╰─╯_╰╯╰╯__╰╯_╰─╯╰╯__╰─╯╰'];
+for (const f of FOAM) if ([...f].length !== FOAM_W) throw new Error(`foam frame is ${[...f].length} cells, not ${FOAM_W}`);
 const foam = (phase) => art([FOAM[phase]], [FOAM[phase].replace(/[^_]/g, '1')]);
 
 // Block-glyph title letters: the shape is the cyan part, so each cell is the
@@ -336,7 +346,7 @@ const CAPTIONS = [
   'BONK. A COCONUT FALLS ON THE CRAB.',
   'THE CRAB TRIES IT ON. IT FITS.',
   'THE COCONUT WALKS OFF. CRAB INSIDE.',
-  'SHE MISSED ALL OF IT. NOBODY TELL HER.',
+  'AND THAT WAS THE ACTION SCENE.',
   '90+ THINGS TO DO. 10 HOURS. NO RUSH.',
   'EVERY SOUND IS SYNTHESIZED FROM CODE.',
   'PYTHON TOOLS/SERVE.PY',
@@ -382,11 +392,29 @@ function crabAt(s) {
   return out;
 }
 
+// The second visitor: a sea turtle swims into the shallows under the island,
+// a cell per beat, dozes for a while (a Z rises on every beat), and swims off
+// again. It is gone well before the loop comes round.
+const TURTLE_ROW = 16;
+const T_IN = 216, T_STOP = 30, T_DOZE = T_IN + (39 - T_STOP) * SB, T_TURN = 276;
+function turtleAt(s) {
+  // returns { x, face, z: [x,y] | null } or null
+  if (s < T_IN) return null;
+  if (s < T_DOZE) return { x: 39 - Math.floor((s - T_IN) / SB), face: 'L', z: null };
+  if (s < T_TURN) {
+    const b = Math.floor((s - T_DOZE) / SB);
+    return { x: T_STOP, face: 'L', z: b < 1 ? null : (b % 2 ? [T_STOP + 4, TURTLE_ROW - 1] : [T_STOP + 5, TURTLE_ROW - 2]) };
+  }
+  const x = T_STOP + Math.floor((s - T_TURN) / SB);
+  return x < COLS ? { x, face: 'R', z: null } : null;
+}
+
 function screenAt(base, s) {
   const scr = base.clone();
   const beat = s % SB;
   // the music leaks out of her headphones on every beat
-  if (beat < 2) scr.stamp(HER_X - 1, HER_Y + 1, ARCS);
+  if (beat < 2) scr.stamp(HER_X - 1, HER_Y + 2, ARCS_NEAR);
+  else if (beat === 2) scr.stamp(HER_X - 2, HER_Y + 2, ARCS_FAR);
   // the sun's rays swap every bar
   scr.stamp(1, 0, Math.floor(s / SBAR) % 2 ? SUN_RAYS_B : SUN_RAYS_A);
   // foam washes in and out every half bar
@@ -414,6 +442,12 @@ function screenAt(base, s) {
   if (k.crab) scr.put(k.crab[0], k.crab[1], 'π', 2);
   if (k.bonk) { scr.put(COCO_COL - 1, 11, '*', 1); scr.put(COCO_COL + 1, 11, '*', 1); }
   if (k.splash) scr.put(k.splash[0], k.splash[1], '▒', 1);
+  // the turtle
+  const t = turtleAt(s);
+  if (t) {
+    scr.stamp(t.x, TURTLE_ROW, t.face === 'L' ? TURTLE_L : TURTLE_R);
+    if (t.z) scr.put(t.z[0], t.z[1], 'Z', 1);
+  }
   // caption: one per two bars, reverse video in the sea
   const ci = Math.floor(s / (2 * SBAR));
   scr.text(1, CAPTION_ROW, CAPTIONS[ci], 6, true);
@@ -593,6 +627,7 @@ for (const [, g] of groups) {
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${W} ${H}" width="${W * 2}" height="${H * 2}" shape-rendering="crispEdges" role="img" aria-label="CASTAWAY: a PETSCII picture of a tiny island">
 <title>CASTAWAY</title>
+<desc>A Commodore 64 style PETSCII picture, 40 by 25 character cells: a woman in big headphones on a tiny island with one palm. A coconut falls on a hermit crab and walks off with the crab inside; later a sea turtle dozes in the shallows. CASTAWAY is cut out of the sea in block letters.</desc>
 <style>${css.join('')}@media (prefers-reduced-motion:reduce){.a{animation:none!important}}</style>
 <defs>${glyphDefs.join('')}</defs>
 <rect width="${W}" height="${H}" rx="10" fill="${PAL[BORDER]}"/>
@@ -657,6 +692,26 @@ console.log(`wrote ${path.relative(process.cwd(), OUT)}: ${(svg.length / 1024).t
 console.log(`cells that ever change: ${changing.size} of ${COLS * ROWS}; per quarter beat: median ${sorted[N >> 1]}, max ${sorted[N - 1]}`);
 console.log(`characters used: ${shapes.size} (${[...shapes].join('')})`);
 console.log(`colours used: ${[...used.keys()].sort((a, b) => a - b).map((c) => NAMES[c]).join(', ')}; black: ${used.has(0) ? 'USED' : 'never'}`);
+
+// ---------------------------------------------------------------- the README's hand-typed numbers
+// The .md is written by hand but quotes these figures; say so if they drift.
+{
+  const MD = path.join(HERE, '..', '30-petscii-picture_opus_5.5.md');
+  if (fs.existsSync(MD)) {
+    const md = fs.readFileSync(MD, 'utf8');
+    const inPicture = new Set([BG, ...used.keys()]).size;   // the cell colours plus the background
+    const expect = [
+      [`${changing.size} of the 1000 cells ever change`, 'cells that ever change'],
+      [`on a typical quarter beat, ${sorted[N >> 1]} do`, 'median cells per quarter beat'],
+      [`CELLS THAT EVER CHANGE ...... ${changing.size}`, 'credits: cells that change'],
+      [`COLOURS IN THE PICTURE ...... ${inPicture} OF 16`, 'credits: colours in the picture'],
+      [`BLACK ....................... ${used.has(0) ? 'SOME' : 0} CELLS`, 'credits: black cells'],
+    ];
+    const stale = expect.filter(([needle]) => !md.includes(needle));
+    for (const [needle, what] of stale) console.warn(`README out of date (${what}): expected "${needle}"`);
+    if (!stale.length) console.log('README figures match the picture');
+  }
+}
 
 if (SHOW_TEXT) {
   for (const s of [0, STILL]) {

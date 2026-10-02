@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/65-memphis_opus_5.5.svg" width="100%" alt="CASTAWAY, in eight chunky hand-cut capitals, each a different colour and tilt (red, yellow, blue, black-and-white stripes, pink, teal, lilac, orange) with heavy black outlines and hard black shadows, across the top of a warm white laminate covered in small black squiggles, zigzags and coloured confetti, with big flat shapes laid over it: a pink quarter circle with blue stairs, a teal disc, a lilac half-disc, a striped slab, a yellow triangle and a checkerboard. Stickers on the left read: ISLAND FOR ONE. FULLY FURNISHED: 1 PALM, 1 RAFT AND 1 PAIR OF HEADPHONES. 10 HOURS. MOSTLY NOTHING. EVERY FEW MINUTES, A GAG, AND IT LANDS ON THE BEAT. EVERY SOUND SYNTHESIZED FROM CODE. NO SAMPLES. And a terminal chip: python tools/serve.py. On the right, a chunky window titled CASTAWAY, LIVE PREVIEW shows the island redrawn in the same style: a palm with a black-and-white striped trunk on a terrazzo sandbank, a sea of white squiggles, a raft, a bottle, a sun with a striped lower half, a woman in a coral tank top, cream shorts and cream headphones sitting and nodding to the beat, a shark fin wearing headphones nodding along, a coconut walking on crab legs, and a drone carrying a parcel of headphones. The control bar counts the bars of the theme, BAR 01/20 to 20/20, and reads 10:00:00.">
+  <img src="assets/65-memphis_opus_5.5.svg" width="100%" alt="CASTAWAY, in eight chunky hand-cut capitals, each a different colour and tilt (red, yellow, blue, black-and-white stripes, pink, teal, lilac, orange) with heavy black outlines and hard black shadows, across the top of a warm white laminate covered in small black squiggles, zigzags and coloured confetti, with big flat shapes laid over it: a pink quarter circle with blue stairs, a teal disc, a terrazzo half-disc under the T, a striped slab, a yellow triangle and a checkerboard. Stickers on the left read: ISLAND FOR ONE. FULLY FURNISHED: 1 PALM, 1 RAFT AND 1 PAIR OF HEADPHONES. 10 HOURS. MOSTLY NOTHING. A FEW GAGS AN HOUR, AND EVERY ONE LANDS ON THE BEAT. EVERY SOUND SYNTHESIZED FROM CODE. NO SAMPLES. And a terminal chip: python tools/serve.py. On the right, a chunky window titled CASTAWAY, LIVE PREVIEW shows the island redrawn in the same style: a palm with a black-and-white striped trunk on a terrazzo sandbank, a sea of white squiggles, a raft out on the water, a bottle, a sun with a striped lower half, a woman in a coral tank top, cream shorts and cream headphones sitting and nodding to the beat, a shark fin wearing headphones nodding along, a coconut walking on crab legs, and a drone carrying a parcel of headphones. The control bar counts the bars of the theme, BAR 01/20 to 20/20, and reads 10:00:00.">
 </p>
 
 <h1 align="center">CASTAWAY</h1>
@@ -10,11 +10,11 @@
 
 <p align="center">
   A stationary-frame lo-fi video for YouTube. A young woman sits on a tiny island with one tall palm, nodding to the music on her headphones. Every few minutes, something happens. A message in a bottle washes straight back. A drone delivers a parcel, and the parcel is more headphones. A shark in headphones surfaces and nods to the same beat. Then everybody goes back to nodding.<br>
-  <sub>An unofficial remake, inspired by the small-island routines and visual comedy of the 1992 screensaver <i>Johnny Castaway</i>. Sunny, hand-painted coastal anime. 16:9, 1080p, 30 fps. Always daytime.</sub>
+  <sub>An unofficial remake, inspired by the small-island routines and visual comedy of the 1992 screensaver <i>Johnny Castaway</i>. Sunny, hand-painted coastal anime. 16:9, 1080p, 24 fps. Always daytime.</sub>
 </p>
 
 <p align="center">
-  <b>The schedule:</b> more than 90 activities on four timers, from everyday routines every 2 to 5 minutes to super-rare callbacks every 3 to 6 hours. Each one waits for the next bar of the music, so every gag lands on the beat.<br>
+  <b>The schedule:</b> more than 90 activities. Four timers pick them, from everyday routines every 2 to 5 minutes to super-rare callbacks every 3 to 6 hours, and some gags set off a follow-up of their own. Each one waits for the next bar of the music, so every gag lands on the beat.<br>
   <b>The sound:</b> every note, wave and splash is synthesized from code in <a href="tools/make_audio.py"><code>tools/make_audio.py</code></a>. No samples, no borrowed loops, no recordings.
 </p>
 
@@ -36,10 +36,10 @@ python tools/serve.py
 <summary><b>CATALOGO 1992</b>: eight pieces that turn up on their own</summary>
 <br>
 <p align="center">
-  <img src="assets/65-memphis_opus_5.5-catalogo.svg" width="100%" alt="A page from an imaginary design catalogue, CATALOGO 1992, stamped GRUPPO ISOLOTTO: eight cards, each a flat colour panel with one big shape behind one object, a number tab, an Italian name and two lines in English. 01 BOTTIGLIA, a green bottle with a note and an arrow looping back: a message, it washes straight back. 02 PACCO, a drone carrying a parcel with headphones on it: by drone, contains more headphones. 03 TARTARUGA, a turtle with a zigzag shell: visits, stays a bit, says nothing. 04 GATTO, a grey tabby with a white chest napping on a floating crate: arrives on a crate, naps up the palm. 05 SQUALO, a shark fin in cream headphones with a music note: wears headphones, nods on the beat. 06 COCCO, a coconut on crab legs: lands on a crab, walks off with it. 07 SEGNALE, a phone over a palm crown and one signal bar of four: one bar, only at the top of the palm. 08 CAFFÈ FREDDO, an iced coffee with a striped straw: she walks out over the sea to get one.">
+  <img src="assets/65-memphis_opus_5.5-catalogo.svg" width="100%" alt="A page from an imaginary design catalogue, CATALOGO 1992, stamped GRUPPO ISOLOTTO: eight cards, each a flat colour panel with one big shape behind one object, a number tab, an Italian name and two lines in English. 01 BOTTIGLIA, a green bottle with a note and an arrow looping back: a message, it washes straight back. 02 PACCO, a drone carrying a parcel with headphones on it: by drone, contains more headphones. 03 TARTARUGA, a turtle with a zigzag shell: visits, stays a bit, says nothing. 04 GATTO, a grey tabby with a white chest napping on a floating crate: arrives on a crate, naps up the palm. 05 SQUALO, a shark fin in cream headphones with a music note: wears headphones, nods on the beat. 06 COCCO, a coconut on crab legs: lands on a crab, walks off with it. 07 SEGNALE, a phone over a palm crown and one signal bar of four: one bar, only at the top of the palm. 08 CAFFÈ FREDDO, an iced coffee with a striped straw: walks off on the sea, comes back with one.">
 </p>
 
-The catalogue is a joke. The pieces are not: every one of them is an activity in [`activities.toml`](activities.toml), with its own timer, its own lane and its own synthesized sounds.
+The catalogue is a joke. The pieces are not: every one of them is a real activity in [`activities.toml`](activities.toml), picked by a timer, with synthesized sound effects of its own.
 
 | N° | piece | what happens | in the schedule |
 |:---:|:---|:---|:---|
@@ -67,8 +67,8 @@ Also in the range, uncatalogued: a tour boat of selfie-takers, a bro on an elect
  OCCUPANT ......... one young woman: coral tank top, cream shorts,
                     brown hair in a loose low bun, bare feet. she nods
  FINISH ........... sunny, hand-painted coastal anime. always daytime
- FORMAT ........... 16:9 · 1080p · 30 fps · default run 10:00:00
- SEED ............. 1992. same seed, same video, event for event
+ FORMAT ........... 16:9 · 1080p · 24 fps · default run 10:00:00
+ SEED ............. 1992. same seed, same schedule, event for event
 
  TIMER               EVERY             TYPICAL 10-HOUR RUN
    regular ......... 2 to 5 min        about 155 events
@@ -99,7 +99,7 @@ Also in the range, uncatalogued: a tour boat of selfie-takers, a bro on an elect
    files .......... more than 150, and counting
    mix ............ -14 LUFS, true peak at or below -1 dBTP
    levels ......... adjustable: in master, and per routine
-   listened to .... not yet. by anyone. it is very patient
+   microphones .... none were involved
 ```
 
 The banner keeps the same time: its master loop is the theme's 20 bars of 3 seconds, the counter steps once a bar, the letters hop once a bar, and she and the shark nod once a beat (0.75 s at 80 BPM). Counts are as of 2026-10-01; more activities arrive every few hours.
@@ -112,7 +112,7 @@ The banner keeps the same time: its master loop is the theme's 20 bars of 3 seco
 
 | file | what it does |
 |:---|:---|
-| [`tools/serve.py`](tools/serve.py) | The renderer: a web page with live preview at http://127.0.0.1:8765/. It exports frame-exact video in the browser (WebCodecs H.264, 68 to 78 frames a second at 1080p30 in Chrome); the server mixes the sound and joins the two into a YouTube-ready MP4. Plain ES modules, no build step, no npm packages. The page itself is [`web/index.html`](web/index.html). |
+| [`tools/serve.py`](tools/serve.py) | Serves the renderer: a web page with live preview at http://127.0.0.1:8765/. The page exports frame-exact video in the browser (WebCodecs H.264, measured at 68 to 78 frames a second at 1080p in Chrome); the server mixes the sound and joins the two into a YouTube-ready MP4. Plain ES modules, no build step, no npm packages. The page itself is [`web/index.html`](web/index.html). |
 | [`tools/schedule.py`](tools/schedule.py) | Validates [`activities.toml`](activities.toml) and simulates a 10-hour run. `python tools/schedule.py` |
 | [`tools/render_demo.py`](tools/render_demo.py) | The older Python reference renderer. `python tools/render_demo.py --dev` renders a dev reel of every activity with a heads-up display. |
 | [`tools/make_audio.py`](tools/make_audio.py) | Where every sound is synthesized: the theme, the ocean, and every splash, scuttle and toot. |
@@ -127,9 +127,9 @@ Status: in development. No video has been published yet, so there is nothing to 
 <br>
 
 - **The look** is after the Memphis Group (Milan, 1980 to 1987) and the squiggles-and-confetti graphics it sent through late-80s pop culture. Credited as a reference only: the squiggle laminate, the shapes and the lettering here are drawn from scratch by a seeded generator, and no real print, piece of furniture or typeface is copied.
-- **The idea** is an unofficial homage to *Johnny Castaway* (1992), which belongs to its owners. Nothing from it is used here.
+- **The idea** is an unofficial homage to *Johnny Castaway* (1992), which belongs to its owners. Nothing from it is used on this page.
 - **Invented for this page:** Gruppo Isolotto (the "islet group", the design collective that supposedly made the island) and its Catalogo 1992. Neither exists, which is the least surprising fact on this page.
 - **The Italian** is real and literal: *isolotto* is a small island, *catalogo* a catalogue, *scheda tecnica* a spec sheet, *crediti* credits; the pieces are bottle, parcel, turtle, cat, shark, coconut, signal and iced coffee.
-- **Every sound** in the video is synthesized from code. **Every picture** here is original vector art from a seeded generator, so it comes out the same, byte for byte, every time. Much like a 10-hour run with seed 1992.
+- **Every sound** in the video is synthesized from code. **Every picture** here is original vector art from a seeded generator, so it comes out the same, byte for byte, every time. The schedule plays the same trick: seed 1992 gives the same ten hours, event for event.
 
 </details>

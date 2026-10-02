@@ -1057,36 +1057,67 @@ function fin(R, x, y) {
   blob(R, x, y, 12, 10, (px, py) => py <= y + 9 && px >= x + 1 + (y + 9 - py) * 0.2 && px <= x + 10 - (y + 9 - py) * 0.95 + (py - y) * 0.1 && py >= y + 1, INK.chk);
   R.sprite(['#..##..##..#'], x - 1, y + 9);
 }
-// the shark surfaces facing her, cream headphones on, nodding on the beat.
-// (x, wl) is the tail end at the waterline; it is 44 wide and 24 tall.
+// the shark surfaces side-on, facing her: a grey back and fin, a white face
+// with a toothy grin, eyes shut like hers, and a pair of headphones whose
+// band arches over its head. It nods on the beat. (x, wl) is the tail end
+// at the waterline; it is 48 wide and 25 tall.
 function shark(R, x, wl, down) {
   const oy = down ? 1 : 0;
-  const top = (u) => (u <= 30 ? 14 * Math.sin((u / 30) * Math.PI / 2) ** 0.8 : 5 + 9 * Math.sqrt(Math.max(0, 1 - ((u - 30) / 12.5) ** 2)));
-  const U = (px) => px + 0.5 - x, Hh = (py) => wl + oy - (py + 0.5); // pixel to (u, h)
-  // dorsal fin: a hooked triangle on the back
-  blob(R, x + 4, wl - 26 + oy, 20, 22, (px, py) => {
-    const u = px - x, h = wl + oy - py;
-    return h >= 5 && h <= 21 && u >= 6 + (h - 5) * 0.2 && u <= 22 - (h - 5) * 0.75 - ((h - 5) / 16) ** 2 * 2;
+  const top0 = wl - 25 + oy; // local row 0
+  // the silhouette in local (u, r): u to the right, r down, waterline at r = 25
+  const topOf = (u) => (u <= 30 ? 24.5 - 17.5 * Math.sin((u / 30) * Math.PI / 2) ** 0.85
+    : 7 + 9 * (1 - Math.sqrt(Math.max(0, 1 - ((u - 30) / 17.2) ** 2))));
+  const botOf = (u) => (u >= 39 ? 15.5 + (47.2 - u) * 1.15 : 26);
+  const inHead = (u, r) => u >= 0 && u <= 47.2 && r >= topOf(u) && r <= botOf(u);
+  const L = (px, py) => [px - x, py - top0]; // screen to local
+  // where the grey back gives way to white: low along the tail, then up
+  // behind the gills to a cap over the top of the head
+  const back = (u) => (u < 19 ? 25.5 - Math.max(0, u - 11) * 0.5 : u < 26 ? 21.5 - (u - 19) * 1.6 : 10.3);
+  // the grin, from the corner of the mouth to the snout
+  const mouth = (u) => 15.2 + 2.6 * Math.sin(Math.PI * Math.min(1, Math.max(0, (u - 31) / 14.5))) - (u - 31) * 0.1;
+  // dorsal fin: hooked back towards the tail
+  blob(R, x + 2, top0, 24, 18, (px, py) => {
+    const [u, r] = L(px, py);
+    const lead = 6 + (r - 1) * 1.125; // the front edge, sloping back to the tip
+    const trail = 6 + 5 * ((r - 1) / 16) ** 2; // the back edge, hollowed out
+    return r >= 1 && r <= 18 && u <= lead && u >= trail;
   }, INK.chk);
-  // the head and back, out of the water
-  blob(R, x - 1, wl - 16 + oy, 46, 17, (px, py) => {
-    const u = px - x, h = wl + oy - py;
-    return u >= 0 && u <= 42.5 && h >= -0.5 + oy && h <= top(u);
-  }, (px, py) => (Hh(py) < 4.5 && U(px) > 24 ? Wt : INK.chk));
-  // headphones: the band rides high over its head, the near cup sits behind the eye
-  blob(R, x + 20, wl + oy - 21, 18, 12, (px, py) => {
-    const r = Math.hypot((px - (x + 29)) / 1.1, py - (wl + oy - 12));
-    return py <= wl + oy - 11 && r <= 5.6 && r >= 3.6;
+  // the head and back
+  blob(R, x - 1, top0 + 5, 50, 22, (px, py) => inHead(...L(px, py)), (px, py) => {
+    const [u, r] = L(px + 0.5, py + 0.5);
+    return r < back(u) ? INK.chk : Wt;
+  });
+  // an open grin: lips in black, a row of teeth top and bottom
+  for (let u = 31; u <= 45; u++) {
+    const m = Math.round(mouth(u + 0.5));
+    for (let k = 0; k <= 2; k++) {
+      if (!inHead(u + 0.5, m + k + 0.5)) continue;
+      const teeth = (k === 1 && u > 32 && u < 45) && u % 2 === 0;
+      R.set(x + u, top0 + m + k, teeth ? Wt : B);
+    }
+  }
+  // eye: shut and happy
+  R.sprite(['.###.', '#...#'], x + 38, top0 + 11);
+  // gill slits
+  for (const u of [21, 23.5, 26]) for (let r = 14; r <= 18; r++) R.set(Math.round(x + u + (r - 14) * 0.3), top0 + r, B);
+  // headphones: the band arches over the head, the near cup sits on its cheek
+  const bc = [30, 13.5];
+  blob(R, x + 20, top0 + 2, 22, 11, (px, py) => {
+    const [u, r] = L(px, py);
+    const d = Math.hypot((u - bc[0]) / 1.08, r - bc[1]);
+    return d >= 6.2 && d <= 9.0 && r <= 10.5 && u <= 36.5;
   }, Wt);
-  blob(R, x + 19, wl + oy - 14, 11, 11, (px, py) => Math.hypot(px - (x + 24.5), py - (wl + oy - 8)) <= 4.5,
-    (px, py) => (Math.hypot(px + 0.5 - (x + 24.5), py + 0.5 - (wl + oy - 8)) < 2 ? INK.dg : Wt));
-  // eye, with a glint, and a big easy grin
-  R.rect(x + 36, wl + oy - 9, 2, 3, B); R.set(x + 36, wl + oy - 9, Wt); R.set(x + 38, wl + oy - 8, B);
-  R.line(x + 32, wl + oy - 4, x + 37, wl + oy - 2);
-  R.line(x + 37, wl + oy - 2, x + 42, wl + oy - 5);
+  blob(R, x + 24, top0 + 8, 11, 11, (px, py) => {
+    const [u, r] = L(px, py);
+    return Math.hypot(u - 29, (r - 13) / 1.1) <= 4.3;
+  }, (px, py) => {
+    const [u, r] = L(px + 0.5, py + 0.5);
+    const d = Math.hypot(u - 29, (r - 13) / 1.1);
+    return d <= 2.2 ? INK.dg : d <= 3.3 ? Wt : B;
+  });
   // the waterline, which does not nod
-  R.rect(x - 2, wl + 1, 48, 2, Wt);
-  R.sprite(['##..###..####..###..####..###..####..###..###'], x - 2, wl + 1);
+  R.rect(x - 2, wl + 1, 52, 2, Wt);
+  R.sprite(['##..###..####..###..####..###..####..###..####..'], x - 2, wl + 1);
 }
 function crab(R, x, y, step) {
   // a hermit crab in a spiral shell, walking left
@@ -1255,16 +1286,16 @@ layer(bob(sx(64), sy(94)), vis([at(0, 9, 9.75)]));
 layer(bob(sx(82), sy(104)), vis([at(0, 9.75, 10.5)]));
 layer(sprite(16, 12, sx(98), sy(126), (R) => bottle(R, sx(102), sy(127), Math.PI / 2 - 0.15)), vis([at(0, 10.5, 12)]));
 // gag 2: a shark in headphones, nodding to the beat
-layer(sprite(13, 11, sx(0), sy(89), (R, x, y) => fin(R, x + 1, y)), vis([at(1, 6, 6.75)]));
-layer(sprite(13, 11, sx(10), sy(89), (R, x, y) => fin(R, x + 1, y)), vis([at(1, 6.75, 7.5)]));
-layer(sprite(13, 11, sx(20), sy(89), (R, x, y) => fin(R, x + 1, y)), vis([at(1, 7.5, 8.25)]));
+layer(sprite(13, 11, sx(0), sy(91), (R, x, y) => fin(R, x + 1, y)), vis([at(1, 6, 6.75)]));
+layer(sprite(13, 11, sx(10), sy(91), (R, x, y) => fin(R, x + 1, y)), vis([at(1, 6.75, 7.5)]));
+layer(sprite(13, 11, sx(20), sy(91), (R, x, y) => fin(R, x + 1, y)), vis([at(1, 7.5, 8.25)]));
 {
   const g = vis([at(1, 8.25, 11.25)]);
   const [down, up] = frames(BEAT, 2);
-  const mk = (d) => emit(sprite(50, 28, sx(2), sy(74), (R) => shark(R, sx(5), sy(98), d)));
+  const mk = (d) => emit(sprite(54, 30, sx(2), sy(74), (R) => shark(R, sx(5), sy(100), d)));
   layers.push(`<g ${g}><g ${down}>${mk(true)}</g><g ${up}>${mk(false)}</g></g>`);
 }
-layer(sprite(13, 11, sx(8), sy(89), (R, x, y) => fin(R, x + 1, y)), vis([at(1, 11.25, 12)]));
+layer(sprite(13, 11, sx(8), sy(91), (R, x, y) => fin(R, x + 1, y)), vis([at(1, 11.25, 12)]));
 // gag 3: a coconut falls on a hermit crab, which walks off wearing it
 const NUT0 = [PALM.top[0] + COCONUTS[FALLING][0], PALM.top[1] + COCONUTS[FALLING][1]];
 const CRAB_Y = sy(117);
@@ -1290,9 +1321,13 @@ layer(sprite(9, 4, sx(208), CRAB_Y - 9, (R, x, y) => bonk(R, x, y)), vis([at(2, 
 const MOODS = [
   { when: [[0, 4.5], [12, 16.5], [24, 28.5]], l1: 'Please wait…', l2: 'Something happens every 2 to 5 minutes.' },
   { when: MENU, l1: 'Something is coming…', l2: 'It starts on the next bar, on the beat.' },
-  { when: [GAG[0]], l1: 'Something is happening!', l2: 'A message in a bottle. It came back.' },
-  { when: [GAG[1]], l1: 'Something is happening!', l2: 'A shark in headphones, nodding along.' },
-  { when: [GAG[2]], l1: 'Something is happening!', l2: 'The crab is wearing the coconut now.' },
+  // each gag gets a setup line and then its punchline, cut on the beat
+  { when: [at(0, 6, 8.25)], l1: 'Something is happening!', l2: 'A message in a bottle, out to sea.' },
+  { when: [at(0, 8.25, 12)], l1: 'Something is happening!', l2: 'And straight back again, to her feet.' },
+  { when: [at(1, 6, 8.25)], l1: 'Something is happening!', l2: 'A fin is circling the island.' },
+  { when: [at(1, 8.25, 12)], l1: 'Something is happening!', l2: 'A shark in headphones, nodding along.' },
+  { when: [at(2, 6, 8.25)], l1: 'Something is happening!', l2: 'A hermit crab is out for a walk.' },
+  { when: [at(2, 8.25, 12)], l1: 'Something is happening!', l2: 'The crab is wearing the coconut now.' },
 ];
 for (const m of MOODS) {
   const x = DLG.x + 52, y = DLG.y + 10;
@@ -1328,7 +1363,7 @@ const ITEMS = [
   ['Delivery Drone', 'D'],
   ['Sea Turtle Visit', 'T'],
   ['Shark in Headphones', 'S'],
-  ['Coconut Meets Crab', 'K'],
+  ['Crab Gets a New Shell', 'K'],
   ['Stray Cat Visit', 'C'],
   null,
   ['Get Rescued', null],
@@ -1404,15 +1439,15 @@ const PICK = [0, 3, 4]; // which item each round chooses
   const cx0 = 92, cy0 = 238;
   const R = new Raster(16, 15, cx0, cy0);
   R.sprite(WATCH, cx0, cy0, { '#': B, '.': Wt });
-  // twelve o'clock and the hour marks
-  for (const [dx, dy] of [[6, 5], [6, 10], [3, 7], [10, 7]]) R.set(cx0 + dx, cy0 + dy, B);
+  // the hour hand stays at ten, like the clock in the menu bar
+  R.line(cx0 + 6, cy0 + 7, cx0 + 4, cy0 + 6);
   layer(R, '');
   const hands = frames(BEAT * 8, 8);
-  const c = [cx0 + 6.5, cy0 + 7.5];
+  const c = [cx0 + 6, cy0 + 7];
   for (let k = 0; k < 8; k++) {
     const H1 = new Raster(16, 15, cx0, cy0);
     const a = (k / 8) * Math.PI * 2 - Math.PI / 2;
-    H1.line(c[0], c[1], c[0] + Math.cos(a) * 3.8, c[1] + Math.sin(a) * 3.8);
+    H1.line(c[0], c[1], c[0] + Math.cos(a) * 3.4, c[1] + Math.sin(a) * 3.4);
     H1.set(Math.round(c[0]), Math.round(c[1]), B);
     layer(H1, hands[k]);
   }

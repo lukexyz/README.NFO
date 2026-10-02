@@ -16,7 +16,7 @@
 // style below does, and why the letters look lit from the top right.
 //
 // WHAT IS HERE (all of it new, nothing taken from any real font file)
-// One typeface, LOWTIDE, drawn for this header as 41 small bitmaps (26 capitals, 10 digits,
+// One typeface, SWASH, drawn for this header as 41 small bitmaps (26 capitals, 10 digits,
 // five marks) on a 6-row grid. From those bitmaps the script sets:
 //   - the Outline type: the edges of each bitmap are traced on the lattice between its pixels,
 //     and every lattice point becomes the box-drawing character that joins its edges. This is
@@ -25,7 +25,13 @@
 //     Color type one pixel per cell, lit from the same top right as the outline (white top
 //     faces and right edges, brown left edges, grey counters, a shadow falling down-left),
 //     the Block type at half-cell height in one colour, typing what is on the island now.
-// The foundry (EBB & KERN) and the face (LOWTIDE) exist only in this file.
+// The foundry (EBB & KERN) and the face (SWASH) exist only in this file. A swash is the sheet
+// of water that runs up the beach after a wave breaks, and also the flourish on a fancy
+// letter. This face has the first kind only.
+//
+// The outline tracing uses only the pieces the reverse-engineered .TDF outline format has
+// placeholders for (═ ─ │ ║ ╒ ╗ ╓ ┐ ╚ ╛ └ ╜), with the double line on the top of every beam
+// and the right of every column, as that specification says the format always draws them.
 //
 // The script refuses a <pre> line wider than 80 columns, trailing whitespace, a tab, a
 // character outside ASCII and the box/block set, a glyph that would make an ambiguous joint,
@@ -45,16 +51,16 @@ const PAGE = 80; // widest a <pre> line may be: the classic 80 columns
 //   python -B -c "import tomllib; d=tomllib.load(open('activities.toml','rb')); print(len(d['activities']))"
 //   find media/audio -name '*.wav' | wc -l
 // The header only says "more than" these, so it ages well; re-check before it goes live.
-const AS_OF = '2026-10-01';
+const AS_OF = '2026-10-02';
 const ACTIVITIES_FLOOR = 90; // 94 on AS_OF: 81 on four timers, 13 chained
 const SOUNDS_FLOOR = 150; // 181 on AS_OF
 
 // =============================================================================================
-// 1. LOWTIDE. '#' is ink. Six rows. Stems are two pixels wide and beams one pixel tall, which
+// 1. SWASH. '#' is ink. Six rows. Stems are two pixels wide and beams one pixel tall, which
 //    traces to "│ ║" for a stem and "═" over "─" for a beam. Bowls (B D P R 5) step in at the
 //    corners; everything else is square. The 0 is a pixel narrower than the O.
 // =============================================================================================
-const FONT_NAME = 'LOWTIDE';
+const FONT_NAME = 'SWASH';
 const FOUNDRY = 'EBB & KERN';
 const GH = 6;
 const GLYPHS = {
@@ -71,7 +77,7 @@ const GLYPHS = {
   K: ['##...##', '##..##.', '#####..', '##..##.', '##...##', '##...##'],
   L: ['##.....', '##.....', '##.....', '##.....', '##.....', '#######'],
   M: ['##########', '##..##..##', '##..##..##', '##......##', '##......##', '##......##'],
-  N: ['######..##', '##..##..##', '##..##..##', '##..##..##', '##..##..##', '##..######'],
+  N: ['##....##', '###...##', '####..##', '##.##.##', '##..####', '##...###'],
   O: ['#######', '##...##', '##...##', '##...##', '##...##', '#######'],
   P: ['######.', '##...##', '##...##', '######.', '##.....', '##.....'],
   Q: ['#######', '##...##', '##...##', '##...##', '##..###', '#######'],
@@ -127,6 +133,8 @@ box('╓', 0, 2, 0, 1); box('╖', 0, 2, 1, 0); box('╙', 2, 0, 0, 1); box('╜
 box('╥', 0, 2, 1, 1); box('╨', 2, 0, 1, 1); box('╫', 2, 2, 1, 1);
 
 // Edge weights: the top of a beam, the bottom of a beam, the left of a column, the right of one.
+// Placeholders A to L of the reverse-engineered outline format, as code page 437 draws them.
+const TDF_PIECES = '═─│║╒╗╓┐╚╛└╜';
 const STYLES = {
   lit: { top: 2, bottom: 1, left: 1, right: 2 },
   single: { top: 1, bottom: 1, left: 1, right: 1 },
@@ -152,7 +160,7 @@ function traceGlyph(rows, style) {
   return out;
 }
 
-// Set a line of text in LOWTIDE. Returns the rows and where each glyph landed.
+// Set a line of text in SWASH. Returns the rows and where each glyph landed.
 function setWord(text, style = STYLES.lit, spacing = 1) {
   const rows = Array(GH + 1).fill('');
   const spans = [];
@@ -162,7 +170,7 @@ function setWord(text, style = STYLES.lit, spacing = 1) {
     let g;
     if (ch === ' ') g = Array(GH + 1).fill(' '.repeat(SPACE_W + 1));
     else if (GLYPHS[ch]) g = traceGlyph(GLYPHS[ch], style);
-    else throw new Error(`LOWTIDE has no glyph for ${JSON.stringify(ch)}`);
+    else throw new Error(`SWASH has no glyph for ${JSON.stringify(ch)}`);
     for (let y = 0; y <= GH; y++) rows[y] += ' '.repeat(gap) + g[y];
     spans.push({ ch, x0: x + gap, x1: x + gap + g[0].length - 1 });
     x += gap + g[0].length;
@@ -171,13 +179,15 @@ function setWord(text, style = STYLES.lit, spacing = 1) {
   const again = spans.filter((s) => s.ch !== ' ').map((s) => rows.map((r) => r.slice(s.x0, s.x1 + 1)).join('\n'));
   const want = [...text].filter((c) => c !== ' ').map((c) => traceGlyph(GLYPHS[c], style).join('\n'));
   if (again.join('|') !== want.join('|')) throw new Error(`banner "${text}" does not read back`);
+  // The lit style may only use the twelve line pieces the outline format has placeholders for.
+  if (style === STYLES.lit) for (const ch of rows.join('')) if (ch !== ' ' && !TDF_PIECES.includes(ch)) throw new Error(`"${ch}" in "${text}" is not an outline piece`);
   return { rows: rows.map((r) => r.replace(/\s+$/, '')), spans, width: x };
 }
 // Because it is a font, it sets any word made of its glyphs:
 //   node examples/castaway/src/48-tdf-font-banner_opus_5.5.mjs --set "SEA 2" [lit|single|double]
 // prints the banner and writes nothing.
 if (process.argv[2] === '--set') {
-  const s = setWord(process.argv[3] ?? 'LOWTIDE', STYLES[process.argv[4] ?? 'lit']);
+  const s = setWord(process.argv[3] ?? 'SWASH', STYLES[process.argv[4] ?? 'lit']);
   console.log(`${s.rows.join('\n')}\n(${s.width} columns)`);
   process.exit(0);
 }
@@ -259,7 +269,7 @@ function beside(banner, text, at, from = 0) {
 }
 
 // =============================================================================================
-// 4. The header: a specimen card for CASTAWAY, set in LOWTIDE, lit edge, spacing 1
+// 4. The header: a specimen card for CASTAWAY, set in SWASH, lit edge, spacing 1
 // =============================================================================================
 const hero = setWord('CASTAWAY');
 if (hero.width !== PAGE - 4) throw new Error(`hero is ${hero.width} columns; the card holds ${PAGE - 4}`);
@@ -313,8 +323,8 @@ const notes = (...ls) => ls.map(note);
 // GAGS ----------------------------------------------------------------------------------------
 const gagsPre = pre([
   ...section('GAGS', [
-    `more than ${ACTIVITIES_FLOOR} activities on four timers.`,
-    'a few of them, in no order. each',
+    `more than ${ACTIVITIES_FLOOR} activities, most of them on`,
+    'four timers. a few, in no order. each',
     'one starts on the next bar of the',
     'music, so every gag lands on the',
     'beat.',
@@ -323,7 +333,7 @@ const gagsPre = pre([
   ...leaders([
     ['BOTTLE', 'a message in a bottle washes straight back. later, a', 'different bottle brings a reply.'],
     ['DRONE', 'a delivery drone drops off a parcel. it is another pair', 'of headphones.'],
-    ['TURTLE', 'a sea turtle visits, then leaves. everyone leaves, except', 'her.'],
+    ['TURTLE', 'a sea turtle swims in and crawls up beside her. they both', 'doze off. this counts as an event.'],
     ['CAT', 'a grey tabby with a white chest arrives on a crate, climbs', 'the palm and naps. one day it floats away again. another', 'day, it comes back.'],
     ['SIGNAL', 'there is one bar of signal on the island. it is at the', 'top of the palm.'],
     ['SHARK', 'a shark in headphones goes by, nodding to the beat. nobody', 'asks what it is listening to.'],
@@ -333,7 +343,8 @@ const gagsPre = pre([
     ['HYDROFOIL', 'a bro on an electric hydrofoil throws a shaka and carves', 'off.'],
     ['BUSHCRAFT', 'fire by friction, a hammock, a lookout up the palm, spear', 'fishing.'],
     ['KUMARA', 'planted once. grows, slowly, over the course of the video.'],
-    ['EVERY DAY', 'coconut sipping, fishing, jogging laps, waving for rescue,', 'and a sandcastle that the tide takes.'],
+    ['RESCUE', 'she finally spots a ship and waves like mad. it sounds its', 'horn back, then sails on. she puts the music back on.'],
+    ['EVERY DAY', 'coconut sipping, fishing, jogging laps, a stroll to the', 'waterline, and a sandcastle that the tide takes.'],
   ], 15),
   rule,
   ...notes(
@@ -372,8 +383,8 @@ const timersPre = pre([
     'the gags land on the beat the way the letters land on the grid.',
     '',
     'lanes let things overlap. she has one; the cat, the turtle, the sea and',
-    'sky, and the shore each have their own. so the cat can nap up the palm',
-    'while she does something else entirely, and nobody takes turns.',
+    'sky, the shore and even the kumara patch each have their own. so the cat',
+    'can nap up the palm while she does something else entirely.',
     '',
     'scene life: 26 entries, 4 always on and 22 timed. shore waves and',
     'drifting cloud shadows are built. birds, planes with vapour trails,',
@@ -389,8 +400,9 @@ const soundPre = pre([
   ...section('80 BPM', [
     'every sound is synthesized',
     'from code. no samples, no',
-    'loops, no recordings, so',
-    'no third-party licence.',
+    'stock loops, no',
+    'recordings, so no',
+    'third-party licence.',
   ]),
   rule,
   ...leaders([
@@ -403,8 +415,8 @@ const soundPre = pre([
   ], 12),
   rule,
   ...notes(
-    'a bar is 3 seconds and a letter is one column wide. everything here',
-    'snaps to a grid of some kind.',
+    'a bar is 3 seconds and the gap between letters is one column. everything',
+    'here snaps to a grid of some kind.',
   ),
 ]);
 
@@ -442,7 +454,7 @@ const runPre = pre([
   ),
 ]);
 
-// LOWTIDE: the specimen ------------------------------------------------------------------------
+// SWASH: the specimen ------------------------------------------------------------------------
 const PANGRAM = ['A QUIET CAT DOZES. SHE JOGS, NODS, WAVES AT A', 'HYDROFOIL. A DRONE BOX. KUMARA. PALM.'];
 {
   const letters = new Set(PANGRAM.join('').replace(/[^A-Z]/g, ''));
@@ -457,10 +469,12 @@ const specimenRows = [
   ...section(FONT_NAME, ['an outline', 'face by', FOUNDRY]),
   rule,
   ...leaders([
+    ['NAME', 'a swash is the sheet of water that runs up the beach after', 'a wave breaks. it is also the flourish on a fancy letter.', 'this face has the first kind only.'],
     ['GRID', `${GH} pixels tall, traced to ${GH + 1} rows. stems 2 wide, beams 1 tall`],
     ['GLYPHS', `${glyphCount}: ${caps} capitals, ${digits} digits, and ${marks.join(' ')}`],
     ['MISSING', 'lowercase, most punctuation, and night-time'],
     ['SPACING', '1 column. no kerning. every gap is the same gap.'],
+    ['PIECES', `${[...TDF_PIECES].length}: ${[...TDF_PIECES].join(' ')}, the line pieces behind`, 'placeholders A to L of an outline font file. a letter may', 'use those and nothing else, and the script checks.'],
     ['EDGES', 'lit: double lines on the top and the right, the two sides', 'the sun reaches, single lines on the others. the sun', 'never sets here: no night is a project rule, and now it', 'is a font rule too.'],
   ], 12),
   rule,
@@ -507,12 +521,12 @@ const colophonPre = pre(notes(
   '',
   'greetz to the hermit crab, for wearing a coconut with confidence. to the',
   'grey tabby, for arriving and leaving by crate. to the shark, for keeping',
-  'the beat. to the turtle, for visiting. and to the kumara, for growing at',
-  'all.',
+  'the beat. to the turtle, for sharing a nap. and to the kumara, for',
+  'growing at all.',
 ));
 
 // =============================================================================================
-// 5. The colour proof (SVG). The same LOWTIDE bitmaps as a Color-type font (CASTAWAY) and a
+// 5. The colour proof (SVG). The same SWASH bitmaps as a Color-type font (CASTAWAY) and a
 //    Block-type font (what is happening now), on an 80-column text screen of 8 x 16 cells in
 //    the sixteen text-mode colours. One loop is 60 s: the theme's 20 bars of 3 s. Words change
 //    on a bar line and stamp in one letter per sixteenth note (80 BPM), as if typed into a
@@ -768,7 +782,7 @@ const NOW = [
   { word: 'IDLE', from: 4, to: 7 },
   { word: 'BOTTLE', from: 7, to: 8, caption: 'A MESSAGE IN A BOTTLE. IT WASHES STRAIGHT BACK.' },
   { word: 'IDLE', from: 8, to: 11 },
-  { word: 'TURTLE', from: 11, to: 12, caption: 'A SEA TURTLE VISITS. THEN IT LEAVES.' },
+  { word: 'TURTLE', from: 11, to: 12, caption: 'A SEA TURTLE VISITS. THEY BOTH DOZE OFF.' },
   { word: 'IDLE', from: 12, to: 14 },
   { word: 'DRONE', from: 14, to: 15, caption: 'A PARCEL ARRIVES. IT IS MORE HEADPHONES.' },
   { word: 'IDLE', from: 15, to: 17 },
@@ -793,26 +807,30 @@ const logoW = inkMap('CASTAWAY').w;
 const LOGO_COL = Math.floor((COLS - logoW) / 2);
 colourType(still, 'CASTAWAY', LOGO_COL, L.logo);
 const WORD_COL = LOGO_COL;
-// The island, small, at the right of the word line: half-row pixels, as the Block type uses.
-// g/G frond greens, t trunk, y sand, c/C water. One tall palm, leaning a little, no one under it
-// at this size: she is in the word line.
+// The island, small, at the right of the word line, in a little daylight window: half-row
+// pixels, as the Block type uses. s sky, u/U the sun (top right, where the letters are lit
+// from), g/G frond greens, t trunk, y sand, b sea, C wave crests. One tall palm, leaning a
+// little toward the sun; no one under it at this size: she is in the word line.
 const ISLAND = [
-  '...gGg....',
-  '.gGGGGGg..',
-  'gg..tG.gg.',
-  'g...t...g.',
-  '....t.....',
-  '....t.....',
-  '...t......',
-  '...t......',
-  '...t......',
-  '..ytyy....',
-  'yyyyyyyy..',
-  'CcCCccCCcC',
+  'sssssssssssss',
+  'sssgGgssssuus',
+  'sgGGGGGgsuUUu',
+  'ggsstGsgsuUUu',
+  'gssstsssssuus',
+  'sssstssssssss',
+  'sssstssssssss',
+  'bbbtbbbbbbCbb',
+  'bbytyyybbbbbb',
+  'byyyyyyyybbCb',
+  'bbCbbbbbbbbbb',
+  'bbbbbbCbbbbbb',
 ];
 const ISLAND_COL = COLS - 1 - ISLAND[0].length, ISLAND_HY = (L.caption + 1) * 2 - ISLAND.length;
-const ISLAND_INK = { g: 'green', G: 'lgreen', t: 'brown', y: 'yellow', c: 'cyan', C: 'lcyan' };
-ISLAND.forEach((row, y) => [...row].forEach((k, x) => { if (ISLAND_INK[k]) still.half(ISLAND_COL + x, ISLAND_HY + y, ISLAND_INK[k]); }));
+const ISLAND_INK = { s: 'cyan', u: 'yellow', U: 'white', g: 'green', G: 'lgreen', t: 'brown', y: 'yellow', b: 'blue', C: 'lcyan' };
+ISLAND.forEach((row, y) => {
+  if (row.length !== ISLAND[0].length) throw new Error(`island row ${y} is ${row.length} wide`);
+  [...row].forEach((k, x) => { if (!ISLAND_INK[k]) throw new Error(`island key ${k}`); still.half(ISLAND_COL + x, ISLAND_HY + y, ISLAND_INK[k]); });
+});
 
 const layers = [];
 layers.push(drawCells(still));
@@ -857,19 +875,21 @@ for (const seg of NOW) {
     const until = i + 1 < ends.length ? ends[i + 1][0] : t1;
     wordLayer.push(during([[at, until]], `<rect class="blink" x="${(c + 1) * CW}" y="${(L.word + 2) * CH + 8}" width="${CW}" height="${CH / 2}" fill="${VGA.lgrey}"/>`));
   });
+  if (col >= ISLAND_COL - 1) throw new Error(`${seg.word} and its cursor run into the island`); // the cursor sits in column col
+  if (WORD_COL + (seg.caption ?? IDLE_CAPTION).length >= ISLAND_COL - 1) throw new Error(`caption for ${seg.word} runs into the island`);
   wordLayer.push(during([[t0, t1]], stext(L.caption, WORD_COL, seg.caption ?? IDLE_CAPTION, seg.caption ? 'white' : 'lgrey')));
 }
 for (const { svg } of blockIds.values()) blockDefs.push(svg);
 css.push(`@keyframes bl{0%{opacity:1}50%{opacity:0}100%{opacity:1}}.blink{animation:bl ${BEAT}s step-end infinite}`);
 css.push('@media (prefers-reduced-motion:reduce){*{animation:none!important}}');
 
-const SVG_TITLE = 'CASTAWAY, set in LOWTIDE colour type';
-const SVG_ALT = 'An 80-column text screen in the sixteen DOS colours: a colour proof of the LOWTIDE font. '
-  + 'A blue bar at the top reads LOWTIDE, colour type and block type, spacing 1, EBB & KERN. Below it, CASTAWAY in big slab capitals, '
+const SVG_TITLE = 'CASTAWAY, set in SWASH colour type';
+const SVG_ALT = 'An 80-column text screen in the sixteen-colour DOS text palette: a colour proof of the SWASH font. '
+  + 'A blue bar at the top reads SWASH, colour type and block type, spacing 1, EBB & KERN. Below it, CASTAWAY in big slab capitals, '
   + 'yellow with white top faces and white right edges, brown left edges, grey dotted counters and a dotted shadow falling down and to the left: lit from the top right. '
   + 'Under the label NOW ON THE ISLAND, a smaller light cyan block-letter word is typed in on the bar lines, one letter per sixteenth note: mostly IDLE, '
   + 'captioned SHE NODS TO THE MUSIC. NOTHING ELSE HAPPENS. Now and then it is COCONUT, BOTTLE, TURTLE, DRONE or SHARK, each with a one-line caption, '
-  + 'and then IDLE again. At the right, a tiny palm island. A bottom bar counts BAR 01/20 to 20/20 with four beat lights, 80 BPM, F MAJOR, SEED 1992, and NOT TO SCALE.';
+  + 'and then IDLE again. At the right, a tiny palm island in a daylight window: cyan sky, a yellow sun in the top right corner, blue sea. A bottom bar counts BAR 01/20 to 20/20 with four beat lights, 80 BPM, F MAJOR, SEED 1992, and NOT TO SCALE.';
 const tglyphDefs = [...tglyphIds].map(([ch, id]) => {
   const g = TFONT.get(ch);
   return `<path id="${id}" d="${runsToPath(g.map((v) => runsOf(Array.from({ length: 8 }, (_, x) => (v >> (7 - x)) & 1))))}"/>`;
@@ -897,14 +917,14 @@ const md = [
   '',
   `**Castaway** (working title) is a stationary-frame lo-fi video for YouTube: one tiny island, one tall palm, one raft, and a young woman in cream headphones with ten hours to fill. She mostly idles, nodding to the music. Every so often, something happens. It is an unofficial remake inspired by the small-island routines and visual comedy of *Johnny Castaway*, the 1992 desert-island screensaver, repainted as a sunny, hand-painted coastal scene: 16:9, 1080p, 30 fps, and always daytime.`,
   '',
-  `A bottle washes straight back. A drone delivers more headphones. A shark in headphones nods along. [activities.toml](activities.toml) holds more than ${ACTIVITIES_FLOOR} activities on four timers, and every one starts on the next bar of the music, so the gags land on the beat. Every sound is synthesized from code: no samples, no loops, no recordings.`,
+  `A bottle washes straight back. A drone delivers more headphones. A shark in headphones nods along. [activities.toml](activities.toml) holds more than ${ACTIVITIES_FLOOR} activities, most of them on four timers, and every one starts on the next bar of the music, so the gags land on the beat. Every sound is synthesized from code: no samples, no stock loops, no recordings.`,
   '',
   '```sh',
   'python tools/serve.py',
   '# then open http://127.0.0.1:8765/ for the live preview and the MP4 export',
   '```',
   '',
-  `<sub>In development: no video has been published yet. Set in ${FONT_NAME}, an outline face with exactly one A.</sub>`,
+  `<sub>In development: no video has been published yet. Set in ${FONT_NAME}, an outline face with exactly one A and no swashes.</sub>`,
   '',
   '<br>',
   '',

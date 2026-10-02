@@ -2,7 +2,7 @@
 <!-- Style: ANSImation, the modem-speed draw-in (catalogue entry ansi-04). Links are written for the castaway project root. -->
 
 <p align="center">
-  <img src="assets/49-ansimation_opus_5.5.svg" width="832" alt="CASTAWAY, as a 1990s ANSI animation on a black 80-column text screen. Big yellow block capitals with a dithered shadow spell CASTAWAY and are already there when you arrive; the rest of the file paints in below them, row by row, behind a grey block cursor, while the terminal status line reads BEACHCOMM, ANSI, 9600 8N1, castaway.ans, 80x25, RECEIVING and then IDLE, with 80 BPM at the end. On the left, a framed stage titled the island, always daytime: a half-block pixel island with one tall palm and two coconuts, a sun, clouds, a raft and a blue sea. A young woman in cream headphones, a coral tank top and cream shorts stands by the palm and nods on every beat, eyes shut. A hermit crab walks in from the sea. On the downbeat a coconut drops onto it with a red KLONK! and stars, and the coconut walks off on crab legs, into the sea. Later a shark fin wearing headphones glides along the bottom of the frame, nodding in time with her, and the palm grows another coconut. The title letters hop one at a time to the beat. A caption line under the stage types out each event. On the right, four facts: an unofficial lo-fi remake of a 1992 desert-island screensaver, ten hours, one tiny island, one tall palm, she idles and now and then, on the beat, something happens; gags: a coconut that walks off, a shark in headphones, a cat on a crate, a bottle that washes straight back; more than 90 activities on four timers, every 2 to 5 minutes up to every 3 to 6 hours; sound synthesized from code, no samples, no loops. The last line is the run command: python tools/serve.py, then open http://127.0.0.1:8765/.">
+  <img src="assets/49-ansimation_opus_5.5.svg" width="832" alt="CASTAWAY, as a 1990s ANSI animation on a black 80-column text screen. Big yellow block capitals with a dithered shadow spell CASTAWAY and are already there when you arrive; the rest of the file paints in below them, row by row, behind a grey block cursor, while the terminal status line reads BEACHCOMM, ANSI, 9600 8N1, castaway.ans, 80x25, RECEIVING and then IDLE, with 80 BPM at the end. On the left, a framed stage titled the island, always daytime: a half-block pixel island with one tall palm and two coconuts, a sun, clouds, a log raft and a blue sea. A young woman in cream headphones, a coral tank top and cream shorts stands by the palm and nods on every beat. A hermit crab walks in from the sea. On the downbeat a coconut drops onto it with a red KLONK! and stars, and the coconut walks off on crab legs, into the sea. Later a fin glides in, and a grinning shark surfaces right below her in headphones and nods in time with her for two bars before it sinks again, and the palm grows another coconut. The title letters hop one at a time to the beat. A caption line under the stage types out each event. On the right, four facts: an unofficial lo-fi remake of a 1992 desert-island screensaver, ten hours, one tiny island, one tall palm, she idles and now and then, on the beat, something happens; gags: a coconut that walks off, a shark in headphones, a cat on a crate, a bottle that washes straight back; more than 90 activities, four timers, every 2 to 5 minutes up to every 3 to 6 hours; sound synthesized from code, no samples, no mics. The last line is the run command: python tools/serve.py, then open http://127.0.0.1:8765/.">
 </p>
 
 <p align="center">
@@ -10,9 +10,9 @@
   <sub>an unofficial lo-fi remake, inspired by the 1992 screensaver <i>Johnny Castaway</i> · in development · no video published yet</sub>
 </p>
 
-**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour streams: a young woman, a tiny island, one tall palm, a raft and a great deal of time. She stands about. She nods along to her headphones. Every so often, on the next bar of the music, something happens: a coconut lands on a hermit crab, who keeps it; a shark in headphones glides past, nodding to the same song; a stray cat drifts in on a crate and naps at the top of the palm. Then she goes back to standing about. The header above takes 3.55 seconds to arrive at 9600 baud. The video takes ten hours. Nobody here is in a hurry.
+**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour streams: a young woman, a tiny island, one tall palm, a raft and a great deal of time. She stands about. She nods along to her headphones. Every so often, on the next bar of the music, something happens: a coconut lands on a hermit crab, who keeps it; a shark surfaces in headphones and nods along to the same beat; a stray cat drifts in on a crate and naps at the top of the palm. Then she goes back to standing about. The header above takes 3.55 seconds to arrive at 9600 baud. The video takes ten hours. Nobody here is in a hurry.
 
-The happenings are booked in [activities.toml](activities.toml): more than 90 activities on four timers, regular every 2 to 5 minutes, occasional every 12 to 25, rare every 30 to 60 and super rare every 3 to 6 hours (three a run at most), plus follow-ups that only ever come after something else. A typical ten-hour run (the median of 200 simulated runs) has about 155 regular, 30 occasional, 13 rare and 2 super-rare events, and she is busy for about a third of it. Each one waits for the next bar of the music, every 3 seconds, so the gags land on the beat, like the coconut above. Lanes let them overlap, which is how a ship gets past while she is busy with a coconut (it waits until she is). The default run is 10:00:00 on seed 1992, and it is always daytime.
+The happenings are booked in [activities.toml](activities.toml): more than 90 activities, most of them on four timers (regular every 2 to 5 minutes, occasional every 12 to 25, rare every 30 to 60, super rare every 3 to 6 hours and three a run at most) and the rest follow-ups that only ever come after something else. A typical ten-hour run (the median of 200 simulated runs) has about 155 regular, 30 occasional, 13 rare and 2 super-rare events, and she is busy for about a third of it. Each one waits for the next bar of the music, every 3 seconds, so the gags land on the beat, like the coconut above. Lanes let them overlap, which is how a ship gets past while she is busy with a coconut (it waits until she is). The default run is 10:00:00 on seed 1992, and it is always daytime.
 
 Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): more than 150 sound files and no samples, loops or recordings, so no third-party licence applies. The theme is a seamless 60-second loop at 80 BPM in F major (ii-V-I-vi), 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle, and the ocean is a seamless 60-second loop too. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and the levels are adjustable in master and per routine. Nobody has listened to any of it yet. The status line already knows the tempo.
 
@@ -22,13 +22,13 @@ python tools/schedule.py           # validate it all, simulate a 10-hour run
 python tools/render_demo.py --dev  # dev reel of every activity, with a HUD
 ```
 
-The page at [web/index.html](web/index.html) previews live and exports a YouTube-ready MP4: the browser encodes frame-exact H.264 (WebCodecs, 68 to 78 frames a second at 1080p30 in Chrome), and the server mixes in the sound and joins the two. Plain ES modules, no build step, no npm packages. Hard cuts and stepped movement are the house style, which this header approves of. Decisions and notes live in [MUSING.md](MUSING.md).
+The page at [web/index.html](web/index.html) previews live and exports a YouTube-ready MP4: the browser encodes frame-exact H.264 (WebCodecs: 68 to 78 frames a second in Chrome, measured at 1080p30), and the server mixes in the sound and joins the two. Plain ES modules, no build step, no npm packages. Hard cuts and stepped movement are the project's motion defaults, which this header approves of. Decisions and notes live in [MUSING.md](MUSING.md).
 
 <details>
 <summary><b>CAPTURE.TXT</b>: the same screen with the colour codes stripped, and every caption it typed</summary>
 
 ```text
-CAPTURE.TXT · castaway.ans · 80x25 · 4540 bytes · 9600 8N1 · colour stripped
+CAPTURE.TXT · castaway.ans · 80x25 · 4544 bytes · 9600 8N1 · colour stripped
 
    C  A  S  T  A  W  A  Y      (block capitals: they do not capture as text)
 
@@ -44,12 +44,12 @@ CAPTURE.TXT · castaway.ans · 80x25 · 4540 bytes · 9600 8N1 · colour strippe
 │           nodding on the beat.            │       cat on a crate. a bottle
 │                                           │       that washes straight back.
 │       a hermit crab is on its way.        │
-│                                           │ WHEN  more than 90 activities on
+│                                           │ WHEN  more than 90 activities.
 │                                           │       four timers: every 2-5 min
 │                                           │       up to every 3-6 hours.
 │                                           │
-└────────────┤ 1080p · 30 fps · seed 1992 ├─┘ SOUND synthesized from code. all
-                                                    of it. no samples, no loops.
+└──────────────┤ 16:9 · 1080p · seed 1992 ├─┘ SOUND synthesized from code. all
+                                                    of it. no samples, no mics.
  C:\CASTAWAY>python tools/serve.py  then open http://127.0.0.1:8765/
 
 -- the caption line, as typed, bar by bar ------------------------------------
@@ -57,8 +57,9 @@ bar  1   » she idles. she nods. 80 bpm, F major.
 bar  3   » a hermit crab walks in, on the beat.
 bar  5   » a coconut lands. on the beat. on him.
 bar  6   » the crab moves into the coconut.
-bar  8   » she missed it. headphones.
-bar  9   » a shark in headphones. same playlist.
+bar  8   » she keeps nodding. it is a long video.
+bar  9   » a fin. it is in no hurry either.
+bar 10   » it surfaces in headphones. same beat.
 bar 12   » the palm reloads. 9:59:24 to go.
 ```
 
@@ -67,9 +68,9 @@ bar 12   » the palm reloads. 9:59:24 to go.
 <details>
 <summary><b>LINE SPEED</b>: why the header takes 3.55 seconds, and what the cursor is up to</summary>
 
-The generator encodes the screen as a real ANSI stream before it draws anything: half-block pixels become ▀, ▄, █ or a shade character with a foreground and a background colour, gaps become cursor-forward codes, every colour change costs an escape sequence, and each row ends in CR LF. The whole 80x25 screen comes to 4,540 bytes. The title is already up when you arrive; the other 3,066 bytes come in at 9600 baud, 960 bytes a second, and each row takes exactly as long as its bytes do, so rows of sea and sand crawl and the empty ones flash past. At 2400 baud the full screen would take 18.9 seconds.
+Before it draws anything, the generator works out what this screen would cost as an ANSI stream (it counts the bytes; no .ANS file is written): half-block pixels become ▀, ▄, █ or a shade character with a foreground and a background colour, gaps become cursor-forward codes, every colour change costs an escape sequence, and each row ends in CR LF. By that count the whole 80x25 screen is 4,544 bytes. The title is already up when you arrive; the other 3,070 bytes take 3.2 seconds at 9600 baud (960 bytes a second), and with 0.35 seconds of pauses, before and after, the screen is in at 3.55 seconds. Each row takes exactly as long as its bytes do, so rows of sea and sand crawl and the empty ones flash past. At 2400 baud the full screen would take 18.9 seconds.
 
-Then it plays as a cartoon on the soundtrack's grid: 80 BPM, a beat every 0.75 seconds and a bar every 3. Sprites move by erase and redraw, with the faint flicker that comes with it. The caption line is wiped and retyped at 16 characters a second, far slower than the line could carry it, because a caption that arrives in a twentieth of a second is not much of a caption. The cursor follows the work: along the caption as it types, down with the coconut, up to the palm when it grows a new one, then back to the end of the run line, where it blinks on the beat. The cartoon loops every 12 bars (36 seconds). With reduced motion you get one finished frame: the coconut has just landed.
+Then it plays as a cartoon on the soundtrack's grid: 80 BPM, a beat every 0.75 seconds and a bar every 3. Sprites move by erase and redraw, with the faint flicker that comes with it. The caption line is wiped and retyped at 16 characters a second, far slower than the line could carry it, because a caption that arrives in about a twentieth of a second is not much of a caption. The cursor follows the work: along the caption as it types, down with the coconut, up to the palm when it grows a new one, then back to the end of the run line, where it blinks on the beat. The shark nods on the same beat as she does. Nobody told it to. The cartoon loops every 12 bars (36 seconds). With reduced motion you get one finished frame: the coconut has just landed.
 
 </details>
 
@@ -79,15 +80,15 @@ Then it plays as a cartoon on the soundtrack's grid: 80 BPM, a beat every 0.75 s
 ```text
 TITLE     castaway.ans, an ANSImation for the Castaway README
 AUTHOR    pumice
-GROUP     Ebb & Flow Control
-SIZE      4540 bytes · 80x25 · 16 colours · half-block pixels
+GROUP     Half Duplex (one of us talks at a time)
+SIZE      4544 bytes · 80x25 · 16 colours · half-block pixels
 TERMINAL  BEACHCOMM · 9600 8N1
 FONT      an 8x16 bitmap drawn for this header
 COMMENT   unofficial · inspired by a 1992 screensaver · always daytime
 ```
 
-Greetz to the hermit crab (new address), the shark (same playlist), the cat on the crate (wherever it floated off to this time), the ship (busy waiting for her to be busy), and anyone who ever sat through 18.9 seconds at 2400 baud to see a palm tree.
+Greetz to the hermit crab (new address), the shark (same beat), the cat on the crate (wherever it floated off to this time), the ship (busy waiting for her to be busy), and anyone who ever sat through 18.9 seconds at 2400 baud to see a palm tree.
 
-pumice, Ebb & Flow Control and BEACHCOMM are invented for this header. The ANSImation style belongs to the 1990s BBS art scene; no group, artist, board, file or logo from it is reproduced here, and every letter, sprite and pixel is drawn new. *Johnny Castaway* and its castaway belong to their owners; Castaway is an unofficial remake inspired by it and is not affiliated with them.
+pumice, Half Duplex and BEACHCOMM are invented for this header. The ANSImation style belongs to the 1990s BBS art scene; no group, artist, board, file or logo from it is reproduced here, and every letter, sprite and pixel is drawn new. *Johnny Castaway* and its castaway belong to their owners; Castaway is an unofficial remake inspired by it and is not affiliated with them.
 
 </details>

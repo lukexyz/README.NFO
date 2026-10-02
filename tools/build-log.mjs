@@ -57,7 +57,7 @@ function readAgent(file) {
     if (row.timestamp) { first ??= row.timestamp; last = row.timestamp; }
     const content = row.message?.content;
     if (row.type === 'user' && typeof content === 'string' && !slug) {
-      slug = ((content.match(/slug: ([0-9]{2}-[A-Za-z0-9._-]+)/) || [])[1] || '').replace(/[.,]+$/, '');
+      slug = ((content.match(/slug: ([0-9]{2,3}-[A-Za-z0-9._-]+)/) || [])[1] || '').replace(/[.,]+$/, '');
       styleId = (content.match(/catalogue entry ([a-z0-9]+-\d\d)/) || [])[1] || '';
     }
     if (row.type === 'assistant') {

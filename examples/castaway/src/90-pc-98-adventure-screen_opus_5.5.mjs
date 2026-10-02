@@ -17,7 +17,7 @@
 //     16 x 16 full-width kana and kanji, all drawn pixel by pixel in this file
 //     (zero with a slash, single-pixel strokes);
 //   * nothing tweens: every change is a hard cut, typing goes one character
-//     cell at a time, and the menu cursor steps.
+//     at a time (a kanji appears whole), and the menu cursor steps.
 //
 // The adventure: the command menu reads 見る LOOK, 話す TALK, 待つ WAIT,
 // 聞く LISTEN, 出る LEAVE, 実行 RUN. TALK is greyed out, because there is
@@ -28,7 +28,7 @@
 // walk over the water and the iced coffee for LEAVE, the drone for RUN).
 // She nods on every beat throughout; the bar counter in the status box
 // counts the 20 bars. At the loop point the picture is wiped and redrawn
-// one interlaced line in eight at a time, like a picture loading from disk.
+// one interlaced line in eight at a time, like a picture being loaded.
 //
 // Every animated value also gets the value it has on the first frame as its
 // static style, so under prefers-reduced-motion the screen stops on that
@@ -343,10 +343,10 @@ const JP = {
   'え': '................|......##........|........##......|................|..##########....|.........#......|........#.......|.......#........|......####......|.....#...#......|....#....#......|...#.....#......|..#......#......|.#.......####...|................|................',
   '？': '................|................|.....#####......|....#.....#.....|..........#.....|..........#.....|.........#......|........#.......|.......#........|.......#........|................|................|.......#........|................|................|................',
   '見': '................|...#########....|...#.......#....|...#.......#....|...#########....|...#.......#....|...#.......#....|...#########....|...#.......#....|...#.......#....|...#########....|.....#..#.......|.....#..#.......|....#...#.....#.|...#....#.....#.|.##......######.',
-  '話': '................|..#..........##.|...#......###...|#####.....#.....|..........#.....|####..##########|..........#.....|####......#.....|..........#.....|####...#######..|#..#...#.....#..|#..#...#.....#..|#..#...#.....#..|####...#######..|#..#...#.....#..|................',
+  '話': '................|..#..........##.|...#......###...|#####.....#.....|..........#.....|####..##########|..........#.....|####......#.....|..........#.....|####...#######..|#..#...#.....#..|#..#...#.....#..|#..#...#.....#..|#..#...#.....#..|####...#######..|................',
   '待': '................|...#......#.....|..#....#######..|.#........#.....|...#.###########|..##............|.#.#.......#....|#..#.###########|...#........#...|...#..#.....#...|...#...#....#...|...#........#...|...#........#...|...#........#...|...#......###...|................',
   '聞': '................|.######..######.|.#....#..#....#.|.######..######.|.#....#..#....#.|.######..######.|.#............#.|.#..########..#.|.#...#....#...#.|.#...######...#.|.#...#....#...#.|.#...######...#.|.#..########..#.|.#........#...#.|.#........#..##.|................',
-  '出': '................|.......#........|..#....#....#...|..#....#....#...|..#....#....#...|..#....#....#...|..###########...|.......#........|.#.....#.....#..|.#.....#.....#..|.#.....#.....#..|.#.....#.....#..|.#.....#.....#..|.#############..|.............#..|................',
+  '出': '................|.......#........|..#....#....#...|..#....#....#...|..#....#....#...|..#....#....#...|..###########...|.......#........|.#.....#.....#..|.#.....#.....#..|.#.....#.....#..|.#.....#.....#..|.#.....#.....#..|.#.....#.....#..|.#############..|................',
   '実': '.......#........|.......#........|.##############.|.#............#.|...#########....|.......#........|...#########....|.......#........|###############.|.......#........|......#.#.......|.....#...#......|....#.....#.....|..##.......##...|##...........##.|................',
   '行': '................|...#............|..#...#########.|.#..............|...#............|..##............|.#.#.###########|#..#........#...|...#........#...|...#........#...|...#........#...|...#........#...|...#........#...|...#........#...|...#......###...|................',
   '島': '.......#........|......#.........|..##########....|..#........#....|..##########....|..#........#....|..##########....|..#.............|..#############.|..............#.|....#..#..#...#.|....#..#..#...#.|....#..#..#...#.|....########..#.|.............#..|...........##...',
@@ -375,7 +375,7 @@ if (SHOW_GLYPHS) for (const ch of Object.keys(JP)) {
   console.log(ch);
   console.log(JP[ch].split('|').map((r) => r.replace(/\./g, ' ').replace(/#/g, '█')).join('\n'));
 }
-const isWide = (ch) => JP[ch] !== undefined;
+const isWide = (ch) => JP[ch] !== undefined || ch === '　'; // the full-width space is two cells too
 const cellsOf = (s) => [...s].reduce((n, ch) => n + (isWide(ch) ? 2 : 1), 0);
 
 const usedGlyphs = new Map(); // char -> id
@@ -976,9 +976,9 @@ const SHARK_UP = 15, SHARK_DOWN = 22.5, SHARK_GONE = 23.25;
   pic.push(`<g class="${windows([[D0, LOOP]])}"><g class="${moves(psteps)}">${emit(parcel)}</g></g>`);
 }
 
-// The loop point: the picture is wiped and redrawn the way a disk-loaded
-// picture arrives, one interlaced line in eight at a time, so the reset to
-// the first scene reads as the next picture loading.
+// The loop point: the picture is wiped and redrawn one interlaced line in
+// eight at a time, so the reset to the first scene reads as the next
+// picture loading.
 const blindDefs = [];
 {
   const ORDER = [0, 4, 2, 6, 1, 5, 3, 7], dt = BEAT / 8;
@@ -1074,7 +1074,7 @@ const MSGS = [
   { win: [12, 24], lines: [
     [12.75, 'Time passes.'],
     [SHARK_UP, 'On the next bar, a shark in headphones surfaces and nods along.'],
-    [null, 'More than 90 activities on four timers: every 2-5 min, 12-25 min,'],
+    [null, 'More than 90 activities. Four timers: every 2-5 min, 12-25 min,'],
     [null, '30-60 min and, rarely, every 3-6 hours. The rest of the time: this.'],
   ] },
   { win: [24, 36], lines: [
@@ -1085,7 +1085,7 @@ const MSGS = [
   ] },
   { win: [36, LEAVE_T], lines: [
     [36.75, '島から出ますか？　(Leave the island?)'],
-    [37.5, '　　 はい　 YES', 'xw', true],
+    [37.5, '　　 はい　　YES', 'xw', true],
     [37.5, '　　 いいえ　NO', 'xw', true],
   ], choice: true },
   { win: [LEAVE_T, 48], lines: [
@@ -1113,7 +1113,20 @@ for (const m of MSGS) {
     s += text(str, x, y, cls).svg;
     if (!instant) {
       const end = t + cells / CPS, w = cells * 8 + 8;
-      const cover = anim([[0, 'transform:translate(0,0)'], [t, 'transform:translate(0,0)', `steps(${cells},end)`], [end, `transform:translate(${cells * 8}px,0)`]]);
+      let cover;
+      if ([...str].some(isWide)) {
+        // a full-width character appears whole, not half at a time
+        const steps = [[0, 'transform:translate(0,0)']];
+        let c = 0;
+        for (const ch of str) {
+          const cw = isWide(ch) ? 2 : 1;
+          steps.push([t + c / CPS, `transform:translate(${(c + cw) * 8}px,0)`]);
+          c += cw;
+        }
+        cover = anim(steps);
+      } else {
+        cover = anim([[0, 'transform:translate(0,0)'], [t, 'transform:translate(0,0)', `steps(${cells},end)`], [end, `transform:translate(${cells * 8}px,0)`]]);
+      }
       s += `<path class="k ${cover}" d="M${x} ${y}h${w}v16h-${w}z"/>`;
       t = end;
     } else {
@@ -1125,7 +1138,7 @@ for (const m of MSGS) {
     // the choice cursor sits on はい, and はい blinks when it is taken
     const pick = 38.25;
     const y = LINE_Y[1];
-    s += `<g class="${windows([[37.5, LEAVE_T]])}"><path class="n ${anim([[0, 'opacity:0'], [pick, 'opacity:1'], [pick + 0.1875, 'opacity:0'], [pick + 0.375, 'opacity:1']])}" d="M${LINE_X + 36} ${y - 1}h${12 * 8}v18h-${12 * 8}z"/>${text('▶', LINE_X + 24, y, 'xy').svg}${text('はい　 YES', LINE_X + 40, y, 'xw').svg}</g>`;
+    s += `<g class="${windows([[37.5, LEAVE_T]])}"><path class="n ${anim([[0, 'opacity:0'], [pick, 'opacity:1'], [pick + 0.1875, 'opacity:0'], [pick + 0.375, 'opacity:1']])}" d="M${LINE_X + 36} ${y - 1}h${12 * 8}v18h-${12 * 8}z"/>${text('▶', LINE_X + 24, y, 'xy').svg}${text('はい　　YES', LINE_X + 40, y, 'xw').svg}</g>`;
   } else {
     // the "more" marker blinks once the text is all out
     s += `<g class="${windows([[t, m.win[1]]])}">${text('▼', QX + QW - 20, QY + QH - 20, `xy ${anim([[0, 'opacity:1'], [0.5, 'opacity:0']], 1)}`).svg}</g>`;
@@ -1144,14 +1157,15 @@ ui.push(text('█', 8 + 23 * 8, 384, `xw ${anim([[0, 'opacity:1'], [0.5, 'opacit
 // ================================================================ assembly
 const svg = [
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" shape-rendering="crispEdges">`,
-  `<title>CASTAWAY: a PC-98 style adventure screen</title>`,
+  `<title>CASTAWAY: a late-80s Japanese computer adventure screen</title>`,
+  `<desc>A dithered 16-colour island picture under the title CASTAWAY, a command menu (look, talk greyed out, wait, listen, leave, run) and a message window that types; the last message gives the run command, python tools/serve.py, then http://127.0.0.1:8765/.</desc>`,
   `<style>${Object.entries(PAL).map(([k, v]) => `.${k}{fill:${v}}`).join('')}${Object.entries(TXT).map(([k, v]) => `.${k}{fill:${v}}`).join('')}${css.join('')}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>`,
   `<defs><clipPath id="scr"><rect width="${W}" height="${H}" rx="10"/></clipPath><clipPath id="pic"><rect width="${PW}" height="${PH}"/></clipPath><clipPath id="msg"><rect x="${QX}" y="${QY}" width="${QW}" height="${QH}"/></clipPath>`,
   // patterns and glyphs are collected while drawing, so they go last
   null,
   `</defs><g clip-path="url(#scr)"><path class="k" d="M0 0h${W}v${H}H0z"/>${ui.join('')}</g></svg>`,
 ];
-svg[4] = `${blindDefs.join('')}${[...usedPatterns].map(patternDef).join('')}${glyphDefs()}${letterDefs.join('')}${spriteDefs.join('')}`;
+svg[svg.indexOf(null)] = `${blindDefs.join('')}${[...usedPatterns].map(patternDef).join('')}${glyphDefs()}${letterDefs.join('')}${spriteDefs.join('')}`;
 const out = svg.join('');
 fs.writeFileSync(OUT, out);
 console.log(`wrote ${OUT} (${(out.length / 1024).toFixed(1)} KB, ${usedGlyphs.size} glyphs, ${usedPatterns.size} patterns, ${animN} animations)`);

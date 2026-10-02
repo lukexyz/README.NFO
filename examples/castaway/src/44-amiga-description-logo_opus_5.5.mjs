@@ -35,10 +35,11 @@
 //     weight (a two-line trunk with bark ticks, six slim outlined fronds, curves cut into a few
 //     straight facets), with two coconuts for the colon that pokes above the roof. The text twin
 //     carries an ASCII palm in its place.
-//   * One 30 second loop (ten bars of the 80 BPM theme). The logo is complete at time zero. Then
-//     the tide comes in row by row, in hard steps, takes the ink, and goes out again; only the
-//     wet imprint (a faint wide underlay) and the palm are left. A cursor retypes the logo row by
-//     row, each character drawing itself on (stroke-dashoffset on a path of pathLength 1), the
+//   * One 30 second loop (ten bars of the 80 BPM theme). The logo is complete at time zero. Then,
+//     on a bar, the tide comes in row by row, in hard steps, takes the ink, and goes out again;
+//     only the wet imprint (a faint wide underlay) and the palm are left. On a later bar a cursor
+//     retypes the logo row by row (skating faster over the spaces), each character drawing itself
+//     on (stroke-dashoffset on a path of pathLength 1), the
 //     base rule shoots out to both margins, the arrowheads and the tag drop in, and it holds. The
 //     final state equals the first, so the loop has no seam.
 //   * Each character has its own small @keyframes (four stops), so the whole draw needs no script.
@@ -261,12 +262,13 @@ const LETTER = {
  / ____ \
 /_/    \_\
 `,
+  // the arm climbs in _/ steps, so it is shallower than the stem and the K stops reading as IK
   K: String.raw`
     ___   ___
-   /  /  /  /
-  /  /__/  /
- /  /____  \
-/__/     \__\
+   /  / _/ _/
+  /  /_/ _/
+ /  __   \
+/__/  \___\
 `,
   U: String.raw`
     ___  __
@@ -421,8 +423,10 @@ const UP_STEPS = TIDE_LOW - TIDE_TOP;    // rows climbed
 const T_HIGH = TIDE_IN + UP_STEPS * STEP;
 const T_EBB = T_HIGH + 0.75;
 const T_DRY = T_EBB + UP_STEPS * STEP;
-const T_TYPE = T_DRY + 0.75;             // cursor starts typing
-const DT = 0.027;                        // per cell
+const BAR = BEAT * 4;                    // 3 s: the tide comes in on a bar, the cursor starts on one
+const T_TYPE = Math.ceil((T_DRY + 0.4) / BAR) * BAR;
+const DT = 0.022;                        // per inked cell
+const DT_SPACE = 0.009;                  // per space: the cursor skates over the gaps
 const RET = 0.12;                        // carriage return
 const DRAW = 0.2;                        // one character drawing itself on
 const SHOOT = 0.018;                     // base rule, per cell, outward
@@ -435,8 +439,9 @@ for (let r = ROW_ROOF; r <= ROW_RULE + 0; r++) {
   for (let c = 0; c < COLS; c++) if (cell[r][c] && cell[r][c].layer === 'logo') cs.push(c);
   if (!cs.length) continue;
   for (let c = cs[0]; c <= cs.at(-1); c++) {
-    typed.push({ r, c, t, ink: !!(cell[r][c] && cell[r][c].layer === 'logo') });
-    t += DT;
+    const inked = !!(cell[r][c] && cell[r][c].layer === 'logo');
+    typed.push({ r, c, t, ink: inked });
+    t += inked ? DT : DT_SPACE;
   }
   t += RET;
 }
@@ -444,6 +449,7 @@ const T_TYPED = t;
 const T_SHOOT = T_TYPED + 0.15;
 const T_SHOT = T_SHOOT + Math.max(LOGO_L, COLS - 1 - LOGO_R) * SHOOT + DRAW;
 const T_TAG = T_SHOT + 0.1;
+if (TIDE_IN % BAR || T_TYPE % BAR) throw new Error('the tide and the cursor start on a bar');
 if (T_TAG + 1 > LOOP) throw new Error(`timeline overruns the loop: ${T_TAG}`);
 if (argv.includes("--times")) console.log({ T_HIGH, T_EBB, T_DRY, T_TYPE, T_TYPED, T_SHOOT, T_SHOT, T_TAG, cells: typed.length });
 
@@ -706,7 +712,7 @@ const RESIDENT_DEFS = [
     'swims in, crawls up beside her, and they both doze off.',
     'nobody is in a hurry about any of it.',
   ] },
-  { plan: [['K', 0], ['U', 14], ['M', 22], ['A', 34], ['R', 42], ['A', 53]], client: 'THE KUMARA', lines: [
+  { plan: [['K', 0], ['U', 12], ['M', 20], ['A', 32], ['R', 40], ['A', 51]], client: 'THE KUMARA', lines: [
     'she plants it. hours later it is leafy. later still it flowers.',
     'nobody remarks on it. it does not seem to mind.',
   ] },
@@ -810,14 +816,14 @@ python tools/serve.py      # then open http://127.0.0.1:8765/
 python tools/schedule.py   # check the schedule, simulate a 10-hour run
 ${FENCE}
 
-Amiga description logos were often drawn while an upload ran, in whatever time that took. This one was drawn while waiting for something to happen, which on this island takes two to five minutes. Every thirty seconds the tide takes it and the cursor draws it back. That is roughly the plot.
+Amiga description logos started out as something to draw while an upload ran, in whatever time that took. This one was drawn while waiting for something to happen, which on this island takes two to five minutes. Every thirty seconds the tide takes it and the cursor draws it back. That is roughly the plot.
 
 <details>
 <summary><b>[-${TAG}-]</b> the description, as text</summary>
 
 <br>
 
-The banner's logo as the text file it is, ready to sit under a file name on a board. It was drawn for Topaz, the Amiga's screen font, where an underscore runs straight into the slash beside it and stacked slashes make one unbroken line. A browser's code font leaves gaps between the rows, which is why the banner is an SVG: there every character is one stroke in an 8 by 16 cell, so the joins close.
+The banner's logo as the text file it is, ready to sit under a file name on a board. It was drawn for Topaz, the Amiga's screen font, which is spaced so tightly that an underscore runs straight into the slash beside it. A browser's code font leaves gaps between the characters and the rows, which is why the banner is an SVG: there every character is one stroke in an 8 by 16 cell, so the joins close.
 
 ${pre(twinBlock)}
 
@@ -840,7 +846,7 @@ Once the island had a logo, everyone on it wanted one.
 <summary><b>the schedule</b>: more than 90 activities, four timers, every start on the bar</summary>
 
 ${pre([
-  '{{activities.toml|activities.toml}} lists more than 90 activities (94 on 2026-10-01),',
+  '{{activities.toml|activities.toml}} lists more than 90 activities (94 on 2026-10-02),',
   'each with its beats, how long it lasts and how often it comes round.',
   '',
   'timer          comes round every       in a typical 10-hour run',
@@ -921,8 +927,8 @@ ${pre([
   '            is an unofficial homage with its own character, art and music,',
   '            and no affiliation with it or its owners.',
   '            to the amiga description-logo artists of 1992 to 1994, who',
-  '            drew whole words from ten different characters while the',
-  '            modem ran. the style is theirs. every letter here is new.',
+  '            drew whole words from a handful of characters while an',
+  '            upload ran. the style is theirs. every letter here is new.',
   '',
   `credits ... logo, letters and palm by shorehand (${TAG}) of pending ink.`,
   '            the artist, the tag and the crew exist only in this file.',

@@ -451,10 +451,11 @@ front.sprite([
 ], 64, 30);
 
 // Her. Six sextels wide, fourteen tall. Body and head are separate so the
-// head can nod. 0 dark hair with the low bun behind, 7 cream headphones and
-// shorts, 5 skin, 4 coral tank top and (in shade) legs.
+// head can nod. 1 brown hair (a dark grey on a monochrome set) with the low
+// bun behind, 7 cream headphones and shorts, 5 skin, 4 coral tank top and
+// (in shade) legs.
 const HER = [30, 16];
-const head = ['.0000.', '00550.', '.7557.', '..55..'];
+const head = ['.1111.', '11550.', '.7557.', '..55..'];
 const legs = ['.7777.', '.7..7.', '.4..4.', '.4..4.', '.4..4.', '44..44'];
 const body = {
   idle: ['.4444.', '544445', '544445', '.4444.', ...legs],
@@ -466,7 +467,7 @@ const body = {
 const throwArm = ['......', '.....5', '.....5', '.....5'];      // beside the head rows
 const waveA = ['.....5', '.....5', '.....5', '.....5', '......'];
 const waveB = ['......5', '......5', '.....5.', '.....5.', '.......'];
-const sipHead = ['.0000.', '00550.', '.7566.', '..566.'];          // a young green coconut at her mouth
+const sipHead = ['.1111.', '11550.', '.7566.', '..566.'];          // a young green coconut at her mouth
 const bottleHand = { x: HER[0] + 5, y: HER[1] - 1 };
 
 function spriteGrid(rows) { const g = new Grid(rows[0].length, rows.length); g.sprite(rows, 0, 0); return g; }
@@ -486,13 +487,13 @@ const bottle = [];
 const LYING = ['114'];
 bottle.push({ rows: LYING, x: 37, y: 29, iv: [[0, B(5)], [B(9), T]] });
 bottle.push({ rows: ['5', '1'], x: bottleHand.x, y: bottleHand.y, iv: [[B(5), B(5) + 0.75]] });
-const flight = [[33, 11], [29, 8], [25, 7], [21, 8], [17, 11], [14, 15], [12, 19]];
+const flight = [[33, 11], [28, 8], [23, 7], [18, 9], [15, 13], [12, 18]];   // a third of a beat each
 flight.forEach(([x, y], i) => {
   const t0 = B(5) + 0.75 + i * 0.25;
   bottle.push({ rows: ['5', '1'], x, y, iv: [[t0, t0 + 0.25]] });
 });
-const tSplash = B(5) + 0.75 + flight.length * 0.25;
-bottle.push({ rows: ['7.7', '.7.'], x: 11, y: 21, iv: [[tSplash, tSplash + 0.5]] });
+const tSplash = B(5) + 0.75 + flight.length * 0.25;   // = 14.25 s, on a beat
+bottle.push({ rows: ['7.7', '.7.'], x: 11, y: 21, iv: [[tSplash, tSplash + BEAT]] });
 // Bobbing on the beat until bar 8, then straight back in eight steps.
 const bobA = [], bobB = [];
 for (let t = tSplash; t < B(8) - 1e-9; t += BEAT) {
@@ -670,7 +671,7 @@ function buildMain() {
   const idleBody = gridPaths(spriteGrid(body.idle), hx, hy + 4);
   const headUp = gridPaths(spriteGrid(head), hx, hy);
   const headDown = gridPaths(spriteGrid(['.....', ...head]), hx, hy);
-  const nod = visGroup([[0, 0.3]], headDown, BEAT) + visGroup([[0.3, BEAT]], headUp, BEAT);
+  const nod = visGroup([[0, BEAT / 2]], headDown, BEAT) + visGroup([[BEAT / 2, BEAT]], headUp, BEAT);
   pic.push(visGroup(TL.idle, idleBody + nod));
   pic.push(visGroup(TL.throw, gridPaths(spriteGrid(body.up), hx, hy + 4) + headUp + gridPaths(spriteGrid(throwArm), hx, hy)));
   pic.push(visGroup(TL.sip, gridPaths(spriteGrid(body.sip), hx, hy + 4) + gridPaths(spriteGrid(sipHead), hx, hy)));
@@ -703,32 +704,36 @@ function buildMain() {
   }
   const typeCover = `<rect class="ty c1" x="${7 * CW}" y="${16 * CH}" width="${33 * CW}" height="${CH}"/>`;
 
-  // --- cursor: a block on the input dot, blinking once a second
+  // --- cursor: a block on the input dot, on for a beat and off for a beat
   kf.push(`@keyframes kcur{0%{opacity:1}50%{opacity:0}100%{opacity:0}}`);
-  css.push(`.cu{animation:${anim('kcur', 1)}}`);
+  css.push(`.cu{animation:${anim('kcur', BEAT * 2)}}`);
   const cursor = `<rect class="cu c7" x="${26 * CW}" y="${23 * CH}" width="${CW}" height="${CH}"/>` +
     `<use class="cu c0" href="#g2e" x="${26 * CW}" y="${23 * CH}"/>`;
   used.add('.');
 
   // --- the paint: one cover per row, sliding off a cell at a time, top to bottom
-  // (Each cover takes one step more than the row has cells, so the row is
-  // fully shown one step before the end: some browsers hold a finished
-  // steps() animation on its last-but-one step.)
+  // (Each cover takes two steps more than the row has cells, so the row is
+  // fully shown, cover clear of the page edge, before the end: some browsers
+  // hold a finished steps() animation on its last-but-one step.)
   const covers = [];
   const kpDone = new Set();
   let t = 0.45;
   for (let r = 3; r < ROWS; r++) {
     const n = page.lastUsed(r);
     if (n === 0) { t += 2 / CPS; continue; }
-    const m = n + 1, dur = m / CPS;
+    const m = n + 2, dur = m / CPS;
     if (!kpDone.has(m)) {
       kpDone.add(m);
       kf.push(`@keyframes kp${m}{from{transform:translateX(0);visibility:visible}to{transform:translateX(${m * CW}px);visibility:hidden}}`);
     }
     const c = `p${r}`;
     css.push(`.${c}{animation:${anim(`kp${m}`, dur, { delay: t, timing: `steps(${m},end)`, iter: 1, fill: 'both' })}}`);
-    // each cover reaches a little into the next row, so no seam shows between them
-    covers.push(`<rect class="cv c0 ${c}" x="0" y="${r * CH}" width="${PW}" height="${CH + 0.8}"/>`);
+    // Each cover is a little larger than its row (half a unit up, except on the
+    // first painted row, which meets the title band; most of a unit down; past
+    // both sides of the page), and the covers sit outside the page clip, so no
+    // antialiased cell edge peeks out before its row is painted.
+    const up = r > 3 ? 0.5 : 0, down = r === ROWS - 1 ? 1.5 : 0.8;
+    covers.push(`<rect class="cv c0 ${c}" x="-0.5" y="${r2(r * CH - up)}" width="${PW + 2}" height="${r2(CH + up + down)}"/>`);
     t += dur + 3 / CPS;     // plus a few bytes of cursor positioning per row
   }
   const paintEnd = t;
@@ -767,6 +772,7 @@ ${kf.join('\n')}
   const zw = CROP ? CROP[2] * Z : W * 2, zh = CROP ? CROP[3] * Z : H * 2;
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" width="${zw}" height="${zh}" role="img" aria-labelledby="t">
 <title id="t">CASTAWAY on Lagoon Pages: a viewdata service page on a beige terminal</title>
+<desc>A 40-column page in eight greys paints itself top to bottom: the title CASTAWAY, a mosaic picture of a tiny island with a palm, a raft and a young woman in headphones, a numbered menu of four sections, an input line and a key legend.</desc>
 ${style}${glass}
 ${bezelSvg}
 <g clip-path="url(#gl)">
@@ -780,8 +786,8 @@ ${status}
 ${nowGroups}
 ${typeCover}
 ${cursor}
-${covers.join('')}
 </g>
+${covers.join('')}
 </g>
 <rect x="${GX}" y="${GY}" width="${GW}" height="${GH}" fill="url(#scan)"/>
 <rect x="${GX}" y="${GY}" width="${GW}" height="${GH}" fill="url(#vig)"/>

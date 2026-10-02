@@ -27,7 +27,7 @@
 //     are merged into one path and used as a clipPath over a tall stack of
 //     one-scanline stripes (sea ramp, then sand ramp) that is moved up one
 //     scanline per step with steps() timing: the raster split, rolling.
-//   * The two text bars are 11 one-scanline rects each, shaded in five
+//   * The two text bars are 11 one-scanline rects each, shaded in three
 //     luminance steps of the VIC-II palette, extending into the border as
 //     raster bars do. Their text is black, so it reads as cut out of them.
 //   * Text is an 8x8 font defined below, each glyph one <path> in <defs>,
@@ -36,10 +36,14 @@
 //   * The scroller is the same font at 2x2, shaded per scanline by one
 //     hard-stop gradient, moved two pixels per step at 30 steps a second, and
 //     drawn twice back to back so the loop has no seam.
-//   * PRESS SPACE blinks on the beat of the theme (80 BPM: on one beat, off
-//     one beat), and the two expanded sprites (her island, and the shark in
-//     headphones) nod on every beat. No pixel peaks more than twice a
-//     second (the logo ramps hit white twice per 1.2 s cycle).
+//   * Everything except the scroller keeps time with the theme (80 BPM, a
+//     beat every 0.75 s): PRESS SPACE is on one beat and off the next, the two
+//     expanded sprites (her island, and the shark in headphones) nod on every
+//     beat, a glint runs down each bar once a beat, the colour wash goes round
+//     once a beat, the logo's raster table rolls past once every two beats and
+//     PRESENTS fades once every nine. No colour cycle brings white back to
+//     the same spot more than 1.4 times a second (the logo: twice per 1.5 s),
+//     well under the 3 Hz flash limit.
 //   * prefers-reduced-motion stops everything on the first frame, which is a
 //     complete screen: the logo, every line, and the first words of the scroll.
 
@@ -259,7 +263,9 @@ const logoShadow = pathOf(logoSet, LOGO_X + 2, LOGO_Y + 2);
 const SEA = ['blue', 'lblue', 'cyan', 'white', 'cyan', 'lblue'];
 const SAND = ['brown', 'orange', 'yellow', 'white', 'yellow', 'orange'];
 const LOGO_TABLE = [...SEA, ...SAND].flatMap((c) => [c, c]);
-const ROLL_STEP = 0.05;            // one scanline every 50 ms (20 lines a second)
+// The whole table rolls past once every two beats (1.5 s at 80 BPM): 16
+// scanlines a second, so the logo keeps time with the theme like the rest.
+const ROLL_STEP = (2 * BEAT) / LOGO_TABLE.length;
 const ROLL_DUR = LOGO_TABLE.length * ROLL_STEP;
 
 function stripes(table, x, y0, w, lines) {
@@ -309,8 +315,8 @@ const ISLAND = [
   '...WHHHH....tT..........',
   '..HHHHHSS...tT..........',
   '..HWWHSkS...tT..........',
-  '...WWHSSS...Tt..........',
-  '....HSS......tT.........',
+  '.HHWWHSSS...Tt..........',
+  '.HH.HSS......tT.........',
   '....RRRS.....tT.........',
   '...RRRRSSSS..Tt.........',
   '...RRRwwwS.S.tT.........',
@@ -380,7 +386,7 @@ export const SCROLL = [
   'YOU ARE WATCHING THE INTRO. THE MAIN FEATURE IS TEN HOURS OF ONE TINY ISLAND, ONE TALL PALM, ONE RAFT AND ONE YOUNG WOMAN IN HEADPHONES, AND IT IS MOSTLY THIS CALM.',
   'SHE IDLES, NODDING TO THE MUSIC. EVERY SO OFTEN SOMETHING HAPPENS, AND IT ALWAYS STARTS ON THE NEXT BAR, SO EVERY GAG LANDS ON THE BEAT.',
   'AN UNOFFICIAL LO-FI REMAKE, INSPIRED BY THE SMALL-ISLAND ROUTINES OF A CERTAIN 1992 DESERT-ISLAND SCREENSAVER. ALWAYS DAYTIME. HOUSE RULE.',
-  'MORE THAN 90 ACTIVITIES ON FOUR TIMERS: EVERY 2 TO 5 MINUTES, 12 TO 25 MINUTES, 30 TO 60 MINUTES, AND EVERY 3 TO 6 HOURS FOR THE VERY RARE ONES.',
+  'MORE THAN 90 ACTIVITIES, MOST OF THEM ON FOUR TIMERS: EVERY 2 TO 5 MINUTES, 12 TO 25 MINUTES, 30 TO 60 MINUTES, AND EVERY 3 TO 6 HOURS FOR THE VERY RARE ONES. THE REST WAIT TO BE CALLED.',
   'GREETINGS TO THE SEA TURTLE ... THE GREY TABBY ON THE CRATE (SEE YOU NEXT TIME) ... THE SHARK IN HEADPHONES (NICE NODDING) ... THE HERMIT CRAB (SORRY ABOUT THE COCONUT. IT SUITS YOU) ... THE DELIVERY DRONE (THANKS FOR THE SPARE HEADPHONES) ... THE BRO ON THE HYDROFOIL (SHAKA RECEIVED) ... THE TOUR BOAT (NO PHOTOS, PLEASE) ... THE KUMARA (LOOKING TALLER) ... AND THE BOTTLE THAT KEEPS COMING BACK.',
   'NO GREETINGS TO THE SHIP. IT KNOWS WHAT IT DID.',
   'EVERY NOTE, WAVE AND GULL IS MADE BY CODE IN TOOLS/MAKE_AUDIO.PY: NO SAMPLES, NO BORROWED LOOPS, NO RECORDINGS. THE THEME IS 60 SECONDS AT 80 BPM IN F MAJOR, AND IT COMES ROUND WITHOUT A SEAM.',
@@ -452,17 +458,24 @@ css.push(`.glint{animation:glint ${BEAT}s steps(${GLINT_LINES}) infinite}`);
 css.push(`@keyframes glint{from{transform:translateY(0)}to{transform:translateY(${GLINT_LINES}px)}}`);
 
 // --- info block: label in light blue, dot leader in dark grey, value in yellow
+// The values share one left edge, so every dot leader stops in the same
+// column. The lines sit 10 pixels apart rather than 8 (two blank scanlines
+// opened between character rows, as FLD did on the real VIC-II), so one
+// line's letters never touch the next; the block is centred between the
+// blue bar and PRESS SPACE.
+const STAT_PITCH = 10;
 {
   const x0 = centreX('#'.repeat(STAT_W));
+  const vcol = STAT_W - Math.max(...STATS.map(([, v]) => v.length));
   const lab = [];
   const dots = [];
   const val = [];
   STATS.forEach(([l, v], i) => {
-    const y = rowY(14 + i);
-    const nd = STAT_W - l.length - v.length - 2;
+    const y = rowY(14) - 2 + i * STAT_PITCH;
+    const nd = vcol - l.length - 2;
     lab.push(uses(l, x0, y));
     dots.push(uses('.'.repeat(nd), x0 + (l.length + 1) * 8, y));
-    val.push(uses(v, x0 + (STAT_W - v.length) * 8, y));
+    val.push(uses(v, x0 + vcol * 8, y));
   });
   body.push(`<g fill="${C.lblue}">${lab.join('')}</g><g fill="${C.dgrey}">${dots.join('')}</g><g fill="${C.yellow}">${val.join('')}</g>`);
 }
@@ -487,8 +500,10 @@ css.push('@keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:1}}');
 
 // --- colour-wash line: every character cell cycles through a ramp, each
 // column a step behind its left neighbour, so the colours run to the right
-const WASH_RAMP = ['blue', 'lblue', 'cyan', 'lgreen', 'white', 'yellow', 'lred', 'purple'];
-const WASH_STEP = 0.1;
+// Up the luminance levels to white and back down, never darker than light
+// blue, so the line stays readable at every step; one full cycle per beat.
+const WASH_RAMP = ['lblue', 'lred', 'cyan', 'lgreen', 'white', 'yellow', 'lgrey', 'green'];
+const WASH_STEP = BEAT / WASH_RAMP.length;
 {
   const st = WASH_RAMP.map((c, i) => `${n((i / WASH_RAMP.length) * 100, 2)}%{fill:${C[c]}}`).join('');
   css.push(`.w{animation:wash ${n(WASH_RAMP.length * WASH_STEP)}s step-end infinite}`);
@@ -521,6 +536,8 @@ body.push(rule(rowY(25) + 3, ['blue', 'lblue', 'blue']));
 css.push('@media (prefers-reduced-motion: reduce){.roll,.fade,.nod,.blink,.w,.scroll,.glint{animation:none}}');
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W * SCALE}" height="${H * SCALE}" shape-rendering="crispEdges" role="img" aria-label="CASTAWAY: a Commodore 64 style one-screen intro">
+<title>CASTAWAY: ten hours of almost nothing</title>
+<desc>A Commodore 64 style one-screen intro for Castaway, a lo-fi island video: a raster-striped CASTAWAY logo, PRESENTS, ${PINK_LINE} on a pink raster bar, ${BLUE_LINE} on a blue one, an info block (${STATS.map(([l, v]) => `${l} ${v}`).join(', ')}), her island and a shark in headphones nodding on the beat, ${PRESS}, ${WASH}, and a scroller that opens with ${SCROLL[0]}</desc>
 <style>${css.join('')}</style>
 <defs>${glyphDefs.join('')}</defs>
 ${body.join('\n')}

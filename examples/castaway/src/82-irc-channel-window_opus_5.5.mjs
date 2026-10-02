@@ -576,7 +576,7 @@ function drawIsland() {
   // a ship on the horizon, minding its own business
   sprite(['..r...', '.www..', 'kkkkkk'], 42, 12, { r: 4, w: 0, k: 14 });
   // glints on the water (seeded, so the same every run)
-  for (let y = 17; y < AH; y += 2) {
+  for (let y = 17; y < 26; y += 2) {     // none under the name, where they read as specks on its outline
     for (let x = Math.floor(rng() * 9); x < AW; x += 7 + Math.floor(rng() * 9)) {
       const deep = A[y][x] === 47;
       const n = 1 + Math.floor(rng() * 3);
@@ -695,6 +695,11 @@ const TOPIC_B = 'brb, up the palm. one bar of signal';
 // The script. `dt` is the pause before the line (seconds); `type` lines are typed into the input
 // box first; `fx` changes the nick list / title / switchbar at the moment the line appears.
 const TYPE_DT = 0.065;
+// Every new line steps the whole log (and any picture in it) up one row, so no two lines may
+// arrive less than MIN_STEP apart: at most 5 steps a second, which keeps the big colour picture
+// from jumping faster than 2.5 light/dark changes a second (under the 3 Hz flash guideline).
+const MIN_STEP = 0.2;
+const BURST_DT = 0.2;                  // the netsplit: quits and rejoins as fast as MIN_STEP allows
 const SCRIPT = [
   { dt: 1.0, type: 'hi! what happens in here?', line: () => you('00:00', 'hi! what happens in here?') },
   { dt: 1.1, line: () => bot('00:00', seg('mostly this:', K.text)) },
@@ -710,15 +715,15 @@ const SCRIPT = [
   { dt: 0.9, line: () => event('01:12', K.action, 'shark nods to the beat. it has headphones too') },
   { dt: 1.4, line: () => event('02:20', K.topic, `castaway changes topic to '${TOPIC_B}'`), fx: [['topic', TOPIC_B]] },
   { dt: 1.5, line: () => event('03:05', K.quit, `sandcastle has quit ${SPLIT_SERVERS}`), fx: [['part', 'sandcastle']] },
-  { dt: 0.12, line: () => event('03:05', K.quit, `sea_turtle has quit ${SPLIT_SERVERS}`), fx: [['part', 'sea_turtle']] },
-  { dt: 0.12, line: () => event('03:05', K.quit, `stray_cat has quit ${SPLIT_SERVERS}`), fx: [['part', 'stray_cat']] },
-  { dt: 0.12, line: () => event('03:05', K.quit, `walking_coconut has quit ${SPLIT_SERVERS}`), fx: [['part', 'walking_coconut']] },
-  { dt: 0.12, line: () => event('03:05', K.quit, `shark has quit ${SPLIT_SERVERS}`), fx: [['part', 'shark']] },
+  { dt: BURST_DT, line: () => event('03:05', K.quit, `sea_turtle has quit ${SPLIT_SERVERS}`), fx: [['part', 'sea_turtle']] },
+  { dt: BURST_DT, line: () => event('03:05', K.quit, `stray_cat has quit ${SPLIT_SERVERS}`), fx: [['part', 'stray_cat']] },
+  { dt: BURST_DT, line: () => event('03:05', K.quit, `walking_coconut has quit ${SPLIT_SERVERS}`), fx: [['part', 'walking_coconut']] },
+  { dt: BURST_DT, line: () => event('03:05', K.quit, `shark has quit ${SPLIT_SERVERS}`), fx: [['part', 'shark']] },
   { dt: 0.8, type: 'uh. where did everyone go', line: () => you('03:05', 'uh. where did everyone go') },
   { dt: 1.4, line: () => event('03:06', K.join, 'sea_turtle (~shell@reef) has joined #castaway'), fx: [['join', 'sea_turtle']] },
-  { dt: 0.12, line: () => event('03:06', K.join, 'stray_cat (~tabby@crate) has joined #castaway'), fx: [['join', 'stray_cat']] },
-  { dt: 0.12, line: () => event('03:06', K.join, 'hermit_crab (~crab@low.tide) has joined #castaway'), fx: [['join', 'hermit_crab']] },
-  { dt: 0.12, line: () => event('03:06', K.join, 'shark (~fin@deep.water) has joined #castaway'), fx: [['join', 'shark']] },
+  { dt: BURST_DT, line: () => event('03:06', K.join, 'stray_cat (~tabby@crate) has joined #castaway'), fx: [['join', 'stray_cat']] },
+  { dt: BURST_DT, line: () => event('03:06', K.join, 'hermit_crab (~crab@low.tide) has joined #castaway'), fx: [['join', 'hermit_crab']] },
+  { dt: BURST_DT, line: () => event('03:06', K.join, 'shark (~fin@deep.water) has joined #castaway'), fx: [['join', 'shark']] },
   { dt: 0.8, line: () => event('03:06', K.mode, 'tide.atoll.irc sets mode: +vv sea_turtle stray_cat'), fx: [['voice', 'sea_turtle'], ['voice', 'stray_cat']] },
   { dt: 1.0, line: () => bot('03:06', seg('netsplit over. the tide kept the sandcastle', K.text)) },
   { dt: 0.8, type: '!castaway', line: () => you('03:07', '!castaway') },
@@ -732,14 +737,14 @@ const SCRIPT = [
   { dt: 0.7, line: () => bot('05:42', tag('RUN', 4), seg(' python tools/serve.py', 2), seg(', then open ', K.text), seg('http://127.0.0.1:8765/', 12, null, { u: true })) },
   { dt: 1.8, line: () => event('06:12', K.join, 'sandcastle (~castle@low.tide) has joined #castaway'), fx: [['join', 'sandcastle']] },
   { dt: 1.6, type: 'did she do anything', line: () => you('09:59', 'did she do anything') },
-  { dt: 1.0, line: () => bot('09:59', seg('castaway: idle 9h 59m, nodding to the music', K.text)) },
+  { dt: 1.0, line: () => bot('09:59', seg('about 200 things happened. she idled between them', K.text)) },
   { dt: 1.2, line: () => bot('09:59', seg('it is that kind of video', K.text)) },
   { dt: 1.6, line: () => event('10:00', K.quit, 'Guest1992 has quit (Quit: 10 hours. worth it)'), fx: [['part', 'Guest1992'], ['kumara', false]] },
   { dt: 1.4, line: () => event('00:00', K.join, 'Guest1992 (~you@README.md) has joined #castaway'), fx: [['join', 'Guest1992']] },
   { dt: 0.5, line: () => event('00:00', K.topic, `Topic is '${TOPIC_A}'`) },
   { dt: 0.6, art: true },
 ];
-const PASTE_DT = 0.15;
+const PASTE_DT = 0.2;                  // a bot pastes one line every 0.2 s
 
 // Expand the script into the period's lines with their arrival times, plus the typing spans and
 // the effects timeline.
@@ -777,6 +782,11 @@ for (const s of SCRIPT) {
 }
 if (clock > T - 6) throw new Error(`script runs to ${clock.toFixed(2)} s; the loop is ${T} s`);
 const P = period.length;
+// photosensitivity guard: the log never steps faster than MIN_STEP, including across the loop seam
+for (let i = 0; i < P; i++) {
+  const gap = i ? period[i].at - period[i - 1].at : period[0].at + T - period[P - 1].at;
+  if (gap < MIN_STEP - 1e-9) throw new Error(`log lines ${i - 1} and ${i} are ${gap.toFixed(3)} s apart (min ${MIN_STEP})`);
+}
 const PREFIX_COLS = len('[00:00] <tidebot> ');
 
 // Check widths.

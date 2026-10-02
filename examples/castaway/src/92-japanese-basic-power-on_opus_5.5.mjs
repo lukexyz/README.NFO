@@ -504,6 +504,7 @@ function buildMain() {
   // Function-key bar: ten reverse-video boxes; the one for what she is doing lights yellow.
   const KEYS = ['idle', 'nod', 'sip', 'bottle', 'wave↵', 'shark', 'turtle', 'drone', 'crab', 'wait↵'];
   const KW = 6, KGAP = 1, GGAP = 4;
+  const KPAD = 2; // each box reaches 2 px past its 6 cells, so a 6-letter label clears both edges
   const kx = (i) => 4 + i * (KW + KGAP) + (i >= 5 ? GGAP - KGAP : 0);
   const barOn = A.vis([[0, OFF], [BAN[0], T]]);
   const lit = {
@@ -514,9 +515,9 @@ function buildMain() {
   };
   let bar = `<g class="${barOn}">`;
   KEYS.forEach((k, i) => {
-    const x = kx(i) * CW, y = 24 * CH;
-    bar += `<rect x="${x}" y="${y}" width="${KW * CW}" height="${CH}" fill="#fff"/>`;
-    if (lit[i]) bar += `<rect class="${A.vis(lit[i])}" x="${x}" y="${y}" width="${KW * CW}" height="${CH}" fill="${DIGI[YEL]}"/>`;
+    const x = kx(i) * CW - KPAD, y = 24 * CH, w = KW * CW + 2 * KPAD;
+    bar += `<rect x="${x}" y="${y}" width="${w}" height="${CH}" fill="#fff"/>`;
+    if (lit[i]) bar += `<rect class="${A.vis(lit[i])}" x="${x}" y="${y}" width="${w}" height="${CH}" fill="${DIGI[YEL]}"/>`;
     bar += `<g fill="#000">${textRun(k, kx(i), 24)}</g>`;
   });
   bar += '</g>';
@@ -570,7 +571,8 @@ function buildMain() {
   // Clouds: a low bank along the horizon, round puffs with a foam-tinted belly.
   {
     const puffs = [
-      [[8, 110, 22], [40, 106, 26], [76, 108, 22], [104, 111, 16], [128, 113, 12]],
+      // (the tallest puff stays below text row 11, so it never underlines the tagline)
+      [[8, 110, 22], [40, 109, 24], [76, 108, 22], [104, 111, 16], [128, 113, 12]],
       [[236, 112, 12], [258, 109, 15], [282, 112, 11]],
       [[372, 113, 10], [390, 111, 12]],
       [[560, 111, 16], [592, 106, 24], [626, 108, 22], [648, 104, 20]],
@@ -811,28 +813,30 @@ function buildMain() {
   const splash = splashR.map((r, i) => `<g class="${A.vis([[SPLASH + i * 0.25, SPLASH + (i + 1) * 0.25]])}">${pathsSvg(rasterPaths(r, to[0] - 14, (to[1] - 6) * 2, 2, 2))}</g>`).join('');
 
   // ---- the shark in headphones, nodding along ------------------------------------------
+  // A grey fin with a white headband over its tip and a solid yellow cup on each side, so the
+  // headphones read at README size; the band and cups tip one dot on the off-beat.
   const FIN = [
-    '.........PPPP.......',
-    '........P....P......',
-    '.......P..LG..P.....',
-    '......CC.LGG..CC....',
-    '......CCLGGG..CC....',
-    '......CLGGGGD.CC....',
-    '......LGGGGGD.......',
-    '.....LGGGGGGGD......',
-    '....LGGGGGGGGD......',
-    '...LGGGGGGGGGGD.....',
-    '..LGGGGGGGGGGGGD....',
-    '.LGGGGGGGGGGGGGGDD..',
+    '.......PPPPPP.........',
+    '......P......P........',
+    '.....P...LD...P.......',
+    '....YYY.LGD..YYY......',
+    '....YYYLGGD..YYY......',
+    '....YYYLGGGD.YYY......',
+    '......LGGGGD..........',
+    '.....LGGGGGGD.........',
+    '....LGGGGGGGGD........',
+    '...LGGGGGGGGGGD.......',
+    '..LGGGGGGGGGGGGDD.....',
+    '.LGGGGGGGGGGGGGGGDD...',
   ];
   const finFrames = [FIN, FIN.map((row, j) => (j < 6 ? '.' + row.slice(0, -1) : row))];
-  const SHX = 130, SHY = 130;
+  const SHX = 128, SHY = 129;
   const finSvg = finFrames.map((rows) => {
-    const r = new Raster(22, 15);
-    r.sprite(1, 1, rows, { P: WHT, G: 20, C: 11, L: WHT, D: 16 });
+    const r = new Raster(24, 15);
+    r.sprite(1, 1, rows, { P: WHT, G: 16, Y: YEL, L: WHT, D: 20 });
     r.outline();
-    r.hline(0, 21, 13, 13);
-    r.hline(3, 18, 14, CYN);
+    r.hline(0, 22, 13, 13);
+    r.hline(3, 19, 14, CYN);
     return pathsSvg(rasterPaths(r, SHX, SHY * 2, 2, 2));
   });
   const shark = `<g class="${A.vis([[SHARK, SHARK_END]])}"><g class="${nodA}">${finSvg[0]}</g><g class="${nodB}">${finSvg[1]}</g></g>`;
@@ -890,7 +894,7 @@ function buildMsx() {
   const SIGN = [[0, 3.0]];
   centre('CASTAWAY  island system', 8, SIGN);
   centre('version 10:00:00, seed 1992', 10, SIGN);
-  centre('no samples, no loops, no recordings', 13, SIGN);
+  centre('no samples, no recordings, only code', 13, SIGN);
 
   // BASIC
   const B0 = 3.2;

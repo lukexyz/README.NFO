@@ -32,8 +32,10 @@
 //   12.0 s   PIXEL SORT: bright runs (the letters, the sun, the clouds, the sand)
 //            are dragged down into smooth comb-like streaks, then snap back.
 // Photosensitivity: every burst is local (bands, blocks, streaks), lasts 400 ms
-// at most and is 3 s from the next, so nothing changes more than four times in
-// any one second (two flashes at most), and the frame is never flashed whole.
+// at most and starts 3 s after the last, so no burst has more than four state
+// changes in any one second (two flashes at most), and the frame is never flashed
+// whole. The hydrofoil's 12.5 steps a second move a small sprite; that is motion,
+// not a flash.
 //
 // LETTERING, no <text> anywhere:
 //   * "Bent Grotesk": a heavy plain capital sans for CASTAWAY, drawn here as
@@ -464,7 +466,9 @@ pic.push(`<ellipse cx="712" cy="268" rx="52" ry="6" fill="${C.sandShade}" opacit
 // rocks
 const rock = (x, y, rx, ry) => `<ellipse cx="${x}" cy="${y}" rx="${rx}" ry="${ry}" fill="${C.rockDark}"/><ellipse cx="${x - rx * 0.15}" cy="${y - ry * 0.25}" rx="${rx * 0.8}" ry="${ry * 0.7}" fill="${C.rock}"/><ellipse cx="${x - rx * 0.3}" cy="${y - ry * 0.45}" rx="${rx * 0.4}" ry="${ry * 0.3}" fill="${C.rockLit}"/>`;
 pic.push(rock(454, 292, 12, 8));
-pic.push(rock(748, 296, 9, 6));
+// (the right-hand rock sits clear of the hydrofoil in the reduced-motion still, so
+// he never looks as if he is holding it)
+pic.push(rock(798, 283, 8, 5.5));
 // low tropical shrubs: fans of pointed leaves, dark underneath, lit on top
 {
   const r = mulberry32(77);
@@ -736,7 +740,9 @@ const txt = [];
   // three channel swatches, after the filename
   const sx = 40 + textW(topL, CAP_S) + 18;
   txt.push(`<rect x="${sx}" y="17" width="14" height="14" fill="#ff2a3c"/><rect x="${sx + 18}" y="17" width="14" height="14" fill="${C.green}"/><rect x="${sx + 36}" y="17" width="14" height="14" fill="#2a5cff"/>`);
-  const sub = 'A TEN-HOUR LO-FI ISLAND VIDEO IN WHICH ALMOST NOTHING HAPPENS';
+  // True of the real export too: the browser encoder is asked for a keyframe every
+  // 2 s (60 frames at 30 fps), so 59 frames in every 60 are predicted from the last.
+  const sub = 'ONE LO-FI ISLAND, TEN HOURS, NEARLY EVERY FRAME SAYS SAME AS BEFORE';
   txt.push(`<g fill="#c9ccdc">${textUses(sub, Math.round((W - textW(sub, SUB_S)) / 2), 220, SUB_S)}</g>`);
   // one caption per bar: the frame type and what the "decoder" makes of it
   const hexP = ['00 00 00 01 41 9A 24 6C 0F 3B', '00 00 00 01 41 9A 46 1D 87 C2', '00 00 00 01 41 9A 6E 03 F1 5A', '00 00 00 01 65 88 84 00 2B FF', '00 00 00 01 41 9A A2 5C 90 0E'];

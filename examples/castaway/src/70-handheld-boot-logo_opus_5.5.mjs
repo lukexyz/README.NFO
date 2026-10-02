@@ -35,12 +35,14 @@
 // complete title card. No <text>: the screen uses an original 8 x 8 tile font, the bezel
 // legends a monoline stroke face (adapted from this folder's 18-tui-monitor generator).
 //
-// Facts used, from D:/python/castaway on 2026-10-01: more than 90 activities in
-// activities.toml on four timers (regular 2-5 min, occasional 12-25 min, rare 30-60 min,
-// super rare 3-6 h), every start snapped to the next 3-second bar; "leave any time" is a
-// super-rare gag; default run 10:00:00, seed 1992; theme 80 BPM, F major, 60 s loop;
-// every sound synthesized by tools/make_audio.py (no samples, loops or recordings);
-// renderer: python tools/serve.py, then http://127.0.0.1:8765/.
+// Facts used, re-checked in D:/python/castaway on 2026-10-02 (read-only): more than 90
+// activities in activities.toml (94 that day: 81 on four timers, 13 chained follow-ups),
+// timers regular 2-5 min, occasional 12-25 min, rare 30-60 min, super rare 3-6 h; every
+// start snapped to the next 3-second bar; "leave any time" is super rare with
+// max_per_run = 1 (hence "once per video, if that"); default run 10:00:00, seed 1992;
+// [video] fps = 24 since 2026-10-01; theme 80 BPM, F major, 60 s loop; every sound
+// synthesized by tools/make_audio.py (no samples, loops or recordings); renderer:
+// python tools/serve.py, then http://127.0.0.1:8765/.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -245,17 +247,18 @@ const centreX = (str, adv = 8) => Math.round((SW - textW(str, adv)) / 2);
 // ------------------------------------------------------------------ her (original sprite, 4 shades)
 // Brown hair in a low bun (3), cream headphones (0), skin (1), coral tank top (2), cream
 // shorts (0), bare feet. Facing right; outlines are added in the darkest shade.
-// Head 10 x 8, facing right: hair (3) with a low bun at the back, a cream band (0) over the
-// crown down to the ear cup, face (0) with one eye.
+// Head 10 x 8, facing right: hair (3) with a round low bun at the nape (one shade-2 sheen
+// pixel so it reads as a knot, not as loose hair), a cream band (0) over the crown down to
+// the ear cup, face (0) with one eye.
 const HEAD = [
   '...33033..',
   '..3330333.',
   '.33303333.',
   '.33003000.',
-  '.33003030.',
-  '333003000.',
+  '333003030.',
+  '323003000.',
   '33333000..',
-  '.33..00...',
+  '..3..00...',
 ];
 // Body 10 x 10: coral tank top (2) with bare arms (0), cream shorts (1), legs and feet (0).
 const TORSO = ['..022220..', '..022220..', '..022220..', '..022220..', '..011110..', '...1111...'];
@@ -495,8 +498,8 @@ const PAGES = [
   ['SO SHE DOES.', ''],
   ['THE ISLAND WAITS.', ''],
   ['SHE IS BACK.', 'SHE HAS A COFFEE.'],
-  ['IT IS ICED.', ''],
-  ['NEXT ONE LIKE IT:', 'IN 3 TO 6 HOURS.'],
+  ['IT IS ICED.', 'NOBODY ASKS.'],
+  ['ONCE PER VIDEO,', 'IF THAT.'],
 ];
 for (const p of PAGES) for (const l of p) if (l.length > 18) throw new Error(`text box line too long: ${l}`);
 
@@ -559,8 +562,9 @@ for (let y = 0; y < 120; y++) for (let x = 0; x < SW; x++) if (worldA.p[y * SW +
 const shimmer = toggle(2 * BEAT, 0.5, 1);   // B shows on the second beat of every two
 
 // raft is redrawn on its own so it can bob; clouds drift
-const clouds = new Bmp(SW + 60, 30);
-cloud(clouds, 8, 6, 22); cloud(clouds, 60, 14, 16); cloud(clouds, 100, 4, 24); cloud(clouds, 184, 9, 18);
+// the last one drifts in from the right below the sun, so it never smears across the disc
+const clouds = new Bmp(SW + 60, 36);
+cloud(clouds, 8, 6, 22); cloud(clouds, 60, 14, 16); cloud(clouds, 100, 4, 24); cloud(clouds, 184, 22, 18);
 
 const worldVis = windows([[T_TITLE, T_OFF]]);
 const driftKf = loopKf([[0, 'transform:translateX(0)', 'steps(39,end)'], [L, 'transform:translateX(-39px)']]);
@@ -768,12 +772,12 @@ left.push(legend('ISLAND VIDEO.', LP, 134 + LINE, CAP));
 left.push(rule(LP, 184));
 ['SHE IDLES.', 'EVERY SO OFTEN', 'SOMETHING', 'HAPPENS.'].forEach((t, i) => left.push(legend(t, LP, 202 + i * LINE, CAP)));
 left.push(rule(LP, 292));
-['90+ ACTIVITIES', 'ON FOUR TIMERS,', 'EACH ON THE BAR.'].forEach((t, i) => left.push(legend(t, LP, 310 + i * LINE, CAP)));
+['90+ ACTIVITIES,', 'FOUR TIMERS,', 'ALL ON THE BAR.'].forEach((t, i) => left.push(legend(t, LP, 310 + i * LINE, CAP)));
 // rating plate
 left.push(`<rect x="${LP}" y="392" width="176" height="86" rx="5" fill="none" stroke="${INK}" stroke-width="1.3"/>`);
 left.push(`<rect x="${LP}" y="392" width="176" height="20" rx="5" fill="${INK}"/><rect x="${LP}" y="404" width="176" height="8" fill="${INK}"/>`);
 left.push(legend('THE DEFAULT RUN', LP + 10, 397.5, 9.5, { color: '#e2ddd2', weight: 1.3 }));
-['10:00:00 LONG', 'SEED 1992', '1080P · 30 FPS'].forEach((t, i) => left.push(legend(t, LP + 10, 420 + i * 18, 10)));
+['10:00:00 LONG', 'SEED 1992', '1080P · 24 FPS'].forEach((t, i) => left.push(legend(t, LP + 10, 420 + i * 18, 10)));
 
 // right side: sound, speaker, the buttons, how to start
 const right = [];
@@ -845,9 +849,10 @@ const desc = 'An invented late-1980s style handheld by the invented maker FOURSH
   + 'The screen powers on and the word CASTAWAY scrolls down from the top edge with a faint ghost trail, stops in the middle and holds, then cuts to a title card: '
   + 'CASTAWAY in outlined tile letters over a tiny island with one tall palm, a raft and a young woman in cream headphones nodding to the beat, PRESS START blinking, and python tools/serve.py. '
   + 'Then the attract mode plays itself, one text-box page per bar: She is on a very small island. She nods to the music. Nothing happens. It is going very well. '
-  + 'She could leave any time. So she does (she walks out over the water and off the screen). The island waits. She is back. She has a coffee. It is iced. Next one like it: in 3 to 6 hours. '
-  + 'Printed on the bezel: a lamp labelled DAYTIME, always lit; a ten-hour lo-fi island video; she idles, every so often something happens; 90+ activities on four timers, each on the bar; '
-  + 'the default run, 10:00:00, seed 1992, 1080p at 30 fps; every sound is synthesized from code, 0 samples; buttons labelled WAIT and START; press start: python tools/serve.py, then open 127.0.0.1:8765.';
+  + 'She could leave any time. So she does (she walks out over the water and off the screen). The island waits. She is back. She has a coffee. It is iced. Nobody asks. Once per video, if that. '
+  + 'The screen blanks for a moment and the logo drops again. '
+  + 'Printed on the bezel: a lamp labelled DAYTIME, always lit; a ten-hour lo-fi island video; she idles, every so often something happens; 90+ activities, four timers, all on the bar; '
+  + 'the default run, 10:00:00, seed 1992, 1080p at 24 fps; every sound is synthesized from code, 0 samples; buttons labelled WAIT and START; press start: python tools/serve.py, then open 127.0.0.1:8765.';
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W * ZOOM}" height="${H * ZOOM}" role="img" aria-labelledby="t d">
 <title id="t">${title_}</title>

@@ -749,8 +749,10 @@ KEYS.forEach((row, ri) => row.forEach((k, ci) => {
   const ty = sub ? y + 9 : y + (KH - 4 - big) / 2;
   face += `<path d="${text(k, x + KW / 2, ty, big, { align: 'c' })}" fill="none" stroke="${C.legend}" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/>`;
   if (sub) {
-    const sc = ad ? 8.6 : 10;
-    face += `<path d="${text(sub, x + KW / 2, y + 47, sc, { align: 'c', track: ad ? 2 : 3 })}" fill="none" stroke="${ad ? '#5d2417' : '#55524a'}" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>`;
+    // the A-D timer legends are the schedule itself, so they get the same
+    // size as the letters on the digit keys (the widest, 30-60 MIN, is 60 of 80)
+    const sc = 10;
+    face += `<path d="${text(sub, x + KW / 2, y + 47, sc, { align: 'c', track: ad ? 2 : 3 })}" fill="none" stroke="${ad ? '#5d2417' : '#55524a'}" stroke-width="${ad ? 1.5 : 1.35}" stroke-linecap="round" stroke-linejoin="round"/>`;
   }
   let pressedAttr = '';
   let glow = '';
@@ -939,8 +941,9 @@ css.push(`@keyframes cshade{from{transform:translateX(-420px)}to{transform:trans
 // ---------------------------------------------------------------------------
 // Assemble
 // ---------------------------------------------------------------------------
-const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="ttl">
+const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="ttl dsc">
 <title id="ttl">CASTAWAY: a hand-built tone pad on the island, dialling CAST AWAY</title>
+<desc id="dsc">A blue tone pad with CASTAWAY on red label tape sits on the sand of a sunny island; behind it a young woman in headphones nods under one tall palm. Keys light on the beat with their row and column, a green scope draws each key's two tones and their sum, and a red readout dials 2278 2929, which spells CAST AWAY. She does not answer (headphones). Then it dials 127.0.0.1:8765, which picks up at once, and the D key puts you on hold for a super-rare gag.</desc>
 <style>
 ${css.join('\n')}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}

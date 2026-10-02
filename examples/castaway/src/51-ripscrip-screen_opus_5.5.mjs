@@ -22,7 +22,7 @@
 //   * the concentric dithered rings behind the title are the daytime sky, a
 //     sun-glare that steps from white to deep blue in EGA checker patterns;
 //   * the parchment is a door-game menu of her actual activities, with the
-//     lightbar parked on "Nod to the music" for most of the minute;
+//     lightbar parked on "Wait" for most of the minute;
 //   * the board is ISLE WAIT BBS (sysop SEA LEVEL); the art is signed by
 //     DITHER DINGHY of FLOODFILL ATOLL. All of these are invented.
 //
@@ -37,7 +37,7 @@
 //          her, beat for beat, until 30 s, when it sinks in three steps
 //   30 s   the mouse pointer drifts to "(L) Leave (any time)", thinks about
 //          it, and goes to the CONTINUE button instead
-//   36 s   click (bar 12). One beat later the screen clears and the board
+//   36 s   click (twelve bars in). One beat later the screen clears and the board
 //          sends the next screen at 2400 bps: the sky rings, the title, the
 //          sea, the island, the palm, the raft, her, the scroll, its text,
 //          and last of all the button. The next screen is the same island.
@@ -62,10 +62,12 @@ const SLUG = '51-ripscrip-screen_opus_5.5';
 const OUT = path.resolve(here, `../assets/${SLUG}.svg`);
 
 // ------------------------------------------------------------------ facts
-// Checked 2026-10-01 against D:/python/castaway (read-only): 94 activities in
-// activities.toml and growing; four timers; starts snap to 3 s bars; theme is
-// a seamless 60 s loop at 80 BPM; every sound comes from tools/make_audio.py.
-// The image only shows activities that exist: bottle (washes straight back),
+// Checked 2026-10-02 against D:/python/castaway (read-only): 94 activities in
+// activities.toml and growing (81 on four timers, 13 chained); starts snap to
+// 3 s bars; theme is a seamless 60 s loop at 80 BPM; every sound comes from
+// tools/make_audio.py (181 files in media/audio/audio_catalog.json).
+// The image only shows activities that exist: bottle (she throws it out, it
+// washes straight back),
 // shark_nod (surfaces in headphones and nods to the beat), coconut, fishing,
 // the signal hunt up the palm, the sandcastle and the tide, waving for rescue,
 // and "she could leave any time".
@@ -78,9 +80,9 @@ const H = SH + BH;
 const ASPECT = 1.5; // each logical row is shown 1.5x taller than wide
 const LOOP = 60;
 const BEAT = 0.75;
-const CLICK = 36; // bar 12: the pointer clicks CONTINUE
+const CLICK = 36; // twelve bars in: the pointer clicks CONTINUE
 const CLEAR = CLICK + BEAT; // one beat later the screen clears for the redraw
-const SINK = 30; // bar 10: the shark goes
+const SINK = 30; // ten bars in: the shark goes
 
 const E = {
   k: '#000000', b: '#0000aa', g: '#00aa00', c: '#00aaaa', r: '#aa0000', m: '#aa00aa', br: '#aa5500', lg: '#aaaaaa',
@@ -322,7 +324,9 @@ const textWidth = (str, sx, track = 1.6) => {
 // polyline the nib's corner follows; the drawn shape is the nib swept along
 // it, so verticals come out heavy and up-strokes hairline, all straight.
 const GOTH = {
-  T: [7.6, '-0.2,1.8 0.8,0.8 2.4,1.3 4.6,0.6 6.6,1.3 7.6,0.6;3.6,1.0 3.6,8.0 2.6,9.2 1.2,9.2 0.4,8.6'],
+  // the T's stem ends in a foot to the right like the other letters, so the
+  // heading reads "Things" and not "Jhings"
+  T: [7.6, '-0.2,1.8 0.8,0.8 2.4,1.3 4.6,0.6 6.6,1.3 7.6,0.6;3.4,1.0 3.4,8.4 4.1,9.1 5.0,8.6'],
   h: [5.4, '0,0.9 0.7,0.2 0.7,8.5 1.3,9.1;0.7,4.3 1.9,3.1 3.3,4.2 3.3,9.8 2.5,10.8'],
   i: [3.0, '0,3.7 0.7,3 0.7,8.4 1.4,9.1;0.5,1.1 1.1,1.7'],
   n: [5.6, '0,3.7 0.7,3 0.7,8.5 1.3,9.1;0.7,4.3 1.9,3.1 3.4,4.2 3.4,8.4 4.1,9.1'],
@@ -365,12 +369,14 @@ const BM = {
   G: '.###.|#...#|#....|#.###|#...#|#...#|.####', H: '#...#|#...#|#...#|#####|#...#|#...#|#...#',
   I: '.###.|..#..|..#..|..#..|..#..|..#..|.###.', J: '..###|...#.|...#.|...#.|...#.|#..#.|.##..',
   K: '#...#|#..#.|#.#..|##...|#.#..|#..#.|#...#', L: '#....|#....|#....|#....|#....|#....|#####',
-  M: '#...#|##.##|#.#.#|#.#.#|#...#|#...#|#...#', N: '#...#|#...#|##..#|#.#.#|#..##|#...#|#...#',
+  // M and W are drawn already bold, 7 wide (bolding a 5-wide W fills its
+  // middle in and it reads as a box); they take one more pixel of advance
+  M: '##...##|###.###|#######|##.#.##|##.#.##|##...##|##...##', N: '#...#|#...#|##..#|#.#.#|#..##|#...#|#...#',
   O: '.###.|#...#|#...#|#...#|#...#|#...#|.###.', P: '####.|#...#|#...#|####.|#....|#....|#....',
   Q: '.###.|#...#|#...#|#...#|#.#.#|#..#.|.##.#', R: '####.|#...#|#...#|####.|#.#..|#..#.|#...#',
   S: '.####|#....|#....|.###.|....#|....#|####.', T: '#####|..#..|..#..|..#..|..#..|..#..|..#..',
   U: '#...#|#...#|#...#|#...#|#...#|#...#|.###.', V: '#...#|#...#|#...#|#...#|#...#|.#.#.|..#..',
-  W: '#...#|#...#|#...#|#.#.#|#.#.#|#.#.#|.#.#.', X: '#...#|#...#|.#.#.|..#..|.#.#.|#...#|#...#',
+  W: '##...##|##...##|##.#.##|##.#.##|##.#.##|#######|.##.##.', X:'#...#|#...#|.#.#.|..#..|.#.#.|#...#|#...#',
   Y: '#...#|#...#|.#.#.|..#..|..#..|..#..|..#..', Z: '#####|....#|...#.|..#..|.#...|#....|#####',
   0: '.###.|#...#|#..##|#.#.#|##..#|#...#|.###.', 1: '..#..|.##..|..#..|..#..|..#..|..#..|.###.',
   2: '.###.|#...#|....#|...#.|..#..|.#...|#####', 3: '#####|...#.|..#..|...#.|....#|#...#|.###.',
@@ -395,9 +401,10 @@ function bmGlyph(ch) {
     let d = '';
     rows.forEach((row, y) => {
       // bold: OR with itself shifted right one pixel, then merge runs
+      // (7-wide rows are drawn bold already and used as they are)
       const bits = [...row].map((c) => c === '#');
-      const bold = bits.map((b, i) => b || (i > 0 && bits[i - 1]));
-      bold.push(bits[bits.length - 1]);
+      const bold = row.length > 5 ? bits : bits.map((b, i) => b || (i > 0 && bits[i - 1]));
+      if (row.length <= 5) bold.push(bits[bits.length - 1]);
       let x = 0;
       while (x < bold.length) {
         if (!bold[x]) { x++; continue; }
@@ -411,6 +418,8 @@ function bmGlyph(ch) {
   }
   return id;
 }
+const bmAdvance = (ch) => (BM[ch] && BM[ch].split('|')[0].length > 5 ? 8 : 7);
+const bmWidth = (str) => [...str].reduce((a, ch) => a + bmAdvance(ch), 0);
 function bmText(str, x, y, colour) {
   let s = '';
   let cx = x;
@@ -419,7 +428,7 @@ function bmText(str, x, y, colour) {
       if (!BM[ch]) throw new Error(`no bitmap glyph for ${JSON.stringify(ch)}`);
       s += `<use href="#${bmGlyph(ch)}" x="${cx}" y="${y}"/>`;
     }
-    cx += 7;
+    cx += bmAdvance(ch);
   }
   return `<g fill="${E[colour]}">${s}</g>`;
 }
@@ -638,12 +647,14 @@ const IS = { cx: 186, cy: 290 };
   t = cmd(0.1);
   fillShape(polyD(dry.map(([x, y]) => [IS.cx + (x - IS.cx) * 0.55, IS.cy - 5 + (y - IS.cy) * 0.45])), 'c12:y:br', t);
   // rocks
-  for (const [rx, ry, s] of [[150, 306, 1], [256, 302, 0.8], [96, 296, 0.6]]) {
+  const ROCKS = [[150, 306, 1], [256, 302, 0.8], [96, 296, 0.6]];
+  for (const [rx, ry, s] of ROCKS) {
     const rp = ellPts(rx, ry, 6 * s, 5 * s / ASPECT, 12).map(([x, y]) => [x, Math.min(y, ry + 0.5)]);
     plotPoly(rp, 'lg', { dur: 0.12, gap: 0 });
     fillShape(polyD(ellPts(rx + 1.5 * s, ry + 0.2, 3.5 * s, 2 * s / ASPECT, 8)), 'c50:lg:dg', T);
   }
-  log(t0, 'ELLIPSE x3, POLY x5: shallows, foam, sand, rocks');
+  // polygons: foam, wet sand, dry sand, speckles, then a rock and its shading each
+  log(t0, `ELLIPSE x3, POLY x${4 + ROCKS.length * 2}: shallows, foam, sand, rocks`);
 }
 
 // bushes
@@ -708,7 +719,9 @@ const CROWN = PALM.top;
   fillShape(polyD(hl), 'c50:br:lr', th);
   // the bark segments: black strokes across the trunk
   let seg = '';
+  let nBark = 0;
   for (let yy = PALM.base[1] - 6; yy > PALM.top[1] + 3; yy -= 6.5) {
+    nBark++;
     // find u for this y (monotonic): simple search
     let u = 0;
     while (u < 1 && qp(u)[1] > yy) u += 0.005;
@@ -718,7 +731,7 @@ const CROWN = PALM.top;
   }
   const ts = cmd(0.35);
   outline(seg, ts, 0.3, 'k', 1);
-  log(t0, 'POLY, traced; LINE x24: the trunk and its bark');
+  log(t0, `POLY, traced; LINE x${nBark}: the trunk and its bark`);
 }
 // fronds: a spine bent by "gravity", leaflet zigzag on both edges
 function frond(angleDeg, len, droop, width, rnd) {
@@ -898,9 +911,8 @@ function bottleSVG(x, y, rot = 0) {
   for (const [p] of herHead()) outl += polyD(p);
   add(`<path d="${outl}" fill="none" stroke="#000" stroke-width="1" pathLength="1" class="${trace(tOut, 0.4)}"/>`);
   add(`<g class="${vis(tFill)}"><g class="pIdle">${emitHer('idle')}</g><g class="pThrow">${emitHer('throw')}</g></g>`);
-  log(t0, 'POLY x14, traced, then filled: her');
+  log(t0, `POLY x${herParts('idle').length + herHead().length}, traced, then filled: her`);
 }
-add('<!--GAGS-->');
 
 // ---- 10. little waves and two gulls ------------------------------------------------
 {
@@ -928,6 +940,9 @@ add('<!--GAGS-->');
   add(`<g class="${drift('dg', -26, 26)}"><g class="${vis(tg)}" fill="none" stroke="#000" stroke-width="1"><path class="gA" d="${GULLS.map(([x, y]) => gull(x, y, true)).join('')}"/><path class="gB" d="${GULLS.map(([x, y]) => gull(x, y, false)).join('')}"/></g></g>`);
   log(tg, 'LINE x8: two gulls');
 }
+// the gags (bottle, splash, shark) go over the waves, so no wave dash crosses
+// the fin or the bottle; they are not part of the redraw
+add('<!--GAGS-->');
 
 // ---- 11. the scroll: a door-game menu of her activities -----------------------------
 const SC = { x0: 410, x1: 622, y0: 112, y1: 304 };
@@ -1134,7 +1149,7 @@ css.push(`@keyframes gA{0%{opacity:1}50%{opacity:0}}@keyframes gB{0%{opacity:0}5
 // ================================================================== STATUS BAR
 const MSGS = [
   [0, 6, 'ISLE WAIT BBS * NODE 1 * NOTHING IS HAPPENING'],
-  [6, 11.25, 'INCOMING: ONE BOTTLE. SLOWLY.'],
+  [6, 11.25, 'INCOMING: ONE BOTTLE. HERS. AGAIN.'],
   [11.25, 15, 'BOTTLE RECEIVED. SENDING IT BACK...'],
   [15, 18, 'BOTTLE SENT. BOTTLE COMING BACK.'],
   [18, 21, 'RETURNED TO SENDER. SENDER: HER.'],
@@ -1160,7 +1175,7 @@ function statusBar() {
     s += `<g class="m${i}">${bmText(msg, 8, ty, 'k')}</g>`;
   });
   // progress bar while the screen is received: steps across the free part of the field
-  const px0 = 8 + 7 * 'RECEIVING SCREEN AT 2400 BPS'.length + 8;
+  const px0 = 8 + bmWidth('RECEIVING SCREEN AT 2400 BPS') + 8;
   const px1 = 428;
   const steps = 24;
   const dur = DRAW_DONE - CLEAR;
@@ -1218,7 +1233,7 @@ const status = statusBar();
 const ptr = pointer();
 const bodyStr = body.join('\n').replace('<!--GAGS-->', gags);
 
-const ALT = 'CASTAWAY drawn as a RIPscrip BBS screen: sky rings, a palm island, her, a parchment menu and a Continue button.';
+const ALT = 'CASTAWAY drawn as a RIPscrip BBS screen: dithered sky rings, a palm island with a young woman in headphones, a parchment menu of things to do and a Continue button.';
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${r2(H * ASPECT)}" preserveAspectRatio="none" shape-rendering="crispEdges" role="img" aria-label="${ALT}">
 <title>${ALT}</title>
 <style>

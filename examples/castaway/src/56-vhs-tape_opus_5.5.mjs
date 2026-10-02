@@ -121,8 +121,8 @@ const C = {
   rope: '#f4e0c4',
   skin: '#f8c4ae',
   skinDark: '#e0a093',
-  hair: '#5e3448',
-  hairDark: '#45243b',
+  hair: '#6b3d38',
+  hairDark: '#4a2830',
   coral: '#ff6a6f',
   coralDark: '#d94b65',
   cream: '#fff1dd',
@@ -273,7 +273,7 @@ const OSD_DOTS = {
 };
 const OSD_BLOBS = { '♪': [[1.5, 5, 1.6, 1.25]] }; // ellipses: cx, cy, rx, ry
 const OSD_ADV = 7;
-const OSD_SW = 1.25;
+const OSD_SW = 1.5; // heavy, like a VCR's character generator
 const oid = (ch) => 'o' + ch.codePointAt(0).toString(16);
 const usedOsd = new Set();
 
@@ -433,8 +433,8 @@ function frond(cx, cy, angDeg, len, droop, wid, light, dark, rib) {
 // ------------------------------------------------------------------ the island scene
 const HORIZON = 300;
 const TRUNK_BASE = [474, 446];
-const CROWN = [532, 262];
-const NUT_HOME = [541, 276]; // the coconut that falls, in the crown
+const CROWN = [532, 270]; // low enough that the top fronds clear the strapline
+const NUT_HOME = [541, 284]; // the coconut that falls, in the crown
 const GROUND = 464; // where the crab walks
 const HER = [459, 452]; // her seat, back against the trunk
 const ISLE_S = 1.15; // island zoom
@@ -445,9 +445,9 @@ function sky() {
   // sun high up, posterised glow rings
   const [sx, sy] = [318, 46];
   s += circ(sx, sy, 46, C.sunGlow, ' opacity=".16"') + circ(sx, sy, 34, C.sunGlow, ' opacity=".28"') + circ(sx, sy, 28, C.sunGlow, ' opacity=".5"') + circ(sx, sy, 19, C.sun);
-  // two gulls, far off
-  s += line([[222, 226], [228, 222], [233, 226], [238, 222], [244, 226]], '#5b4a96', 1.6);
-  s += line([[256, 214], [261, 211], [265, 214], [269, 211], [274, 214]], '#5b4a96', 1.4);
+  // two gulls, far off, low over the cloud bank (clear of the strapline)
+  s += line([[190, 256], [196, 252], [201, 256], [206, 252], [212, 256]], '#5b4a96', 1.6);
+  s += line([[226, 246], [231, 243], [235, 246], [239, 243], [244, 246]], '#5b4a96', 1.4);
   return s;
 }
 function clouds() {
@@ -966,10 +966,12 @@ ${[...usedOsd].map(osdGlyphDef).join('\n')}
     headSwitch() +
     rewindBars() +
     dropouts() +
-    `<g stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2">${osdLayer}</g>` +
-    `<rect width="${FW}" height="${FH}" fill="url(#pScan)"/>` +
+    // the tube's falloff and glare belong to the picture; the VCR's display sits on top,
+    // bright and sharp, and only the scanlines cross it
     `<rect width="${FW}" height="${FH}" fill="url(#gVig)"/>` +
     `<rect width="${FW}" height="${FH}" fill="url(#gGlare)"/>` +
+    `<g stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2">${osdLayer}</g>` +
+    `<rect width="${FW}" height="${FH}" fill="url(#pScan)"/>` +
     `</g><rect x=".75" y=".75" width="${FW - 1.5}" height="${FH - 1.5}" rx="30" fill="none" stroke="#2c2340" stroke-width="1.5"/></g>`;
 
   css.push(`@keyframes blink{0%{opacity:1}50%{opacity:0}100%{opacity:0}}.blink{animation:blink 1s step-end infinite}`);

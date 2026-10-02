@@ -8,18 +8,21 @@
 // The cleartext signature framework of OpenPGP (RFC 4880, section 7): a "-----BEGIN PGP SIGNED
 // MESSAGE-----" line, a "Hash:" armor header, exactly one blank line, the text itself with every
 // line that starts with a hyphen dash-escaped as "- -", then an ASCII-armoured signature block:
-// optional Comment: headers, a blank line, a rectangle of base64 64 characters wide, a short
-// last line, the "=" CRC-24 checksum line and the END delimiter. The zine-footer variant (a
-// "PUBLIC KEY BLOCK", a taller base64 rectangle) closes the README in a <details> block. The
-// letter closes the way a 1990s list manifesto does: a name, an address and a date on three
-// lines. The delimiter format is an open standard; nothing is copied from any real post, key or
+// a Version: header (the 1990s tell; this one names no program, because none made it), Comment:
+// headers, a blank line, a rectangle of base64 64 characters wide, a short last line, the "="
+// CRC-24 checksum line and the END delimiter. The zine-footer variant (a "PUBLIC KEY BLOCK", a
+// taller base64 rectangle) closes the README in a <details> block. The letter closes the way a
+// 1990s list manifesto does: a name, an e-mail address and a date on three lines (the address is
+// on .invalid, which is reserved and never resolves, so mail to it bounces, like the bottle).
+// The delimiter format is an open standard; nothing is copied from any real post, key or
 // signature.
 //
 // NOTHING HERE IS FAKE
 // The catalogue's caveat is that a made-up signature block misleads people into trusting it, so
 // this one is real: every byte of the armour is built here, from scratch, as OpenPGP v4 packets
 // (an Ed25519 key, algorithm 22; a canonical-text signature, type 0x01, over SHA-256), and the
-// message verifies with stock GnuPG (checked with GnuPG 2.4.9 on 2026-10-01):
+// message verifies with stock GnuPG (checked with GnuPG 2.4.9 on 2026-10-01 and again, after the
+// review changes, on 2026-10-02):
 //   gpg --import README.md
 //   sed -n '/^-----BEGIN PGP SIGNED/,/^-----END/p' README.md | gpg --verify
 // (Plain `gpg --verify README.md` says Good signature too, then trips over the key block.)
@@ -41,9 +44,12 @@
 // the logo and the block stops verifying (the armour's CRC-24 notices first; fix that up and
 // the signature fails instead).
 //
-// Everything is new and invented: the Palm Notary (the demo key's name), the notation domain
-// one-palm.invalid (.invalid is reserved and never resolves), the letter, the logo font and the
-// palm. Castaway is Luke's own project; the jokes are about it and nothing else.
+// Everything is new and invented: the Palm Notary (the demo key's name), the domain
+// bottle.invalid (for the notations and the castaway's address; .invalid is reserved and never
+// resolves), the letter, the logo font and the palm. Castaway is Luke's own project; the jokes
+// are about it and nothing else.
+// The notation name must stay at most 22 characters ("logo@" + domain) or the logo slips down
+// an armour line and a row of filler base64 appears above it.
 //
 // The build refuses to write anything if a body line is over 70 columns, has trailing spaces or
 // a character outside printable 7-bit ASCII, if any armour line is not where the picture put it,
@@ -62,7 +68,9 @@ const OUT = path.resolve(HERE, '..', `${SLUG}.md`);
 // ---------------------------------------------------------------------------------------------
 const KEY_PHRASE = 'Castaway demo key. The palm notary signs anything. Seed 1992. Trust nobody.';
 const USER_ID = 'Palm Notary (demo key)';
-const NOTATION_DOMAIN = 'one-palm.invalid';
+const NOTATION_DOMAIN = 'bottle.invalid';
+// The armour's Version: header. In the 1990s it named the program; no program made this one.
+const VERSION = 'hand-rolled in plain Node (no gpg, no npm)';
 const KEY_TIME = Date.UTC(2026, 9, 1, 0, 0, 0) / 1000; // 1 Oct 2026, 00:00:00 UTC
 const SIG_TIME = Date.UTC(2026, 9, 1, 10, 0, 0) / 1000; // 1 Oct 2026, 10:00:00 UTC (a Thursday)
 const B64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
@@ -274,19 +282,12 @@ const FRONDS = [
   [[33, 9], [38, 21], 3.2], // right, low
   [[17, 3], [25, 1.2], 3.0], // top
 ];
-// Leaflets: short strands hanging from the outer two thirds of each frond.
-const leaflets = FRONDS.slice(0, 4).flatMap(([p1, p2]) =>
-  [0.5, 0.67, 0.84].map((t) => {
-    const [x, y] = quad(CROWN, p1, p2, t);
-    const side = p2[0] < CROWN[0] ? -1 : 1;
-    return stroke([x, y + 1], [x + side * 0.6, y + 3], [x + side * 1.4, y + 4.6], 1.1, 0.8);
-  }),
-);
+// (Leaflets hanging off the fronds were tried and dropped: at 64 columns they read as noise,
+// and the plain arcs read as a palm from further back.)
 const SCENE = [
   // [character, shape, how much of the cell it must cover], topmost first
   ['0', any(disc(19.6, 15.2, 1.5), disc(23, 15.6, 1.5)), 0.3], // coconuts
-  ['M', any(...FRONDS.map(([p1, p2, w]) => stroke(CROWN, p1, p2, w, 1.0))), 0.34],
-  ['l', any(...leaflets), 0.3],
+  ['M', any(...FRONDS.map(([p1, p2, w]) => stroke(CROWN, p1, p2, w, 1.6))), 0.34],
   ['8', stroke([21, 14], [27, 27], [24.5, 39], 3.4, 2.6), 0.4], // trunk, ringed
   ['m', oval(25, SEA_Y - 0.5, 17, 4.2), 0.4], // the island
   ['O', disc(52, 7, 5.6), 0.4], // sun
@@ -349,7 +350,7 @@ SHA-256 of everything that happens between gags:
 ${EMPTY_SHA256}
 
 the castaway
-top of the palm, one bar of signal
+castaway@bottle.invalid (mail to it comes straight back too)
 Thursday, 1 October 2026
 `.replace(/^\n|\n$/g, '').split('\n');
 
@@ -409,6 +410,7 @@ const signedBlock = [
   '',
   ...shown,
   '-----BEGIN PGP SIGNATURE-----',
+  `Version: ${VERSION}`,
   'Comment: signed at the top of the palm, where there is one bar',
   'Comment: comments are not covered by the signature. this one may lie',
   '',
@@ -417,6 +419,7 @@ const signedBlock = [
 ];
 const keyBlock = [
   '-----BEGIN PGP PUBLIC KEY BLOCK-----',
+  `Version: ${VERSION}`,
   'Comment: Palm Notary, demo key. stand back from the screen a bit',
   '',
   ...keyRows,
@@ -464,22 +467,22 @@ const md = [
     "sed -n '/^-----BEGIN PGP SIGNED/,/^-----END/p' README.md | gpg --verify",
   ], 'sh'),
   '',
-  'What GnuPG 2.4.9 printed on 1 October 2026:',
+  'What GnuPG 2.4.9 printed:',
   '',
   ...fence(GPG_SAYS),
   '',
-  'Good signature, from a key nobody should trust. Both of those are correct. Now change one word of the letter and run it again: BAD signature. Change a `Comment:` line instead and it still verifies, because armour headers are not signed. That is why the second one warns you about the first.',
+  'Good signature, from a key nobody should trust. Both of those are correct. Now change one word of the letter and run it again: BAD signature. Change a `Comment:` line instead and it still verifies, because armour headers are not signed. The second comment is owning up to exactly that.',
   '',
   '</details>',
   '',
   '<details>',
-  '<summary><b>The fine print</b>: seven tells that this went through a real signer</summary>',
+  '<summary><b>The fine print</b>: seven tells that this really was signed</summary>',
   '',
   '1. **`- - this bottle goes out`** is dash-escaping. Every line of the letter that starts with a hyphen gets a `- ` in front, so no line of text can ever pass itself off as a `-----BEGIN` line. GnuPG takes it off again before it checks.',
   '2. **`Hash: SHA256`**, then exactly one blank line, then the letter. Trailing spaces are not signed, and every line ending is signed as CR LF, whatever your system uses.',
-  "3. **The logo is inside the signature, and it is signed.** Base64 is only letters, digits, `+` and `/`, so any 64 of them decode to 48 bytes. Those bytes sit in a notation packet in the signature's hashed area, placed so they start a line of their own, and they armour straight back into the picture. `gpg --verify-options show-notations --verify` lists it as `logo@one-palm.invalid`, \"not human readable\", which is fair.",
-  '4. **`=` and four characters** close the block: a CRC-24 of the armour, there to catch a mangled copy, not a forger.',
-  '5. **The `Comment:` lines** sit outside the signature. The first one may even be true.',
+  "3. **The logo is inside the signature, and it is signed.** Base64 is only letters, digits, `+` and `/`, so any 64 of them decode to 48 bytes. Those bytes sit in a notation subpacket in the signature's hashed area, placed so they start a line of their own, and they armour straight back into the picture. Add `--verify-options show-notations` to the check and gpg lists it as `logo@bottle.invalid`, \"not human readable\", which is fair.",
+  '4. **`=` and four characters** close the block: a CRC-24 of the bytes under the base64, there to catch a mangled copy, not a forger.',
+  '5. **The `Version:` and `Comment:` lines** sit outside the signature. In the 1990s the `Version:` line named the program that made the block; no OpenPGP program made this one, so it says what did. The first comment may even be true.',
   "6. **The SHA-256 in the letter** is the hash of an empty file. Check it: `printf '' | sha256sum`.",
   `7. **The key is a demo.** Its secret half is the SHA-256 of a sentence anyone can read: \`${KEY_PHRASE}\` That is why it signs with a straight face and proves nothing about who wrote the letter.`,
   '',

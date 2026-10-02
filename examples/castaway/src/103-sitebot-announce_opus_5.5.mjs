@@ -326,16 +326,16 @@ function announce(tag, sec, body) {
 const LOG = [
   ['new', 'LOFI', '~Castaway.10h.Run~ by *her*/CASTAWAY :: seed *1992* :: expecting *10:00:00*'],
   ['racer', 'OCCASIONAL', '*ship*/SEA_SKY is racing *her*/CASTAWAY :: she is busy with a ~coconut~'],
-  ['leader', 'OCCASIONAL', '*ship*/SEA_SKY takes the lead :: sightings *0* :: headphones on'],
+  ['leader', 'REGULAR', '*her*/CASTAWAY takes the lead :: ~Coconut.Sip~, eyes closed :: ships seen *0*'],
   ['login', 'RARE', '*cat*/CAT logged in from a ~crate~ :: grey tabby, white chest'],
   ['nuke', 'OCCASIONAL', '~Note.In.A.Bottle~ x*1* by *the.sea* {reason} came.straight.back {nukees} *her*'],
   ['dupe', 'RARE', '~Headphones~ by *drone*/SEA_SKY :: dupe of the pair she is wearing'],
   ['racer', 'RARE', '*shark*/SEA_SKY is racing *her*/CASTAWAY at *80 BPM* :: both nodding :: a tie'],
-  ['wipe', 'REGULAR', '~Sandcastle~ wiped by *tide*/SHORE :: she will build it again'],
+  ['wipe', 'CHAINED', '~Sandcastle~ wiped by *tide*/SHORE :: she will build it again'],
   ['req', 'SUPER-RARE', '*her*/CASTAWAY requests ~A.Lift.Home~ :: waving for rescue'],
-  ['50%', 'LOFI', '~Castaway.10h.Run~ is halfway :: *5:00:00* :: *her*/CASTAWAY leads, idling'],
+  ['50%', 'LOFI', '~Castaway.10h.Run~ is halfway :: *her*/CASTAWAY leads, idling :: ETA *5:00:00*'],
   ['filled', 'RARE', '~A.Lift.Home~ by *tour.boat*/SEA_SKY :: selfies taken :: lifts *0*'],
-  ['bwinfo', '', '*1* up at *1 bar* :: top of the palm :: *0* down :: *1* very happy texter'],
+  ['bwinfo', '', '*1* up at *1 bar* :: top of the palm :: *0* down :: *1* phone, held very high'],
   ['update', 'OCCASIONAL', '~Coconut.On.A.Hermit.Crab~ :: the coconut walked off :: crab inside'],
   ['unnuke', 'CHAINED', '~Note.In.A.Bottle~ :: a different bottle washed up :: a reply'],
   ['logout', 'SUPER-RARE', '*her*/CASTAWAY walked out over the water :: island empty'],
@@ -492,6 +492,7 @@ ${fills}
 const defs = [...used.entries()].map(([id, d]) => `<path id="${id}" d="${d}"/>`).join('');
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="Castaway: a sitebot announce channel for a 10-hour lo-fi island video">
 <title>Castaway: sitebot announce</title>
+<desc>The word CASTAWAY in large cyan pixel capitals above a dark IRC window in which an invented bot, CAY, announces the island's gags one bracketed line per bar of the 80 BPM theme: the ship racing her while she sips a coconut, the cat logging in from a crate, the bottle that comes straight back, the shark nodding at 80 BPM. Run python tools/serve.py, then open 127.0.0.1:8765.</desc>
 <style>${css}</style>
 <defs>${defs}</defs>
 ${parts.join('\n')}

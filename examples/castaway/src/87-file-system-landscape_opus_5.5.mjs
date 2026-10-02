@@ -5,9 +5,10 @@
 // the early-90s idea that a file system is a place you fly over. Folders are pedestals standing
 // on a ground plane, files are boxes standing on the pedestals (height = size, colour = age),
 // wires run from each folder to its children with pulses travelling along them, and the code
-// folders become a little city of glass towers covered in file names, with a highlight bar
-// scanning one of the lists. Everything is this file's own drawing and lettering; no real
-// program, film, logo or wordmark is reproduced.
+// folders become a little city of glass towers covered in file names, with highlight bars
+// scanning the lists and, once a minute, the gags tower's front face going to the alert colour
+// for one bar. Everything is this file's own drawing and lettering; no real program, film, logo
+// or wordmark is reproduced.
 //
 // The twist: it is always daytime on Castaway, so the ground plane is a sunny lagoon, the root
 // folder is the island (sand on top, one tall palm, one raft moored alongside), and she sits on
@@ -199,17 +200,17 @@ const NODES = [
   ['web/js', 'js', 'web', -25.5, 37, 'tower'],
   ['web/assets', 'assets', 'web', -15, 37, 'boxes'],
   ['tools/idle_rig', 'idle_rig', 'tools', -8.5, 37, 'boxes'],
-  ['tools/sprite_fit', 'sprite_fit', 'tools', -1, 37, 'boxes'],
+  ['tools/sprite_fit', 'sprite_fit', 'tools', 0.8, 37, 'boxes'],
   ['media/audio', 'audio', 'media', 11, 37, 'boxes'],
   ['media/gags', 'gags', 'media', 21, 37, 'boxes'],
   ['media/sprites', 'sprites', 'media', 32, 37, 'boxes'],
   ['media/props', 'props', 'media', 42, 37, 'boxes'],
   ['web/js/routines', 'routines', 'web/js', -37, 55, 'tower'],
-  ['web/assets/scenery', 'scenery', 'web/assets', -21, 55, 'boxes'],
+  ['web/assets/scenery', 'scenery', 'web/assets', -24.5, 55, 'boxes'],
   ['web/assets/sprites', 'sprites', 'web/assets', -12, 55, 'boxes'],
   ['media/audio/music', 'music', 'media/audio', 1, 55, 'boxes'],
   ['media/audio/sfx', 'sfx', 'media/audio', 9, 55, 'boxes'],
-  ['media/environment', 'environment', 'media', 20, 55, 'boxes'],
+  ['media/environment', 'environment', 'media', 18, 55, 'boxes'],
   ['media/scenes', 'scenes', 'media', 29, 55, 'boxes'],
   ['media/references', 'references', 'media', 36, 55, 'boxes'],
   ['media/effects', 'effects', 'media', 44, 55, 'boxes'],
@@ -263,7 +264,7 @@ for (const n of NODES) {
     w = Math.max(2.4, cols * CELL - (CELL - BOX) + 2 * MARGIN);
     dep = Math.max(2.0, rows * CELL - (CELL - BOX) + 2 * MARGIN);
   }
-  const h = tower ? 0.42 : pedH(n.total);
+  const h = pedH(n.total); // towers too: every pedestal's height is its folder's total size
   n.b = { x0: n.x - w / 2, x1: n.x + w / 2, y0: 0, y1: h, z0: n.z, z1: n.z + dep };
   n.w = w; n.dep = dep; n.h = h;
   const ped = n.b;
@@ -323,13 +324,15 @@ named['castaway/her'] = { x0: HER.x - 0.55, x1: HER.x + 0.55, y0: RH, y1: RH + 1
 add({ b: { x0: HER.x - 0.45, x1: HER.x + 0.45, y0: RH, y1: RH + 1.1, z0: HER.z - 0.2, z1: HER.z + 0.3 }, kind: 'her', draw: () => drawHer() });
 const CASTLE = { x: -6.1, z: 6.2 };
 add({ b: { x0: CASTLE.x - 0.62, x1: CASTLE.x + 0.62, y0: RH, y1: RH + 1.5, z0: CASTLE.z - 0.47, z1: CASTLE.z + 0.47 }, kind: 'castle', draw: () => drawCastle() });
-const RAFT = { x0: -12.6, x1: -9.6, z0: -0.4, z1: 1.8 };
+// far enough back that the fly-through's zoom (scale 1.045 about the vanishing point, plus the
+// half-degree bank) never pushes it into the frame's rounded bottom-left corner
+const RAFT = { x0: -13.0, x1: -10.0, z0: 1.0, z1: 3.2 };
 add({ b: { ...RAFT, y0: 0, y1: 0.3 }, kind: 'raft', draw: () => drawRaft() });
 const TURTLE = { x: -16.5, z: 7.5 };
 add({ b: { x0: TURTLE.x - 0.8, x1: TURTLE.x + 0.8, y0: 0, y1: 0.2, z0: TURTLE.z - 0.5, z1: TURTLE.z + 0.5 }, kind: 'turtle', draw: () => drawTurtle() });
 const DRONE = { x: 11.6, y: 2.5, z: -0.7 };
 add({ b: { x0: DRONE.x - 0.6, x1: DRONE.x + 0.6, y0: DRONE.y - 0.8, y1: DRONE.y + 0.2, z0: DRONE.z - 0.3, z1: DRONE.z + 0.3 }, kind: 'drone', draw: () => drawDrone() });
-const BOTTLE = { x: -12.8, z: 3.9 };
+const BOTTLE = { x: -13.0, z: 5.6 }; // clear water behind the raft
 add({ b: { x0: BOTTLE.x - 0.3, x1: BOTTLE.x + 0.3, y0: 0, y1: 0.2, z0: BOTTLE.z - 0.15, z1: BOTTLE.z + 0.15 }, kind: 'bottle', draw: () => drawBottle() });
 const FIN = { z: 13.5 };
 add({ b: { x0: -60, x1: 60, y0: 0, y1: 0.6, z0: FIN.z, z1: FIN.z + 0.3 }, kind: 'fin', draw: () => drawFin() });
@@ -784,11 +787,13 @@ function drawTower(n, b, names, scan) {
   // the roof (seen from above) and the near faces
   o += `<path fill="${fog('#8fc4ff', z)}" opacity=".45" d="${poly([P(b.x0, b.y1, b.z0), P(b.x1, b.y1, b.z0), P(b.x1, b.y1, b.z1), P(b.x0, b.y1, b.z1)])}"/>`;
   if (visSide) o += `<path fill="${fog('#2462c4', z)}" opacity=".5" d="${quad(visSide)}"/>` + faceText(faces[visSide], 'gt');
-  o += `<path fill="${fog('#2a6fdb', z)}" opacity=".42" d="${quad('front')}"/>` + faceText(faces.front, 'gt');
+  o += `<path fill="${fog('#2a6fdb', z)}" opacity=".42" d="${quad('front')}"/>`;
+  if (names === ROUTINE_NAMES) o += `<path class="alert" fill="#ff3b30" d="${quad('front')}"/>`;
+  o += faceText(faces.front, 'gt');
   if (scan) { // highlight bar scanning down the front list, one line per beat
     const [lx, ty] = P(b.x0 + 0.05, b.y1 - m + 0.06, b.z0); const [rx] = P(b.x1 - 0.05, 0, b.z0);
     const hpx = LH * S(b.z0);
-    o += `<rect class="scan${id}" x="${r1(lx)}" y="${r1(ty)}" width="${r1(rx - lx)}" height="${r1(hpx)}" fill="#e9fbff" opacity=".55"/>`;
+    o += `<rect class="scan${id}" x="${r1(lx)}" y="${r1(ty)}" width="${r1(rx - lx)}" height="${r1(hpx)}" fill="#f2fdff" opacity=".68"/>`;
     extraCss.push(`.scan${id}{animation:scan${id} ${(nLines * 0.75).toFixed(2)}s steps(${nLines},end) infinite}@keyframes scan${id}{to{transform:translateY(${r1(hpx * nLines)}px)}}`);
   }
   // edges
@@ -867,18 +872,18 @@ function cloud(x, y, sc) {
 // ---------------------------------------------------------------------------------------------
 const STOPS = [
   ['castaway/', 'ONE ISLAND. ONE PALM. ONE RAFT. TEN HOURS.', 'THE CAMERA NEVER MOVES. EXCEPT IN HERE.'],
-  ['activities.toml', 'MORE THAN 90 ACTIVITIES ON FOUR TIMERS', '2-5 MIN · 12-25 MIN · 30-60 MIN · 3-6 HOURS'],
+  ['activities.toml', 'MORE THAN 90 ACTIVITIES, MOST ON FOUR TIMERS', '2-5 MIN · 12-25 MIN · 30-60 MIN · 3-6 HOURS'],
   ['web/js/routines/', 'THE GAGS, AS CODE', 'BOTTLE · DRONE · CAT · SHARK · CRAB · COCONUT'],
   ['tools/schedule.py', 'SIMULATES A TEN-HOUR RUN, SEED 1992', 'EVERY GAG STARTS ON THE NEXT BAR: EVERY 3 S'],
   ['castaway/her', 'NOT A FILE. JUST IDLING, ON THE BEAT.', 'BUSY A THIRD OF THE TIME. THE REST IS THIS.'],
   ['tools/make_audio.py', 'EVERY SOUND IS SYNTHESIZED FROM CODE', 'NO SAMPLES, NO LOOPS, NO RECORDINGS'],
-  ['media/audio/sfx/', 'MORE THAN 150 SOUND FILES', '80 BPM, F MAJOR, KALIMBA LEAD. -14 LUFS.'],
+  ['media/audio/', 'MORE THAN 150 SOUND FILES', 'THEME: 80 BPM, F MAJOR, KALIMBA LEAD. MIX: -14 LUFS.'],
   ['web/index.html', 'LIVE PREVIEW. EXPORTS A YOUTUBE-READY MP4.', 'PLAIN ES MODULES. NO BUILD STEP. NO NPM.'],
   ['tools/serve.py', 'RUN ME, THEN OPEN 127.0.0.1:8765', 'python tools/serve.py'],
   ['MUSING.md', 'THE PROJECT LOG. CURRENT STATE FIRST.', 'IN DEVELOPMENT. NOTHING PUBLISHED YET.'],
 ];
 const STOP_S = 6, LOOP_S = STOPS.length * STOP_S;
-const named2 = (key) => named[key] || named[key.replace(/\/$/, '')] || (key === 'media/audio/sfx/' && byId['media/audio/sfx'].b);
+const named2 = (key) => named[key] || named[key.replace(/\/$/, '')] || byId[key.replace(/\/$/, '')]?.b;
 
 function marker(key, i) {
   const b = named2(key); if (!b) throw new Error('no marker target ' + key);
@@ -932,8 +937,9 @@ function legend() {
     o += `<path fill="${a.top}" d="M${bx} ${by + 4}L${bx + 4} ${by}H${bx + 16}L${bx + 12} ${by + 4}Z"/><rect x="${bx}" y="${by + 4}" width="12" height="12" fill="${a.front}"/><path fill="${a.side}" d="M${bx + 12} ${by + 4}L${bx + 16} ${by}V${by + 12}L${bx + 12} ${by + 16}Z"/>`;
     o += text(a.label, bx + 22, by + 3.5, 1.0, 'hb');
   });
-  o += text('BOX = FILE. HEIGHT = SIZE, LOG SCALE.', x + 16, y + 70, 1.0, 'hb');
-  o += text('PEDESTAL = FOLDER. WIRE = PARENT TO CHILD.', x + 16, y + 92, 1.0, 'hb');
+  o += text('BOX = FILE. STRIPED BOX = MANY FILES.', x + 16, y + 64, 1.0, 'hb');
+  o += text('HEIGHT = SIZE (LOG). PEDESTAL = FOLDER.', x + 16, y + 82, 1.0, 'hb');
+  o += text('WIRE = PARENT TO CHILD. RED GLASS = ALERT.', x + 16, y + 100, 1.0, 'hb');
   return o + '</g>';
 }
 
@@ -974,6 +980,7 @@ const css = [
   `.fb{opacity:0}.fa,.fb{animation:fl 1.5s steps(1,end) infinite}.fb{animation-delay:-.75s}@keyframes fl{0%{opacity:1}50%{opacity:0}}`,
   `.swim{animation:swim ${LOOP_S}s linear infinite}@keyframes swim{from{transform:translateX(-120px)}to{transform:translateX(${VW + 120}px)}}`,
   `.finnod{animation:finnod .75s steps(1,end) infinite}@keyframes finnod{50%{transform:rotate(-7deg)}}`,
+  `.alert{opacity:0;animation:alert ${LOOP_S}s linear infinite}@keyframes alert{0%,25%{opacity:0}25.667%,28.5%{opacity:.62}30%,100%{opacity:0}}`,
   `.cl{fill:#ffffff;opacity:.88}`,
   `.drift{animation:drift 120s linear infinite}@keyframes drift{from{transform:translateX(-260px)}to{transform:translateX(${VW + 260}px)}}`,
   ...extraCss,

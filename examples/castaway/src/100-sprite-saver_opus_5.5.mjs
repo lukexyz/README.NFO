@@ -19,7 +19,8 @@
 // every so often something happens. A screen saver is the same deal: a
 // flock that never stops, and every so often a cameo. So the turtles take
 // one flipper stroke per beat (80 BPM, the theme's tempo), and between them
-// the island's gags drift through in front of the title, one at a time: her,
+// the island's gags drift through the open water under the title, one at a
+// time (never over a letter of the name): her,
 // walking over the water with an iced coffee ("she could leave any time"),
 // the stray cat on her crate, and the coconut walking off with a hermit crab
 // under it. The control panel lists the gags as modules, puts the schedule's
@@ -36,8 +37,9 @@
 // one <use> per frame whose opacity is switched by a step-end keyframe.
 // Each lane's sprite leaves the screen and re-enters at the same moment,
 // so every loop is seamless. Cameos share one 48 s timetable. Reduced
-// motion pauses everything on the opening frame, which already shows the
-// title, the message line and her mid-stride.
+// motion switches every animation off; each sprite's transform attribute
+// and base opacity hold its t = 0 pose, so the still is the opening frame,
+// one pose per sprite, with the title, the message line and her mid-stride.
 //
 // Dev aid: SPRITE_SHEET=<path.svg> also writes a zoomed sheet of every
 // sprite frame to that path (nothing else is written outside assets/).
@@ -539,6 +541,7 @@ const BODY = {
   Z: '#####|....#|...#.|..#..|.#...|#....|#####',
   J: '...#|...#|...#|...#|...#|#..#|.##.',
   Q: '.###.|#...#|#...#|#...#|#.#.#|#..#.|.##.#',
+  '*': '.....|..#..|#.#.#|.###.|#.#.#|..#..|.....',
 };
 function makeFont(table, { space, gap = 1 }) {
   const cache = new Map();
@@ -632,16 +635,36 @@ const SX = 40, SY = 32; // screen origin in svg units
 const VB_W = 1280, VB_H = 688;
 const BEAT = 0.75; // 80 BPM
 const fmt = (n) => (Math.round(n * 1000) / 1000).toString();
+// Frame-flip delays are multiples of 3/32 s, so they are written exactly
+// (5 places): rounded to 3, neighbouring frames would overlap or leave a gap
+// for half a millisecond at every switch, and a frame caught on that edge
+// shows two poses at once (or none).
+const fmtx = (n) => (Math.round(n * 100000) / 100000).toString();
 
 // Every sprite rides a straight diagonal: 2 px left and 1 px down per step,
 // in from the top or right edge, out at the bottom or left edge. A lane is
 // the line x + 2y = c; its sprite re-enters the moment it leaves, so each
 // lane always holds exactly one sprite and the screen never looks empty.
+// The first step starts wholly off screen and the last step ends wholly off
+// screen, so nothing pops at an edge when a lane wraps round.
 function lanePath(c, w, h, scrW = SW, scrH = SH) {
-  const yIn = Math.max(-h, Math.ceil((c - scrW) / 2));
-  const yOut = Math.min(scrH, Math.floor((c + w) / 2));
-  return { x0: c - 2 * yIn, y0: yIn, n: yOut - yIn };
+  const yIn = Math.max(-h, Math.floor((c - scrW) / 2));
+  const yOff = Math.min(scrH, Math.ceil((c + w) / 2));
+  return { x0: c - 2 * yIn, y0: yIn, n: yOff - yIn + 1 };
 }
+
+// ink bounds of a sprite over all its frames, [x0, y0, x1, y1] inclusive
+function inkBox(grids) {
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  for (const g of grids) for (let y = 0; y < g.h; y++) for (let x = 0; x < g.w; x++) {
+    if (g.get(x, y) === null) continue;
+    x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y);
+  }
+  return [x0, y0, x1, y1];
+}
+const at = ([x0, y0, x1, y1], dx, dy) => [x0 + dx, y0 + dy, x1 + dx, y1 + dy];
+const hits = (a, b, m = 0) => a[0] <= b[2] + m && b[0] <= a[2] + m && a[1] <= b[3] + m && b[1] <= a[3] + m;
+const onScreen = (b) => hits(b, [0, 0, SW - 1, SH - 1]);
 
 // the flock: t = turtle, h = the turtle in headphones, b = a bottle
 const FLOCK_KINDS = [...'ttbtttbtthttbttbtttbtt'];
@@ -669,7 +692,7 @@ function buildSaver() {
     const name = `v${kind}${slot}`;
     if (!used.has(name)) {
       used.add(name);
-      css.push(`.${name}{animation:q${nf} ${fmt(dur)}s step-end infinite;animation-delay:${fmt(-dur + (slot * dur) / nf)}s;opacity:${slot === 0 ? 1 : 0}}`);
+      css.push(`.${name}{animation:q${nf} ${fmtx(dur)}s step-end infinite;animation-delay:${fmtx(-dur + (slot * dur) / nf)}s;opacity:${slot === 0 ? 1 : 0}}`);
     }
     return name;
   };
@@ -682,39 +705,92 @@ function buildSaver() {
     return s;
   };
 
-  // lanes for the flock: 14 turtles (one wearing headphones) and 5 bottles
+  // the title, fixed in the middle
+  const tg = titleGrid('CASTAWAY');
+  const tx = Math.round((SW - tg.w) / 2), ty = 40;
+
+  // Cameos: one at a time, on their own timetable, in the open water under
+  // the title. A 48 s loop (16 bars): her with the iced coffee, the cat on
+  // her crate, the crab in the coconut. Each crosses once, then waits off
+  // screen. Their lanes start right of the title's last column on every row
+  // the title fills, so a cameo never covers a letter of the name.
+  const CAMEO_LOOP = 48;
+  const clear = tx + tg.w + 2 * (ty + tg.h - 1);
+  const cameos = [
+    { kind: 'g', w: HW, h: HH, c: clear + 2, speed: 10, start: -4.5 },
+    { kind: 'c', w: CW, h: CH, c: clear + 6, speed: 8, start: 13 },
+    { kind: 'n', w: NW, h: NH, c: clear + 16, speed: 12, start: 31 },
+  ];
+  // where each cameo stands at t = 0 (also its reduced-motion pose)
+  cameos.forEach((cm) => {
+    Object.assign(cm, lanePath(cm.c, cm.w, cm.h));
+    cm.k = cm.start > 0 ? cm.n : Math.min(cm.n, Math.floor(-cm.start * cm.speed));
+  });
+
+  // The opening frame is also the reduced-motion still, so it is kept
+  // tidy: no flock sprite starts on the message line or on a cameo. A lane
+  // whose drawn start lands on one is moved along its own diagonal to the
+  // nearest step that is clear of those, of the title and of every other
+  // sprite. Only the start moves; lanes, speeds and the PRNG draws do not.
+  const MY = SH - 19, MSPEED = 24;
+  const INK = {
+    t: inkBox([0, 1, 2, 3].map((f) => turtle(f))), h: inkBox([0, 1, 2, 3].map((f) => turtle(f, true))),
+    b: inkBox([0, 1, 2, 3, 4, 5, 6, 7].map(bottle)),
+    g: inkBox([0, 1, 2, 3].map(her)), c: inkBox([0, 1, 2, 3].map(catCrate)), n: inkBox([0, 1, 2, 3].map(crabNut)),
+  };
+  const ticker = [0, MY - 1, SW - 1, MY + 10];
+  const titleBox = [tx, ty, tx + tg.w - 1, ty + tg.h - 1];
+  const cameoBoxes = cameos.map((cm) => at(INK[cm.kind], cm.x0 - 2 * cm.k, cm.y0 + cm.k)).filter(onScreen);
+
+  // lanes for the flock: 17 turtles (one wearing headphones) and 5 bottles
   const kinds = FLOCK_KINDS;
   const speeds = { slow: 8, mid: 11, fast: 15 };
   const tiers = ['mid', 'fast', 'slow', 'mid', 'slow', 'fast', 'mid', 'slow', 'mid', 'fast', 'slow', 'mid', 'fast', 'slow', 'mid', 'slow', 'fast', 'mid', 'slow', 'fast', 'mid', 'slow'];
   const cMin = -60, cMax = SW + 2 * SH - 8;
-  let lanes = '';
-  kinds.forEach((kind, i) => {
+  const flock = kinds.map((kind, i) => {
     const [w, h] = kind === 'b' ? [BW, BW] : [TW, TH];
     const c = Math.round(cMin + ((i + 0.5) * (cMax - cMin)) / kinds.length + (rnd() - 0.5) * 12);
     const { x0, y0, n } = lanePath(c, w, h);
+    const k0 = Math.floor(rnd() * n);
+    const phase = Math.floor(rnd() * cyc[kind][0]);
+    return { kind, i, x0, y0, n, k0, phase };
+  });
+  const boxOf = (s, k = s.k0) => at(INK[s.kind], s.x0 - 2 * k, s.y0 + k);
+  const blocked = (b) => hits(b, ticker, 2) || cameoBoxes.some((o) => hits(b, o, 6));
+  const inside = (b) => b[0] >= 0 && b[1] >= 0 && b[2] < SW && b[3] < SH;
+  flock.forEach((s) => {
+    if (!onScreen(boxOf(s)) || !blocked(boxOf(s))) return;
+    // the nearest clear step wholly on screen; failing that (a lane that
+    // only crosses the screen through the message line), the nearest step
+    // wholly off it, so that sprite has just left as the still is taken
+    const free = (k) => {
+      const b = boxOf(s, k);
+      return inside(b) && !blocked(b) && !hits(b, titleBox, 2) &&
+        flock.every((o) => o === s || !hits(b, boxOf(o), 2));
+    };
+    const away = (k) => !onScreen(boxOf(s, k));
+    for (const ok of [free, away]) {
+      for (let d = 1; d < s.n; d++) {
+        const k = [s.k0 + d, s.k0 - d].find((j) => j >= 0 && j < s.n && ok(j));
+        if (k !== undefined) { s.k0 = k; return; }
+      }
+    }
+  });
+
+  let lanes = '';
+  flock.forEach(({ kind, i, x0, y0, n, k0, phase }) => {
     const sp = speeds[kind === 'b' && tiers[i] === 'fast' ? 'mid' : tiers[i]];
     const dur = n / sp;
-    const k0 = Math.floor(rnd() * n);
     const delay = -((k0 + 0.5) / n) * dur;
     const name = `L${i}`;
     css.push(`@keyframes ${name}{from{transform:translate(${x0}px,${y0}px)}to{transform:translate(${x0 - 2 * n}px,${y0 + n}px)}}`);
     css.push(`.${name}{animation:${name} ${fmt(dur)}s steps(${n}) infinite;animation-delay:${fmt(delay)}s}`);
-    const phase = Math.floor(rnd() * cyc[kind][0]);
     lanes += `<g class="${name}" transform="translate(${x0 - 2 * k0} ${y0 + k0})">${frames(kind, phase)}</g>`;
   });
 
-  // Cameos: one at a time, on their own timetable, in front of the title.
-  // A 48 s loop (16 bars): her with the iced coffee, the cat on her crate,
-  // the crab in the coconut. Each crosses once, then waits off screen.
-  const CAMEO_LOOP = 48;
-  const cameos = [
-    { kind: 'g', w: HW, h: HH, c: 330, speed: 10, start: -4.5 },
-    { kind: 'c', w: CW, h: CH, c: 300, speed: 8, start: 13 },
-    { kind: 'n', w: NW, h: NH, c: 340, speed: 12, start: 31 },
-  ];
   let cams = '';
   cameos.forEach((cm, i) => {
-    const { x0, y0, n } = lanePath(cm.c, cm.w, cm.h);
+    const { x0, y0, n, k } = cm;
     const dur = n / cm.speed;
     const pct = (dur / CAMEO_LOOP) * 100;
     const name = `C${i}`;
@@ -722,14 +798,10 @@ function buildSaver() {
     const delay = cm.start > 0 ? cm.start - CAMEO_LOOP : cm.start;
     css.push(`.${name}{animation:${name} ${CAMEO_LOOP}s linear infinite;animation-delay:${fmt(delay)}s}`);
     // static position (reduced motion): where it is at t = 0
-    const k = cm.start > 0 ? n : Math.min(n, Math.floor(-cm.start * cm.speed));
     cams += `<g class="${name}" transform="translate(${x0 - 2 * k} ${y0 + k})">${frames(cm.kind, 0)}</g>`;
   });
 
-  // the title, fixed in the middle
-  const tg = titleGrid('CASTAWAY');
-  const tx = Math.round((SW - tg.w) / 2), ty = 40;
-  const title = `<g transform="translate(${tx} ${ty})">${paths(tg)}</g>`;
+  const title =`<g transform="translate(${tx} ${ty})">${paths(tg)}</g>`;
 
   // glints: a small star sparkles on a letter, one per bar, in turn
   const glintSmall = fromArt(['.w.', 'www', '.w.'], { w: '#ffffff' });
@@ -752,7 +824,6 @@ function buildSaver() {
   text(mg, sys, MSG, 1, 1, (ch, n) => (ch === '*' ? '#ff7a5c' : n < 8 ? '#ffd84a' : '#f6efd9'));
   keyline(mg);
   defs.push(`<g id="msg">${paths(mg, -1, -1)}</g>`);
-  const MY = SH - 19, MSPEED = 24;
   css.push(`@keyframes msg{from{transform:translate(0px,0px)}to{transform:translate(-${mw}px,0px)}}`);
   css.push(`.msg{animation:msg ${fmt(mw / MSPEED)}s steps(${mw}) infinite}`);
   const msg = `<g transform="translate(6 ${MY})"><g class="msg"><use href="#msg"/><use href="#msg" x="${mw}"/></g></g>`;
@@ -783,7 +854,7 @@ function buildSaver() {
   out.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VB_W} ${VB_H}" width="${VB_W}" height="${VB_H}" shape-rendering="crispEdges">`);
   out.push('<title>CASTAWAY: a screen saver module</title>');
   out.push('<desc>A beige monitor runs a screen saver: sea turtles, messages in bottles and the odd cameo cross a black screen on one diagonal while the word CASTAWAY stays put and a message line scrolls along the bottom.</desc>');
-  out.push(`<style>${css.join('')}@media (prefers-reduced-motion:reduce){*{animation-play-state:paused!important}}</style>`);
+  out.push(`<style>${css.join('')}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>`);
   out.push(`<defs><clipPath id="scr"><rect x="${SX}" y="${SY}" width="${SW * PX}" height="${SH * PX}" rx="8"/></clipPath>${defs.join('')}</defs>`);
   out.push(bez.join(''));
   out.push(`<g clip-path="url(#scr)"><rect x="${SX}" y="${SY}" width="${SW * PX}" height="${SH * PX}" fill="#000"/>`);
@@ -824,7 +895,8 @@ const ICONS = {
   crab: ['...........', '...kkkkk...', '..kbbBbbk..', '.kbBbbbBbk.', '.kbbbBbbbk.', 'RkbBbbbbbk.', 'eRkbbbBbk..', '.R.kkkkk...', '.R.R...R.R.', 'R.R.....R.R', '...........'],
   coffee: ['......r....', '.....r.....', '...LLrLL...', '..kLLLLLk..', '...klllk...', '...kiiik...', '...kiiik...', '...kiiik...', '....kik....', '....kkk....', '...........'],
   signal: ['.........oo', '.........oo', '.........oo', '......oo.oo', '......oo.oo', '...oo.oo.oo', '...oo.oo.oo', 'gg.oo.oo.oo', 'gg.oo.oo.oo', '...........', '...........'],
-  shark: ['....www....', '...w...w...', '..w..s..w..', '.ww.ssS.ww.', '.ww.ssSSww.', '...sssSSS..', '..ssssSSSS.', '.sssssSSSSS', 'WWWWWWWWWWW', '.W..W..W..W', '...........'],
+  // a dorsal fin (sloped front, steep back) in a pair of headphones
+  shark: ['....ddddd..', '...d..s..d.', '..kk.ss.kk.', '..kksss.kk.', '...sssS....', '..ssssSS...', '.sssssSSs..', 'ssssssSSSs.', 'WWWWWWWWWWW', '.W..W..W..W', '...........'],
   parcel: ['...........', '.kkkkkkkkk.', '.kxxxnxxxk.', '.kxxxnxxxk.', '.kkkkkkkkk.', '.kXXXnXXXk.', '.kXXXnXXXk.', '.kXXXnXXXk.', '.kkkkkkkkk.', '...........', '...........'],
   ticker: ['...........', '...........', 'kkkkkkkkkkk', 'kYkkYYkkkYY', 'YkYkYkYkYkk', 'YYYkYYkkYkk', 'YkYkYkYkYkk', 'YkYkYYkkkYY', 'kkkkkkkkkkk', '...........', '...........'],
 };
@@ -927,7 +999,7 @@ function buildPanel(counts) {
   box(FX + 1, FY + 1, FW - 2, 1, UI.shade);
   box(FX + 1, FY + 1, 1, 13, UI.shade);
   const fieldText = 'CASTAWAY * a lo-fi island video for very long';
-  const fw = text(g, body, fieldText.replace('*', '+'), FX + 4, FY + 4, UI.k);
+  const fw = text(g, body, fieldText, FX + 4, FY + 4, UI.k);
   box(FX + 4 + fw, FY + 3, 1, 10, UI.k);
 
   // module settings
@@ -948,16 +1020,16 @@ function buildPanel(counts) {
   right(body, 'few - many', RX + RW, y, UI.grey);
   track(y + 12);
   thumb(RX + Math.round(RW * 0.72), y + 9);
-  // 2. something happens: the four timers on a log scale, 1 min to 6 h
+  // 2. now and then: the four timers on a log scale, 1 min to 6 h
   y = 96;
-  text(g, body, 'Something happens', RX, y, UI.k);
+  text(g, body, 'Now and then', RX, y, UI.k);
   track(y + 12);
   const lx = (min) => RX + 1 + Math.round(((RW - 2) * Math.log(min)) / Math.log(360));
   for (const [a, b, c] of [[2, 5, UI.reg], [12, 25, UI.occ], [30, 60, UI.rare], [180, 360, UI.srare]]) box(lx(a), y + 13, Math.max(2, lx(b) - lx(a)), 4, c);
   text(g, body, '1 min', RX, y + 21, UI.grey);
   right(body, '6 h', RX + RW, y + 21, UI.grey);
   // 3. busy
-  y = 130;
+  y = 132;
   text(g, body, 'She is busy', RX, y, UI.k);
   right(body, 'a third', RX + RW, y, UI.k);
   track(y + 12);
@@ -994,7 +1066,7 @@ function buildPanel(counts) {
       const name = `v${kind}${slot}`;
       if (!slots.has(name)) {
         slots.add(name);
-        css.push(`.${name}{animation:q${nf} ${fmt(dur)}s step-end infinite;animation-delay:${fmt(-dur + (slot * dur) / nf)}s;opacity:${slot === 0 ? 1 : 0}}`);
+        css.push(`.${name}{animation:q${nf} ${fmtx(dur)}s step-end infinite;animation-delay:${fmtx(-dur + (slot * dur) / nf)}s;opacity:${slot === 0 ? 1 : 0}}`);
       }
       s += `<use href="#${kind}${f}" class="${name}"/>`;
     }
@@ -1015,8 +1087,8 @@ function buildPanel(counts) {
   const out = [];
   out.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${PW * P} ${PH * P}" width="${PW * P}" height="${PH * P}" shape-rendering="crispEdges">`);
   out.push('<title>Broad Daylight: the CASTAWAY saver control panel</title>');
-  out.push('<desc>A platinum control panel window. Modules: Sea Turtles (selected), Bottle Returned, Cat on a Crate, Coconut Crab, Leave Any Time, Signal Hunt, Shark Nodding, Parcel Drone, Ticker Tape. Sliders: Turtles, Something happens (four timers from 2 minutes to 6 hours), She is busy (a third), and Darkness, greyed out and locked: always daytime.</desc>');
-  out.push(`<style>${css.join('')}@media (prefers-reduced-motion:reduce){*{animation-play-state:paused!important}}</style>`);
+  out.push('<desc>A platinum control panel window. Modules: Sea Turtles (selected), Bottle Returned, Cat on a Crate, Coconut Crab, Leave Any Time, Signal Hunt, Shark Nodding, Parcel Drone, Ticker Tape. Sliders: Turtles, Now and then (the four timers, from every 2 minutes to every 6 hours), She is busy (a third), and Darkness, greyed out and locked: always daytime.</desc>');
+  out.push(`<style>${css.join('')}@media (prefers-reduced-motion:reduce){*{animation:none!important}}</style>`);
   out.push(`<defs><clipPath id="pv"><rect x="${(VX + 4) * P}" y="${(VY + 4) * P}" width="${(VW - 8) * P}" height="${(VH - 8) * P}"/></clipPath>${defs.join('')}</defs>`);
   out.push(`<g transform="scale(${P})">${paths(g)}</g>`);
   out.push(`<g clip-path="url(#pv)"><g transform="translate(${(VX + 4) * P} ${(VY + 4) * P}) scale(${MS})">${lanes}</g></g>`);

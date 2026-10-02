@@ -5,8 +5,9 @@
 // lines at the bottom. Style: "Roguelike dungeon screen" (catalogue entry hack-08).
 //
 // The joke: a roguelike in which you never go downstairs. The word CASTAWAY is the dungeon: eight
-// rooms cut in the shapes of the letters (hyphen and pipe walls, full-stop floors), each holding
-// one item that stands for a file of the project. Below them the level opens onto a sea of
+// rooms cut in the shapes of the letters (hyphen and pipe walls, full-stop floors, brown doors),
+// each holding one item that stands for a file of the project, and every corridor out of the
+// word stops dead at the water. Below them the level opens onto a sea of
 // braces with one island in it. She is the @, the palm is a green #, the cat is an f, the turtle
 // a :, the shark a ;. The message line narrates one minute of the video, on the beat:
 //   bar  1  welcome                         bar 12  the shark swims off; a hermit crab arrives
@@ -46,13 +47,16 @@ const OUT_MD = path.join(HERE, '..', `${SLUG}.md`);
 
 // ---------------------------------------------------------------------------------------------
 // Facts used on screen, checked read-only against D:/python/castaway on 2026-10-01:
-//   activities.toml: 94 activities that day (the page says "more than 90"); four timers:
+//   activities.toml: 94 activities (recounted 2026-10-02: 81 on the four timers, 13 chained; the
+//   page says "more than 90" and dates the exact count); four timers:
 //   regular 2-5 min, occasional 12-25 min, rare 30-60 min, super rare 3-6 h (at most 3 a run);
 //   typical 10-hour run (medians of 200 simulated runs): about 155 regular, 30 occasional,
-//   13 rare, 2 super rare, plus chained follow-ups; busy about a third of the time.
+//   13 rare, 2 super rare, plus about 20 chained follow-ups (the toml's own header); busy about
+//   a third of the time. Max one "leave any time" per run (hence "once" in the vows).
 //   run: 10:00:00, seed 1992, every start snapped to the next 3.0 s bar.
 //   theme: seamless 60 s loop, 80 BPM, F major, 20 bars of 3 s; -14 LUFS, true peak <= -1 dBTP.
-//   sound files: more than 150, all synthesized by tools/make_audio.py.
+//   sound files: more than 150 (181 in media/audio/audio_catalog.json on 2026-10-02), all
+//   synthesized by tools/make_audio.py. tools/schedule.py simulates a 10-hour run in about a second.
 // ---------------------------------------------------------------------------------------------
 
 function prng(seed) {                         // mulberry32
@@ -229,7 +233,7 @@ function glyphPath(ch) {
 // ---------------------------------------------------------------------------------------------
 const PAL = {
   wht: '#F4F1E8', gry: '#A9A9A9', dgy: '#5B5B5B', blk: '#000000',
-  wall: '#EDE6D6', floor: '#C79A3A', litbg: '#33270C',
+  wall: '#EDE6D6', floor: '#C79A3A', litbg: '#33270C', door: '#D9862B',
   deep: '#1C3290', sea: '#2848BC', sea2: '#3F78E0', shal: '#4FC7D8', foam: '#B9F4FF',
   sand: '#F2CF63', palm: '#47D65A', raft: '#B8722E',
   coral: '#FF7A66', cream: '#F7E6C4', grey: '#B9B5AE',
@@ -351,6 +355,25 @@ for (let r = SEA_R0; r <= SEA_R1; r++) {
 }
 const isSea = (r, c) => { const v = at(r, c); return v && v.ch === '}'; };
 corridor([[LOGO_TOP + 7, T_STEM], [SEA_R0 - 1, T_STEM]]);
+
+// Doors and more corridors, the way a level joins its rooms. Doors are brown, as in the genre's
+// colour mode: + closed, - (in a side wall) open, . an empty doorway. Two short passages join
+// neighbouring letters, and two more wander off west and east and, like the one from the T,
+// stop dead at the sea. Every way out of this dungeon ends in water.
+{
+  const L = (i) => letterAt[i].c0;
+  const DOORS = [
+    [LOGO_TOP + 1, L(0) + 6, '.'], [LOGO_TOP + 1, L(1), '+'],   // C to A, along the top
+    [LOGO_TOP + 5, L(5) + 6, '-'], [LOGO_TOP + 5, L(6), '+'],   // W to A, along the bottom
+    [LOGO_TOP + 4, L(0), '+'],                                  // out of the C, going west
+    [LOGO_TOP + 3, L(7) + 6, '-'],                              // out of the Y, going east
+  ];
+  for (const [r, c, ch] of DOORS) put(r, c, ch, ch === '.' ? 'floor' : 'door');
+  corridor([[LOGO_TOP + 1, L(0) + 7], [LOGO_TOP + 1, L(0) + 7]]);
+  corridor([[LOGO_TOP + 5, L(5) + 7], [LOGO_TOP + 5, L(5) + 7]]);
+  corridor([[LOGO_TOP + 4, L(0) - 1], [LOGO_TOP + 4, L(0) - 4], [11, L(0) - 4], [11, L(0) - 6], [14, L(0) - 6]]);
+  corridor([[LOGO_TOP + 3, L(7) + 7], [LOGO_TOP + 3, L(7) + 9], [9, L(7) + 9], [9, L(7) + 11], [13, L(7) + 11]]);
+}
 
 // Fixtures on the island.
 const PALM = [14, 36];
@@ -721,8 +744,8 @@ function buildSvg() {
 
   const TITLE = 'CASTAWAY, drawn as a roguelike dungeon screen';
   const DESC = 'An 80 by 24 terminal screen on black. The word CASTAWAY is spelled by eight dungeon rooms '
-    + 'shaped like its letters, with hyphen and pipe walls and full-stop floors, each holding one item. Below, '
-    + 'a sea of blue braces with a sandy island: she is the @ under a green # palm, a cat f beside her, a turtle '
+    + 'shaped like its letters, with hyphen and pipe walls, full-stop floors and brown doors, each holding one '
+    + 'item. Hash corridors join some rooms, and three wander off and stop dead at the sea below, a field of blue braces with a sandy island. She is the @ under a green # palm, a cat f beside her, a turtle '
     + 'paddling. The message line narrates one minute on the beat: a bottle thrown out comes straight back, a '
     + 'shark in headphones nods, a coconut falls on a hermit crab and walks off, she walks out over the water '
     + 'and comes back with an iced coffee, and a hydrofoil carves past. Two status lines carry the project stats.';
@@ -752,9 +775,9 @@ function leader(glyph, item, file, what, at = 40) {
 
 function buildMd() {
   const alt = 'CASTAWAY, drawn as an 80 by 24 roguelike dungeon screen in coloured letters and punctuation on black. '
-    + 'The word CASTAWAY is eight dungeon rooms shaped like its letters, with hyphen and pipe walls and lit floors '
-    + 'and one item in each room. A corridor runs down from the T and stops at the sea: a field of blue braces with '
-    + 'one sandy island, where she is a coral @ beside a green # palm, with a cat f, a planted kumara, a sandcastle '
+    + 'The word CASTAWAY is eight dungeon rooms shaped like its letters, with hyphen and pipe walls, lit floors, '
+    + 'brown doors and one item in each room. Grey hash corridors join some of the rooms; three more wander away '
+    + 'from the word and stop dead at the sea: a field of blue braces with one sandy island, where she is a coral @ beside a green # palm, with a cat f, a planted kumara, a sandcastle '
     + 'and a raft, while a turtle paddles round. The message line tells one minute, on the beat: welcome to Castaway; '
     + 'she throws a message in a bottle and it washes straight back to her feet; a fin circles the island and is a '
     + 'shark in headphones, nodding to the beat; a coconut falls on a hermit crab and walks off; she walks out over '
@@ -770,7 +793,7 @@ function buildMd() {
     leader('+', 'a spellbook', 'activities.toml', 'more than 90 activities, 4 timers'),
     leader('/', 'a wand', 'tools/schedule.py', 'simulates ten hours in a moment'),
     leader('{', 'a fountain', 'tools/make_audio.py', 'every sound, synthesized from code'),
-    leader('(', 'a tool', 'tools/serve.py', 'the renderer: run it, open :8765'),
+    leader('(', 'a tool', 'tools/serve.py', 'serves the renderer on :8765'),
     leader('*', 'a gem', 'web/index.html', 'live preview, export to MP4'),
     leader('"', 'an amulet', 'tools/render_demo.py', 'the dev reel: every activity, in turn'),
     leader('%', 'a coconut, or a kumara', '', 'for later'),
@@ -778,7 +801,7 @@ function buildMd() {
     ' @  you, the castaway: coral top, cream headphones, nowhere to be',
     ' f  a grey tabby, white chest (tame)     :  a sea turtle (peaceful)',
     ' ;  a shark in headphones (peaceful)     c  a hermit crab (moves house a lot)',
-    ' #  the one tall palm, with one bar of signal at the very top',
+    ' #  the one tall palm (one bar of signal, at the top), or a corridor (grey)',
     ' =  the raft (moored)                    ^  a sandcastle (the tide wants it)',
     ' }  the sea, which gives back everything you throw in it',
     ' &gt;  the stairs down: there are none. She could leave any time.',
@@ -801,10 +824,11 @@ function buildMd() {
 
 **Castaway** is a stationary-frame lo-fi video for YouTube: a young woman alone on a tiny island with one tall palm, a raft and a lot of time. She mostly idles, nodding to the music on her headphones, and every so often something happens. A message in a bottle washes straight back. A shark in headphones nods along. A coconut falls on a hermit crab, then gets up and walks off with the crab inside. Sunny and hand-painted, 16:9 at 1080p and 30 fps, and always daytime.
 
-Up there it is drawn the way an old dungeon game would draw it, which suits it better than you might expect: she is the \`@\`, the palm is a \`#\`, the sea is a great many \`}\`, and there are no stairs down, because nobody here is going anywhere. More than 90 activities wait on four timers, every one starts on the next bar of the music so the gags land on the beat, and every sound is synthesized from code: no samples, no loops, no recordings.
+Up there it is drawn the way an old dungeon game would draw it, which suits it better than you might expect: she is the \`@\`, the palm is a \`#\`, the sea is a great many \`}\`, every corridor that leaves the word stops dead at the water, and there are no stairs down, because nobody here is going anywhere. More than 90 activities take turns on four timers (a few only ever follow another one), every one starts on the next bar of the music so the gags land on the beat, and every sound is synthesized from code: no samples, no loops, no recordings.
 
 \`\`\`sh
-python tools/serve.py        # then open http://127.0.0.1:8765/
+python tools/serve.py
+# then open http://127.0.0.1:8765/
 \`\`\`
 
 <pre>
@@ -849,10 +873,10 @@ ${legend}
  occasional . every 12 to 25 minutes ..... about 30
  rare ....... every 30 to 60 minutes ..... about 13
  super rare . every 3 to 6 hours ......... about 2 (at most 3 a run)
- chained .... only after another one ..... the follow-ups
+ chained .... only after another one ..... about 20 follow-ups
 </pre>
 
-The counts are the medians of 200 simulated runs, as ${link('activities.toml')} states in its own header: she is busy about a third of the time and idling the rest. More than 90 activities share the four timers (94 when this screen was drawn on 2026-10-01, and the list keeps growing). Lanes let things overlap, so a ship can sail past while she is busy with a coconut, and every start snaps to the next bar of the music, every 3 seconds. The default run is 10:00:00 on seed 1992. \`python tools/schedule.py\` validates the schedule and simulates a ten-hour run.
+The counts are the medians of 200 simulated runs, as ${link('activities.toml')} states in its own header: she is busy about a third of the time and idling the rest. There are more than 90 activities in all (94 when counted on 2026-10-02: 81 on the four timers and 13 that only ever follow another one), and the list keeps growing. Lanes let things overlap, so a ship can sail past while she is busy with a coconut, and every start snaps to the next bar of the music, every 3 seconds. The default run is 10:00:00 on seed 1992. \`python tools/schedule.py\` validates the schedule and simulates a ten-hour run.
 
 The scene has a life of its own too: 26 entries, 4 always-on effects and 22 timed events. Shore waves and drifting cloud shadows are built; distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are planned.
 
@@ -893,10 +917,10 @@ The scene has a life of its own too: 26 entries, 4 always-on effects and 22 time
 </details>
 
 <details>
-<summary><kbd>#</kbd><kbd>conduct</kbd> <b>Voluntary challenges</b> · the sound, made the hard way</summary>
+<summary><kbd>#</kbd><kbd>vows</kbd> <b>Vows kept</b> · the sound, made the hard way</summary>
 
 <pre>
- Voluntary challenges:
+ Vows kept, so far:
    You never used a sample, a loop or a recording.
    You synthesized every sound from code.
    You kept the mix at -14 LUFS, true peak at or below -1 dBTP.
@@ -906,7 +930,7 @@ The scene has a life of its own too: 26 entries, 4 always-on effects and 22 time
    You left the island once, for coffee.
 </pre>
 
-All of it comes from ${link('tools/make_audio.py')}: more than 150 sound files and counting, no samples, loops or recordings, so no third-party licence applies. The theme is a seamless 60-second loop at 80 BPM in F major (a ii-V-I-vi progression): 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean ambience is a seamless 60-second loop too. Levels are adjustable in master and per routine. Nobody has listened to any of it yet, which is the only challenge still open.
+All of it comes from ${link('tools/make_audio.py')}: more than 150 sound files and counting, no samples, loops or recordings, so no third-party licence applies. The theme is a seamless 60-second loop at 80 BPM in F major (a ii-V-I-vi progression): 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean ambience is a seamless 60-second loop too. Levels are adjustable in master and per routine. Nobody has listened to any of it yet. That room is still unexplored.
 
 The screen above loops in exactly 60 seconds too, so its \`Bar:\` counter wraps where the theme does.
 
@@ -917,7 +941,7 @@ The screen above loops in exactly 60 seconds too, so its \`Bar:\` counter wraps 
 
 **The renderer** is a web page with live preview and export to a YouTube-ready MP4: \`python tools/serve.py\`, then open http://127.0.0.1:8765/ (the page itself is ${link('web/index.html')}). Plain ES modules, no build step, no npm packages. It exports frame-exact video in the browser (WebCodecs H.264, 68 to 78 frames a second at 1080p30 in Chrome), and the server mixes in the sound and joins the two into an MP4. \`python tools/render_demo.py --dev\` renders a dev reel of every activity with a heads-up display (the older Python reference renderer). Hard cuts and stepped movement are the motion defaults, which is why everything on the screen above moves one cell at a time.
 
-**Reading the screen.** The top line is the message line. The two bottom lines are the status lines, re-labelled for an island: \`Castaway the Idler\` is the name and rank, \`Bpm:80 Key:F Fps:30 Lufs:-14 Seed:1992\` are the vital statistics, and \`Unbothered\` is the alignment. Below that, \`Isle:1\` is the dungeon level (there is only one), \`$:0\` is what the sound cost in licences, \`Hrs:10(10)\` is hours left out of hours total, and \`T:36000\` is ten hours counted in seconds. The status word says \`Busy\` when she is doing something and \`Idle\` the rest of the time, which is most of it.
+**Reading the screen.** The top line is the message line. The two bottom lines are the status lines, re-labelled for an island: \`Castaway the Idler\` is the name and rank, \`Bpm:80 Key:F Fps:30 Lufs:-14 Seed:1992\` are the vital statistics, and \`Unbothered\` is the alignment. Below that, \`Isle:1\` is the dungeon level (there is only one), \`$:0\` is what the sound cost in licences, \`Hrs:10(10)\` is hours left out of hours total, and \`T:36000\` is ten hours counted in seconds. The status word says \`Busy\` when she is doing something and \`Idle\` the rest of the time, which is most of it. On the map, the brown \`+\` and \`-\` set into the walls are doors, the magenta \`+\` is the spellbook, and the grey \`#\` are corridors: every one that leaves the word ends at the sea.
 
 **Notes from the project.** ${link('MUSING.md')} is the log; start at "Current state".
 

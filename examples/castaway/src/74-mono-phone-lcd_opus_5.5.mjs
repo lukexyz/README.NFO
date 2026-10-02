@@ -25,10 +25,10 @@
 //    6  NOTIFY    1 message received (an envelope, floating)
 //    9  BOTTLE    the bottle drifts straight back to her: From: you. Again.
 //   15  DRONE     Special delivery: a drone lowers a parcel; it is more headphones
-//   21  SIGNAL    she climbs the palm; at the top the signal stack steps to 1
+//   21  SIGNAL    she climbs the palm; at the top one signal bar blinks on: Nutwork
 //   27  SHARK     a fin in headphones crosses, nodding on every beat
 //   33  TONES     all synthesized; 80 BPM, F major; a level meter on the beat
-//   39  10 HOURS  typical events per 10-hour run as bar stacks (1 pixel = rare)
+//   39  10 HOURS  typical events per 10-hour run as bar stacks (median counts)
 //   45  CALL      python tools/serve.py, Calling... 127.0.0.1:8765
 //   51  REBUILD   a snake crawls in and laps the logo as it wipes on, the
 //                 signal stack searches 1-2-3-4 and drops to nothing, and
@@ -38,6 +38,7 @@
 // emitted as merged rects (one <path> per bitmap) inside a group scaled by the
 // pixel pitch. That group is shown through a <mask> whose tiled pattern leaves
 // a hairline between pixels, and a faint offset copy of it is the LCD's shadow.
+// Frames of one page share their common pixels (showSeq), which keeps it small.
 // Each bitmap is shown and hidden by a step-end opacity animation; the snake is
 // one stroked path whose dash offset advances in steps(). The phone and the
 // sand around it are flat vector shapes: a palm-frond shadow sways, the shore
@@ -47,10 +48,11 @@
 //
 // Facts on screen, from D:/python/castaway on 2026-10-01: a typical 10-hour run
 // (median of 200 simulated runs, as activities.toml states) has about 155
-// regular, 30 occasional, 13 rare and 2 super-rare events; she is busy about a
-// third of the time; the theme is 80 BPM in F major; every sound is synthesized
-// by tools/make_audio.py; python tools/serve.py serves http://127.0.0.1:8765/.
-// "Signal: one bar, at the top of the palm" is the project's own gag.
+// regular, 30 occasional, 13 rare and 2 super-rare events; the theme is 80 BPM
+// in F major; every sound is synthesized by tools/make_audio.py; python
+// tools/serve.py serves http://127.0.0.1:8765/ (re-checked 2026-10-02).
+// "Signal: one bar, at the top of the palm" is the project's own gag; the network
+// name "Nutwork" and the phone "DRIFTCELL" are invented for this header.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -286,6 +288,19 @@ function show(b, t0, t1) {
   if (!items.has(k)) items.set(k, { b, iv: [] });
   items.get(k).iv.push([t0, t1]);
 }
+// a run of back-to-back frames: the pixels every frame shares are drawn once for
+// the whole run, and each frame only adds what is its own (smaller file, same picture)
+function showSeq(frames) {
+  const common = new Bmp(); common.a.fill(1);
+  for (const [b] of frames) for (let i = 0; i < common.a.length; i++) common.a[i] &= b.a[i];
+  const tA = Math.min(...frames.map((f) => f[1])), tB = Math.max(...frames.map((f) => f[2]));
+  show(common, tA, tB);
+  for (const [b, t0, t1] of frames) {
+    const r = b.clone();
+    for (let i = 0; i < r.a.length; i++) if (common.a[i]) r.a[i] = 0;
+    show(r, t0, t1);
+  }
+}
 // one glyph at a time: returns the time the last glyph appears
 function typeOut(font, str, x, y, t0, dt, t1, v = 1) {
   let cx = x, t = t0;
@@ -495,8 +510,8 @@ function waves(b, x0, x1, y, phase, gapEvery = 8) {
   }
   return b;
 }
-function inverseHeader(b, label) {
-  b.rect(0, 0, SW, 10);
+function inverseHeader(b, label, h = 10) {
+  b.rect(0, 0, SW, h);   // h = 11 leaves room under a descender
   b.center(MENU, label, 1, 0);
   return b;
 }
@@ -630,6 +645,7 @@ show(IDLE, T_IDLE_DONE, LOOP);
   // her: at the foot of the palm, then up it a few pixels a beat. Drawn with a
   // one-pixel clear halo so she stays separate from the trunk and the fronds.
   const tops = [20, 18, 16, 14, 12, 12, 12, 12];
+  const frames = [];
   for (let k = 0; k < 8; k++) {
     const her = new Bmp();
     const y = tops[k];
@@ -651,13 +667,18 @@ show(IDLE, T_IDLE_DONE, LOOP);
     b.or(her);
     // the sprite's pale parts (face, shorts) stay clear of anything behind them
     sp.forEach((row, j) => [...row].forEach((c, i) => { if (c === 'o') b.px(sx0 + i, y + j, 0); }));
-    statusLeft(b, k >= 5 ? 1 : 0);
-    show(b, t0 + B(k), t0 + B(k + 1));
+    statusLeft(b, 0);
+    frames.push([b, t0 + B(k), t0 + B(k + 1)]);
   }
+  showSeq(frames);
+  // the one bar arrives at the top of the palm: it blinks on the half beat, twice, then holds
+  const bar1 = new Bmp(); bar1.rect(0, 21, 2, 3);
+  const tb = t0 + B(5), hb = BEAT / 2;
+  show(bar1, tb, tb + hb); show(bar1, tb + 2 * hb, tb + 3 * hb); show(bar1, tb + 4 * hb, t1);
   // caption: Searching, with a dot per beat, then the network name
   const s0 = new Bmp(); s0.text(MENU, 'Searching', 18, 39); show(s0, t0, t0 + B(5));
   for (let k = 1; k <= 3; k++) { const d = new Bmp(); d.text(MENU, '.', 18 + textWidth(MENU, 'Searching') + 2 * k - 1, 39); show(d, t0 + B(k), t0 + B(5)); }
-  const s1 = new Bmp(); s1.center(MENU, 'Coconet: 1 bar', 39); show(s1, t0 + B(5), t1);
+  const s1 = new Bmp(); s1.center(MENU, 'Nutwork: 1 bar', 39); show(s1, t0 + B(5), t1);
 }
 
 // SHARK [27, 33): a fin in headphones, nodding on the beat
@@ -693,6 +714,7 @@ function sharkFin(b, x, y, nod) {
   far.curve([OX + 3, 11], [OX + 11, 6], [OX + 19, 11]);
   far.line(OX + 11, 8, OX + 12, 3);
   far.curve([OX + 12, 3], [OX + 8, 1], [OX + 6, 5]); far.curve([OX + 12, 3], [OX + 16, 1], [OX + 18, 5]);
+  const frames = [];
   for (let k = 0; k < 8; k++) {
     const b = far.clone();
     const fx = OX + 50 - k * 4, sy = 21;
@@ -705,8 +727,9 @@ function sharkFin(b, x, y, nod) {
     waves(b, OX + 4, OX + 70, 25, k + 1, 10);
     if (k % 2 === 0) b.sprite(NOTE, fx + 18, 4 - (k % 4 === 0 ? 0 : 1));
     else b.sprite(NOTE, fx - 7, 3);
-    show(b, t0 + B(k), t0 + B(k + 1));
+    frames.push([b, t0 + B(k), t0 + B(k + 1)]);
   }
+  showSeq(frames);
 }
 
 // TONES [33, 39): every sound is code; a level meter on the beat
@@ -735,20 +758,22 @@ function sharkFin(b, x, y, nod) {
 {
   const t0 = 39, t1 = 45;
   const base = new Bmp();
-  inverseHeader(base, 'In 10 hours');
+  // five lines, as the screen allows: a title bar and the four timers. The counts
+  // are the medians of 200 simulated 10-hour runs, from activities.toml's header.
+  inverseHeader(base, 'Typical 10 hours', 11);
   const rows = [['REGULAR', 155], ['OCCASIONAL', 30], ['RARE', 13], ['SUPER RARE', 2]];
+  const rowY = (i) => 14 + i * 8;
   rows.forEach(([lab, n], i) => {
-    const y = 13 + i * 7;
+    const y = rowY(i);
     base.text(TINY, lab, 0, y);
     const s = String(n);
     base.text(TINY, s, 84 - textWidth(TINY, s), y);
   });
-  base.center(TINY, 'BUSY 1/3, IDLE 2/3', 42);
   show(base, t0, t1);
   // bars grow, a step per beat
   const BX = 43, BW = 27;
   rows.forEach(([, n], i) => {
-    const y = 13 + i * 7;
+    const y = rowY(i);
     const full = Math.max(1, Math.round((n / 155) * BW));
     for (let k = 0; k < 4; k++) {
       const len = Math.max(1, Math.round((full * (k + 1)) / 4));
@@ -784,7 +809,8 @@ function sharkFin(b, x, y, nod) {
 const SNAKE = { t0: 51, t1: 57, len: 15, step: 3 };
 {
   // the snake's centreline (pixel boundaries): along the top, round the logo, back to the food
-  SNAKE.pts = [[-16, 8], [81, 8], [81, 29], [3, 29], [3, 8], [17, 8]];
+  // (the top run is at row 5, well clear of the letters, so the food never reads as an accent)
+  SNAKE.pts = [[-16, 5], [81, 5], [81, 29], [3, 29], [3, 5], [17, 5]];
   let L = 0;
   for (let i = 1; i < SNAKE.pts.length; i++) L += Math.abs(SNAKE.pts[i][0] - SNAKE.pts[i - 1][0]) + Math.abs(SNAKE.pts[i][1] - SNAKE.pts[i - 1][1]);
   SNAKE.total = L;
@@ -793,7 +819,7 @@ const SNAKE = { t0: 51, t1: 57, len: 15, step: 3 };
   if (!Number.isInteger(SNAKE.steps)) throw new Error(`snake travel ${SNAKE.travel} not a multiple of ${SNAKE.step}`);
   const dt = (SNAKE.t1 - SNAKE.t0) / SNAKE.steps;
   // food
-  const food = new Bmp(); food.rect(17, 7, 2, 2); show(food, SNAKE.t0, SNAKE.t1 - dt);
+  const food = new Bmp(); food.rect(17, 4, 2, 2); show(food, SNAKE.t0, SNAKE.t1 - dt);
   // letters wipe on as the head passes them on the first lap (steps(start): head x = -1 + 3(k+1))
   for (let i = 0; i < 8; i++) {
     const x0 = LOGO_X + 9 * i;
@@ -855,7 +881,15 @@ function bmpPath(b) {
       else { const [x, w] = k.split(',').map(Number); open.set(k, { x, y, w, h: 1 }); }
     }
   }
-  return rects.map((r) => `M${r.x} ${r.y}h${r.w}v${r.h}h-${r.w}z`).join('');
+  // relative moves between rects (after z the pen is back at the rect's corner)
+  rects.sort((p, q) => p.y - q.y || p.x - q.x);
+  const pair = (a, b) => `${a}${b < 0 ? '' : ' '}${b}`;
+  let px = 0, py = 0, d = '';
+  for (const r of rects) {
+    d += (d ? `m${pair(r.x - px, r.y - py)}` : `M${r.x} ${r.y}`) + `h${r.w}v${r.h}h-${r.w}z`;
+    px = r.x; py = r.y;
+  }
+  return d;
 }
 
 // ------------------------------------------------------------------ css helpers
@@ -1009,7 +1043,8 @@ function crabSymbol() {
     }
     return d;
   };
-  return `<symbol id="crab" overflow="visible">`
+  // drawn inline (it appears once), so its leg animation never depends on <use>
+  return `<g>`
     + `<ellipse cx="4" cy="6" rx="19" ry="18" fill="#5b4320" opacity=".2"/>`
     + `<g class="legA"><path d="${legs(0)}" fill="none" stroke="#d2553c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>`
     + `<g class="legB"><path d="${legs(1)}" fill="none" stroke="#d2553c" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>`
@@ -1020,16 +1055,17 @@ function crabSymbol() {
     + `<circle r="16" fill="none" stroke="#5d3c22" stroke-width="2"/>`
     + `<path d="M-11 -6 q6 -6 12 -3 M-12 3 q8 -3 16 2 M-7 10 q6 -2 12 1" fill="none" stroke="#a37a52" stroke-width="1.6" stroke-linecap="round"/>`
     + `<circle cx="-5" cy="-6" r="5" fill="#9b7049" opacity=".55"/>`
-    + `</symbol>`;
+    + `</g>`;
 }
 
 function seaCorner() {
   // the shoreline runs from the top edge to the right edge
-  const shore = 'M640 0 C 680 30, 720 40, 760 70 S 815 120, 830 150';
+  // the line runs on past both edges, so the tide's to-and-fro never shows an edge of the sea
+  const shore = 'M612 -21 L640 0 C 680 30, 720 40, 760 70 S 815 120, 830 150 L846 182';
   const wet = 'M600 0 C 650 45, 700 60, 745 92 S 805 150, 830 182 L830 0z';
   return `<path d="${wet}" fill="#d9c28f" opacity=".75"/>`
     + `<g class="tide">`
-    + `<path d="${shore} L830 0z" fill="url(#sea)"/>`
+    + `<path d="${shore} L870 182 L870 -30 L612 -30z" fill="url(#sea)"/>`
     + `<path d="${shore}" fill="none" stroke="#fffaf0" stroke-width="7" stroke-linecap="round" opacity=".9"/>`
     + `<path d="${shore}" fill="none" stroke="#bfeeea" stroke-width="3" transform="translate(9 -9)" opacity=".9"/>`
     + `<path d="M725 22 q12 5 22 2 M770 40 q10 6 20 3 M800 78 q9 5 18 4 M690 8 q10 4 20 1" fill="none" stroke="#e8fbf8" stroke-width="2.4" stroke-linecap="round" opacity=".8"/>`
@@ -1054,7 +1090,7 @@ const bodyR = 84;
 const svg = [];
 svg.push(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">`);
 svg.push(`<title id="t">CASTAWAY on a phone screen</title>`);
-svg.push(`<desc id="d">A coral candybar phone lies face up on island sand. Its two-tone green LCD shows the idle screen CASTAWAY, No network, Menu, then cycles through picture messages: a bottle drifting straight back, a parcel of headphones, a palm climb for one bar of signal, a shark nodding in headphones, the synthesized tones, a 10-hour schedule and the command python tools/serve.py.</desc>`);
+svg.push(`<desc id="d">A coral candybar phone lies face up on island sand. Its two-tone green LCD shows the idle screen CASTAWAY, No network, Menu, then cycles through picture messages: a bottle drifting straight back, a parcel of headphones, a palm climb for one bar of signal, a shark nodding in headphones, the synthesized tones, a typical 10-hour schedule and the command python tools/serve.py, then a snake laps the logo back on.</desc>`);
 svg.push(`<defs>`);
 svg.push(`<clipPath id="panel"><rect width="${W}" height="${H}" rx="16"/></clipPath>`);
 svg.push(`<radialGradient id="sandg" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#f3e4bf"/><stop offset=".6" stop-color="${SAND}"/><stop offset="1" stop-color="#dcc595"/></radialGradient>`);
@@ -1068,7 +1104,6 @@ svg.push(`<linearGradient id="key" x1="0" y1="0" x2="0" y2="1"><stop offset="0" 
 svg.push(`<radialGradient id="cloud"><stop offset="0" stop-color="#2d4250" stop-opacity=".2"/><stop offset=".6" stop-color="#2d4250" stop-opacity=".12"/><stop offset="1" stop-color="#2d4250" stop-opacity="0"/></radialGradient>`);
 svg.push(`<pattern id="cell" width="1" height="1" patternUnits="userSpaceOnUse"><rect width=".88" height=".88" fill="#fff"/></pattern>`);
 svg.push(`<mask id="cells" maskUnits="userSpaceOnUse" x="0" y="0" width="${SW}" height="${SH}"><rect width="${SW}" height="${SH}" fill="url(#cell)"/></mask>`);
-svg.push(crabSymbol());
 svg.push(`</defs>`);
 
 // style
@@ -1124,7 +1159,7 @@ svg.push(`<g transform="translate(762 268) rotate(18)"><path d="M0 -16 C 14 -14 
 svg.push(headphonesOnSand(70, 240, -18));
 svg.push(kumara(64, 360));
 svg.push(icedCoffee(770, 210));
-svg.push(`<g class="crab" style="transform:translate(770px,380px)"><use href="#crab"/></g>`);
+svg.push(`<g class="crab" style="transform:translate(770px,380px)">${crabSymbol()}</g>`);
 
 // the phone
 const body = `<rect x="${PHX}" y="${PHY}" width="${PHW}" height="${H + 120}" rx="${bodyR}"/>`;
@@ -1149,8 +1184,10 @@ svg.push(`<rect x="${GLASS.x}" y="${GLASS.y}" width="${GLASS.w}" height="${GLASS
 // pixels: a faint grid of every pixel, the shadow copy, then the lit pixels
 svg.push(`<g transform="translate(${LX} ${LY}) scale(${P})">`);
 svg.push(`<rect width="${SW}" height="${SH}" fill="${LCD_PX}" opacity=".045" mask="url(#cells)"/>`);
-svg.push(`<use href="#pix" transform="translate(.24 .26)" opacity=".2"/>`);
-svg.push(`<g id="pix" class="lcd" fill="${LCD_PX}" mask="url(#cells)">${lcdPaths.join('')}</g>`);
+// the shadow is a real second copy, not a <use>: every browser then runs the same
+// animations on both, so the shadow can never show a different page from the pixels
+svg.push(`<g class="lcd" fill="${LCD_PX}" mask="url(#cells)" transform="translate(.24 .26)" opacity=".2">${lcdPaths.join('')}</g>`);
+svg.push(`<g class="lcd" fill="${LCD_PX}" mask="url(#cells)">${lcdPaths.join('')}</g>`);
 svg.push(`</g>`);
 svg.push(`<path d="M${LENS.x + 4} ${LENS.y + 4} H${LENS.x + 300} L${LENS.x + 150} ${LENS.y + LENS.h - 4} H${LENS.x + 4}z" fill="url(#glare)"/>`);
 // keys under the screen: clear, the big soft key, and the up/down rocker

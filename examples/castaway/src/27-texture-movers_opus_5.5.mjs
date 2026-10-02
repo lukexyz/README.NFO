@@ -38,11 +38,12 @@
 //     * The far end is not dark: it opens onto the island, in daylight, kept
 //       upright by a counter-rotation. She nods on every beat.
 //     * Every bar a sign flies out of the island along the tube (four slots,
-//       three gags each, swapped while a slot is tiny), and a coconut with a
-//       hermit crab inside walks the top of the logo in eighth-note steps.
+//       three gags each, swapped while a slot is invisible) and swerves out
+//       of the frame as it passes, and a coconut with a hermit crab inside
+//       walks the top of the logo in eighth-note steps.
 //   ROTOZOOMER. One 48 px embossed sand tile (a C with a palm in it) as a
 //   <pattern> on a huge rect, under three nested CSS animations: rotate
-//   (10 degrees a second), zoom (breathing x0.75 to x1.45 every 4 bars) and a
+//   (10 degrees a second), zoom (breathing x0.8 to x1.45 every 4 bars) and a
 //   slow drift of the texture centre. The run command sits on a solid plate.
 //   Everything loops every 36 s (12 bars). prefers-reduced-motion pauses every
 //   track at its first frame, which is already a complete picture.
@@ -66,6 +67,15 @@ const LOOP = 12 * BAR;      // 36 s, everything repeats
 
 const n = (v, d = 2) => String(+(+v).toFixed(d));
 const dly = (s) => `${n(s - T0, 3)}s`;
+// A keyframe percentage for a hard cut, rounded DOWN so that two step-end
+// tracks handing over at the same instant never both show (16.667% of 36 s
+// would keep the old page up 1 ms past the new one: two pages at once on the
+// very first frame, and frozen that way under prefers-reduced-motion).
+const cutPc = (frac) => `${(Math.floor(frac * 100000) / 1000).toFixed(3)}%`;
+// The tunnel (rings, roll, signs) starts this far into its loop, so the first
+// frame, which is also the reduced-motion frame, already has a sign at a
+// readable size instead of one still tucked behind the island.
+const TSHIFT = 9 * 0.75;
 
 // ------------------------------------------------------------------ colour
 const rgb = (c) => [1, 3, 5].map((i) => parseInt(c.slice(i, i + 2), 16));
@@ -384,9 +394,11 @@ function islandArt(doc) {
   sky.set(28, 12, '#6b3f1f');
   sky.set(30, 12, '#6b3f1f');
   sky.set(29, 12, '#7b4b2a');
-  // the raft, moored to the right
+  // the raft, moored off the left of the island on a short rope (inside the
+  // window: further right or lower and the round frame cuts it off)
   const raft = new Canvas();
-  sprite(['.bbbbbbbb', 'aRaaRaaRa', 'cccccccc.'], { a: '#9a5a30', b: '#c0814d', c: '#6d3c1d', R: '#e9cf98' }, raft, 40, 44);
+  sprite(['.bbbbbbbb', 'aRaaRaaRa', 'cccccccc.'], { a: '#9a5a30', b: '#c0814d', c: '#6d3c1d', R: '#e9cf98' }, raft, 4, 35);
+  for (const [x, y] of [[13, 36], [14, 37]]) sky.set(x, y, '#e9cf98');
   // her: brown low bun, cream headphones, coral tank top, cream shorts, bare feet
   const body = new Canvas();
   const head = new Canvas();
@@ -462,24 +474,33 @@ function tunnelSVG() {
 
   // --- the one shared ring track
   const K = 48;
+  // Signs grow on the rings' own curve from the window rim. They stay on the
+  // far end's axis (no bend, so they never slide back behind the window),
+  // and over the last quarter of their life they swerve outward faster and
+  // faster, the way anything passing the camera does, so a big sign leaves
+  // the frame instead of dissolving in the middle of it.
+  const SG0 = 0.34;
+  const EMERGE = 0.12;
+  const swerve = (p) => (p < 0.72 ? 0 : 520 * ((p - 0.72) / 0.21) ** 2);
+  let sswerve = '';
   let fly = '';
-  let sbend = '';
   let sgrow = '';
   for (let i = 0; i <= K; i++) {
     const p = i / K;
     const pc = n(p * 100, 3);
     fly += `${pc}%{transform:translate(${n(bend(p))}px,0) rotate(${n(TW * p)}deg) scale(${n(scale(p), 4)});color:${ramp(FOG, p)}}`;
-    sbend += `${pc}%{transform:translate(${n(bend(p))}px,0)}`;
-    const sg = 0.34 * Math.pow(QZ, p);
-    const op = p < 0.12 ? 0 : p < 0.3 ? (p - 0.12) / 0.18 : p > 0.93 ? Math.max(0, (1 - p) / 0.07) : 1;
+    const sg = SG0 * Math.pow(QZ, p);
+    const op = p < EMERGE ? 0 : p < 0.3 ? (p - EMERGE) / (0.3 - EMERGE) : p > 0.93 ? Math.max(0, (1 - p) / 0.07) : 1;
     sgrow += `${pc}%{transform:scale(${n(sg, 4)});opacity:${n(op, 3)}}`;
+    sswerve += `${pc}%{transform:translate(${n(swerve(p))}px,0)}`;
   }
-  css.push(`@keyframes fly{${fly}}`, `@keyframes sbend{${sbend}}`, `@keyframes sgrow{${sgrow}}`);
+  css.push(`@keyframes fly{${fly}}`, `@keyframes sgrow{${sgrow}}`, `@keyframes sswerve{${sswerve}}`);
   css.push(`.ring{animation:fly ${P}s linear infinite}`);
-  css.push(`.roll{animation:roll ${LOOP}s linear infinite}`, `.unroll{animation:unroll ${LOOP}s linear infinite}`);
+  css.push(`.roll{animation:roll ${LOOP}s linear infinite;animation-delay:${dly(-TSHIFT)}}`,
+    `.unroll{animation:unroll ${LOOP}s linear infinite;animation-delay:${dly(-TSHIFT)}}`);
   css.push('@keyframes roll{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}');
   css.push('@keyframes unroll{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}');
-  for (let j = 0; j < N; j++) css.push(`.r${j}{animation-delay:${dly(-j * BEAT)}}`);
+  for (let j = 0; j < N; j++) css.push(`.r${j}{animation-delay:${dly(-j * BEAT - TSHIFT)}}`);
 
   let rings = '';
   for (let j = 0; j < N; j++) rings += `<use href="#ring${j % 2 ? 'B' : 'A'}" class="ring r${j}"/>`;
@@ -511,10 +532,10 @@ function tunnelSVG() {
     const v = Math.floor((((t + k * BAR) % LOOP) + LOOP) % LOOP / P);
     variants[k][v] = GAGS[nn];
   }
-  css.push(`.sb{animation:sbend ${P}s linear infinite}.sg{animation:sgrow ${P}s linear infinite}`);
+  css.push(`.sg{animation:sgrow ${P}s linear infinite}.sx{animation:sswerve ${P}s linear infinite}`);
   css.push(`.v0,.v1,.v2{animation:v0 ${LOOP}s step-end infinite}.v1{animation-name:v1}.v2{animation-name:v2}`);
-  css.push('@keyframes v0{0%{opacity:1}33.333%{opacity:0}}@keyframes v1{0%{opacity:0}33.333%{opacity:1}66.667%{opacity:0}}@keyframes v2{0%{opacity:0}66.667%{opacity:1}}');
-  for (let k = 0; k < 4; k++) css.push(`.s${k}{animation-delay:${dly(-k * BAR)}}`);
+  css.push(`@keyframes v0{0%{opacity:1}${cutPc(1 / 3)}{opacity:0}}@keyframes v1{0%{opacity:0}${cutPc(1 / 3)}{opacity:1}${cutPc(2 / 3)}{opacity:0}}@keyframes v2{0%{opacity:0}${cutPc(2 / 3)}{opacity:1}}`);
+  for (let k = 0; k < 4; k++) css.push(`.s${k}{animation-delay:${dly(-k * BAR - TSHIFT)}}`);
   let signs = '';
   for (let k = 0; k < 4; k++) {
     const { dir, tilt } = SLOT[k];
@@ -527,8 +548,8 @@ function tunnelSVG() {
       inner += `<g class="v${v} s${k}"><g transform="translate(${n(R * Math.cos(a))} ${n(R * Math.sin(a))}) rotate(${tilt})">${t.svg}</g></g>`;
     });
     const a0 = (dir * Math.PI) / 180;
-    const rim = `translate(${n(58 * Math.cos(a0))} ${n(58 * Math.sin(a0))})`;
-    signs += `<g transform="translate(${CX} ${CY})"><g class="roll"><g class="sb s${k}"><g class="unroll"><g transform="${rim}"><g class="sg s${k}">${inner}</g></g></g></g></g></g>`;
+    const rim = `rotate(${-dir}) translate(${n(58 * Math.cos(a0))} ${n(58 * Math.sin(a0))})`;
+    signs += atFar(`<g transform="rotate(${dir})"><g class="sx s${k}"><g transform="${rim}"><g class="sg s${k}">${inner}</g></g></g></g>`);
   }
 
   // --- logo, crab, subtitle
@@ -572,9 +593,9 @@ function tunnelSVG() {
   // --- the text panel: six pages, hard cuts, 6 s each
   const PAGES = [
     ['LOOKUP LAGOON PRESENTS, AT ONE RING PER BEAT:', 'CASTAWAY. TEN HOURS OF ONE TINY ISLAND.', 'SHE IDLES. EVERY SO OFTEN, SOMETHING HAPPENS.'],
-    ['MORE THAN 90 ACTIVITIES ON FOUR TIMERS,', 'FROM EVERY 2-5 MINUTES TO EVERY 3-6 HOURS.', 'EACH ONE STARTS ON THE NEXT BAR. ON THE BEAT.'],
+    ['MORE THAN 90 ACTIVITIES, MOST ON FOUR TIMERS', 'FROM EVERY 2-5 MINUTES TO EVERY 3-6 HOURS.', 'EACH ONE STARTS ON THE NEXT BAR. ON THE BEAT.'],
     ['UP THERE A GAG ARRIVES EVERY BAR.', 'THE VIDEO IS MUCH, MUCH CALMER THAN THIS.', 'MOSTLY SHE NODS. THAT IS THE WHOLE IDEA.'],
-    ['EVERY SOUND IS SYNTHESIZED FROM CODE.', 'NO SAMPLES, NO LOOPS, NO RECORDINGS.', 'THEME: 60 S, 80 BPM, F MAJOR, KALIMBA LEAD.'],
+    ['EVERY SOUND IS SYNTHESIZED FROM CODE.', 'NO SAMPLES, NO LOOP PACKS, NO RECORDINGS.', 'THEME: 60 S, 80 BPM, F MAJOR, KALIMBA LEAD.'],
     ['RUN     python tools/serve.py', 'OPEN    http://127.0.0.1:8765/', 'PREVIEW LIVE, EXPORT A YOUTUBE-READY MP4.'],
     ['DISTANCE TO THE ISLAND: STILL TEN HOURS.', 'THE WALLS MOVE. THE ISLAND DOES NOT.', 'SHE COULD LEAVE ANY TIME. SHE GETS COFFEE.'],
   ];
@@ -586,8 +607,8 @@ function tunnelSVG() {
   const TS = 2.5;
   const LINE_COL = [SUN, WHITE, AQUA];
   const pageDur = LOOP / PAGES.length;
-  css.push(`.pg{animation:pg ${LOOP}s step-end infinite}@keyframes pg{0%{opacity:1}${n(100 / PAGES.length, 3)}%{opacity:0}}`);
-  css.push(`.pip{fill:#1d4651;animation:pip ${LOOP}s step-end infinite}@keyframes pip{0%{fill:${CORAL}}${n(100 / PAGES.length, 3)}%{fill:#1d4651}}`);
+  css.push(`.pg{animation:pg ${LOOP}s step-end infinite}@keyframes pg{0%{opacity:1}${cutPc(1 / PAGES.length)}{opacity:0}}`);
+  css.push(`.pip{fill:#1d4651;animation:pip ${LOOP}s step-end infinite}@keyframes pip{0%{fill:${CORAL}}${cutPc(1 / PAGES.length)}{fill:#1d4651}}`);
   PAGES.forEach((lines, i) => {
     let g = '';
     lines.forEach((str, li) => {
@@ -659,9 +680,12 @@ function rotoSVG() {
   }
   const TS = 2;
   defs.push(`<pattern id="tile" patternUnits="userSpaceOnUse" width="${T * TS}" height="${T * TS}" x="${-T}" y="${-T}">${tile.paths(TS)}</pattern>`);
-  // rotate, breathe, drift
-  css.push(`.rz-rot{animation:rzrot ${LOOP}s linear infinite;animation-delay:${dly(0)}}@keyframes rzrot{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`);
-  css.push(`.rz-zoom{animation:rzzoom ${4 * BAR}s ease-in-out infinite;animation-delay:${dly(0)}}@keyframes rzzoom{0%{transform:scale(.8)}50%{transform:scale(1.45)}100%{transform:scale(.8)}}`);
+  // rotate, breathe, drift. All three start 5 beats in, so the first frame
+  // (and the reduced-motion frame) is already turned and zoomed: a still of a
+  // rotozoomer, not a plain wallpaper.
+  const RZ0 = 5 * BEAT;
+  css.push(`.rz-rot{animation:rzrot ${LOOP}s linear infinite;animation-delay:${dly(-RZ0)}}@keyframes rzrot{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`);
+  css.push(`.rz-zoom{animation:rzzoom ${4 * BAR}s ease-in-out infinite;animation-delay:${dly(-RZ0)}}@keyframes rzzoom{0%{transform:scale(.8)}50%{transform:scale(1.45)}100%{transform:scale(.8)}}`);
   let drift = '';
   const DK = 36;
   for (let i = 0; i <= DK; i++) {
@@ -670,7 +694,7 @@ function rotoSVG() {
     const y = 26 * Math.sin(4 * Math.PI * t);
     drift += `${n(t * 100, 3)}%{transform:translate(${n(x)}px,${n(y)}px)}`;
   }
-  css.push(`.rz-drift{animation:rzdrift ${LOOP}s linear infinite;animation-delay:${dly(0)}}@keyframes rzdrift{${drift}}`);
+  css.push(`.rz-drift{animation:rzdrift ${LOOP}s linear infinite;animation-delay:${dly(-RZ0)}}@keyframes rzdrift{${drift}}`);
   const roto = `<g transform="translate(${W / 2} ${H / 2})"><g class="rz-rot"><g class="rz-zoom"><g class="rz-drift">`
     + '<rect x="-1300" y="-1300" width="2600" height="2600" fill="url(#tile)"/></g></g></g></g>';
 

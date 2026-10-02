@@ -11,9 +11,9 @@
   <sub>working title · in development, nothing published yet · an unofficial remake inspired by the 1992 screensaver <i>Johnny Castaway</i></sub>
 </p>
 
-**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a great deal of time. She mostly idles, nodding to the music in her headphones, and every so often, always on the next bar of the music, something happens. Sunny, hand-painted coastal anime, 16:9, 1080p at 30 fps, and always daytime.
+**Castaway** is a stationary-frame lo-fi video for YouTube, in the spirit of the ten-hour lofi streams: a young woman alone on a tiny island with one tall palm, a raft and a great deal of time. She mostly idles, nodding to the music in her headphones, and every so often, always on the next bar of the music, something happens. Sunny, hand-painted coastal anime, 16:9 at 1080p, and always daytime.
 
-Up there, the island is a directory. `ship.pas` is a ship that passes. `crab.hat` is a coconut that lands on a hermit crab, who keeps it. `drone.arj` is a parcel by drone with one file inside: more headphones. `PALM\TOP\signal.bar` is one bar of signal, found at the very top of the palm and nowhere else. Press F6 on `bottle.msg` and it moves to `C:\ISLAND\SEA`. Then it washes straight back. More than 90 activities wait their turn on four timers, from **regular** (every 2 to 5 minutes) to **super rare** (every 3 to 6 hours), and every sound in it is synthesized from code: no samples, no loops, no recordings.
+Up there, the island is a directory. `ship.pas` is a ship that passes. `crab.hat` is a coconut that lands on a hermit crab, who keeps it. `drone.arj` is a parcel by drone with one file inside: more headphones. `PALM\TOP\signal.bar` is one bar of signal, found at the very top of the palm and nowhere else. Press F6 on `bottle.msg` and it moves to `C:\ISLAND\SEA`. Then it washes straight back. More than 90 activities wait their turn, most of them on four timers from **regular** (every 2 to 5 minutes) to **super rare** (every 3 to 6 hours), the rest chained on as follow-ups. Every sound in it is synthesized from code: no samples, no recordings, no borrowed loops.
 
 ```sh
 python tools/serve.py        # then open http://127.0.0.1:8765/
@@ -26,9 +26,9 @@ python tools/serve.py        # then open http://127.0.0.1:8765/
 ║     Name      │         What         ║║     Name      │         What         ║
 ║..             │►UP--DIR◄             ║║..             │►UP--DIR◄             ║
 ║MEDIA          │►SUB-DIR◄ art, sound  ║║<a href="tools/make_audio.py">make_audio.py</a>  │every sound, from code║
-║TOOLS          │►SUB-DIR◄ ──────────► ║║<a href="tools/render_demo.py">render_demo.py</a> │a dev reel, every gag ║
+║TOOLS          │►SUB-DIR◄ ──────────► ║║<a href="tools/render_demo.py">render_demo.py</a> │--dev: every activity ║
 ║WEB            │►SUB-DIR◄ <a href="web/index.html">index.html</a>  ║║<a href="tools/schedule.py">schedule.py</a>    │checks, simulates 10h ║
-║<a href="activities.toml">activities.toml</a>│90+ gags, four timers ║║<a href="tools/serve.py">serve.py</a>       │live preview, MP4 out ║
+║<a href="activities.toml">activities.toml</a>│90+ activities, timed ║║<a href="tools/serve.py">serve.py</a>       │live preview, MP4 out ║
 ║<a href="MUSING.md">MUSING.md</a>      │the project log       ║║               │                      ║
 ║README.md      │you are here          ║║               │                      ║
 ╟───────────────┴──────────────────────╢╟───────────────┴──────────────────────╢
@@ -41,16 +41,31 @@ C:\CASTAWAY>python tools/serve.py
 <sub>The same commander in plain text, with the project's own files linked: run <code>python tools/serve.py</code>, then open http://127.0.0.1:8765/.</sub>
 
 <details>
+<summary><b>F2 Run</b>: the renderer, and the other two commands</summary>
+
+<br>
+
+```sh
+python tools/serve.py               # then open http://127.0.0.1:8765/
+python tools/schedule.py            # validate, simulate a 10-hour run
+python tools/render_demo.py --dev   # a dev reel of every activity, HUD on
+```
+
+[`tools/serve.py`](tools/serve.py) serves [`web/index.html`](web/index.html), a page with a live preview and export to a YouTube-ready MP4. It encodes frame-exact video in the browser with WebCodecs (68 to 78 frames a second in Chrome, measured at 1080p30), and the server mixes the sound and joins the two into an MP4. [`tools/render_demo.py`](tools/render_demo.py) is the older Python reference renderer. The working log is [`MUSING.md`](MUSING.md).
+
+</details>
+
+<details>
 <summary><b>F3 View</b>: how to read the screen up there</summary>
 
 <br>
 
 - **The left panel is the island.** Every file in `C:\ISLAND` is an activity from [`activities.toml`](activities.toml), apart from `her.nod`, which is what she does in between: *Lasts* is its real duration range and *Tier* is the timer that picks it. The status line under the list gives the activity's own id, so `ship.pas` is `ship_passes_unseen` and `crab.hat` is `coconut_crab`.
-- **The cursor is her.** She has one lane and does one thing at a time. A file that turns yellow is running in a lane of its own while she is busy with something else. In the banner that is `ship.pas`, in lane `sea_sky`, which the schedule deliberately starts while she has her hands full: it will wait up to ten minutes for her to be busy and not looking.
+- **The cursor is her.** She has one lane and does one thing at a time. A file that turns yellow is running in a lane of its own while she is busy with something else. In the banner that is `ship.pas`, in lane `sea_sky`, which the schedule deliberately starts while she has her hands full: it will wait up to ten minutes for her to be busy with a coconut, a sandcastle, a fishing line or a jogging lap.
 - **The right panel is a Quick View** of the file under the cursor, drawn in half-block pixels in the 16 text colours. One palette register is redefined to a skin tone, as VGA allowed. The caption underneath says what is happening, in case the pixels do not.
 - **The counter in the top-right corner**, where a clock would sit, counts the bars of the theme: 20 bars of 3 seconds. One loop of the banner is one loop of the theme, 60 seconds.
-- **Everything moves a whole cell at a time, on hard cuts.** That is the house style of the twin-panel commander, and it happens to be the project's own rule too: hard cuts and stepped movement are its motion defaults.
-- **The 8.3 names.** `her.nod` lasts *the rest*, in tier *between*. `sandcast.le` has lost the end of its name to the 8.3 rule, which is roughly what the tide does to it. `leave.any` is the super rare one: she walks out over the water and comes back with an iced coffee. `kumara.grw` is a chained follow-up: hours after she plants the kumara, it quietly comes into leaf.
+- **Everything moves in whole steps, on hard cuts.** The cursor goes a row at a time and the pictures a half-block pixel at a time, with nothing in between. That is the house style of the twin-panel commander, and it happens to be the project's own rule too: hard cuts and stepped movement are its motion defaults.
+- **The 8.3 names.** `her.nod` lasts *the rest*, in tier *between*. `sandcast.le` has lost the end of its name to the 8.3 rule, which is roughly what the tide does to it. `leave.any` is the super rare one: she walks out over the water and comes back with an iced coffee. `kumara.grw` is a chained follow-up: hours after she plants the kumara, it quietly comes into leaf. The two coconuts in `PALM` are not activities at all: they are hanging, and their tier is gravity.
 
 </details>
 
@@ -76,7 +91,7 @@ C:\CASTAWAY>python tools/serve.py
 
 Every activity starts on the next bar of the music, every 3 seconds, so every punchline lands on the beat. Lanes let things overlap: her, the cat, the turtle, the sea and sky, the shore and the kumara patch each have their own, which is how a ship can sail past while she is busy with a coconut. [`tools/schedule.py`](tools/schedule.py) validates the file and simulates a 10-hour run.
 
-Also on the island, in no particular hurry: a sea turtle who visits, a grey tabby who arrives on a crate, naps up the palm and one day floats off again (and comes back another time), a bro on an electric hydrofoil who waves a shaka and carves off, a tour boat of selfie-takers, fire by friction, a hammock, a lookout up the palm, spear fishing, fishing (nothing bites), jogging laps and a sandcastle for the tide. The scene has 26 entries of life of its own: shore waves and drifting cloud shadows are built; distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are planned.
+Also on the island, in no particular hurry: a sea turtle who visits, a grey tabby who arrives on a crate, naps up the palm and one day floats off again (and comes back another time), a bro on an electric hydrofoil who waves a shaka and carves off, a tour boat of selfie-takers, fire by friction, a hammock, a lookout up the palm, spear fishing, fishing (a nibble, then nothing), jogging laps and a sandcastle for the tide. The scene has 26 entries of life of its own: shore waves and drifting cloud shadows are built; distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are planned.
 
 </details>
 
@@ -92,33 +107,20 @@ Nobody has listened to any of it yet, so this page has no opinion about how it s
 </details>
 
 <details>
-<summary><b>F2 Run</b>: the renderer, and the other two commands</summary>
-
-<br>
-
-```sh
-python tools/serve.py               # then open http://127.0.0.1:8765/
-python tools/schedule.py            # validate, simulate a 10-hour run
-python tools/render_demo.py --dev   # a dev reel of every activity, HUD on
-```
-
-[`tools/serve.py`](tools/serve.py) serves [`web/index.html`](web/index.html), a page with a live preview and export to a YouTube-ready MP4. It encodes frame-exact video in the browser with WebCodecs (68 to 78 frames a second at 1080p30 in Chrome), and the server mixes the sound and joins the two into an MP4. [`tools/render_demo.py`](tools/render_demo.py) is the older Python reference renderer. The working log is [`MUSING.md`](MUSING.md).
-
-</details>
-
-<details>
 <summary><b>F10 Leave</b>: credits, and what is not real</summary>
 
 <br>
 
 ```text
   The program on screen is called Catamaran Commander: two hulls, two
-  panels, one island. It does not exist. Its layout is the orthodox twin-panel
-  file manager that DOS users lived in, and that clones still keep
-  alive; no product's name, logo or strings were borrowed.
+  panels, one island. It does not exist. Its layout is the orthodox
+  twin-panel file manager that DOS users lived in, and that clones still
+  keep alive. No product's name or logo was borrowed; the ►SUB-DIR◄
+  markers belong to the genre, which its clones have shared for decades.
 
-  Logo, font, island, palm, raft, ship, crab, drone and shark were all
-  drawn fresh for this page, a half-block pixel at a time.
+  Logo, island, palm, raft, ship, crab, drone and shark were all drawn
+  fresh for this page, a half-block pixel at a time. The 8x16 text face
+  is hand-made in the manner of the VGA ROM; no ROM font was copied.
 
   F7 Plant and F8 Tide work exactly as labelled: slowly, and
   eventually.

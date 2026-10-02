@@ -18,7 +18,9 @@
 //     random offsets, three different frames that churn while the reveal runs;
 //   * each cell is assigned one of 20 reveal buckets (a sixteenth note each, 5 beats at 80 BPM);
 //     at its moment a background-coloured cover hides that cell's noise and its true glyph
-//     appears, white for a sixteenth, then its own colour;
+//     appears, white for a sixteenth, then its own colour (in the picture the cover is the
+//     cell's sky or sea colour, so the daylight arrives a cell at a time);
+//   * the noise frames themselves change only on eighth notes, under 3 times a second;
 //   * the logo cells carry a brighter, denser noise, so CASTAWAY is legible from the first frame.
 // One-shot: 2 beats of scramble, 5 beats of reveal, then the plaintext holds for good (only the
 // sea, two gulls, her nodding head and a beat light keep moving). With no animation, or with
@@ -70,14 +72,17 @@ const f3 = (n) => +n.toFixed(4);
 // ---------------------------------------------------------------------------------------------
 const P = {
   bg: '#0A0E14', edge: '#1D2735', frame: '#2C4767', frameHi: '#4F78A6',
-  noise: '#3F4A5C', wmark: '#B4D4FA', tint: '#21416A',
+  noise: '#3F4A5C', wmark: '#B4D4FA', tint: '#29527F',
   hi: '#EEF6FF', blue: '#6CB6FF', label: '#7F9DC4', dim: '#5D7593', num: '#FFFFFF',
   shadow: '#1F3A5E',
-  // the attachment: one view of the island, in daylight
-  sun: '#FFD166', sunHi: '#FFE9A8', frond: '#7DDB8C', frondDk: '#3FB27A', nut: '#C08A55',
-  trunk: '#D9925F', trunkDk: '#9C5F3C', sand: '#F7E2B0', sandDk: '#E0BC7E', foam: '#E4F7FF', sea: '#4FC3F7', seaDk: '#2E95D3', raft: '#C9773F', crab: '#FF5A3C', raftDk: '#8E4E2A',
-  cream: '#F6EAD0', glass: '#8EE8C6', hair: '#9A6440', coral: '#FF7D6B', skin: '#F2C29A', bird: '#CFE3F5',
+  // the attachment: one view of the island, in daylight. Every picture cell carries its own
+  // background colour (a text-mode attribute), banded: four rows of sky, five of sea.
+  sun: '#FFD84D', sunHi: '#FFF4C4', frond: '#46C46E', frondDk: '#1D8A4C', nut: '#6E4024',
+  trunk: '#B86F3C', trunkDk: '#7A4526', sand: '#FBE8BC', sandDk: '#E6C084', foam: '#F4FCFF', sea: '#DDF5FF', seaDk: '#2E95D3', raft: '#C9773F', crab: '#E8452C', raftDk: '#8E4E2A',
+  cream: '#FFF3DC', glass: '#8EE8C6', hair: '#6A3F22', coral: '#FF6B57', skin: '#F2C29A', bird: '#2B4560',
 };
+const SKY = ['#58ACE6', '#6CBAED', '#84C7F2', '#A3D8F7']; // top of the sky down to the horizon
+const SEA = ['#2A85CB', '#2F94D5', '#36A4DF', '#3FB3E7', '#4BC1EE']; // far water to the shallows
 const COLOR = {
   H: P.hi, T: P.blue, L: P.label, D: P.dim, N: P.num,
   y: P.sun, Y: P.sunHi, g: P.frond, G: P.frondDk, n: P.nut, t: P.trunk, s: P.sand,
@@ -311,8 +316,14 @@ BODY.forEach((s, i) => {
 });
 
 // --- the attachment: one view of the island (right) ------------------------------------------
-// Drawn by placing strings on a small canvas (spaces are transparent), each in one colour.
-const PIC_COL = 47, PIC_ROW = 13, PIC_W = 31, PIC_H = 10;
+// A small daylight window, exactly as tall as the message header beside it (rows 13 to 21).
+// Every cell in it has a background colour, the way a text-mode attribute would: four bands of
+// sky and five of sea, so the horizon is simply where the colour changes. Text cells (the sea's
+// ripples, two gulls) are placed as strings; spaces are transparent.
+const PIC_COL = 48, PIC_ROW = 13, PIC_W = 30, PIC_H = 9;
+const BAND = [...SKY, ...SEA];
+if (BAND.length !== PIC_H) throw new Error('one background band per picture row');
+const isPic = (r, c) => r >= PIC_ROW && r < PIC_ROW + PIC_H && c >= PIC_COL && c < PIC_COL + PIC_W;
 const pic = Array.from({ length: PIC_H }, () => Array(PIC_W).fill(null));
 function at(x, y, s, col, fx) {
   [...s].forEach((ch, i) => {
@@ -321,16 +332,14 @@ function at(x, y, s, col, fx) {
     pic[y][x + i] = { ch, col, fx };
   });
 }
-// sky: the sun (always daytime) and two far-off gulls
-at(8, 0, 'ˇ', 'b', 'bird'); at(29, 0, 'ˇ', 'b', 'bird');
-// the horizon, faint
-at(0, 4, 'ˉˉˉ ˉˉ ˉˉˉ', 'W'); at(23, 4, 'ˉˉ ˉˉˉ ˉ', 'W');
-// the sea behind the island
-at(4, 5, '~', 'w', 'wave'); at(15, 6, '~', 'w', 'wave'); at(25, 5, '~', 'w', 'wave');
-at(1, 7, '~', 'w', 'wave'); at(27, 7, '~', 'w', 'wave'); at(23, 6, '~', 'w', 'wave');
-// the island, the bottle that came straight back, the raft, the sea
-at(0, 8, '~~~~~', 'w', 'wave');
-at(0, 9, '≈~~≈~~~≈~~~~≈~~~~≈~~~≈~~~~~≈~~', 'w', 'wave');
+// sky: two far-off gulls (the sun is in the bitmap below; it is always daytime)
+at(9, 0, 'ˇ', 'b', 'bird'); at(26, 1, 'ˇ', 'b', 'bird');
+// the sea: a few ripples far out, then the shallows in front of the island
+at(3, 4, '~', 'w', 'wave'); at(22, 4, '~', 'w', 'wave'); at(27, 4, '~', 'w', 'wave');
+at(6, 5, '~', 'w', 'wave'); at(25, 5, '~', 'w', 'wave');
+at(1, 6, '~', 'w', 'wave'); at(28, 6, '~', 'w', 'wave');
+at(0, 7, '≈~~', 'w', 'wave');
+at(0, 8, '≈~~≈~~~≈~~~~≈~~~~≈~~~≈~~~~~≈~', 'w', 'wave');
 const PIC_COLOR = { ...COLOR, h: P.hair, B: P.glass };
 pic.forEach((row, y) => row.forEach((cell, x) => {
   if (cell) cells[PIC_ROW + y][PIC_COL + x] = { ...cell, pic: true };
@@ -350,6 +359,7 @@ function sprite(x0, y0, rows, fxRows = 0) {
   rows.forEach((row, y) => [...row].forEach((ch, x) => {
     if (ch === '.') return;
     if (!(ch in BIDX)) throw new Error(`sprite colour ${ch}`);
+    if (x0 + x < 0 || x0 + x >= BW || y0 + y < 0 || y0 + y >= BH) throw new Error(`sprite off the canvas at ${x0 + x},${y0 + y}`);
     FX = y < fxRows ? 1 : 0;
     px(x0 + x, y0 + y, BIDX[ch]);
   }));
@@ -366,11 +376,12 @@ function seg(x0, y0, x1, y1, w, k) {
   const n = Math.ceil(Math.hypot(x1 - x0, y1 - y0) * 3) + 1;
   for (let i = 0; i <= n; i++) disc(x0 + (x1 - x0) * i / n, y0 + (y1 - y0) * i / n, w / 2, k);
 }
-const PALM_X = 140, PALM_Y = 37, GROUND = 8 * CH + 10; // crown centre; the sand line
+const PALM_X = 124, PALM_Y = 26, GROUND = 92; // crown centre; the foot of the trunk
+const SHORE = 95; // the island's waterline (a row of foam)
 // trunk: a gentle S from the crown down to the sand, bark rings every few units, shaded edge
 {
   const bez = (t) => {
-    const a = [PALM_X, PALM_Y + 2], c = [PALM_X - 7, 78], b = [PALM_X + 2, GROUND];
+    const a = [PALM_X, PALM_Y + 2], c = [PALM_X - 7, 62], b = [PALM_X + 2, GROUND];
     return [(1 - t) ** 2 * a[0] + 2 * (1 - t) * t * c[0] + t * t * b[0], (1 - t) ** 2 * a[1] + 2 * (1 - t) * t * c[1] + t * t * b[1]];
   };
   const xs = new Map();
@@ -378,7 +389,7 @@ const PALM_X = 140, PALM_Y = 37, GROUND = 8 * CH + 10; // crown centre; the sand
   for (let y = PALM_Y + 2; y < GROUND; y++) {
     const cx = xs.get(y) ?? xs.get(y - 1);
     const t = (y - PALM_Y) / (GROUND - PALM_Y);
-    const hw = 1.6 + 1.0 * t;
+    const hw = 1.5 + 1.1 * t;
     const ring = (y - PALM_Y) % 5 === 0;
     for (let x = Math.round(cx - hw); x <= Math.round(cx + hw); x++) {
       px(x, y, ring || x >= Math.round(cx + hw) - 0.5 ? 2 : 1);
@@ -412,26 +423,26 @@ function frond(deg, L, droop, k, leaf) {
     seg(x1, y1, x1 + ux * len * 0.45, y1 + uy * len * 0.45, 1, k);
   }
 }
-for (const [deg, L, droop, leaf] of [[150, 50, 0.5, 6], [30, 50, 0.5, 6], [108, 34, 0.3, 5], [72, 34, 0.3, 5]]) frond(deg, L, droop, 4, leaf);
+for (const [deg, L, droop, leaf] of [[150, 44, 0.5, 6], [30, 44, 0.5, 6], [108, 30, 0.3, 5], [72, 30, 0.3, 5]]) frond(deg, L, droop, 4, leaf);
 disc(PALM_X - 3.5, PALM_Y + 2.5, 2.7, 3); disc(PALM_X + 3.5, PALM_Y + 2.5, 2.7, 3); disc(PALM_X, PALM_Y + 5.5, 2.7, 3);
-for (const [deg, L, droop, leaf] of [[168, 58, 0.62, 7], [12, 58, 0.62, 7], [132, 46, 0.5, 6], [48, 46, 0.5, 6], [93, 24, 0.2, 4]]) frond(deg, L, droop, 5, leaf);
-// the sun, high (it is always daytime): a disc and its rays
+for (const [deg, L, droop, leaf] of [[168, 50, 0.6, 7], [12, 50, 0.6, 7], [132, 40, 0.5, 6], [48, 40, 0.5, 6], [93, 21, 0.2, 4]]) frond(deg, L, droop, 5, leaf);
+// the sun, high in the sky (it is always daytime): a disc, a highlight and its rays
 for (let a = 0; a < 8; a++) {
   const t = a * Math.PI / 4 + Math.PI / 8;
-  seg(24 + Math.cos(t) * 11, 17 + Math.sin(t) * 11, 24 + Math.cos(t) * 15, 17 + Math.sin(t) * 15, 1.6, BIDX.y);
+  seg(21 + Math.cos(t) * 11, 16 + Math.sin(t) * 11, 21 + Math.cos(t) * 14.5, 16 + Math.sin(t) * 14.5, 1.6, BIDX.y);
 }
-disc(24, 17, 7.6, BIDX.y); disc(22.5, 15.5, 4.2, BIDX.Y);
+disc(21, 16, 7.6, BIDX.y); disc(19.5, 14.5, 4.2, BIDX.Y);
 // the island: a low mound of sand with a lit top and a line of foam where it meets the sea
-for (let x = 40; x <= 196; x++) {
-  const u = (x - 118) / 78;
-  const top = Math.round(116 - 6.5 * Math.sqrt(Math.max(0, 1 - u * u)));
-  for (let y = top; y <= 116; y++) {
+for (let x = 26; x <= 188; x++) {
+  const u = (x - 107) / 81;
+  const top = Math.round(SHORE - 1 - 6.5 * Math.sqrt(Math.max(0, 1 - u * u)));
+  for (let y = top; y <= SHORE; y++) {
     if (bmp[y * BW + x]) continue; // the trunk stands in it
-    px(x, y, y === 116 ? BIDX.F : y <= top + 1 ? BIDX.s : BIDX.S);
+    px(x, y, y === SHORE ? BIDX.F : y <= top + 1 ? BIDX.s : BIDX.S);
   }
 }
 // her: cream headphones over brown hair, coral tank top, cream shorts, bare feet; she faces us
-sprite(84, 82, [
+sprite(66, 60, [
   '...hhhhh...',
   '..hhhhhhh..',
   '..chhhhhc..',
@@ -462,16 +473,16 @@ sprite(84, 82, [
   '...kk.kk...',
   '..kkk.kkk..',
 ], 8);
-// the bottle that came straight back, on the sand by her feet
-sprite(60, 108, ['BBBBB...', 'BBBBBBBc', 'BBBBB...']);
+// the bottle that came straight back, on the sand a few steps from her
+sprite(42, 87, ['BBBBB...', 'BBBBBBBn', 'BBBBB...']);
 // the hermit crab who pressed the key, minding its own business on the right-hand beach
-sprite(166, 108, ['.x...x.', 'xx.x.xx', '.xxxxx.', 'x.x.x.x']);
+sprite(150, 85, ['.x...x.', 'xx.x.xx', '.xxxxx.', 'x.x.x.x']);
 // the raft, moored off the right-hand shore: lashed logs, end-on shading
-sprite(190, 108, [
-  'rrRrrrRrrrRrrrRrrrRrrr',
-  'rrRrrrRrrrRrrrRrrrRrrr',
-  'RRRRRRRRRRRRRRRRRRRRRR',
-  '.RRRRRRRRRRRRRRRRRRRR.',
+sprite(190, 92, [
+  'rrRrrrRrrrRrrrRrrr',
+  'rrRrrrRrrrRrrrRrrr',
+  'RRRRRRRRRRRRRRRRRR',
+  '.RRRRRRRRRRRRRRRR.',
 ]);
 // slice into cells: one redefined character per cell and colour
 const SLICE = new Map();
@@ -581,12 +592,13 @@ defs.push(`<pattern id="sh" width="2" height="2" patternUnits="userSpaceOnUse"><
 
 // --- covers + truth, by bucket ----------------------------------------------------------------
 const coverD = Array.from({ length: NB }, () => []);
+const coverP = Array.from({ length: NB }, () => []); // picture cells: their cover is the daylight
 const truth = new Map(); // "b|col" -> uses
 const logoD = Array.from({ length: NB }, () => '');
 const shadeD = Array.from({ length: NB }, () => '');
 for (let r = INNER.r0; r <= INNER.r1; r++) for (let c = INNER.c0; c <= INNER.c1; c++) {
   const cell = cells[r][c];
-  coverD[cell.b].push([r, c]);
+  (isPic(r, c) ? coverP : coverD)[cell.b].push([r, c]);
   if (cell.logo) {
     const [lt, lb] = cell.logo, [st, sb] = cell.shade;
     const x = X(c), y = Y(r), hh = CH / 2;
@@ -672,6 +684,16 @@ body.push(`<g class="nz">`
 body.push(`<g fill="none" stroke="${P.bg}" stroke-width="${CH}">`
   + coverD.map((list, b) => (list.length ? `<path class="cv b${b}" d="${coverPath(list)}"/>` : '')).join('')
   + `</g>`);
+// the picture's covers are its background attributes: banded sky and sea, one flat colour a row
+defs.push(`<linearGradient id="pan" gradientUnits="userSpaceOnUse" x1="0" y1="${Y(PIC_ROW)}" x2="0" y2="${Y(PIC_ROW + PIC_H)}">`
+  + BAND.map((col, i) => `<stop offset="${f3(i / PIC_H)}" stop-color="${col}"/><stop offset="${f3((i + 1) / PIC_H)}" stop-color="${col}"/>`).join('')
+  + `</linearGradient>`);
+body.push(`<g fill="none" stroke="url(#pan)" stroke-width="${CH}">`
+  + coverP.map((list, b) => (list.length ? `<path class="cv b${b}" d="${coverPath(list)}"/>` : '')).join('')
+  + `</g>`);
+// once every cell has landed, one seamless panel replaces the patchwork (no hairlines between
+// cells at fractional scales)
+body.push(`<rect class="solidP" x="${X(PIC_COL)}" y="${Y(PIC_ROW)}" width="${PIC_W * CW}" height="${PIC_H * CH}" fill="url(#pan)"/>`);
 // --- logo shade and letters --------------------------------------------------------------------
 body.push(`<g fill="url(#sh)">${shadeD.map((d, b) => (d ? `<path class="cv b${b}" d="${d}"/>` : '')).join('')}</g>`);
 body.push(`<g>${logoD.map((d, b) => (d ? `<path class="kL b${b}" fill="url(#lg)" d="${d}"/>` : '')).join('')}</g>`);
@@ -684,6 +706,25 @@ for (const [key, list] of [...truth.entries()].sort()) {
   truthOut.push(`<g class="${k} b${b}" fill="${hex}">${list.join('')}</g>`);
 }
 body.push(truthOut.join(''));
+// and once the picture's last cell has stopped flashing, the same bitmap drawn whole, per colour,
+// over its slices: no hairlines in the sand or the trunk where cells meet at fractional scales
+{
+  const groups = new Map(); // colour index + 32 * nod -> pixels
+  for (let y = 0; y < BH; y++) for (let x = 0; x < BW; x++) {
+    const i = y * BW + x;
+    if (!bmp[i]) continue;
+    const k = bmp[i] + 32 * bfx[i];
+    if (!groups.has(k)) groups.set(k, []);
+    groups.get(k).push([x, y]);
+  }
+  let s = '';
+  for (const k of [...groups.keys()].sort((a, b) => a - b)) {
+    const d = mergePixels(groups.get(k), false)
+      .map(([x, y, w, h]) => `M${X(PIC_COL) + x} ${Y(PIC_ROW) + y}h${w}v${h}h-${w}z`).join('');
+    s += `<path fill="${PIC_COLOR[BCOL[k % 32]]}"${k >= 32 ? ' class="nd"' : ''} d="${d}"/>`;
+  }
+  body.push(`<g class="solidB">${s}</g>`);
+}
 
 // --- the window: a double-line frame with labels sitting in it ---------------------------------
 const fx0 = X(0) + 2.5, fy0 = Y(0) + 5.5, fx1 = X(COLS) - 2.5, fy1 = Y(ROWS) - 5.5;
@@ -739,7 +780,9 @@ body.push(label(ROWS - 1, COLS - 2 - plainLen(FOOT[3]) - 4, FOOT[3]));
 // ---------------------------------------------------------------------------------------------
 css.push(`.nz{opacity:0;animation:nz ${f3(TEND + 0.1)}s steps(1,end) both}`);
 css.push('@keyframes nz{0%{opacity:1}100%{opacity:0}}');
-const CYC = SUB * 3; // the noise churns through its three frames, a sixteenth each
+// the noise churns through its three frames, an eighth note each: under 3 changes a second over
+// the big area, while single cells still snap on the sixteenths
+const CYC = (BEAT / 2) * 3;
 const NCYC = Math.ceil((TEND - T0) / CYC) + 1;
 css.push(`.fa,.fb,.fc{animation:${f3(CYC)}s steps(1,end) ${T0}s ${NCYC} both}`);
 css.push('.fa{animation-name:fa}.fb{animation-name:fb}.fc{animation-name:fc}');
@@ -763,6 +806,8 @@ css.push(`.mid{animation:on ${f3(TEND - T0)}s linear ${T0}s}`);
 css.push(`.fin{animation:off ${TEND}s linear}`);
 css.push('@keyframes on{0%,100%{opacity:1}}@keyframes off{0%,100%{opacity:0}}');
 css.push(`.solid{animation:off ${f3(TEND + FL + 0.05)}s linear}`);
+css.push(`.solidP{animation:off ${f3(TEND + 0.05)}s linear}`);
+css.push(`.solidB{animation:off ${f3(TEND + FL + 0.05)}s linear}`);
 for (let k = 0; k < 5; k++) css.push(`.sq${k}{animation:off ${f3(T0 + (k + 1) * BEAT)}s linear}`);
 // the blinking footer cursor, and the beat light
 css.push(`.pre1 g:last-child{animation:bl ${BEAT}s steps(1,end) infinite}@keyframes bl{50%{opacity:0}}`);
@@ -777,7 +822,8 @@ css.push('@media (prefers-reduced-motion:reduce){*{animation:none!important}}');
 // --- glyph defs (only what is used) -------------------------------------------------------------
 const glyphDefs = [...GID.entries()].map(([ch, id]) => `<path id="${id}" d="${glyphD(ch)}"/>`).join('');
 
-const ALT = 'CASTAWAY: a scrambled message in a terminal window decrypts, cell by cell, on the beat.';
+const ALT = 'CASTAWAY: a scrambled message in a terminal window decrypts, cell by cell, on the beat, '
+  + 'into the title, a message header with the event timers, the run command and a small daylight island picture.';
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VBW} ${VBH}" width="${VBW * 2}" height="${VBH * 2}" role="img" aria-label="${ALT}">
 <title>${ALT}</title>
 <style>${css.join('')}</style>
@@ -820,15 +866,14 @@ if (!ARGV_OUT) {
     return h;
   }).join('\n');
 
-  const IMG_ALT = 'CASTAWAY, decrypting. A dark terminal window titled castaway.msg opens as a solid block of dim, '
-    + 'scrambled symbols, with the word CASTAWAY already showing through in brighter noise. A hermit crab presses the key, '
-    + 'and on the beat, cell by cell in random order, the noise resolves into big blue block letters spelling CASTAWAY, '
-    + 'then: ten hours on one very small island, almost nothing happens, on the beat. A message header follows: from her, '
-    + 'with 1 island, 1 palm and 1 raft; to anyone, because the bottle came straight back; status idle, nodding at 80 BPM, as planned. '
-    + 'Then the four event timers, each with a gag (a coconut, a turtle, a drone bringing headphones, a walk on water for coffee), '
-    + 'every sound synthesized from code, and the run command: python tools/serve.py, then http://127.0.0.1:8765/. '
-    + 'Beside the text a small daylight picture decrypts too: the sun, a tall palm, a raft, a bottle, a crab, '
-    + 'and her in cream headphones and a coral tank top, nodding to the beat.';
+  const IMG_ALT = 'CASTAWAY, decrypting. A dark terminal window titled castaway.msg starts as a solid block of dim, '
+    + 'scrambled symbols with the word CASTAWAY already showing through. On the beat, cell by cell in random order, '
+    + 'the noise resolves into big blue block letters spelling CASTAWAY and the tagline: ten hours on one very small island, '
+    + 'almost nothing happens, on the beat. Below, a message header (from her, to anyone, status idle), the four event timers '
+    + 'with a gag each, every sound synthesized from code, and the run command python tools/serve.py with http://127.0.0.1:8765/. '
+    + 'Beside it a small daylight picture decrypts too, a cell of sky or sea at a time: the sun, a tall palm on a sandy island, '
+    + 'a bottle, a hermit crab, a raft, and her in cream headphones and a coral tank top, nodding to the beat. '
+    + 'The full text is repeated below the image.';
 
   const md = `<!-- Header ${SLUG} for Castaway, written for a future README.md at the project root. This file and its SVG are generated by src/${SLUG}.mjs: edit that, not this. -->
 
@@ -871,9 +916,9 @@ ${preHtml}
 | Occasional | 12 to 25 minutes | about 30 | a sea turtle visits; a coconut lands on a hermit crab, which leaves wearing it |
 | Rare | 30 to 60 minutes | about 13 | a drone delivers more headphones; a shark in headphones nods along |
 | Super rare | 3 to 6 hours, at most 3 a run | about 2 | she walks out over the water and comes back with an iced coffee |
-| Chained | never on a timer | when called | the tide takes the sandcastle; a different bottle brings a reply |
+| Chained | never on a timer, only by another activity | about 20 | the tide takes the sandcastle; hours after the bottle, a different one brings a reply |
 
-Counts are the median of 200 simulated runs of the default 10:00:00 with seed 1992. She is busy about a third of the time and idles the rest, which is the point. Lanes let things overlap, so a ship can sail past while she is busy with a coconut: the ship even waits for her to get busy.
+Counts are the median of 200 simulated 10-hour runs, as the header of [activities.toml](activities.toml) puts it; the default run is 10:00:00 with seed 1992. She is busy about a third of the time and idles the rest, which is the point. Lanes let things overlap, so a ship can sail past while she is busy with a coconut: the ship even waits for her to get busy.
 
 #### Sightings, so far
 
@@ -884,7 +929,8 @@ Counts are the median of 200 simulated runs of the default 10:00:00 with seed 19
 - A bro on an electric hydrofoil throws a shaka and carves off.
 - Bushcraft: fire by friction, a hammock, a lookout up the palm, spear fishing.
 - A kumara, planted, that grows over the course of the video.
-- A sandcastle, until the tide takes it. Waving for rescue, at nobody.
+- A sandcastle, until the tide takes it.
+- Waving for rescue. Once in a long while a ship honks back, then sails on.
 
 #### Sound
 
@@ -903,11 +949,11 @@ Decisions, and what holds right now: [MUSING.md](MUSING.md).
 <details>
 <summary><b>About the cipher</b>: what kelpcrypt is (nothing), and what this banner borrows</summary>
 
-The banner is a decrypt reveal: a block of scrambled symbols that turns into the real text cell by cell, in random order, each cell snapping to a bright accent as it lands. The effect comes from early-1990s film computer screens and was recreated as the open-source terminal tool no-more-secrets; this one is drawn from scratch as an animated SVG, and nothing is taken from either. Here every cell lands on a sixteenth note at 80 BPM, so the whole message decrypts in exactly five beats, the way the video's gags start on the bar. The picture is drawn in a redefined character set, the way text-mode games drew their scenery, so it decrypts like the words do. The name shows through the noise from the first frame, and with reduced motion switched on you get the plaintext straight away.
+The banner is a decrypt reveal: a block of scrambled symbols that turns into the real text cell by cell, in random order, each cell snapping to a bright accent as it lands. The effect comes from early-1990s film computer screens and was recreated as the open-source terminal tool no-more-secrets; this one is drawn from scratch as an animated SVG, and nothing is taken from either. Here every cell lands on a sixteenth note at 80 BPM, so the whole message decrypts in exactly five beats, the way the video's gags start on the bar. The picture is drawn in a redefined character set, the way text-mode games drew their scenery, and every one of its cells carries a sky or sea background colour, so the daylight decrypts a cell at a time like the words do. The name shows through the noise from the first frame, and with reduced motion switched on you get the plaintext straight away.
 
-kelpcrypt is made up. Its only key is 1992, which is also the default seed (same seed, same video, event for event), so the security model is best described as "printed on the bottle". Please do not encrypt anything with it.
+kelpcrypt is made up. Its only key is 1992, which is also the default seed (same seed, same schedule, event for event), so the security model is best described as "printed on the bottle". Please do not encrypt anything with it.
 
-Castaway is an unofficial remake inspired by the 1992 screensaver Johnny Castaway, which belongs to its owners; nothing here is taken from it. Counts are as of 2026-10-01 and the schedule grows every few hours, so trust \`python tools/schedule.py\` over this page.
+Castaway is an unofficial remake inspired by the 1992 screensaver Johnny Castaway, which belongs to its owners; nothing here is taken from it. Counts are as of 2026-10-02 and the schedule grows every few hours, so trust \`python tools/schedule.py\` over this page.
 
 </details>
 `;

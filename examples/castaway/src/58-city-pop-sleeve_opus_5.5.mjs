@@ -14,7 +14,9 @@
 // turquoise shallows with a drifting net of white caustic lines, four-point
 // sparkles), with a paper obi down its left edge carrying the title in
 // vertical katakana. The record has slid half out of it. On the right, the
-// back-cover card: the track list, which is really the schedule.
+// back-cover card: the track list, which is really the schedule. Along the
+// bottom, the corner of the pool itself: white coping, flat turquoise, a
+// caustic net and a chrome ladder that catches the light.
 //
 // Nothing is traced: the island scene is an original drawing of Castaway's
 // own island (not any painting, and not the project's scene art), the Latin
@@ -22,13 +24,19 @@
 // plain gothic strokes drawn below. No <text>, no filters, no external
 // anything.
 //
+// Every number on the sleeve is true of the project: 80 BPM (the theme's
+// tempo, printed where a label would print 33 1/3 RPM), 30 FPS, STEREO (the
+// mix is rendered to stereo buses), 10:00:00 (the default run), SSR-1992
+// (the default seed), and the track times (see SIDES below).
+//
 // Japanese used (real, and meant):
 //   キャストアウェイ   "Castaway", in katakana
 //   ずっと、昼。       "Daytime, all the way through" (the project's rule)
 //   定価               "list price" (here: 10:00:00, paid in time)
 //
 // Motion (all CSS keyframes, each on its own clean loop):
-//   caustic nets drift across the shallows by exactly one pattern tile;
+//   caustic nets drift across the shallows and the pool by exactly one
+//   pattern tile;
 //   the palm crown sways a degree or two, and its shadow on the sand sways
 //   with it through the same squash; an unseen poolside palm's shadow sways
 //   across the tiles and the card's corner; sparkles pop on and off; she nods once
@@ -741,8 +749,9 @@ function recordSvg(cx, cy, r) {
   s += text('SHORT SHADOW', cx, cy - 26, 6, { track: 1.6, weight: 1, color: NAVY, align: 'center' }).svg;
   s += text('SIDE A', cx - 12, cy - 5, 8.4, { track: 1.4, weight: 1.4, color: CORAL, align: 'right' }).svg;
   s += text('NOON', cx - 12, cy + 6, 5.6, { track: 1.6, weight: 1, color: NAVY, align: 'right' }).svg;
-  s += text('33 1/3', cx + 12, cy - 5, 8.4, { track: 0.8, weight: 1.4, color: CORAL, align: 'left' }).svg;
-  s += text('RPM', cx + 12, cy + 6, 5.6, { track: 1.6, weight: 1, color: NAVY, align: 'left' }).svg;
+  // where a real label prints its speed, this one prints the theme's tempo
+  s += text('80', cx + 12, cy - 5, 8.4, { track: 0.8, weight: 1.4, color: CORAL, align: 'left' }).svg;
+  s += text('BPM', cx + 12, cy + 6, 5.6, { track: 1.6, weight: 1, color: NAVY, align: 'left' }).svg;
   s += text('SSR-1992', cx, cy + 21, 5.2, { track: 1.2, weight: 0.95, color: NAVY, align: 'center' }).svg;
   s += text('STEREO', cx, cy + 41, 4.8, { track: 1.6, weight: 0.9, color: '#ffffff', align: 'center' }).svg;
   s += `<circle cx="${cx}" cy="${cy}" r="3.6" fill="${TILE}"/>`;
@@ -815,7 +824,7 @@ function cardSvg() {
   s += `<rect width="${CW}" height="${CH}" rx="2" fill="${PAPER}"/>`;
   s += `<rect width="${CW}" height="10" fill="${CORAL}"/><rect y="10" width="${CW}" height="4" fill="${ORANGE}"/>`;
   s += text('SSR-1992', P, 24, 6.2, { track: 1.8, weight: 1.05, color: NAVY }).svg;
-  s += text('STEREO · 33 1/3 RPM · 10:00:00', CW - P, 24, 6.2, { track: 1.5, weight: 1.05, color: NAVY, align: 'right' }).svg;
+  s += text('STEREO · 30 FPS · 10:00:00', CW - P, 24, 6.2, { track: 1.5, weight: 1.05, color: NAVY, align: 'right' }).svg;
   // title, tracked out to the full measure
   const tSize = 32;
   const tTrack = (IW - 2 - measure('CASTAWAY', tSize)) / 7;
@@ -828,7 +837,8 @@ function cardSvg() {
   let y = 124;
   s += `<path d="M${P} ${y}H${CW - P}" stroke="${NAVY}" stroke-width="1.2"/>`;
   y += 13;
-  const TS = 9.2; // track title cap height
+  const TS = 8.8; // track title cap height
+  const LEAD_MIN = 14; // every row keeps at least a few leader dots
   for (const side of SIDES) {
     const head = text(side.side, P, y, 8.4, { track: 1.9, weight: 1.45, color: CORAL });
     s += head.svg;
@@ -840,7 +850,7 @@ function cardSvg() {
       const nEl = text(no, P, y, TS, { track: 0.6, weight: 1.5, color: CORAL });
       const tm = text(time, CW - P, y, TS, { track: 0.6, weight: 1.5, color: NAVY, align: 'right' });
       let tr = 0.9;
-      while (measure(title, TS, tr) > IW - 25 - tm.w - 10 && tr > -0.6) tr -= 0.1;
+      while (measure(title, TS, tr) > IW - 25 - tm.w - 10 - LEAD_MIN && tr > -0.6) tr -= 0.1;
       const tEl = text(title, P + 25, y, TS, { track: tr, weight: 1.5, color: NAVY });
       s += nEl.svg + tEl.svg + tm.svg;
       const x0 = tEl.end + 5;
@@ -878,9 +888,13 @@ function cardSvg() {
 }
 
 // ================================================================ assembly
-const COVER = { x: 36, y: 62, s: 436 };
+const COVER = { x: 36, y: 36, s: 436 };
 const REC = { cx: 572, cy: COVER.y + COVER.s / 2, r: 204 };
-const CARD = { x: 630, y: 33, rot: 1.1 };
+const CARD = { x: 630, y: 24, rot: 1.1 };
+// The pool the sleeve was left beside: its corner comes in along the bottom
+// left, seen from straight above, with a white coping, a flat turquoise
+// floor, a drifting caustic net and a chrome ladder.
+const POOL = { x0: -40, x1: 604, y0: 492, cope: 9, r: 16 };
 const SH = { dx: 7, dy: 9 }; // midday: short, crisp shadows
 
 defs.push(`<pattern id="tiles" width="60" height="60" patternUnits="userSpaceOnUse" x="12" y="6"><rect width="60" height="60" fill="${TILE}"/><path d="M0 1H60M1 0V60" stroke="${GROUT}" stroke-width="2.2"/></pattern>`);
@@ -893,8 +907,46 @@ const card = cardSvg();
 const k = COVER.s / S;
 const cardT = `translate(${CARD.x} ${CARD.y}) rotate(${CARD.rot} ${CW / 2} ${CH / 2})`;
 
+function poolSvg() {
+  const { x0, x1, y0, cope, r } = POOL;
+  const yb = H + 40; // runs off the bottom of the panel
+  // rounded top-right corner only; the rest is off the panel
+  const rr = (ax, ay, bx, rad) => `M${ax} ${yb}V${ay}H${bx - rad}A${rad} ${rad} 0 0 1 ${bx} ${ay + rad}V${yb}Z`;
+  const wx1 = x1 - cope;
+  const wy0 = y0 + cope;
+  let s = '';
+  // the coping casts a short midday shadow onto the tiles, like everything else
+  s += `<path d="${rr(x0 + SH.dx, y0 + SH.dy * 0.6, x1 + SH.dx * 0.6, r)}" fill="${SHADOW}" opacity=".3"/>`;
+  s += `<path d="${rr(x0, y0, x1, r)}" fill="#fffdfb"/>`;
+  s += `<path d="M${x0} ${y0 + cope - 1.6}H${wx1 - r + cope}" stroke="#ecdcd5" stroke-width="1.2"/>`;
+  defs.push(`<clipPath id="poolClip"><path d="${rr(x0, wy0, wx1, r - cope)}"/></clipPath>`);
+  const T = 96;
+  causticPattern('caus3', T, 4, 0.5, 41, '#ffffff', 0.6, 0.72);
+  css.push(`@keyframes c3{to{transform:translate(${T}px,0)}}.c3{animation:c3 20s linear infinite}`);
+  s += `<g clip-path="url(#poolClip)">` +
+    `<rect x="${x0}" y="${wy0}" width="${x1 - x0}" height="${yb - wy0}" fill="#37c6dc"/>` +
+    // ladder steps, seen through the water
+    `<path d="M520 ${wy0 + 15}h30M520 ${wy0 + 30}h30" stroke="#a6ecf2" stroke-width="5" stroke-linecap="round" opacity=".75"/>` +
+    `<g class="c3"><rect x="${x0 - T}" y="${wy0 - 4}" width="${x1 - x0 + T * 2}" height="${yb - wy0}" fill="url(#caus3)"/></g>` +
+    // the pool wall's own shadow, a flat band just under the coping
+    `<path d="M${x0} ${wy0}H${wx1}V${yb}h-4V${wy0 + 4}H${x0}Z" fill="#1fa3c4" opacity=".55"/>` +
+    `</g>`;
+  // chrome ladder rails, from above: two bars over the coping into the water
+  const rail = (x) =>
+    `<path d="M${x + 3} ${y0 - 12}V${wy0 + 36}" stroke="${SHADOW}" stroke-width="4.6" stroke-linecap="round" opacity=".32"/>` +
+    `<circle cx="${x}" cy="${y0 - 15}" r="4.4" fill="#c9d6e2"/>` +
+    `<path d="M${x} ${y0 - 15}V${wy0 + 32}" stroke="#d3dfea" stroke-width="4.6" stroke-linecap="round"/>` +
+    `<path d="M${x - 0.9} ${y0 - 14}V${wy0 + 31}" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>`;
+  s += rail(518) + rail(552);
+  s += sparkle(552, y0 - 4, 6.4, 0.6);
+  s += sparkle(214, wy0 + 22, 5.6, 2.3);
+  s += sparkle(410, wy0 + 30, 4.4, 1.25);
+  return s;
+}
+
 let body = '';
 body += `<rect width="${W}" height="${H}" fill="url(#tiles)"/>`;
+body += poolSvg();
 // shadows on the tiles
 body += `<g fill="${SHADOW}" opacity=".42">` +
   `<circle cx="${REC.cx + SH.dx}" cy="${REC.cy + SH.dy}" r="${REC.r}"/>` +
@@ -904,8 +956,14 @@ body += `<g fill="${SHADOW}" opacity=".42">` +
 body += record;
 // ring wear: the faint print of the record pressing through the sleeve
 // (patchy, as real wear is: heaviest where the sleeve was handled)
-const wear = `<circle cx="${S / 2 + 6}" cy="${S / 2}" r="186" fill="none" stroke="#ffffff" stroke-width="5" stroke-dasharray="190 46 120 90 260 70 150 60" opacity=".07"/>` +
-  `<circle cx="${S / 2 + 6}" cy="${S / 2}" r="60" fill="none" stroke="#ffffff" stroke-width="2.4" stroke-dasharray="80 30 120 40" opacity=".06"/>`;
+// Stacked soft strokes so it reads as a scuffed band, not a drawn circle.
+const wearRing = (r, layers) => layers.map(([w, op, dash]) =>
+  `<circle cx="${S / 2 + 6}" cy="${S / 2}" r="${r}" fill="none" stroke="#ffffff" stroke-width="${w}" stroke-dasharray="${dash}" opacity="${op}"/>`).join('');
+const wear = wearRing(186, [
+  [14, 0.025, '300 40 210 110 330 80 180 50'],
+  [7, 0.035, '190 46 120 90 260 70 150 60'],
+  [2.5, 0.04, '120 70 90 140 200 60 110 80'],
+]) + wearRing(60, [[6, 0.03, '80 30 120 40'], [2, 0.035, '60 50 90 30']]);
 // laminate gloss: one soft diagonal band of light across the sleeve
 defs.push(`<linearGradient id="gloss" x1="0" y1="0" x2="1" y2="1"><stop offset=".28" stop-color="#fff" stop-opacity="0"/><stop offset=".36" stop-color="#fff" stop-opacity=".13"/><stop offset=".44" stop-color="#fff" stop-opacity="0"/></linearGradient>`);
 body += `<g transform="translate(${COVER.x} ${COVER.y}) scale(${f(k * 10000) / 10000})"><g clip-path="url(#coverClip)">${cover}${obi}${wear}<rect width="${S}" height="${S}" fill="url(#gloss)"/></g></g>`;
@@ -921,7 +979,7 @@ css.push(`@keyframes sw2{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(
 css.push('@media (prefers-reduced-motion:reduce){*{animation:none!important}}');
 
 const title = 'Castaway: a city pop LP sleeve. キャストアウェイ, ずっと、昼。';
-const desc = 'An early-80s Japanese LP left on pink poolside tiles: a flat, sunlit sleeve of a tiny island with one tall palm, turquoise shallows and a young woman in headphones nodding on the beat, a paper obi with the title in vertical katakana, the record half out of its sleeve, and a back cover listing the gags as tracks.';
+const desc = 'An early-80s Japanese LP left on pink poolside tiles: a flat, sunlit sleeve of a tiny island with one tall palm, turquoise shallows and a young woman in headphones nodding on the beat, a paper obi with the title in vertical katakana, the record half out of its sleeve, a back cover listing the gags as tracks, and the corner of the pool with a chrome ladder.';
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">` +
   `<title id="t">${title}</title><desc id="d">${desc}</desc>` +
   `<style>${css.join('')}</style>` +

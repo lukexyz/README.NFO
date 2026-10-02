@@ -22,10 +22,11 @@
 // ("quad" symmetry) into a four-fold mandala on a coarse block grid. The only
 // text is a one-line status readout in a ROM-style 8x8 character set, with a
 // graduated bar showing the variable being adjusted. Nothing is copied from
-// the real program: the five seed shapes (a palm, a ripple, a sea turtle, a
+// the real program: the five seed shapes (a palm, a wave, a sea turtle, a
 // delivery drone and a sprouting kumara, all things on Castaway's island),
-// the 8x8 font, the palette order and every word of the readout are drawn
-// and written for this file.
+// the 8x8 font and the palette order are drawn for this file. The only words
+// it shares are two plain control names, PULSE SPEED and BUFFER LENGTH,
+// kept because they say what the readout is; every value is Castaway's.
 //
 // How the SVG does it
 //   * The screen is 80 x 26 cells of 10 units. The cursor runs a closed
@@ -56,10 +57,13 @@
 //     with a graduated bar whose segments change over left to right, so the
 //     new value wipes in.
 //   * No large area flashes: a cell changes colour only when a ring passes
-//     over it, the screen's overall brightness stays level, and nothing
-//     blinks. prefers-reduced-motion pauses everything on the first frame
-//     (LEAD seconds into the loop), which is a complete mandala with the name
-//     and a full readout.
+//     over it, and (measured over every step of the loop) no trail cell flashes
+//     more than twice in any second, the screen's mean brightness moves by
+//     at most about 2% a step, and nothing blinks. The cursor is a white
+//     cell in a thin black frame, so it shows at the head of the trail even
+//     when the newest seed is white. prefers-reduced-motion pauses
+//     everything on the first frame (LEAD seconds into the loop), which is a
+//     complete mandala with the name and a full readout.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -99,8 +103,9 @@ const SW = GW * CS;             // 800
 const SH = GH * CS;             // 260
 const STATUS_Y = PAD + SH + 10; // top of the status line
 const BASE = STATUS_Y + 22;     // the status line's letters all stand on this
+const SX = PAD + 8;             // the status line starts a little in from the corner
 const W = SW + 2 * PAD;
-const H = BASE + PAD;
+const H = BASE + PAD + 6;       // and stands a little clear of the bottom edge
 
 // ------------------------------------------------------------------ palette
 // An 8-bit "three levels per gun" palette (each of R, G and B at 0, half or
@@ -208,8 +213,8 @@ const SHAPES = [
     ]),
   },
   {
-    // a diamond ripple, sparser the further out it goes
-    name: 'RIPPLE',
+    // a diamond of rings, like the shore waves, sparser the further out
+    name: 'WAVE',
     levels: Array.from({ length: 7 }, (_, r) => {
       const out = [];
       if (r === 0) return [[0, 0]];
@@ -426,26 +431,54 @@ function build() {
   const usedStarts = new Set();
   SEQ.forEach((c, j) => css.push(`.c${j}{fill:${c}}`));
 
+  // --- a seed near the edge is trimmed to the grid rather than clipped: a
+  // clip edge that lands between pixels when the image is scaled lets a faint
+  // hairline of the cells beyond it through. A trimmed level is its own path.
+  const trimmed = new Map();
+  const levelRef = (s, k) => {
+    const cells = SHAPES[s.shape].levels[k];
+    const keep = cells.filter(([dx, dy]) => {
+      const x = s.cx + dx;
+      const y = s.cy + dy;
+      return x >= 0 && y >= 0 && x < GW && y < GH;
+    });
+    if (keep.length === cells.length) return `s${s.shape}${k}`;
+    if (!keep.length) return null;
+    const d = pathOf(new Set(keep.map(([x, y]) => key(x, y))), CS);
+    if (!trimmed.has(d)) {
+      const id = `r${trimmed.size.toString(36)}`;
+      trimmed.set(d, id);
+      defs.push(`<path id="${id}" d="${d}"/>`);
+    }
+    return trimmed.get(d);
+  };
+
   // --- one quadrant's worth of seeds (written four times)
   const uses = [];
   for (const s of seeds) {
     const lv = [];
     SHAPES[s.shape].levels.forEach((cells, k) => {
       if (!cells.length) return;
+      const ref = levelRef(s, k);
+      if (!ref) return;
       const start = (s.i + k) % NS;
       usedStarts.add(start);
       const col = (k + s.phase) % SEQ.length;
-      lv.push(`<use href="#s${s.shape}${k}" class="t${start} c${col}"/>`);
+      lv.push(`<use href="#${ref}" class="t${start} c${col}"/>`);
     });
     uses.push(`<g transform="translate(${s.cx * CS} ${s.cy * CS})">${lv.join('')}</g>`);
   }
   [...usedStarts].sort((a, b) => a - b).forEach((st) => css.push(`.t${st}{animation-delay:${delayOf(st)}}`));
   const quad = uses.join('');
 
-  defs.push(`<clipPath id="scr"><rect x="0" y="0" width="${SW}" height="${SH}"/></clipPath>`);
+  // the seeds are trimmed to the grid, so the screen needs no clip; the
+  // cursor, frame and all, stays on it too
+  for (const [x, y] of CURSOR) {
+    if (x < 1 || y < 1 || x > GW - 2 || y > GH - 2) throw new Error(`cursor off the screen at ${x},${y}`);
+  }
 
   body.push(`<rect width="${W}" height="${H}" rx="14" fill="#000"/>`);
-  body.push(`<g transform="translate(${PAD} ${PAD})"><g clip-path="url(#scr)">`);
+  body.push(`<g transform="translate(${PAD} ${PAD})">`);
   body.push(`<g class="q">${quad}</g>`);
   body.push(`<g class="q" transform="matrix(-1 0 0 1 ${SW} 0)">${quad}</g>`);
   body.push(`<g class="q" transform="matrix(1 0 0 -1 0 ${SH})">${quad}</g>`);
@@ -464,14 +497,15 @@ function build() {
   kf.push(`100%{transform:translate(${CURSOR[0][0] * CS}px,${CURSOR[0][1] * CS}px)}`);
   css.push(`.cur{animation:cur ${n(T)}s step-end infinite;animation-delay:${delayOf(0)}}`);
   css.push(`@keyframes cur{${kf.join('')}}`);
-  body.push(`<rect class="cur" width="${CS}" height="${CS}" fill="#fff"/>`);
-  body.push('</g></g>');
+  // a thin black frame round the white cell, so the cursor shows on the trail
+  body.push(`<g class="cur"><path d="M-2 -2h${CS + 4}v${CS + 4}h${-CS - 4}z" fill="#000"/><rect width="${CS}" height="${CS}" fill="#fff"/></g>`);
+  body.push('</g>');
 
   // --- status line: everything stands on one baseline
   const FPX = CS / 8;
   const NAME_SCALE = 2.5;
   const topFor = (scale) => BASE - 7 * FPX * scale;
-  body.push(text('CASTAWAY', PAD, topFor(NAME_SCALE), NAME_SCALE, ' fill="#fff"'));
+  body.push(text('CASTAWAY', SX, topFor(NAME_SCALE), NAME_SCALE, ' fill="#fff"'));
   const y1 = topFor(1);
 
   // one window per bar of the theme: shown for a bar, hidden for the rest
@@ -481,9 +515,21 @@ function build() {
   for (let b = 0; b < BARS; b++) css.push(`.b${b}{animation-delay:${delayOf(b * STEPS_PER_BAR)}}`);
 
   // the current seed shape
-  const shapeX = PAD + 8 * CS * NAME_SCALE + 2.5 * CS;
+  const shapeX = SX + 8 * CS * NAME_SCALE + 2.5 * CS;
+  // ...and a small swatch of it, every level in its colour, standing on the
+  // baseline just after its name, so the abstract trail has a key
+  const ICON = 1.8;
   SHAPES.forEach((sh, si) => {
-    body.push(`<g class="w b${si}">${text('SHAPE', shapeX, y1, 1, ` fill="${GREY}"`)}${text(`${si + 1} ${sh.name}`, shapeX + 6 * CS, y1, 1, ' fill="#fff"')}</g>`);
+    const label = `${si + 1} ${sh.name}`;
+    const all = sh.levels.flat();
+    const minX = Math.min(...all.map((c) => c[0]));
+    const maxY = Math.max(...all.map((c) => c[1]));
+    const ix = shapeX + 6 * CS + label.length * CS + 0.6 * CS - minX * ICON;
+    const iy = BASE - (maxY + 1) * ICON;
+    const swatch = sh.levels.map((cells, k) => (cells.length
+      ? `<path fill="${SEQ[k]}" d="${pathOf(new Set(cells.map(([x, y]) => key(x, y))), ICON, ix, iy)}"/>`
+      : '')).join('');
+    body.push(`<g class="w b${si}">${text('SHAPE', shapeX, y1, 1, ` fill="${GREY}"`)}${text(label, shapeX + 6 * CS, y1, 1, ' fill="#fff"')}${swatch}</g>`);
   });
 
   // readouts: label, graduated bar, value. The bar's segments change over
@@ -519,8 +565,13 @@ function build() {
   css.push('@media (prefers-reduced-motion:reduce){*{animation-play-state:paused!important}}');
 
   const title = 'CASTAWAY: a light synth, played on the beat';
+  const desc = 'On black, one white cursor cell drops pattern seeds that grow outward in'
+    + ' seven rainbow levels and fade, mirrored through both axes into a four-fold'
+    + ' mandala. The seed changes every 3 seconds (palm, wave, turtle, drone, kumara).'
+    + ' The status line reads CASTAWAY, the seed shape, and one readout a bar:'
+    + ' pulse speed 80 BPM, buffer length 10:00:00, plot minimal, samples used none, signal 1 bar.';
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${title}">`
-    + `<title>${title}</title>`
+    + `<title>${title}</title><desc>${desc}</desc>`
     + `<style>${css.join('')}</style>`
     + `<defs>${defs.join('')}${glyphDefs.join('')}</defs>`
     + body.join('')

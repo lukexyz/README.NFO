@@ -6,7 +6,7 @@
 - One page per family (below): each style with what it looks like, palette, lettering, motion, how it becomes a README header, how to build it, what must not be copied, and links to the references.
 - [styles.json](styles.json): the same data, for the tool to read. `node tools/build-styles.mjs` rebuilds the pages from it.
 
-The six styles built before this research (scene NFO, Amiga cracktro, keygen dialog, C64 loader, CRT terminal, ANSI BBS) are in [../examples](../examples), and nothing here repeats them. Since then, 36 of the catalogue's styles have been built as headers for ULTRA-SATISFACTORY: see the Style column in [../examples/ultra-satisfactory](../examples/ultra-satisfactory).
+The six styles built before this research (scene NFO, Amiga cracktro, keygen dialog, C64 loader, CRT terminal, ANSI BBS) are in [../examples](../examples), and nothing here repeats them. Since then, every one of the 152 distinct styles here has been built as a header: 36 for ULTRA-SATISFACTORY ([../examples/ultra-satisfactory](../examples/ultra-satisfactory)) and the other 116 for Castaway ([../examples/castaway](../examples/castaway)). Each set's index links every header to its style entry.
 
 ## The four things you asked for
 

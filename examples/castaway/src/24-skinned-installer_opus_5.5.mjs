@@ -21,9 +21,9 @@
 // of release info dissolve through a pixel cloud while the dot object morphs palm -> clock
 // face -> sound wave -> coconut -> iced coffee. In the porthole a shark in headphones crosses
 // behind the island, nodding. Then the cursor presses EXIT, and she does: she picks up the
-// iced coffee from the sand, walks out over the water, comes back with a fresh one and plants
-// it where the old one stood, so the loop closes. The resting frame (prefers-reduced-motion)
-// is the 99 % wait.
+// iced coffee from the sand, walks out over the water towards the horizon until she is a dot,
+// comes back with a fresh one and plants it where the old one stood, so the loop closes. The
+// resting frame (prefers-reduced-motion) is the 99 % wait.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -217,8 +217,11 @@ const C = {
 const SIGN = { x: 24, y: 14, w: 532, h: 112 };
 const VP = { x: 58, y: 146, w: 504, h: 270 }; // blue riveted frame
 const IN = { x: 72, y: 160, w: 476, h: 242 }; // navy glass
-const DOT = { cx: 158, cy: 284 }; // dot object centre
-const TX = 250; // text column left
+const DOT = { cx: 155, cy: 284 }; // dot object centre, midway between its corner ticks
+// Text column left. A full 24-character line is 286 px wide, so this leaves the same 12 px
+// on the right (to the cyan frame line) as on the left (to the divider).
+const TX = 244;
+const CLOUD_COLS = 25; // pixel-cloud columns: 25 x 12 px covers the text column
 const BTN = { x: 586, w: 98, h: 48, ys: [162, 224, 286, 348] };
 const PORT = { cx: 836, cy: 244, R: 148, ring: 132, glass: 116 };
 const PROG = { x: 58, y: 428, w: 636, h: 56 };
@@ -253,7 +256,7 @@ defs.push(
   `<filter id="fShadow" x="-5%" y="-5%" width="110%" height="115%"><feGaussianBlur stdDeviation="7"/></filter>`,
   `<filter id="fGlow" x="-10%" y="-30%" width="120%" height="160%"><feGaussianBlur stdDeviation="4"/></filter>`,
   `<clipPath id="cGlass"><circle cx="${PORT.cx}" cy="${PORT.cy}" r="${PORT.glass}"/></clipPath>`,
-  `<clipPath id="cText"><rect x="${TX - 6}" y="${IN.y + 6}" width="${IN.x + IN.w - TX}" height="${IN.h - 12}"/></clipPath>`,
+  `<clipPath id="cText"><rect x="${TX - 6}" y="${IN.y + 6}" width="${CLOUD_COLS * 12}" height="${IN.h - 12}"/></clipPath>`,
   `<clipPath id="cStrip"><rect x="${RAIL.x + 12}" y="${RAIL.y + 6}" width="${RAIL.w - 24}" height="${RAIL.h - 12}" rx="3"/></clipPath>`,
 );
 // Rivets and slotted bolts are symbols, placed with <use>.
@@ -451,9 +454,9 @@ const PAGES = [
     'IDLES. EVERY SO OFTEN,',
     'SOMETHING HAPPENS.',
   ] },
-  { head: 'SCHEDULE.TOML', lines: [
-    'MORE THAN 90 ACTIVITIES',
-    'ON FOUR TIMERS:',
+  { head: 'ACTIVITIES.TOML', lines: [
+    'MORE THAN 90 ACTIVITIES,',
+    'MOST ON FOUR TIMERS:',
     'REGULAR ..... 2-5 MIN',
     'OCCASIONAL .. 12-25 MIN',
     'RARE ........ 30-60 MIN',
@@ -509,7 +512,7 @@ const PAGE_START = (p) => (KB[(p + 4) % 5] * BEAT) % T; // page p appears on the
   // groups lift again in the same random order.
   const COLS = ['#08123a', '#11296e', '#08123a', '#24589e', '#0c1b4e', '#08123a', '#163a8c', '#08123a', '#2d84bd', '#0c1b4e'];
   const groups = Array.from({ length: 10 }, () => []);
-  for (let y = IN.y + 12; y < IN.y + IN.h; y += 12) for (let x = TX; x < IN.x + IN.w; x += 12) groups[Math.floor(rnd() * 10)].push([x, y]);
+  for (let y = IN.y + 12; y < IN.y + IN.h; y += 12) for (let c = 0, x = TX; c < CLOUD_COLS; c++, x += 12) groups[Math.floor(rnd() * 10)].push([x, y]);
   const P = 12 * BEAT; // 9 s
   groups.forEach((g, k) => {
     const off = 0.07 * (k + 1), on = 8.25 + 0.065 * k;
@@ -539,7 +542,8 @@ function button(i, state) {
   if (state !== 'p') s += `<path d="M${x + 3} ${y + BTN.h - 4}V${y + 3}H${x + BTN.w - 4}" fill="none" stroke="#a9c6f6" stroke-width="1.5" opacity=".8"/><path d="M${x + 4} ${y + BTN.h - 2.5}H${x + BTN.w - 2.5}V${y + 4}" fill="none" stroke="#0d1d44" stroke-width="1.5"/>`;
   else s += `<path d="M${x + 3} ${y + BTN.h - 4}V${y + 3}H${x + BTN.w - 4}" fill="none" stroke="#0d1d44" stroke-width="1.5"/>`;
   s += textC(LABELS[i], x + BTN.w / 2, y + (BTN.h - 14) / 2 + dy, 2, lab);
-  if (state === 'h' || state === 'p') s += `<circle cx="${x + 9}" cy="${y + BTN.h / 2 + dy}" r="2.6" fill="url(#rLed)"/>`;
+  // the lit LED sits in the top-left corner, clear of the label
+  if (state === 'h' || state === 'p') s += `<circle cx="${x + 9}" cy="${y + 9 + dy}" r="2.4" fill="url(#rLed)" stroke="#0a1530" stroke-width=".6"/>`;
   return s;
 }
 for (let i = 0; i < 4; i++) body.push(button(i, 'n'));
@@ -681,9 +685,10 @@ const SG = {
     const [x0, y0] = p(a0), [x1, y1] = p(a1);
     return `<path d="M${n(x0)} ${n(y0)}A${r - 5} ${r - 5} 0 0 1 ${n(x1)} ${n(y1)}" fill="none" stroke="${col}" stroke-width="4"/>`;
   };
-  body.push(arc(PI * 0.8, PI * 1.35, '#3cbf5a'), arc(PI * 1.35, PI * 1.9, '#e9b23a'), arc(PI * 1.9, PI * 2.2, '#d9402e'));
-  for (let i = 0; i <= 8; i++) { const a = PI * 0.8 + i / 8 * PI * 1.4; body.push(`<path d="M${n(gx + (r - 2) * Math.cos(a))} ${n(gy + (r - 2) * Math.sin(a))}L${n(gx + (r - 8) * Math.cos(a))} ${n(gy + (r - 8) * Math.sin(a))}" stroke="#2a323c" stroke-width="1"/>`); }
-  body.push(textC('CALM', gx, gy + 8, 1.2, '#2a323c'));
+  // the scale stops short of the bottom so the CALM label sits clear of it
+  body.push(arc(PI * 0.9, PI * 1.35, '#3cbf5a'), arc(PI * 1.35, PI * 1.8, '#e9b23a'), arc(PI * 1.8, PI * 2.1, '#d9402e'));
+  for (let i = 0; i <= 8; i++) { const a = PI * 0.9 + i / 8 * PI * 1.2; body.push(`<path d="M${n(gx + (r - 2) * Math.cos(a))} ${n(gy + (r - 2) * Math.sin(a))}L${n(gx + (r - 8) * Math.cos(a))} ${n(gy + (r - 8) * Math.sin(a))}" stroke="#2a323c" stroke-width="1"/>`); }
+  body.push(textC('CALM', gx, gy + 9.5, 1.2, '#2a323c'));
   const nd = stepAnim([[0, 'transform:rotate(-8deg)'], [0.25, 'transform:rotate(-3deg)']], BEAT);
   css.push(`.${nd}{transform-origin:${gx}px ${gy}px}`);
   body.push(`<g class="${nd}"><path d="M${gx} ${gy}L${n(gx + (r - 6) * Math.cos(PI * 1.06))} ${n(gy + (r - 6) * Math.sin(PI * 1.06))}" stroke="#c22416" stroke-width="2" stroke-linecap="round"/></g>`);
@@ -895,22 +900,31 @@ function girl({ step = false, holding = false, nod = '' } = {}) {
   const HX = 800, HY = 304;
   const nod = stepAnim([[0, 'transform:translateY(1px) rotate(6deg)'], [BEAT * 0.32, 'transform:none']], BEAT);
   css.push(`.${nod}{transform-origin:0.8px -39px;transform-box:view-box}`);
-  // position: idle, then out over the water to the right (15 px a half-beat), away, then back
-  const pts = [[0, 'transform:translateX(0)']];
-  const H2 = BEAT / 2;
-  for (let i = 1; i <= 12; i++) pts.push([LEAVE + i * H2, `transform:translateX(${i * 15}px)`]);
-  for (let i = 0; i <= 8; i++) pts.push([BACK + i * H2, `transform:translateX(${n(180 - i * 22.5)}px)`]);
+  // Position: idle; then straight out across the sand and over the water towards the horizon,
+  // one step a half-beat, shrinking with distance until she is a dot and gone; then back the
+  // same way, growing, with a fresh iced coffee. Feet stay on the ground plane: the further
+  // away, the closer to the horizon and the smaller she is.
+  const H2 = BEAT / 2, DEPTH = HY - HORIZON;
+  const place = (u) => {
+    const s = 1 - 0.93 * u;
+    return `transform:translate(${n(18 * u)}px,${n(-(1 - s) * DEPTH)}px) scale(${n(s, 3)})`;
+  };
+  const pts = [[0, place(0)]];
+  for (let i = 1; i <= 12; i++) pts.push([LEAVE + i * H2, place(Math.min(1, i / 11))]);
+  for (let i = 0; i <= 8; i++) pts.push([BACK + i * H2, place(1 - i / 8)]);
   const mv = stepAnim(pts);
   const legA = stepAnim([[0, 'opacity:1'], [H2, 'opacity:0']], BEAT);
   const legB = stepAnim([[0, 'opacity:0'], [H2, 'opacity:1']], BEAT);
-  const ripple = `<ellipse cx="0" cy="-0.5" rx="9" ry="2.2" fill="none" stroke="#fff" stroke-width="1.1" opacity=".8"/>`;
+  // the ripple at her feet shows only once she is past the sand and over the water
+  const wet = windowAnim([[LEAVE + 3 * H2, GONE], [BACK, BACK + 7 * H2]], true);
+  const ripple = `<g class="${wet}"><ellipse cx="0" cy="-0.5" rx="9" ry="2.2" fill="none" stroke="#fff" stroke-width="1.3" opacity=".9"/></g>`;
   const idle = windowAnim([[RESET, LEAVE]]);
-  const outR = windowAnim([[LEAVE, GONE]], true);
-  const inL = windowAnim([[BACK, RESET]], true);
+  const away = windowAnim([[LEAVE, GONE]], true);
+  const home = windowAnim([[BACK, RESET]], true);
   scene.push(`<g transform="translate(${HX} ${HY})"><g class="${mv}">` +
-    `<g class="${idle}">${girl({ nod })}</g>` +
-    `<g class="${outR}">${ripple}<g class="${legA}">${girl({ holding: true, nod })}</g><g class="${legB}">${girl({ step: true, holding: true, nod })}</g></g>` +
-    `<g class="${inL}">${ripple}<g transform="scale(-1 1)"><g class="${legA}">${girl({ holding: true, nod })}</g><g class="${legB}">${girl({ step: true, holding: true, nod })}</g></g></g>` +
+    `<g class="${idle}">${girl({ nod })}</g>` + ripple +
+    `<g class="${away}"><g class="${legA}">${girl({ holding: true, nod })}</g><g class="${legB}">${girl({ step: true, holding: true, nod })}</g></g>` +
+    `<g class="${home}"><g transform="scale(-1 1)"><g class="${legA}">${girl({ holding: true, nod })}</g><g class="${legB}">${girl({ step: true, holding: true, nod })}</g></g></g>` +
     `</g></g>`);
 }
 // glass: vignette, reflections
@@ -953,13 +967,13 @@ body.push(`<g clip-path="url(#cGlass)">${scene.join('')}</g>`);
     body.push(`<circle class="${cls}" cx="${x}" cy="${y}" r="5.5" fill="url(#rLed)"/>`);
   }
   body.push(text('80 BPM', 888, y0 - 2, 1.75, '#1f2730'));
-  body.push(text('F MAJOR', 888, y0 + 18, 1.75, '#1f2730'));
-  body.push(text('SYNTH', 888, y0 + 38, 1.75, '#1f2730'));
-  // maker's plate
-  const s = 'SKIN BY SETUP-ON-SEA', w = textW(s, 1.5) + 22;
-  body.push(`<rect x="706" y="${y0 + 52}" width="${n(w)}" height="20" rx="3" fill="#cfd6dc" stroke="#3a434e" stroke-width="1.4"/>`);
-  body.push(rivet(713, y0 + 62, 2), rivet(706 + w - 7, y0 + 62, 2));
-  body.push(text(s, 717, y0 + 57, 1.5, '#2a323c'));
+  body.push(text('F MAJOR', 888, y0 + 16, 1.75, '#1f2730'));
+  body.push(text('SYNTH', 888, y0 + 34, 1.75, '#1f2730'));
+  // maker's plate, with room for its rivets either side of the lettering
+  const s = 'SKIN BY SETUP-ON-SEA', w = textW(s, 1.5) + 30;
+  body.push(`<rect x="706" y="${y0 + 54}" width="${n(w)}" height="20" rx="3" fill="#cfd6dc" stroke="#3a434e" stroke-width="1.4"/>`);
+  body.push(rivet(713, y0 + 64, 2), rivet(706 + w - 7, y0 + 64, 2));
+  body.push(text(s, 721, y0 + 59, 1.5, '#2a323c'));
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -971,7 +985,7 @@ body.push(`<g clip-path="url(#cGlass)">${scene.join('')}</g>`);
   body.push(`<rect x="${x + 12}" y="${y + 6}" width="${w - 24}" height="${h - 12}" rx="3" fill="#06090d" stroke="#000" stroke-width="1"/>`);
   body.push(bolt(x + 6.5, y + h / 2, 4), bolt(x + w - 6.5, y + h / 2, 4));
   const msg = 'CASTAWAY (WORKING TITLE) ♦ A TEN-HOUR LO-FI ISLAND VIDEO ♦ CODE: PLAIN ES MODULES, NO BUILD STEP ♦ ' +
-    'GRAPHICS: HAND-PAINTED, ALWAYS DAYTIME ♦ MUSIC: SYNTHESIZED FROM CODE, NO SAMPLES ♦ WAITING: HER ♦ ' +
+    'GRAPHICS: SUNNY COASTAL ANIME, ALWAYS DAYTIME ♦ MUSIC: SYNTHESIZED FROM CODE, NO SAMPLES ♦ WAITING: HER ♦ ' +
     'SKIN: SETUP-ON-SEA ♦ UNOFFICIAL, INSPIRED BY A 1992 DESERT-ISLAND SCREENSAVER ♦ ';
   const L = [...msg].length * 12;
   const speed = 64;
@@ -1031,7 +1045,7 @@ css.push('@media (prefers-reduced-motion:reduce){*{animation:none!important}.dot
 const glyphDefs = [...glyphIds].map(([ch, id]) => `<path id="${id}" d="${bitmapPath(F5[ch].split('|'))}"/>`).join('');
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">` +
   `<title id="t">CASTAWAY: a skinned installer for a ten-hour lo-fi island video</title>` +
-  `<desc id="d">A non-rectangular steel and blue installer window with a lit CASTAWAY sign, a release-info viewport with a rotating dot object, an INSTALL, NFO, MUSIC, EXIT button column, a porthole preview of the island, a progress bar that stops at 99 percent with an ETA of 10:00:00, and a scrolling credits strip.</desc>` +
+  `<desc id="d">A non-rectangular steel and blue installer window with a lit CASTAWAY sign, a release-info viewport with a rotating dot object, an INSTALL, NFO, MUSIC, EXIT button column, a porthole preview of the island (where, after EXIT, she walks out over the water and back with an iced coffee), a progress bar that stops at 99 percent with an ETA of 10:00:00, and a scrolling credits strip.</desc>` +
   `<style>${css.join('')}</style><defs>${glyphDefs}${defs.join('')}</defs>${body.join('')}</svg>`;
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, svg);

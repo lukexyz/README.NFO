@@ -795,11 +795,11 @@ function buildStrip() {
     '......otttttto.....',
     '.....otttttttto....',
     '....okttttttttko...',
-    '....okttttttTtko...',
-    '....okttttttTtko...',
+    '....okttttttttko...',
+    '....okTTTTTTTTko...',
     '...okKossssssoKko..',
     '..okKosssssssoKkko.',
-    '.osssssssssssssssso',
+    '.okkksssssssssskkko',
     'okKKkkkkKKkkkkKKkko',
     '.ooooooooooooooooo.',
   ], key);
@@ -910,8 +910,8 @@ function page1(ink) {
     'one young woman, one tall palm, one raft and a lot of',
     'time. She mostly idles, nodding to her headphones.',
     'Every so often, on the next bar of the music,',
-    'something happens: {t|more than 90 somethings}, on four',
-    'timers. {t|Every sound in it is synthesized from code.}',
+    'something happens: {t|more than 90 somethings}, most on',
+    'four timers. {t|Every sound in it is synthesized from code.}',
     'An unofficial remake in the spirit of a 1992',
     'desert-island screensaver. It is always daytime.',
     '',
@@ -926,7 +926,7 @@ function page2(ink) {
   column(ink, CX1, [
     '{t|0:00:00}\tArrived. She was already',
     '\there, nodding. Good sign.',
-    '{t|0:24:09}\tShe opens a coconut.',
+    '{t|0:24:09}\tShe sips a coconut.',
     '{t|0:24:18}\tA ship sails past behind',
     '\ther. It waited for that.',
     '{t|0:44:06}\tA grey tabby drifts in on',
@@ -966,7 +966,7 @@ function page3(ink) {
     '2  {t|tools/make_audio.py}, again',
     '3  the sea, a 60 s loop {d|(see 1)}',
     '',
-    '{d|No samples. No loops. No recordings.}',
+    '{d|No samples, stock loops or recordings.}',
   ]);
   column(ink, CX2, [
     '{y|TOP VISITORS}',
@@ -981,6 +981,7 @@ function page3(ink) {
     '',
     '{y|TOP PASTIME}',
     '1  nodding, about two thirds',
+    '2  fishing, quietly',
   ]);
 }
 function adBox(ink, x, y, h, label, lines) {
@@ -1000,7 +1001,7 @@ function page4(ink) {
   s += adBox(ink, CX1, y0, 50, 'FOR SALE', ['Cream headphones, as new. Came', 'by drone. Already had a pair.']);
   s += adBox(ink, CX1, y0 + 66, 50, 'WANTED', ['Signal. Currently one bar, and', 'only at the very top of the palm.']);
   s += adBox(ink, CX1, y0 + 132, 50, 'SWAPPER', ['Seeks contacts, by bottle. Quick', 'replies: my first came straight back.']);
-  s += adBox(ink, CX2, y0, 50, 'STUDIO', ['Every sound synthesized from code.', 'No samples, loops or recordings.', '80 BPM, F major: {t|tools/make_audio.py}']);
+  s += adBox(ink, CX2, y0, 50, 'STUDIO', ['Every sound synthesized from code.', 'No samples, stock loops or recordings.', '80 BPM, F major: {t|tools/make_audio.py}']);
   s += adBox(ink, CX2, y0 + 66, 50, 'LESSONS', ['Fire by friction. Hammocks. Spear', 'fishing. A lookout up the palm.']);
   s += adBox(ink, CX2, y0 + 132, 50, 'LOST', ['One coconut. Last seen walking', 'off, worn by a hermit crab.']);
   return s;
@@ -1014,10 +1015,12 @@ function page5(ink) {
     'small island, with one palm.',
     '',
     '{y|PLACE}\t127.0.0.1, port 8765',
-    '{y|LENGTH}\t10:00:00, seed 1992',
-    '{y|WHEN}\tany time. Always daytime.',
     '{y|ENTRY}\t{t|python tools/serve.py}',
-    '{y|THEN}\tpress Play.',
+    '{y|THEN}\tpick the demo cut, the dev reel',
+    '\tor one routine. Press Play.',
+    '{y|WHEN}\tany time. Always daytime.',
+    '{y|ALSO}\t{t|python tools/schedule.py}',
+    '\tsimulates the ten hours.',
   ], { y: BODY_Y + 39, tab: 52 });
   column(ink, CX2, [
     '{y|COMPOS}',
@@ -1025,11 +1028,11 @@ function page5(ink) {
     'Coconut. Sandcastle versus tide.',
     '{y|FACILITIES}',
     'One palm, one raft, live preview,',
-    'export to MP4 at 1080p30.',
+    'export to MP4, 1080p at 24 fps.',
     '{y|BRING}',
-    'Python and a browser. No npm, no',
-    'build step. {t|python tools/schedule.py}',
-    'checks the schedule first.',
+    'Python and a browser. For the MP4,',
+    'ffmpeg, numpy and Pillow as well.',
+    'No npm, no build step.',
     '{y|SLEEPING PLACE}',
     'A hammock. Build your own.',
   ]);
@@ -1180,7 +1183,7 @@ const AT = [
   [CX1 + 52 + measure('A sandcastle goes up.') + 3, BODY_Y + 7 * PITCH + 5], // the tide is coming
   [CX1 + measure('3  the sea, a 60 s loop (see 1)') + 3, BODY_Y + 9 * PITCH + 5], // the musicians
   [CX2 + 10 + measure('80 BPM, F major: tools/make_audio.py') + 3, 146 + 9 + 24 + 5], // the studio advert
-  [CX1 + 52 + measure('python tools/serve.py') + 3, BODY_Y + 39 + 6 * PITCH + 5], // the way in
+  [CX1 + 52 + measure('or one routine. Press Play.') + 3, BODY_Y + 39 + 6 * PITCH + 5], // press Play
 ];
 const WAY = [
   [0, ...REST],
@@ -1196,7 +1199,9 @@ const WAY = [
   [57.4, ...AT[4]], [58.7, ...REST],
   [60, ...REST],
 ];
-const CLICKS = [11.0, 23.0, 35.0, 47.0, 59.0];
+// each click lands on the beat that starts the page turn (11.25 s is beat 15),
+// and the turn lands on the next bar
+const CLICKS = Array.from({ length: PAGES }, (_, p) => (p + 1) * PAGE_T - SLIDE);
 let css = '';
 {
   let k = '';

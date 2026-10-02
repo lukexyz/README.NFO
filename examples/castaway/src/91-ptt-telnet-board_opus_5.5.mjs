@@ -27,12 +27,13 @@
 // and every character on screen is a <use>.
 //
 // PICTURE: painted at 8-pixel resolution, then each double-width cell becomes the block
-// character that fits its 2 x 2 dots (see "the picture" below). Block shapes are exact
-// rects and triangles, drawn crisp.
+// character that fits its 2 x 2 dots (see "the picture" below); the palm's crown, the raft
+// and her are then placed cell by cell, as a block artist would type them. Block shapes
+// are exact rects and triangles, drawn crisp.
 //
 // MOTION (CSS only, on the soundtrack's grid: 80 BPM, a bar every 3 s): a new comment
 // lands at the bottom of the column on every bar and the column steps up one line,
-// cycling through twelve comments (36 s, seamless: the last six lines repeat the first);
+// cycling through twelve comments (36 s: the last six lines repeat the first, a day later);
 // she nods on every beat (0.75 s); the glints on the water swap every half bar. On the
 // board list the cursor steps down one board per bar (60 s). prefers-reduced-motion
 // leaves a complete still frame.
@@ -581,38 +582,33 @@ function paintDots() {
       for (;;) { set(x0, y0, k); if (x0 === x1 && y0 === y1) break; const e2 = 2 * err; if (e2 >= dy) { err += dy; x0 += sx; } if (e2 <= dx) { err += dx; y0 += sy; } }
     }
   };
-  const ell = (cx, cy, rx, ry, k) => { for (let y = 0; y < DH; y++) for (let x = 0; x < DW; x++) if (((x + 0.5 - cx) / rx) ** 2 + ((y + 0.5 - cy) / ry) ** 2 <= 1) set(x, y, k); };
-  // sea (rows 5-8): navy at the horizon; the bright water rises in each row to a level
-  // that wanders a little from cell to cell, so the bands read as slow swells
-  const R = prng(1992);
+  // sea from the horizon (dot row 10) down
   for (let x = 0; x < DW; x++) for (let y = 10; y < DH; y++) set(x, y, BLU);
-  // a cloud low over the water, right of the caption
-  // the island: shallow ring, sand, a darker wet edge
-  ell(66, 17.6, 17, 5.2, CYN);
-  ell(66, 17.6, 15, 4.4, LCY);
-  ell(66, 17.6, 13, 3.7, LYL);
-  // raft, pulled up on the right
-  line([[74, 15], [79, 15]], RED); line([[75, 16], [79, 16]], YEL);
-  // palm trunk (two dots wide), leaning a little towards the title
-  const thick = (pts, k) => { line(pts, k); line(pts.map(([x, y]) => [x + 1, y]), k); };
-  thick([[68, 15], [68, 12], [67, 9], [65, 6], [64, 4]], RED);
-  // fronds: bright on top, a dark underside near the crown; at 45 degrees or level, so
-  // the cells come out as clean triangles
-  const frond = (pts, under = 2) => {
-    line(pts, LGN);
-    line(pts.map(([x, y]) => [x, y + 1]), LGN);
-    line(pts.slice(0, under).map(([x, y]) => [x, y + 2]), GRN);
-  };
-  frond([[63, 3], [61, 1], [60, 0], [49, 0]], 3);       // the long one, over the title
-  frond([[66, 3], [68, 1], [69, 0], [76, 0], [78, 2], [78, 4]], 3);
-  frond([[62, 4], [59, 7], [58, 8]]);
-  frond([[66, 4], [70, 8], [71, 9]]);
-  frond([[64, 4], [62, 6], [62, 8]], 1);
-  line([[48, 1], [47, 1]], LGN);
-  for (const [x, y] of [[63, 4], [64, 4], [65, 4], [64, 3], [65, 3], [63, 5], [64, 5]]) set(x, y, GRN);
-  set(63, 6, YEL); set(66, 5, YEL); set(65, 6, YEL);
+  // the island: a low, flat oval of sand in a ring of teal shallows, painted row by row
+  // so its bottom edge falls on a cell boundary (sand can never sit on top of a darker
+  // colour inside one cell: the bright colour has to be the drawn shape)
+  for (const [y, x0, x1] of SHALLOWS) for (let x = x0; x <= x1; x++) set(x, y, CYN);
+  for (const [y, x0, x1] of SAND) for (let x = x0; x <= x1; x++) set(x, y, LYL);
+  // the palm trunk: one dot wide, curving up and a little left from the sand
+  // (it steps right only on a cell boundary, so every trunk cell is a clean half block)
+  line([[67, 3], [67, 7]], RED); line([[68, 8], [68, 11]], RED); line([[69, 12], [69, 13]], RED);
   return D;
 }
+// [dot row, first x, last x]
+const SHALLOWS = [[11, 58, 69], [12, 54, 73], [13, 53, 74], [14, 52, 75], [15, 52, 75], [16, 53, 74], [17, 56, 71]];
+const SAND = [[12, 58, 69], [13, 57, 70], [14, 54, 73], [15, 55, 72]];
+// The crown, placed cell by cell after the dots are converted: two long fronds rise from
+// the crown and droop to thin tips (eighth bars, the left one reaching over the title),
+// with a fringe of dark leaflets (corner triangles) hanging under them, and two lower
+// fronds slanting down either side. Glyph rows start at cell 24; colour codes below.
+const CROWN = [
+  ['▁▂▃▄▅▆██◣ ◢██▆▄▂', 'gGGGGGGGG GGGGGG'],
+  ['     ◥◤◥█▄█◥◤◥◤', '     gggGoGgggg'],
+  ['       ◢◤ ◥◣', '       GG GG'],
+  ['     ◢◤     ◥◣', '     GG     GG'],
+];
+const CROWN_C = { G: LGN, g: GRN, o: YEL };
+const HER = 30; // her cell column
 function seaCells(band) {
   // rows 5-8 of the sea as eighth bars: bright blue rising out of navy
   const R = prng(1992);
@@ -643,11 +639,17 @@ function artBand({ nod = 0, wave = 0 } = {}) {
   }
   // a bank of cloud on the horizon
   [['▁', 19], ['▃', 20], ['▅', 21], ['▃', 22], ['▂', 23], ['▄', 24], ['▃', 25], ['▁', 26]].forEach(([g, c]) => set(c, 4, g, LWH, CYN));
-  // her, standing at the water's edge with her head above the horizon: hair in a low
+  CROWN.forEach(([gl, co], r) => [...gl].forEach((g, i) => {
+    if (g === ' ') return;
+    set(24 + i, r, g, CROWN_C[co[i]], co[i] === 'o' ? GRN : undefined);
+  }));
+  // the raft, moored just off the right-hand shore
+  set(38, 7, '▄', RED, BLU); set(39, 7, '▄', RED, BLU);
+  // her, standing on the sand left of the palm, her head above the horizon: hair in a low
   // bun, coral tank top, cream shorts, feet in the sand. She nods on the beat.
-  set(31, 4, nod ? '▂' : '▄', RED, CYN);
-  set(31, 5, '█', LRD);
-  set(31, 6, '▄', LYL, WHT);
+  set(HER, 4, nod ? '▂' : '▄', RED, CYN);
+  set(HER, 5, '█', LRD);
+  set(HER, 6, '▄', LYL, WHT);
   return band;
 }
 
@@ -672,11 +674,14 @@ function drawLogo(scr, row0, col0, word, fg, bg) {
 }
 
 // ================================================================== facts (snapshot)
-// Checked read-only against D:/python/castaway on 2026-10-01. The comment times are real
-// events of the default run (seed 1992, `python -B tools/schedule.py`), written as clock
-// times with the video starting at 08:00, so 0:24:18 into the run is "10/01 08:24".
+// Checked read-only against D:/python/castaway on 2026-10-01 and again on 2026-10-02 (94
+// activities, 181 sound files, [video] fps = 24). The comment times are real events of the
+// default run (seed 1992, `python -B tools/schedule.py`), written as clock times with the
+// video starting at 08:00, so 0:24:18 into the run is "10/01 08:24". They will drift if
+// the schedule is rebalanced or activities are added.
 const SNAP = {
   date: '10/01',
+  next: '10/02',      // the wrapped repeat of the column: same seed, same ten hours, next day
   activities: 94,     // [activities.*] tables in activities.toml today
 };
 // [mark, id, text, time]; the cycle loops, like the video does
@@ -684,26 +689,28 @@ const COMMENTS = [
   ['推', 'NotStopping', 'pass 1 of 9. she was sipping a coconut.', '08:24'],          // ship 0:24:18, coconut 0:24:09
   ['推', 'PalmTopCat', 'came in on a crate. the top of the palm is mine.', '08:44'],   // cat_visit 0:44:06
   ['噓', 'TheTide', 'that sandcastle was in my lane.', '09:07'],                       // tide_takes_sandcastle 1:07:57
-  ['→', 'lowbun', '(nods)', '09:12'],                                                 // idle
+  ['→', 'lowbun', '(nods)', '09:12'],                                                 // idle, 1:11:29 to 1:13:15
   ['推', 'NotStopping', 'pass 3 of 9. coconut again. she did not look up.', '09:44'], // ship 1:44:30, coconut 1:44:06
   ['噓', 'BackToSender', 'thrown out to sea. washed straight back.', '11:04'],         // message_in_bottle 3:04:15
   ['推', 'ShellSuit', 'a coconut landed on me. it is my shell now. bye.', '11:36'],     // coconut_crab 3:36:03
   ['推', 'HornSection', 'she waved! we honked back! we sailed on.', '13:14'],          // rescue_almost 5:14:06
-  ['→', 'lowbun', '(shrugs, puts the music back on)', '13:16'],
+  ['→', 'lowbun', '(shrugs, puts the music back on)', '13:16'],                      // rescue_almost ends 5:16:00
   ['推', 'AmberBottle', 'a reply, three hours later. she smiled.', '14:05'],           // bottle_reply 6:05:06
   ['→', 'lowbun', 'one bar of signal. top of the palm. worth it.', '14:07'],          // signal_hunt 6:07:24
-  ['推', 'NotStopping', 'pass 9 of 9. sandcastle this time. nope.', '17:05'],         // ship 9:05:27, sandcastle 9:04:30
+  ['推', 'NotStopping', 'pass 9 of 9. sandcastle this time. sightings: 0.', '17:05'], // ship 9:05:27, sandcastle 9:04:30
 ];
 const BAR = 3; // seconds: one bar of the 80 BPM theme; a new comment lands on every bar
 
-function commentLine(scr, r, [mark, id, text, time]) {
+function commentLine(scr, r, [mark, id, text, time], date = SNAP.date) {
   const maxlength = 62 - id.length; // the board's own arithmetic: 78 - lead - date - time - id
-  if (text.length > maxlength) throw new Error(`comment too long: ${text}`);
+  // the board puts nothing after the colon; commenters type their own leading space
+  const msg = ' ' + text;
+  if (msg.length > maxlength) throw new Error(`comment too long: ${text}`);
   let c = put(scr, r, 0, mark, mark === '推' ? LWH : LRD);
   c = put(scr, r, c, ' ');
   c = put(scr, r, c, id, LYL);
-  c = put(scr, r, c, ':' + text.padEnd(maxlength), YEL);
-  put(scr, r, c, ` ${SNAP.date} ${time}`, WHT);
+  c = put(scr, r, c, ':' + msg.padEnd(maxlength), YEL);
+  put(scr, r, c, ` ${date} ${time}`, WHT);
 }
 
 // ================================================================== screen 1: the article
@@ -739,7 +746,9 @@ function articleScreen(frame) {
 function commentScreen() {
   const K = COMMENTS.length, VIS = 6;
   const s = newScreen(K + VIS);
-  for (let i = 0; i < K + VIS; i++) commentLine(s, i, COMMENTS[i % K]);
+  // the last six lines repeat the first six, dated the next day, so every frame of the
+  // scroll reads in time order and the loop point is a plain one-line step
+  for (let i = 0; i < K + VIS; i++) commentLine(s, i, COMMENTS[i % K], i < K ? SNAP.date : SNAP.next);
   return s;
 }
 
@@ -747,14 +756,14 @@ function commentScreen() {
 const BOARDS = [
   // name, class, description, popularity (an honest count for one default 10-hour run), BM, fav, unread
   ['Castaway', '公告', 'start here. one island, ten hours', 1, 'lowbun', 1, 1],
-  ['Idle', '日常', 'bars spent nodding along (~72%)', 8640, 'lowbun', 1, 0],
+  ['Idle', '日常', 'bars spent idling, ~72% of a run', 8640, 'lowbun', 1, 0],     // 72% idle in seed 1992: 0.72 x 12000 bars
   ['Regular', '排程', 'every 2 to 5 minutes, ~155 a run', 155, 'Timekeeper', 0, 1],
   ['Occasional', '排程', 'every 12 to 25 minutes', 30, 'Timekeeper', 0, 1],
   ['Rare', '排程', 'every 30 to 60 minutes', 13, 'Timekeeper', 0, 0],
   ['SuperRare', '排程', 'every 3 to 6 hours, never 4', 2, 'Timekeeper', 0, 1],
   ['Chained', '排程', 'follow-ups: the reply bottle', 20, 'Timekeeper', 0, 0],
   ['Activities', '排程', `all of them, as of ${SNAP.date}`, SNAP.activities, 'Timekeeper', 0, 1],
-  ['Ships', '島上', 'passes by while she is busy', 9, 'NotStopping', 1, 1],
+  ['Ships', '島上', 'sails past. she never sees it', 9, 'NotStopping', 1, 1],   // ship_passes_unseen, seed 1992
   ['Coconuts', '島上', 'sipped with eyes closed', 29, 'ShellSuit', 0, 0],
   ['Sandcastle', '島上', 'built 10 times. tide wins 10-0', 10, 'TheTide', 0, 1],
   ['Cat', '島上', 'arrives by crate, naps up top', 5, 'PalmTopCat', 1, 0],
@@ -762,9 +771,9 @@ const BOARDS = [
   ['Theme', '音樂', '60 s loop, F major, 600 a run', 600, 'EightyBPM', 1, 0],
   ['Bars', '音樂', '3 s each. gags land on one', 12000, 'EightyBPM', 0, 0],
   ['Beats', '音樂', '80 BPM for ten hours', 48000, 'EightyBPM', 0, 0],
-  ['Synth', '音樂', 'every sound made from code', 150, 'MakeAudio', 1, 1],
+  ['Synth', '音樂', 'every sound made from code', 181, 'MakeAudio', 1, 1],      // audio_catalog.json files on 10/02: HOT either way
   ['Samples', '音樂', 'recordings used: none', 0, 'MakeAudio', 0, 0],
-  ['Frames', '畫面', '1080p30 for 10:00:00', 1080000, 'FrameExact', 0, 0],
+  ['Frames', '畫面', '1080p, 24 fps, for 10:00:00', 864000, 'FrameExact', 0, 0], // [video] fps = 24 since 10/01: 36000 s x 24
   ['Night', '天氣', 'always daytime. no nights', 0, '', 0, 0],
 ];
 // Class colour: hashed from the tag's Big5 bytes exactly as the board does it.
@@ -867,8 +876,8 @@ function buildMain() {
 .scroll{animation:scroll ${K * BAR}s steps(${K}) infinite}@keyframes scroll{from{transform:translateY(0)}to{transform:translateY(-${scrollPx}px)}}
 @media (prefers-reduced-motion:reduce){.nod,.wave,.scroll{animation:none}}`;
   return svgDoc({
-    title: 'CASTAWAY, a post on the 一棵椰子樹 board',
-    desc: 'A Taiwanese telnet bulletin board article in an 80-column terminal. Header: author lowbun (nodding along), board Castaway, title [公告] CASTAWAY: ten hours on one tiny island, on purpose. A block-character picture: CASTAWAY in white block letters on a teal sky with the caption 一座小島，一棵椰子樹，十個小時 (one small island, one coconut palm, ten hours), a tall palm leaning over the title, a small sandy island, a raft, a navy-to-blue sea with glints, and a tiny figure in a coral top who nods on every beat. Text: one tiny island, one tall palm, ten hours of lo-fi; she idles; every so often, on the next bar, something happens; every sound is synthesized from code; python tools/serve.py then open 127.0.0.1:8765. Under it, comments arrive one per bar: a ship that passes nine times unseen, a cat, the tide, a bottle, a hermit crab, a ship that honks back, a reply bottle, and lowbun herself.',
+    title: 'CASTAWAY, a post on the Castaway board of the 一棵椰子樹 station',
+    desc: 'A Taiwanese telnet bulletin board article in an 80-column terminal. Header: author lowbun (nodding along), board Castaway, title [公告] CASTAWAY: ten hours on one tiny island, on purpose. A picture made of block characters: CASTAWAY in white block letters on a teal sky with the caption 一座小島，一棵椰子樹，十個小時 (one small island, one coconut palm, ten hours); a palm whose long frond reaches over the title, on a small flat sandy island in teal shallows; a raft moored off the shore; a navy-to-blue sea with glints; and a tiny figure with dark hair, a coral top and light shorts who nods on every beat. Text: one tiny island, one tall palm, ten hours of lo-fi; she idles, nodding along; every so often, on the next bar of the beat, something happens; every sound is synthesized from code; python tools/serve.py then open 127.0.0.1:8765. Under it, comments arrive one per bar: a ship that passes nine times unseen, a cat, the tide, a bottle, a hermit crab, a ship that honks back, a reply bottle, and lowbun herself.',
     body, extraCss: css,
   });
 }
@@ -886,7 +895,7 @@ function buildBoards() {
   const body = `<g transform="translate(${PADX} ${PADY})"><g class="scr">${renderScreen(base)}</g>${layers}</g>`;
   return svgDoc({
     title: 'The 一棵椰子樹 board list: Castaway, by the numbers',
-    desc: 'A Taiwanese telnet bulletin board list, 80 columns. Each board is a part of Castaway and its popularity column is a real count for one default ten-hour run: 1 person on the island, Regular events HOT (about 155), Occasional 30, Rare 13, SuperRare 2, Chained 20, Activities ' + SNAP.activities + ', Ships 9, Coconuts 29, Sandcastle 10 (the tide wins 10-0), Cat 5, Signal 1, Theme HOT (600 loops), Bars 12000 and Beats 48000 and Frames 1080000 shown as the explode mark in rising colours, Synth HOT, Samples none, Night none. Status bar: 10/1 Thursday 8:00, 每天都是晴天 (every day is a sunny day), 1 user online, I am lowbun.',
+    desc: 'A Taiwanese telnet bulletin board list, 80 columns. Each board is a part of Castaway, and its popularity column counts that thing in one ten-hour run: the timer boards show a typical run (medians of 200 simulated runs), the rest the default run (seed 1992). Castaway 1 (one person on the island), Idle about 8640 bars (72 percent of the run), Regular HOT (about 155), Occasional 30, Rare 13, SuperRare 2, Chained 20, Activities ' + SNAP.activities + ' as of ' + SNAP.date + ', Ships 9, Coconuts 29, Sandcastle 10 (the tide wins 10-0), Cat 5, Signal 1, Theme HOT (600 loops), Bars 12000, Beats 48000, Synth HOT (more than 150 sounds made from code), Samples none, Frames 864000 (24 fps), Night none. Counts from 1000 up show the explode character, recoloured as they climb. Status bar: 10/1 Thursday 8:00, 每天都是晴天 (every day is a sunny day), 1 user online, I am lowbun.',
     body, extraCss: css,
   });
 }

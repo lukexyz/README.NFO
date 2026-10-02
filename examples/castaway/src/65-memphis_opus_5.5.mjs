@@ -17,7 +17,7 @@
 // wallpaper of late-80s television. A warm white laminate covered in short
 // black squiggles, zigzags and confetti that never touch; big flat
 // primitives overlapping off-grid (a quarter circle, stairs, a striped bar,
-// a dot); black-and-white stripes slapped straight onto saturated colour;
+// a dot, a terrazzo half-disc); black-and-white stripes slapped straight onto saturated colour;
 // terrazzo chips; hard black offset shadows; no gradients, no perspective.
 // The squiggle laminate here is drawn from scratch by the scatter below
 // (eight little mark shapes, placed by dart throwing with a minimum gap), not
@@ -384,8 +384,12 @@ function banner() {
   out.push(`<path d="M0 ${H - 190}A190 190 0 0 1 190 ${H}H0Z" fill="${C.pink}" class="o" stroke-width="4"/>`);
   // a teal disc in the gap between the stickers and the window
   out.push(`<circle cx="384" cy="300" r="46" fill="${C.teal}" class="o" stroke-width="4"/>`);
-  // a lilac half-disc tucked under the window's top-left corner
-  out.push(`<path d="M352 150A48 48 0 0 1 448 150Z" fill="${C.lilac}" class="o" stroke-width="4"/>`);
+  // a terrazzo half-disc tucked under the window's top-left corner: a plinth
+  // for the striped T (pale ground, angular chips in several colours)
+  const plinth = 'M352 150A48 48 0 0 1 448 150Z';
+  out.push(`<clipPath id="plinth"><path d="${plinth}"/></clipPath><path d="${plinth}" fill="#e8e3dc"/>` +
+    `<g clip-path="url(#plinth)">${terrazzo(mulberry32(1987), 348, 96, 104, 58, 160, { k0: 1.55, gap: 1.2, cols: [C.coral, C.teal, C.blue, C.pink, C.ink, C.lilac, C.yellow] })}</g>` +
+    `<path d="${plinth}" fill="none" class="o" stroke-width="4"/>`);
   // a black-and-white striped slab, top right, under the Y
   out.push(`<g transform="rotate(-14 900 70)"><rect x="830" y="22" width="190" height="56" fill="url(#stripeV)" class="o" stroke-width="4"/></g>`);
   // a yellow triangle bottom right
@@ -414,7 +418,7 @@ function banner() {
   css.push(ANIM_CSS);
 
   const title = 'CASTAWAY: an island for one, fully furnished';
-  const desc = 'A Memphis-style banner: a warm white laminate covered in small black squiggles, zigzags and coloured confetti, with big flat shapes laid over it (a pink quarter circle with blue stairs, a teal disc, a lilac half-disc, a striped slab, a yellow triangle, a checkerboard). Across the top, CASTAWAY in chunky hand-cut capitals, each a different colour and tilt, with heavy black outlines and hard black shadows; the letters hop one after another once every bar. On the left, stickers read: ISLAND FOR ONE. FULLY FURNISHED: 1 PALM, 1 RAFT AND 1 PAIR OF HEADPHONES. 10 HOURS. MOSTLY NOTHING. EVERY FEW MINUTES, A GAG, AND IT LANDS ON THE BEAT. EVERY SOUND SYNTHESIZED FROM CODE. NO SAMPLES. And a terminal chip: python tools/serve.py. On the right, a chunky window titled CASTAWAY, LIVE PREVIEW shows the island in Memphis shapes: a palm with a striped trunk on a terrazzo sandbank, a sea of white squiggles, a raft, a bottle, a woman in a coral tank top, cream shorts and cream headphones nodding to the beat, a shark fin wearing headphones nodding along, a coconut walking on crab legs and a drone delivering a parcel of headphones. The control bar counts the bars of the theme, BAR 01/20 to 20/20, and reads 10:00:00.';
+  const desc = 'A Memphis-style banner: a warm white laminate covered in small black squiggles, zigzags and coloured confetti, with big flat shapes laid over it (a pink quarter circle with blue stairs, a teal disc, a terrazzo half-disc under the T, a striped slab, a yellow triangle, a checkerboard). Across the top, CASTAWAY in chunky hand-cut capitals, each a different colour and tilt, with heavy black outlines and hard black shadows; the letters hop one after another once every bar. On the left, stickers read: ISLAND FOR ONE. FULLY FURNISHED: 1 PALM, 1 RAFT AND 1 PAIR OF HEADPHONES. 10 HOURS. MOSTLY NOTHING. A FEW GAGS AN HOUR, AND EVERY ONE LANDS ON THE BEAT. EVERY SOUND SYNTHESIZED FROM CODE. NO SAMPLES. And a terminal chip: python tools/serve.py. On the right, a chunky window titled CASTAWAY, LIVE PREVIEW shows the island in Memphis shapes: a palm with a striped trunk on a terrazzo sandbank, a sea of white squiggles, a raft out on the water, a bottle, a woman in a coral tank top, cream shorts and cream headphones nodding to the beat, a shark fin wearing headphones nodding along, a coconut walking on crab legs and a drone delivering a parcel of headphones. The control bar counts the bars of the theme, BAR 01/20 to 20/20, and reads 10:00:00.';
 
   return wrapSvg({ W, H, title, desc, css: css.join(''), defs: defsBanner(T), body: out.join('\n') });
 }
@@ -471,7 +475,7 @@ function leftColumn(T, WIN) {
   // 2. pink, the inventory
   put({ x: 46, y: 234, lines: ['FULLY FURNISHED:', '1 PALM, 1 RAFT AND', '1 PAIR OF HEADPHONES.'], cap: 12.5, sw: 2, fill: C.pink, rot: 2 });
   // 3. yellow, what happens
-  put({ x: 30, y: 324, lines: ['10 HOURS. MOSTLY NOTHING.', 'EVERY FEW MINUTES, A GAG,', 'AND IT LANDS ON THE BEAT.'], cap: 12, sw: 1.9, fill: C.yellow, rot: -1.5 });
+  put({ x: 30, y: 324, lines: ['10 HOURS. MOSTLY NOTHING.', 'A FEW GAGS AN HOUR, AND', 'EVERY ONE LANDS ON THE BEAT.'], cap: 12, sw: 1.9, fill: C.yellow, rot: -1.5 });
   // 4. white, the sound
   put({ x: 62, y: 408, lines: ['EVERY SOUND SYNTHESIZED', 'FROM CODE. NO SAMPLES.'], cap: 11.5, sw: 1.9, fill: C.white, rot: 2 });
   // 5. the terminal
@@ -527,11 +531,13 @@ function controlBar(T, SCR, BAR) {
   const lx = tx + tw + 16;
   s += T.text('BAR', lx, cy - 6, ty);
   const nx = lx + T.width('BAR ', ty) + 2;
+  // right-aligned, so a narrow 1 does not leave a gap before the slash
+  const nr = nx + T.width('00', ty);
   for (let b = 1; b <= 20; b++) {
     const lab = String(b).padStart(2, '0');
-    s += `<g class="bc${b === 1 ? ' b1' : ''}" style="animation-delay:${(b - 1) * 3}s">${T.text(lab, nx, cy - 6, ty)}</g>`;
+    s += `<g class="bc${b === 1 ? ' b1' : ''}" style="animation-delay:${(b - 1) * 3}s">${T.text(lab, nr, cy - 6, { ...ty, anchor: 'end' })}</g>`;
   }
-  const sx = nx + T.width('00', ty) + 2;
+  const sx = nr + 2;
   s += T.text('/20', sx, cy - 6, ty);
   // the beat light, once per beat at 80 BPM
   const bx = sx + T.width('/20', ty) + 14;
@@ -571,8 +577,8 @@ function scene() {
   // lagoon and surf ring
   s += `<ellipse cx="236" cy="208" rx="196" ry="52" fill="${C.lagoon}"/>`;
   s += `<ellipse cx="236" cy="204" rx="160" ry="37" fill="${C.white}"/>`;
-  // the raft, bobbing to the right
-  s += raft(424, 200);
+  // the raft, bobbing out on the water to the right (clear of the shark)
+  s += raft(436, 150);
   // the sandbank: terrazzo
   s += `<clipPath id="isl"><ellipse cx="236" cy="200" rx="150" ry="30"/></clipPath>`;
   s += `<ellipse cx="236" cy="200" rx="150" ry="30" fill="${C.sand}"/>`;
@@ -624,12 +630,12 @@ function raft(x, y) {
   return s;
 }
 
-function terrazzo(rnd, x, y, w, h, n) {
-  const cols = [C.coral, C.teal, C.blue, C.pink, C.ink, C.lilac, C.green];
+// irregular angular chips of several colours; k scales chip size and spacing
+function terrazzo(rnd, x, y, w, h, n, { k0 = 1, gap = 3, cols = [C.coral, C.teal, C.blue, C.pink, C.ink, C.lilac, C.green] } = {}) {
   let s = '';
-  const placed = scatter(rnd, { x, y, w, h }, n, 3, () => ({ r: 3.4 }));
+  const placed = scatter(rnd, { x, y, w, h }, n, gap, () => ({ r: 3.4 * k0 }));
   placed.forEach((p, i) => {
-    const k = 3 + Math.floor(rnd() * 2), r = 2.2 + rnd() * 2.4, a0 = rnd() * 6.28;
+    const k = 3 + Math.floor(rnd() * 2), r = (2.2 + rnd() * 2.4) * k0, a0 = rnd() * 6.28;
     const pts = [];
     for (let j = 0; j < k; j++) { const a = a0 + (j / k) * 6.28 + rnd() * 0.6; const rr = r * (0.7 + rnd() * 0.5); pts.push([p.x + rr * Math.cos(a), p.y + rr * Math.sin(a) * 0.8]); }
     s += `<path d="${polyD(pts)}" fill="${cols[i % cols.length]}"/>`;
@@ -699,9 +705,10 @@ function her() {
     `<path d="${d}" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"${extra}/>`;
   let s = '';
   s += o('M1 -3L12 -16L19 -1', 4, '#e6b089');            // back leg
-  s += o('M-4 -5L7 -11', 11, C.cream);                     // shorts
   s += o('M3 -2L16 -13L24 0', 4.4, C.skin);               // front leg
   s += `<path d="M22 0.5h4" stroke="${C.ink}" stroke-width="3" stroke-linecap="round"/>`;
+  // cream shorts over both thighs, down to mid-thigh, so they read at a glance
+  s += o('M-3 -4L8.5 -9.5', 10, C.cream);
   s += o('M-2 -7L-4 -24', 12, C.coral);                    // tank top
   s += o('M-3 -22L7 -17L14 -14', 3.4, C.skin);             // arm on the knee
   // head, nodding once per beat
@@ -805,12 +812,14 @@ const ANIM_CSS = [
   // (each starts at its home spot: the negative delay puts translateX(0) at t = 0)
   `.cl1{animation:cl1 60s linear infinite ${f((-250 / -580) * -60)}s}`,
   `@keyframes cl1{0%{transform:translateX(-250px)}100%{transform:translateX(330px)}}`,
-  `.cl2{animation:cl2 60s linear infinite ${f((-410 / -560) * -60)}s}`,
-  `@keyframes cl2{0%{transform:translateX(-410px)}100%{transform:translateX(150px)}}`,
+  // cl2 sits in a scale(0.8) group, so its travel is in the group's own
+  // units: -520 to 190 puts it fully off the left and right edges of the screen
+  `.cl2{animation:cl2 60s linear infinite ${f((-520 / -710) * -60)}s}`,
+  `@keyframes cl2{0%{transform:translateX(-520px)}100%{transform:translateX(190px)}}`,
   `.drone{animation:drone 30s linear infinite}`,
   `@keyframes drone{0%{transform:translateX(0)}30.6%{transform:translateX(230px)}30.7%,46.6%{transform:translateX(-400px)}100%{transform:translateX(0)}}`,
   // the coconut crab walks the beach in steps, turns, walks back
-  `.crab{animation:crab 24s steps(1) infinite}`,
+  `.crab{animation:crab 30s steps(1) infinite}`,
   `@keyframes crab{${crabFrames()}}`,
   `.legA{animation:legA .375s steps(1) infinite}.legB{opacity:0;animation:legB .375s steps(1) infinite}`,
   `@keyframes legA{0%{opacity:1}50%{opacity:0}}@keyframes legB{0%{opacity:0}50%{opacity:1}}`,
@@ -827,13 +836,15 @@ const ANIM_CSS = [
   `@media (prefers-reduced-motion:reduce){*{animation:none!important}}`,
 ].join('');
 
-// 24 s: 48 half-beat steps; walks right 150 px in 20 steps, pauses, walks back
+// 30 s (half the master loop): 40 steps of one beat (0.75 s at 80 BPM), so
+// every step lands on the beat; walks right 150 px in 15 steps, pauses for
+// 5 beats, walks back, pauses again
 function crabFrames() {
   const fr = [];
-  const N = 48, walk = 20, dx = 7.5;
+  const N = 40, half = 20, walk = 15, dx = 10;
   for (let i = 0; i < N; i++) {
     let x, flip;
-    if (i < walk) { x = i * dx; flip = 1; } else if (i < 24) { x = walk * dx; flip = 1; } else if (i < 24 + walk) { x = walk * dx - (i - 24) * dx; flip = -1; } else { x = 0; flip = -1; }
+    if (i < walk) { x = i * dx; flip = 1; } else if (i < half) { x = walk * dx; flip = 1; } else if (i < half + walk) { x = walk * dx - (i - half) * dx; flip = -1; } else { x = 0; flip = -1; }
     fr.push(`${f((i / N) * 100, 3)}%{transform:translateX(${f(x)}px) scaleX(${flip})}`);
   }
   return fr.join('');
@@ -972,7 +983,7 @@ const PIECES = [
     },
   },
   {
-    it: 'CAFFÈ FREDDO', en: ['SHE WALKS OUT OVER', 'THE SEA TO GET ONE.'], bg: C.coral,
+    it: 'CAFFÈ FREDDO', en: ['WALKS OFF ON THE SEA.', 'COMES BACK WITH ONE.'], bg: C.coral,
     back: () => `<circle cx="150" cy="70" r="50" fill="${C.blue}" class="o" stroke-width="3"/><rect y="126" width="204" height="30" fill="${C.sky}"/>${zig(4, 132, 34, 6, 4, C.white)}`,
     art: () => `<g transform="translate(-10 6)"><g class="wob">` +
       `<g transform="rotate(14 8 -40)"><rect x="4" y="-82" width="8" height="52" fill="url(#stripeR)" stroke="${C.ink}" stroke-width="2.6"/></g>` +
@@ -1007,7 +1018,11 @@ function card(T, i, x, y, P) {
   const it = { cap: 16, sw: 2.5, track: 1.3 };
   const fitIt = Math.min(1, (w - 24) / T.width(P.it, it));
   s += T.text(P.it, 12, art + 14, { ...it, cap: it.cap * fitIt });
-  P.en.forEach((l, k) => { s += T.text(l, 12, art + 42 + k * 17, { cap: 10, sw: 1.7, track: 1.1 }); });
+  P.en.forEach((l, k) => {
+    const ew = T.width(l, { cap: 10, sw: 1.7, track: 1.1 });
+    if (12 + ew > w - 8) console.warn(`card ${i + 1} line "${l}" is ${f(ew)} wide`);
+    s += T.text(l, 12, art + 42 + k * 17, { cap: 10, sw: 1.7, track: 1.1 });
+  });
   s += `</g>`;
   return s;
 }
@@ -1069,7 +1084,7 @@ function catalogo() {
     MARK_DEFS,
     T.defs(),
   ].join('\n');
-  const desc = 'A page from an imaginary design catalogue, CATALOGO 1992, on a pale mint laminate with black squiggles, stamped GRUPPO ISOLOTTO. A pink sticker says: eight pieces that turn up on their own; assembly not required, waiting is. Eight cards, each a flat colour panel with a big shape behind one object, a number tab, an Italian name and two lines in English. 01 BOTTIGLIA: a green bottle with a note, and an arrow looping back: a message, it washes straight back. 02 PACCO: a drone carrying a parcel with headphones on it: by drone, contains more headphones. 03 TARTARUGA: a turtle with a zigzag shell: visits, stays a bit, says nothing. 04 GATTO: a grey tabby cat with a white chest napping on a floating crate: arrives on a crate, naps up the palm. 05 SQUALO: a shark fin wearing cream headphones, nodding, with a music note: wears headphones, nods on the beat. 06 COCCO: a coconut walking on crab legs: lands on a crab, walks off with it. 07 SEGNALE: a phone above a palm crown with one signal bar of four: one bar, only at the top of the palm. 08 CAFFE FREDDO: an iced coffee with a striped straw: she walks out over the sea to get one.';
+  const desc = 'A page from an imaginary design catalogue, CATALOGO 1992, on a pale mint laminate with black squiggles, stamped GRUPPO ISOLOTTO. A pink sticker says: eight pieces that turn up on their own; assembly not required, waiting is. Eight cards, each a flat colour panel with a big shape behind one object, a number tab, an Italian name and two lines in English. 01 BOTTIGLIA: a green bottle with a note, and an arrow looping back: a message, it washes straight back. 02 PACCO: a drone carrying a parcel with headphones on it: by drone, contains more headphones. 03 TARTARUGA: a turtle with a zigzag shell: visits, stays a bit, says nothing. 04 GATTO: a grey tabby cat with a white chest napping on a floating crate: arrives on a crate, naps up the palm. 05 SQUALO: a shark fin wearing cream headphones, nodding, with a music note: wears headphones, nods on the beat. 06 COCCO: a coconut walking on crab legs: lands on a crab, walks off with it. 07 SEGNALE: a phone above a palm crown with one signal bar of four: one bar, only at the top of the palm. 08 CAFFE FREDDO: an iced coffee with a striped straw: walks off on the sea, comes back with one.';
   return wrapSvg({ W, H, title: 'CASTAWAY catalogue: eight pieces that turn up on their own', desc, css, defs, body: out.join('\n') });
 }
 

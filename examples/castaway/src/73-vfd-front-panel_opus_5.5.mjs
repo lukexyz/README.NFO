@@ -29,11 +29,13 @@
 //    3    TEN HOURS
 //    4    SHE IDLES
 //    5    MOSTLY.
-//    6    COCONUT SIP     REGULAR lamp; a ship crosses the horizon behind her
+//    6    COCONUT SIP     REGULAR + OCCASIONAL; she sips (regular) while the
+//                         ship (occasional, its own lane) crosses behind her
 //    7    BOTTLE BACK     OCCASIONAL; thrown out, washes straight back
 //    8    DRONE DROP      RARE; a parcel is lowered onto the sand
 //    9    HEADPHONES?     RARE; it is another pair of headphones
-//   10    SHARK NODS      RARE; a fin in headphones, nodding on the beat
+//   10    SHARK NODS      RARE; a fin in headphones, nodding on the beat; she
+//                         nods back (the activity uses her lane, so BUSY)
 //   11    CAT ON CRATE    RARE; a stray cat drifts in on a crate
 //   12    ONE BAR         RARE; phone up: one bar of signal, top of the palm
 //   13    TURTLE NAP      OCCASIONAL; a turtle visits, both doze off
@@ -44,16 +46,18 @@
 //   18    127.0.0.1:8765
 //   19    WAIT FOR IT     then the lamp test, then CASTAWAY again
 //
-// Lamps: IDLE is lit except in the seven bars where she is busy (7 of 20, a bit
-// over a third, as in a real run). SUPER RARE never lights in the 60 s demo,
-// and NIGHT and SAMPLES never light at all: always daytime, no samples.
+// Lamps: IDLE is lit except in the eight bars where an activity holds her lane
+// (8 of 20: a real run is nearer a third, the demo is showing off). SUPER RARE
+// never lights in the 60 s demo, and NIGHT and SAMPLES never light at all:
+// always daytime, no samples.
 //
-// Facts on screen, checked in D:/python/castaway on 2026-10-01 (read only):
+// Facts on screen, checked in D:/python/castaway on 2026-10-02 (read only):
 // four tiers (regular 2-5 min, occasional 12-25 min, rare 30-60 min, super rare
-// 3-6 h); coconut sip is regular; message in a bottle, turtle visit and the
-// coconut crab are occasional; delivery drone, shark nod, cat visit and signal
-// hunt are rare. Theme 80 BPM, F major, 20 bars of 3 s; every activity starts on
-// the next bar. Mix at -14 LUFS. Every sound synthesized by tools/make_audio.py.
+// 3-6 h); coconut sip is regular; message in a bottle, the ship passing, turtle
+// visit and the coconut crab are occasional; delivery drone, shark nod, cat
+// visit and signal hunt are rare; the cat and the ship have lanes of their own.
+// Theme 80 BPM, F major, 20 bars of 3 s, stereo; every activity starts on the
+// next bar. Mix at -14 LUFS. Every sound synthesized by tools/make_audio.py.
 // Run: python tools/serve.py, then http://127.0.0.1:8765/.
 //
 // No <text>: every letter is generated geometry (segment cells, or the stroke
@@ -97,6 +101,7 @@ const C = {
   coral: '#ff8a6e',    // her tank top (a coral filter over the phosphor)
   cream: '#fff0cf',    // shorts and headphones (a cream filter)
   skin: '#ffd0ad',     // her face, arms and legs (a peach filter)
+  hair: '#c27a45',     // her brown hair and bun (a dark amber filter)
   sun: '#ffc54d',      // the sun (an amber filter)
   glass: '#051012',
   print: '#2f5557',    // ink printed on the inside of the glass
@@ -357,8 +362,15 @@ const PAGES = [
   'CAT ON CRATE', 'ONE BAR', 'TURTLE NAP', 'BONK', 'NO SAMPLES', 'ALL CODE',
   'RUN SERVE.PY', '127.0.0.1:8765', 'WAIT FOR IT',
 ];
-const TIER = { 6: 'REG', 7: 'OCC', 8: 'RARE', 9: 'RARE', 10: 'RARE', 11: 'RARE', 12: 'RARE', 13: 'OCC', 14: 'OCC' };
-const BUSY = [6, 7, 8, 9, 12, 13, 14];
+// Which timer each gag comes off (activities.toml). Bar 6 lights two lamps: the
+// coconut sip is regular, and the ship behind her is occasional, on its own lane.
+const TIER = {
+  6: ['REG', 'OCC'], 7: ['OCC'], 8: ['RARE'], 9: ['RARE'], 10: ['RARE'], 11: ['RARE'],
+  12: ['RARE'], 13: ['OCC'], 14: ['OCC'],
+};
+// Bars where an activity holds her lane. The cat has its own lane, so she idles
+// through bar 11; the shark nod uses hers (they nod at each other).
+const BUSY = [6, 7, 8, 9, 10, 12, 13, 14];
 
 // Parse a message into cells: '.' and ':' attach to the previous cell.
 function cellsOf(msg) {
@@ -495,6 +507,12 @@ const colonX = BIGX + 66 + 4;
   const { cls } = onOff(Array.from({ length: 60 }, (_, s) => [s, s + 0.5]));
   lit.push(`<path d="${dots}" transform="${tr}" class="t ${cls}"/>`);
 }
+// a divider printed on the glass between the ticker and the clock, slanted like the cells
+{
+  const x = (TX + (NCELL - 1) * CELL.pitch + CELL.cw + BIGX) / 2;
+  const k = Math.tan((-SKEW * Math.PI) / 180);
+  print.push(`M${f(x + k * 4)} ${f(TY - 4)}L${f(x - k * (CELL.ch + 4))} ${f(TY + CELL.ch + 4)}`);
+}
 const secX = { x: BIGX + 104, y: BIGY, id: 'B' };
 digitCell(secX, 0, 66, (t) => Math.floor(t / 10), 1);
 digitCell(secX, 1, 66, (t) => Math.floor(t) % 10, 1);
@@ -563,7 +581,7 @@ print.push(text('/20', RX + 202, RY + 31, 8.5).d);
   const tiers = [['REGULAR', 'REG'], ['OCCASIONAL', 'OCC'], ['RARE', 'RARE'], ['SUPER RARE', 'SR']];
   tiers.forEach(([label, key], n) => {
     const x = lx + (n % 2) * (bw + gx), y = ly + Math.floor(n / 2) * (bh + gy);
-    const on = Object.entries(TIER).filter(([, v]) => v === key).map(([b]) => [b * BAR, (+b + 1) * BAR]);
+    const on = Object.entries(TIER).filter(([, v]) => v.includes(key)).map(([b]) => [b * BAR, (+b + 1) * BAR]);
     const tx = text(label, x + bw / 2, y + (bh - 9) / 2, 9, { anchor: 'middle', track: 1.3 });
     const g = `<path d="${rrect(x, y, bw, bh, 4)}" class="s SO" stroke-width="1.5"/><path d="${tx.d}" class="s SO" stroke-width="1.5"/>`;
     ghost.push(`<g>${g}</g>`);
@@ -575,40 +593,71 @@ print.push(text('/20', RX + 202, RY + 31, 8.5).d);
   print.push(text('SCHEDULE', lx, ly - 16, 7.5, { track: 1.6 }).d);
 }
 
-// ---- level meters: one stereo pair per synthesized source
+// ---- level meters: one stereo pair per synthesized source (scoreLevels above)
 const MX = DX + 40, MY = PY, NSEG = 12, SEGP = 12.4, SEGH = 7.6, COLW = 16;
 const SOURCES = [
   { name: 'DRUMS', kind: 'drums' }, { name: 'E.PIANO', kind: 'piano' },
   { name: 'KALIMBA', kind: 'kalimba' }, { name: 'VINYL', kind: 'crackle' }, { name: 'SURF', kind: 'surf' },
 ];
+// The drums, e.piano and kalimba meters follow the theme's own score, bar for bar
+// (the arrangement in tools/make_audio.py, checked read-only on 2026-10-02):
+// bars 1-2 keys only; drums and bass from bar 3, eighth hats, then sixteenths
+// from bar 11, a fill in the last bar of each 4-bar phrase; kalimba from bar 7;
+// bars 17-20 a breakdown of kick and rim only while the keys' filter closes.
+// Levels are drawn from note timings and velocities, not from listening.
+const QB = 4, NQ = 20 * 4 * QB;          // quarter-beat steps in the 60 s theme
+const MELODY_AT = '7:.5,1,1.5,2.5 8:1,1.5,2 9:.5,1,1.75,2.5 10:1,2,3 11:0,.5,1,1.5,2,3 ' +
+  '12:.5,1,1.75,2.5,3,3.5 13:0,1.5,2,2.5,3,3.5 14:0,1.5,2,2.5,3 15:0,2,2.5,3 ' +
+  '16:.5,1,1.5,3.5 17:0,2 18:0,2 19:1,2.5 20:0,.5,1,2';
+function scoreLevels(kind, ch) {
+  const hits = new Array(NQ).fill(0);
+  const put = (bar, beat, v) => { const i = Math.round(((bar - 1) * 4 + beat) * QB) % NQ; hits[i] = Math.max(hits[i], v); };
+  if (kind === 'drums') {
+    for (let bar = 3; bar <= 20; bar++) {
+      if (bar >= 17) { put(bar, 0, 8); put(bar, 1, 5 + ch); put(bar, 3, 5 + ch); continue; }
+      const fill = bar % 4 === 2;
+      for (const b of fill ? [0, 1.75, 2.5] : [0, 2.5]) put(bar, b, b === 0 ? 10 : 9);
+      put(bar, 1, ch ? 8 : 9); put(bar, 3, ch ? 9 : 8);
+      if (fill) put(bar, 3.75, 3);
+      for (let b = 0; b < 4; b += bar >= 11 ? 0.25 : 0.5) {
+        const v = fill && b === 3.5 ? 4 : b % 1 === 0 ? 5 : b % 0.5 === 0 ? 4 : 2;
+        put(bar, b, v + ch);                     // the hats sit a little to the right
+      }
+    }
+    return decay(hits, 2.6);
+  }
+  if (kind === 'kalimba') {
+    for (const part of MELODY_AT.split(' ')) {
+      const [bar, beats] = part.split(':');
+      for (const b of beats.split(',').map(Number)) {
+        const v = (b % 1 === 0 ? 9 : 7) * (+bar === 20 ? 0.7 : 1);
+        put(+bar, b, Math.round(v) - (ch ? 0 : 1)); // panned a little right
+      }
+    }
+    return decay(hits, 1.4);
+  }
+  // e.piano: a chord on beat 1 (held 2.4 beats) and on the "and" of 3 (held 1.4),
+  // every bar; the filter opens over the intro and closes through the breakdown
+  const out = new Array(NQ).fill(0);
+  const cutoff = (t) => (t < 6 ? 450 * 16 ** (t / 6) : t < 48 ? 7200 : 7200 * 16 ** (-(t - 48) / 12));
+  for (let pass = 0, v = 0; pass < 2; pass++) {
+    for (let i = 0; i < NQ; i++) {
+      const beat = (i / QB) % 4, t = (i / QB) * BEAT;
+      const g = 0.5 + 0.5 * Math.log(cutoff(t) / 450) / Math.log(16);
+      const onset = beat === 0 ? 9 : beat === 2.5 ? 6.5 : 0;
+      const held = beat < 2.4 || (beat >= 2.5 && beat < 3.9);
+      v = onset ? onset * g : Math.max(0, v - (held ? 0.35 : 1.6));
+      if (pass === 1) out[i] = Math.round(v - (ch ? 0.4 : 0));
+    }
+  }
+  return out;
+}
 function levels(kind, ch) {
   const r = mulberry32(kind.length * 97 + ch * 13 + 7);
   let period, step, raw = [];
-  if (kind === 'drums') {
-    period = 3; step = 3 / 16;
-    for (let i = 0; i < 16; i++) {
-      let hit = 0;
-      if (i % 8 === 0) hit = 10;
-      else if (i % 8 === 4) hit = ch ? 8 : 9;
-      else if (i % 2 === 0) hit = 5 + (r() < 0.5 ? 1 : 0);
-      else hit = r() < 0.3 ? 3 : 0;
-      raw.push(hit);
-    }
-    raw = decay(raw, 2.6);
-  } else if (kind === 'piano') {
-    period = 12; step = 0.375;
-    for (let i = 0; i < 32; i++) {
-      const j = i % 8;
-      raw.push(j === 0 ? 8 + (i === 16 ? 1 : 0) : j === 3 ? 6 + ch : j === 5 ? 5 : 0);
-    }
-    raw = decay(raw, 1, 2);
-  } else if (kind === 'kalimba') {
-    period = 12; step = 3 / 16;
-    for (let i = 0; i < 64; i++) {
-      const on = i % 4 === 0 ? r() < 0.75 : i % 2 === 0 ? r() < 0.45 : r() < 0.12;
-      raw.push(on ? 6 + Math.floor(r() * 4) : 0);
-    }
-    raw = decay(raw, 1.8, 1);
+  if (kind === 'drums' || kind === 'piano' || kind === 'kalimba') {
+    period = LOOP; step = BEAT / QB;
+    raw = scoreLevels(kind, ch);
   } else if (kind === 'crackle') {
     period = 3; step = 0.125;
     for (let i = 0; i < 24; i++) raw.push(r() < 0.14 ? 4 + Math.floor(r() * 2) : 1 + Math.floor(r() * 2.4));
@@ -810,9 +859,9 @@ const HER = 6;   // she sits a little clear of the trunk
   const hair = clipHalf(ring, nx, ny, c0 - 0.55), face = clipHalf(ring, -nx, -ny, -(c0 + 0.55));
   const move = (pts, ex, ey) => pts.map(([x, y]) => [x + ex, y + ey]);
   const head = (ex, ey) => [
-    F(poly(move(hair, ex, ey))),
+    F(poly(move(hair, ex, ey)), 'h'),
     F(poly(move(face, ex, ey)), 'k'),
-    F(circ(hx - 6.6 + ex, hy + 3.1 + ey, 3.1)),                                                     // low bun
+    F(circ(hx - 6.6 + ex, hy + 3.1 + ey, 3.1), 'h'),                                                // low bun
     Sk(`M${f(hx - 1.4 + ex)} ${f(hy - 2.2 + ey)}L${f(hx - 2.2 + ex)} ${f(hy - 5.4 + ey)}A7.4 7.4 0 0 1 ${f(hx + 4.6 + ex)} ${f(hy - 7.2 + ey)}`, 'M', 2.1), // band
     F(rrect(hx - 3.6 + ex, hy - 2.4 + ey, 4.4, 6.8, 2), 'm'),                                    // ear cup
   ];
@@ -837,7 +886,8 @@ const HER = 6;   // she sits a little clear of the trunk
     if (b === 13) { down.push([t, t + BEAT]); continue; }
     down.push([t, t + HALF]);
     up.push([t + HALF, t + BEAT]);
-    if (!BUSY.includes(b)) (k % 2 ? noteB : noteA).push([t, t + HALF + 0.1875]);
+    // notes while she idles, and while she and the shark nod at each other
+    if (!BUSY.includes(b) || b === 10) (k % 2 ? noteB : noteA).push([t, t + HALF + 0.1875]);
   }
   show('ihu', up);
   show('ihd', down);
@@ -896,14 +946,17 @@ const HER = 6;   // she sits a little clear of the trunk
 // shark in headphones, nodding (tilting) on the beat
 {
   const fin = (deg) => {
+    // a swept dorsal fin: convex leading edge up to a hooked tip, concave
+    // trailing edge back down; the headphone band sits below the tip
     const cx = 418, cy = 134;
-    const pts = [[cx - 12, cy], [cx + 1, cy - 20], [cx + 4, cy - 19], [cx + 12, cy]].map((p) => rot(p, cx, cy, deg));
-    const band = [[cx - 7, cy - 12], [cx + 2.5, cy - 24.5], [cx + 11, cy - 11]].map((p) => rot(p, cx, cy, deg));
-    const cupL = rot([cx - 7.4, cy - 10], cx, cy, deg), cupR = rot([cx + 10.6, cy - 9.4], cx, cy, deg);
+    const R = (x, y) => rot([cx + x, cy + y], cx, cy, deg);
+    const P = (p) => `${f(p[0])} ${f(p[1])}`;
+    const b0 = R(-13, 0), lc = R(-7, -21), tip = R(9, -27), tc = R(3.5, -10), b1 = R(12, 0);
+    const h0 = R(-8.4, -9.5), hc = R(0.5, -28), h1 = R(9.4, -9);
     return [
-      F(`M${f(pts[0][0])} ${f(pts[0][1])}Q${f(pts[1][0] - 4)} ${f(pts[1][1] + 6)} ${f(pts[1][0])} ${f(pts[1][1])}L${f(pts[2][0])} ${f(pts[2][1])}Q${f(pts[2][0] + 1)} ${f(pts[2][1] + 10)} ${f(pts[3][0])} ${f(pts[3][1])}Z`),
-      Sk(`M${f(band[0][0])} ${f(band[0][1])}Q${f(band[1][0])} ${f(band[1][1])} ${f(band[2][0])} ${f(band[2][1])}`, 'M', 1.8),
-      F(circ(cupL[0], cupL[1], 2.8), 'm'), F(circ(cupR[0], cupR[1], 2.8), 'm'),
+      F(`M${P(b0)}Q${P(lc)} ${P(tip)}Q${P(tc)} ${P(b1)}Z`),
+      Sk(`M${P(h0)}Q${P(hc)} ${P(h1)}`, 'M', 1.8),
+      F(circ(h0[0], h0[1], 2.9), 'm'), F(circ(h1[0], h1[1], 2.9), 'm'),
     ];
   };
   const A = icon('ifa', fin(-7)), B = icon('ifb', fin(5));
@@ -1042,7 +1095,7 @@ const FACE_TXT = '#2b3036';
 }
 
 // ------------------------------------------------------------------ assemble
-const desc = 'CASTAWAY on the glowing blue-green display of an invented hi-fi receiver, the IDLETRONIC IR-600, in demo mode: a 16-segment ticker pushes in one message per bar (CASTAWAY, LO-FI ISLAND, TEN HOURS, SHE IDLES, MOSTLY, then the gags), a clock counts the 60-second theme loop, level meters bounce for drums, electric piano, kalimba, vinyl crackle and surf, and a pictogram island with one palm lights up gag by gag.';
+const desc = 'CASTAWAY on the glowing blue-green display of an invented hi-fi receiver, the IDLETRONIC IR-600, in demo mode: a 16-segment ticker pushes in one message per bar (CASTAWAY, LO-FI ISLAND, TEN HOURS, SHE IDLES, MOSTLY, then the gags), a clock counts the 60-second theme loop, level meters follow the theme\'s score for drums, electric piano and kalimba and bounce for vinyl crackle and surf, and a pictogram island with one palm, where a young woman in a coral tank top and cream headphones sits nodding, lights up gag by gag.';
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="ti de">
 <title id="ti">CASTAWAY: the island on a hi-fi front panel</title>
 <desc id="de">${desc}</desc>
@@ -1061,7 +1114,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.
 ${defs.join('\n')}
 </defs>
 <style>
-.t{fill:${C.lit}}.k{fill:${C.skin}}.o{fill:${C.orange}}.c{fill:${C.coral}}.m{fill:${C.cream}}.y{fill:${C.sun}}
+.t{fill:${C.lit}}.k{fill:${C.skin}}.h{fill:${C.hair}}.o{fill:${C.orange}}.c{fill:${C.coral}}.m{fill:${C.cream}}.y{fill:${C.sun}}
 .s{fill:none;stroke-linecap:round;stroke-linejoin:round}.ST{stroke:${C.lit}}.Sk{stroke:${C.skin}}.SO{stroke:${C.orange}}.SM{stroke:${C.cream}}.SY{stroke:${C.sun}}.SG{stroke:${C.glass}}
 .gh{opacity:.085}.cut{stroke:${C.glass};stroke-width:2.2;paint-order:stroke;stroke-linejoin:round}.pr{fill:none;stroke:${C.print};stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
 ${css.join('\n')}

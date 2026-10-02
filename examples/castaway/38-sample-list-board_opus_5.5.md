@@ -9,12 +9,12 @@
  03   ▀▄▄▄ █  █ ▄▄▄▀  █       03 █  █ ▀▄▀▄▀ █  █   █
  04 *====================*    04 *====================*
  05        ▄▄▄▀▀▀▄▄▀▀▀▄▄▄     05                ▀ ▄▄▄ ▀
- 06     ▄▀▀    ▄▀██▀▄    ▀    06   ▄▄   ▄▄       █████
- 07    ▀      █  ██  ▀▄       07 ▀   ▀▄▀   ▀    ▄ ▀▀▀ ▄
- 08  ▄▀▀▀▀▀▄    ▄█▀    ▄      08
- 09 ██ ███ ██   ██     ██▄    09    ▄    ██      █
- 10    ▀█▀     ██      █      10   ▄█▄▄███████▄▄▄█▄██
- 11 ▄▄█████▄▄▄███▄▄▄ ▄▄█▄▄    11    ▀██████████████▀
+ 06      ▀▀    ▄▀██▀▄    ▀    06   ▄▄   ▄▄       █████
+ 07  ▄▀▀▀▀▀▄  █  ██  ▀▄       07 ▀   ▀▄▀   ▀    ▄ ▀▀▀ ▄
+ 08 ██ ███ ██   ▄█▀    ▄      08
+ 09    ▀█▀      ██     ██▄    09    ▄    ██      █
+ 10  ▄▀███▀▄   ██      █      10   ▄█▄▄███████▄▄▄█▄██
+ 11 ▄███████▄▄███▄▄▄ ▄▄█▄▄    11    ▀██████████████▀
  12 ▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄    12 ▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄▀▄
  13 *====================*    13 *====================*
  14 #   she nods along   #    14 #  every sound here  #
@@ -37,10 +37,11 @@
  31    <a href="activities.toml">activities.toml</a>        31 <a href="http://127.0.0.1:8765/">http://127.0.0.1:8765/</a>
 
  timers  reg 2-5 min · occ 12-25 min · rare 30-60 min · super 3-6 hours
- 62 slots: 10 sounds, 49 messages at 0 frames, 3 empty. no slot 32.
+ 62 slots: 11 gags, 10 sounds, 37 messages at 0 frames, 4 empty.
+ no slot 32.
 </pre>
 
-**Castaway** (working title) is a ten-hour lo-fi video for YouTube in which almost nothing happens, on purpose: one young woman, one tiny island, one tall palm, one raft and a great deal of time. She sits under the palm in cream headphones, nodding to the music. It is an unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver *Johnny Castaway*, repainted sunny, coastal and hand-painted: 16:9, 1080p, 30 fps, and always daytime.
+**Castaway** (working title) is a ten-hour lo-fi video for YouTube in which almost nothing happens, on purpose: one young woman, one tiny island, one tall palm, one raft and a great deal of time. Mostly she idles in cream headphones, nodding to the music. It is an unofficial remake inspired by the small-island routines and visual comedy of the 1992 screensaver *Johnny Castaway*, done sunny and hand-painted in a coastal anime look: 16:9 at 1080p, and always daytime.
 
 Every so often, on the next bar of the music, something happens. More than 90 activities live in [activities.toml](activities.toml), most of them on four timers, from everyday things every few minutes (a spot of fishing, a sandcastle) to a super-rare stroll out across the water and back with an iced coffee: she could leave any time. In between, a bottle washes straight back, a drone delivers more headphones, a hermit crab walks off wearing a coconut and a shark in headphones nods along. A ship goes by as well. It makes no sound, and her eyes are shut.
 
@@ -52,7 +53,7 @@ python tools/serve.py      # then open http://127.0.0.1:8765/
 
 The page plays the run live and exports a YouTube-ready MP4: the browser encodes frame-exact H.264 and the server mixes in the sound. Plain ES modules, no build step, no npm packages.
 
-<sub>In development: no video has been published yet, and nobody has heard the sound. Both are on the list.</sub>
+<p><sub>In development: no video has been published yet, and nobody has heard the sound. Both are on the list.</sub></p>
 
 <details>
 <summary><b>how to read the list</b>: two lists, 31 slots each, 22 characters a slot</summary>
@@ -78,10 +79,10 @@ A tracker module keeps a name for each of its 31 samples, 22 characters apiece, 
  01 *====================*    01 *====================*
  02 #    four timers     #    02 #   a typical run    #
  03 *====================*    03 *====================*
- 04 # when one goes off, #    04 #   seed 1992, ten   #
- 05 # it picks a gag by  #    05 # hours: the median  #
- 06 # weight, from those #    06 #  of 200 simulated  #
- 07 #  free to go now.   #    07 # runs. a block = 10 #
+ 04 # when one goes off, #    04 # ten hours, as the  #
+ 05 # it picks a gag by  #    05 #   median of 200    #
+ 06 # weight, from those #    06 #  simulated runs.   #
+ 07 #  free to go now.   #    07 #   one block = 10   #
  08                           08
  09 reg:   every 2-5 min      09 ███████████████▌ ~155
  10 occ:   every 12-25 min    10 ███ ~30
@@ -102,9 +103,9 @@ A tracker module keeps a name for each of its 31 samples, 22 characters apiece, 
  25 # turtle, sea &amp; sky, #    25 # fish, lap, castle) #
  26 # shore and garden.  #    26 #  then sails past.  #
  27 *--------------------*    27 *--------------------*
- 28 # check it, and run  #    28 # super rare: three  #
- 29 #   ten simulated    #    29 #  a run, at most.   #
- 30 #    hours, with     #    30 #  the rest of it:   #
+ 28 #  default run: ten  #    28 # super rare: three  #
+ 29 # hours, seed 1992.  #    29 #  a run, at most.   #
+ 30 # check &amp; simulate:  #    30 #  the rest of it:   #
  31   <a href="tools/schedule.py">tools/schedule.py</a>       31    <a href="activities.toml">activities.toml</a>
 </pre>
 
@@ -125,7 +126,7 @@ A tracker module keeps a name for each of its 31 samples, 22 characters apiece, 
  06 def snare(r):             06 #   beats 2 and 4    #
  07 def rim(r):               07 # breakdown, w/ kick #
  08 def hat(r, open_=False    08 # 16ths from bar 11  #
- 09 def vinyl(n, r):          09 #  crackle, -26 db   #
+ 09 def vinyl(n, r):          09 # pops, hiss, -26 db #
  10 *====================*    10 *====================*
  11 #  80 bpm. f major.  #    11 #   mix: -14 lufs,   #
  12 # ii-v-i-vi, a chord #    12 #  true peak at or   #
@@ -179,10 +180,10 @@ A tracker module keeps a name for each of its 31 samples, 22 characters apiece, 
  18   straight back           18 *--------------------*
  19 the ship. you know        19
  20   what you did            20 #  always daytime.   #
- 21 *====================*    21 # 16:9 1080p 30 fps  #
- 22 #   an unofficial    #    22 #  exported in the   #
- 23 #  remake. inspired  #    23 # browser, frame by  #
- 24 #  by a 1992 desert  #    24 # frame, as an mp4.  #
+ 21 *====================*    21 #   16:9 at 1080p.   #
+ 22 #   an unofficial    #    22 #  browser: frames.  #
+ 23 #  remake. inspired  #    23 # server: the sound. #
+ 24 #  by a 1992 desert  #    24 # out comes an mp4.  #
  25 # island screensaver #    25 *====================*
  26 #  no affiliation.   #    26   ▄▄▄▄▄▄▄▄▄▄
  27 *====================*    27 ▄▀ ▄▄▄▄▄▄   ▀▀▄▄▄▄▄▄▄

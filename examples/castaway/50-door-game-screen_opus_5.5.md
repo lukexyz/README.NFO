@@ -11,7 +11,7 @@
 
 **Castaway** is a stationary-frame lo-fi video for YouTube: one young woman, one tiny island, one tall palm, a raft and a great deal of time. Mostly she idles, nodding along to her headphones. Every so often, on the next bar of the music, something happens. She throws a bottle out to sea and it comes straight back. A delivery drone brings her another pair of headphones. A shark in headphones nods along to the same beat. Then nothing happens for a while, beautifully, which is the main thing it does.
 
-More than 90 activities are booked in [activities.toml](activities.toml) on four timers, from every 2 to 5 minutes down to once every 3 to 6 hours, and every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no loops, no recordings. It is always daytime. Your move:
+More than 90 activities are booked in [activities.toml](activities.toml), most of them on four timers that go off anywhere from every 2 to 5 minutes to once every 3 to 6 hours, and the rest as follow-ups. Every sound is synthesized from code by [tools/make_audio.py](tools/make_audio.py): no samples, no stock loops, no recordings. It is always daytime. Your move:
 
 ```sh
 python tools/serve.py     # then open http://127.0.0.1:8765/
@@ -26,7 +26,7 @@ python tools/serve.py     # then open http://127.0.0.1:8765/
 
  <a href="tools/serve.py">(S)erve the island</a> ...... python tools/serve.py, then 127.0.0.1:8765
  <a href="web/index.html">(W)eb page</a> .............. the renderer: live preview, MP4 export
- <a href="activities.toml">(A)ctivities</a> ............ more than 90 of them, on four timers
+ <a href="activities.toml">(A)ctivities</a> ............ more than 90: four timers, plus follow-ups
  <a href="tools/schedule.py">(C)heck the schedule</a> .... validate it, simulate a ten-hour run
  <a href="tools/make_audio.py">(M)ake the sound</a> ........ every sound, synthesized from code
  <a href="tools/render_demo.py">(D)ev reel</a> .............. every activity in a row, with a HUD
@@ -39,7 +39,7 @@ python tools/serve.py     # then open http://127.0.0.1:8765/
 <summary><b>(V)iew stats</b> · the island in the space-trader manner: sector, paths, and the timer report</summary>
 
 <p align="center">
-  <img src="assets/50-door-game-screen_opus_5.5-stats.svg" width="832" alt="A space-trader style sector screen. Sector 1992 in The Island. Port: Timer Exchange, Class 0, sells events. Moored: one raft, one tall palm, one of her. Passing: one ship, on schedule, unseen. Weather: sunny, it is always daytime here. Radio: 80 BPM, F major, a 60-second loop. Paths to: Palm, Raft, Shallows, and the unexplored Reef, Horizon and Iced coffee. A commerce report for the Timer Exchange: regular, every 2 to 5 minutes, about 155 in ten hours; occasional, every 12 to 25 minutes, about 30; rare, every 30 to 60 minutes, about 13; super rare, every 3 to 6 hours, about 2, at most 3 a run; chained, waiting, after another one, follow-ups. A brown status line: busy about a third of the run, idle the rest, every start on the next bar. A magenta prompt: orders, 9:59:51 left, sector 1992, question mark for help.">
+  <img src="assets/50-door-game-screen_opus_5.5-stats.svg" width="832" alt="A space-trader style sector screen. Sector 1992 in The Island. Port: Timer Exchange, Class 0, sells events. Moored: one raft, one tall palm, one of her. Passing: one ship, on schedule, unseen. Weather: sunny, it is always daytime here. Radio: 80 BPM, F major, a 60-second loop. Paths to: Palm, Raft, Shallows, and the unexplored Reef, Horizon and Iced coffee. Trading today at the Timer Exchange: regular, every 2 to 5 minutes, about 155 in ten hours; occasional, every 12 to 25 minutes, about 30; rare, every 30 to 60 minutes, about 13; super rare, every 3 to 6 hours, about 2, at most 3 a run; chained, waiting, after another one, follow-ups. A brown status line: busy about a third of the run, idle the rest, every start on the next bar. A magenta prompt: orders, 9:59:51 left, sector 1992, question mark for help.">
 </p>
 
 The numbers are the schedule's own. In a typical ten-hour run (the median of 200 simulated runs) that is about 155 regular, 30 occasional, 13 rare and 2 super-rare events, plus the chained follow-ups, and she is busy about a third of the time. Lanes let things overlap, so a ship can sail past while she is busy with a coconut, and every activity starts on the next bar of the music (every 3 seconds), so the gags land on the beat. The sector number is the default seed: the default run is 10:00:00 on seed 1992.
@@ -90,11 +90,11 @@ The numbers are the schedule's own. In a typical ten-hour run (the median of 200
 <details>
 <summary><b>(?) Help</b> · how the door works, the sound, credits and the small print</summary>
 
-**The video.** 16:9, rendered at 1080p and 30 fps, and always daytime: night scenes are against the rules here. Shore waves and drifting cloud shadows are built; distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are planned.
+**The video.** 16:9, 1080p at 24 fps, and always daytime: night scenes are against the rules here. Shore waves and drifting cloud shadows are built; distant birds, planes with vapour trails, whale pods, dolphins, sailboats, sandpipers, a gecko and a rain shower are planned.
 
-**The renderer** is a web page with live preview: `python tools/serve.py`, then open http://127.0.0.1:8765/. Plain ES modules, no build step, no npm packages. It exports frame-exact video in the browser (WebCodecs H.264, 68 to 78 frames a second at 1080p30 in Chrome), and the server mixes in the sound and joins the two into a YouTube-ready MP4. `python tools/schedule.py` validates the schedule and simulates a ten-hour run; `python tools/render_demo.py --dev` renders a dev reel of every activity with a heads-up display (the older Python reference renderer). Hard cuts and stepped movement are the defaults, which is also how this header moves.
+**The renderer** is a web page with live preview: `python tools/serve.py`, then open http://127.0.0.1:8765/. Plain ES modules, no build step, no npm packages. It exports frame-exact video in the browser (WebCodecs H.264, 68 to 78 frames a second at 1080p in Chrome, well ahead of real time), and the server mixes in the sound and joins the two into a YouTube-ready MP4. `python tools/schedule.py` validates the schedule and simulates a ten-hour run; `python tools/render_demo.py --dev` renders a dev reel of every activity with a heads-up display (the older Python reference renderer). Hard cuts and stepped movement are the defaults, which is also how this header moves.
 
-**The sound** is all synthesized from code by [tools/make_audio.py](tools/make_audio.py), more than 150 sound files and counting, with no samples, loops or recordings, so no third-party licence applies. The theme is a seamless 60-second loop at 80 BPM in F major (ii-V-I-vi): 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean ambience is a seamless 60-second loop too. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and levels are adjustable in master and per routine. Nobody has listened to any of it yet. It is on the list, just after waiting.
+**The sound** is all synthesized from code by [tools/make_audio.py](tools/make_audio.py), more than 150 sound files and counting, with no samples, stock loops or recordings, so no third-party licence applies. The theme is a seamless 60-second loop at 80 BPM in F major (ii-V-I-vi): 20 bars of exactly 3 seconds, with electric piano, a kalimba lead, soft drums and vinyl crackle. The ocean ambience is a seamless 60-second loop too. The mix sits at -14 LUFS with true peak at or below -1 dBTP, and levels are adjustable in master and per routine. Nobody has listened to any of it yet. It is on the list, just after waiting.
 
 <pre>
  CASTAWAY door ............ Windward Doorworks

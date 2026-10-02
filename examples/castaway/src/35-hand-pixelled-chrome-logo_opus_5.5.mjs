@@ -61,9 +61,9 @@ const BASE = TOP + LH; // first row below the faces
 const DEPTH = 5; // extrusion, pixels down and right
 const SEA_TOP = 75; // the horizon line of the floor
 const SEA_H = 29;
-const TEXT1_Y = 109;
-const TEXT2_Y = 120;
-const STRIP_Y = 132;
+const TEXT1_Y = 108;
+const TEXT2_Y = 118;
+const STRIP_Y = 129; // leaves three clear rows above the frame
 const BEAT = 0.75;
 const BAR = 3;
 const LOOP = 36;
@@ -184,12 +184,12 @@ const FONT = {
   U: '#..#|#..#|#..#|#..#|#..#|#..#|.##.', V: '#...#|#...#|#...#|.#.#.|.#.#.|.#.#.|..#..',
   W: '#...#|#...#|#...#|#.#.#|#.#.#|##.##|#...#', X: '#..#|#..#|.##.|.##.|.##.|#..#|#..#',
   Y: '#...#|#...#|.#.#.|..#..|..#..|..#..|..#..', Z: '####|...#|..#.|.##.|.#..|#...|####',
-  0: '.##.|#..#|#.##|####|##.#|#..#|.##.', 1: '.#.|##.|.#.|.#.|.#.|.#.|###',
+  0: '.##.|#..#|#..#|#.##|##.#|#..#|.##.', 1: '.#.|##.|.#.|.#.|.#.|.#.|###',
   2: '.##.|#..#|...#|..#.|.#..|#...|####', 3: '###.|...#|...#|.##.|...#|...#|###.',
   4: '#..#|#..#|#..#|####|...#|...#|...#', 5: '####|#...|###.|...#|...#|#..#|.##.',
   6: '.##.|#...|###.|#..#|#..#|#..#|.##.', 7: '####|...#|..#.|..#.|.#..|.#..|.#..',
   8: '.##.|#..#|#..#|.##.|#..#|#..#|.##.', 9: '.##.|#..#|#..#|.###|...#|...#|.##.',
-  '.': '.|.|.|.|.|.|#', ',': '.|.|.|.|.|#|#', ':': '.|.|#|.|.|#|.', "'": '#|#|.|.|.|.|.',
+  '.': '.|.|.|.|.|.|#', ',': '..|..|..|..|..|.#|#.', ':': '.|.|#|.|.|#|.', "'": '#|#|.|.|.|.|.',
   '-': '...|...|...|###|...|...|...', '/': '..#|..#|.#.|.#.|.#.|#..|#..',
   '·': '.|.|.|#|.|.|.', '!': '#|#|#|#|#|.|#', '(': '.#|#.|#.|#.|#.|#.|.#', ')': '#.|.#|.#|.#|.#|.#|#.',
   '>': '#..|.#.|..#|..#|..#|.#.|#..', '?': '###.|...#|..#.|.#..|.#..|....|.#..',
@@ -297,36 +297,40 @@ const letters = [];
 }
 const anyFace = (x, y) => letters.some((l) => l.at(x, y));
 
-// The horizon: a row of small waves per letter (hand variation from the
-// seeded generator), a little over halfway down. In the W's left stem the
-// reflected world has an island in it, with one palm, leaning with the italic.
-const HZ = 25; // horizon row (letter rows 0..43); waves lift it by up to 2
+// The horizon: a hard zigzag per letter, a little over halfway down, cut in
+// one-pixel steps like a row of small waves seen side-on. Each letter gets its
+// own phase and pitch from the seeded generator (the hand variation). In the
+// W's left stem the reflected world has an island in it, with one palm,
+// leaning with the italic; the horizon runs flat behind it.
+const HZ = 25; // horizon row (letter rows 0..43); the zigzag lifts it by up to 3
 const ISLAND_LETTER = 5; // the W
-const waves = letters.map(() => ({ ph: Math.floor(rnd() * 8), amp: rnd() < 0.5 ? 1 : 2 }));
-const islandX = (yr = HZ) => Math.floor(letters[ISLAND_LETTER].ox + 5.5 + lean(TOP + yr));
+const waves = letters.map(() => ({ ph: Math.floor(rnd() * 8), per: rnd() < 0.5 ? 6 : 8 }));
+// (the A overlaps the W's first three columns, so the island is centred on
+// what is left of the stem)
+const islandX = (yr = HZ) => Math.floor(letters[ISLAND_LETTER].ox + 7 + lean(TOP + yr));
 function horizonAt(li, x) {
-  const { ph, amp } = waves[li];
-  const t = (x + ph) % 8;
-  return HZ - Math.round((amp * Math.abs(t - 4)) / 4);
+  if (li === ISLAND_LETTER && Math.abs(x - islandX()) <= 6) return HZ;
+  const { ph, per } = waves[li];
+  const t = (x + ph) % per;
+  return HZ - Math.round((3 * Math.abs(t - per / 2)) / (per / 2));
 }
 // The island sits on the horizon in front of the glare: a low dome and one
-// palm, as a silhouette in the ground colour.
+// palm with two drooping fronds, as a silhouette in the darkest ground colour.
 const PALM = [
   '.##.##.',
-  '#.###.#',
+  '#..#..#',
   '...#...',
   '...#...',
-  '....#..',
+  '..#....',
+  '..#....',
+  '.####..',
+  '#######',
 ];
-const DOME = [3, 3, 2, 1];
 function islandAt(li, x, yr) {
   if (li !== ISLAND_LETTER) return false;
-  const d = Math.abs(x - islandX(yr));
-  const top = d < DOME.length ? HZ - DOME[d] : 99;
-  if (yr >= top && yr < HZ) return true;
-  const r = yr - (HZ - 3 - PALM.length);
+  const r = yr - (HZ - PALM.length);
   const c = x - (islandX(yr) - 3);
-  return r >= 0 && r < PALM.length && c >= 0 && c < 7 && PALM[r][c] === '#';
+  return r >= 0 && r < PALM.length && c >= 0 && c < PALM[0].length && PALM[r][c] === '#';
 }
 
 // Face colour for a pixel of letter li, before the bevel.
@@ -334,7 +338,9 @@ function bandAt(li, x, y) {
   const yr = y - TOP;
   const h = horizonAt(li, x);
   if (islandAt(li, x, yr)) return { zone: 'warm', i: 0, island: true };
-  if (yr === h - 1) return { zone: 'glare', i: 7 };
+  // glare: the row above the horizon, joined up across each step
+  const hn = Math.min(h, horizonAt(li, x - 1), horizonAt(li, x + 1));
+  if (yr <= h - 1 && yr >= hn - 1) return { zone: 'glare', i: 7 };
   if (yr < h - 1) {
     // sky: five bands from violet to pale blue, a checkerboard row where
     // the lighter ones meet
@@ -424,10 +430,12 @@ const SEA_BANDS = [['C6', 1], ['S0', 1], ['S1', 2], ['S2', 2], ['S3', 3], ['S4',
     }
   });
 }
-// The reflection: the faces flipped about the waterline, one to three steps
-// darker the further out it is, thinned by a checkerboard at the far edge,
-// and drawn in strips with a one-row gap so the water lines show through.
-// Each strip ripples sideways on the beat.
+// The reflection: the whole logo flipped about the waterline and squashed to
+// fit the sea (44 rows into 28), so the sand sits nearest the logo and the
+// zigzag horizon and the sky lie further out. It gets one to three steps
+// darker with distance, thins to a checkerboard at the far edge, and is drawn
+// in strips with a one-row gap so the water lines show through. Each strip
+// ripples sideways on the beat.
 const DIM = {
   WH: 'C5', C6: 'C4', C5: 'C3', C4: 'C2', C3: 'C2', C2: 'C1', C1: 'C0', C0: 'C0',
   W7: 'W5', W6: 'W4', W5: 'W3', W4: 'W3', W3: 'W2', W2: 'W1', W1: 'W0', W0: 'W0',
@@ -436,16 +444,16 @@ const strips = [];
 for (let r = 0; r < SEA_H - 1; r++) {
   if (r % 3 === 2) continue; // water line
   const y = SEA_TOP + 1 + r;
-  const ys = BASE - 1 - r;
+  const ys = BASE - 1 - Math.floor((r * LH) / (SEA_H - 1));
   const si = Math.floor(r / 3);
   if (!strips[si]) strips[si] = { px: [] };
   for (let x = 0; x < W; x++) {
     if (!faceMask.get(x, ys)) continue;
-    if (r >= 21 && (x + y) % 2 === 0) continue;
+    if (r >= 22 && (x + y) % 2 === 0) continue;
     let k = DIM[art.get(x, ys)];
     if (!k) continue;
     if (r >= 2) k = DIM[k];
-    if (r >= 14) k = DIM[k];
+    if (r >= 19) k = DIM[k];
     strips[si].px.push([x, y, k]);
   }
 }
@@ -519,10 +527,10 @@ const SPARKS = [
 const LINE1 = 'A TEN-HOUR LO-FI ISLAND VIDEO';
 const ROTATE = [
   'SHE IDLES. EVERY SO OFTEN, SOMETHING HAPPENS.',
-  'MORE THAN 90 ACTIVITIES ON FOUR TIMERS',
+  'MORE THAN 90 THINGS CAN HAPPEN. MOSTLY, NOTHING DOES.',
   'EVERY GAG STARTS ON THE NEXT BAR OF THE MUSIC',
   'EVERY SOUND SYNTHESIZED FROM CODE. NO SAMPLES.',
-  'RUN IT: PYTHON TOOLS/SERVE.PY',
+  'RUN IT: PYTHON TOOLS/SERVE.PY, THEN 127.0.0.1:8765',
   'THE SHINE ALSO WAITS FOR THE NEXT BAR.',
 ];
 const text = new Buf(W, H);
@@ -558,9 +566,9 @@ const strip = new Buf(W, H);
     }
   }
   const label = `32 COLOURS, ${usedKeys.length} USED`;
-  drawText(strip, label, x0 + 32 * 4 + 4, STRIP_Y, 'C3', 'C3', null);
+  drawText(strip, label, x0 + 32 * 4 + 4, STRIP_Y, 'C4', 'C4', null);
   const tag = 'LOGO: BRACKISH';
-  drawText(strip, tag, W - 8 - textW(tag), STRIP_Y, 'C3', 'C3', null);
+  drawText(strip, tag, W - 8 - textW(tag), STRIP_Y, 'C4', 'C4', null);
 }
 
 // ---------------------------------------------------------- write banner
@@ -645,7 +653,7 @@ rotBufs.forEach((b, i) => {
 });
 parts.push(`<g>${pathsOf(strip)}</g>`);
 
-const title = 'CASTAWAY: a ten-hour lo-fi island video, as a hand-pixelled chrome logo';
+const title = 'CASTAWAY: a ten-hour lo-fi island video, as a 16-bit chrome logo in the hand-pixelled style';
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W * 3}" height="${H * 3}" role="img" aria-labelledby="t">`
   + `<title id="t">${title}</title>`
   + `<style>${css.join('')}</style>`
@@ -682,8 +690,8 @@ const NOTES = [
   ['SKY: VIOLET TO PALE BLUE', [rightOf(IL, 6) - 4, TOP + 6]],
   ['ONE-PIXEL BLACK OUTLINE', [rightOf(IL, 11) + 1, TOP + 11]],
   ['BANDS MEET: CHECKERBOARD', [rightOf(IL, 14) - 4, TOP + 14]],
-  ['AN ISLAND IN THE CHROME', [islandX(HZ - 5), TOP + HZ - 5]],
   ['HORIZON: GLARE, ZIGZAG', findPx((x, y) => IL.at(x, y) && plateArt.get(x, y) === 'WH' && y - TOP > 20 && x > rightOf(IL, 23) - 8)],
+  ['AN ISLAND IN THE CHROME', [islandX(HZ - 7), TOP + HZ - 7]],
   ['EXTRUDED 5 PX DOWN-RIGHT', [rightOf(IL, 32) + 3, TOP + 32]],
   ['SAND: DARK TO LIGHT', [rightOf(IL, 39) - 6, TOP + 39]],
 ];

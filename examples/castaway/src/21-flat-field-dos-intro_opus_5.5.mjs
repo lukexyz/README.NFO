@@ -52,10 +52,13 @@ const OUT = path.resolve(here, `../assets/${SLUG}.svg`);
 
 // ------------------------------------------------------------------ facts
 // Verified 2026-10-01 against D:/python/castaway (read-only): 93, then 94
-// activities in activities.toml, and growing (so "OVER 90"); tiers every 2-5 min, 12-25 min, 30-60 min,
-// 3-6 h; run 10:00:00 at seed 1992; starts snap to 3 s bars, so a ten-hour
-// run is 12,000 bars. Theme: 60 s seamless loop, 80 BPM, F major. Everything
-// synthesized by tools/make_audio.py; nobody has listened to it yet.
+// activities in activities.toml (81 on the four timers, 13 chained), and
+// growing, so the banner says "OVER 90". Tiers every 2-5 min, 12-25 min,
+// 30-60 min and 3-6 h; run 10:00:00 at seed 1992; starts snap to 3 s bars, so
+// a ten-hour run is 36,000 s / 3 s = 12,000 bars. Theme: 60 s seamless loop,
+// 80 BPM, F major. Everything synthesized by tools/make_audio.py; nobody has
+// listened to it yet. The ship's `prefer_wait` is 0:10:00 ("wait up to this
+// long for her to be busy"), so "she was busy" is the schedule's own joke.
 
 // ------------------------------------------------------------------ canvas
 const W = 320; // lowres pixels, Mode-X width; the SVG scales them up
@@ -557,7 +560,7 @@ const PAGES = [
       '> A SHARK WHO KEEPS THE BEAT',
       '> A CRAB WEARING A COCONUT',
       '> SPARE HEADPHONES, BY DRONE',
-      '> SIGNAL: ONE BAR, UP THE PALM',
+      '> SIGNAL: ONE BAR, PALM TOP',
       '> A SHIP. SHE WAS BUSY.',
     ],
   },

@@ -954,26 +954,33 @@ const dither = (x, y, f) => (bayer4[y & 3][x & 3] + 0.5) / 16 < f;
 const ellD = (x, y, cx, cy, rx, ry) => Math.hypot((x - cx) / rx, (y - cy) / ry);
 
 // ================================================================ the scene
-const ISLAND = { cx: 128, cy: 146, rx: 76, ry: 17 };
-const SHALLOWS = { cx: 128, cy: 147, rx: 96, ry: 25 };
-const HER = { col: 12, row: 17 };               // top-left cell of her 1x3 cells
-const NOTE = { col: 13, row: 17 };              // the FLASHing note
+const ISLAND = { cx: 128, cy: 138, rx: 76, ry: 17 };
+const SHALLOWS = { cx: 128, cy: 139, rx: 96, ry: 25 };
+const HER = { col: 12, row: 16 };               // top-left cell of her 1x3 cells
+const NOTE = { col: 13, row: 16 };              // the FLASHing note
 const SHARK = { x: 20, y: 104 };
-const CRAB = { x: 139, y: 144 };                // exactly one attribute row: row 18
-const BAND_ROW = 22;                            // the bottom two text rows
+const CRAB = { x: 139, y: 136 };                // exactly one attribute row: row 17
+// The text band is the bottom three rows of cells. Its two lines have different
+// INKs, so they may not share a cell row: the second line keeps row 23 to
+// itself and the first sits across rows 21-22, which leaves a few pixel lines
+// of leading between them (the font fills all eight rows of a cell).
+const BAND_ROW = 21;
+const BAND_Y = [173, 184];                      // top pixel line of each line of text
 
-// Her, three cells tall. Each cell gets two colours, so: black hair, outline
+// Her, three cells tall. Each cell gets two colours, so: dark hair, outline
 // and headphones on sand-coloured skin; a coral (bright red) tank top; legs and
 // cream shorts in outline. She is small on purpose.
+// (Hair and headphones share the head cell's one INK, so the hair is drawn
+// dark and the low bun sits at the nape on her left, lower right here.)
 const HER_HEAD = [
   '..####..',
   '.######.',
   '##.##.##',
   '##k..k##',
   '##....##',
-  '.#....#.',
-  '..#..#..',
-  '...##...',
+  '.#....##',
+  '..#..###',
+  '...##.#.',
 ];
 const HER_HEAD_NOD = [                          // one pixel lower: the nod
   '........',
@@ -982,8 +989,8 @@ const HER_HEAD_NOD = [                          // one pixel lower: the nod
   '##.##.##',
   '##k..k##',
   '##....##',
-  '.#....#.',
-  '..####..',
+  '.#....##',
+  '..######',
 ];
 const HER_BODY = [
   '..R..R..',
@@ -1054,7 +1061,7 @@ function paintScene(p, opts = {}) {
   // sparser as they come closer
   for (let y = 88; y < 176; y++) for (let x = 0; x < SW; x++) p.bg(x, y, 'b');
   const shark = (x, y) => (x > SHARK.x - 6 && x < SHARK.x + 24 && y > SHARK.y - 4 && y < SHARK.y + 16)
-    || (x > 220 && y > 140 && y < 162);       // and keep the raft's cells clear
+    || (x > 220 && y > 132 && y < 154);       // and keep the raft's cells clear
   const ws = opts.waveShift ? 1 : 0;
   for (let x = 0; x < SW; x++) if ((x + ws * 3) % 7 < 4) p.fg(x, 89, 'c');
   for (let y = 92; y < 176; y += 3 + Math.floor((y - 89) / 20)) {
@@ -1086,10 +1093,10 @@ function paintScene(p, opts = {}) {
       if (d <= r && ((x * 7 + y * 3) % 5 !== 0 || d < r - 1.5)) p.fg(x, y, 'G');
     }
   };
-  bush(70, 141, 3); bush(80, 137, 2); bush(150, 135, 3); bush(162, 138, 2); bush(197, 144, 2);
+  bush(70, 133, 3); bush(80, 129, 2); bush(150, 127, 3); bush(162, 130, 2); bush(197, 136, 2);
 
   // ---- the palm: tall, slender, slightly curved, with ring marks on the bark
-  const P0 = [178, 151], P1 = [164, 108], P2 = [190, 66];
+  const P0 = [178, 143], P1 = [164, 104], P2 = [190, 66];
   for (let s = 0; s <= 1; s += 0.002) {
     const x = (1 - s) ** 2 * P0[0] + 2 * (1 - s) * s * P1[0] + s * s * P2[0];
     const y = Math.round((1 - s) ** 2 * P0[1] + 2 * (1 - s) * s * P1[1] + s * s * P2[1]);
@@ -1153,7 +1160,7 @@ function paintScene(p, opts = {}) {
   ], { k: 'k' });
 
   // ---- the raft, just off the island: four logs and two lashings
-  p.sprite(227, 149, [
+  p.sprite(227, 141, [
     '.yyyyyyyyyyyyyyyyyyyyyy.',
     'yyyy.yyyyyyyyyyyyy.yyyyy',
     '........................',
@@ -1169,7 +1176,7 @@ function paintScene(p, opts = {}) {
   for (let i = -3; i < 20; i++) if ((i + ws) % 3) p.fg(SHARK.x + i, SHARK.y + 11, 'w');
 
   // ---- a bottle, on its way back again
-  p.sprite(54, 165, ['.gggggg....', 'gggggggggg.', '.gggggg....'], { g: 'g' });
+  p.sprite(54, 157, ['.gggggg....', 'gggggggggg.', '.gggggg....'], { g: 'g' });
 
   // ---- the logo, a tagline, and the black band of text at the bottom
   const logoCols = ['W', 'Y', 'Y', 'R'];
@@ -1186,9 +1193,9 @@ function paintScene(p, opts = {}) {
   const tag = 'a ten-hour lo-fi island video';
   p.text(tag, Math.round((SW - tag.length * 8) / 2), 48, 'W');
 
-  p.rect(0, BAND_ROW * 8, SW, 16, 'B');
+  p.rect(0, BAND_ROW * 8, SW, SH - BAND_ROW * 8, 'B');
   const msg = opts.message || MESSAGES[0];
-  msg.forEach((ln, k) => p.text(ln.s, Math.round((SW - ln.s.length * 8) / 2), (BAND_ROW + k) * 8, ln.c));
+  msg.forEach((ln, k) => p.text(ln.s, Math.round((SW - ln.s.length * 8) / 2), BAND_Y[k], ln.c));
 }
 
 // The bottom two lines: MESSAGES[0] is in the loaded picture (and is what the
@@ -1196,7 +1203,7 @@ function paintScene(p, opts = {}) {
 const MESSAGES = [
   [{ s: 'she idles. every so often', c: 'Y' }, { s: 'something happens.', c: 'C' }],
   [{ s: 'LOADED. now we wait.', c: 'W' }, { s: 'that is most of the plot.', c: 'C' }],
-  [{ s: '90+ things on four timers:', c: 'Y' }, { s: '2-5m 12-25m 30-60m 3-6h', c: 'G' }],
+  [{ s: '90+ activities. four timers:', c: 'Y' }, { s: '2-5m 12-25m 30-60m 3-6h', c: 'G' }],
   [{ s: 'every sound is made by code.', c: 'M' }, { s: 'no samples. no recordings.', c: 'C' }],
 ];
 const MSG_SLOTS = [null, [15, 18], [18, 21], [21, 24]];
@@ -1307,27 +1314,38 @@ const dataStripes = [];
   }
 }
 const DATA_P = dataStripes.reduce((a, s0) => a + s0.h, 0);
-const dataTurns = Math.max(1, Math.round(T * 18 / DATA_P));       // about 18 px a second
-const dataDur = T / dataTurns;
-const pilotDur = 0.8;                                             // 25 px a second
+// Both roll in whole pixels and slowly, for photosensitivity: a run of 0 bits
+// is a stack of 4-pixel stripes, so at 15 px a second one point of the border
+// changes colour at most about 4 times a second (2 flashes, under the limit of
+// 3), and the pilot's 10-pixel bands at 25 px a second change 2.5 times.
+const DATA_ROLL = 360;                                            // px per 24-s loop: 15 px a second
+const pilotDur = 0.8;                                             // 20 px in 0.8 s: 25 px a second
 
 const HOLD_BORDER = '#0000d8';                  // once loaded, the border matches the sea
 timeline('bd', [[0, `fill:${HOLD_BORDER}`], [t.cls, 'fill:#d8d8d8'], [t.done, `fill:${HOLD_BORDER}`]]);
 timeline('pv', [[0, 'opacity:0'], [t.pilot1, 'opacity:1'], [t.head, 'opacity:0'], [t.pilot2, 'opacity:1'], [t.data, 'opacity:0']]);
 timeline('dv', [[0, 'opacity:0'], [t.head, 'opacity:1'], [t.gap, 'opacity:0'], [t.data, 'opacity:1'], [t.done, 'opacity:0']]);
-css.push(`@keyframes ps{from{transform:translateY(-${PILOT_P}px)}to{transform:translateY(0)}}.ps{animation:ps ${pilotDur}s linear infinite}`);
-css.push(`@keyframes ds{from{transform:translateY(-${DATA_P}px)}to{transform:translateY(0)}}.ds{animation:ds ${num(dataDur)}s linear infinite}`);
+css.push(`@keyframes ps{from{transform:translateY(-${PILOT_P}px)}to{transform:translateY(0)}}.ps{animation:ps ${pilotDur}s steps(${PILOT_P},end) infinite}`);
+css.push(`@keyframes ds{from{transform:translateY(-${DATA_ROLL}px)}to{transform:translateY(0)}}.ds{animation:ds ${T}s steps(${DATA_ROLL},end) infinite}`);
 
 // ================================================================ the picture
-// One path per pixel line of the bitmap. Line y belongs to loading step
-// n = third * 8 + (pixel line within its character row): 24 steps in memory
-// order, so all eight rows of a third get their line 0, then their line 1...
+// One path per pixel line of the bitmap, arriving in memory order: line y is
+// in step n = third * 8 + (pixel line within its character row), 24 steps,
+// and inside a step the eight character rows of that third take their turn,
+// top to bottom, so each step is a quick sweep down the third (the venetian
+// blind, drawn one pixel line at a time as the bytes come in).
+const lineTime = (y) => layerTime((y >> 6) * 8 + (y & 7)) + ((y >> 3) & 7) * (t.step / 8);
 const bitLines = [];
 for (let y = 0; y < SH; y++) {
   const d = linePath([y], base.bmp);
-  if (d) bitLines.push({ y, n: (y >> 6) * 8 + (y & 7), d });
+  if (d) bitLines.push({ y, d });
 }
-for (let n = 0; n < 24; n++) timeline(`m${n}`, [[0, 'opacity:0'], [t.cls, 'opacity:0'], [layerTime(n), 'opacity:1']]);
+// Every line shares one keyframe: on for 10 s from its own start time (set
+// by animation-delay), off for the other 14. A line only matters while its
+// row is under a white cover (3 s until the colour reaches it, by 14.2 s), and
+// every start time lies between 7 and 13 s, so on-for-10 covers every case.
+css.push(`@keyframes m{0%{opacity:1}${pc(10)}{opacity:0}100%{opacity:0}}.m{opacity:0;animation:m ${T}s steps(1,end) infinite}`);
+for (const l of bitLines) css.push(`.l${l.y}{animation-delay:${num(lineTime(l.y))}s}`);
 // PAPER cells, then INK cells shown through the bitmap
 const paperHex = (r, c) => hex(base.attr[r][c].paper, base.attr[r][c].bright);
 const inkHex = (r, c) => hex(base.attr[r][c].ink, base.attr[r][c].bright);
@@ -1391,11 +1409,11 @@ css.push('@media (prefers-reduced-motion:reduce){*{animation:none!important}}');
 const escXml = (s0) => s0.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const title = 'CASTAWAY: an 8-bit tape loading screen for a ten-hour lo-fi island video';
 const desc = 'A small TV showing an 8-bit home computer with a blue border. It holds a finished loading screen: CASTAWAY in chunky white, yellow and red letters on a blue sky, '
-  + 'the line a ten-hour lo-fi island video, clouds and two gulls, a tall palm on a small sandy island, a young woman in headphones and a coral top nodding beside a flashing music note, '
+  + 'the line a ten-hour lo-fi island video, clouds and two gulls, a tall palm on a small sandy island, a young woman with her dark hair in a low bun, headphones and a coral top, nodding beside a flashing music note, '
   + 'a coconut on hermit-crab legs that scuttles off and back, a raft, a bottle, and a shark fin wearing headphones, nodding too. Then the screen clears to white, LOAD "" appears, '
   + 'the border fills with rolling red and cyan bands, then thin blue and yellow stripes, Program: CASTAWAY is printed, and the picture loads again in black and white '
   + 'in the machine\'s interleaved order before the colour sweeps down it row by row. Once loaded, the bottom lines take turns: she idles, every so often something happens; '
-  + 'loaded, now we wait, that is most of the plot; 90+ things on four timers; every sound is made by code, no samples, no recordings.';
+  + 'loaded, now we wait, that is most of the plot; 90+ activities, four timers; every sound is made by code, no samples, no recordings.';
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VW} ${VH}" width="${VW * 2}" height="${VH * 2}" shape-rendering="crispEdges" role="img" aria-labelledby="ttl dsc">
 <title id="ttl">${escXml(title)}</title>
@@ -1427,7 +1445,7 @@ ${paperLayer}
 ${inkLayer}
 </g>
 ${Array.from({ length: 24 }, (_, r) => `<g class="v${r}"><rect y="${r * 8}" width="${SW}" height="8" fill="#d8d8d8"/><g fill="none" stroke="#000">`
-  + bitLines.filter((l) => l.y >> 3 === r).map((l) => `<use href="#q${l.y}" class="m${l.n}"/>`).join('')
+  + bitLines.filter((l) => l.y >> 3 === r).map((l) => `<use href="#q${l.y}" class="m l${l.y}"/>`).join('')
   + (r === 0 ? progLines : '') + (r === 23 ? loadLine : '') + '</g></g>').join('\n')}
 <g class="hd">
 ${holdParts.join('\n')}
@@ -1439,4 +1457,4 @@ ${holdParts.join('\n')}
 </svg>
 `;
 fs.writeFileSync(OUT, svg);
-console.log(`wrote ${path.relative(process.cwd(), OUT)}: ${(svg.length / 1024).toFixed(1)} KB; data stripes ${DATA_P} px, ${num(dataDur)} s a turn`);
+console.log(`wrote ${path.relative(process.cwd(), OUT)}: ${(svg.length / 1024).toFixed(1)} KB; data stripes ${DATA_P} px, rolling ${DATA_ROLL / T} px a second`);

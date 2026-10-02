@@ -486,6 +486,7 @@ const ALERT_AT = TL.alert, ALERT_END = TL.reboot;
 const WIN_AT = TL.win;
 
 // ---------------------------------------------------------------------------- the card
+const CARD_DX = -28;
 function buildCard() {
   const bg = `<rect width="${SW}" height="${SH * 2}" fill="${COL.w}"/>`;
 
@@ -527,6 +528,10 @@ function buildCard() {
   // disk's front edge, with a crease at the last joint
   fingers.forEach((fg, i) => fill(hand, fg, 'w', 'k', HBB, (x) => x < [262, 270, 270, 264][i]));
   for (const [x, y, r] of [[234, 149, 8], [224, 171, 8.6], [228, 195, 8.2], [238, 218, 7.4]]) line(hand, x, y - r + 4, x - 1, y + r - 4, 'k');
+  // fingernails: we see the back of the hand, so each fingertip shows its nail
+  for (const [x, y, rx, ry] of [[216, 149, 5, 4.2], [205, 171, 5.4, 4.6], [209, 194, 5.2, 4.4], [221, 216, 4.6, 4]]) {
+    fill(hand, inEll(x + 2, y, rx, ry), 'w', 'k', [x - 6, y - 8, x + 10, y + 8]);
+  }
   // the edge of the thumb, round the back, and a crease where the wrist bends
   line(hand, 304, 138, 314, 160, 'k');
   line(hand, 310, 250, 298, 262, 'k');
@@ -545,17 +550,23 @@ function buildCard() {
   text(words, 'Insert disk. Then wait.', tx, 120, 'P');
   text(words, 'python tools/serve.py', tx, 134, 'k');
   text(words, '127.0.0.1:8765', tx, 144, 'k');
-  text(words, 'Sandstart 1.0', SW - 12 - textW('Sandstart 1.0'), SH - 13, 'p');   // the boot ROM's version, small
+  const ver = new Cv();
+  text(ver, 'Sandstart 1.0', SW - 12 - textW('Sandstart 1.0'), SH - 13, 'p');   // the boot ROM's version, small
 
   // the hand bobs the disk on every beat while it waits, then pushes it up and out of the
   // top of the screen: inserted
   const I = TL.insert;
   const lift = [[0, 0, 0], [I, 0, -16], [I + 0.25, 0, -60], [I + 0.5, 0, -400], [TL.card, 0, 0]];
   for (const t of [...beats(0, I), ...beats(TL.card, T)]) lift.push([t, 0, 2], [t + 0.25, 0, 0]);
+  // the disk, hand and name sit CARD_DX pixels left of where they were drawn, so the margins
+  // either side of the group match (about 30 pixels each)
   return (
     bg +
+    `<g transform="translate(${CARD_DX} 0)">` +
     g(move(lift), disk.svg() + hand.svg()) +
-    words.svg()
+    words.svg() +
+    '</g>' +
+    ver.svg()
   );
 }
 
@@ -632,7 +643,7 @@ function buildBench() {
     [[TL.bench, TL.win], 'Shorebench 1.0.   36000 free seconds.'],
     [[TL.win, TL.bottle], 'Theme: 80 BPM in F major. Every sound made from code.'],
     [[TL.bottle, TL.bottle + 3], 'Post: one bottle, thrown out to sea.'],
-    [[TL.bottle + 3, TL.shark], 'Post: returned to sender. A reply comes later.'],
+    [[TL.bottle + 3, TL.shark], 'Post: delivered, to her. A reply will follow.'],
     [[TL.shark, TL.drone], 'Visitor: one shark, in headphones, nodding along.'],
     [[TL.drone, TL.coconut], 'Drone: one parcel. Contents: more headphones.'],
     [[TL.coconut, TL.alert], 'Coconut: landed on a crab. The crab kept it.'],
@@ -645,8 +656,10 @@ function buildBench() {
   const icons = new Cv();
   iconRaft(icons, ix - 2, 128);
   text(icons, 'Raft Disk', ix + 20 - textW('Raft Disk') / 2, 86, 'W');
-  iconTide(icons, ix, 318);
-  text(icons, 'Tide', ix + 22 - textW('Tide') / 2, 183, 'W');
+  // the bin sits straight under Raft Disk, high enough to stay whole when the alert pushes
+  // the screen down
+  iconTide(icons, ix, 232);
+  text(icons, 'Tide', ix + 22 - textW('Tide') / 2, 140, 'W');
   const iconOn = vis([[TL.icons, TL.reboot]]);
   const diskIcon = new Cv(); iconDisk(diskIcon, ix, 30, false);
   const diskSel = new Cv(); iconDisk(diskSel, ix, 30, true);
@@ -666,10 +679,11 @@ function buildBench() {
   // ---- the window
   out += g(vis([[WIN_AT, TL.reboot]]), buildWindow());
 
-  // ---- the pointer: in from the middle, double-click on the disk, then off to rest
+  // ---- the pointer: in from the middle, double-click on the disk, then off to rest in the
+  // gap between the window and the bin
   const pt = new Cv(); pointer(pt, 300, 110);
   const P0 = TL.icons;
-  out += g(vis([[P0, TL.reboot]]), g(move([[0, 0, 0], [P0 + 0.25, 120, -80], [P0 + 0.5, 210, -150], [P0 + 0.75, 282, -186], [WIN_AT + 0.25, 262, 30], [WIN_AT + 0.5, 256, 64]]), pt.svg()));
+  out += g(vis([[P0, TL.reboot]]), g(move([[0, 0, 0], [P0 + 0.25, 120, -80], [P0 + 0.5, 210, -150], [P0 + 0.75, 282, -186], [WIN_AT + 0.25, 250, 0], [WIN_AT + 0.5, 236, 16]]), pt.svg()));
   return out;
 }
 
@@ -746,11 +760,18 @@ function buildWindow() {
   out += g(vis([[0, WIN_AT], ...beatsOn(WIN_AT, ALERT_AT, 0), [ALERT_AT, T]]), waveA.svg());
   out += g(vis(beatsOn(WIN_AT, ALERT_AT, 1)), waveB.svg());
 
+  // The island and everything on it (and the raft beside it) sit LIFT units higher than drawn,
+  // so that when the alert pushes the screen down the island and raft stay whole above the
+  // bezel and only open sea and the window's lower edge go under it. Whole lines only.
+  const LIFT = 24;
+  const up = (s) => `<g transform="translate(0 -${LIFT})">${s}</g>`;
+  let isle = '';
+
   // the raft, bobbing a line every other beat
   const raft = new Cv();
   for (let i = 0; i < 3; i++) fill(raft, sc(inCap(372, 260 + i * 7, 430, 258 + i * 7, 4.2)), 'O', 'K', BB(360, 250, 440, 284));
   sline(raft, 384, 252, 384, 280, 'K'); sline(raft, 418, 250, 418, 278, 'K');
-  out += g(move([[0, 0, 0], ...beatsOn(WIN_AT, ALERT_AT, 1).map(([t]) => [t, 0, 2]), ...beatsOn(WIN_AT, ALERT_AT, 0).map(([t]) => [t, 0, 0])]), raft.svg());
+  isle += g(move([[0, 0, 0], ...beatsOn(WIN_AT, ALERT_AT, 1).map(([t]) => [t, 0, 2]), ...beatsOn(WIN_AT, ALERT_AT, 0).map(([t]) => [t, 0, 0])]), raft.svg());
 
   // the island: a low mound of sand with an outline, stippled, and white foam where it meets the sea
   const isl = new Cv();
@@ -761,7 +782,7 @@ function buildWindow() {
     if ((x * 7 + ly * 13) % 29 || !mound(X, Y) || !mound(X - 4, Y) || !mound(X + 4, Y) || !mound(X, Y - 4) || !mound(X, Y + 4)) continue;
     isl.set(x, ly, 'K');
   }
-  out += isl.svg();
+  isle += isl.svg();
   const foamA = new Cv(), foamB = new Cv();
   for (let x = 70; x < 360; x += 2) {
     const yb = 280;
@@ -770,12 +791,14 @@ function buildWindow() {
     (Math.floor(x / 8) % 2 ? foamA : foamB).set(SX + x, (SY + yb) / 2 + 1, 'W');
     (Math.floor(x / 8) % 2 ? foamB : foamA).set(SX + x + 1, (SY + yb) / 2 + 2, 'W');
   }
-  out += g(vis([[0, WIN_AT], ...beatsOn(WIN_AT, ALERT_AT, 0), [ALERT_AT, T]]), foamA.svg());
-  out += g(vis(beatsOn(WIN_AT, ALERT_AT, 1)), foamB.svg());
+  isle += g(vis([[0, WIN_AT], ...beatsOn(WIN_AT, ALERT_AT, 0), [ALERT_AT, T]]), foamA.svg());
+  isle += g(vis(beatsOn(WIN_AT, ALERT_AT, 1)), foamB.svg());
+  out += up(isle); isle = '';
 
-  // the palm: a curved trunk of capsules with ring marks, black fronds, three coconuts
+  // the palm: a curved trunk of capsules with ring marks, black fronds, three coconuts. The
+  // crown stays where it is; the trunk's foot moves up with the island.
   const palm = new Cv();
-  const trunkPts = quad([150, 262], [176, 150], [126, 54], 14);
+  const trunkPts = quad([150, 262 - LIFT], [176, 150 - LIFT / 2], [126, 54], 14);
   const trunk = any(...trunkPts.slice(1).map((p, i) => { const a = trunkPts[i]; const r = 7.5 - i * 0.22; return sc(inCap(a[0], a[1], p[0], p[1], r)); }));
   fill(palm, trunk, 'O', 'K', BB(100, 40, 200, 270));
   for (let i = 1; i < trunkPts.length - 1; i++) {
@@ -826,15 +849,15 @@ function buildWindow() {
   sline(her, ...P(10, -10), ...P(12, -3), 'K');
   // coral tank top, leaning back a touch
   fill(her, polyL([[-13, -44], [3, -44], [8, -16], [-11, -16]]), 'O', 'K', HB);
-  out += her.svg();
+  isle += her.svg();
   // arms: resting back on the sand, or up for the throw
   const armRest = new Cv();
   fill(armRest, any(capL(-7, -40, -18, -20, 3.2), capL(-18, -20, -22, -2, 3)), 'W', 'K', HB);
   const armUp = new Cv();
   fill(armUp, any(capL(-2, -42, 10, -56, 3.2), capL(10, -56, 15, -74, 3)), 'W', 'K', HB);
   const B0 = TL.bottle, THROW = [B0, B0 + 0.75];
-  out += g(vis([[0, THROW[0]], [THROW[1], T]]), armRest.svg());
-  out += g(vis([THROW]), armUp.svg());
+  isle += g(vis([[0, THROW[0]], [THROW[1], T]]), armRest.svg());
+  isle += g(vis([THROW]), armUp.svg());
   // head: hair in a low bun, cream headphones, a face turned to the sea; nods on every beat
   const head = new Cv();
   const HX = -4, HY = -57;
@@ -852,7 +875,7 @@ function buildWindow() {
   head.set(Math.round(SX + herX + (HX + 6) * S), Math.floor((SY + herY + (HY - 1) * S) / 2), 'K');  // eye
   const nodDown = [];
   for (const t of beats(WIN_AT, ALERT_AT)) nodDown.push([t, 0, 2], [t + 0.25, 0, 0]);
-  out += g(move([[0, 0, 0], ...nodDown]), head.svg());
+  isle += g(move([[0, 0, 0], ...nodDown]), head.svg());
 
   // ---- gag 1: the bottle she throws, which washes straight back
   const bottle = new Cv();
@@ -863,10 +886,11 @@ function buildWindow() {
     [0, -600, 0], [B0, -54, -40], [B0 + 0.25, 4, -90], [B0 + 0.5, 64, -70], [B0 + 0.75, 104, 24], [B0 + 1.5, 98, 26],
     [B0 + 2.25, 84, 28], [B0 + 3, 70, 32], [B0 + 3.75, 52, 40], [B0 + 4.5, 36, 50], [B0 + 5.25, 30, 52], [TL.shark, -600, 0],
   ];
-  out += g(move(bpath), bottle.svg());
+  isle += g(move(bpath), bottle.svg());
   const splash = new Cv();
   for (const [x, y] of [[398, 214], [404, 208], [410, 214], [392, 220], [416, 220], [404, 222]]) splash.set(SX + x, (SY + y) / 2, 'W');
-  out += g(vis([[B0 + 0.75, B0 + 1.5]]), splash.svg());
+  isle += g(vis([[B0 + 0.75, B0 + 1.5]]), splash.svg());
+  out += up(isle); isle = '';
 
   // ---- gag 2: a shark in headphones, nodding along with her
   const shark = new Cv();
@@ -879,6 +903,7 @@ function buildWindow() {
   fill(shark, sc(ring), 'W', 'K', FB);
   fill(shark, sc(inRect(...F(-18, -26), ...F(-10, -10))), 'W', 'K', FB);
   fill(shark, sc(inRect(...F(12, -26), ...F(20, -10))), 'W', 'K', FB);
+  // the shark stays where it was: out at sea, so it does not move with the island
   const sharkWater = new Cv();
   sharkWater.rect(SX + fx - 36, Math.floor((SY + fy) / 2), SX + fx + 38, Math.floor((SY + fy) / 2) + 1, 'W');
   DEFS.push(`<clipPath id="finclip"><rect x="0" y="0" width="${SW}" height="${SY + fy}"/></clipPath>`);
@@ -910,8 +935,8 @@ function buildWindow() {
   for (let t = D0; t < TL.coconut; t += 0.25) PROPS.push([t, t + 0.125]);
   const dropY = 180;                 // drone offset when the parcel touches the sand
   const dPath = [[0, 0, -140], [D0, 0, -60], [D0 + 0.75, 0, 20], [D0 + 1.5, 0, 80], [D0 + 2.25, 0, 140], [D0 + 3, 0, dropY], [D0 + 3.75, 0, 110], [D0 + 4.5, 0, 30], [D0 + 5.25, 0, -60], [TL.coconut, 0, -140]];
-  out += g(vis([[D0, TL.coconut]]), g(move(dPath), drone.svg() + g(vis(PROPS), propA.svg()) + g(vis(PROPS.map(([a, b]) => [b, b + 0.125])), propB.svg()) + g(vis([[D0, D0 + 3.75]]), tether.svg())));
-  out += g(vis([[D0, D0 + 3.75]]), g(move(dPath), parcel.svg()));
+  isle += g(vis([[D0, TL.coconut]]), g(move(dPath), drone.svg() + g(vis(PROPS), propA.svg()) + g(vis(PROPS.map(([a, b]) => [b, b + 0.125])), propB.svg()) + g(vis([[D0, D0 + 3.75]]), tether.svg())));
+  isle += g(vis([[D0, D0 + 3.75]]), g(move(dPath), parcel.svg()));
   // parcel on the sand, opened, and a pair of headphones popping out
   const opened = new Cv();
   const oy = dy + dropY;
@@ -923,26 +948,52 @@ function buildWindow() {
   fill(phones, sc(both(both(inEll(px0, py0, 12, 12), not(inEll(px0, py0, 9, 9))), (x, y) => y < py0 + 2)), 'W', 'K', BB(px0 - 13, py0 - 13, px0 + 13, py0 + 3));
   fill(phones, sc(inRect(px0 - 15, py0 - 2, px0 - 7, py0 + 12)), 'W', 'K', BB(px0 - 16, py0 - 3, px0 - 6, py0 + 13));
   fill(phones, sc(inRect(px0 + 7, py0 - 2, px0 + 15, py0 + 12)), 'W', 'K', BB(px0 + 6, py0 - 3, px0 + 16, py0 + 13));
-  out += g(vis([[D0 + 3.75, ALERT_END]]), opened.svg());
-  out += g(vis([[D0 + 4.5, ALERT_END]]), g(move([[0, 0, 0], [D0 + 4.5, 0, 8], [D0 + 4.75, 0, 0]]), phones.svg()));
+  isle += g(vis([[D0 + 3.75, ALERT_END]]), opened.svg());
+  isle += g(vis([[D0 + 4.5, ALERT_END]]), g(move([[0, 0, 0], [D0 + 4.5, 0, 8], [D0 + 4.75, 0, 0]]), phones.svg()));
 
-  // ---- gag 4: a coconut falls on a hermit crab, and walks off with it
-  const crab = new Cv();
-  const cxb = 110, cyb = 262;
-  fill(crab, sc(inEll(cxb, cyb - 5, 8, 6)), 'O', 'K', BB(cxb - 9, cyb - 12, cxb + 9, cyb + 2));
-  for (const [a, b] of [[-7, -12], [7, 12]]) sline(crab, cxb + a, cyb - 2, cxb + b, cyb + 2, 'K');
-  for (const s of [-1, 1]) { sline(crab, cxb + s * 4, cyb - 10, cxb + s * 5, cyb - 15, 'K'); crab.set(SX + cxb + s * 5, (SY + cyb - 16) / 2, 'K'); }
+  // ---- gag 4: a coconut falls on a hermit crab, and the crab walks off wearing it
+  // The crab: an orange shell, two claws, eyes on stalks. The coconut lands on top and from
+  // then on the crab shows only below and in front of it: the bottom of the shell, the claws
+  // either side, the eyes poking out ahead, and the legs, all walking left a step a beat.
+  const cxb = 122, cyb = 262;                       // where the crab stands on the sand
+  const nutC = [cxb, cyb - 16, 12, 11];             // the coconut once it has landed
+  const crabBody = sc(inEll(cxb, cyb - 6, 10, 7));
+  const CBB = BB(cxb - 24, cyb - 30, cxb + 22, cyb + 4);
+  const claws = (cv) => { for (const s of [-1, 1]) fill(cv, sc(inEll(cxb + s * 13, cyb - 9, 3.6, 3.2)), 'O', 'K', CBB); };
+  const crab = new Cv();                            // before: sitting, eyes up
+  fill(crab, crabBody, 'O', 'K', CBB);
+  claws(crab);
+  for (const s of [-1, 1]) {
+    sline(crab, cxb + s * 3, cyb - 12, cxb + s * 4, cyb - 19, 'K');
+    fill(crab, sc(inEll(cxb + s * 4, cyb - 20, 2, 2.4)), 'W', 'K', CBB);
+    sline(crab, cxb + s * 7, cyb - 2, cxb + s * 12, cyb + 3, 'K');
+  }
+  const shell = new Cv();                           // after: the shell under the coconut
+  fill(shell, crabBody, 'O', 'K', CBB);
   const nut = new Cv();
-  fill(nut, sc(inEll(cxb, cyb - 11, 9, 9)), 'K', null, BB(cxb - 10, cyb - 21, cxb + 10, cyb - 1));
-  nut.set(SX + cxb - 4, (SY + cyb - 16) / 2, 'O'); nut.set(SX + cxb - 3, (SY + cyb - 16) / 2, 'O');
+  fill(nut, sc(inEll(...nutC)), 'K', null, CBB);
+  fill(nut, sc(inEll(cxb - 5, cyb - 21, 2.2, 2.2)), 'O', null, CBB);
+  const kit = new Cv();                             // claws and eyes, drawn over the coconut's edge
+  claws(kit);
+  sline(kit, cxb - 8, cyb - 8, cxb - 16, cyb - 14, 'K'); sline(kit, cxb - 6, cyb - 10, cxb - 12, cyb - 24, 'K');
+  fill(kit, sc(inEll(cxb - 17, cyb - 15, 2, 2.4)), 'W', 'K', CBB);
+  fill(kit, sc(inEll(cxb - 13, cyb - 25, 2, 2.4)), 'W', 'K', CBB);
+  // legs in near-black (orange would vanish into the sand), two frames
   const legsA = new Cv(), legsB = new Cv();
-  for (const s of [-1, 1]) { sline(legsA, cxb + s * 6, cyb - 4, cxb + s * 11, cyb + 1, 'O'); sline(legsB, cxb + s * 4, cyb - 4, cxb + s * 6, cyb + 1, 'O'); }
+  for (const s of [-1, 1]) {
+    sline(legsA, cxb + s * 6, cyb - 3, cxb + s * 12, cyb + 3, 'K'); sline(legsA, cxb + s * 2, cyb - 2, cxb + s * 5, cyb + 3, 'K');
+    sline(legsB, cxb + s * 5, cyb - 3, cxb + s * 8, cyb + 3, 'K'); sline(legsB, cxb + s * 1, cyb - 2, cxb + s * 1, cyb + 3, 'K');
+  }
   const C0 = TL.coconut;
   const walk = [[0, 0, 0], [C0 + 1.5, -6, 0], [C0 + 2.25, -12, 0], [C0 + 3, -18, 0]];
-  out += g(vis([[C0, C0 + 0.75]]), crab.svg());
-  out += g(vis([[C0, ALERT_END]]), g(move([[0, 0, -170], [C0, 0, -170], [C0 + 0.25, 0, -110], [C0 + 0.5, 0, -50], [C0 + 0.75, 0, 0], ...walk.slice(1)]), nut.svg()));
-  out += g(vis([[C0 + 0.75, C0 + 1.5], [C0 + 2.25, ALERT_END]]), g(move(walk), legsA.svg()));
-  out += g(vis([[C0 + 1.5, C0 + 2.25]]), g(move(walk), legsB.svg()));
+  const LAND = C0 + 0.75;
+  isle += g(vis([[C0, LAND]]), crab.svg());
+  isle += g(vis([[LAND, ALERT_END]]), g(move(walk), shell.svg()));
+  isle += g(vis([[C0, ALERT_END]]), g(move([[0, 0, LIFT - 170], [C0, 0, LIFT - 170], [C0 + 0.25, 0, -94], [C0 + 0.5, 0, -42], [LAND, 0, 0], ...walk.slice(1)]), nut.svg()));
+  isle += g(vis([[LAND, ALERT_END]]), g(move(walk), kit.svg()));
+  isle += g(vis([[LAND, C0 + 1.5], [C0 + 2.25, ALERT_END]]), g(move(walk), legsA.svg()));
+  isle += g(vis([[C0 + 1.5, C0 + 2.25]]), g(move(walk), legsB.svg()));
+  out += up(isle);
   return frameSvg + `<g clip-path="url(#win)">${out}</g>`;
 }
 

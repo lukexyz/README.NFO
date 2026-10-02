@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/97-classic-saver-set_opus_5.5.svg" width="100%" alt="CASTAWAY in big sun-yellow serif capitals with jagged, unsmoothed edges, on the black screen of an old screen saver. Behind the name, two thin-line quadrilaterals bounce off the edges of the screen, each trailing a ribbon of colour-shifting copies. Every so often, always on the bar line, the two polygons snap into a picture for a bar or two, with a caption beside it: a ship (she was busy), a message in a bottle (it washes straight back), a sandcastle that the tide flattens, a shark fin nodding on the beat (a shark in headphones), and an iced coffee with a straw (she could leave any time, she came back with an iced coffee). Then they fly apart again as if nothing happened. Under the name: a ten-hour lo-fi island video in which almost nothing happens, on purpose. Along the bottom a cyan marquee scrolls the pitch: she idles, nodding to the music on her headphones; every 2 to 5 minutes something happens, always on the next bar; more than 90 activities on four timers; every sound is synthesized from code; python tools/serve.py, then open http://127.0.0.1:8765/; always daytime.">
+  <img src="assets/97-classic-saver-set_opus_5.5.svg" width="100%" alt="CASTAWAY in big sun-yellow serif capitals with jagged, unsmoothed edges, on the black screen of an old screen saver. Behind the name, two thin-line quadrilaterals bounce off the edges of the screen, each trailing a ribbon of colour-shifting copies. Every so often, always on the bar line, the two polygons snap into a picture for a bar or two, with a caption beside it: a ship (she was busy), a message in a bottle (it washes straight back), a sandcastle that the tide flattens, a shark fin nodding on the beat (a shark in headphones), and an iced coffee with a straw (she could leave any time, she came back with an iced coffee). Then they fly apart again as if nothing happened. Under the name: a ten-hour lo-fi island video in which almost nothing happens, on purpose. Along the bottom a cyan marquee scrolls the pitch: she idles, nodding to the music on her headphones; every 2 to 5 minutes something happens, always on the next bar; more than 90 activities, most of them on four timers; every sound is synthesized from code; python tools/serve.py, then open http://127.0.0.1:8765/; always daytime.">
 </p>
 
 <h1 align="center">Castaway</h1>
@@ -11,7 +11,7 @@
 
 Screen savers were invented so that a picture left on all day would not burn itself into the screen. Castaway is a picture you leave on all day: one tiny island, one tall palm, a raft, and a young woman nodding to the music on her headphones. So, to be on the safe side, every few minutes something happens. A message in a bottle washes straight back. A drone delivers a parcel, and the parcel is another pair of headphones. A shark in headphones nods along to the beat. She walks out over the water and comes back with an iced coffee. She could leave any time.
 
-**The schedule:** more than 90 activities in [`activities.toml`](activities.toml), on four timers, from regular (every 2 to 5 minutes) to super rare (every 3 to 6 hours, three at most). Every one waits for the next bar of the music, so the gags land on the beat.<br>
+**The schedule:** more than 90 activities in [`activities.toml`](activities.toml). Most sit on four timers, from regular (every 2 to 5 minutes) to super rare (every 3 to 6 hours, three at most); the rest are follow-ups that another gag sets off. Every one waits for the next bar of the music, so the gags land on the beat.<br>
 **The sound:** all of it synthesized from code by [`tools/make_audio.py`](tools/make_audio.py). No samples, no loops, no recordings, so no third-party licence.
 
 ```sh
@@ -19,7 +19,7 @@ python tools/serve.py
 # then open http://127.0.0.1:8765/
 ```
 
-<sub>Live preview in the browser, and export to a frame-exact, YouTube-ready MP4 from the same page. Plain ES modules, no build step, no npm. The banner above does not stop either; move your mouse all you like.</sub>
+<p><sub>Live preview in the browser, and export to a frame-exact, YouTube-ready MP4 from the same page. Plain ES modules, no build step, no npm. The banner above does not stop either; move your mouse all you like.</sub></p>
 
 <details>
 <summary><b>Setup...</b>: the timers, the seed, and a Speed slider that only goes to Slow</summary>
@@ -43,7 +43,7 @@ python tools/serve.py
  ──────────────────────────────────────────────────────────────────────
  she is busy about a third of the time and idling the rest. every gag
  starts on the next bar (one bar = 3 s), so it lands on the beat.
- counts are the median of 200 simulated runs. same seed, same video,
+ counts are the median of 200 simulated runs. same seed, same run,
  event for event.
 ```
 
@@ -87,7 +87,7 @@ Ocean=60 s loop
 Loudness=-14 LUFS, true peak at or below -1 dBTP
 Levels=master and per routine
 SoundFiles=more than 150, every one synthesized from code
-ListenedToByAnyone=0 (it has passed its loudness checks, which is a start)
+ListenedToByAnyone=0 (a loudness meter has, which is a start)
 Motion=hard cuts and stepped movement
 Night=0
 Hurry=0
@@ -114,9 +114,9 @@ When a gag lands in the banner, the lines hold it for exactly one or two bars, t
  THE SAVER SET ..................... Still Water Software, which does not
                                      exist and has never shipped a disk.
                                      every line, star, island and letter
-                                     above is drawn by a script in this
-                                     repo; nothing is taken from the real
-                                     savers
+                                     above is drawn by a small Node script
+                                     made for this header; nothing is
+                                     taken from the real savers
  THE INSPIRATION ................... Johnny Castaway (1992), which belongs
                                      to its owners. this is an unofficial
                                      remake, in spirit only
