@@ -90,7 +90,9 @@ export function checkCatalogue(data) {
 export function svgPolicyIssues(source) {
   const issues = [];
   if (/<(?:script|foreignObject)\b/i.test(source)) issues.push('scripts and foreignObject are not supported in README images');
-  if (/\son[a-z]+\s*=/i.test(source)) issues.push('event handlers are not supported in README images');
+  // Escaped project descriptions can contain example attributes as plain text.
+  const tags = source.match(/<(?:[^>"']|"[^"]*"|'[^']*')*>/g)?.join('\n') || '';
+  if (/\son[a-z]+\s*=/i.test(tags)) issues.push('event handlers are not supported in README images');
   if (/(?:href|src)\s*=\s*["'](?!#|data:)[^"']+/i.test(source)) issues.push('external image resources must be embedded');
   if (/@import/i.test(source) || [...source.matchAll(/url\(\s*(['"]?)([^'"\s)]+)\1\s*\)/gi)]
     .some((match) => !/^(?:#|data:)/i.test(match[2]))) issues.push('external CSS resources must be embedded');

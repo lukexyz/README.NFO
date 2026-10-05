@@ -56,6 +56,7 @@ test('local targets decode spaces and fragments, and reject traversal beyond the
 test('SVG policy allows internal resources and embedded data', () => {
   const source = '<svg viewBox="0 0 100 50"><style>.a{fill:url(#paint)}.b{fill:url("#paint")}@font-face{src:url("data:font/woff;base64,ABC")}</style><use href="#glyph"/><image href="data:image/png;base64,ABC"/></svg>';
   assert.deepEqual(svgPolicyIssues(source), []);
+  assert.deepEqual(svgPolicyIssues('<svg viewBox="0 0 100 50"><desc>Escaped HTML: &lt;img onerror=example()&gt;</desc></svg>'), []);
 });
 
 test('SVG policy reports blocked content, remote resources, bad dimensions and motion without a fallback', () => {
@@ -63,4 +64,5 @@ test('SVG policy reports blocked content, remote resources, bad dimensions and m
   const issues = svgPolicyIssues(source).join('\n');
   for (const expected of ['scripts', 'event handlers', 'external image', 'external CSS', 'viewBox', 'prefers-reduced-motion']) assert.ok(issues.includes(expected));
   assert.deepEqual(svgPolicyIssues('<svg viewBox="0 0 10 10"><style>@keyframes fade{} @media(prefers-reduced-motion:reduce){*{animation:none}}</style></svg>'), []);
+  assert.match(svgPolicyIssues('<svg viewBox="0 0 10 10" aria-label="a > b" onload="run()"/>').join(), /event handlers/);
 });

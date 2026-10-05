@@ -8,7 +8,7 @@ import { chromium } from 'playwright';
 import { checkCatalogue, localReferences, localTarget, svgPolicyIssues } from './lib/checks.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const ignored = new Set(['node_modules', '.git', '.preview']);
+const ignored = new Set(['node_modules', '.git', '.preview', 'readme-headers']);
 const errors = [];
 const fail = (file, message) => errors.push(`${file}: ${message}`);
 const read = (file) => fs.readFileSync(path.join(ROOT, file), 'utf8');

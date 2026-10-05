@@ -2,7 +2,7 @@
 
 Forty original headers for [README.NFO itself](../../README.md), drawn in two random batches from the 152 distinct catalogue styles on 5 October 2026. [Draw one](draw.json) and [draw two](draw-2.json) record the selections; the second batch excludes every style used in the first.
 
-**Home README favourites:** [04 — Tracker](04-trk-07.md), [16 — Brush-script NFO](16-nfo-01.md), [26 — Cassette](26-print-02.md), [36 — Off-air test card](36-idle-10.md) and [38 — Copper ribbons](38-c64-07.md). [See them on the home README](../../README.md). The other candidates remain available to copy and compare.
+**Home README:** [16 — Brush-script NFO](16-nfo-01.md) is the main header. The favourites below it are [04 — Tracker](04-trk-07.md), [26 — Cassette](26-print-02.md), [36 — Off-air test card](36-idle-10.md) and [38 — Copper ribbons](38-c64-07.md), with [12 — Luna desktop](12-vap-09.md) and [25 — Vector objects](25-pc-13.md) completing the preview gallery. [See the home README](../../README.md). All forty candidates remain available to copy and compare.
 
 **New batch:** [Candidates 21–30](page-3.md) · [Candidates 31–40](page-4.md) · [Interactive new batch](gallery.html#batch-2).
 
