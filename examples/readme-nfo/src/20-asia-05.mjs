@@ -1,0 +1,37 @@
+import { writeHeader } from './lib.mjs';
+// PMD-inspired layout. An original source-code motif; not a compiled audio asset.
+const score=[
+'; +--------------------------------------------------------------------+',
+'; |  R E A D M E . N F O                  PUBLIC FILES / ORIGINAL THEME |',
+'; +--------------------------------------------------------------------+',
+'#Title     README.NFO - eight bars for a blank repository',
+'#Composer  lukexyz / README.NFO',
+'#Memo      Retro headers: 152 styles, 13 families, text art + SVG',
+'#Memo      MIT licence. Copy the header. Change the arrangement.',
+'',
+'; PMD-inspired MML. A = melody / B = answering voice / G = bass.',
+'; A quiet original C-major motif; this listing is not audio playback.',
+'',
+'A  t132 @1 v10 o4 l8  c e g >c<  g e d r | e g >d c<  g4 r4',
+'A                    f a >c e<  a g f r | e g b >d<   c4 r4',
+'A                    c d e g    a g e r | f e d c    e4 r4',
+'A                    d f a >c<  b a g r | e d c r    c2',
+'',
+'B  t132 @2 v7  o4 l8  r4 c e     r4 b d | r4 e g     r4 d g',
+'B                    r4 c f     r4 c f | r4 c e     r4 c e',
+'B                    r4 e g     r4 c e | r4 c f     r4 c e',
+'B                    r4 d f     r4 b d | r4 c e     c2',
+'',
+'G  t132 v8 o3 l4      c g c g | e b e b | f c f c | c g c g',
+'G                    a e a e | f c f c | g d g d | c2 r2',
+'',
+'; FILE MAP -------------------------------------------------------------',
+'; styles/    : the score book           13 families / 152 distinct looks',
+'; examples/  : the finished mixes       copyable Markdown + SVG headers',
+'; tools/     : the rehearsal room       preview / galleries / validation',
+'; LICENSE    : the permission slip      MIT',
+'; ----------------------------------------------------------------------'];
+writeHeader(20,{summary:'A text-only PMD-inspired music-source header with an original eight-bar melody and a repository file map.',markdown:[
+'```text',...score,'```','',
+'**README.NFO** — retro headers for your next repository. Pick a style, copy a sample, and make it yours.','',
+'[Style catalogue](../../styles/INDEX.md) · [Example galleries](../README.md) · [MIT licence](../../LICENSE)'].join('\n')});

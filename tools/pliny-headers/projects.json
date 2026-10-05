@@ -1,0 +1,47 @@
+{
+  "naturalis-historia": {
+    "name": "NATURALIS-HISTORIA",
+    "display": "NATVRALIS HISTORIA",
+    "short": "NATVRALIS",
+    "lines": ["NATVRALIS", "HISTORIA"],
+    "pitch": "The first encyclopedia, illustrated.",
+    "url": "https://github.com/elder-plinius/NATURALIS-HISTORIA",
+    "live": "https://naturalishistoria.org/",
+    "facts": ["37 BOOKS", "1065 CHAPTERS", "LATIN + ENGLISH"],
+    "menus": ["The thirty-seven books", "Latin and English", "Chapter illustrations", "Search and Fortuna"],
+    "boards": [["BOOKS", "TEXT", "The complete thirty-seven books", "37"], ["CHAPTERS", "READ", "Latin with English translation", "1065"], ["PLATES", "ART", "One illustration per chapter", "1065"]],
+    "comments": ["Latin first. English beside it.", "Every chapter has its own plate.", "Let Fortuna choose the next page."],
+    "status": "ARCHIVE SIGNAL / BOOK XXXVII",
+    "accent": "#e9ba65"
+  },
+  "gl4ss": {
+    "name": "GL4SS",
+    "display": "GL4SS",
+    "short": "GL4SS",
+    "lines": ["GL4SS"],
+    "pitch": "A place. A year. A window through time.",
+    "url": "https://github.com/elder-plinius/GL4SS",
+    "live": "https://gl4ss.ai/",
+    "facts": ["284 TIME STATIONS", "55 JOURNEYS", "PLACE + YEAR + HOUR"],
+    "menus": ["Choose a place", "Tune the year", "Set the hour", "Pull the lever"],
+    "boards": [["STATIONS", "TIME", "The dial from deep time to 3050", "284"], ["JOURNEYS", "MAP", "Curated places through history", "55"], ["ARCHIVE", "LOCAL", "Frames kept in your browser", "---"]],
+    "comments": ["Pick a place, then turn the dial.", "Hold two eras. Compare the view.", "The lever opens the next window."],
+    "status": "TEMPORAL SIGNAL / AD 79",
+    "accent": "#71ddd0"
+  },
+  "st3gg": {
+    "name": "ST3GG",
+    "display": "ST3GG",
+    "short": "ST3GG",
+    "lines": ["ST3GG"],
+    "pitch": "A message beneath the surface.",
+    "url": "https://github.com/elder-plinius/ST3GG",
+    "live": "https://ste.gg/",
+    "facts": ["IMAGES + AUDIO", "TEXT + DOCUMENTS", "STEGANOGRAPHY"],
+    "menus": ["Image carriers", "Audio carriers", "Text and documents", "Inspect and decode"],
+    "boards": [["IMAGE", "PIXELS", "A carrier beneath the picture", "---"], ["AUDIO", "SOUND", "Another layer inside the wave", "---"], ["TEXT", "WORDS", "Inspect the visible and hidden", "---"]],
+    "comments": ["The picture is only the surface.", "A wave can carry another story.", "Look again, one layer deeper."],
+    "status": "CARRIER SIGNAL / HIDDEN LAYER",
+    "accent": "#d5a1f4"
+  }
+}

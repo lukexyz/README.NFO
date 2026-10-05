@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pliny · five scenes, three repos</title>
+  <style>
+    :root { color-scheme: dark; --page:#111316; --panel:#1a1d21; --line:#34393e; --ink:#ecece7; --muted:#a1aaa9; --accent:#dbdfaf; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--page); color:var(--ink); font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+    body.light { color-scheme:light; --page:#efeee8; --panel:#fffefa; --line:#c8cbc4; --ink:#202822; --muted:#5d685f; --accent:#3d512c; }
+    a { color:inherit; text-underline-offset:3px; }
+    button,select { font:inherit; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:8px 12px; cursor:pointer; }
+    button:hover,a:hover { color:var(--accent); }
+    button:focus-visible,select:focus-visible,a:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
+    .shell { max-width:1700px; margin:auto; padding:36px 30px 60px; }
+    .eyebrow { color:var(--accent); text-transform:uppercase; letter-spacing:.16em; font:11px/1.4 ui-monospace,Consolas,monospace; }
+    header { display:flex; justify-content:space-between; align-items:flex-start; gap:32px; }
+    h1 { font-size:clamp(30px,4vw,53px); font-weight:600; letter-spacing:-.055em; line-height:1.06; margin:14px 0 16px; }
+    .intro { max-width:690px; color:var(--muted); margin:0; font-size:16px; }
+    .count { padding-top:22px; white-space:nowrap; text-align:right; color:var(--muted); font:12px/1.7 ui-monospace,Consolas,monospace; }
+    .count strong { display:block; color:var(--ink); font-size:26px; font-weight:400; }
+    .toolbar { display:flex; gap:9px; flex-wrap:wrap; align-items:center; padding:27px 0 23px; margin-bottom:0; }
+    .toolbar label { display:flex; gap:10px; align-items:center; color:var(--muted); margin-right:auto; }
+    .columns { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-bottom:12px; border-top:1px solid var(--line); padding-top:20px; }
+    .project { min-width:0; }
+    .project strong { font-weight:600; font-size:15px; letter-spacing:.01em; }
+    .project p { color:var(--muted); font-size:12px; margin:4px 0 0; }
+    section { padding-top:28px; margin-bottom:30px; border-bottom:1px solid var(--line); padding-bottom:25px; }
+    .row-heading { display:flex; align-items:baseline; gap:15px; margin-bottom:15px; }
+    .number { color:var(--muted); font:12px ui-monospace,Consolas,monospace; }
+    h2 { font-size:20px; font-weight:500; letter-spacing:-.025em; margin:0; }
+    code { color:var(--muted); font-size:11px; }
+    .cards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+    article { min-width:0; }
+    .art { display:block; width:100%; padding:0; border:1px solid var(--line); border-radius:3px; overflow:hidden; background:#050505; line-height:0; cursor:zoom-in; }
+    .art img { width:100%; height:auto; aspect-ratio:16/9; display:block; }
+    .card-project { display:none; margin:0 0 8px; font-size:13px; font-weight:600; }
+    .caption { color:var(--muted); font-size:13px; margin:12px 0 10px; min-height:59px; }
+    .actions { display:flex; gap:15px; align-items:center; font-size:12px; }
+    .actions button { padding:0; border:0; background:none; color:var(--muted); text-decoration:underline; text-underline-offset:3px; border-radius:0; }
+    .actions button:hover { color:var(--accent); }
+    footer { max-width:900px; color:var(--muted); font-size:12px; }
+    footer p { margin:6px 0; }
+    dialog { color:var(--ink); background:var(--page); border:1px solid var(--line); border-radius:8px; width:min(1120px,96vw); max-height:95vh; padding:18px; }
+    dialog::backdrop { background:#000b; }
+    .dialog-top { display:flex; gap:12px; justify-content:space-between; align-items:center; margin-bottom:15px; }
+    #detail-title { margin:0; font-size:18px; }
+    #detail-art { width:100%; display:block; aspect-ratio:16/9; background:#000; }
+    #detail-caption { color:var(--muted); font-size:14px; }
+    .toast { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); padding:10px 16px; border:1px solid var(--line); background:var(--panel); border-radius:8px; box-shadow:0 8px 32px #0004; z-index:5; }
+    [hidden] { display:none!important; }
+    @media(max-width:850px) {
+      .shell { padding:26px 18px 44px; }
+      header { gap:15px; }
+      .count { display:none; }
+      .columns { display:none; }
+      .cards { grid-template-columns:1fr; gap:28px; }
+      .card-project { display:block; }
+      .caption { min-height:0; }
+      .toolbar label { flex:1 1 100%; }
+      .row-heading { flex-wrap:wrap; gap:8px 12px; }
+      section { border-top:1px solid var(--line); border-bottom:0; margin-bottom:12px; }
+    }
+    @media(prefers-reduced-motion:no-preference) { button { transition:color .15s,border-color .15s; } }
+  </style>
+</head>
+<body>
+<main class="shell">
+  <header>
+    <div><div class="eyebrow">README.NFO / Pliny / first draw</div><h1>Five scenes.<br>Three interpretations.</h1><p class="intro">The same five random style references, with a different composition for each repo. Read across to see what the scene brings out of each project.</p></div>
+    <div class="count"><strong>15 headers</strong>5 shared references<br>3 independent project sets</div>
+  </header>
+  <nav class="toolbar" aria-label="Comparison controls">
+    <label for="style-filter">Show <select id="style-filter"><option value="all">All five styles</option></select></label>
+    <button id="motion" type="button" aria-pressed="false">Motion: on</button>
+    <button id="replay" type="button">Replay</button>
+    <button id="surround" type="button" aria-pressed="false">Light surround</button>
+  </nav>
+  <div class="columns" id="columns" aria-label="Repository columns"></div>
+  <div id="rows"></div>
+  <footer><p>Click any header for a larger view. SVG downloads are the same files used by the repository galleries. Markdown copies expect the matching SVG in <code>assets/</code>.</p><p>Unofficial design studies · source descriptions checked <span id="checked"></span> · original vector artwork · no remote assets. Terminal discussions, file names and status changes are illustrative.</p><p>The saved draw: off-air idle, Taiwanese telnet board, PC demo titles, monochrome viewdata and Luna desktop. This page embeds all fifteen headers and works offline.</p></footer>
+</main>
+<dialog id="detail" aria-labelledby="detail-title"><div class="dialog-top"><h2 id="detail-title"></h2><button id="close-detail" type="button" autofocus>Close</button></div><img id="detail-art" alt=""><p id="detail-caption"></p><div class="actions"><button id="detail-svg" type="button">Download SVG</button><button id="detail-md" type="button">Copy Markdown</button></div></dialog>
+<div id="toast" class="toast" role="status" hidden></div>
+<script id="data" type="application/json">__DATA__</script>
+<script>
+  'use strict';
+  const data = JSON.parse(document.getElementById('data').textContent);
+  const $ = selector => document.querySelector(selector);
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  let moving = !reduced.matches;
+  let selectedCard = null;
+  let toastTimer;
+  const urls = new Map();
+  const images = new Map();
+  const cardId = card => card.key + ':' + card.index;
+  const element = (tag, className, content) => { const e = document.createElement(tag); if (className) e.className = className; if (content) e.textContent = content; return e; };
+  function source(card) { return moving ? card.svg : card.svg.replace('<svg ', '<svg data-motion="still" '); }
+  function refresh(card) {
+    const id = cardId(card);
+    const old = urls.get(id);
+    const url = URL.createObjectURL(new Blob([source(card)], { type:'image/svg+xml' }));
+    urls.set(id, url);
+    images.get(id).src = url;
+    if (selectedCard === card) $('#detail-art').src = url;
+    if (old) URL.revokeObjectURL(old);
+  }
+  function motionLabel() { $('#motion').textContent = 'Motion: ' + (moving ? 'on' : 'off'); $('#motion').setAttribute('aria-pressed', String(!moving)); }
+  function refreshAll() { data.cards.forEach(refresh); motionLabel(); }
+  function toast(message) { $('#toast').textContent = message; $('#toast').hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => $('#toast').hidden = true, 2600); }
+  function download(card) {
+    const url = URL.createObjectURL(new Blob([card.svg], { type:'image/svg+xml' }));
+    const a = element('a'); a.href = url; a.download = card.slug + '.svg'; a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+  async function copy(card) {
+    try { await navigator.clipboard.writeText(card.markdown); toast('Markdown copied. Keep the SVG in assets/' + card.slug + '.svg'); }
+    catch {
+      const area = element('textarea'); area.value = card.markdown; area.style.position = 'fixed'; area.style.opacity = '0'; document.body.append(area); area.select();
+      const copied = document.execCommand('copy'); area.remove();
+      if (copied) toast('Markdown copied. Keep the matching SVG in assets/.');
+      else { const url = URL.createObjectURL(new Blob([card.markdown], { type:'text/markdown' })); const a = element('a'); a.href = url; a.download = card.slug + '.md'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000); toast('Markdown saved as a file.'); }
+    }
+  }
+  function enlarge(card) {
+    selectedCard = card;
+    $('#detail-title').textContent = card.title + ' · ' + data.styles[card.index].name;
+    $('#detail-caption').textContent = card.scene;
+    $('#detail-art').src = urls.get(cardId(card));
+    $('#detail-art').alt = card.title + ': ' + card.scene;
+    $('#detail').showModal();
+  }
+  for (const p of data.projects) {
+    const col = element('div','project'); const link = element('a',null,p.name); link.href = p.url;
+    const strong = element('strong'); strong.append(link); col.append(strong,element('p',null,p.pitch)); $('#columns').append(col);
+  }
+  data.styles.forEach((style,index) => {
+    const option = element('option',null,style.name); option.value = index; $('#style-filter').append(option);
+    const section = element('section'); section.dataset.style = index; section.id = style.slug;
+    const heading = element('div','row-heading'); heading.append(element('span','number',String(index+1).padStart(2,'0')),element('h2',null,style.name),element('code',null,style.id));
+    const cards = element('div','cards');
+    for (const card of data.cards.filter(card => card.index === index)) {
+      const article = element('article'); article.append(element('h3','card-project',card.title));
+      const art = element('button','art'); art.type = 'button'; art.setAttribute('aria-label','Enlarge ' + card.title + ' ' + style.name); art.addEventListener('click',() => enlarge(card));
+      const img = element('img'); img.alt = card.title + ': ' + card.scene; img.width = 960; img.height = 540; art.append(img); images.set(cardId(card),img);
+      const actions = element('div','actions');
+      for (const [label,action] of [['Enlarge',() => enlarge(card)],['SVG',() => download(card)],['Copy Markdown',() => copy(card)]]) { const b = element('button',null,label); b.type = 'button'; b.addEventListener('click',action); actions.append(b); }
+      article.append(art,element('p','caption',card.scene),actions); cards.append(article);
+    }
+    section.append(heading,cards); $('#rows').append(section);
+  });
+  $('#checked').textContent = data.checked;
+  $('#style-filter').addEventListener('change',event => document.querySelectorAll('section[data-style]').forEach(s => s.hidden = event.target.value !== 'all' && s.dataset.style !== event.target.value));
+  $('#motion').addEventListener('click',() => { moving = !moving; refreshAll(); });
+  $('#replay').addEventListener('click',refreshAll);
+  $('#surround').addEventListener('click',() => { const light = document.body.classList.toggle('light'); $('#surround').textContent = light ? 'Dark surround' : 'Light surround'; $('#surround').setAttribute('aria-pressed',String(light)); });
+  $('#close-detail').addEventListener('click',() => $('#detail').close());
+  $('#detail').addEventListener('click',event => { if (event.target === $('#detail')) { const r = $('#detail').getBoundingClientRect(); if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) $('#detail').close(); } });
+  $('#detail').addEventListener('close',() => { selectedCard = null; $('#detail-art').removeAttribute('src'); });
+  $('#detail-svg').addEventListener('click',() => download(selectedCard));
+  $('#detail-md').addEventListener('click',() => copy(selectedCard));
+  reduced.addEventListener('change',event => { moving = !event.matches; refreshAll(); });
+  window.addEventListener('beforeunload',() => urls.forEach(url => URL.revokeObjectURL(url)));
+  refreshAll();
+</script>
+</body>
+</html>

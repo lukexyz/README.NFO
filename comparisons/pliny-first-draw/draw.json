@@ -1,0 +1,50 @@
+{
+  "title": "Pliny — first shared draw",
+  "drawnAt": "2026-10-05",
+  "selectionMethod": "Five styles drawn without replacement using crypto.randomInt from the 152 non-duplicate catalogue entries.",
+  "styleIds": [
+    "idle-10",
+    "asia-03",
+    "demo-01",
+    "ansi-09",
+    "vap-09"
+  ],
+  "projects": [
+    "naturalis-historia",
+    "gl4ss",
+    "st3gg"
+  ],
+  "sourceCheckedAt": "2026-10-05",
+  "styles": [
+    {
+      "id": "idle-10",
+      "name": "Off-air idle: colour bars, test card and the hopping 'no signal' box",
+      "medium": "animated-svg",
+      "feasibility": "easy"
+    },
+    {
+      "id": "asia-03",
+      "name": "PTT telnet board: board list, push/boo comment column and double-width Big5 block art",
+      "medium": "text-plus-svg",
+      "feasibility": "easy"
+    },
+    {
+      "id": "demo-01",
+      "name": "PC demo opening titles and part-credit cards (Second Reality manner)",
+      "medium": "animated-svg",
+      "feasibility": "easy"
+    },
+    {
+      "id": "ansi-09",
+      "name": "Minitel / viewdata service page (numbered menu, function-key legend)",
+      "medium": "animated-svg",
+      "feasibility": "medium"
+    },
+    {
+      "id": "vap-09",
+      "name": "Windows XP Luna: blue title bars and the green hill",
+      "medium": "animated-svg",
+      "feasibility": "medium"
+    }
+  ]
+}

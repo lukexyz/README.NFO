@@ -1,15 +1,32 @@
+<p align="center">
+  <a href="examples/readme-nfo/04-trk-07.md"><img src="examples/readme-nfo/assets/04-trk-07.svg" width="100%" alt="README.NFO: a five-channel chiptune tracker with colourful notes, live scopes and the style catalogue as its song"></a>
+</p>
+
 # README.NFO
 
 Retro README headers built from text art and animated SVG: cracktros, terminals, trackers, arcade screens, old desktops and physical media.
 
-**164 headers · 152 distinct catalogue styles · three project galleries.** Each example comes with its source generator and ready-to-copy Markdown. The style catalogue explains the look, how to build it, and the references behind it.
+**219 headers · 152 distinct catalogue styles · seven project galleries.** Each example comes with its source generator and ready-to-copy Markdown. The style catalogue explains the look, how to build it, and the references behind it.
 
 **[Start with twelve picks](examples/START-HERE.md)** · [Browse every example](examples/README.md) · [Explore the style catalogue](styles/INDEX.md)
 
+## Five favourite looks
+
+These five headers were chosen for README.NFO itself. **[04 — Multi-chip tracker](examples/readme-nfo/04-trk-07.md)** opens this page; the other four are below. Click a preview to open its copyable Markdown and source generator, or [browse all forty candidates](examples/readme-nfo/README.md).
+
 <p align="center">
-  <a href="examples/castaway/01-mode7-island_opus_5.5.md"><img src="examples/castaway/assets/01-mode7-island_opus_5.5.svg" width="400" alt="Castaway: a pixel island and rotating Mode 7 sea"></a>
-  <a href="examples/ultra-satisfactory/17-amiga-tracker_opus_5.5.md"><img src="examples/ultra-satisfactory/assets/17-amiga-tracker_opus_5.5.svg" width="400" alt="ULTRA-SATISFACTORY: a four-channel Amiga tracker showing factory recipes"></a>
+  <a href="examples/readme-nfo/16-nfo-01.md"><img src="examples/readme-nfo/assets/16-nfo-01.svg" width="400" alt="Candidate 16: README.NFO in original half-block brush lettering with a two-column release panel"></a>
+  <a href="examples/readme-nfo/26-print-02.md"><img src="examples/readme-nfo/assets/26-print-02.svg" width="400" alt="Candidate 26: README.NFO on a cassette with turning reels and a blue-and-cream J-card"></a>
 </p>
+
+[16 — Brush-script NFO](examples/readme-nfo/16-nfo-01.md) · [26 — Cassette and J-card](examples/readme-nfo/26-print-02.md)
+
+<p align="center">
+  <a href="examples/readme-nfo/36-idle-10.md"><img src="examples/readme-nfo/assets/36-idle-10.svg" width="400" alt="Candidate 36: README.NFO on an off-air circle test card that alternates with colour bars"></a>
+  <a href="examples/readme-nfo/38-c64-07.md"><img src="examples/readme-nfo/assets/38-c64-07.svg" width="400" alt="Candidate 38: README.NFO over slowly twisting copper ribbons in cyan, orange and magenta"></a>
+</p>
+
+[36 — Off-air test card](examples/readme-nfo/36-idle-10.md) · [38 — Copper ribbons](examples/readme-nfo/38-c64-07.md)
 
 ## Choose a header
 
@@ -20,6 +37,12 @@ The [shortlist](examples/START-HERE.md) pairs eight animated previews with four 
 | [Dance Vision](examples/dance-vision/README.md) | 6 | Phone motion capture, stick-figure dancers and a shared TV dance floor |
 | [ULTRA-SATISFACTORY](examples/ultra-satisfactory/README.md) | 42 | Factory recipes, machines and Space Elevator objectives |
 | [Castaway](examples/castaway/README.md) | 116 | A lo-fi island, passing ships and a schedule of visual gags; split across six gallery pages |
+| [NATURALIS-HISTORIA](examples/naturalis-historia/README.md) | 5 | Latin-English natural history, chapter plates and a bilingual library |
+| [GL4SS](examples/gl4ss/README.md) | 5 | Places through time, year and hour controls, and an era comparison |
+| [ST3GG](examples/st3gg/README.md) | 5 | Visible carriers and hidden layers in images, audio, text and documents |
+| [README.NFO](examples/readme-nfo/README.md) | 40 | This repository: two random draws, with a favourite picker and four gallery pages |
+
+[Compare the three Pliny repositories side by side](comparisons/pliny-first-draw/index.html): the same five randomly drawn references, with an independent composition for each project.
 
 For a particular look, use the [style index](styles/INDEX.md). Its thirteen families include NFO/ASCII, ANSI/BBS, chiptune, vaporwave, demoscene and print. There are 156 entries; four explicitly marked duplicates leave 152 distinct styles, all represented in the examples.
 
@@ -81,7 +104,9 @@ It runs the validation tests, checks JavaScript syntax, catalogue coverage, gall
 
 | Command | Purpose |
 | --- | --- |
-| `npm run gallery` | Rebuild all three project galleries and the curated shortlist |
+| `npm run gallery` | Rebuild all seven project galleries and the curated shortlist |
+| `npm run gallery:pliny` | Rebuild the fifteen Pliny headers, their galleries and the portable comparison |
+| `npm run gallery:readme-nfo` | Rebuild the forty README.NFO candidates' index, four gallery pages and favourite picker |
 | `npm run shortlist` | Rebuild the shortlist from `examples/shortlist.json` |
 | `npm run styles` | Rebuild catalogue family pages and the index from `styles/styles.json` |
 | `npm run preview -- <file.md-or.svg> <output-dir>` | Render a single example; screenshots belong in ignored `.preview/` |

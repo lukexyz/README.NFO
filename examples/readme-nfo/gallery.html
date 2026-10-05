@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark light"><title>README.NFO — 40 header candidates</title>
+<style>
+:root{--theme:dark;--bg:#0b1017;--panel:#141c27;--text:#e8edf5;--muted:#98a8bc;--line:#344354;--accent:#9bea93;--input:#080d14;color-scheme:dark;scroll-behavior:smooth}
+@media(prefers-color-scheme:light){:root{--theme:light;--bg:#edf0f5;--panel:#fff;--text:#1b283b;--muted:#536780;--line:#c5d0dc;--accent:#17653a;--input:#f6f8fa;color-scheme:light}}
+:root[data-theme="light"]{--theme:light;--bg:#edf0f5;--panel:#fff;--text:#1b283b;--muted:#536780;--line:#c5d0dc;--accent:#17653a;--input:#f6f8fa;color-scheme:light}
+:root[data-theme="dark"]{--theme:dark;--bg:#0b1017;--panel:#141c27;--text:#e8edf5;--muted:#98a8bc;--line:#344354;--accent:#9bea93;--input:#080d14;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--accent);text-underline-offset:3px}button,input{font:inherit}button{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:9px 14px;border-radius:7px;cursor:pointer}button:hover{border-color:var(--accent)}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.wrap{max-width:1320px;margin:auto;padding:36px 26px}.intro{max-width:900px;margin-bottom:24px}.eyebrow{font:13px/1.5 monospace;letter-spacing:2px;color:var(--accent)}h1{font-size:clamp(30px,5vw,56px);line-height:1.08;letter-spacing:-2px;margin:10px 0 16px}.intro p{color:var(--muted);max-width:740px}.toplinks{display:flex;gap:20px;flex-wrap:wrap;font-size:14px}.selection{position:sticky;top:0;z-index:2;background:var(--bg);border-block:1px solid var(--line);padding:14px 0;margin:26px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.selection strong{font-size:14px;min-width:90px}.selection input{flex:1;min-width:180px;width:200px;padding:9px 12px;border:1px solid var(--line);border-radius:7px;background:var(--input);color:var(--text);font-family:monospace}.selection #status{width:100%;font-size:13px;color:var(--muted);min-height:0}.selection #status:empty{display:none}#copy{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}.batches{display:flex;gap:10px;flex-wrap:wrap}.batches [aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}.card[hidden]{display:none}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.card{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .15s,box-shadow .15s}.card.chosen{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}.card-heading{padding:17px 18px;display:flex;gap:10px;align-items:flex-start;justify-content:space-between}.card-heading label{display:flex;align-items:flex-start;gap:10px;font-size:14px;font-weight:600;line-height:1.4;cursor:pointer}.card-heading input{accent-color:var(--accent);width:18px;height:18px;margin:2px 0;flex-shrink:0}.number{font:700 19px/1.15 monospace;color:var(--accent)}.format{font:10px/1.4 monospace;color:var(--muted);white-space:nowrap;padding-top:4px}.art{background:#080d13}.art img{display:block;width:100%;height:auto}.text-art{color:#e8edf5;overflow:auto}.text-art pre{margin:0;padding:24px 20px;font:12px/1.5 ui-monospace,Consolas,monospace;tab-size:4;white-space:pre;min-width:fit-content}.text-art a{color:#95d5ff}.description{font-size:14px;color:var(--muted);margin:17px 18px}.card footer{display:flex;gap:16px;flex-wrap:wrap;padding:0 18px 19px;font-size:12px}.closing{color:var(--muted);font-size:13px;margin:34px 0 8px}.closing a{color:inherit}@media(max-width:900px){.grid{grid-template-columns:1fr}.wrap{padding:24px 18px}.card-heading{padding:15px}.selection{gap:8px}.selection button{padding:8px 10px;font-size:14px}.selection input{min-width:140px}.format{max-width:70px;white-space:normal;text-align:right}}@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}.card{transition:none}}
+</style></head><body><main class="wrap"><header class="intro"><div class="eyebrow">README.NFO / FIRST IMPRESSIONS</div><h1>Forty possible beginnings.</h1><p>Two random batches of twenty styles, each made into a header for this repository. New candidates are numbered 21–40. Tick around five favourites, then copy their numbers and send them back. The home README features 04, 16, 26, 36 and 38. You can still compare all forty and save your own favourites.</p><nav class="toplinks" aria-label="Gallery navigation"><a href="README.md">Markdown index</a><a href="page-1.md">Full headers 01–10</a><a href="page-2.md">Full headers 11–20</a><a href="page-3.md">New 21–30</a><a href="page-4.md">New 31–40</a><a href="draw.json">Draw one</a><a href="draw-2.json">Draw two</a></nav></header>
+<nav class="batches" aria-label="Choose a batch"><button type="button" data-show-batch="all" aria-pressed="true">All 40</button><button type="button" data-show-batch="1" aria-pressed="false">First 20</button><button type="button" data-show-batch="2" aria-pressed="false">New 21–40</button></nav>
+<section class="selection" aria-label="Your favourites"><strong id="count">0 selected</strong><input id="selected" aria-label="Selected candidate numbers" readonly placeholder="Tick favourites below"><button id="copy" type="button">Copy favourites</button><button id="clear" type="button">Clear</button><button id="theme" type="button">Light / dark</button><span id="status" role="status" aria-live="polite"></span></section>
+<section class="grid" aria-label="Forty header candidates"><article class="card" id="candidate-01" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="01" aria-label="Choose candidate 01"><span class="number">01</span><span>Pinball dot-matrix display (orange plasma DMD)</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/01-mach-11.svg" alt="Orange plasma dots, a travelling sparkle and a slow pinball attract loop." width="960" loading="lazy"></div>
+  <p class="description">Orange plasma dots, a travelling sparkle and a slow pinball attract loop.</p>
+  <footer><a href="01-mach-11.md">Copyable header</a><a href="../../styles/mach.md#mach-11">mach-11</a><a href="src/01-mach-11.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-02" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="02" aria-label="Choose candidate 02"><span class="number">02</span><span>MUD session transcript (login banner, room block, exits line, HP prompt)</span></label><span class="format">TEXT</span></header>
+  <div class="art text-art"><pre>
+                  R  E  A  D  M  E  .  N  F  O
+                            2  0  2  6
+
+                     A world of retro headers
+                    Built from text and vectors
+
+By what name shall we know you? visitor
+Welcome, visitor. Your adventure begins with a blank README.
+
+*** PRESS RETURN: &lt;enter&gt;
+
+README.NFO — The Hall of First Impressions
+You stand beneath an arch made of glowing text. Thirteen doors
+lead to 152 different styles: terminals, trackers, arcades and
+stranger places. Every header is yours to copy and customise.
+A small brass plaque beside the door reads: MIT.
+
+A catalogue of styles rests on a wooden lectern.
+A gallery of finished headers hangs along the north wall.
+A toolkit waits in an open chest.
+
+[ Exits: <a href="../../styles/INDEX.md">north: catalogue</a>  <a href="../README.md">east: galleries</a>  <a href="../../LICENSE">west: licence</a> ]
+
+152H 13M 20V &gt; look
+You see twenty possible beginnings. Choose the one that feels like you.
+
+152H 13M 20V &gt; _
+</pre></div>
+  <p class="description">A plain-text MUD login and a room full of reusable headers. The exits are real links.</p>
+  <footer><a href="02-hack-09.md">Copyable header</a><a href="../../styles/hack.md#hack-09">hack-09</a><a href="src/02-hack-09.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-03" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="03" aria-label="Choose candidate 03"><span class="number">03</span><span>Digital rain banner (light falling through fixed glyph columns, resolving into the title)</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/03-hack-14.svg" alt="Independent phosphor streams keep falling while the repository title locks into the centre." width="960" loading="lazy"></div>
+  <p class="description">Independent phosphor streams keep falling while the repository title locks into the centre.</p>
+  <footer><a href="03-hack-14.md">Copyable header</a><a href="../../styles/hack.md#hack-14">hack-14</a><a href="src/03-hack-14.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-04" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="04" aria-label="Choose candidate 04"><span class="number">04</span><span>Multi-chip tracker (FamiTracker / DefleMask / Furnace)</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/04-trk-07.svg" alt="Five colour-coded chip channels for text, SVG, styles, galleries and tools, with a pattern grid and live scopes." width="960" loading="lazy"></div>
+  <p class="description">Five colour-coded chip channels for text, SVG, styles, galleries and tools, with a pattern grid and live scopes.</p>
+  <footer><a href="04-trk-07.md">Copyable header</a><a href="../../styles/trk.md#trk-07">trk-07</a><a href="src/04-trk-07.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-05" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="05" aria-label="Choose candidate 05"><span class="number">05</span><span>Piano roll and falling notes (up to black MIDI)</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/05-trk-10.svg" alt="Slow rainbow notes descend onto a piano keyboard; a luminous note mosaic spells README.NFO." width="960" loading="lazy"></div>
+  <p class="description">Slow rainbow notes descend onto a piano keyboard; a luminous note mosaic spells README.NFO.</p>
+  <footer><a href="05-trk-10.md">Copyable header</a><a href="../../styles/trk.md#trk-10">trk-10</a><a href="src/05-trk-10.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-06" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="06" aria-label="Choose candidate 06"><span class="number">06</span><span>Apple II crack screen: six-colour hi-res panels and 40-column credits</span></label><span class="format">TEXT + SVG</span></header>
+  <div class="art"><img src="assets/06-demo-11.svg" alt="Six-colour title panels with a narrow, forty-column companion credit screen." width="960" loading="lazy"></div>
+  <p class="description">Six-colour title panels with a narrow, forty-column companion credit screen.</p>
+  <footer><a href="06-demo-11.md">Copyable header</a><a href="../../styles/demo.md#demo-11">demo-11</a><a href="src/06-demo-11.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-07" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="07" aria-label="Choose candidate 07"><span class="number">07</span><span>PC demo opening titles and part-credit cards (Second Reality manner)</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/07-demo-01.svg" alt="A letterboxed demo opening: held title, drifting horizon, and production credits." width="960" loading="lazy"></div>
+  <p class="description">A letterboxed demo opening: held title, drifting horizon, and production credits.</p>
+  <footer><a href="07-demo-01.md">Copyable header</a><a href="../../styles/demo.md#demo-01">demo-01</a><a href="src/07-demo-01.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-08" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="08" aria-label="Choose candidate 08"><span class="number">08</span><span>VHS tape and late-night lo-fi: OSD, tracking and chroma bleed</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/08-vap-03.svg" alt="Late-night tape: purple skyline, sharp title, OSD and restrained tracking drift." width="960" loading="lazy"></div>
+  <p class="description">Late-night tape: purple skyline, sharp title, OSD and restrained tracking drift.</p>
+  <footer><a href="08-vap-03.md">Copyable header</a><a href="../../styles/vap.md#vap-03">vap-03</a><a href="src/08-vap-03.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-09" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="09" aria-label="Choose candidate 09"><span class="number">09</span><span>Razor 1911 Amiga cracktro (Sector9, 1990-91): logo plate, deep-blue panel, rainbow copper text</span></label><span class="format">TEXT + SVG</span></header>
+  <div class="art"><img src="assets/09-c64-05.svg" alt="A red logo plate, deep-blue panel and gently waving rainbow copper title." width="960" loading="lazy"></div>
+  <p class="description">A red logo plate, deep-blue panel and gently waving rainbow copper title.</p>
+  <footer><a href="09-c64-05.md">Copyable header</a><a href="../../styles/c64.md#c64-05">c64-05</a><a href="src/09-c64-05.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-10" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="10" aria-label="Choose candidate 10"><span class="number">10</span><span>BBS data screens: stats header, last callers, file-area table</span></label><span class="format">TEXT + SVG</span></header>
+  <div class="art"><img src="assets/10-ansi-05.svg" alt="BBS data screen with a stats masthead, directory table and inverse-video hotkeys." width="960" loading="lazy"></div>
+  <p class="description">BBS data screen with a stats masthead, directory table and inverse-video hotkeys.</p>
+  <footer><a href="10-ansi-05.md">Copyable header</a><a href="../../styles/ansi.md#ansi-05">ansi-05</a><a href="src/10-ansi-05.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-11" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="11" aria-label="Choose candidate 11"><span class="number">11</span><span>256-byte intro: bit-pattern textures in the default VGA palette</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/11-demo-04.svg" alt="A tiny-intro XOR quilt in the sixteen VGA colours, with a crisp block title and slow pixel-grid drift." width="960" loading="lazy"></div>
+  <p class="description">A tiny-intro XOR quilt in the sixteen VGA colours, with a crisp block title and slow pixel-grid drift.</p>
+  <footer><a href="11-demo-04.md">Copyable header</a><a href="../../styles/demo.md#demo-04">demo-04</a><a href="src/11-demo-04.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-12" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="12" aria-label="Choose candidate 12"><span class="number">12</span><span>Windows XP Luna: blue title bars and the green hill</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/12-vap-09.svg" alt="An original hill-and-sky desktop, glossy blue window chrome and a cream header-library dialog." width="960" loading="lazy"></div>
+  <p class="description">An original hill-and-sky desktop, glossy blue window chrome and a cream header-library dialog.</p>
+  <footer><a href="12-vap-09.md">Copyable header</a><a href="../../styles/vap.md#vap-09">vap-09</a><a href="src/12-vap-09.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-13" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="13" aria-label="Choose candidate 13"><span class="number">13</span><span>Decrypt reveal: a scrambled text block that resolves into plaintext</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/13-hack-15.svg" alt="A one-shot scatter of scrambled cells decrypts into a quiet blue title block, then settles permanently." width="960" loading="lazy"></div>
+  <p class="description">A one-shot scatter of scrambled cells decrypts into a quiet blue title block, then settles permanently.</p>
+  <footer><a href="13-hack-15.md">Copyable header</a><a href="../../styles/hack.md#hack-15">hack-15</a><a href="src/13-hack-15.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-14" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="14" aria-label="Choose candidate 14"><span class="number">14</span><span>Win32 new old-school cracktro: metal logo, twister, sine scroller</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/14-pc-05.svg" alt="Cold chrome, a faded mirror floor, purple ribbon twisters and a pink sine-wave scroller." width="960" loading="lazy"></div>
+  <p class="description">Cold chrome, a faded mirror floor, purple ribbon twisters and a pink sine-wave scroller.</p>
+  <footer><a href="14-pc-05.md">Copyable header</a><a href="../../styles/pc.md#pc-05">pc-05</a><a href="src/14-pc-05.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-15" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="15" aria-label="Choose candidate 15"><span class="number">15</span><span>ANSImation: the modem-speed draw-in</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/15-ansi-04.svg" alt="Bright ANSI letters paint in row by row at modem speed, then a little block robot keeps the connection alive." width="960" loading="lazy"></div>
+  <p class="description">Bright ANSI letters paint in row by row at modem speed, then a little block robot keeps the connection alive.</p>
+  <footer><a href="15-ansi-04.md">Copyable header</a><a href="../../styles/ansi.md#ansi-04">ansi-04</a><a href="src/15-ansi-04.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-16" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="16" aria-label="Choose candidate 16"><span class="number">16</span><span>PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED)</span></label><span class="format">TEXT + SVG</span></header>
+  <div class="art"><img src="assets/16-nfo-01.svg" alt="An original oversized brush R, joined half-block lettering and a two-column NFO information panel." width="960" loading="lazy"></div>
+  <p class="description">An original oversized brush R, joined half-block lettering and a two-column NFO information panel.</p>
+  <footer><a href="16-nfo-01.md">Copyable header</a><a href="../../styles/nfo.md#nfo-01">nfo-01</a><a href="src/16-nfo-01.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-17" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="17" aria-label="Choose candidate 17"><span class="number">17</span><span>3D file-system landscape (pedestals and wires, or the glass-tower data city)</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/17-hack-16.svg" alt="A glass-tower map of the real repository: directory sizes become height, and white data pulses connect them." width="960" loading="lazy"></div>
+  <p class="description">A glass-tower map of the real repository: directory sizes become height, and white data pulses connect them.</p>
+  <footer><a href="17-hack-16.md">Copyable header</a><a href="../../styles/hack.md#hack-16">hack-16</a><a href="src/17-hack-16.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-18" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="18" aria-label="Choose candidate 18"><span class="number">18</span><span>Phreak tone pad: 4x4 keypad matrix with dual-tone scope traces</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/18-hack-17.svg" alt="A blue tone pad, sixteen ivory keys and real dual-frequency scope traces; it silently dials 152 / 13." width="960" loading="lazy"></div>
+  <p class="description">A blue tone pad, sixteen ivory keys and real dual-frequency scope traces; it silently dials 152 / 13.</p>
+  <footer><a href="18-hack-17.md">Copyable header</a><a href="../../styles/hack.md#hack-17">hack-17</a><a href="src/18-hack-17.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-19" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="19" aria-label="Choose candidate 19"><span class="number">19</span><span>Door game screen (narrated location, bracketed hotkeys, command prompt)</span></label><span class="format">TEXT + SVG</span></header>
+  <div class="art"><img src="assets/19-ansi-06.svg" alt="An original space-station door game: narrated arrival, a starfield, bracketed choices and a command prompt." width="960" loading="lazy"></div>
+  <p class="description">An original space-station door game: narrated arrival, a starfield, bracketed choices and a command prompt.</p>
+  <footer><a href="19-ansi-06.md">Copyable header</a><a href="../../styles/ansi.md#ansi-06">ansi-06</a><a href="src/19-ansi-06.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-20" data-batch="1">
+  <header class="card-heading"><label><input type="checkbox" value="20" aria-label="Choose candidate 20"><span class="number">20</span><span>MML listing: the project name as a tune in plain text</span></label><span class="format">TEXT</span></header>
+  <div class="art text-art"><pre>; +--------------------------------------------------------------------+
+; |  R E A D M E . N F O                  PUBLIC FILES / ORIGINAL THEME |
+; +--------------------------------------------------------------------+
+#Title     README.NFO - eight bars for a blank repository
+#Composer  lukexyz / README.NFO
+#Memo      Retro headers: 152 styles, 13 families, text art + SVG
+#Memo      MIT licence. Copy the header. Change the arrangement.
+
+; PMD-inspired MML. A = melody / B = answering voice / G = bass.
+; A quiet original C-major motif; this listing is not audio playback.
+
+A  t132 @1 v10 o4 l8  c e g &gt;c&lt;  g e d r | e g &gt;d c&lt;  g4 r4
+A                    f a &gt;c e&lt;  a g f r | e g b &gt;d&lt;   c4 r4
+A                    c d e g    a g e r | f e d c    e4 r4
+A                    d f a &gt;c&lt;  b a g r | e d c r    c2
+
+B  t132 @2 v7  o4 l8  r4 c e     r4 b d | r4 e g     r4 d g
+B                    r4 c f     r4 c f | r4 c e     r4 c e
+B                    r4 e g     r4 c e | r4 c f     r4 c e
+B                    r4 d f     r4 b d | r4 c e     c2
+
+G  t132 v8 o3 l4      c g c g | e b e b | f c f c | c g c g
+G                    a e a e | f c f c | g d g d | c2 r2
+
+; FILE MAP -------------------------------------------------------------
+; styles/    : the score book           13 families / 152 distinct looks
+; examples/  : the finished mixes       copyable Markdown + SVG headers
+; tools/     : the rehearsal room       preview / galleries / validation
+; LICENSE    : the permission slip      MIT
+; ----------------------------------------------------------------------</pre></div>
+  <p class="description">A text-only PMD-inspired music-source header with an original eight-bar melody and a repository file map.</p>
+  <footer><a href="20-asia-05.md">Copyable header</a><a href="../../styles/asia.md#asia-05">asia-05</a><a href="src/20-asia-05.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-21" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="21" aria-label="Choose candidate 21"><span class="number">21</span><span>mIRC channel window with colour-code block art and netsplit</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/21-hack-11.svg" alt="A grey IRC channel window, a bot-pasted colour logo and a brief fictional netsplit." width="960" loading="lazy"></div>
+  <p class="description">A grey IRC channel window, a bot-pasted colour logo and a brief fictional netsplit.</p>
+  <footer><a href="21-hack-11.md">Copyable header</a><a href="../../styles/hack.md#hack-11">hack-11</a><a href="src/21-hack-11.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-22" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="22" aria-label="Choose candidate 22"><span class="number">22</span><span>Magazine type-in listing: BASIC, DATA blocks and a checksum column</span></label><span class="format">TEXT</span></header>
+  <div class="art text-art"><pre>
++------------------------------------------------------------------+
+| README.NFO                                         TYPE-IN DESK |
+| Program 1: A first impression                         ISSUE 013 |
++------------------------------------------------------------------+
+
+Enter the listing below. Replace brace tokens with the matching
+screen keys on your chosen BASIC system. Keep your favourite style.
+
+10 PRINT &quot;{CLR}{RVS}README.NFO{OFF}&quot;          :REM 208
+20 REM RETRO HEADERS FOR YOUR REPOSITORY      :REM 228
+30 REM TYPE IT IN. MAKE IT YOURS.             :REM  86
+40 READ STYLES,FAMILIES                       :REM  26
+50 PRINT STYLES;&quot; STYLES TO EXPLORE&quot;          :REM 155
+60 PRINT FAMILIES;&quot; FAMILIES OF FIRST LOOKS&quot;  :REM 107
+70 PRINT &quot;TEXT ART + SVG / MIT LICENCE&quot;       :REM 139
+80 PRINT &quot;1 CATALOGUE  2 GALLERIES  3 TOOLS&quot;  :REM 173
+90 INPUT &quot;CHOOSE A SECTION&quot;;N                 :REM  93
+100 IF N=1 THEN GOSUB 1000                    :REM 236
+110 IF N=2 THEN GOSUB 1100                    :REM 239
+120 IF N=3 THEN GOSUB 1200                    :REM 242
+130 GOTO 80                                   :REM 117
+200 DATA 152,13,2026,10,5,0                   :REM  84
+1000 PRINT &quot;STYLES/INDEX.MD&quot;:RETURN           :REM  54
+1100 PRINT &quot;EXAMPLES/README.MD&quot;:RETURN        :REM 232
+1200 PRINT &quot;NPM RUN PREVIEW&quot;:RETURN           :REM  48
+
+CHECK COLUMN: sum the ASCII bytes BEFORE the :REM, modulo 256.
+Exclude the padding spaces. Checksums describe this printed listing;
+brace tokens are counted literally, before keyboard substitution.
+
+                     COPY / CUSTOMISE / SHARE
+                    README.NFO  -  OCTOBER 2026
+</pre></div>
+  <p class="description">A magazine BASIC type-in page with original code, brace tokens and genuinely computed ASCII-sum checksums.</p>
+  <footer><a href="22-print-03.md">Copyable header</a><a href="../../styles/print.md#print-03">print-03</a><a href="src/22-print-03.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-23" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="23" aria-label="Choose candidate 23"><span class="number">23</span><span>Game Boy DMG boot: logo drop on a four-shade green LCD</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/23-mach-07.svg" alt="A four-shade green 160×144 LCD: the logo drops, pauses, then opens an original tile-built book title screen." width="960" loading="lazy"></div>
+  <p class="description">A four-shade green 160×144 LCD: the logo drops, pauses, then opens an original tile-built book title screen.</p>
+  <footer><a href="23-mach-07.md">Copyable header</a><a href="../../styles/mach.md#mach-07">mach-07</a><a href="src/23-mach-07.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-24" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="24" aria-label="Choose candidate 24"><span class="number">24</span><span>Shift_JIS AA: proportional-font line art inside an anonymous forum post</span></label><span class="format">STATIC SVG</span></header>
+  <div class="art"><img src="assets/24-asia-04.svg" alt="A static anonymous forum post with a proportional punctuation balloon and an original folded-page AA archivist." width="960" loading="lazy"></div>
+  <p class="description">A static anonymous forum post with a proportional punctuation balloon and an original folded-page AA archivist.</p>
+  <footer><a href="24-asia-04.md">Copyable header</a><a href="../../styles/asia.md#asia-04">asia-04</a><a href="src/24-asia-04.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-25" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="25" aria-label="Choose candidate 25"><span class="number">25</span><span>Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/25-pc-13.svg" alt="A slow, genuinely projected 3D glenz icosahedron with translucent faces, wire edges and orbiting dots." width="960" loading="lazy"></div>
+  <p class="description">A slow, genuinely projected 3D glenz icosahedron with translucent faces, wire edges and orbiting dots.</p>
+  <footer><a href="25-pc-13.md">Copyable header</a><a href="../../styles/pc.md#pc-13">pc-13</a><a href="src/25-pc-13.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-26" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="26" aria-label="Choose candidate 26"><span class="number">26</span><span>Netlabel cassette: J-card with obi strip, and a shell whose reels turn</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/26-print-02.svg" alt="A cassette edition with turning hubs, an obi strip and a six-section J-card track list." width="960" loading="lazy"></div>
+  <p class="description">A cassette edition with turning hubs, an obi strip and a six-section J-card track list.</p>
+  <footer><a href="26-print-02.md">Copyable header</a><a href="../../styles/print.md#print-02">print-02</a><a href="src/26-print-02.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-27" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="27" aria-label="Choose candidate 27"><span class="number">27</span><span>FM-synth status display: one piano keyboard per channel, level bars and spectrum (MMDSP / FMDSP lineage)</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/27-asia-01.svg" alt="Four keyboard channels, lime key lights and a stepped lavender spectrum for the retro archive." width="960" loading="lazy"></div>
+  <p class="description">Four keyboard channels, lime key lights and a stepped lavender spectrum for the retro archive.</p>
+  <footer><a href="27-asia-01.md">Copyable header</a><a href="../../styles/asia.md#asia-01">asia-01</a><a href="src/27-asia-01.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-28" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="28" aria-label="Choose candidate 28"><span class="number">28</span><span>Atari ST menu disk: key-numbered game list, big gradient scroller, scanline rasters</span></label><span class="format">TEXT + SVG</span></header>
+  <div class="art"><img src="assets/28-c64-13.svg" alt="A menu disk with red scanline rasters, warm logo, numbered keys and a pixel sunset." width="960" loading="lazy"></div>
+  <p class="description">A menu disk with red scanline rasters, warm logo, numbered keys and a pixel sunset.</p>
+  <footer><a href="28-c64-13.md">Copyable header</a><a href="../../styles/c64.md#c64-13">c64-13</a><a href="src/28-c64-13.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-29" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="29" aria-label="Choose candidate 29"><span class="number">29</span><span>Amiga megademo menu and trainer menu: chrome logo, giant scroller, dotted-leader option list</span></label><span class="format">TEXT + SVG</span></header>
+  <div class="art"><img src="assets/29-c64-06.svg" alt="Chrome title, sparse starfield, giant white scroller and a blue-to-pink dotted selector." width="960" loading="lazy"></div>
+  <p class="description">Chrome title, sparse starfield, giant white scroller and a blue-to-pink dotted selector.</p>
+  <footer><a href="29-c64-06.md">Copyable header</a><a href="../../styles/c64.md#c64-06">c64-06</a><a href="src/29-c64-06.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-30" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="30" aria-label="Choose candidate 30"><span class="number">30</span><span>Braille-dot terminal graphics (modern TUI dashboard)</span></label><span class="format">TEXT</span></header>
+  <div class="art text-art"><pre>⣵⡿⣫⣾⠀⠀⡿⣫⣾⢟⣵⠀⠀⣾⢟⣵⠀⠀⣾⢟⣵⡿⠀⠀⢟⠀⠀⠀⣾⠀⣵⡿⣫⣾⢟⠀⠀⠀⠀⠀⠀⠀⣫⠀⠀⠀⡿⠀⣾⢟⣵⡿⣫⠀⠀⣵⡿⣫⠀
+⣫⠀⠀⠀⡿⠀⣾⠀⠀⠀⠀⠀⢟⠀⠀⠀⣾⠀⣵⠀⠀⠀⢟⠀⡿⣫⠀⢟⣵⠀⣫⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢟⣵⠀⠀⣾⠀⣵⠀⠀⠀⠀⠀⡿⠀⠀⠀⣵
+⢟⠀⠀⠀⣾⠀⣵⠀⠀⠀⠀⠀⡿⠀⠀⠀⣵⠀⣫⠀⠀⠀⡿⠀⣾⠀⣵⠀⣫⠀⢟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡿⣫⠀⠀⣵⠀⣫⠀⠀⠀⠀⠀⣾⠀⠀⠀⣫
+⡿⣫⣾⢟⠀⠀⣫⣾⢟⣵⠀⠀⣾⢟⣵⡿⣫⠀⢟⠀⠀⠀⣾⠀⣵⠀⣫⠀⢟⠀⡿⣫⣾⢟⠀⠀⠀⠀⠀⠀⠀⠀⣾⠀⣵⠀⣫⠀⢟⣵⡿⣫⠀⠀⣵⠀⠀⠀⢟
+⣾⠀⣵⠀⠀⠀⢟⠀⠀⠀⠀⠀⣵⠀⠀⠀⢟⠀⡿⠀⠀⠀⣵⠀⣫⠀⠀⠀⡿⠀⣾⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣵⠀⠀⣾⢟⠀⡿⠀⠀⠀⠀⠀⣫⠀⠀⠀⡿
+⣵⠀⠀⣾⠀⠀⡿⠀⠀⠀⠀⠀⣫⠀⠀⠀⡿⠀⣾⠀⠀⠀⣫⠀⢟⠀⠀⠀⣾⠀⣵⠀⠀⠀⠀⠀⠀⣫⣾⠀⠀⠀⣫⠀⠀⣵⡿⠀⣾⠀⠀⠀⠀⠀⢟⠀⠀⠀⣾
+⣫⠀⠀⠀⡿⠀⣾⢟⣵⡿⣫⠀⢟⠀⠀⠀⣾⠀⣵⡿⣫⣾⠀⠀⡿⠀⠀⠀⣵⠀⣫⣾⢟⣵⡿⠀⠀⢟⣵⠀⠀⠀⢟⠀⠀⠀⣾⠀⣵⠀⠀⠀⠀⠀⠀⣫⣾⢟⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⢤⠤⡤⢤⠤⡤⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⢤⠤⡤⢤
+⠖⢤⠤⣀⣀⡀⠀⠀⠀⠀⠀⢀⣀⣀⠤⡤⠲⠊⠋⠉⠀⠁⠀⠀⠀⠀⠀⠀⠈⠀⠉⠙⠑⠖⢤⠤⣀⣀⡀⠀⠀⠀⠀⠀⢀⣀⣀⠤⡤⠲⠊⠋⠉⠀⠁⠀⠀⠀⠀
+⠀⠀⠀⠁⠈⠈⠋⠙⠉⠋⠙⠁⠁⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠈⠈⠋⠙⠉⠋⠙⠁⠁⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</pre></div>
+  <p class="description">A stippled Braille-dot wordmark and decorative sine trace with ordinary text labels.</p>
+  <footer><a href="30-ansi-12.md">Copyable header</a><a href="../../styles/ansi.md#ansi-12">ansi-12</a><a href="src/30-ansi-12.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-31" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="31" aria-label="Choose candidate 31"><span class="number">31</span><span>Atari Video Music: pulsing two-part diamonds in a tiled array</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/31-idle-01.svg" alt="Eight two-part TV diamonds pulse independently above an original cream visualiser faceplate." width="960" loading="lazy"></div>
+  <p class="description">Eight two-part TV diamonds pulse independently above an original cream visualiser faceplate.</p>
+  <footer><a href="31-idle-01.md">Copyable header</a><a href="../../styles/idle.md#idle-01">idle-01</a><a href="src/31-idle-01.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-32" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="32" aria-label="Choose candidate 32"><span class="number">32</span><span>Oscilloscope view (one scope per channel)</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/32-trk-09.svg" alt="Four clean white scopes give the styles, examples, gallery and tools their own waveform personality." width="960" loading="lazy"></div>
+  <p class="description">Four clean white scopes give the styles, examples, gallery and tools their own waveform personality.</p>
+  <footer><a href="32-trk-09.md">Copyable header</a><a href="../../styles/trk.md#trk-09">trk-09</a><a href="src/32-trk-09.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-33" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="33" aria-label="Choose candidate 33"><span class="number">33</span><span>Bobs and dot objects: a sphere chain on a Lissajous path, a rotating dot cube</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/33-c64-08.svg" alt="A blue sphere chain follows a figure-eight beside a rotating dot lattice, framed by rainbow hairlines." width="960" loading="lazy"></div>
+  <p class="description">A blue sphere chain follows a figure-eight beside a rotating dot lattice, framed by rainbow hairlines.</p>
+  <footer><a href="33-c64-08.md">Copyable header</a><a href="../../styles/c64.md#c64-08">c64-08</a><a href="src/33-c64-08.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-34" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="34" aria-label="Choose candidate 34"><span class="number">34</span><span>Text-mode poster installer (Razor 1911, 2024-26)</span></label><span class="format">TEXT + SVG</span></header>
+  <div class="art"><img src="assets/34-pc-07.svg" alt="A flat tan-and-orange installer poster with giant packed character cells and a matching text version." width="960" loading="lazy"></div>
+  <p class="description">A flat tan-and-orange installer poster with giant packed character cells and a matching text version.</p>
+  <footer><a href="34-pc-07.md">Copyable header</a><a href="../../styles/pc.md#pc-07">pc-07</a><a href="src/34-pc-07.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-35" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="35" aria-label="Choose candidate 35"><span class="number">35</span><span>Demoparty results.txt (with the invitation text as its companion)</span></label><span class="format">TEXT</span></header>
+  <div class="art text-art"><pre>
+                            R E A D M E . N F O
+                          HEADER JAM / RESULTS.TXT
+                  CATALOGUE COUNTS - NO BALLOTS WERE CAST
+
+----------------------------------------------------------------------------
+
+STYLE COVERAGE COMPO
+- ---- -------------------------------------------------------------- ---- -
+ Rank  Cards  Family
+
+ 01.    18   Hacker, phreak and zine culture
+ 02.    17   Vaporwave and internet-era aesthetics
+ 03.    14   C64, Amiga and Atari ST
+ 04.    14   PC cracktros and keygen intros
+ 05.    13   Retro machine, console and arcade screens
+ 06.    11   ANSI art, BBS and text-mode
+ 07.    11   The demoscene proper
+ 08.    11   NFO and ASCII art schools
+ 09.    11   Trackers and chiptune visuals
+ 10.    10   Screensavers, idle screens and visualisers
+ 11.    10   How the files moved
+ 12.     7   Japan and East Asia
+ 13.     5   Physical media and print ephemera
+
+----------------------------------------------------------------------------
+
+DELIVERY COMPO
+- ---- -------------------------------------------------------------- ---- -
+ 01.   152   Researched style cards             by styles/
+ 02.    40   README.NFO header candidates         by examples/readme-nfo/
+ 03.    13   Distinct visual families           by the catalogue
+ 04.     2   Header formats: text art + SVG     by the examples
+
+----------------------------------------------------------------------------
+ 152 distinct styles / 13 families / original recipes / MIT licence
+ <a href="../../styles/INDEX.md">[ STYLE CATALOGUE ]</a>   <a href="README.md">[ ALL CANDIDATES ]</a>   <a href="../../LICENSE">[ MIT LICENCE ]</a>
+----------------------------------------------------------------------------
+</pre></div>
+  <p class="description">A demoparty-style results file ranks real catalogue coverage and delivery counts; no fictional votes.</p>
+  <footer><a href="35-demo-06.md">Copyable header</a><a href="../../styles/demo.md#demo-06">demo-06</a><a href="src/35-demo-06.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-36" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="36" aria-label="Choose candidate 36"><span class="number">36</span><span>Off-air idle: colour bars, test card and the hopping 'no signal' box</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/36-idle-10.svg" alt="An original off-air circle test card, seven colour bars and a slow-hopping NO SIGNAL box." width="960" loading="lazy"></div>
+  <p class="description">An original off-air circle test card, seven colour bars and a slow-hopping NO SIGNAL box.</p>
+  <footer><a href="36-idle-10.md">Copyable header</a><a href="../../styles/idle.md#idle-10">idle-10</a><a href="src/36-idle-10.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-37" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="37" aria-label="Choose candidate 37"><span class="number">37</span><span>PC demo READ.ME: paged info file with index, member table and cut-here form</span></label><span class="format">TEXT</span></header>
+  <div class="art text-art"><pre>
++--------------------------------------------------------------------------+
+|                     = = = R E A D M E . N F O = = =                      |
+|                           PUBLIC FILES / 2026                            |
++--------------------------------------------------------------------------+
+|                  Retro headers for your next repository                  |
+|               152 styles / 13 families / text + SVG / MIT                |
++--------------------------------------------------------------------------+
+
+                              M A I N   I N D E X
+
+        <a href="../../styles/INDEX.md">The style catalogue</a>..............................01
+        <a href="../README.md">The finished galleries</a>...........................02
+        <a href="README.md">Your next first impression</a>.......................03
+        <a href="../../LICENSE">The licence notice</a>...............................04
+
+                                   - 01 -
+
+        THE DEMO
+        ========
+        A blank repository deserves a memorable first screen.
+        Copy a header, change its words, and let your README make
+        an entrance: terminal, tracker, copper, chrome, dots or paper.
+
+        FILE CREW
+        ---------
+        AREA           CONTENT                  POSITION
+        ---------------------------------------------------------
+        styles/        152 researched looks     reference library
+        examples/      Markdown + SVG           finished productions
+        tools/         build + preview          workshop
+        LICENSE        MIT                      permission slip
+
+                                   - 02 -
+
+        Q: May I use these headers in my own repository?
+        A: Yes. Keep the MIT notice with the copied material.
+
+        Q: Which one should I choose?
+        A: The one that feels like the project you are making.
+
+--- CUT HERE! ---------------- CUT HERE! ---------------- CUT HERE! --------
+        REQUEST FOR A DIFFERENT FIRST IMPRESSION
+        Project name : __________________________________________
+        Favourite #s : __________________________________________
+        Desired mood : [ ] quiet  [ ] loud  [ ] nostalgic  [ ] strange
+---------------------------------------------------------------------------
+</pre></div>
+  <p class="description">A pure-text paged READ.ME with a dot-leader index, file crew, FAQ and cut-here request form.</p>
+  <footer><a href="37-demo-02.md">Copyable header</a><a href="../../styles/demo.md#demo-02">demo-02</a><a href="src/37-demo-02.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-38" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="38" aria-label="Choose candidate 38"><span class="number">38</span><span>Vertical copper bars ('Kefrens bars' / 'Alcatraz bars'): ribbons twisting down the screen</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/38-c64-07.svg" alt="Three slowly swaying scanline ramps braid into copper ribbons behind a crisp, dark-backed title." width="960" loading="lazy"></div>
+  <p class="description">Three slowly swaying scanline ramps braid into copper ribbons behind a crisp, dark-backed title.</p>
+  <footer><a href="38-c64-07.md">Copyable header</a><a href="../../styles/c64.md#c64-07">c64-07</a><a href="src/38-c64-07.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-39" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="39" aria-label="Choose candidate 39"><span class="number">39</span><span>Classic Mac OS: 1-bit System 6/7 desktop</span></label><span class="format">STATIC SVG</span></header>
+  <div class="art"><img src="assets/39-vap-11.svg" alt="Two colours, checker dither, pinstripe chrome and an original document window: a quiet one-bit desktop." width="960" loading="lazy"></div>
+  <p class="description">Two colours, checker dither, pinstripe chrome and an original document window: a quiet one-bit desktop.</p>
+  <footer><a href="39-vap-11.md">Copyable header</a><a href="../../styles/vap.md#vap-11">vap-11</a><a href="src/39-vap-11.mjs">Generator</a></footer>
+</article>
+<article class="card" id="candidate-40" data-batch="2">
+  <header class="card-heading"><label><input type="checkbox" value="40" aria-label="Choose candidate 40"><span class="number">40</span><span>CTF challenge board and scoreboard (category tiles, top-ten score graph, rank table)</span></label><span class="format">ANIMATED SVG</span></header>
+  <div class="art"><img src="assets/40-hack-18.svg" alt="A challenge board and stepped scoreboard built from real counts in the two saved candidate draws." width="960" loading="lazy"></div>
+  <p class="description">A challenge board and stepped scoreboard built from real counts in the two saved candidate draws.</p>
+  <footer><a href="40-hack-18.md">Copyable header</a><a href="../../styles/hack.md#hack-18">hack-18</a><a href="src/40-hack-18.mjs">Generator</a></footer>
+</article></section>
+<p class="closing">Two non-repeating draws saved on 5 October 2026 from 152 distinct catalogue styles. Selection stays in this browser when local storage is available. <a href="../../LICENSE">MIT licence</a> · <a href="../README.md">Other galleries</a> · <a href="../../README.md">Repository README</a>.</p></main><script>
+const filters = [...document.querySelectorAll('[data-show-batch]')];
+function filterBatch(batch) {
+  document.querySelectorAll('.card').forEach(card => { card.hidden = batch !== 'all' && card.dataset.batch !== batch; });
+  filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.showBatch === batch)));
+}
+const batchFromHash = () => location.hash === '#batch-2' ? '2' : location.hash === '#batch-1' ? '1' : 'all';
+filters.forEach(button => button.addEventListener('click', () => {
+  filterBatch(button.dataset.showBatch);
+  history.replaceState(null, '', button.dataset.showBatch === 'all' ? location.pathname : '#batch-' + button.dataset.showBatch);
+}));
+window.addEventListener('hashchange', () => filterBatch(batchFromHash()));
+filterBatch(batchFromHash());
+const storageKey = 'readme-nfo-favourites-2026-10-05';
+const boxes = [...document.querySelectorAll('input[type="checkbox"]')];
+const selected = document.getElementById('selected');
+const count = document.getElementById('count');
+const status = document.getElementById('status');
+const numbers = () => boxes.filter(box => box.checked).map(box => box.value);
+let saved = [];
+try { saved = JSON.parse(localStorage.getItem(storageKey) || '[]'); } catch {}
+if (!Array.isArray(saved)) saved = [];
+boxes.forEach(box => { box.checked = saved.includes(box.value); });
+function update() {
+  const chosen = numbers();
+  selected.value = chosen.join(', ');
+  count.textContent = chosen.length + ' selected';
+  boxes.forEach(box => box.closest('.card').classList.toggle('chosen', box.checked));
+  try { localStorage.setItem(storageKey, JSON.stringify(chosen)); } catch {}
+}
+boxes.forEach(box => box.addEventListener('change', () => { update(); status.textContent = ''; }));
+document.getElementById('clear').addEventListener('click', () => { boxes.forEach(box => box.checked = false); update(); status.textContent = 'Selection cleared.'; });
+document.getElementById('copy').addEventListener('click', async () => {
+  const chosen = numbers();
+  if (!chosen.length) { status.textContent = 'Tick a few favourites first.'; return; }
+  selected.focus(); selected.select();
+  let copied = false;
+  try { await navigator.clipboard.writeText(chosen.join(', ')); copied = true; } catch {}
+  if (!copied) { try { copied = document.execCommand('copy'); } catch {} }
+  status.textContent = copied ? 'Favourite numbers copied.' : 'The numbers are selected. Press Ctrl+C to copy.';
+});
+document.getElementById('theme').addEventListener('click', () => {
+  const dark = getComputedStyle(document.documentElement).getPropertyValue('--theme').trim() === 'dark';
+  document.documentElement.dataset.theme = dark ? 'light' : 'dark';
+});
+update();
+</script></body></html>
