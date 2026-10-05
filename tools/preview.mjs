@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { chromium } from 'playwright';
+import { closesFence, localReferences } from './lib/checks.mjs';
 
 const args = process.argv.slice(2);
 const positional = args.filter((a) => !a.startsWith('--'));
@@ -90,7 +91,9 @@ function renderMarkdown(md) {
     if (fence) {
       const body = [];
       i++;
-      while (i < lines.length && !lines[i].startsWith(fence[2])) body.push(lines[i++]);
+      while (i < lines.length && !closesFence(lines[i], fence[2])) {
+        body.push(lines[i++].replace(new RegExp(`^ {0,${fence[1].length}}`), ''));
+      }
       i++;
       codeBlocks.push({ kind: `fenced ${fence[3] || '(no lang)'}`, lines: body, at: out.length });
       out.push(`<div class="highlight"><pre><code>${esc(body.join('\n'))}</code></pre></div>`);
@@ -134,10 +137,11 @@ function renderMarkdown(md) {
     }
     if (/^\s*([-*+]|\d+\.)\s+/.test(line)) {
       const ordered = /^\s*\d+\./.test(line);
+      const start = ordered ? Number(line.match(/^\s*(\d+)\./)[1]) : 1;
       const items = [];
       while (i < lines.length && /^\s*([-*+]|\d+\.)\s+/.test(lines[i])) items.push(lines[i++].replace(/^\s*([-*+]|\d+\.)\s+/, ''));
       const tag = ordered ? 'ol' : 'ul';
-      out.push(`<${tag}>${items.map((t) => `<li>${sanitize(inline(t), 'list')}</li>`).join('')}</${tag}>`);
+      out.push(`<${tag}${ordered && start !== 1 ? ` start="${start}"` : ''}>${items.map((t) => `<li>${sanitize(inline(t), 'list')}</li>`).join('')}</${tag}>`);
       continue;
     }
     const para = [];
@@ -272,7 +276,7 @@ if (/\.svg$/i.test(abs)) {
   const md = fs.readFileSync(abs, 'utf8');
   const { html, codeBlocks } = renderMarkdown(md);
   report.push(...lintCodeBlocks(codeBlocks));
-  const refs = [...md.matchAll(/(?:src|srcset)\s*=\s*"([^"]+)"|!\[[^\]]*\]\(([^)\s]+)/g)].map((m) => m[1] || m[2]).filter((r) => !/^https?:|^data:/.test(r));
+  const refs = localReferences(md, true);
   for (const r of new Set(refs)) {
     const f = path.resolve(path.dirname(abs), r);
     if (!fs.existsSync(f)) report.push(`MISSING image ref: ${r}`);

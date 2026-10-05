@@ -2,6 +2,8 @@
 
 Header sets made for real projects. Each folder has a gallery page, one `.md` per header, the animated SVGs in `assets/` and the generators in `src/`.
 
+**[Start with twelve picks and animated previews](START-HERE.md)** · [Copying, customisation and validation](../README.md)
+
 | Set | For | Styles |
 | --- | --- | --- |
 | [dance-vision](dance-vision) | Dance Vision: a phone as a motion-capture rig, a TV as a dance floor | Scene NFO, Amiga cracktro, keygen dialog, C64 loader, CRT terminal, ANSI BBS × pirate radio |

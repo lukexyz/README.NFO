@@ -1,0 +1,18 @@
+{
+  "animated": [
+    { "set": "castaway", "slug": "01-mode7-island_opus_5.5", "name": "Mode 7 Island", "style": "mach-15", "why": "A small scene with depth and character; a good fit for games and simulations." },
+    { "set": "ultra-satisfactory", "slug": "17-amiga-tracker_opus_5.5", "name": "Amiga Tracker", "style": "trk-01", "why": "Turns real project data into a four-channel instrument panel." },
+    { "set": "dance-vision", "slug": "02-amiga-cracktro_opus_5.5", "name": "Amiga Cracktro", "style": null, "why": "Chrome letters, copper bars and dancers for an energetic introduction." },
+    { "set": "dance-vision", "slug": "05-crt-terminal_opus_5.5", "name": "CRT Terminal", "style": null, "why": "A readable green-phosphor boot sequence for command-line and developer tools." },
+    { "set": "ultra-satisfactory", "slug": "13-chrome-spheres_opus_5.5", "name": "Chrome Spheres", "style": "pc-03", "why": "A large wordmark, checker floor and reflective spheres for classic demo spectacle." },
+    { "set": "ultra-satisfactory", "slug": "26-vaporwave_opus_5.5", "name": "Classic Vaporwave", "style": "vap-01", "why": "Pink, mint, perspective grids and desktop windows for a softer palette." },
+    { "set": "castaway", "slug": "09-pinball-dmd_opus_5.5", "name": "Pinball Display", "style": "mach-11", "why": "Orange dots, scores and an attract loop for a playful arcade treatment." },
+    { "set": "castaway", "slug": "52-teletext-page_opus_5.5", "name": "Teletext Page", "style": "ansi-08", "why": "A colourful broadcast page where the project's sections become channel listings." }
+  ],
+  "text": [
+    { "set": "castaway", "slug": "07-7bit-outline-nfo_opus_5.5", "name": "7-bit Outline NFO", "style": "nfo-04", "why": "A 78-column slash-and-underscore logo with a compact ASCII island." },
+    { "set": "dance-vision", "slug": "01-nfo-release_opus_5.5", "name": "Scene Release NFO", "style": null, "why": "Shaded block letters, release information and install notes in an 80-column layout." },
+    { "set": "ultra-satisfactory", "slug": "29-site-race_opus_5.5", "name": "Site Race", "style": "xfer-01", "why": "An ASCII transfer session that makes progress bars and statistics part of the identity." },
+    { "set": "castaway", "slug": "06-rfc-manpage_opus_5.5", "name": "RFC / Man Page", "style": "hack-03", "why": "A 72-column technical memo and manual page for a quieter, dryly funny introduction." }
+  ]
+}

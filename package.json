@@ -2,10 +2,18 @@
   "name": "readme.nfo",
   "version": "0.0.0",
   "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
   "description": "Retro scene / keygen / cracktro README headers.",
   "scripts": {
     "preview": "node tools/preview.mjs",
-    "gallery": "node examples/dance-vision/src/build-gallery.mjs && node examples/ultra-satisfactory/src/build-gallery.mjs && node examples/castaway/src/build-gallery.mjs"
+    "gallery": "node examples/dance-vision/src/build-gallery.mjs && node examples/ultra-satisfactory/src/build-gallery.mjs && node examples/castaway/src/build-gallery.mjs && npm run shortlist",
+    "shortlist": "node tools/build-shortlist.mjs",
+    "styles": "node tools/build-styles.mjs",
+    "test": "node --test tools/validate.test.mjs",
+    "validate": "npm test && node tools/validate.mjs"
   },
   "devDependencies": {
     "playwright": "^1.63.0"
