@@ -14,16 +14,16 @@ For GitHub the rule is: 7-bit styles survive as plain text; block styles should 
 
 | ID | Style | Medium | Build | Impact |
 | --- | --- | --- | --- | --- |
-| [nfo-01](#nfo-01) | PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED) | Text + SVG | Medium | 4/5 |
+| [nfo-01](#nfo-01) | PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED) | Text / ASCII + SVG | Medium | 4/5 |
 | [nfo-02](#nfo-02) | PC NFO: shaded block logo with fades and debris (SAC school) | Animated SVG | Medium | 5/5 |
 | [nfo-03](#nfo-03) | Poster NFO: full-canvas shaded illustration with the text set inside it | Animated SVG | Hard | 5/5 |
-| [nfo-04](#nfo-04) | 7-bit outline NFO with dot-leader fields | Text | Easy | 3/5 |
-| [nfo-05](#nfo-05) | FILE\_ID.DIZ miniature | Text | Easy | 2/5 |
-| [nfo-06](#nfo-06) | Amiga description logos: compact Topaz outline (1992-94) | Text + SVG | Medium | 4/5 |
-| [nfo-07](#nfo-07) | Amiga colly era: full-width Latin-1 logos and page layout | Text + SVG | Medium | 4/5 |
-| [nfo-08](#nfo-08) | PC newschool ASCII: dollar-fill blob lettering (Remorse 1981 school) | Text | Medium | 3/5 |
-| [nfo-09](#nfo-09) | FIGlet and TOIlet generated banners | Text | Easy | 2/5 |
-| [nfo-10](#nfo-10) | Usenet line art and the signed picture (jgs school) | Text | Medium | 3/5 |
+| [nfo-04](#nfo-04) | 7-bit outline NFO with dot-leader fields | Text / ASCII | Easy | 3/5 |
+| [nfo-05](#nfo-05) | FILE\_ID.DIZ miniature | Text / ASCII | Easy | 2/5 |
+| [nfo-06](#nfo-06) | Amiga description logos: compact Topaz outline (1992-94) | Text / ASCII + SVG | Medium | 4/5 |
+| [nfo-07](#nfo-07) | Amiga colly era: full-width Latin-1 logos and page layout | Text / ASCII + SVG | Medium | 4/5 |
+| [nfo-08](#nfo-08) | PC newschool ASCII: dollar-fill blob lettering (Remorse 1981 school) | Text / ASCII | Medium | 3/5 |
+| [nfo-09](#nfo-09) | FIGlet and TOIlet generated banners | Text / ASCII | Easy | 2/5 |
+| [nfo-10](#nfo-10) | Usenet line art and the signed picture (jgs school) | Text / ASCII | Medium | 3/5 |
 | [nfo-11](#nfo-11) | Teletype, line-printer and typewriter pictures | Animated SVG | Medium | 3/5 |
 
 ---
@@ -32,7 +32,7 @@ For GitHub the rule is: 7-bit styles survive as plain text; block styles should 
 
 ## nfo-01 · PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED)
 
-**Text + SVG** · build: **Medium** · impact: **4/5** · 1992 to the present, PC release scene. Logos drawn 1992-94 by JED of ACiD in the BBS era; Razor 1911 and Fairlight still ship them (files checked: 1993, 1994, 2000, 2011, 2023).
+**Text / ASCII + SVG** · build: **Medium** · impact: **4/5** · 1992 to the present, PC release scene. Logos drawn 1992-94 by JED of ACiD in the BBS era; Razor 1911 and Fairlight still ship them (files checked: 1993, 1994, 2000, 2011, 2023).
 
 By 1992-93 release groups were commissioning ANSI-group artists for a logo above the typed NFO (the NFO itself dates to a Humble Guys release of January 1990). JED of ACiD drew flat, unshaded brush-script logos for Fairlight and Razor 1911; both groups kept them, so this silhouette is what most people picture as 'a Razor NFO'. It differs from the tool's existing NFO style in being a hand-lettered script silhouette with an oversized initial, not upright block capitals.
 
@@ -171,7 +171,7 @@ The most extravagant NFOs stop being a logo over a text file and become a painti
 
 ## nfo-04 · 7-bit outline NFO with dot-leader fields
 
-**Text** · build: **Easy** · impact: **3/5** · 1997-2014, PC release scene; a minority branch beside the block templates
+**Text / ASCII** · build: **Easy** · impact: **3/5** · 1997-2014, PC release scene; a minority branch beside the block templates
 
 Some PC groups and divisions used plain keyboard characters instead of CP437 blocks: a slanted outline logo in the Amiga manner over release data set with rows of dots. It reads correctly in any editor or web page, which block art does not. It was never the norm: the mainstream NFOs I opened from 2000 to 2023 are all block art.
 
@@ -212,7 +212,7 @@ Some PC groups and divisions used plain keyboard characters instead of CP437 blo
 
 ## nfo-05 · FILE\_ID.DIZ miniature
 
-**Text** · build: **Easy** · impact: **2/5** · 1993-2000s, BBS file listings on PC and Amiga
+**Text / ASCII** · build: **Easy** · impact: **2/5** · 1993-2000s, BBS file listings on PC and Amiga
 
 FILE\_ID.DIZ was created by Clark Development for its PCBDescribe utility as a plain description of up to 10 lines of 45 characters, shown automatically in BBS file lists; the shareware guidance said no high ASCII and no formatting. Release groups ignored that from about 1993 and squeezed a logo, a title and a disk counter into the stamp-sized space. It is the scene's business card.
 
@@ -255,7 +255,7 @@ FILE\_ID.DIZ was created by Clark Development for its PCBDescribe utility as a p
 
 ## nfo-06 · Amiga description logos: compact Topaz outline (1992-94)
 
-**Text + SVG** · build: **Medium** · impact: **4/5** · 1992-1994, Amiga BBS scene. Wikipedia dates the Amiga ASCII scene to 1992 and names Art, Epsilon Design, Upper Class and Unreal (later DeZign) among the first groups.
+**Text / ASCII + SVG** · build: **Medium** · impact: **4/5** · 1992-1994, Amiga BBS scene. Wikipedia dates the Amiga ASCII scene to 1992 and names Art, Epsilon Design, Upper Class and Unreal (later DeZign) among the first groups.
 
 The Amiga character set is ASCII plus Latin-1 with no block or box characters, and Topaz is spaced so tightly that an underscore followed by a slash looks like one line, so Amiga artists drew logos as outlines. They began as file-description logos drawn while uploads ran (Rotox's own account, quoted by Albert). Art's 'Description Art Volume One!' holds 66 of them by Rotox, Enforcer, Rat and Rip!. Albert likens the result to graffiti throw-ups.
 
@@ -299,7 +299,7 @@ The Amiga character set is ASCII plus Latin-1 with no block or box characters, a
 
 ## nfo-07 · Amiga colly era: full-width Latin-1 logos and page layout
 
-**Text + SVG** · build: **Medium** · impact: **4/5** · 1994-1998, with a revival from 2010; Amiga ASCII crews releasing collections ('collys')
+**Text / ASCII + SVG** · build: **Medium** · impact: **4/5** · 1994-1998, with a revival from 2010; Amiga ASCII crews releasing collections ('collys')
 
 By the mid-90s the logo had grown to the full 80 columns and the colly, one text file of logos with title, index, greets and respects, was the unit of competition. asciiarena holds 3,993 of them; its top-rated artists are Skin, Desoto, Enforcer, Stylez and nUP!, its top crews Arclite, DeZign, Low Profile, G-Style and Contra. This is the Amiga answer to 'epic'.
 
@@ -346,7 +346,7 @@ By the mid-90s the logo had grown to the full 80 columns and the colly, one text
 
 ## nfo-08 · PC newschool ASCII: dollar-fill blob lettering (Remorse 1981 school)
 
-**Text** · build: **Medium** · impact: **3/5** · 1994-2005, PC ASCII-only art groups
+**Text / ASCII** · build: **Medium** · impact: **3/5** · 1994-2005, PC ASCII-only art groups
 
 Katharsis!Ascii, started by Tinyz in March 1994, was the first ASCII-only group on the PC; Remorse followed in October 1994, founded by Necromancer and Necronite, and released 57 packs to June 2005. Their 'newschool' went beyond outline to filling and shading: letters poured solid from heavy characters with edges softened by punctuation. Roy of SAC argues the label is a misnomer for classic text art making a comeback.
 
@@ -390,7 +390,7 @@ Katharsis!Ascii, started by Tinyz in March 1994, was the first ASCII-only group 
 
 ## nfo-09 · FIGlet and TOIlet generated banners
 
-**Text** · build: **Easy** · impact: **2/5** · 1991 to the present; Unix, Usenet signatures, later open-source READMEs and CLI splash screens
+**Text / ASCII** · build: **Easy** · impact: **2/5** · 1991 to the present; Unix, Usenet signatures, later open-source READMEs and CLI splash screens
 
 FIGlet began in spring 1991 as a 170-line C program called newban by Glenn Chappell, inspired by Frank Sheeran's email signature and urged on by Ian Chai; FIGlet 2.0 in 1993 shipped 13 fonts and contributed fonts later passed 400. TOIlet (Sam Hocevar, 2006) adds Unicode fonts, colour filters and export formats. It is the look of the open-source world, not the scene, and the banner most READMEs already use.
 
@@ -432,7 +432,7 @@ FIGlet began in spring 1991 as a 170-line C program called newban by Glenn Chapp
 
 ## nfo-10 · Usenet line art and the signed picture (jgs school)
 
-**Text** · build: **Medium** · impact: **3/5** · 1990s-2003, Usenet alt.ascii-art, email signatures, GeoCities
+**Text / ASCII** · build: **Medium** · impact: **3/5** · 1990s-2003, Usenet alt.ascii-art, email signatures, GeoCities
 
 On Usenet, ASCII art meant small figurative drawings in plain ASCII posted in messages and signatures. Joan G. Stark (Spunk, signing jgs) met the form in 1995, was drawing by July 1996 and made several hundred pieces to 2003, mostly freehand in 15-20 minutes each; her site drew over 250,000 visitors between 1996 and 1998. Her line style, a small picture with initials in the corner, is what most people outside the scene mean by ASCII art.
 

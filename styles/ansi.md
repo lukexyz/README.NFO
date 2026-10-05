@@ -10,18 +10,18 @@ Checked against the sources, this family holds up as three worlds, with several 
 
 | ID | Style | Medium | Build | Impact |
 | --- | --- | --- | --- | --- |
-| [ansi-01](#ansi-01) | ANSI logo colly (gradient block-letter logos between cut lines) | Text + SVG | Medium | 4/5 |
-| [ansi-02](#ansi-02) | TheDraw font banner (outline and block typefaces) | Text | Easy | 3/5 |
+| [ansi-01](#ansi-01) | ANSI logo colly (gradient block-letter logos between cut lines) | Text / ASCII + SVG | Medium | 4/5 |
+| [ansi-02](#ansi-02) | TheDraw font banner (outline and block typefaces) | Text / ASCII | Easy | 3/5 |
 | [ansi-03](#ansi-03) | Illustrated ANSI: toon mascot and comic-book / graffiti scroller | Animated SVG | Hard | 5/5 |
 | [ansi-04](#ansi-04) | ANSImation: the modem-speed draw-in | Animated SVG | Medium | 4/5 |
-| [ansi-05](#ansi-05) | BBS data screens: stats header, last callers, file-area table | Text + SVG | Easy | 3/5 |
-| [ansi-06](#ansi-06) | Door game screen (narrated location, bracketed hotkeys, command prompt) | Text + SVG | Easy | 4/5 |
+| [ansi-05](#ansi-05) | BBS data screens: stats header, last callers, file-area table | Text / ASCII + SVG | Easy | 3/5 |
+| [ansi-06](#ansi-06) | Door game screen (narrated location, bracketed hotkeys, command prompt) | Text / ASCII + SVG | Easy | 4/5 |
 | [ansi-07](#ansi-07) | RIPscrip vector BBS screen (with NAPLPS/Telidon as its videotex cousin) | Animated SVG | Medium | 4/5 |
 | [ansi-08](#ansi-08) | Teletext page (Ceefax-style index with mosaic graphics) | Animated SVG | Medium | 5/5 |
 | [ansi-09](#ansi-09) | Minitel / viewdata service page (numbered menu, function-key legend) | Animated SVG | Medium | 4/5 |
 | [ansi-10](#ansi-10) | PETSCII plain picture and directory art | Static SVG | Medium | 3/5 |
 | [ansi-11](#ansi-11) | Text-mode demo effect (plasma in character cells) | Animated SVG | Medium | 4/5 |
-| [ansi-12](#ansi-12) | Braille-dot terminal graphics (modern TUI dashboard) | Text | Medium | 3/5 |
+| [ansi-12](#ansi-12) | Braille-dot terminal graphics (modern TUI dashboard) | Text / ASCII | Medium | 3/5 |
 
 ---
 
@@ -29,7 +29,7 @@ Checked against the sources, this family holds up as three worlds, with several 
 
 ## ansi-01 · ANSI logo colly (gradient block-letter logos between cut lines)
 
-**Text + SVG** · build: **Medium** · impact: **4/5** · 1993-1999 peak on PC BBSes; ACiD issued numbered 'logoclusters' in its Acquisition packs (number 10 is dated September 1995). Still produced: Legacy Krew (file dated December 2020, pack filed under 2021), Impure pack 80 (August 2021), Lazarus pack 21 (April 2026).
+**Text / ASCII + SVG** · build: **Medium** · impact: **4/5** · 1993-1999 peak on PC BBSes; ACiD issued numbered 'logoclusters' in its Acquisition packs (number 10 is dated September 1995). Still produced: Legacy Krew (file dated December 2020, pack filed under 2021), Impure pack 80 (August 2021), Lazarus pack 21 (April 2026).
 
 A colly is one tall ANSI file stacking many BBS or group logos, separated by cut lines so each sysop can snip out theirs. It is the lettering school of the ANSI scene, where the letterforms are the whole picture; 16colo.rs tags 606 files 'logo colly' and 3,291 'logo'. The logocluster viewed is 80 columns by 382 rows and credits six artists.
 
@@ -71,7 +71,7 @@ A colly is one tall ANSI file stacking many BBS or group logos, separated by cut
 
 ## ansi-02 · TheDraw font banner (outline and block typefaces)
 
-**Text** · build: **Easy** · impact: **3/5** · TheDraw by Ian E. Davis (TheSoft Programming Services), first released 5 January 1986, last public version 4.63 in October 1993. Fonts for it were drawn by scene artists through the 1990s; the tdfiglet project bundles 1,198 known .TDF fonts, and 16colo.rs tags about 1,200 files 'font' (peak 1998-2002).
+**Text / ASCII** · build: **Easy** · impact: **3/5** · TheDraw by Ian E. Davis (TheSoft Programming Services), first released 5 January 1986, last public version 4.63 in October 1993. Fonts for it were drawn by scene artists through the 1990s; the tdfiglet project bundles 1,198 known .TDF fonts, and 16colo.rs tags about 1,200 files 'font' (peak 1998-2002).
 
 TheDraw, the standard DOS ANSI editor, had a font manager: you typed a word and it stamped large letters from a .TDF font. It is the ready-made cousin of the hand-drawn logo, and the source of thousands of BBS headers whose letters are all cut from the same typeface. The format has three font types: Outline, Block and Color.
 
@@ -196,7 +196,7 @@ An .ANS file whose cursor-positioning escape codes redraw parts of the screen so
 
 ## ansi-05 · BBS data screens: stats header, last callers, file-area table
 
-**Text + SVG** · build: **Easy** · impact: **3/5** · 1990-1997 on PCBoard (Clark Development, 1983-1997), Renegade, Telegard, WWIV and Wildcat boards; alive on Mystic, Synchronet and ENiGMA boards today (the menu set viewed is dated April 2020). The artpack info-file table it borrows from ran monthly from 1992 (ACiD's Acquisition, iCE's packs).
+**Text / ASCII + SVG** · build: **Easy** · impact: **3/5** · 1990-1997 on PCBoard (Clark Development, 1983-1997), Renegade, Telegard, WWIV and Wildcat boards; alive on Mystic, Synchronet and ENiGMA boards today (the menu set viewed is dated April 2020). The artpack info-file table it borrows from ran monthly from 1992 (ACiD's Acquisition, iCE's packs).
 
 After login a board walked you through data screens: who called last, a wall of user one-liners, system stats, then message and file areas with FILE\_ID.DIZ descriptions. Sysops commissioned matching header art for each and artists released them as menu sets (16colo.rs files 692 of these under the 'matrix' tag). This is a sub-variant of the existing ANSI BBS style: the tables after login, not the login or main menu. The artpack info file and its file table have been merged in here.
 
@@ -242,7 +242,7 @@ After login a board walked you through data screens: who called last, a wall of 
 
 ## ansi-06 · Door game screen (narrated location, bracketed hotkeys, command prompt)
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · 1989-1997. Legend of the Red Dragon by Seth Robinson (Wikipedia dates it to 1989; Break Into Chat says it began on the Amiga and the earliest surviving PC version is 1.7 of 24 May 1992; sold to Metropolis Gameport in 1998). TradeWars 2002 by Gary Martin (version 1.00 June 1991, after his 1986 TradeWars 2001 port of Chris Sherrick's 1984 Trade Wars; version 3 in 1997).
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1989-1997. Legend of the Red Dragon by Seth Robinson (Wikipedia dates it to 1989; Break Into Chat says it began on the Amiga and the earliest surviving PC version is 1.7 of 24 May 1992; sold to Metropolis Gameport in 1998). TradeWars 2002 by Gary Martin (version 1.00 June 1991, after his 1986 TradeWars 2001 port of Chris Sherrick's 1984 Trade Wars; version 3 in 1997).
 
 Door games were external programs a BBS handed the caller to, played in daily turns through plain text with ANSI colour. The two best-remembered ones fixed a grammar - a titled location, a paragraph of narration, choices marked by a bracketed hotkey letter, a status-bearing prompt - that anyone who dialled a board recognises instantly.
 
@@ -502,7 +502,7 @@ Demos that run real-time effects in the plain text screen - standard character s
 
 ## ansi-12 · Braille-dot terminal graphics (modern TUI dashboard)
 
-**Text** · build: **Medium** · impact: **3/5** · Braille Patterns block in Unicode since version 3.0 (1999); used for terminal plotting since drawille by Adam Tauber (2014) and its many ports; standard in current system monitors such as btop; Chafa by Hans Petter Jansson (2018) converts images to half blocks and other symbol sets; sextants arrived in Unicode 13 (2020).
+**Text / ASCII** · build: **Medium** · impact: **3/5** · Braille Patterns block in Unicode since version 3.0 (1999); used for terminal plotting since drawille by Adam Tauber (2014) and its many ports; standard in current system monitors such as btop; Chafa by Hans Petter Jansson (2018) converts images to half blocks and other symbol sets; sextants arrived in Unicode 13 (2020).
 
 The present-day descendant of mosaic graphics: each character cell is treated as a 2x4 dot matrix (Braille) or as two stacked pixels (half block), so a terminal can plot curves and pictures. It is the look of today's command-line dashboards, and it is the one 'pixel' technique in this family that survives as plain text on GitHub.
 

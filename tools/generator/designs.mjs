@@ -2,6 +2,10 @@
 // These portable templates complement the larger catalogue of hand-drawn examples.
 import { createHash } from 'node:crypto';
 import { lettering as text, paragraph, rect, svg, short } from './svg.mjs';
+import { additionalDesigns } from './library.mjs';
+import { qualityDesigns } from './quality-library.mjs';
+import { catalogue, supportsFormat, formatsFor } from './catalogue.mjs';
+import { renderText } from './catalogue-art.mjs';
 
 const title = (p, x, y, options = {}) => text(p.name, x, y, { scale: 8, ...options });
 const pitch = (p, x, y, options = {}) => paragraph(p.description || p.fullName, x, y, options);
@@ -193,7 +197,8 @@ function zine(p) {
   return { body, background: '#c7cbbd' };
 }
 
-export const designs = Object.freeze([
+export const presetStyleIds = {tracker:'trk-07',cassette:'print-02','off-air':'idle-10',copper:'c64-07',desktop:'vap-09',vector:'pc-13',terminal:'hack-05',bbs:'ansi-05',radar:'hack-13',neon:'vap-05',starfield:'idle-05',zine:'nfo-03',...Object.fromEntries([...additionalDesigns,...qualityDesigns].map(design=>[design.id,design.styleId]))};
+export const presets = Object.freeze([
   { id: 'tracker', name: 'Multi-chip tracker', render: tracker },
   { id: 'cassette', name: 'Cassette and J-card', render: cassette },
   { id: 'off-air', name: 'Off-air test card', render: offair },
@@ -206,15 +211,35 @@ export const designs = Object.freeze([
   { id: 'neon', name: 'Neon horizon', render: neon },
   { id: 'starfield', name: 'Deep-space transmission', render: starfield },
   { id: 'zine', name: 'Independent zine', render: zine },
-]);
+  ...additionalDesigns,
+  ...qualityDesigns,
+].map(design=>({...design,styleId:design.styleId||presetStyleIds[design.id]})));
+
+// A catalogue entry is a design brief, not an implemented renderer. Only these
+// independently composed scenes are eligible for standalone generation.
+export const designs = Object.freeze(presets.map(preset => {
+  const style=catalogue.find(style=>style.id===preset.styleId);
+  if(!style)throw new Error(`Unknown preset style: ${preset.styleId}`);
+  return {...style,...preset,id:style.id,formats:formatsFor(style)};
+}));
+export const renderTextHeader = (design, project) => renderText(design, project);
 
 export function renderDesign(design, project) {
   return svg(project, design.name, design.render(project));
 }
 
-export function selectDesigns(count, seed) {
-  if (!Number.isInteger(count) || count < 1 || count > designs.length) throw new Error(`Choose 1–${designs.length} headers.`);
-  const result = [...designs];
+export function selectDesigns(count, seed, { format = 'all', exclude = [], styles } = {}) {
+  const excluded = new Set(exclude.map(id => presetStyleIds[id] || presets.find(preset => preset.id === id)?.styleId || id));
+  const result = designs.filter(design => supportsFormat(design, format) && !excluded.has(design.id));
+  if (!Number.isInteger(count) || count < 1 || count > result.length) throw new Error(`Choose 1–${result.length} headers for the selected format and exclusions.`);
+  if (styles) {
+    if (styles.length !== count || new Set(styles).size !== count) throw new Error('Saved selection must contain the requested number of distinct styles.');
+    return styles.map(id => {
+      const design = result.find(candidate => candidate.id === id);
+      if (!design) throw new Error(`Unavailable saved style: ${id}`);
+      return design;
+    });
+  }
   let block = 0;
   // Reproducible Fisher–Yates selection, with rejection sampling to avoid modulo bias.
   const random = maximum => {

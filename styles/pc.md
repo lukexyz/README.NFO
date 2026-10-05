@@ -23,12 +23,12 @@ Motion is inferred from comments and effect names, not watched: every visual des
 | [pc-03](#pc-03) | Chrome spheres over a checkerboard | Animated SVG | Medium | 5/5 |
 | [pc-04](#pc-04) | Early DOS VGA loader: metal logo, gradient bars, one big scroller | Animated SVG | Easy | 3/5 |
 | [pc-05](#pc-05) | Win32 new old-school cracktro: metal logo, twister, sine scroller | Animated SVG | Medium | 4/5 |
-| [pc-06](#pc-06) | Skinned rip installer: INSTALL / NFO / MUSIC / EXIT | Text + SVG | Easy | 4/5 |
-| [pc-07](#pc-07) | Text-mode poster installer (Razor 1911, 2024-26) | Text + SVG | Easy | 4/5 |
-| [pc-08](#pc-08) | Trainer menu: F-key toggles under a logo | Text + SVG | Easy | 3/5 |
+| [pc-06](#pc-06) | Skinned rip installer: INSTALL / NFO / MUSIC / EXIT | Text / ASCII + SVG | Easy | 4/5 |
+| [pc-07](#pc-07) | Text-mode poster installer (Razor 1911, 2024-26) | Text / ASCII + SVG | Easy | 4/5 |
+| [pc-08](#pc-08) | Trainer menu: F-key toggles under a logo | Text / ASCII + SVG | Easy | 3/5 |
 | [pc-09](#pc-09) | Pencil on paper: the cracktro that draws itself | Animated SVG | Medium | 4/5 |
 | [pc-10](#pc-10) | Fake desktop takeover | Animated SVG | Easy | 4/5 |
-| [pc-11](#pc-11) | BIOS setup hijack: the firmware screen that starts misbehaving | Text + SVG | Easy | 4/5 |
+| [pc-11](#pc-11) | BIOS setup hijack: the firmware screen that starts misbehaving | Text / ASCII + SVG | Easy | 4/5 |
 | [pc-12](#pc-12) | Neon cube field: the rez-era Razor look | Animated SVG | Medium | 4/5 |
 | [pc-13](#pc-13) | Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs | Animated SVG | Medium | 4/5 |
 | [pc-14](#pc-14) | Texture movers: rotozoomer and tunnel | Animated SVG | Medium | 3/5 |
@@ -253,7 +253,7 @@ The mid-2000s revival in which demoscene coders (hitchhikr, the Titan people, an
 
 ## pc-06 · Skinned rip installer: INSTALL / NFO / MUSIC / EXIT
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · 1997-2004, Windows (Class and Myth game-rip installers); a DOS precedent in Razor's 1997 'Arnie 3' cracktro, a fake GUI window converted from an Amiga trainer
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1997-2004, Windows (Class and Myth game-rip installers); a DOS precedent in Razor's 1997 'Arnie 3' cracktro, a fake GUI window converted from an Amiga trainer
 
 Rip groups cut games down to small packages and shipped their own installer, which doubled as the intro: a custom-shaped window with a logo sign, three or four buttons, an info viewport and a chiptune playlist. Wikipedia describes Class's rips, its custom installation software and its rivalry with Myth; Pouet commenters remember the Class installers mainly for the Maktone tunes and complain about hearing them recycled. It is a different object from the keygen dialog: no serial field, a release menu instead.
 
@@ -294,7 +294,7 @@ Rip groups cut games down to small packages and shipped their own installer, whi
 
 ## pc-07 · Text-mode poster installer (Razor 1911, 2024-26)
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · May 2024 onward, Windows; Razor 1911 game installers with code by Black Panther, graphics by Goto80 and music by Dubmood, plus the text-art passages of the 2026 anniversary demo Razor1911
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · May 2024 onward, Windows; Razor 1911 game installers with code by Black Panther, graphics by Goto80 and music by Dubmood, plus the text-art passages of the 2026 anniversary demo Razor1911
 
 Razor's current house look, and the one most directly usable as plain text: each installer is a single character-cell poster in two or three flat colours, with the game title and the group name built as enormous block letters that fill the frame, and two small buttons. A Pouet commenter credits these with taking cracktro style somewhere new 'like Melon Dezign used to'. The same vocabulary (PETSCII, ANSI, ASCII, BBS file lists) runs through the group's 40th-anniversary demo, which won the PC demo competition at Revision 2026.
 
@@ -337,7 +337,7 @@ Razor's current house look, and the one most directly usable as plain text: each
 
 ## pc-08 · Trainer menu: F-key toggles under a logo
 
-**Text + SVG** · build: **Easy** · impact: **3/5** · 1993-2006: DOS trainers by Razor 1911 (1993-94); Windows trainers by Hoodlum (2004-05), Deviance (2005), FANAiON with Titan (2005) and Razor (2006)
+**Text / ASCII + SVG** · build: **Easy** · impact: **3/5** · 1993-2006: DOS trainers by Razor 1911 (1993-94); Windows trainers by Hoodlum (2004-05), Deviance (2005), FANAiON with Titan (2005) and Razor (2006)
 
 A trainer patches a running game to give cheats, and its screen is a cracktro with a job to do: a logo on top and a list of function-key toggles underneath. It is the most list-shaped screen in the family, which makes it the easiest to turn into something useful, and the VU bars in the 1993 Razor one are the natural visual stand-in for the music a README cannot play.
 
@@ -458,7 +458,7 @@ A cracktro that pretends to be, or takes over, the user's own desktop. Fairlight
 
 ## pc-11 · BIOS setup hijack: the firmware screen that starts misbehaving
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · Razor 1911, CMOS Cosmos (Windows, 29 Nov 2025; by Anat, Dubmood, Flopine, Goto80 and zabutom), 1st in the combined demo/intro competition at Compusphere 2025. A dentro rather than a cracktro, but it is current Razor and the look is a PC-only one.
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · Razor 1911, CMOS Cosmos (Windows, 29 Nov 2025; by Anat, Dubmood, Flopine, Goto80 and zabutom), 1st in the combined demo/intro competition at Compusphere 2025. A dentro rather than a cracktro, but it is current Razor and the look is a PC-only one.
 
 A demo staged inside a PC BIOS setup screen: the familiar navy text-mode page with a double-line frame and a key legend, whose main panel then fills with text-mode effects. Pouet commenters single out 'the old school CMOS screens' and 'the BIOS part', one wishes for a whole demo inside those UI constraints, another calls it the perfect prank for an unlocked computer. Demozoo lists it as nominated for Best Direction at the Meteoriks 2026 and tags it with an epilepsy warning.
 

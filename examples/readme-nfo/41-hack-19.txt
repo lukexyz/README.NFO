@@ -1,0 +1,24 @@
+####  #####  ###  ####  #   # #####       #   # #####  ### 
+#   # #     #   # #   # ## ## #           ##  # #     #   #
+#   # #     #   # #   # # # # #           ##  # #     #   #
+####  ####  ##### #   # # # # ####        # # # ####  #   #
+# #   #     #   # #   # #   # #           #  ## #     #   #
+#  #  :     #   # #   : :   # #      :#   :  :# #     #   :
+:   # ##:## #   : :##:  #   # #:##:  ##   #   # #      ##: 
+
+https://github.com/lukexyz/README.NFO
+
+Repository: lukexyz/README.NFO
+
+Loading style catalogue... Ok
+* 153 distinct styles / 13 families
+
+Preparing header formats...
+* Text / ASCII: copyable character art
+* SVG: colour, vector lettering, optional motion
+
+Reading project...
+* Adapt name, description and verified facts
+Ready: choose a style, then copy a header
+
+Illustrative startup sequence.

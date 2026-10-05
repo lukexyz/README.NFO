@@ -1,6 +1,6 @@
 # README.NFO headers 21–30
 
-[All 40 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-2.md) · [Next →](page-4.md)
+[All 41 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-2.md) · [Next →](page-4.md)
 
 Keep the numbers of your favourites. Each header below is also saved in its own Markdown file.
 
@@ -8,7 +8,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 21 · mIRC channel window with colour-code block art and netsplit
 
-[Copy this header](21-hack-11.md) · [hack-11](../../styles/hack.md#hack-11) · [Generator](src/21-hack-11.mjs)
+**Format: ANIMATED SVG** · [Copy this header](21-hack-11.md) · [hack-11](../../styles/hack.md#hack-11) · [Generator](src/21-hack-11.mjs)
 
 <p align="center">
   <img src="assets/21-hack-11.svg" width="100%" alt="A generic IRC client showing the README.NFO channel, a colour-cell logo, role nicknames and copy instructions.">
@@ -23,7 +23,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 22 · Magazine type-in listing: BASIC, DATA blocks and a checksum column
 
-[Copy this header](22-print-03.md) · [print-03](../../styles/print.md#print-03) · [Generator](src/22-print-03.mjs)
+**Format: TEXT / ASCII** · [Copy this header](22-print-03.md) · [print-03](../../styles/print.md#print-03) · [Generator](src/22-print-03.mjs)
 
 <pre>
 +------------------------------------------------------------------+
@@ -66,7 +66,7 @@ brace tokens are counted literally, before keyboard substitution.
 
 ## 23 · Game Boy DMG boot: logo drop on a four-shade green LCD
 
-[Copy this header](23-mach-07.md) · [mach-07](../../styles/mach.md#mach-07) · [Generator](src/23-mach-07.mjs)
+**Format: ANIMATED SVG** · [Copy this header](23-mach-07.md) · [mach-07](../../styles/mach.md#mach-07) · [Generator](src/23-mach-07.mjs)
 
 <p align="center">
   <img src="assets/23-mach-07.svg" width="100%" alt="README.NFO on an original green four-shade LCD with a dropping wordmark and an open-book title card.">
@@ -81,7 +81,7 @@ brace tokens are counted literally, before keyboard substitution.
 
 ## 24 · Shift_JIS AA: proportional-font line art inside an anonymous forum post
 
-[Copy this header](24-asia-04.md) · [asia-04](../../styles/asia.md#asia-04) · [Generator](src/24-asia-04.mjs)
+**Format: STATIC SVG** · [Copy this header](24-asia-04.md) · [asia-04](../../styles/asia.md#asia-04) · [Generator](src/24-asia-04.mjs)
 
 <p align="center">
   <img src="assets/24-asia-04.svg" width="100%" alt="Monochrome anonymous forum post: README.NFO inside an AA speech balloon, with an original folded-page figure and catalogue card.">
@@ -96,7 +96,7 @@ brace tokens are counted literally, before keyboard substitution.
 
 ## 25 · Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs
 
-[Copy this header](25-pc-13.md) · [pc-13](../../styles/pc.md#pc-13) · [Generator](src/25-pc-13.mjs)
+**Format: ANIMATED SVG** · [Copy this header](25-pc-13.md) · [pc-13](../../styles/pc.md#pc-13) · [Generator](src/25-pc-13.mjs)
 
 <p align="center">
   <img src="assets/25-pc-13.svg" width="100%" alt="README.NFO beside a translucent rotating cyan icosahedron, with 152 styles, thirteen families and MIT licence.">
@@ -111,7 +111,7 @@ brace tokens are counted literally, before keyboard substitution.
 
 ## 26 · Netlabel cassette: J-card with obi strip, and a shell whose reels turn
 
-[Copy this header](26-print-02.md) · [print-02](../../styles/print.md#print-02) · [Generator](src/26-print-02.mjs)
+**Format: ANIMATED SVG** · [Copy this header](26-print-02.md) · [print-02](../../styles/print.md#print-02) · [Generator](src/26-print-02.mjs)
 
 <p align="center">
   <img src="assets/26-print-02.svg" width="100%" alt="README.NFO on a smoke-grey cassette beside a blue and cream unfolded J-card">
@@ -126,7 +126,7 @@ brace tokens are counted literally, before keyboard substitution.
 
 ## 27 · FM-synth status display: one piano keyboard per channel, level bars and spectrum (MMDSP / FMDSP lineage)
 
-[Copy this header](27-asia-01.md) · [asia-01](../../styles/asia.md#asia-01) · [Generator](src/27-asia-01.mjs)
+**Format: ANIMATED SVG** · [Copy this header](27-asia-01.md) · [asia-01](../../styles/asia.md#asia-01) · [Generator](src/27-asia-01.mjs)
 
 <p align="center">
   <img src="assets/27-asia-01.svg" width="100%" alt="README.NFO lavender FM status display with four keyboards, lit green keys and spectrum bars">
@@ -141,7 +141,7 @@ brace tokens are counted literally, before keyboard substitution.
 
 ## 28 · Atari ST menu disk: key-numbered game list, big gradient scroller, scanline rasters
 
-[Copy this header](28-c64-13.md) · [c64-13](../../styles/c64.md#c64-13) · [Generator](src/28-c64-13.mjs)
+**Format: SVG** · [Copy this header](28-c64-13.md) · [c64-13](../../styles/c64.md#c64-13) · [Generator](src/28-c64-13.mjs)
 
 <p align="center"><img src="assets/28-c64-13.svg" width="100%" alt="README.NFO menu disk with orange logo, red rasters, numbered menu and pixel sunset"></p>
 
@@ -160,7 +160,7 @@ SPACE ... COPY, CUSTOMISE, SHARE ... MIT
 
 ## 29 · Amiga megademo menu and trainer menu: chrome logo, giant scroller, dotted-leader option list
 
-[Copy this header](29-c64-06.md) · [c64-06](../../styles/c64.md#c64-06) · [Generator](src/29-c64-06.mjs)
+**Format: SVG** · [Copy this header](29-c64-06.md) · [c64-06](../../styles/c64.md#c64-06) · [Generator](src/29-c64-06.mjs)
 
 <p align="center"><img src="assets/29-c64-06.svg" width="100%" alt="README.NFO chrome megademo selector with starfield, white scroller and dotted menu"></p>
 
@@ -183,7 +183,7 @@ OPEN THE ARCHIVE / COPY / CUSTOMISE / SHARE
 
 ## 30 · Braille-dot terminal graphics (modern TUI dashboard)
 
-[Copy this header](30-ansi-12.md) · [ansi-12](../../styles/ansi.md#ansi-12) · [Generator](src/30-ansi-12.mjs)
+**Format: TEXT / ASCII** · [Copy this header](30-ansi-12.md) · [ansi-12](../../styles/ansi.md#ansi-12) · [Generator](src/30-ansi-12.mjs)
 
 **README.NFO** — retro headers in text and SVG.
 
@@ -214,4 +214,4 @@ OPEN THE ARCHIVE / COPY / CUSTOMISE / SHARE
 
 ---
 
-[All 40 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-2.md) · [Next →](page-4.md)
+[All 41 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-2.md) · [Next →](page-4.md)

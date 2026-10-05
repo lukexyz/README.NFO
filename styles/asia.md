@@ -12,11 +12,11 @@ This family has four schools that share one technical fact: their character cell
 | --- | --- | --- | --- | --- |
 | [asia-01](#asia-01) | FM-synth status display: one piano keyboard per channel, level bars and spectrum (MMDSP / FMDSP lineage) | Animated SVG | Medium | 5/5 |
 | [asia-02](#asia-02) | PC-98 adventure / visual-novel screen: dithered 16-colour picture, command menu, kanji message window | Animated SVG | Medium | 5/5 |
-| [asia-03](#asia-03) | PTT telnet board: board list, push/boo comment column and double-width Big5 block art | Text + SVG | Easy | 4/5 |
+| [asia-03](#asia-03) | PTT telnet board: board list, push/boo comment column and double-width Big5 block art | Text / ASCII + SVG | Easy | 4/5 |
 | [asia-04](#asia-04) | Shift\_JIS AA: proportional-font line art inside an anonymous forum post | Static SVG | Medium | 4/5 |
-| [asia-05](#asia-05) | MML listing: the project name as a tune in plain text | Text | Easy | 3/5 |
-| [asia-06](#asia-06) | Japanese 8/16-bit BASIC power-on: memory count, file-buffer question, function-key bar (PC-88/98), and the MSX blue screen | Text + SVG | Easy | 3/5 |
-| [asia-07](#asia-07) | Kaomoji and one-line AA: the font-proof subset | Text | Easy | 2/5 |
+| [asia-05](#asia-05) | MML listing: the project name as a tune in plain text | Text / ASCII | Easy | 3/5 |
+| [asia-06](#asia-06) | Japanese 8/16-bit BASIC power-on: memory count, file-buffer question, function-key bar (PC-88/98), and the MSX blue screen | Text / ASCII + SVG | Easy | 3/5 |
+| [asia-07](#asia-07) | Kaomoji and one-line AA: the font-proof subset | Text / ASCII | Easy | 2/5 |
 
 ---
 
@@ -107,7 +107,7 @@ The PC-98 held over 60% of the Japanese market by 1991. It had 640x400 graphics 
 
 ## asia-03 · PTT telnet board: board list, push/boo comment column and double-width Big5 block art
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · Taiwan, PTT founded 14 September 1995 by Yi-Chin Tu at National Taiwan University; push/boo comments added 25 May 2002; text animation viewer (pmore) 2005 and 2007; still running today over SSH and WebSocket
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · Taiwan, PTT founded 14 September 1995 by Yi-Chin Tu at National Taiwan University; push/boo comments added 25 May 2002; text animation viewer (pmore) 2005 and 2007; still running today over SSH and WebSocket
 
 PTT is a text-terminal bulletin board with more than 1.5 million registered users and over 20,000 boards, descended from Pirate BBS through Eagles, Phoenix and MapleBBS. Its screens are a living BBS dialect: a reverse-video column header, colour-coded popularity numbers, and under each article a column of one-line comments each opening with a push, boo or arrow mark. The source code is public, so every colour and column below is read from the code, not guessed.
 
@@ -197,7 +197,7 @@ What the West calls Shift\_JIS art is simply 'AA' in Japan. Unlike Western ASCII
 
 ## asia-05 · MML listing: the project name as a tune in plain text
 
-**Text** · build: **Easy** · impact: **3/5** · Term in print by May 1982 (BYTE on the OKI if-800); NEC calls its PLAY channel strings MML in a 1986 manual; PMD 4.8 manual dated 4 April 1997 by M. Kajihara (KAJA); mck for the NES released 2001
+**Text / ASCII** · build: **Easy** · impact: **3/5** · Term in print by May 1982 (BYTE on the OKI if-800); NEC calls its PLAY channel strings MML in a 1986 manual; PMD 4.8 manual dated 4 April 1997 by M. Kajihara (KAJA); mck for the NES released 2001
 
 Music Macro Language is chip music written as text: letters for notes, digits for lengths, single-letter commands for octave, tempo, volume and instrument. It began inside BASIC PLAY statements on Japanese 8-bit machines and became the input format for dedicated drivers such as PMD on the PC-98 and, later, mck on the Famicom, whose release revived it among chiptune musicians. It is the one chiptune artefact that is natively a code block.
 
@@ -239,7 +239,7 @@ Music Macro Language is chip music written as text: letters for notes, digits fo
 
 ## asia-06 · Japanese 8/16-bit BASIC power-on: memory count, file-buffer question, function-key bar (PC-88/98), and the MSX blue screen
 
-**Text + SVG** · build: **Easy** · impact: **3/5** · NEC PC-8801 (1981, N88-BASIC), PC-9801 (1982, N88-BASIC(86)), MSX (1983, MSX BASIC 1.0)
+**Text / ASCII + SVG** · build: **Easy** · impact: **3/5** · NEC PC-8801 (1981, N88-BASIC), PC-9801 (1982, N88-BASIC(86)), MSX (1983, MSX BASIC 1.0)
 
 The screens Japanese owners saw with no disk in the drive. A PC-98 runs its self-test, prints a memory figure followed by OK, and, finding nothing to boot, drops into ROM BASIC, which opens by asking how many file buffers to reserve; a specialist PC-98 site has a whole page explaining that question because so many people met it by accident. MSX machines show a brief system sign-on and then a solid blue BASIC screen. Both keep a row of function-key words along the bottom edge.
 
@@ -282,7 +282,7 @@ The screens Japanese owners saw with no disk in the drive. A PC-98 runs its self
 
 ## asia-07 · Kaomoji and one-line AA: the font-proof subset
 
-**Text** · build: **Easy** · impact: **2/5** · Japan from 20 June 1986 (the upright smiling face posted on ASCII-NET by Yasushi Wakabayashi); 2channel one-liners from 1999; Korean and Chinese variants in the 2000s
+**Text / ASCII** · build: **Easy** · impact: **2/5** · Japan from 20 June 1986 (the upright smiling face posted on ASCII-NET by Yasushi Wakabayashi); 2channel one-liners from 1999; Korean and Chinese variants in the 2000s
 
 Upright faces built from brackets and symbols, read without tilting the head, with the eyes doing the work. On 2channel they grew arms, props and sound words and became one-line banners. Because nothing has to line up with the row above or below, they are the only part of Japanese AA that survives any font.
 

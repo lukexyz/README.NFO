@@ -10,7 +10,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIR = path.resolve(HERE, '..', 'styles');
 const data = JSON.parse(fs.readFileSync(path.join(DIR, 'styles.json'), 'utf8'));
 
-const MEDIUM = { 'text-only': 'Text', 'animated-svg': 'Animated SVG', 'static-svg': 'Static SVG', 'text-plus-svg': 'Text + SVG' };
+const MEDIUM = { 'text-only': 'Text / ASCII', 'animated-svg': 'Animated SVG', 'static-svg': 'Static SVG', 'text-plus-svg': 'Text / ASCII + SVG' };
 const BUILD = { easy: 'Easy', medium: 'Medium', hard: 'Hard', 'not-possible': 'Not possible' };
 
 // The research text is prose that mentions HTML tags, dollar signs and asterisks. Escape anything
@@ -66,7 +66,8 @@ for (const f of data.families) {
     out.push(`**As a README header.** ${oneLine(s.readme_translation)}`, '');
     out.push(`**How to build it.** ${oneLine(s.feasibility_notes)}`, '');
     out.push(`**Do not copy / caveats.** ${oneLine(s.caveats)}`, '');
-    out.push('**References**', '', ...s.references.map((r) => `- ${link(r.what, r.url)}`), '');
+    if (s.sampler_prompt) out.push('**Sampler prompt**', '', '```text', s.sampler_prompt, '```', '');
+    if (s.references.length) out.push('**References**', '', ...s.references.map((r) => `- ${link(r.what, r.url)}`), '');
   }
   if (f.left_out.length) out.push('---', '', '## Considered and left out', '', ...f.left_out.map((d) => `- ${oneLine(d)}`), '');
   if (f.research_notes.length) out.push('---', '', '## Research notes', '', ...f.research_notes.map((d) => `- ${oneLine(d)}`), '');
@@ -81,9 +82,18 @@ const idx = [
   '',
   `<sub>Generated from <code>styles.json</code> by <code>tools/build-styles.mjs</code>. ${total} entries, ${total - dupes} distinct styles, in ${data.families.length} families. [Back to the catalogue](README.md)</sub>`,
   '',
-  'Medium: **Text** is plain text art in a `<pre>` block. **SVG** is an image file, animated or static. **Text + SVG** works either way. Build is how hard it is to make within GitHub\'s limits. Impact is the researchers\' own 1 to 5 guess at how striking it would be at the top of a repo.',
+  'Medium: **Text / ASCII** is copyable character art in a `<pre>` or fenced text block. **SVG** is an image file, animated or static. **Text / ASCII + SVG** supports either output; colour and seamless block fills need SVG. Build is how hard it is to make within GitHub\'s limits. Impact is the researchers\' own 1 to 5 guess at how striking it would be at the top of a repo.',
   '',
 ];
+idx.push('## Browse by output format', '', 'These groups describe supported output formats. A terminal or ASCII-looking image is still an SVG; check the actual sample format in its gallery.', '');
+for (const [name, matches] of [
+  ['Text / ASCII only', (s) => s.medium === 'text-only'],
+  ['SVG only', (s) => ['animated-svg', 'static-svg'].includes(s.medium)],
+  ['Text / ASCII or SVG', (s) => s.medium === 'text-plus-svg'],
+]) {
+  const styles = [...byId.values()].filter((s) => !s.duplicate_of && matches(s));
+  idx.push(`### ${name} (${styles.length})`, '', ...styles.map((s) => `- ${ref(s.id)} · ${oneLine(s.name)}`), '');
+}
 for (const f of data.families) {
   idx.push(`## [${f.title}](${f.key}.md)`, '', '| ID | Style | Medium | Build | Impact | What it is |', '| --- | --- | --- | --- | --- | --- |');
   for (const s of f.styles) {

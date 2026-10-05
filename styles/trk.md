@@ -11,13 +11,13 @@ Sound cannot play in a README, so this family is what module and chip music look
 | ID | Style | Medium | Build | Impact |
 | --- | --- | --- | --- | --- |
 | [trk-01](#trk-01) | Amiga 4-channel tracker (ProTracker 2.3D editor screen) | Animated SVG | Medium | 5/5 |
-| [trk-02](#trk-02) | Module sample list as message board (text-only) | Text | Easy | 3/5 |
+| [trk-02](#trk-02) | Module sample list as message board (text-only) | Text / ASCII | Easy | 3/5 |
 | [trk-03](#trk-03) | FastTracker II (dense DOS GUI tracker with scope grid) | Animated SVG | Medium | 4/5 |
-| [trk-04](#trk-04) | DOS text-mode trackers (Scream Tracker 3 gold, Impulse Tracker tan, AdLib Tracker II navy) | Text + SVG | Easy | 4/5 |
+| [trk-04](#trk-04) | DOS text-mode trackers (Scream Tracker 3 gold, Impulse Tracker tan, AdLib Tracker II navy) | Text / ASCII + SVG | Easy | 4/5 |
 | [trk-05](#trk-05) | LSDj phrase screen (Game Boy tracker), with the nanoloop grid as its minimalist opposite | Animated SVG | Easy | 4/5 |
-| [trk-06](#trk-06) | SID tracker in plain text mode (GoatTracker three-voice screen) | Text | Easy | 3/5 |
+| [trk-06](#trk-06) | SID tracker in plain text mode (GoatTracker three-voice screen) | Text / ASCII | Easy | 3/5 |
 | [trk-07](#trk-07) | Multi-chip tracker (FamiTracker / DefleMask / Furnace) | Animated SVG | Medium | 3/5 |
-| [trk-08](#trk-08) | Open Cubic Player (DOS module player with text-mode spectrum analyser) | Text + SVG | Easy | 4/5 |
+| [trk-08](#trk-08) | Open Cubic Player (DOS module player with text-mode spectrum analyser) | Text / ASCII + SVG | Easy | 4/5 |
 | [trk-09](#trk-09) | Oscilloscope view (one scope per channel) | Animated SVG | Easy | 4/5 |
 | [trk-10](#trk-10) | Piano roll and falling notes (up to black MIDI) | Animated SVG | Medium | 3/5 |
 | [trk-11](#trk-11) | Winamp 2 classic stack (player, equaliser, playlist) | Animated SVG | Medium | 4/5 |
@@ -71,7 +71,7 @@ The editor nearly every Amiga demo, cracktro and game tune was written in: a gre
 
 ## trk-02 · Module sample list as message board (text-only)
 
-**Text** · build: **Easy** · impact: **3/5** · 1987 onward, Amiga MOD and later XM modules; the convention was reinforced by the IntuiTracker player and is still surfaced by The Mod Archive's 'View Internal Text(s)' link
+**Text / ASCII** · build: **Easy** · impact: **3/5** · 1987 onward, Amiga MOD and later XM modules; the convention was reinforced by the IntuiTracker player and is still surfaced by The Mod Archive's 'View Internal Text(s)' link
 
 A MOD file has a 20-character title and 31 sample slots with 22-character names, and composers routinely used the names as a notice board: credits, greetings, contact details, even block-letter pictures. Players showed this text to the listener, so the sample list became the module's own tiny NFO. It is the one tracker artefact that was always plain monospace text.
 
@@ -153,7 +153,7 @@ The tracker that carried the mid-1990s PC demoscene and introduced the XM format
 
 ## trk-04 · DOS text-mode trackers (Scream Tracker 3 gold, Impulse Tracker tan, AdLib Tracker II navy)
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · 1993-1999, MS-DOS text mode. Scream Tracker 3 by Psi (Sami Tammilehto) of Future Crew (screen reads 'Copyright (C) 1993,1994'; last version 3.21 in 1994). Impulse Tracker by Jeffrey Lim (begun over Christmas 1994 as 'the version of ST3 that I wanted', first release 1995, v2.14 patch 5 on 8 April 1999; 80x50 characters on 640x400). AdLib Tracker II by subz3ro for OPL3 FM. Schism Tracker is the open-source reimplementation of Impulse Tracker.
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1993-1999, MS-DOS text mode. Scream Tracker 3 by Psi (Sami Tammilehto) of Future Crew (screen reads 'Copyright (C) 1993,1994'; last version 3.21 in 1994). Impulse Tracker by Jeffrey Lim (begun over Christmas 1994 as 'the version of ST3 that I wanted', first release 1995, v2.14 patch 5 on 8 April 1999; 80x50 characters on 640x400). AdLib Tracker II by subz3ro for OPL3 FM. Schism Tracker is the open-source reimplementation of Impulse Tracker.
 
 The keyboard-driven PC trackers that ran in character mode yet looked like bevelled control panels, because they redefined font glyphs on the fly (Impulse Tracker even drew a pixel-accurate mouse pointer and its envelope graphs that way). Scream Tracker 3 set the layout, Impulse Tracker refined it and became the best-loved DOS tracker, and AdLib Tracker II applied the idea to FM synthesis in deep blue. People remember the colour as much as the program: Zoe Blade writes that its 'gold and green matrix' is etched in her memory.
 
@@ -243,7 +243,7 @@ The program that made the Game Boy the standard instrument of the 2000s chiptune
 
 ## trk-06 · SID tracker in plain text mode (GoatTracker three-voice screen)
 
-**Text** · build: **Easy** · impact: **3/5** · 2000s to present, cross-platform tools for Commodore 64 music. GoatTracker and GoatTracker 2: CSDb credits the releases to Covert Bitops (2.x releases listed through 2021), SourceForge lists maintainers loorni and jauernig, latest 2.77, GPLv2, reSID emulation by Dag Lem. Native C64 editor for contrast: SID-Wizard by Hermit (v1.0 RC released 7 July 2012 at Arok 2012).
+**Text / ASCII** · build: **Easy** · impact: **3/5** · 2000s to present, cross-platform tools for Commodore 64 music. GoatTracker and GoatTracker 2: CSDb credits the releases to Covert Bitops (2.x releases listed through 2021), SourceForge lists maintainers loorni and jauernig, latest 2.77, GPLv2, reSID emulation by Dag Lem. Native C64 editor for contrast: SID-Wizard by Hermit (v1.0 RC released 7 July 2012 at Arok 2012).
 
 How C64 music is written today: a plain black character screen with one pattern column per SID voice and a block of instrument numbers (ADSR, pulse width, filter) beside it. It is a distinct sub-variant of the existing C64 style because it shows the composer's workbench rather than the boot, loader and title screen. It is also the tracker that is already almost pure text.
 
@@ -328,7 +328,7 @@ The modern chiptune workstation: a black pattern grid where each column is a nam
 
 ## trk-08 · Open Cubic Player (DOS module player with text-mode spectrum analyser)
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · 1994 to early 2000s, MS-DOS then Linux and Windows. Cubic Player / Open Cubic Player: the title bar reads '(c) 1994-1999 Niklas Beisert et al.'; version 0.9 was released at The Party 1994; the DOS version was discontinued in 2006. Reviewed as OpenCP v2.5.1a in Hugi 14 (December 1998). Graphical contemporary: Inertia Player v1.22 (Inertia, 1995).
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1994 to early 2000s, MS-DOS then Linux and Windows. Cubic Player / Open Cubic Player: the title bar reads '(c) 1994-1999 Niklas Beisert et al.'; version 0.9 was released at The Party 1994; the DOS version was discontinued in 2006. Reviewed as OpenCP v2.5.1a in Hugi 14 (December 1998). Graphical contemporary: Inertia Player v1.22 (Inertia, 1995).
 
 The listener's side of the module scene: a player, not an editor. It packs a three-line status header, a channel list, a character-cell spectrum analyser and a read-only pattern view into one 80x25 text screen, with oscilloscope and spectrogram modes a keypress away. Differs from the existing keygen-dialog analyser by being a full text-mode console with a status vocabulary of its own.
 

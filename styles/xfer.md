@@ -10,16 +10,16 @@ This family is the plumbing around a release, not the release itself: the screen
 
 | ID | Style | Medium | Build | Impact |
 | --- | --- | --- | --- | --- |
-| [xfer-01](#xfer-01) | Topsite race: zipscript box, progress-bar directory and complete bar | Text | Easy | 4/5 |
-| [xfer-02](#xfer-02) | FidoNet echomail message in a GoldED reader (with the Russian CP866 variant) | Text + SVG | Easy | 4/5 |
-| [xfer-03](#xfer-03) | XDCC pack list: numbered packs, gets, sizes and the slots line | Text | Easy | 3/5 |
+| [xfer-01](#xfer-01) | Topsite race: zipscript box, progress-bar directory and complete bar | Text / ASCII | Easy | 4/5 |
+| [xfer-02](#xfer-02) | FidoNet echomail message in a GoldED reader (with the Russian CP866 variant) | Text / ASCII + SVG | Easy | 4/5 |
+| [xfer-03](#xfer-03) | XDCC pack list: numbered packs, gets, sizes and the slots line | Text / ASCII | Easy | 3/5 |
 | [xfer-04](#xfer-04) | Userbar kit: the 350x19 forum signature strip | Static SVG | Easy | 3/5 |
 | [xfer-05](#xfer-05) | Terminal program session: modem lines, dialing directory and the Zmodem transfer box | Animated SVG | Easy | 4/5 |
 | [xfer-06](#xfer-06) | Sitebot announce: bracketed race lines in the site channel | Animated SVG | Easy | 3/5 |
 | [xfer-07](#xfer-07) | P2P client transfer window: results grid, per-file bars, chunk map and status bar | Animated SVG | Medium | 4/5 |
-| [xfer-08](#xfer-08) | Sysop's waiting-for-caller screen: the BBS status dashboard | Text + SVG | Easy | 3/5 |
+| [xfer-08](#xfer-08) | Sysop's waiting-for-caller screen: the BBS status dashboard | Text / ASCII + SVG | Easy | 3/5 |
 | [xfer-09](#xfer-09) | FXP client: two site panes, a queue and a raw log | Animated SVG | Medium | 3/5 |
-| [xfer-10](#xfer-10) | SFV file and check result (with an NFO viewer frame) | Text + SVG | Easy | 2/5 |
+| [xfer-10](#xfer-10) | SFV file and check result (with an NFO viewer frame) | Text / ASCII + SVG | Easy | 2/5 |
 
 ---
 
@@ -27,7 +27,7 @@ This family is the plumbing around a release, not the release itself: the screen
 
 ## xfer-01 · Topsite race: zipscript box, progress-bar directory and complete bar
 
-**Text** · build: **Easy** · impact: **4/5** · 1998-2008, private FTP topsites running glFTPd (first public release early 1998) with the Project-ZS zipscript (development stopped 2002) and its successor pzs-ng (from April 2004)
+**Text / ASCII** · build: **Easy** · impact: **4/5** · 1998-2008, private FTP topsites running glFTPd (first public release early 1998) with the Project-ZS zipscript (development stopped 2002) and its successor pzs-ng (from April 2004)
 
 A topsite is a private high-bandwidth FTP server where release groups pre and couriers race files for upload credits. After every uploaded file the server's zipscript checks it against the release's SFV and answers with a small ASCII box, and it keeps a fake directory in the listing whose name is a progress bar. Racers never saw a GUI for this: the site spoke to them in framed monospace text inside their FTP client's log.
 
@@ -69,7 +69,7 @@ A topsite is a private high-bandwidth FTP server where release groups pre and co
 
 ## xfer-02 · FidoNet echomail message in a GoldED reader (with the Russian CP866 variant)
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · 1986-2008. FidoNet software June 1984 (Tom Jennings), echomail February 1986 (Jeff Rush), echomail spec derived from Bob Hartman's Conference Mail manual of 12 December 1987; GoldED by Odinn Sorensen until 1999, then GoldED+; Russian Region 50 from 1990
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1986-2008. FidoNet software June 1984 (Tom Jennings), echomail February 1986 (Jeff Rush), echomail spec derived from Bob Hartman's Conference Mail manual of 12 December 1987; GoldED by Odinn Sorensen until 1999, then GoldED+; Russian Region 50 from 1990
 
 Echomail was FidoNet's public conferencing: messages hopped between hobbyist BBSes overnight by modem, each system appending its address to the control lines at the bottom. The message therefore ends in a stack of machine-written lines (tear line, origin line, SEEN-BY, PATH) that every reader learned to recognise, usually with a one-line joke tagline just above them. In Russia and Ukraine the network outlived its Western peak by a decade and GoldED was the standard editor, nicknamed 'naked grandfather' from the sound of its name.
 
@@ -118,7 +118,7 @@ Echomail was FidoNet's public conferencing: messages hopped between hobbyist BBS
 
 ## xfer-03 · XDCC pack list: numbered packs, gets, sizes and the slots line
 
-**Text** · build: **Easy** · impact: **3/5** · 1994-2008, IRC. XDCC began in 1994 as a script for the ircII client by Xabi; the listing format described here is the one produced by the iroffer bot
+**Text / ASCII** · build: **Easy** · impact: **3/5** · 1994-2008, IRC. XDCC began in 1994 as a script for the ircII client by Xabi; the listing format described here is the one produced by the iroffer bot
 
 An XDCC bot is a file server living in an IRC channel. It periodically pastes its catalogue into the channel as numbered 'packs' with a download counter and size, and users fetch one by messaging the bot a pack number; if all slots are busy they wait in a queue. For anyone who downloaded from IRC, the double-asterisk header and the hash-numbered rows are instantly familiar.
 
@@ -336,7 +336,7 @@ The window a generation left running overnight: a list of files, each with a pro
 
 ## xfer-08 · Sysop's waiting-for-caller screen: the BBS status dashboard
 
-**Text + SVG** · build: **Easy** · impact: **3/5** · 1989-1996, DOS BBS packages: RemoteAccess (Andrew Milner, Australia, 1989), Renegade (Cott Lang, June 1991, descended from Telegard and WWIV), WWIV
+**Text / ASCII + SVG** · build: **Easy** · impact: **3/5** · 1989-1996, DOS BBS packages: RemoteAccess (Andrew Milner, Australia, 1989), Renegade (Cott Lang, June 1991, descended from Telegard and WWIV), WWIV
 
 When nobody was connected, the BBS machine showed its owner a local console: today's numbers, lifetime totals, the last thing the modem said, and a grid of keys for maintenance. Callers never saw it; sysops stared at it for hours waiting for the phone to ring. It is a ready-made status dashboard, and the opposite view from the login and data screens already in the catalogue.
 
@@ -416,7 +416,7 @@ FXP is the trick of making one FTP server send a file straight to another while 
 
 ## xfer-10 · SFV file and check result (with an NFO viewer frame)
 
-**Text + SVG** · build: **Easy** · impact: **2/5** · About 1996-2010. The .sfv file travelled with scene releases and Usenet posts; QuickSFV's site lists versions 2.35 and 2.36 in early 2008 and a rewritten 3.0 in July 2010; dedicated NFO viewers appeared because Windows editors mangled CP437 art
+**Text / ASCII + SVG** · build: **Easy** · impact: **2/5** · About 1996-2010. The .sfv file travelled with scene releases and Usenet posts; QuickSFV's site lists versions 2.35 and 2.36 in early 2008 and a rewritten 3.0 in July 2010; dedicated NFO viewers appeared because Windows editors mangled CP437 art
 
 The last two steps after a download: open the NFO to read it, and run the SFV to prove every part arrived intact. An SFV is a tiny text file listing each file of a release with an eight-digit CRC-32 checksum, and a missing one got a release nuked. The file itself is the recognisable object: a few comment lines starting with semicolons, then a neat column of file names and hex.
 

@@ -33,17 +33,17 @@ What I could not do:
 | ID | Style | Medium | Build | Impact |
 | --- | --- | --- | --- | --- |
 | [vap-01](#vap-01) | Classic vaporwave: the Floral Shoppe manner | Animated SVG | Medium | 4/5 |
-| [vap-02](#vap-02) | Fullwidth text header: vaporwave as plain text | Text | Easy | 3/5 |
+| [vap-02](#vap-02) | Fullwidth text header: vaporwave as plain text | Text / ASCII | Easy | 3/5 |
 | [vap-03](#vap-03) | VHS tape and late-night lo-fi: OSD, tracking and chroma bleed | Animated SVG | Medium | 4/5 |
 | [vap-04](#vap-04) | Signalwave: the Weather Channel local-forecast screen | Animated SVG | Easy | 4/5 |
 | [vap-05](#vap-05) | Synthwave / outrun: sunset, laser grid, chrome logo | Animated SVG | Medium | 4/5 |
 | [vap-06](#vap-06) | Future funk / city pop sleeve | Animated SVG | Medium | 3/5 |
 | [vap-07](#vap-07) | Windows 95/98 desktop: dialogs, error cascade, setup wizard, Defrag | Animated SVG | Easy | 5/5 |
-| [vap-08](#vap-08) | Blue Screen of Death / fatal exception | Text + SVG | Easy | 3/5 |
+| [vap-08](#vap-08) | Blue Screen of Death / fatal exception | Text / ASCII + SVG | Easy | 3/5 |
 | [vap-09](#vap-09) | Windows XP Luna: blue title bars and the green hill | Animated SVG | Medium | 4/5 |
 | [vap-10](#vap-10) | Frutiger Aero and Web 2.0 gloss | Animated SVG | Medium | 3/5 |
 | [vap-11](#vap-11) | Classic Mac OS: 1-bit System 6/7 desktop | Static SVG | Easy | 4/5 |
-| [vap-12](#vap-12) | Geocities homepage / web 1.0 | Text + SVG | Easy | 4/5 |
+| [vap-12](#vap-12) | Geocities homepage / web 1.0 | Text / ASCII + SVG | Easy | 4/5 |
 | [vap-13](#vap-13) | Winamp classic skin: player, equaliser, playlist | Animated SVG | Medium | 5/5 |
 | [vap-14](#vap-14) | Instant messenger window: MSN, AIM, ICQ | Animated SVG | Easy | 4/5 |
 | [vap-15](#vap-15) | Y2K / cybercore: techno type, orbit lines and chrome | Animated SVG | Hard | 3/5 |
@@ -100,7 +100,7 @@ A collage style that treats early-90s corporate computing as a lost luxury resor
 
 ## vap-02 · Fullwidth text header: vaporwave as plain text
 
-**Text** · build: **Easy** · impact: **3/5** · 2011 onward; track and album titles on Bandcamp, then Tumblr, Twitter and YouTube comments. The characters come from legacy CJK encodings (Unicode block U+FF00-FFEF).
+**Text / ASCII** · build: **Easy** · impact: **3/5** · 2011 onward; track and album titles on Bandcamp, then Tumblr, Twitter and YouTube comments. The characters come from legacy CJK encodings (Unicode block U+FF00-FFEF).
 
 Vaporwave's one purely typographic device: titles typed in fullwidth Latin, often beside Japanese text. Wikipedia notes the aesthetic itself is conventionally written in fullwidth characters. It reads as vaporwave with no image at all, which makes it the only member of this family that works as monochrome text.
 
@@ -340,7 +340,7 @@ The grey bevelled interface everyone over thirty used: silver surfaces, navy tit
 
 ## vap-08 · Blue Screen of Death / fatal exception
 
-**Text + SVG** · build: **Easy** · impact: **3/5** · Windows 3.1 (1992) turned the text-mode system-message screen from black to blue; the stop screen proper first appeared in Windows NT 3.1 (1993); redesigned with a sad face in Windows 8 (2012); Microsoft announced a black version on 26 June 2025.
+**Text / ASCII + SVG** · build: **Easy** · impact: **3/5** · Windows 3.1 (1992) turned the text-mode system-message screen from black to blue; the stop screen proper first appeared in Windows NT 3.1 (1993); redesigned with a sad face in Windows 8 (2012); Microsoft announced a black version on 26 June 2025.
 
 > Also researched as [mach-14](mach.md#mach-14).
 
@@ -497,7 +497,7 @@ Susan Kare's black-and-white Macintosh: pinstriped title bars, Chicago type, 32x
 
 ## vap-12 · Geocities homepage / web 1.0
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · 1994-2001 amateur web (GeoCities ran 1994-2009; the US service closed October 2009); revived on Neocities and as 'webcore' in the early 2020s.
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1994-2001 amateur web (GeoCities ran 1994-2009; the US service closed October 2009); revived on Neocities and as 'webcore' in the early 2020s.
 
 The personal homepage before templates. Olia Lialina's 2005 essay A Vernacular Web calls the mid-90s web "bright, rich, personal, slow and under construction" and catalogues its parts in sections on construction signs, starry-night backgrounds and free collections of web elements. The 88x31 button, popularised by Netscape's and Microsoft's 'best viewed in' buttons during the browser wars, is its smallest unit.
 

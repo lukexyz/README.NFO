@@ -1,6 +1,6 @@
 # Hacker, phreak and zine culture
 
-<sub>Generated from <code>styles.json</code> by <code>tools/build-styles.mjs</code>. 18 styles, researched 2026-09-30. Checked by a second reviewer, who made 44 corrections. [Back to the catalogue](README.md) · [Full index](INDEX.md)</sub>
+<sub>Generated from <code>styles.json</code> by <code>tools/build-styles.mjs</code>. 19 styles, researched 2026-09-30. Checked by a second reviewer, who made 44 corrections. [Back to the catalogue](README.md) · [Full index](INDEX.md)</sub>
 
 ## Reviewer's summary
 
@@ -20,15 +20,15 @@ Techniques that apply across the family:
 
 | ID | Style | Medium | Build | Impact |
 | --- | --- | --- | --- | --- |
-| [hack-01](#hack-01) | Text-zine issue header (Phrack lineage: header bars, hex contents, EOF line) | Text | Easy | 3/5 |
-| [hack-02](#hack-02) | BBS t-file with framed masthead and directory footer (cDc lineage) | Text | Easy | 3/5 |
-| [hack-03](#hack-03) | Standards plain text: RFC first page and Unix man page | Text | Easy | 2/5 |
-| [hack-04](#hack-04) | PGP clearsigned message block (cypherpunk list post) | Text | Easy | 2/5 |
-| [hack-05](#hack-05) | Security-tool console: rotating banner, bracketed stats block and scan-report table | Text | Easy | 3/5 |
-| [hack-06](#hack-06) | Fetch card: ASCII logo left, key-value system info right, palette blocks | Text + SVG | Easy | 2/5 |
+| [hack-01](#hack-01) | Text-zine issue header (Phrack lineage: header bars, hex contents, EOF line) | Text / ASCII | Easy | 3/5 |
+| [hack-02](#hack-02) | BBS t-file with framed masthead and directory footer (cDc lineage) | Text / ASCII | Easy | 3/5 |
+| [hack-03](#hack-03) | Standards plain text: RFC first page and Unix man page | Text / ASCII | Easy | 2/5 |
+| [hack-04](#hack-04) | PGP clearsigned message block (cypherpunk list post) | Text / ASCII | Easy | 2/5 |
+| [hack-05](#hack-05) | Security-tool console: rotating banner, bracketed stats block and scan-report table | Text / ASCII | Easy | 3/5 |
+| [hack-06](#hack-06) | Fetch card: ASCII logo left, key-value system info right, palette blocks | Text / ASCII + SVG | Easy | 2/5 |
 | [hack-07](#hack-07) | Full-screen TUI monitor: bracketed bar meters, process table, function-key bar, tmux status line | Animated SVG | Easy | 3/5 |
-| [hack-08](#hack-08) | Roguelike dungeon screen (Rogue / NetHack terminal layout) | Text + SVG | Easy | 4/5 |
-| [hack-09](#hack-09) | MUD session transcript (login banner, room block, exits line, HP prompt) | Text | Easy | 2/5 |
+| [hack-08](#hack-08) | Roguelike dungeon screen (Rogue / NetHack terminal layout) | Text / ASCII + SVG | Easy | 4/5 |
+| [hack-09](#hack-09) | MUD session transcript (login banner, room block, exits line, HP prompt) | Text / ASCII | Easy | 2/5 |
 | [hack-10](#hack-10) | DOS virus payload screen (falling letters, crawling sprite) | Animated SVG | Medium | 4/5 |
 | [hack-11](#hack-11) | mIRC channel window with colour-code block art and netsplit | Animated SVG | Medium | 4/5 |
 | [hack-12](#hack-12) | PC diskmag reader (three-band screen, two-column articles, charts, tune player) | Animated SVG | Medium | 3/5 |
@@ -38,6 +38,7 @@ Techniques that apply across the family:
 | [hack-16](#hack-16) | 3D file-system landscape (pedestals and wires, or the glass-tower data city) | Animated SVG | Medium | 5/5 |
 | [hack-17](#hack-17) | Phreak tone pad: 4x4 keypad matrix with dual-tone scope traces | Animated SVG | Easy | 3/5 |
 | [hack-18](#hack-18) | CTF challenge board and scoreboard (category tiles, top-ten score graph, rank table) | Animated SVG | Easy | 3/5 |
+| [hack-19](#hack-19) | CLI startup banner: teal block lettering and diagnostic log | Text / ASCII + SVG | Easy | 3/5 |
 
 ---
 
@@ -45,7 +46,7 @@ Techniques that apply across the family:
 
 ## hack-01 · Text-zine issue header (Phrack lineage: header bars, hex contents, EOF line)
 
-**Text** · build: **Easy** · impact: **3/5** · 1985 to present. Phrack issue 1 was released 17 Nov 1985 on the Metal Shop BBS; 72 issues to 2025. Conventions below were read from issues 1 (1985), 49 (8 Nov 1996), 53-55 (1998-99), 56 (1 May 2000), 57 (11 Aug 2001), 58, 69 (6 May 2016) and 72 (2025), plus LOD/H Technical Journal 1 (1 Jan 1987) and 40Hex 1.
+**Text / ASCII** · build: **Easy** · impact: **3/5** · 1985 to present. Phrack issue 1 was released 17 Nov 1985 on the Metal Shop BBS; 72 issues to 2025. Conventions below were read from issues 1 (1985), 49 (8 Nov 1996), 53-55 (1998-99), 56 (1 May 2000), 57 (11 Aug 2001), 58, 69 (6 May 2016) and 72 (2025), plus LOD/H Technical Journal 1 (1 Jan 1987) and 40Hex 1.
 
 Hacker text zines are bundles of numbered plain-text files, each opening with the same centred masthead and a 'file N of M' line so any single file identifies the whole issue. The modern form (hex numbering from issue 56, bracketed header bars from issue 57) has been stable for 25 years, so a security person recognises it from the first three lines.
 
@@ -91,7 +92,7 @@ Hacker text zines are bundles of numbered plain-text files, each opening with th
 
 ## hack-02 · BBS t-file with framed masthead and directory footer (cDc lineage)
 
-**Text** · build: **Easy** · impact: **3/5** · 1984 through the 1990s, BBS text-file groups. Specimen read: cDc file \#200, dated 18 Dec 1992 in its own footer. The group was founded in 1984 in Lubbock, Texas.
+**Text / ASCII** · build: **Easy** · impact: **3/5** · 1984 through the 1990s, BBS text-file groups. Specimen read: cDc file \#200, dated 18 Dec 1992 in its own footer. The group was founded in 1984 in Lubbock, Texas.
 
 A t-file is a single numbered text file released by a named group, wrapped in the same masthead and footer every time so the file advertises the group wherever it is mirrored. The header is a wide ASCII frame holding the group emblem; the footer is a boxed directory of affiliated boards with phone numbers beside a small mascot. It is the house style of the most self-mythologising group of the BBS era.
 
@@ -132,7 +133,7 @@ A t-file is a single numbered text file released by a named group, wrapped in th
 
 ## hack-03 · Standards plain text: RFC first page and Unix man page
 
-**Text** · build: **Easy** · impact: **2/5** · RFC series from 1969; the 72-column, 58-line paginated text format is set out in RFC 2223 (1997), and newer RFCs such as RFC 9110 (2022) are unpaginated. Man pages from 1971 Unix onward. Both are still produced.
+**Text / ASCII** · build: **Easy** · impact: **2/5** · RFC series from 1969; the 72-column, 58-line paginated text format is set out in RFC 2223 (1997), and newer RFCs such as RFC 9110 (2022) are unpaginated. Man pages from 1971 Unix onward. Both are still produced.
 
 The two canonical plain-text document layouts of internet and Unix culture. An RFC is recognisable from its two-column first-page header and 3-space indented sections; a man page from its NAME(1) title line and upper-case headings. Both are a long-running vehicle for deadpan jokes (RFC 1149 of 1 April 1990 is the classic), which is the register a README header wants.
 
@@ -175,7 +176,7 @@ The two canonical plain-text document layouts of internet and Unix culture. An R
 
 ## hack-04 · PGP clearsigned message block (cypherpunk list post)
 
-**Text** · build: **Easy** · impact: **2/5** · PGP 1.0 in 1991 (Philip Zimmermann); the cypherpunks mailing list from 1992; the armor and cleartext-signature framing is specified in RFC 4880. Seen throughout 1990s mailing lists, Usenet, zine footers and security advisories.
+**Text / ASCII** · build: **Easy** · impact: **2/5** · PGP 1.0 in 1991 (Philip Zimmermann); the cypherpunks mailing list from 1992; the armor and cleartext-signature framing is specified in RFC 4880. Seen throughout 1990s mailing lists, Usenet, zine footers and security advisories.
 
 A plain-text message wrapped in dashed BEGIN/END delimiter lines with a block of base64 beneath it. It is the visual signature of cypherpunk and security-list culture, and it is one of the few retro text frames that can be real: the block can be a genuine signature that verifies.
 
@@ -215,7 +216,7 @@ A plain-text message wrapped in dashed BEGIN/END delimiter lines with a block of
 
 ## hack-05 · Security-tool console: rotating banner, bracketed stats block and scan-report table
 
-**Text** · build: **Easy** · impact: **3/5** · 1997 to present. Nmap was first published in Phrack 51 on 1 Sep 1997. Metasploit was created in 2003 in Perl and rewritten in Ruby by 2007. Both still ship this output.
+**Text / ASCII** · build: **Easy** · impact: **3/5** · 1997 to present. Nmap was first published in Phrack 51 on 1 Sep 1997. Metasploit was created in 2003 in Perl and rewritten in Ruby by 2007. Both still ship this output.
 
 Security tools greet the user with an ASCII banner chosen at random at start-up, then a bracketed block of module counts, and print reports as aligned plain-text tables. The Metasploit repository holds 41 banner files including a cowsay-style cow, a fake login dialog, film parodies, Halloween and April Fools sets chosen by date, and sets unlocked by environment variables. Nmap's report table and its joke leetspeak output mode are equally recognisable.
 
@@ -262,7 +263,7 @@ Security tools greet the user with an ASCII banner chosen at random at start-up,
 
 ## hack-06 · Fetch card: ASCII logo left, key-value system info right, palette blocks
 
-**Text + SVG** · build: **Easy** · impact: **2/5** · screenFetch 2010; neofetch first released 31 Dec 2015, repository archived 26 April 2024; successors such as fastfetch continue. Descends from login banners, motd files and boot-menu ASCII mascots.
+**Text / ASCII + SVG** · build: **Easy** · impact: **2/5** · screenFetch 2010; neofetch first released 31 Dec 2015, repository archived 26 April 2024; successors such as fastfetch continue. Descends from login banners, motd files and boot-menu ASCII mascots.
 
 The screenshot format of Unix desktop customisation culture: a command prints the distribution logo as ASCII art beside a list of system facts, ending with a strip of colour swatches. The neofetch README states that its purpose is to be used in screenshots. It is the most widely recognised present-day descendant of the login banner.
 
@@ -345,7 +346,7 @@ The screen every Unix user leaves running in a corner: rows of bracketed bar met
 
 ## hack-08 · Roguelike dungeon screen (Rogue / NetHack terminal layout)
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · Rogue about 1980 on Unix (Michael Toy, Glenn Wichman, later Ken Arnold, built on Arnold's curses library); Hack 1982; NetHack first released 28 July 1987 and still maintained. Related text-mode looks: ZZT (Tim Sweeney, 1991, CP437 and 16 colours) and classic Dwarf Fortress (80x25 CP437 grid, 16 colours).
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · Rogue about 1980 on Unix (Michael Toy, Glenn Wichman, later Ken Arnold, built on Arnold's curses library); Hack 1982; NetHack first released 28 July 1987 and still maintained. Related text-mode looks: ZZT (Tim Sweeney, 1991, CP437 and 16 colours) and classic Dwarf Fortress (80x25 CP437 grid, 16 colours).
 
 A game drawn entirely with letters and punctuation on an 80-column terminal: rooms, corridors, the player as an at-sign, monsters as letters and a terse status line. It named a whole genre and is one of the few text layouts a non-programmer may also recognise.
 
@@ -390,7 +391,7 @@ A game drawn entirely with letters and punctuation on an 80-column terminal: roo
 
 ## hack-09 · MUD session transcript (login banner, room block, exits line, HP prompt)
 
-**Text** · build: **Easy** · impact: **2/5** · MUD1 at Essex from 1978 (Roy Trubshaw, then Richard Bartle); AberMUD 1987, TinyMUD and LPMud 1989, DikuMUD 1990-91 (University of Copenhagen); CircleMUD and tbaMUD descend from Diku and are still distributed.
+**Text / ASCII** · build: **Easy** · impact: **2/5** · MUD1 at Essex from 1978 (Roy Trubshaw, then Richard Bartle); AberMUD 1987, TinyMUD and LPMud 1989, DikuMUD 1990-91 (University of Copenhagen); CircleMUD and tbaMUD descend from Diku and are still distributed.
 
 A multi-user text world reached over telnet: the server prints a title banner, asks for a name, then describes rooms in prose while the player types short commands at a prompt showing hit points, mana and moves. It is the prose counterpart of the roguelike map and the ancestor of online role-playing games.
 
@@ -790,6 +791,43 @@ A capture-the-flag contest shows its state on two screens: a board of challenges
 - [CTFd docs: scoring overview, tie-breaking and freeze](<https://docs.ctfd.io/docs/scoring/overview>)
 - [CTFtime: definitions of Jeopardy and attack-defence formats](<https://ctftime.org/ctf-wtf/>)
 - [Wikipedia: Capture the flag (cybersecurity), formats, categories, DEF CON 1996](<https://en.wikipedia.org/wiki/Capture_the_flag_(cybersecurity)>)
+
+---
+
+<a name="hack-19"></a>
+
+## hack-19 · CLI startup banner: teal block lettering and diagnostic log
+
+**Text / ASCII + SVG** · build: **Easy** · impact: **3/5** · Contemporary command-line tools; added from a user-provided screenshot on 2026-10-05, outside the original historical research.
+
+A compact command-line splash with a large teal block-character wordmark at the upper left, a small version beside it, a blue underlined project link, and white diagnostic output below. Blank lines separate loading stages; asterisk bullets and indented component rows create the structure, with sparse green success markers. The reference is the terminal screenshot supplied by the user, not a live run or verified benchmark.
+
+**What it looks like**
+
+- A solid black terminal canvas with no window title bar, glow, scanlines or desktop decoration
+- A wide original wordmark built from block and shade characters, with teal solid strokes and stippled edges
+- Small version text beside the logo and an underlined blue repository link beneath it
+- Left-aligned white monospace diagnostic lines; important names and values in bold
+- Blank lines between stages, asterisk bullets, and indented child rows instead of boxed panels
+- Sparse green OK markers and an optional short series of trial rows ending in one chosen result
+
+**Palette.** Approximate colours from the supplied screenshot: black \#000000, teal \#009c9c, off-white \#eeeeee, link blue \#1682c4, success green \#67a800. Plain Markdown text inherits the reader's theme and omits ANSI colour codes.
+
+**Lettering.** Fixed-width terminal text. Build new block/shade lettering for the actual project name; keep the body at one readable size with selective bold emphasis and aligned indentation.
+
+**Motion.** Static by default. An optional SVG variant may reveal complete log rows in sequence while leaving the title and essential description visible; reduced-motion shows the finished log.
+
+**As a README header.** A short original project banner followed by a description, repository link and three to six project-relevant loading or capability rows. Deliver plain text in a fenced text block or a pre block with real links. For the teal/blue/green terminal appearance and seamless stacked blocks, deliver a self-contained SVG with a matching monochrome text fallback. Keep the screenshot's long log condensed to header height.
+
+**How to build it.** Text: an original ASCII outline or block-character banner under 80 columns; use an ASCII alternative where Markdown line-height breaks solid blocks. SVG: draw solid and stippled logo cells as vector geometry, use monospace body text, and group bold values and status markers into separate spans. No embedded screenshot, remote font, terminal escape sequence or foreignObject is needed.
+
+**Do not copy / caveats.** Borrow the terminal layout and palette, not the HERETIC wordmark, project identity, exact letterforms, GPU/model names, dataset names or measured throughput. Use verified target-project facts. Omit unknown versions and metrics. Label any simulated startup sequence as illustrative, and never present it as the output of an actual command. This addition was described from the user's screenshot and has not had the catalogue's historical second-review process.
+
+**Sampler prompt**
+
+```text
+Create a README header for this repository in a CLI startup-banner style: a black terminal canvas, original teal block/shade lettering for the real project name at top left, a small verified version only if known, and a blue underlined repository link. Below it, set a compact white monospace log with blank lines between stages, asterisk bullets, indented component rows, bold project-relevant values and sparse green OK markers. Use three to six rows based on the repository's actual features; label the startup sequence as illustrative. Keep the composition compact and readable, with no terminal window chrome, glow or scanlines. Do not copy HERETIC's logo, wording, hardware, models, datasets or benchmark numbers. Honour the requested format: text/ASCII uses a monochrome pre or fenced text block without ANSI escapes; SVG preserves the colours with original vector lettering and includes a copyable text fallback.
+```
 
 ---
 

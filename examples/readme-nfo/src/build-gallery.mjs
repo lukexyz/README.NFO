@@ -1,5 +1,5 @@
 // The saved random draw is embedded here so isolated validation needs only
-// this builder and the forty numbered Markdown files. Do not redraw it.
+// this builder and the numbered Markdown files. Do not redraw it.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -46,13 +46,14 @@ const OPTIONS = [
   ["38-c64-07","Vertical copper bars ('Kefrens bars' / 'Alcatraz bars'): ribbons twisting down the screen","c64-07","animated-svg"],
   ["39-vap-11","Classic Mac OS: 1-bit System 6/7 desktop","vap-11","static-svg"],
   ["40-hack-18","CTF challenge board and scoreboard (category tiles, top-ten score graph, rank table)","hack-18","animated-svg"],
+  ['41-hack-19','CLI startup banner: teal block lettering and diagnostic log','hack-19','text-plus-svg'],
 ];
 const esc = (value) => String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const catalogue = (id) => `../../styles/${id.split('-')[0]}.md#${id}`;
 const strip = (markdown) => markdown
   .replace(/^<!-- README\.NFO candidate[^\n]*-->\s*/,'')
   .replace(/^> \*\*Candidate \d+\*\*[^\n]*\n?/gm,'')
-  .replace(/^\[Generator\]\(src\/[^\n]+\) · \[All(?: \d+)? candidates\]\(README\.md\)\s*$/gm,'')
+  .replace(/^\[Generator\]\(src\/[^\n]+\) · \[All(?: \d+)? candidates\]\(README\.md\)[^\n]*$/gm,'')
   .trim();
 const picks = OPTIONS.map(([slug,name,id,medium]) => {
   const markdown = fs.readFileSync(path.join(DIR,`${slug}.md`),'utf8').replace(/\r\n/g,'\n');
@@ -66,19 +67,22 @@ const picks = OPTIONS.map(([slug,name,id,medium]) => {
     const fenced = header.match(/```[^\n]*\n([\s\S]*?)\n```/)?.[1];
     textHTML = pre || `<pre>${esc(fenced || header)}</pre>`;
   }
-  return {slug,name,id,medium,number,header,summary,image,textHTML};
+  const format = image ? 'svg' : 'text';
+  const formatLabel = !image ? 'TEXT / ASCII' : medium==='animated-svg' ? 'ANIMATED SVG' : medium==='static-svg' ? 'STATIC SVG' : 'SVG';
+  const fallback = markdown.includes(`[Text / ASCII](${slug}.txt)`);
+  return {slug,name,id,medium,number,header,summary,image,textHTML,format,formatLabel,fallback};
 });
 
 const index = [
-  '# README.NFO — 40 headers to choose from', '',
-  'Forty original headers for [README.NFO itself](../../README.md), drawn in two random batches from the 152 distinct catalogue styles on 5 October 2026. [Draw one](draw.json) and [draw two](draw-2.json) record the selections; the second batch excludes every style used in the first.', '',
-  '**Home README:** [16 — Brush-script NFO](16-nfo-01.md) is the main header. The favourites below it are [04 — Tracker](04-trk-07.md), [26 — Cassette](26-print-02.md), [36 — Off-air test card](36-idle-10.md) and [38 — Copper ribbons](38-c64-07.md), with [12 — Luna desktop](12-vap-09.md) and [25 — Vector objects](25-pc-13.md) completing the preview gallery. [See the home README](../../README.md). All forty candidates remain available to copy and compare.', '',
+  '# README.NFO — 41 headers to choose from', '',
+  'Forty original headers for [README.NFO itself](../../README.md), drawn in two random batches from the original 152 distinct catalogue styles on 5 October 2026, plus [41 — CLI startup banner](41-hack-19.md), an additional screenshot-inspired reference. [Draw one](draw.json) and [draw two](draw-2.json) record the random selections; the second batch excludes every style used in the first.', '',
+  '**Home README:** [16 — Brush-script NFO](16-nfo-01.md) is the main header. The favourites below it are [04 — Tracker](04-trk-07.md), [26 — Cassette](26-print-02.md), [36 — Off-air test card](36-idle-10.md) and [38 — Copper ribbons](38-c64-07.md), with [12 — Luna desktop](12-vap-09.md) and [25 — Vector objects](25-pc-13.md) completing the preview gallery. [See the home README](../../README.md). All 41 candidates remain available to copy and compare.', '',
   '**New batch:** [Candidates 21–30](page-3.md) · [Candidates 31–40](page-4.md) · [Interactive new batch](gallery.html#batch-2).', '',
-  '**Browse all:** [Interactive gallery and favourites](gallery.html) · [01–10](page-1.md) · [11–20](page-2.md) · [21–30](page-3.md) · [31–40](page-4.md). Tick favourites in the browser and copy their numbers. Your existing selection is retained when local storage is available.', '',
+  '**Browse all:** [Interactive gallery and favourites](gallery.html) · [01–10](page-1.md) · [11–20](page-2.md) · [21–30](page-3.md) · [31–40](page-4.md) · [41](page-5.md). Filter the gallery by **Text / ASCII** or **SVG**. Format labels describe the actual header file; an ASCII-looking SVG belongs with images. Tick favourites in the browser and copy their numbers. Your existing selection is retained when local storage is available.', '',
   'Each numbered Markdown file contains a copyable header. SVGs live in `assets/`; generators live in `src/`. Rebuild the index and pages with `node examples/readme-nfo/src/build-gallery.mjs`. The names below identify catalogue references; the artwork and repository branding are original.', '',
-  '| # | Option | Preview | Style | Full page |',
-  '| --- | --- | --- | --- | --- |',
-  ...picks.map((pick,i) => `| ${pick.number} | [${pick.name}](${pick.slug}.md) | ${pick.image ? `<a href="${pick.slug}.md"><img src="${pick.image}" width="240" alt="Candidate ${pick.number}: ${esc(pick.summary)}"></a>` : '**Pure text**'} | [${pick.id}](${catalogue(pick.id)}) | [${String(Math.floor(i/10)*10+1).padStart(2,'0')}–${Math.floor(i/10)*10+10}](page-${Math.floor(i/10)+1}.md) |`), '',
+  '| # | Option | Format | Preview | Style | Full page |',
+  '| --- | --- | --- | --- | --- | --- |',
+  ...picks.map((pick,i) => `| ${pick.number} | [${pick.name}](${pick.slug}.md) | ${pick.formatLabel}${pick.fallback?' + text fallback':''} | ${pick.image ? `<a href="${pick.slug}.md"><img src="${pick.image}" width="240" alt="Candidate ${pick.number}: ${esc(pick.summary)}"></a>` : '**Pure text**'} | [${pick.id}](${catalogue(pick.id)}) | [${String(Math.floor(i/10)*10+1).padStart(2,'0')}–${Math.min(Math.floor(i/10)*10+10,picks.length)}](page-${Math.floor(i/10)+1}.md) |`), '',
   '[Other example galleries](../README.md) · [Style catalogue](../../styles/INDEX.md) · [MIT licence](../../LICENSE)', '',
 ];
 fs.writeFileSync(path.join(DIR,'README.md'),index.join('\n'));
@@ -87,26 +91,39 @@ for(let p=0;p<Math.ceil(picks.length/10);p++) {
   const neighbours=[];
   if(p>0)neighbours.push('[← Previous](page-'+p+'.md)');
   if((p+1)*10<picks.length)neighbours.push('[Next →](page-'+(p+2)+'.md)');
-  const nav='[All 40 candidates](README.md) · [Interactive favourites](gallery.html) · '+neighbours.join(' · ');
+  const nav='[All 41 candidates](README.md) · [Interactive favourites](gallery.html) · '+neighbours.join(' · ');
   const page=['# README.NFO headers '+range,'',nav,'','Keep the numbers of your favourites. Each header below is also saved in its own Markdown file.',''];
-  for(const pick of picks.slice(p*10,p*10+10)) page.push('---','','## '+pick.number+' · '+pick.name,'','[Copy this header]('+pick.slug+'.md) · ['+pick.id+']('+catalogue(pick.id)+') · [Generator](src/'+pick.slug+'.mjs)','',pick.header,'');
+  for(const pick of picks.slice(p*10,p*10+10)) page.push('---','','## '+pick.number+' · '+pick.name,'','**Format: '+pick.formatLabel+'** · [Copy this header]('+pick.slug+'.md) · ['+pick.id+']('+catalogue(pick.id)+') · [Generator](src/'+pick.slug+'.mjs)','',pick.header,'');
   page.push('---','',nav,'');
   fs.writeFileSync(path.join(DIR,'page-'+(p+1)+'.md'),page.join('\n'));
 }
 
-const cards = picks.map((pick) => `<article class="card" id="candidate-${pick.number}" data-batch="${Number(pick.number)<=20?1:2}">
-  <header class="card-heading"><label><input type="checkbox" value="${pick.number}" aria-label="Choose candidate ${pick.number}"><span class="number">${pick.number}</span><span>${esc(pick.name)}</span></label><span class="format">${pick.medium==='text-only'?'TEXT':pick.medium==='text-plus-svg'?'TEXT + SVG':pick.medium==='static-svg'?'STATIC SVG':'ANIMATED SVG'}</span></header>
+const cards = picks.map((pick) => `<article class="card" id="candidate-${pick.number}" data-batch="${Number(pick.number)<=20?1:Number(pick.number)<=40?2:3}" data-format="${pick.format}">
+  <header class="card-heading"><label><input type="checkbox" value="${pick.number}" aria-label="Choose candidate ${pick.number}"><span class="number">${pick.number}</span><span>${esc(pick.name)}</span></label><span class="format">${pick.formatLabel}</span></header>
   <div class="art${pick.image?'':' text-art'}">${pick.image?`<img src="${pick.image}" alt="${esc(pick.summary)}" width="960" loading="lazy">`:pick.textHTML}</div>
   <p class="description">${esc(pick.summary)}</p>
-  <footer><a href="${pick.slug}.md">Copyable header</a><a href="${catalogue(pick.id)}">${pick.id}</a><a href="src/${pick.slug}.mjs">Generator</a></footer>
+  <footer><a href="${pick.slug}.md">Copyable header</a><a href="${catalogue(pick.id)}">${pick.id}</a><a href="src/${pick.slug}.mjs">Generator</a>${pick.fallback?`<a href="${pick.slug}.txt">Text / ASCII fallback</a><a href="${pick.slug}.prompt.txt">Sampler prompt</a>`:''}</footer>
 </article>`).join('\n');
 const script = `
 const filters = [...document.querySelectorAll('[data-show-batch]')];
-function filterBatch(batch) {
-  document.querySelectorAll('.card').forEach(card => { card.hidden = batch !== 'all' && card.dataset.batch !== batch; });
-  filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.showBatch === batch)));
+const formats = [...document.querySelectorAll('[data-show-format]')];
+let activeBatch = 'all';
+let activeFormat = 'all';
+function updateVisibility() {
+  document.querySelectorAll('.card').forEach(card => {
+    card.hidden = (activeBatch !== 'all' && card.dataset.batch !== activeBatch)
+      || (activeFormat !== 'all' && card.dataset.format !== activeFormat);
+  });
+  filters.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.showBatch === activeBatch)));
+  formats.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.showFormat === activeFormat)));
+  document.getElementById('empty').hidden = Boolean(document.querySelector('.card:not([hidden])'));
 }
-const batchFromHash = () => location.hash === '#batch-2' ? '2' : location.hash === '#batch-1' ? '1' : 'all';
+function filterBatch(batch) {
+  activeBatch = batch;
+  updateVisibility();
+}
+formats.forEach(button => button.addEventListener('click', () => { activeFormat = button.dataset.showFormat; updateVisibility(); }));
+const batchFromHash = () => /^#batch-[123]$/.test(location.hash) ? location.hash.slice(-1) : 'all';
 filters.forEach(button => button.addEventListener('click', () => {
   filterBatch(button.dataset.showBatch);
   history.replaceState(null, '', button.dataset.showBatch === 'all' ? location.pathname : '#batch-' + button.dataset.showBatch);
@@ -148,17 +165,20 @@ document.getElementById('theme').addEventListener('click', () => {
 update();
 `;
 const html = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark light"><title>README.NFO — 40 header candidates</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark light"><title>README.NFO — 41 header candidates</title>
 <style>
 :root{--theme:dark;--bg:#0b1017;--panel:#141c27;--text:#e8edf5;--muted:#98a8bc;--line:#344354;--accent:#9bea93;--input:#080d14;color-scheme:dark;scroll-behavior:smooth}
 @media(prefers-color-scheme:light){:root{--theme:light;--bg:#edf0f5;--panel:#fff;--text:#1b283b;--muted:#536780;--line:#c5d0dc;--accent:#17653a;--input:#f6f8fa;color-scheme:light}}
 :root[data-theme="light"]{--theme:light;--bg:#edf0f5;--panel:#fff;--text:#1b283b;--muted:#536780;--line:#c5d0dc;--accent:#17653a;--input:#f6f8fa;color-scheme:light}
 :root[data-theme="dark"]{--theme:dark;--bg:#0b1017;--panel:#141c27;--text:#e8edf5;--muted:#98a8bc;--line:#344354;--accent:#9bea93;--input:#080d14;color-scheme:dark}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--accent);text-underline-offset:3px}button,input{font:inherit}button{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:9px 14px;border-radius:7px;cursor:pointer}button:hover{border-color:var(--accent)}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--accent);outline-offset:3px}.wrap{max-width:1320px;margin:auto;padding:36px 26px}.intro{max-width:900px;margin-bottom:24px}.eyebrow{font:13px/1.5 monospace;letter-spacing:2px;color:var(--accent)}h1{font-size:clamp(30px,5vw,56px);line-height:1.08;letter-spacing:-2px;margin:10px 0 16px}.intro p{color:var(--muted);max-width:740px}.toplinks{display:flex;gap:20px;flex-wrap:wrap;font-size:14px}.selection{position:sticky;top:0;z-index:2;background:var(--bg);border-block:1px solid var(--line);padding:14px 0;margin:26px 0;display:flex;align-items:center;gap:12px;flex-wrap:wrap}.selection strong{font-size:14px;min-width:90px}.selection input{flex:1;min-width:180px;width:200px;padding:9px 12px;border:1px solid var(--line);border-radius:7px;background:var(--input);color:var(--text);font-family:monospace}.selection #status{width:100%;font-size:13px;color:var(--muted);min-height:0}.selection #status:empty{display:none}#copy{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:600}.batches{display:flex;gap:10px;flex-wrap:wrap}.batches [aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}.card[hidden]{display:none}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.card{min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .15s,box-shadow .15s}.card.chosen{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent)}.card-heading{padding:17px 18px;display:flex;gap:10px;align-items:flex-start;justify-content:space-between}.card-heading label{display:flex;align-items:flex-start;gap:10px;font-size:14px;font-weight:600;line-height:1.4;cursor:pointer}.card-heading input{accent-color:var(--accent);width:18px;height:18px;margin:2px 0;flex-shrink:0}.number{font:700 19px/1.15 monospace;color:var(--accent)}.format{font:10px/1.4 monospace;color:var(--muted);white-space:nowrap;padding-top:4px}.art{background:#080d13}.art img{display:block;width:100%;height:auto}.text-art{color:#e8edf5;overflow:auto}.text-art pre{margin:0;padding:24px 20px;font:12px/1.5 ui-monospace,Consolas,monospace;tab-size:4;white-space:pre;min-width:fit-content}.text-art a{color:#95d5ff}.description{font-size:14px;color:var(--muted);margin:17px 18px}.card footer{display:flex;gap:16px;flex-wrap:wrap;padding:0 18px 19px;font-size:12px}.closing{color:var(--muted);font-size:13px;margin:34px 0 8px}.closing a{color:inherit}@media(max-width:900px){.grid{grid-template-columns:1fr}.wrap{padding:24px 18px}.card-heading{padding:15px}.selection{gap:8px}.selection button{padding:8px 10px;font-size:14px}.selection input{min-width:140px}.format{max-width:70px;white-space:normal;text-align:right}}@media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}.card{transition:none}}
-</style></head><body><main class="wrap"><header class="intro"><div class="eyebrow">README.NFO / FIRST IMPRESSIONS</div><h1>Forty possible beginnings.</h1><p>Two random batches of twenty styles, each made into a header for this repository. New candidates are numbered 21–40. Tick around five favourites, then copy their numbers and send them back. The home README opens with 16 and features 04, 26, 36, 38, 12 and 25. You can still compare all forty and save your own favourites.</p><nav class="toplinks" aria-label="Gallery navigation"><a href="README.md">Markdown index</a><a href="page-1.md">Full headers 01–10</a><a href="page-2.md">Full headers 11–20</a><a href="page-3.md">New 21–30</a><a href="page-4.md">New 31–40</a><a href="draw.json">Draw one</a><a href="draw-2.json">Draw two</a></nav></header>
-<nav class="batches" aria-label="Choose a batch"><button type="button" data-show-batch="all" aria-pressed="true">All 40</button><button type="button" data-show-batch="1" aria-pressed="false">First 20</button><button type="button" data-show-batch="2" aria-pressed="false">New 21–40</button></nav>
+.formats{margin-top:12px}
+</style></head><body><main class="wrap"><header class="intro"><div class="eyebrow">README.NFO / FIRST IMPRESSIONS</div><h1>Forty-one possible beginnings.</h1><p>Two random batches of twenty styles, plus a new CLI startup-banner reference at 41. Filter by the actual output format: copyable text / ASCII or SVG images. Candidate 41 includes a text fallback and a sampler prompt. Tick around five favourites, then copy their numbers and send them back. The home README opens with 16 and features 04, 26, 36, 38, 12 and 25.</p><nav class="toplinks" aria-label="Gallery navigation"><a href="README.md">Markdown index</a><a href="page-1.md">Full headers 01–10</a><a href="page-2.md">Full headers 11–20</a><a href="page-3.md">New 21–30</a><a href="page-4.md">New 31–40</a><a href="page-5.md">CLI banner 41</a><a href="draw.json">Draw one</a><a href="draw-2.json">Draw two</a></nav></header>
+<nav class="batches" aria-label="Choose a batch"><button type="button" data-show-batch="all" aria-pressed="true">All 41</button><button type="button" data-show-batch="1" aria-pressed="false">First 20</button><button type="button" data-show-batch="2" aria-pressed="false">New 21–40</button><button type="button" data-show-batch="3" aria-pressed="false">CLI banner 41</button></nav>
+<nav class="batches formats" aria-label="Choose a header format"><button type="button" data-show-format="all" aria-pressed="true">All formats</button><button type="button" data-show-format="text" aria-pressed="false">Text / ASCII (${picks.filter(pick=>pick.format==='text').length})</button><button type="button" data-show-format="svg" aria-pressed="false">SVG (${picks.filter(pick=>pick.format==='svg').length})</button></nav>
 <section class="selection" aria-label="Your favourites"><strong id="count">0 selected</strong><input id="selected" aria-label="Selected candidate numbers" readonly placeholder="Tick favourites below"><button id="copy" type="button">Copy favourites</button><button id="clear" type="button">Clear</button><button id="theme" type="button">Light / dark</button><span id="status" role="status" aria-live="polite"></span></section>
-<section class="grid" aria-label="Forty header candidates">${cards}</section>
-<p class="closing">Two non-repeating draws saved on 5 October 2026 from 152 distinct catalogue styles. Selection stays in this browser when local storage is available. <a href="../../LICENSE">MIT licence</a> · <a href="../README.md">Other galleries</a> · <a href="../../README.md">Repository README</a>.</p></main><script>${script}</script></body></html>\n`;
+<section class="grid" aria-label="Forty-one header candidates">${cards}</section>
+<p id="empty" class="closing" role="status" hidden>No headers match these filters. Choose All formats or All 41 to see more.</p>
+<p class="closing">Two non-repeating draws saved on 5 October 2026 from the original 152 catalogue styles; 41 is an additional reference for new style hack-19. Selection stays in this browser when local storage is available. <a href="../../LICENSE">MIT licence</a> · <a href="../README.md">Other galleries</a> · <a href="../../README.md">Repository README</a>.</p></main><script>${script}</script></body></html>\n`;
 fs.writeFileSync(path.join(DIR,'gallery.html'),html);
-console.log('wrote README.NFO index, four full-header pages and interactive gallery');
+console.log('wrote README.NFO index, five full-header pages and interactive gallery');

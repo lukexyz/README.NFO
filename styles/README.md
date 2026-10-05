@@ -1,6 +1,8 @@
 # Style catalogue
 
-152 retro styles that could become a GitHub README header, in 13 families. Researched on 2026-09-30 from Pouet, Demozoo, 16colo.rs, asciiarena, textfiles.com, Wikipedia and the artists' and tools' own pages.
+153 styles that could become a GitHub README header, in 13 families: the original 152 retro styles researched on 2026-09-30, plus a CLI startup-banner style added from a user-provided screenshot on 2026-10-05. The original research used Pouet, Demozoo, 16colo.rs, asciiarena, textfiles.com, Wikipedia and the artists' and tools' own pages.
+
+Browse [Text / ASCII, SVG, or styles that support both](INDEX.md#browse-by-output-format). These are output formats: an image built from ASCII-like lettering is tagged SVG. The new [CLI startup banner](hack.md#hack-19) includes a copyable sampler prompt and [SVG and text sample](../examples/readme-nfo/41-hack-19.md).
 
 - [INDEX.md](INDEX.md): every style in one table, with medium, build difficulty and impact.
 - One page per family (below): each style with what it looks like, palette, lettering, motion, how it becomes a README header, how to build it, what must not be copied, and links to the references.
@@ -107,14 +109,14 @@ The researchers rated these 5 out of 5.
 | [ANSI art, BBS and text-mode](ansi.md) | 12 | Yes |
 | [Vaporwave and internet-era aesthetics](vap.md) | 18 | Yes |
 | [Retro machine, console and arcade screens](mach.md) | 15 | Yes |
-| [Hacker, phreak and zine culture](hack.md) | 18 | Yes |
+| [Hacker, phreak and zine culture](hack.md) | 19 | Original 18 only; CLI addition described from the supplied screenshot |
 | [Japan and East Asia](asia.md) | 7 | No |
 | [Screensavers, idle screens and visualisers](idle.md) | 10 | No |
 | [How the files moved](xfer.md) | 10 | No |
 | [The demoscene proper](demo.md) | 11 | No |
 | [Physical media and print ephemera](print.md) | 5 | No |
 
-That is 156 entries. Four are the same style researched twice (Teletext, PETSCII, Winamp, the blue error screen), which leaves 152 distinct styles. The duplicates are marked on their pages.
+That is 157 entries. Four are the same style researched twice (Teletext, PETSCII, Winamp, the blue error screen), which leaves 153 distinct styles. The duplicates are marked on their pages.
 
 ## How far to trust this
 

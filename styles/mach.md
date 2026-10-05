@@ -12,12 +12,12 @@ Checked against the sources, this family holds fifteen usable styles in five sch
 | --- | --- | --- | --- | --- |
 | [mach-01](#mach-01) | ZX Spectrum tape loader: border stripes and loading-screen build-up | Animated SVG | Medium | 4/5 |
 | [mach-02](#mach-02) | Amiga Kickstart 1.x: Guru Meditation banner, with insert-disk hand and blue-and-orange Workbench | Animated SVG | Easy | 4/5 |
-| [mach-03](#mach-03) | Twin-panel DOS commander (Norton Commander lineage), with Borland blue IDE variant | Text + SVG | Easy | 4/5 |
-| [mach-04](#mach-04) | PC power-on: BIOS POST screen | Text + SVG | Easy | 3/5 |
-| [mach-05](#mach-05) | DOS game SETUP.EXE: sound card configuration dialog | Text + SVG | Easy | 3/5 |
+| [mach-03](#mach-03) | Twin-panel DOS commander (Norton Commander lineage), with Borland blue IDE variant | Text / ASCII + SVG | Easy | 4/5 |
+| [mach-04](#mach-04) | PC power-on: BIOS POST screen | Text / ASCII + SVG | Easy | 3/5 |
+| [mach-05](#mach-05) | DOS game SETUP.EXE: sound card configuration dialog | Text / ASCII + SVG | Easy | 3/5 |
 | [mach-06](#mach-06) | Teletext page (Ceefax era, BBC Micro MODE 7) | Animated SVG | Medium | 4/5 |
 | [mach-07](#mach-07) | Game Boy DMG boot: logo drop on a four-shade green LCD | Animated SVG | Easy | 4/5 |
-| [mach-08](#mach-08) | Arcade attract mode: high-score table and coin prompt | Text + SVG | Easy | 4/5 |
+| [mach-08](#mach-08) | Arcade attract mode: high-score table and coin prompt | Text / ASCII + SVG | Easy | 4/5 |
 | [mach-09](#mach-09) | 8-bit console title screen (NES / Famicom era) | Animated SVG | Easy | 3/5 |
 | [mach-10](#mach-10) | Vector arcade, Vectrex and XY oscilloscope: beam-drawn glowing lines | Animated SVG | Medium | 5/5 |
 | [mach-11](#mach-11) | Pinball dot-matrix display (orange plasma DMD) | Animated SVG | Medium | 5/5 |
@@ -121,7 +121,7 @@ Three system screens Amiga owners know by heart: the white boot screen with a si
 
 ## mach-03 · Twin-panel DOS commander (Norton Commander lineage), with Borland blue IDE variant
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · 1986 to 1998 on MS-DOS (final DOS version 5.51, 1 July 1998); the layout lives on in Volkov Commander, DOS Navigator, FAR Manager and Midnight Commander (1994). Borland variant: Turbo Pascal 5.0 (1988) to the mid 1990s.
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1986 to 1998 on MS-DOS (final DOS version 5.51, 1 July 1998); the layout lives on in Volkov Commander, DOS Navigator, FAR Manager and Midnight Commander (1994). Borland variant: Turbo Pascal 5.0 (1988) to the mid 1990s.
 
 John Socha's two-panel file manager, started in 1984 as Visual DOS, defined the orthodox file manager: two file lists side by side, a command line under them and an F1 to F10 key bar on the bottom row. Its blue panels are as recognisable to DOS users as the C64 boot screen is to Commodore owners. It is the one style here that matches what a README is: a list of files with a menu.
 
@@ -165,7 +165,7 @@ John Socha's two-panel file manager, started in 1984 as Visual DOS, defined the 
 
 ## mach-04 · PC power-on: BIOS POST screen
 
-**Text + SVG** · build: **Easy** · impact: **3/5** · 1993 to about 2000; IBM PC clones, modelled on the Award 4.50/4.51 layout (4.50G 1993, 4.51PG 1995 to 1997, 6.00PG April 1998), before vendor splash logos hid the text
+**Text / ASCII + SVG** · build: **Easy** · impact: **3/5** · 1993 to about 2000; IBM PC clones, modelled on the Award 4.50/4.51 layout (4.50G 1993, 4.51PG 1995 to 1997, 6.00PG April 1998), before vendor splash logos hid the text
 
 The black text screen a 1990s PC showed while it named the CPU, counted memory and found the drives. The Award layout is the one most people picture: a small vendor mark top-left, the yellow-and-green energy-saving logo top-right, a climbing memory count and a setup-key prompt at the bottom. Memory counts on screen go back to the IBM XT; full tests were dropped as RAM grew.
 
@@ -206,7 +206,7 @@ The black text screen a 1990s PC showed while it named the CPU, counted memory a
 
 ## mach-05 · DOS game SETUP.EXE: sound card configuration dialog
 
-**Text + SVG** · build: **Easy** · impact: **3/5** · About 1991 to 1997; MS-DOS games and demos before plug and play (checked against the setup program shipped with The Ultimate Doom, version 1.9, 1995)
+**Text / ASCII + SVG** · build: **Easy** · impact: **3/5** · About 1991 to 1997; MS-DOS games and demos before plug and play (checked against the setup program shipped with The Ultimate Doom, version 1.9, 1995)
 
 DOS had no hardware detection, so every game shipped a text-mode setup program that asked which sound card you owned and then its port, IRQ and DMA. Choosing wrong meant silence, which is why a generation remembers the card list and the numbers. It is the most honest way to say 'chiptune' in a silent medium: the screen where you chose what the music would be played on.
 
@@ -339,7 +339,7 @@ On power-up the original Game Boy scrolls a logo slowly down from the top of its
 
 ## mach-08 · Arcade attract mode: high-score table and coin prompt
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · 1976 to mid 1980s coin-op raster games (Sea Wolf 1976, Space Invaders 1978, Star Fire December 1978, Pac-Man 1980)
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1976 to mid 1980s coin-op raster games (Sea Wolf 1976, Space Invaders 1978, Star Fire December 1978, Pac-Man 1980)
 
 When nobody is playing, a cabinet loops its title, a demo and the high-score list to pull in passers-by, with a prompt to insert a coin. Sea Wolf was the first game to use the term 'high score', Star Fire let players enter initials, and Asteroids took that idea from Star Fire and made the initials table famous. The look is a black screen, saturated uppercase 8x8 lettering and blinking text.
 

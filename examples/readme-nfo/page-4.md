@@ -1,6 +1,6 @@
 # README.NFO headers 31–40
 
-[All 40 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-3.md)
+[All 41 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-3.md) · [Next →](page-5.md)
 
 Keep the numbers of your favourites. Each header below is also saved in its own Markdown file.
 
@@ -8,7 +8,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 31 · Atari Video Music: pulsing two-part diamonds in a tiled array
 
-[Copy this header](31-idle-01.md) · [idle-01](../../styles/idle.md#idle-01) · [Generator](src/31-idle-01.mjs)
+**Format: ANIMATED SVG** · [Copy this header](31-idle-01.md) · [idle-01](../../styles/idle.md#idle-01) · [Generator](src/31-idle-01.mjs)
 
 <p align="center">
   <img src="assets/31-idle-01.svg" width="100%" alt="Eight colourful pulsing diamonds over a cream README.NFO faceplate with five round knobs and text, SVG and MIT buttons.">
@@ -23,7 +23,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 32 · Oscilloscope view (one scope per channel)
 
-[Copy this header](32-trk-09.md) · [trk-09](../../styles/trk.md#trk-09) · [Generator](src/32-trk-09.mjs)
+**Format: ANIMATED SVG** · [Copy this header](32-trk-09.md) · [trk-09](../../styles/trk.md#trk-09) · [Generator](src/32-trk-09.mjs)
 
 <p align="center">
   <img src="assets/32-trk-09.svg" width="100%" alt="README.NFO with four white oscilloscope traces labelled styles, examples, gallery and tools on a black background.">
@@ -38,7 +38,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 33 · Bobs and dot objects: a sphere chain on a Lissajous path, a rotating dot cube
 
-[Copy this header](33-c64-08.md) · [c64-08](../../styles/c64.md#c64-08) · [Generator](src/33-c64-08.mjs)
+**Format: ANIMATED SVG** · [Copy this header](33-c64-08.md) · [c64-08](../../styles/c64.md#c64-08) · [Generator](src/33-c64-08.mjs)
 
 <p align="center">
   <img src="assets/33-c64-08.svg" width="100%" alt="Blue shaded balls loop on a figure-eight curve alongside a rotating dot cube, above a violet and cyan README.NFO logo.">
@@ -53,7 +53,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 34 · Text-mode poster installer (Razor 1911, 2024-26)
 
-[Copy this header](34-pc-07.md) · [pc-07](../../styles/pc.md#pc-07) · [Generator](src/34-pc-07.mjs)
+**Format: SVG** · [Copy this header](34-pc-07.md) · [pc-07](../../styles/pc.md#pc-07) · [Generator](src/34-pc-07.mjs)
 
 <p align="center"><img src="assets/34-pc-07.svg" width="100%" alt="An orange, tan and brown README.NFO text-mode poster with giant block lettering."></p>
 
@@ -94,7 +94,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 35 · Demoparty results.txt (with the invitation text as its companion)
 
-[Copy this header](35-demo-06.md) · [demo-06](../../styles/demo.md#demo-06) · [Generator](src/35-demo-06.mjs)
+**Format: TEXT / ASCII** · [Copy this header](35-demo-06.md) · [demo-06](../../styles/demo.md#demo-06) · [Generator](src/35-demo-06.mjs)
 
 <pre>
                             R E A D M E . N F O
@@ -140,7 +140,7 @@ DELIVERY COMPO
 
 ## 36 · Off-air idle: colour bars, test card and the hopping 'no signal' box
 
-[Copy this header](36-idle-10.md) · [idle-10](../../styles/idle.md#idle-10) · [Generator](src/36-idle-10.mjs)
+**Format: ANIMATED SVG** · [Copy this header](36-idle-10.md) · [idle-10](../../styles/idle.md#idle-10) · [Generator](src/36-idle-10.mjs)
 
 <p align="center">
   <img src="assets/36-idle-10.svg" width="100%" alt="An original off-air circle test card, seven colour bars and a slow-hopping NO SIGNAL box.">
@@ -155,7 +155,7 @@ DELIVERY COMPO
 
 ## 37 · PC demo READ.ME: paged info file with index, member table and cut-here form
 
-[Copy this header](37-demo-02.md) · [demo-02](../../styles/demo.md#demo-02) · [Generator](src/37-demo-02.mjs)
+**Format: TEXT / ASCII** · [Copy this header](37-demo-02.md) · [demo-02](../../styles/demo.md#demo-02) · [Generator](src/37-demo-02.mjs)
 
 <pre>
 +--------------------------------------------------------------------------+
@@ -210,7 +210,7 @@ DELIVERY COMPO
 
 ## 38 · Vertical copper bars ('Kefrens bars' / 'Alcatraz bars'): ribbons twisting down the screen
 
-[Copy this header](38-c64-07.md) · [c64-07](../../styles/c64.md#c64-07) · [Generator](src/38-c64-07.mjs)
+**Format: ANIMATED SVG** · [Copy this header](38-c64-07.md) · [c64-07](../../styles/c64.md#c64-07) · [Generator](src/38-c64-07.mjs)
 
 <p align="center">
   <img src="assets/38-c64-07.svg" width="100%" alt="Three slowly swaying scanline ramps braid into copper ribbons behind a crisp, dark-backed title.">
@@ -225,7 +225,7 @@ DELIVERY COMPO
 
 ## 39 · Classic Mac OS: 1-bit System 6/7 desktop
 
-[Copy this header](39-vap-11.md) · [vap-11](../../styles/vap.md#vap-11) · [Generator](src/39-vap-11.mjs)
+**Format: STATIC SVG** · [Copy this header](39-vap-11.md) · [vap-11](../../styles/vap.md#vap-11) · [Generator](src/39-vap-11.mjs)
 
 <p align="center">
   <img src="assets/39-vap-11.svg" width="100%" alt="Two colours, checker dither, pinstripe chrome and an original document window: a quiet one-bit desktop.">
@@ -240,7 +240,7 @@ DELIVERY COMPO
 
 ## 40 · CTF challenge board and scoreboard (category tiles, top-ten score graph, rank table)
 
-[Copy this header](40-hack-18.md) · [hack-18](../../styles/hack.md#hack-18) · [Generator](src/40-hack-18.mjs)
+**Format: ANIMATED SVG** · [Copy this header](40-hack-18.md) · [hack-18](../../styles/hack.md#hack-18) · [Generator](src/40-hack-18.mjs)
 
 <p align="center">
   <img src="assets/40-hack-18.svg" width="100%" alt="A challenge board and stepped scoreboard built from real counts in the two saved candidate draws.">
@@ -253,4 +253,4 @@ DELIVERY COMPO
 
 ---
 
-[All 40 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-3.md)
+[All 41 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-3.md) · [Next →](page-5.md)

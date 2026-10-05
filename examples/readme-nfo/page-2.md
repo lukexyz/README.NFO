@@ -1,6 +1,6 @@
 # README.NFO headers 11–20
 
-[All 40 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-1.md) · [Next →](page-3.md)
+[All 41 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-1.md) · [Next →](page-3.md)
 
 Keep the numbers of your favourites. Each header below is also saved in its own Markdown file.
 
@@ -8,7 +8,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 11 · 256-byte intro: bit-pattern textures in the default VGA palette
 
-[Copy this header](11-demo-04.md) · [demo-04](../../styles/demo.md#demo-04) · [Generator](src/11-demo-04.mjs)
+**Format: ANIMATED SVG** · [Copy this header](11-demo-04.md) · [demo-04](../../styles/demo.md#demo-04) · [Generator](src/11-demo-04.mjs)
 
 <p align="center">
   <img src="assets/11-demo-04.svg" width="100%" alt="README.NFO in white pixel capitals over an animated multicoloured VGA XOR texture.">
@@ -23,7 +23,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 12 · Windows XP Luna: blue title bars and the green hill
 
-[Copy this header](12-vap-09.md) · [vap-09](../../styles/vap.md#vap-09) · [Generator](src/12-vap-09.mjs)
+**Format: ANIMATED SVG** · [Copy this header](12-vap-09.md) · [vap-09](../../styles/vap.md#vap-09) · [Generator](src/12-vap-09.mjs)
 
 <p align="center">
   <img src="assets/12-vap-09.svg" width="100%" alt="README.NFO displayed in a nostalgic blue title-bar window over an original green hill.">
@@ -38,7 +38,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 13 · Decrypt reveal: a scrambled text block that resolves into plaintext
 
-[Copy this header](13-hack-15.md) · [hack-15](../../styles/hack.md#hack-15) · [Generator](src/13-hack-15.mjs)
+**Format: ANIMATED SVG** · [Copy this header](13-hack-15.md) · [hack-15](../../styles/hack.md#hack-15) · [Generator](src/13-hack-15.mjs)
 
 <p align="center"><img src="assets/13-hack-15.svg" width="100%" alt="A scrambled text panel decrypts once into the README.NFO title and library details."></p>
 
@@ -55,7 +55,7 @@ Copy, customise, share under MIT.
 
 ## 14 · Win32 new old-school cracktro: metal logo, twister, sine scroller
 
-[Copy this header](14-pc-05.md) · [pc-05](../../styles/pc.md#pc-05) · [Generator](src/14-pc-05.mjs)
+**Format: ANIMATED SVG** · [Copy this header](14-pc-05.md) · [pc-05](../../styles/pc.md#pc-05) · [Generator](src/14-pc-05.mjs)
 
 <p align="center">
   <img src="assets/14-pc-05.svg" width="100%" alt="A chrome README.NFO pixel logo flanked by animated purple twisters, with a reflection and a pink sine scroller.">
@@ -70,7 +70,7 @@ Copy, customise, share under MIT.
 
 ## 15 · ANSImation: the modem-speed draw-in
 
-[Copy this header](15-ansi-04.md) · [ansi-04](../../styles/ansi.md#ansi-04) · [Generator](src/15-ansi-04.mjs)
+**Format: ANIMATED SVG** · [Copy this header](15-ansi-04.md) · [ansi-04](../../styles/ansi.md#ansi-04) · [Generator](src/15-ansi-04.mjs)
 
 <p align="center"><img src="assets/15-ansi-04.svg" width="100%" alt="A bright yellow README.NFO logo and cyan ANSI text draw in at modem speed, with a small magenta robot."></p>
 
@@ -88,7 +88,7 @@ Copy the header. Make it yours. MIT license.
 
 ## 16 · PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED)
 
-[Copy this header](16-nfo-01.md) · [nfo-01](../../styles/nfo.md#nfo-01) · [Generator](src/16-nfo-01.mjs)
+**Format: SVG** · [Copy this header](16-nfo-01.md) · [nfo-01](../../styles/nfo.md#nfo-01) · [Generator](src/16-nfo-01.mjs)
 
 <p align="center"><img src="assets/16-nfo-01.svg" width="100%" alt="README.NFO brush-script release header"></p>
 
@@ -133,7 +133,7 @@ Retro README headers, made to be copied and customised. **152 styles · 13 famil
 
 ## 17 · 3D file-system landscape (pedestals and wires, or the glass-tower data city)
 
-[Copy this header](17-hack-16.md) · [hack-16](../../styles/hack.md#hack-16) · [Generator](src/17-hack-16.mjs)
+**Format: ANIMATED SVG** · [Copy this header](17-hack-16.md) · [hack-16](../../styles/hack.md#hack-16) · [Generator](src/17-hack-16.mjs)
 
 <p align="center">
   <img src="assets/17-hack-16.svg" width="100%" alt="A glass-tower map of the real repository: directory sizes become height, and white data pulses connect them.">
@@ -148,7 +148,7 @@ Retro README headers, made to be copied and customised. **152 styles · 13 famil
 
 ## 18 · Phreak tone pad: 4x4 keypad matrix with dual-tone scope traces
 
-[Copy this header](18-hack-17.md) · [hack-17](../../styles/hack.md#hack-17) · [Generator](src/18-hack-17.mjs)
+**Format: ANIMATED SVG** · [Copy this header](18-hack-17.md) · [hack-17](../../styles/hack.md#hack-17) · [Generator](src/18-hack-17.mjs)
 
 <p align="center">
   <img src="assets/18-hack-17.svg" width="100%" alt="A blue tone pad, sixteen ivory keys and real dual-frequency scope traces; it silently dials 152 / 13.">
@@ -163,7 +163,7 @@ Retro README headers, made to be copied and customised. **152 styles · 13 famil
 
 ## 19 · Door game screen (narrated location, bracketed hotkeys, command prompt)
 
-[Copy this header](19-ansi-06.md) · [ansi-06](../../styles/ansi.md#ansi-06) · [Generator](src/19-ansi-06.mjs)
+**Format: SVG** · [Copy this header](19-ansi-06.md) · [ansi-06](../../styles/ansi.md#ansi-06) · [Generator](src/19-ansi-06.mjs)
 
 <p align="center"><img src="assets/19-ansi-06.svg" width="100%" alt="README.NFO space door game header"></p>
 
@@ -192,7 +192,7 @@ Command [READ ME]: _
 
 ## 20 · MML listing: the project name as a tune in plain text
 
-[Copy this header](20-asia-05.md) · [asia-05](../../styles/asia.md#asia-05) · [Generator](src/20-asia-05.mjs)
+**Format: TEXT / ASCII** · [Copy this header](20-asia-05.md) · [asia-05](../../styles/asia.md#asia-05) · [Generator](src/20-asia-05.mjs)
 
 ```text
 ; +--------------------------------------------------------------------+
@@ -233,4 +233,4 @@ G                    a e a e | f c f c | g d g d | c2 r2
 
 ---
 
-[All 40 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-1.md) · [Next →](page-3.md)
+[All 41 candidates](README.md) · [Interactive favourites](gallery.html) · [← Previous](page-1.md) · [Next →](page-3.md)

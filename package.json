@@ -13,6 +13,10 @@
   "files": [
     "tools/generate.mjs",
     "tools/generator/",
+    "tools/lib/checks.mjs",
+    "styles/styles.json",
+    "examples/*/src/",
+    "examples/*/*.md",
     "LICENSE"
   ],
   "scripts": {
@@ -23,7 +27,7 @@
     "gallery:readme-nfo": "node examples/readme-nfo/src/build-gallery.mjs",
     "shortlist": "node tools/build-shortlist.mjs",
     "styles": "node tools/build-styles.mjs",
-    "test": "node --test tools/validate.test.mjs tools/generate.test.mjs",
+    "test": "node --test tools/validate.test.mjs tools/generate.test.mjs tools/cli-display.test.mjs",
     "validate": "npm test && node tools/validate.mjs"
   },
   "devDependencies": {

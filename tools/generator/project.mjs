@@ -1,4 +1,5 @@
 // Public GitHub data is input, never executable code. Generation needs no dependencies.
+import { catalogueFor } from './catalogue.mjs';
 export function parseRepository(value) {
   let input = String(value || '').trim();
   if (/^[\w.-]+\/[\w.-]+$/.test(input)) input = `https://github.com/${input}`;
@@ -17,24 +18,29 @@ export function parseRepository(value) {
   return { owner, repo, fullName: `${owner}/${repo}`, url: `https://github.com/${owner}/${repo}` };
 }
 
-export function parseArguments(args, maximum = 12) {
-  const options = { count: 10 };
-  const valued = new Set(['repo', 'count', 'out', 'seed', 'project']);
+export function parseArguments(args, maximum) {
+  const options = { count: 10, creativity: 0, exclude: [], allowRepeats: false, format: 'all', open: true, color: true };
+  const valued = new Set(['repo', 'count', 'out', 'seed', 'project', 'creativity', 'exclude', 'resume', 'format']);
   const assigned = new Set();
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
     if (arg === '--help' || arg === '-h') { options.help = true; continue; }
+    if (arg === '--no-open') { options.open = false; continue; }
+    if (arg === '--no-color') { options.color = false; continue; }
+    if (arg === '--allow-repeats') { options.allowRepeats = true; continue; }
     if (/^-\d+$/.test(arg)) {
       if (assigned.has('count')) throw new Error('Supply the count once.');
       options.count = arg.slice(1); assigned.add('count'); continue;
     }
-    if (arg.startsWith('--')) {
-      const [key, ...rest] = arg.slice(2).split('=');
+    if (arg.startsWith('--') || arg === '-creativity') {
+      const [key, ...rest] = (arg === '-creativity' ? 'creativity' : arg.slice(2)).split('=');
       if (!valued.has(key)) throw new Error(`Unknown option: --${key}. Use --help.`);
-      if (assigned.has(key)) throw new Error(`Supply --${key} once.`);
+      if (key !== 'exclude' && assigned.has(key)) throw new Error(`Supply --${key} once.`);
       const value = rest.length ? rest.join('=') : args[++i];
       if (!value || value.startsWith('--')) throw new Error(`--${key} needs a value.`);
-      options[key] = value; assigned.add(key);
+      if (key === 'exclude') options.exclude.push(value);
+      else options[key] = value;
+      assigned.add(key);
     } else {
       if (arg.startsWith('-')) throw new Error(`Unknown option: ${arg}. Use --help.`);
       if (assigned.has('repo')) throw new Error('Supply one repository.');
@@ -42,11 +48,19 @@ export function parseArguments(args, maximum = 12) {
     }
   }
   if (options.help) return options;
+  if (options.resume) {
+    if (assigned.size !== 1 || options.allowRepeats) throw new Error('Use --resume DIRECTORY by itself to keep its saved draw.');
+    return options;
+  }
   if (Boolean(options.repo) === Boolean(options.project)) throw new Error('Supply a GitHub repository, or --project project.json.');
+  if (!['all', 'svg', 'text'].includes(options.format)) throw new Error('--format must be all, svg or text.');
+  maximum ??= catalogueFor(options.format).length;
   if (!/^\d+$/.test(String(options.count)) || Number(options.count) < 1 || Number(options.count) > maximum) {
     throw new Error(`Choose a count between 1 and ${maximum}.`);
   }
   options.count = Number(options.count);
+  if (!/^(?:0(?:\.\d+)?|1(?:\.0+)?)$/.test(String(options.creativity))) throw new Error('--creativity must be between 0 and 1.');
+  options.creativity = Number(options.creativity);
   if (options.repo) options.repository = parseRepository(options.repo);
   if (options.seed && options.seed.length > 200) throw new Error('Keep the seed under 200 characters.');
   return options;

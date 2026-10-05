@@ -12,9 +12,9 @@ This family is the objects the scene traded and kept rather than the screens it 
 | --- | --- | --- | --- | --- |
 | [print-01](#print-01) | Swapper's floppy: hand-labelled 3.5-inch disk, fanned as 'disk 1 of N' | Static SVG | Medium | 4/5 |
 | [print-02](#print-02) | Netlabel cassette: J-card with obi strip, and a shell whose reels turn | Animated SVG | Easy | 5/5 |
-| [print-03](#print-03) | Magazine type-in listing: BASIC, DATA blocks and a checksum column | Text | Easy | 3/5 |
-| [print-04](#print-04) | Tractor-feed printout: green-bar paper, banner page in giant letters, punched-card strip | Text + SVG | Easy | 4/5 |
-| [print-05](#print-05) | Scene paperwork: tick-box swap letter, party pre-invitation with reply coupon, hand-drawn votesheet | Text + SVG | Easy | 4/5 |
+| [print-03](#print-03) | Magazine type-in listing: BASIC, DATA blocks and a checksum column | Text / ASCII | Easy | 3/5 |
+| [print-04](#print-04) | Tractor-feed printout: green-bar paper, banner page in giant letters, punched-card strip | Text / ASCII + SVG | Easy | 4/5 |
+| [print-05](#print-05) | Scene paperwork: tick-box swap letter, party pre-invitation with reply coupon, hand-drawn votesheet | Text / ASCII + SVG | Easy | 4/5 |
 
 ---
 
@@ -120,7 +120,7 @@ A J-card is the folded card inside a cassette case, named for its shape seen fro
 
 ## print-03 · Magazine type-in listing: BASIC, DATA blocks and a checksum column
 
-**Text** · build: **Easy** · impact: **3/5** · Late 1970s to early 1990s, home computer magazines (Compute!, Compute!'s Gazette, ANALOG, Ahoy!, Antic, Softalk, Run and others); the checksum aids date from October and December 1983
+**Text / ASCII** · build: **Easy** · impact: **3/5** · Late 1970s to early 1990s, home computer magazines (Compute!, Compute!'s Gazette, ANALOG, Ahoy!, Antic, Softalk, Run and others); the checksum aids date from October and December 1983
 
 Magazines printed whole programs for readers to type in: BASIC, with machine code carried as numbers in DATA statements. Because one wrong digit crashed the program, Compute! Publications added a checksum beside every line (The Automatic Proofreader, written by Charles Brannon, October 1983) and a separate entry program for pure machine code (MLX, December 1983). Anyone who owned an 8-bit computer remembers the columns of numbers and the evening spent typing them.
 
@@ -161,7 +161,7 @@ Magazines printed whole programs for readers to type in: BASIC, with machine cod
 
 ## print-04 · Tractor-feed printout: green-bar paper, banner page in giant letters, punched-card strip
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · Punched card 1928 onward; line printers and job banner pages 1950s-80s; home dot-matrix printers and sign-and-banner software from 1984 to the early 1990s
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · Punched card 1928 onward; line printers and job banner pages 1950s-80s; home dot-matrix printers and sign-and-banner software from 1984 to the early 1990s
 
 Continuous paper with sprocket holes down both edges is the paper of computing: mainframe listings on green-striped sheets, a banner page in huge letters in front of every job so operators could separate them, and at home a birthday banner printed sideways across several sheets. The Print Shop (Broderbund, 1984; designed by David Balsam, programmed by Martin Kahn) had a banner mode that printed letters and graphics along continuous paper to any length, with a choice of eight fonts in solid or outline and a graphic before, after or on both sides of the message. The punched card is the ancestor: 80 columns by 12 rows on a 7 3/8 by 3 1/4 inch card, which is where the 80-column line itself comes from.
 
@@ -205,7 +205,7 @@ Continuous paper with sprocket holes down both edges is the paper of computing: 
 
 ## print-05 · Scene paperwork: tick-box swap letter, party pre-invitation with reply coupon, hand-drawn votesheet
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · 1986-1996, European C64 and Amiga scene, exchanged by post and handed out at copy parties and demoparties; preserved by Got Papers? (a research project with scene.org and Demozoo, endorsed by the University of Zurich) and Scene Letters
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1986-1996, European C64 and Amiga scene, exchanged by post and handed out at copy parties and demoparties; preserved by Got Papers? (a research project with scene.org and Demozoo, endorsed by the University of Zurich) and Scene Letters
 
 Swappers kept dozens of postal contacts going at once, so the paperwork became standardised: a short note with every disk, and sometimes a pre-printed form where the sender only ticked boxes. Parties were announced on photocopied sheets with a coupon to post back, and competitions were judged on paper votesheets. One archive alone holds 269 letters from 127 people in 16 countries sent to a single German C64 swapper. It is the scene's office stationery, and it is mostly plain monospaced text.
 

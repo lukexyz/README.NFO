@@ -12,7 +12,7 @@ Header sets made for real projects. Each folder has a gallery page, one `.md` pe
 | [naturalis-historia](naturalis-historia) | NATURALIS-HISTORIA: an illustrated Latin-English encyclopedia | Five shared references interpreted as an archive, reading service and bilingual library |
 | [gl4ss](gl4ss) | GL4SS: place, year and hour as a window through time | Five shared references interpreted as a temporal receiver, field report and time instrument |
 | [st3gg](st3gg) | ST3GG: steganography across images, audio, text and documents | Five shared references interpreted as carrier signals, file areas and decoding services |
-| [readme-nfo](readme-nfo) | README.NFO itself: candidates for the home README | Forty styles from two non-repeating random draws, saved for review, with a numbered gallery and favourite picker |
+| [readme-nfo](readme-nfo) | README.NFO itself: candidates for the home README | Forty random-draw styles plus a CLI startup-banner reference, with a numbered gallery, text / ASCII and SVG filters, and favourite picker |
 
 **[Compare the three Pliny sets side by side](../comparisons/pliny-first-draw/index.html)** · [The saved draw and rebuild instructions](pliny.md)
 

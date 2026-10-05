@@ -24,6 +24,13 @@ const FONT = {
   "'":[4,4,8,0,0,0,0], '&':[12,18,20,8,21,18,13], '@':[14,17,23,21,23,16,14],
 };
 
+export function asciiLettering(value, ink = '#') {
+  const letters = [...String(value).toUpperCase()];
+  if (letters.some(letter => !FONT[letter])) return String(value);
+  return Array.from({ length: 7 }, (_, row) => letters.map(letter =>
+    Array.from({ length: 5 }, (_, col) => FONT[letter][row] & (1 << (4-col)) ? ink : ' ').join('')).join(' ')).join('\n');
+}
+
 export const short = (value, length) => [...String(value)].length <= length ? String(value) : [...String(value)].slice(0, length - 3).join('') + '...';
 export const width = (value, scale) => Math.max(0, [...String(value)].length * 6 - 1) * scale;
 export function lettering(value, x, y, { scale = 3, maxWidth = 880, fill = '#fff', center = false, attrs = '' } = {}) {

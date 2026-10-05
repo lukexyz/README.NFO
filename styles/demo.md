@@ -11,16 +11,16 @@ This family covers what demosceners themselves make and keep, as opposed to crac
 | ID | Style | Medium | Build | Impact |
 | --- | --- | --- | --- | --- |
 | [demo-01](#demo-01) | PC demo opening titles and part-credit cards (Second Reality manner) | Animated SVG | Easy | 4/5 |
-| [demo-02](#demo-02) | PC demo READ.ME: paged info file with index, member table and cut-here form | Text | Easy | 3/5 |
+| [demo-02](#demo-02) | PC demo READ.ME: paged info file with index, member table and cut-here form | Text / ASCII | Easy | 3/5 |
 | [demo-03](#demo-03) | Full-frame procedural effects: fire, voxel landscape, shade bobs, fractal zoom | Animated SVG | Medium | 4/5 |
 | [demo-04](#demo-04) | 256-byte intro: bit-pattern textures in the default VGA palette | Animated SVG | Medium | 4/5 |
-| [demo-05](#demo-05) | Tiny-intro info file: the 40-column note that is longer than the program | Text | Easy | 2/5 |
-| [demo-06](#demo-06) | Demoparty results.txt (with the invitation text as its companion) | Text | Easy | 4/5 |
-| [demo-07](#demo-07) | Big-screen compo slide sequence (beamer) | Text + SVG | Easy | 4/5 |
+| [demo-05](#demo-05) | Tiny-intro info file: the 40-column note that is longer than the program | Text / ASCII | Easy | 2/5 |
+| [demo-06](#demo-06) | Demoparty results.txt (with the invitation text as its companion) | Text / ASCII | Easy | 4/5 |
+| [demo-07](#demo-07) | Big-screen compo slide sequence (beamer) | Text / ASCII + SVG | Easy | 4/5 |
 | [demo-08](#demo-08) | ZX Spectrum / Pentagon demo screen: effects in the attribute grid | Animated SVG | Medium | 4/5 |
 | [demo-09](#demo-09) | Atari 8-bit demo screen: 16-shade GTIA ramps recoloured by display-list interrupts | Animated SVG | Easy | 4/5 |
 | [demo-10](#demo-10) | Amstrad CPC demo screen: Mode 0 fat pixels, three-level RGB, full overscan | Animated SVG | Medium | 3/5 |
-| [demo-11](#demo-11) | Apple II crack screen: six-colour hi-res panels and 40-column credits | Text + SVG | Easy | 4/5 |
+| [demo-11](#demo-11) | Apple II crack screen: six-colour hi-res panels and 40-column credits | Text / ASCII + SVG | Easy | 4/5 |
 
 ---
 
@@ -72,7 +72,7 @@ The early-90s PC demo is a chain of separately coded parts glued together by a l
 
 ## demo-02 · PC demo READ.ME: paged info file with index, member table and cut-here form
 
-**Text** · build: **Easy** · impact: **3/5** · 1992-1995, the text file shipped beside a PC demo executable; 80 columns, CP437, read in a DOS viewer or on a BBS
+**Text / ASCII** · build: **Easy** · impact: **3/5** · 1992-1995, the text file shipped beside a PC demo executable; 80 columns, CP437, read in a DOS viewer or on a BBS
 
 PC demo groups shipped a long typed document with each demo, closer to a club newsletter than to a release NFO. The Second Reality READ.ME is 732 lines at exactly 80 columns: a boxed title card, a numbered index, then pages on hardware, membership, contact, a FAQ, a list of distribution boards and an application form. It is distinct from the existing scene-NFO style because it has no logo art at all: the structure (index, page numbers, tables, a tear-off form) is the look.
 
@@ -200,7 +200,7 @@ Size coding is the discipline of making something watchable in 256 bytes or fewe
 
 ## demo-05 · Tiny-intro info file: the 40-column note that is longer than the program
 
-**Text** · build: **Easy** · impact: **2/5** · 2000s to today; the .diz or .nfo packed with a 256-byte or 4k competition entry
+**Text / ASCII** · build: **Easy** · impact: **2/5** · 2000s to today; the .diz or .nfo packed with a 256-byte or 4k competition entry
 
 Every competition entry travels with a small text file, and for a 256-byte intro that file is several times the size of the program. I read the ten info files in the Revision 2023 256-byte directory: they range from three lines of deadpan self-description to a boxed card with a logo. The shared content is fixed by the situation: what it is, how many bytes, which emulator settings the organisers must use, what to put on the big-screen slide, and who is greeted.
 
@@ -242,7 +242,7 @@ Every competition entry travels with a small text file, and for a 256-byte intro
 
 ## demo-06 · Demoparty results.txt (with the invitation text as its companion)
 
-**Text** · build: **Easy** · impact: **4/5** · 1992 to today; one results.txt per party in the scene.org parties archive, from Assembly 1993 to Revision 2023
+**Text / ASCII** · build: **Easy** · impact: **4/5** · 1992 to today; one results.txt per party in the scene.org parties archive, from Assembly 1993 to Revision 2023
 
 When a demoparty ends the organisers publish the votes as a plain text file, and that file is how most of the scene learns who won. I read seven: Assembly 1993, The Party 1994, Breakpoint 2004, Main 2010, Chaos Constructions 2019, Forever 2019 and Revision 2023, plus the generator inside the Wuhu party system. The layout has barely moved in thirty years: a header, then one block per competition with rank, points and 'title by author', then a sign-off. The invitation text that precedes a party is its sibling: the same header idea followed by rules, size limits and prize tables.
 
@@ -287,7 +287,7 @@ When a demoparty ends the organisers publish the votes as a plain text file, and
 
 ## demo-07 · Big-screen compo slide sequence (beamer)
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · 1990s to today; the projector feed in the main hall of a demoparty, now usually a browser page driven by a party system such as Wuhu
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1990s to today; the projector feed in the main hall of a demoparty, now usually a browser page driven by a party system such as Wuhu
 
 Between entries the big screen shows a slide saying what is about to run. It is the scene's equivalent of a title card, and everyone who has sat in a party hall knows its rhythm: countdown, competition name, then entry number, title, author and a comment line, one slide per entry, and finally the results revealed from last place up. The entrants write their own slide comment: the info files at Revision 2023 carry a labelled block of slide text for the organisers.
 
@@ -456,7 +456,7 @@ The CPC has no sprites and no copper: a 6845 video controller and a gate array, 
 
 ## demo-11 · Apple II crack screen: six-colour hi-res panels and 40-column credits
 
-**Text + SVG** · build: **Easy** · impact: **4/5** · About 1981 to the mid-1980s; Apple II, II+ and IIe; North American BBS pirate groups. Dated screens in the textfiles.com archive run from 1982 to 1985, and Pouet lists a crack screen from September 1981
+**Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · About 1981 to the mid-1980s; Apple II, II+ and IIe; North American BBS pirate groups. Dated screens in the textfiles.com archive run from 1982 to 1985, and Pouet lists a crack screen from September 1981
 
 The oldest layer of the whole tradition. The introduction to the textfiles.com archive explains that Apple II pirates began giving themselves group names and turning a program's splash screen into a credit: who cracked it, who is thanked, which bulletin board to call. It suggests around 1981 as a starting point and calls the screens a likely root of the later art scenes. The archive holds 794 captures, in colour and in monochrome. Wikipedia's crack-intro article likewise places the first ones on the Apple II. Unlike the C64 and Amiga entries there is no music, no scroller and usually no animation: it is a still title card.
 

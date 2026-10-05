@@ -1,6 +1,6 @@
 # README.NFO headers 01–10
 
-[All 40 candidates](README.md) · [Interactive favourites](gallery.html) · [Next →](page-2.md)
+[All 41 candidates](README.md) · [Interactive favourites](gallery.html) · [Next →](page-2.md)
 
 Keep the numbers of your favourites. Each header below is also saved in its own Markdown file.
 
@@ -8,7 +8,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 01 · Pinball dot-matrix display (orange plasma DMD)
 
-[Copy this header](01-mach-11.md) · [mach-11](../../styles/mach.md#mach-11) · [Generator](src/01-mach-11.mjs)
+**Format: ANIMATED SVG** · [Copy this header](01-mach-11.md) · [mach-11](../../styles/mach.md#mach-11) · [Generator](src/01-mach-11.mjs)
 
 <p align="center">
   <img src="assets/01-mach-11.svg" width="100%" alt="README.NFO in orange dot-matrix letters; the display cycles through 152 styles and 13 families.">
@@ -23,7 +23,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 
 ## 02 · MUD session transcript (login banner, room block, exits line, HP prompt)
 
-[Copy this header](02-hack-09.md) · [hack-09](../../styles/hack.md#hack-09) · [Generator](src/02-hack-09.mjs)
+**Format: TEXT / ASCII** · [Copy this header](02-hack-09.md) · [hack-09](../../styles/hack.md#hack-09) · [Generator](src/02-hack-09.mjs)
 
 <pre>
                   R  E  A  D  M  E  .  N  F  O
@@ -59,7 +59,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 
 ## 03 · Digital rain banner (light falling through fixed glyph columns, resolving into the title)
 
-[Copy this header](03-hack-14.md) · [hack-14](../../styles/hack.md#hack-14) · [Generator](src/03-hack-14.mjs)
+**Format: ANIMATED SVG** · [Copy this header](03-hack-14.md) · [hack-14](../../styles/hack.md#hack-14) · [Generator](src/03-hack-14.mjs)
 
 <p align="center">
   <img src="assets/03-hack-14.svg" width="100%" alt="README.NFO glows pale green in a field of slowly falling digital rain.">
@@ -74,7 +74,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 
 ## 04 · Multi-chip tracker (FamiTracker / DefleMask / Furnace)
 
-[Copy this header](04-trk-07.md) · [trk-07](../../styles/trk.md#trk-07) · [Generator](src/04-trk-07.mjs)
+**Format: ANIMATED SVG** · [Copy this header](04-trk-07.md) · [trk-07](../../styles/trk.md#trk-07) · [Generator](src/04-trk-07.mjs)
 
 <p align="center">
   <img src="assets/04-trk-07.svg" width="100%" alt="README.NFO as a five-channel chiptune tracker, with colour-coded notes and oscilloscope traces.">
@@ -89,7 +89,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 
 ## 05 · Piano roll and falling notes (up to black MIDI)
 
-[Copy this header](05-trk-10.md) · [trk-10](../../styles/trk.md#trk-10) · [Generator](src/05-trk-10.mjs)
+**Format: ANIMATED SVG** · [Copy this header](05-trk-10.md) · [trk-10](../../styles/trk.md#trk-10) · [Generator](src/05-trk-10.mjs)
 
 <p align="center">
   <img src="assets/05-trk-10.svg" width="100%" alt="README.NFO formed from luminous note blocks over a rainbow piano roll and a pale keyboard.">
@@ -104,7 +104,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 
 ## 06 · Apple II crack screen: six-colour hi-res panels and 40-column credits
 
-[Copy this header](06-demo-11.md) · [demo-11](../../styles/demo.md#demo-11) · [Generator](src/06-demo-11.mjs)
+**Format: SVG** · [Copy this header](06-demo-11.md) · [demo-11](../../styles/demo.md#demo-11) · [Generator](src/06-demo-11.mjs)
 
 <p align="center"><img src="assets/06-demo-11.svg" width="100%" alt="README.NFO in an original six-colour block title screen"></p>
 
@@ -128,7 +128,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 
 ## 07 · PC demo opening titles and part-credit cards (Second Reality manner)
 
-[Copy this header](07-demo-01.md) · [demo-01](../../styles/demo.md#demo-01) · [Generator](src/07-demo-01.mjs)
+**Format: ANIMATED SVG** · [Copy this header](07-demo-01.md) · [demo-01](../../styles/demo.md#demo-01) · [Generator](src/07-demo-01.mjs)
 
 <p align="center">
   <img src="assets/07-demo-01.svg" width="100%" alt="README.NFO demo title above a steel-blue skyline and green vector ground">
@@ -143,7 +143,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 
 ## 08 · VHS tape and late-night lo-fi: OSD, tracking and chroma bleed
 
-[Copy this header](08-vap-03.md) · [vap-03](../../styles/vap.md#vap-03) · [Generator](src/08-vap-03.mjs)
+**Format: ANIMATED SVG** · [Copy this header](08-vap-03.md) · [vap-03](../../styles/vap.md#vap-03) · [Generator](src/08-vap-03.mjs)
 
 <p align="center">
   <img src="assets/08-vap-03.svg" width="100%" alt="README.NFO on a purple VHS title card with skyline, PLAY indicator and subtle tracking noise">
@@ -158,7 +158,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 
 ## 09 · Razor 1911 Amiga cracktro (Sector9, 1990-91): logo plate, deep-blue panel, rainbow copper text
 
-[Copy this header](09-c64-05.md) · [c64-05](../../styles/c64.md#c64-05) · [Generator](src/09-c64-05.mjs)
+**Format: SVG** · [Copy this header](09-c64-05.md) · [c64-05](../../styles/c64.md#c64-05) · [Generator](src/09-c64-05.mjs)
 
 <p align="center"><img src="assets/09-c64-05.svg" width="100%" alt="README.NFO in rainbow copper lettering beneath an original red capsule plate"></p>
 
@@ -180,7 +180,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 
 ## 10 · BBS data screens: stats header, last callers, file-area table
 
-[Copy this header](10-ansi-05.md) · [ansi-05](../../styles/ansi.md#ansi-05) · [Generator](src/10-ansi-05.mjs)
+**Format: SVG** · [Copy this header](10-ansi-05.md) · [ansi-05](../../styles/ansi.md#ansi-05) · [Generator](src/10-ansi-05.mjs)
 
 <p align="center"><img src="assets/10-ansi-05.svg" width="100%" alt="README.NFO bulletin-board file directory with stats, rows and coloured hotkeys"></p>
 
@@ -201,4 +201,4 @@ You see twenty possible beginnings. Choose the one that feels like you.
 
 ---
 
-[All 40 candidates](README.md) · [Interactive favourites](gallery.html) · [Next →](page-2.md)
+[All 41 candidates](README.md) · [Interactive favourites](gallery.html) · [Next →](page-2.md)
