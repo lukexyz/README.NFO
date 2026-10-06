@@ -6,7 +6,9 @@ Ask your assistant:
 
 > Make 12 random README header images for this repo using README.NFO, with original lettering, SVGs and a preview gallery.
 
-The plugin defaults to twelve choices; you can request ten, fifteen, or another count. It bundles a 152-style catalogue and 219 examples. Image draws use 127 image-capable styles, skip duplicate aliases and text-only entries, and save their seed and selection. You can ask for another batch without repeating styles from a previous saved draw.
+The plugin defaults to twelve choices; you can request ten, fifteen, or another count. The compact package contains short visual cues for 152 distinct styles. Image draws use 127 image-capable styles, skip duplicate aliases and text-only entries, and save their seed and selection. You can ask for another batch without repeating styles from a previous saved draw.
+
+Sample artwork and sample generators stay in the [public README.NFO README and galleries](https://github.com/lukexyz/README.NFO#readme); they are not bundled with the compact plugin. Ask for examples or instructions to see that README link. The assistant can consult a specific public sample when you want it adapted, while ordinary generation uses the compact guidance and your project's facts.
 
 Each batch is designed for your repository's name and real project facts. The assistant creates SVG images, editable generators, a browser gallery, copy-ready Markdown, a saved draw and the MIT notice. Animation is optional and includes reduced-motion support. You choose which header to install.
 

@@ -1,12 +1,12 @@
 # README.NFO Headers terms of use
 
-Effective date: 5 October 2026.
+Effective date: 6 October 2026.
 
-These terms describe use of **README.NFO Headers**, provided by **Luke Woods**. The plugin supplies assistant instructions, reference artwork and code helpers for creating repository headers. ChatGPT/Codex and any other services you use remain subject to their own terms and account requirements.
+These terms describe use of **README.NFO Headers**, provided by **Luke Woods**. The plugin supplies assistant instructions, compact style guidance and code helpers for creating repository headers. ChatGPT/Codex and any other services you use remain subject to their own terms and account requirements.
 
 ## Permission and licensing
 
-The plugin's original code and bundled README.NFO documentation and artwork are provided under the [MIT licence](https://github.com/lukexyz/README.NFO/blob/main/LICENSE). Preserve the copyright and permission notice with copies or substantial portions of that work. Existing third-party notices must also be preserved. Research links in the style catalogue do not grant a licence to the linked artwork.
+The plugin's original code and bundled README.NFO guidance are provided under the [MIT licence](https://github.com/lukexyz/README.NFO/blob/main/LICENSE). Preserve the copyright and permission notice with copies or substantial portions of that work. Existing third-party notices must also be preserved. The public README.NFO repository also hosts MIT-licensed examples; research links do not grant a licence to unrelated linked artwork.
 
 Use only repository information and other inputs that you are authorised to use. Draw original branding for your project; do not adopt historical groups' names, protected logos or artist signatures as your own. Newly generated outputs can contain your inputs and new artwork. The bundled MIT licence does not grant rights to unrelated third-party material or guarantee that a generated design is clear of third-party rights.
 
