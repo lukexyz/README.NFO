@@ -35,7 +35,7 @@ export function readSavedPlan(directory) {
   return {output,plan,project};
 }
 
-export async function generateBatch(project, options, {author=authorImages,authorCheck=checkAuthor,log=console.log,catalogue=loadCatalogue(),onPlan=()=>{},onProgress=()=>{},onRuntime=()=>{}}={}) {
+export async function generateBatch(project, options, {author=authorImages,authorCheck=checkAuthor,log=console.log,catalogue=loadCatalogue(),onPlan=()=>{},onProgress=()=>{},onRuntime=()=>{},onHeaderProgress=()=>{}}={}) {
   let output,plan;
   if(options.resume) ({output,plan,project}=readSavedPlan(options.resume));
   else {
@@ -57,23 +57,30 @@ export async function generateBatch(project, options, {author=authorImages,autho
   const images=new Map(), pending=[];
   const completed=new Set();
   const reportCompleted=(pick,label)=>{if(completed.has(pick.id))return;completed.add(pick.id);onProgress(completed.size,plan.count,`${label} ${pick.id}`);};
+  const reportHeader=(pick,step,label)=>onHeaderProgress({id:pick.id,number:pick.number,total:plan.count,step,steps:5,label});
   onProgress(0,plan.count,'Preparing headers');
   for(const pick of plan.options) {
     const asset=contained(output,`assets/${pick.slug}.svg`);
     if(fs.existsSync(asset)) {
       const svg=fs.readFileSync(asset,'utf8');
-      if(!imageIssues(svg,project.name).length) {images.set(pick.id,{svg});reportCompleted(pick,'Recovered');continue;}
+      if(!imageIssues(svg,project.name).length) {images.set(pick.id,{svg});reportHeader(pick,5,'Recovered saved image');reportCompleted(pick,'Recovered');continue;}
     }
     if(pick.mode==='prebuilt') {
+      reportHeader(pick,0,'Preparing scene');
+      reportHeader(pick,1,'Scene selected');
+      reportHeader(pick,2,'Rendering SVG');
       const svg=renderDesign([...designs,...presets].find(d=>d.id===pick.presetId),project);
+      reportHeader(pick,3,'SVG rendered');
       const issues=imageIssues(svg,project.name);if(issues.length)throw new Error(`${pick.id}: ${issues.join('; ')}`);
+      reportHeader(pick,4,'SVG validated');
       images.set(pick.id,{svg});write(output,`assets/${pick.slug}.svg`,svg);
+      reportHeader(pick,5,'Saved');
       reportCompleted(pick,'Rendered');
     } else pending.push(pick);
   }
   if(pending.length) {
     if(options.resume)await authorCheck();
-    const authored=await author(project,pending,output,{log,onRuntime,onImage:pick=>reportCompleted(pick,'Saved')});
+    const authored=await author(project,pending,output,{log,onRuntime,onHeaderProgress:reportHeader,onImage:pick=>reportCompleted(pick,'Saved')});
     for(const pick of pending) {
       const image=authored.get(pick.id);
       if(!image)throw new Error(`Missing authored image: ${pick.id}. Resume the saved batch.`);

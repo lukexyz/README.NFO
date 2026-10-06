@@ -53,13 +53,16 @@ export async function checkAuthor({runner=spawn}={}) {
   });
 }
 
-export async function authorImages(project, options, output, {runner=spawn,log=console.log,timeoutMs=1200000,onRuntime=()=>{},onImage=()=>{}}={}) {
+export async function authorImages(project, options, output, {runner=spawn,log=console.log,timeoutMs=1200000,onRuntime=()=>{},onImage=()=>{},onHeaderProgress=()=>{}}={}) {
   const images=new Map();
-  // Bound each response and persist completed groups so large draws can resume.
-  for(let offset=0;offset<options.length;offset+=3) {
-    const group=options.slice(offset,offset+3);
-    const directory=options.length<=3?output:path.join(output,'_author',`group-${group[0].slug}`);
-    const authored=await authorGroup(project,group,directory,{runner,log,timeoutMs,onRuntime});
+  // One response per header: saved results advance progress immediately and survive a later failure.
+  for(let offset=0;offset<options.length;offset++) {
+    const group=options.slice(offset,offset+1),pick=group[0];
+    if(!/^\d{2,3}-[a-z][a-z0-9]*-\d{2}$/.test(pick.slug))throw new Error('Invalid authored asset filename.');
+    const directory=path.join(output,'_author',`header-${pick.slug}`);
+    const report=(step,label)=>onHeaderProgress(pick,step,label);
+    report(0,'Queued');
+    const authored=await authorGroup(project,group,directory,{runner,log,timeoutMs,onRuntime,report});
     for(const pick of group) {
       if(!/^\d{2,3}-[a-z][a-z0-9]*-\d{2}$/.test(pick.slug))throw new Error('Invalid authored asset filename.');
       const image=authored.get(pick.id);
@@ -68,6 +71,7 @@ export async function authorImages(project, options, output, {runner=spawn,log=c
       fs.writeFileSync(path.join(output,'assets',`${pick.slug}.svg`),image.svg);
       fs.writeFileSync(path.join(output,'src',`${pick.slug}.art.json`),JSON.stringify(image.artDecisions,null,2)+'\n');
       images.set(pick.id,image);
+      report(5,'Saved');
       onImage(pick);
     }
     log(`Saved ${images.size} of ${options.length} newly authored scenes.`);
@@ -75,13 +79,14 @@ export async function authorImages(project, options, output, {runner=spawn,log=c
   return images;
 }
 
-async function authorGroup(project, options, output, {runner,log,timeoutMs,onRuntime}) {
+async function authorGroup(project, options, output, {runner,log,timeoutMs,onRuntime,report}) {
   if(!options.length)return new Map();
-  const directory=path.join(output,'_author'); fs.mkdirSync(directory,{recursive:true});
+  const directory=output; fs.mkdirSync(directory,{recursive:true});
   const schema=path.join(directory,'schema.json'), answer=path.join(directory,'answer.json');
   fs.writeFileSync(schema,JSON.stringify(responseSchema(options),null,2));
   const prompt=authorPrompt(project,options);fs.writeFileSync(path.join(directory,'brief.txt'),prompt);
   if(fs.existsSync(answer))fs.unlinkSync(answer);
+  report(1,'Brief prepared');
   log(`Authoring ${options.length} new scenes with Codex; the style draw is saved. This can take several minutes.`);
   await new Promise((resolve,reject)=>{
     const args=['exec','--sandbox','read-only','--skip-git-repo-check','--ephemeral','--output-schema',schema,'--output-last-message',answer,'--color','never','-'];
@@ -90,11 +95,15 @@ async function authorGroup(project, options, output, {runner,log,timeoutMs,onRun
     const reportRuntime=createRuntimeReporter(onRuntime);
     child.stderr.on('data',chunk=>{reportRuntime(chunk);diagnostics.write(chunk);errorText=(errorText+chunk.toString()).slice(-4000);});
     child.stdin.on('error',()=>{}); child.stdin.end(prompt);
+    report(2,'Authoring SVG');
     const timer=setTimeout(()=>{child.kill();reject(new Error('Authoring timed out. Resume this directory to keep the existing draw.'));},timeoutMs);
     child.once('error',error=>{clearTimeout(timer);diagnostics.end();reject(new Error(`Cannot start Codex: ${error.message}`));});
     child.once('exit',code=>{clearTimeout(timer);diagnostics.end();code===0?resolve():reject(new Error(`Codex authoring failed (exit ${code}). Check your Codex sign-in and usage limits. The saved draw can be resumed. ${errorText.slice(-700)}`));});
   });
+  report(3,'Response received');
   let data;
   try {data=JSON.parse(fs.readFileSync(answer,'utf8'));}catch{throw new Error('Codex did not return a complete JSON result. Resume the saved batch.');}
-  return validateResponse(data,options,project);
+  const validated=validateResponse(data,options,project);
+  report(4,'SVG validated');
+  return validated;
 }

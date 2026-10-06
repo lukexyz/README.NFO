@@ -70,6 +70,7 @@ export async function main(args = process.argv.slice(2), {stream=process.stdout,
       },
       onRuntime: details=>terminal.resolvedRuntime(details),
       onProgress: (done,total,label)=>terminal.progress(done,total,label),
+      onHeaderProgress: details=>terminal.headerProgress(details),
     });
     clearInterval(timer);terminal.finish();
     terminal.line(`  Created ${bundle.picks.length} headers in ${output}`);

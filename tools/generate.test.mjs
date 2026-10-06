@@ -207,11 +207,11 @@ test('a failed author preserves its draw, resumes without fetching or redrawing,
   } finally {removeTemporary(directory);}
 });
 
-test('authoring saves validated groups when a later group fails',async()=>{
+test('authoring saves headers individually and preserves completed progress when the next header fails',async()=>{
   const {EventEmitter}=await import('node:events');
   const {PassThrough}=await import('node:stream');
   const directory=temporary(),options=makePlan(project,{count:4,creativity:1,seed:'groups'}).options;
-  let calls=0;
+  let calls=0;const stages=[],saved=[];
   const runner=(_executable,args)=>{
     calls++;
     const child=new EventEmitter();child.stdin=new PassThrough();child.stderr=new PassThrough();child.kill=()=>{};
@@ -220,16 +220,22 @@ test('authoring saves validated groups when a later group fails',async()=>{
       if(calls===2){child.stderr.write('Fixture failure');child.emit('exit',1);return;}
       const schema=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1],'utf8'));
       const ids=schema.properties.candidates.items.properties.id.enum;
+      assert.equal(ids.length,1);
       const result={candidates:ids.map(id=>({id,svg:renderDesign(designs[0],project),artDecisions:['Project motif','Custom composition']}))};
       fs.writeFileSync(args[args.indexOf('--output-last-message')+1],JSON.stringify(result));child.emit('exit',0);
     }));
     return child;
   };
   try {
-    await assert.rejects(authorImages(project,options,directory,{runner,log:()=>{}}),/Fixture failure/);
+    await assert.rejects(authorImages(project,options,directory,{runner,log:()=>{},
+      onHeaderProgress:(pick,step)=>stages.push([pick.id,step]),
+      onImage:pick=>{assert.ok(fs.existsSync(path.join(directory,'assets',`${pick.slug}.svg`)));saved.push(pick.id);},
+    }),/Fixture failure/);
     assert.equal(calls,2);
-    for(const pick of options.slice(0,3))assert.ok(fs.existsSync(path.join(directory,'assets',`${pick.slug}.svg`)));
-    assert.equal(fs.existsSync(path.join(directory,'assets',`${options[3].slug}.svg`)),false);
+    assert.deepEqual(stages.filter(([id])=>id===options[0].id).map(([,step])=>step),[0,1,2,3,4,5]);
+    assert.deepEqual(stages.filter(([id])=>id===options[1].id).map(([,step])=>step),[0,1,2]);
+    assert.deepEqual(saved,[options[0].id]);
+    for(const pick of options.slice(1))assert.equal(fs.existsSync(path.join(directory,'assets',`${pick.slug}.svg`)),false);
   }finally{removeTemporary(directory);}
 });
 

@@ -66,6 +66,25 @@ test('terminal keeps incomplete authoring progress truthful and respects disable
   assert.match(stream.read(),/configured custom-gateway provider account/);
 });
 
+test('current-header stages and saved batch progress stay separate while authoring waits',()=>{
+  const stream=capture(true);let elapsed=0;
+  const terminal=createTerminal({stream,color:false,now:()=>elapsed});
+  terminal.runtime({counts:{fresh:3,prebuilt:0},prebuiltLibrarySize:26,catalogueSize:153});
+  terminal.progress(0,3,'Preparing');
+  terminal.headerProgress({id:'nfo-01',number:1,total:3,step:2,steps:5,label:'Authoring SVG'});
+  elapsed=60000;terminal.tick();
+  assert.match(stream.read(),/HEADER 1\/3 \/ nfo-01/);
+  assert.match(stream.read(),/40% 2\/5 stages/);
+  assert.match(stream.read(),/BATCH \/ 0 of 3 headers saved/);
+  assert.doesNotMatch(stream.read(),/100%/);
+  terminal.headerProgress({id:'nfo-01',number:1,total:3,step:5,steps:5,label:'Saved'});
+  terminal.progress(1,3,'Saved nfo-01');
+  terminal.headerProgress({id:'nfo-02',number:2,total:3,step:0,steps:5,label:'Queued'});
+  assert.match(stream.read(),/33% 1\/3/);
+  assert.match(stream.read(),/HEADER 2\/3 \/ nfo-02/);
+  terminal.finish();
+});
+
 test('browser launcher uses argument arrays and safely passes Windows paths through the environment',async()=>{
   const file=path.resolve("gallery ' $ ` & space/index.html");
   const windows=browserCommand(file,'win32');assert.equal(windows.options.shell,false);assert.equal(windows.options.windowsHide,true);
