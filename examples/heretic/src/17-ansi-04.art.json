@@ -1,0 +1,12 @@
+{
+  "id": "ansi-04",
+  "summary": "A cyan-and-yellow ANSI stage with a travelling character cursor and complete Heretic block lettering.",
+  "choices": [
+    "The delivery cursor moves through a research-message row",
+    "Static full lettering remains readable at time zero and with reduced motion"
+  ],
+  "formats": [
+    "svg",
+    "text"
+  ]
+}

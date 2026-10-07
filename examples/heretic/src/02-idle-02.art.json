@@ -1,0 +1,11 @@
+{
+  "id": "idle-02",
+  "summary": "A four-way mirrored light-synth trail, with directional-ablation seeds and a ROM-like status line.",
+  "choices": [
+    "One vector seed expands symmetrically instead of using a generic background",
+    "Heretic becomes the synthesizer status readout"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "c64-04",
+  "summary": "A narrow C64 directory picture of a branching model, constrained to quoted 16-character filename cells.",
+  "choices": [
+    "The directory art contains the model branch motif",
+    "Component and licence names replace invented project files or block counts"
+  ],
+  "formats": [
+    "text"
+  ]
+}

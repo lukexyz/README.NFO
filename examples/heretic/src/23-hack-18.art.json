@@ -1,0 +1,11 @@
+{
+  "id": "hack-18",
+  "summary": "A web-native challenge board with research tiles and conceptual stepped search paths instead of invented leaderboard scores.",
+  "choices": [
+    "Challenge categories name the Heretic workflow",
+    "The scoreboard vocabulary becomes a clearly labelled conceptual diagram"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

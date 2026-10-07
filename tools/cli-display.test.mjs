@@ -104,7 +104,7 @@ test('a full local-library CLI run warns, completes progress and opens only the 
   try {
     const fixture=path.join(directory,'project.json'),output=path.join(directory,'headers');
     fs.writeFileSync(fixture,JSON.stringify(project));let opened=0;
-    const result=await main(['--project',fixture,`-${designs.length}`,'--seed','display','--out',output],{stream,
+    const result=await main(['--project',fixture,`-${designs.length}`,'--creativity','0','--seed','display','--out',output],{stream,
       inspectRuntime:()=>assert.fail('Local runs need no Codex account probe'),
       openBrowser:async file=>{opened++;assert.equal(file,path.join(output,'index.html'));assert.ok(fs.existsSync(file));
         assert.equal(JSON.parse(fs.readFileSync(path.join(output,'manifest.json'))).status,'complete');return true;},
@@ -141,7 +141,7 @@ test('failed generation never opens a browser and a launcher failure retains a u
   try {
     const fixture=path.join(directory,'project.json');fs.writeFileSync(fixture,JSON.stringify(project));
     await assert.rejects(main(['--project',fixture,'-1'],{stream:capture(),batch:async()=>{throw new Error('Failed batch');},openBrowser:()=>assert.fail('No browser on failed batch')}),/Failed batch/);
-    const stream=capture();await main(['--project',fixture,'-1','--out',path.join(directory,'headers')],{stream,openBrowser:async()=>false});
+    const stream=capture();await main(['--project',fixture,'-1','--creativity','0','--out',path.join(directory,'headers')],{stream,openBrowser:async()=>false});
     assert.match(stream.read(),/GALLERY\s+file:/);assert.match(stream.read(),/Could not open the default browser/);
   } finally {cleanup(directory);}
 });

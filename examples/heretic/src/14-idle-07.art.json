@@ -1,0 +1,11 @@
+{
+  "id": "idle-07",
+  "summary": "A brick maze corridor whose far-wall Heretic poster and vector-exit map turn ablation into a navigation metaphor.",
+  "choices": [
+    "The far wall carries the project identity as a physical poster",
+    "An open route through the overlay map represents a freed direction"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

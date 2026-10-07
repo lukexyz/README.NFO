@@ -1,0 +1,12 @@
+{
+  "id": "mach-09",
+  "summary": "An original four-colour console title card with a stepped wordmark and a directional sprite cursor.",
+  "choices": [
+    "A forked arrow is the original menu sprite",
+    "The menu names actual research components rather than fictional game levels"
+  ],
+  "formats": [
+    "svg",
+    "text"
+  ]
+}

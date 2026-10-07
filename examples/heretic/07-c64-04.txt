@@ -1,0 +1,16 @@
+0 "HERETIC         "  HN
+0 "+--------------+" PRG
+0 "|   HERETIC    |" PRG
+0 "+--------------+" PRG
+0 "|  o---o---o   |" PRG
+0 "|      |       |" PRG
+0 "|  o---+---o   |" PRG
+0 "+--------------+" PRG
+0 "PYTHON          " PRG
+0 "ABLITERATION    " PRG
+0 "OPTUNA          " PRG
+0 "AGPL-3.0        " PRG
+
+DECORATIVE DIRECTORY / NO FILE SIZES
+Directional ablation for language models
+https://github.com/p-e-w/heretic

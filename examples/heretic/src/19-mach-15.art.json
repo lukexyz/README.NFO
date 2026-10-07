@@ -1,0 +1,11 @@
+{
+  "id": "mach-15",
+  "summary": "A Mode-7-like ground map with the Heretic wordmark painted onto a receding, textured ablation route.",
+  "choices": [
+    "Project identity belongs to the transformed ground plane",
+    "Ablation becomes an open route across a schematic model landscape"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "mach-12",
+  "summary": "A blue-green starburst VFD faceplate with separately constructed Heretic segment cells and orange research annunciators.",
+  "choices": [
+    "Fourteen-segment lettering is drawn specifically for the seven-letter name",
+    "Workflow stages become fixed front-panel annunciators"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

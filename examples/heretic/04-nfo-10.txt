@@ -1,0 +1,20 @@
+                   .----------------.
+                  /  open language   \
+             .---'--------------------'---.
+            /       .---.    .---.        \
+           |        | o |----| o |         |
+           |        '---'    '---'         |
+           |            \__/              |
+            \           /  \             /
+             '---------'    '-----------'
+                  /\              /\
+                 /__\------------/__\
+                   .-'          '-.
+                  '----.    .----'
+                       |____|
+
+        heretic — open directions, drawn in plain text
+        Python / directional ablation / Optuna
+        https://github.com/p-e-w/heretic
+
+        Original schematic creature; no borrowed signature.

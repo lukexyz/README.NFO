@@ -1,0 +1,11 @@
+{
+  "id": "trk-03",
+  "summary": "A dense teal FastTracker-like research workstation with scope cells, component list and explicitly decorative pattern notes.",
+  "choices": [
+    "Song-order slots become model, vector, search and evaluation stages",
+    "Instrument names describe the actual Python research stack"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

@@ -38,11 +38,12 @@ Six more looks to try. Click a preview or its name for the full header and gener
 
 ## Full galleries
 
-**220 headers · 153 distinct styles · seven project galleries.** [Start with twelve picks](examples/START-HERE.md) or explore a complete set. [Browse styles by text / ASCII or SVG](styles/INDEX.md#browse-by-output-format):
+**260 headers · 153 distinct styles · eight project galleries.** [Start with twelve picks](examples/START-HERE.md) or explore a complete set. [Browse styles by text / ASCII or SVG](styles/INDEX.md#browse-by-output-format):
 
 | Gallery | Headers | Theme |
 | --- | ---: | --- |
 | [README.NFO](examples/readme-nfo/README.md) | 41 | Two random draws plus a CLI startup-banner reference; filter text / ASCII and SVG |
+| [Heretic](examples/heretic/README.md) | 40 | Forty fixed random styles, independently composed; filter SVG and text / ASCII and save favourites |
 | [Dance Vision](examples/dance-vision/README.md) | 6 | Motion capture and a TV dance floor |
 | [ULTRA-SATISFACTORY](examples/ultra-satisfactory/README.md) | 42 | Factory recipes and machines |
 | [Castaway](examples/castaway/README.md) | 116 | A lo-fi island and visual gags, on six pages |

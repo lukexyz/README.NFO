@@ -1,0 +1,11 @@
+{
+  "id": "vap-11",
+  "summary": "A strictly black-and-white research desktop with striped chrome, hard shadow and a removable direction diagram.",
+  "choices": [
+    "A model-node sketch replaces the stock desktop icon",
+    "The window presents directional ablation with 1-bit geometry"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "nfo-10",
+  "summary": "A contour-only ASCII creature made from two connected model nodes, with an open-language caption.",
+  "choices": [
+    "The creature face is a pair of connected residual nodes",
+    "Open jaws act as a metaphor for unrestricted model language"
+  ],
+  "formats": [
+    "text"
+  ]
+}

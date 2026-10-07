@@ -1,0 +1,11 @@
+{
+  "id": "vap-04",
+  "summary": "An indigo-to-orange forecast broadcast, with a sun emblem and label/value rows describing Heretic research.",
+  "choices": [
+    "The forecast describes model research instead of invented weather",
+    "A directional sun and explicit illustrative label establish the metaphor"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

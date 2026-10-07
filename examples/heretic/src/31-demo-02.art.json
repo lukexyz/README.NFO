@@ -1,0 +1,11 @@
+{
+  "id": "demo-02",
+  "summary": "A paged demo READ.ME with a main index, research-component table and cut-here direction form.",
+  "choices": [
+    "Membership columns become verified software components and roles",
+    "The tear-off form asks for a direction rather than invented contact details"
+  ],
+  "formats": [
+    "text"
+  ]
+}

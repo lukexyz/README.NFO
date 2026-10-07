@@ -1,0 +1,17 @@
+ __  __  ______  _____   ______  ______  ______  ______ 
+/ / / / / ____/ / __  / / ____/ /___  / /___  / / ____/ 
+/ /_/ / / /__   / /_/ / / /__      / /     / /  / /     
+/ __  / / __/   / __ <  / __/     / /     / /   / /     
+/ / / / / /____ / / | | / /____  / /    _/ /__  / /___  
+/_/ /_/ /_____/ /_/ |_| /_____/ /_/     /____/  /_____/ 
+<---------------------------------------------------------->
+
+  Python :........ LANGUAGE   <->   LICENCE ........: AGPL-3.0
+  Ablation :...... METHOD     <->   SEARCH .........: Optuna
+
+  [ D I R E C T I O N S ]
+  Automatic censorship removal for language models.
+
+  https://github.com/p-e-w/heretic
+
+<----[ original outline lettering for an open direction ]---->

@@ -1,0 +1,6 @@
+import {R,L,T,write} from './lib.mjs';
+let body=R(28,16,904,368,'#f5f1e7','stroke="#706b64"')+T('heretic / research swap',64,75,46,'#171a1b','font-family="Georgia,serif" font-style="italic"')+T('TO: open model researchers    FROM: a README header',65,110,18,'#313538')+L('M64 132H895','#414347');
+const left=['Read the project','Inspect model directions','Explore abliteration','Review AGPL-3.0'],right=['Python implementation','Optuna parameter search','Transformer models','Original header artwork'];
+for(let i=0;i<4;i++)for(let col=0;col<2;col++){const x=66+col*438,y=159+i*38;body+=R(x,y,18,18,'none','stroke="#303030"')+T((col?right:left)[i],x+31,y+15,19,'#222');if(i===0)body+=L(`M${x+1} ${y+9}l6 8 14-21`,'#b1242d',3);}
+body+=L('M45 324H916','#666',1,'stroke-dasharray="5 5"')+T('REPLY COUPON / YOUR FAVOURITE DIRECTION: __________________',64,351,17,'#222')+T('Illustrative paperwork, not a completed research checklist.',64,375,13,'#555');
+write(29,{body,background:'#9d9b96',summary:'A photocopied swap letter with red pen ticks, a research checklist and a tear-off direction coupon.',choices:['The swap-request vocabulary is adapted to model research','A direction blank turns the reply coupon into an ablation metaphor']});

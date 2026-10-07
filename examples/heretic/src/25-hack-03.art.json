@@ -1,0 +1,11 @@
+{
+  "id": "hack-03",
+  "summary": "A restrained man-page header whose hierarchy comes entirely from capitals, indentation and real Heretic facts.",
+  "choices": [
+    "The title uses the conventional NAME(section) repetition",
+    "The synopsis is the documented positional-model command"
+  ],
+  "formats": [
+    "text"
+  ]
+}

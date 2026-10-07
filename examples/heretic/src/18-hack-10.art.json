@@ -1,0 +1,11 @@
+{
+  "id": "hack-10",
+  "summary": "A decorative DOS host screen whose ablation letters fall out of the research transcript while the project name stays fixed.",
+  "choices": [
+    "Only letters representing a direction fall away",
+    "The header explicitly identifies the payload as decorative, with no malware code"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

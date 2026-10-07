@@ -1,0 +1,11 @@
+{
+  "id": "demo-08",
+  "summary": "A ZX-style attribute-grid effect, with hard colour cells and a white bitmap title across a black interruption.",
+  "choices": [
+    "The colour-field discontinuity acts as a removed model direction",
+    "All colour changes occur on explicit cells instead of smooth gradients"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

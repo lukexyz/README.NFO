@@ -1,0 +1,11 @@
+{
+  "id": "c64-08",
+  "summary": "A depth-varying infinity chain of shaded blue bobs, framed by rainbow hairlines and a separate gradient logo strip.",
+  "choices": [
+    "The chain is a model-direction loop, with depth visible in ball size",
+    "The project name stays in its own static logo strip rather than floating over a panel"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

@@ -16,7 +16,8 @@ const HELP = `README.NFO — generate headers for your GitHub project
   readme-nfo --repo owner/repo --count 10 --out ./my-headers
 
   --count N       Number of headers (default 10; up to the distinct catalogue size)
-  --creativity F  Fraction newly authored, 0–1 (default 0); -creativity also works
+  --creativity F  Fraction newly authored, 0–1 (default 1); -creativity also works
+                  0 = prebuilt scenes only, with no Codex CLI needed
                   Ten headers at 0.9 = nine fresh scenes plus one prebuilt scene
   --exclude FILE  Exclude an earlier draw/manifest (repeatable)
   --allow-repeats Explicitly permit previous styles again

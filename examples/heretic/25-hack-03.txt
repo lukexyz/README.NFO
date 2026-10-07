@@ -1,0 +1,19 @@
+HERETIC(1)                 RESEARCH TOOLS                 HERETIC(1)
+
+NAME
+       heretic - automatic censorship removal for language models
+
+SYNOPSIS
+       heretic MODEL
+
+DESCRIPTION
+       Directional ablation with automatic parameter optimisation.
+       The implementation uses Python and Optuna's TPE search.
+
+SEE ALSO
+       The actual project README, usage guide and AGPL-3.0 licence.
+
+NOTE
+       Decorative manual-style header, not the project's manual.
+
+https://github.com/p-e-w/heretic

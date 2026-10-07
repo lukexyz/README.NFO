@@ -22,9 +22,10 @@
   "scripts": {
     "generate": "node tools/generate.mjs",
     "preview": "node tools/preview.mjs",
-    "gallery": "node examples/dance-vision/src/build-gallery.mjs && node examples/ultra-satisfactory/src/build-gallery.mjs && node examples/castaway/src/build-gallery.mjs && npm run gallery:pliny && npm run gallery:readme-nfo && npm run shortlist",
+    "gallery": "node examples/dance-vision/src/build-gallery.mjs && node examples/ultra-satisfactory/src/build-gallery.mjs && node examples/castaway/src/build-gallery.mjs && npm run gallery:pliny && npm run gallery:readme-nfo && npm run gallery:heretic && npm run shortlist",
     "gallery:pliny": "node tools/pliny-headers/build.mjs",
     "gallery:readme-nfo": "node examples/readme-nfo/src/build-gallery.mjs",
+    "gallery:heretic": "node examples/heretic/src/build-gallery.mjs",
     "shortlist": "node tools/build-shortlist.mjs",
     "styles": "node tools/build-styles.mjs",
     "test": "node --test tools/validate.test.mjs tools/generate.test.mjs tools/cli-display.test.mjs",

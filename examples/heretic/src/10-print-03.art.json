@@ -1,0 +1,11 @@
+{
+  "id": "print-03",
+  "summary": "A two-column magazine type-in page whose REM comments describe Heretic without pretending to execute BASIC.",
+  "choices": [
+    "Heretic facts are typeset as BASIC comments",
+    "The listing explicitly omits invented machine bytes and checksums"
+  ],
+  "formats": [
+    "text"
+  ]
+}

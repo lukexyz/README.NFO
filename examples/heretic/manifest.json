@@ -1,0 +1,497 @@
+{
+  "project": "p-e-w/heretic",
+  "seed": "b766732310a6159fa5082e6260669ee1",
+  "count": 40,
+  "candidates": [
+    {
+      "number": 1,
+      "id": "vap-12",
+      "slug": "01-vap-12",
+      "formats": [
+        "svg",
+        "text"
+      ],
+      "markdown": "01-vap-12.md",
+      "generator": "src/01-vap-12.mjs",
+      "artDirection": "src/01-vap-12.art.json",
+      "svg": "assets/01-vap-12.svg",
+      "text": "01-vap-12.txt"
+    },
+    {
+      "number": 2,
+      "id": "idle-02",
+      "slug": "02-idle-02",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "02-idle-02.md",
+      "generator": "src/02-idle-02.mjs",
+      "artDirection": "src/02-idle-02.art.json",
+      "svg": "assets/02-idle-02.svg"
+    },
+    {
+      "number": 3,
+      "id": "nfo-02",
+      "slug": "03-nfo-02",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "03-nfo-02.md",
+      "generator": "src/03-nfo-02.mjs",
+      "artDirection": "src/03-nfo-02.art.json",
+      "svg": "assets/03-nfo-02.svg"
+    },
+    {
+      "number": 4,
+      "id": "nfo-10",
+      "slug": "04-nfo-10",
+      "formats": [
+        "text"
+      ],
+      "markdown": "04-nfo-10.md",
+      "generator": "src/04-nfo-10.mjs",
+      "artDirection": "src/04-nfo-10.art.json",
+      "text": "04-nfo-10.txt"
+    },
+    {
+      "number": 5,
+      "id": "asia-03",
+      "slug": "05-asia-03",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "05-asia-03.md",
+      "generator": "src/05-asia-03.mjs",
+      "artDirection": "src/05-asia-03.art.json",
+      "svg": "assets/05-asia-03.svg"
+    },
+    {
+      "number": 6,
+      "id": "xfer-09",
+      "slug": "06-xfer-09",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "06-xfer-09.md",
+      "generator": "src/06-xfer-09.mjs",
+      "artDirection": "src/06-xfer-09.art.json",
+      "svg": "assets/06-xfer-09.svg"
+    },
+    {
+      "number": 7,
+      "id": "c64-04",
+      "slug": "07-c64-04",
+      "formats": [
+        "text"
+      ],
+      "markdown": "07-c64-04.md",
+      "generator": "src/07-c64-04.mjs",
+      "artDirection": "src/07-c64-04.art.json",
+      "text": "07-c64-04.txt"
+    },
+    {
+      "number": 8,
+      "id": "vap-04",
+      "slug": "08-vap-04",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "08-vap-04.md",
+      "generator": "src/08-vap-04.mjs",
+      "artDirection": "src/08-vap-04.art.json",
+      "svg": "assets/08-vap-04.svg"
+    },
+    {
+      "number": 9,
+      "id": "pc-12",
+      "slug": "09-pc-12",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "09-pc-12.md",
+      "generator": "src/09-pc-12.mjs",
+      "artDirection": "src/09-pc-12.art.json",
+      "svg": "assets/09-pc-12.svg"
+    },
+    {
+      "number": 10,
+      "id": "print-03",
+      "slug": "10-print-03",
+      "formats": [
+        "text"
+      ],
+      "markdown": "10-print-03.md",
+      "generator": "src/10-print-03.mjs",
+      "artDirection": "src/10-print-03.art.json",
+      "text": "10-print-03.txt"
+    },
+    {
+      "number": 11,
+      "id": "vap-11",
+      "slug": "11-vap-11",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "11-vap-11.md",
+      "generator": "src/11-vap-11.mjs",
+      "artDirection": "src/11-vap-11.art.json",
+      "svg": "assets/11-vap-11.svg"
+    },
+    {
+      "number": 12,
+      "id": "mach-07",
+      "slug": "12-mach-07",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "12-mach-07.md",
+      "generator": "src/12-mach-07.mjs",
+      "artDirection": "src/12-mach-07.art.json",
+      "svg": "assets/12-mach-07.svg"
+    },
+    {
+      "number": 13,
+      "id": "demo-08",
+      "slug": "13-demo-08",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "13-demo-08.md",
+      "generator": "src/13-demo-08.mjs",
+      "artDirection": "src/13-demo-08.art.json",
+      "svg": "assets/13-demo-08.svg"
+    },
+    {
+      "number": 14,
+      "id": "idle-07",
+      "slug": "14-idle-07",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "14-idle-07.md",
+      "generator": "src/14-idle-07.mjs",
+      "artDirection": "src/14-idle-07.art.json",
+      "svg": "assets/14-idle-07.svg"
+    },
+    {
+      "number": 15,
+      "id": "demo-10",
+      "slug": "15-demo-10",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "15-demo-10.md",
+      "generator": "src/15-demo-10.mjs",
+      "artDirection": "src/15-demo-10.art.json",
+      "svg": "assets/15-demo-10.svg"
+    },
+    {
+      "number": 16,
+      "id": "mach-09",
+      "slug": "16-mach-09",
+      "formats": [
+        "svg",
+        "text"
+      ],
+      "markdown": "16-mach-09.md",
+      "generator": "src/16-mach-09.mjs",
+      "artDirection": "src/16-mach-09.art.json",
+      "svg": "assets/16-mach-09.svg",
+      "text": "16-mach-09.txt"
+    },
+    {
+      "number": 17,
+      "id": "ansi-04",
+      "slug": "17-ansi-04",
+      "formats": [
+        "svg",
+        "text"
+      ],
+      "markdown": "17-ansi-04.md",
+      "generator": "src/17-ansi-04.mjs",
+      "artDirection": "src/17-ansi-04.art.json",
+      "svg": "assets/17-ansi-04.svg",
+      "text": "17-ansi-04.txt"
+    },
+    {
+      "number": 18,
+      "id": "hack-10",
+      "slug": "18-hack-10",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "18-hack-10.md",
+      "generator": "src/18-hack-10.mjs",
+      "artDirection": "src/18-hack-10.art.json",
+      "svg": "assets/18-hack-10.svg"
+    },
+    {
+      "number": 19,
+      "id": "mach-15",
+      "slug": "19-mach-15",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "19-mach-15.md",
+      "generator": "src/19-mach-15.mjs",
+      "artDirection": "src/19-mach-15.art.json",
+      "svg": "assets/19-mach-15.svg"
+    },
+    {
+      "number": 20,
+      "id": "nfo-03",
+      "slug": "20-nfo-03",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "20-nfo-03.md",
+      "generator": "src/20-nfo-03.mjs",
+      "artDirection": "src/20-nfo-03.art.json",
+      "svg": "assets/20-nfo-03.svg"
+    },
+    {
+      "number": 21,
+      "id": "pc-11",
+      "slug": "21-pc-11",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "21-pc-11.md",
+      "generator": "src/21-pc-11.mjs",
+      "artDirection": "src/21-pc-11.art.json",
+      "svg": "assets/21-pc-11.svg"
+    },
+    {
+      "number": 22,
+      "id": "trk-03",
+      "slug": "22-trk-03",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "22-trk-03.md",
+      "generator": "src/22-trk-03.mjs",
+      "artDirection": "src/22-trk-03.art.json",
+      "svg": "assets/22-trk-03.svg"
+    },
+    {
+      "number": 23,
+      "id": "hack-18",
+      "slug": "23-hack-18",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "23-hack-18.md",
+      "generator": "src/23-hack-18.mjs",
+      "artDirection": "src/23-hack-18.art.json",
+      "svg": "assets/23-hack-18.svg"
+    },
+    {
+      "number": 24,
+      "id": "vap-17",
+      "slug": "24-vap-17",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "24-vap-17.md",
+      "generator": "src/24-vap-17.mjs",
+      "artDirection": "src/24-vap-17.art.json",
+      "svg": "assets/24-vap-17.svg"
+    },
+    {
+      "number": 25,
+      "id": "hack-03",
+      "slug": "25-hack-03",
+      "formats": [
+        "text"
+      ],
+      "markdown": "25-hack-03.md",
+      "generator": "src/25-hack-03.mjs",
+      "artDirection": "src/25-hack-03.art.json",
+      "text": "25-hack-03.txt"
+    },
+    {
+      "number": 26,
+      "id": "demo-09",
+      "slug": "26-demo-09",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "26-demo-09.md",
+      "generator": "src/26-demo-09.mjs",
+      "artDirection": "src/26-demo-09.art.json",
+      "svg": "assets/26-demo-09.svg"
+    },
+    {
+      "number": 27,
+      "id": "asia-06",
+      "slug": "27-asia-06",
+      "formats": [
+        "text"
+      ],
+      "markdown": "27-asia-06.md",
+      "generator": "src/27-asia-06.mjs",
+      "artDirection": "src/27-asia-06.art.json",
+      "text": "27-asia-06.txt"
+    },
+    {
+      "number": 28,
+      "id": "c64-08",
+      "slug": "28-c64-08",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "28-c64-08.md",
+      "generator": "src/28-c64-08.mjs",
+      "artDirection": "src/28-c64-08.art.json",
+      "svg": "assets/28-c64-08.svg"
+    },
+    {
+      "number": 29,
+      "id": "print-05",
+      "slug": "29-print-05",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "29-print-05.md",
+      "generator": "src/29-print-05.mjs",
+      "artDirection": "src/29-print-05.art.json",
+      "svg": "assets/29-print-05.svg"
+    },
+    {
+      "number": 30,
+      "id": "hack-11",
+      "slug": "30-hack-11",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "30-hack-11.md",
+      "generator": "src/30-hack-11.mjs",
+      "artDirection": "src/30-hack-11.art.json",
+      "svg": "assets/30-hack-11.svg"
+    },
+    {
+      "number": 31,
+      "id": "demo-02",
+      "slug": "31-demo-02",
+      "formats": [
+        "text"
+      ],
+      "markdown": "31-demo-02.md",
+      "generator": "src/31-demo-02.mjs",
+      "artDirection": "src/31-demo-02.art.json",
+      "text": "31-demo-02.txt"
+    },
+    {
+      "number": 32,
+      "id": "mach-12",
+      "slug": "32-mach-12",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "32-mach-12.md",
+      "generator": "src/32-mach-12.mjs",
+      "artDirection": "src/32-mach-12.art.json",
+      "svg": "assets/32-mach-12.svg"
+    },
+    {
+      "number": 33,
+      "id": "c64-14",
+      "slug": "33-c64-14",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "33-c64-14.md",
+      "generator": "src/33-c64-14.mjs",
+      "artDirection": "src/33-c64-14.art.json",
+      "svg": "assets/33-c64-14.svg"
+    },
+    {
+      "number": 34,
+      "id": "asia-05",
+      "slug": "34-asia-05",
+      "formats": [
+        "text"
+      ],
+      "markdown": "34-asia-05.md",
+      "generator": "src/34-asia-05.mjs",
+      "artDirection": "src/34-asia-05.art.json",
+      "text": "34-asia-05.txt"
+    },
+    {
+      "number": 35,
+      "id": "hack-15",
+      "slug": "35-hack-15",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "35-hack-15.md",
+      "generator": "src/35-hack-15.mjs",
+      "artDirection": "src/35-hack-15.art.json",
+      "svg": "assets/35-hack-15.svg"
+    },
+    {
+      "number": 36,
+      "id": "nfo-04",
+      "slug": "36-nfo-04",
+      "formats": [
+        "text"
+      ],
+      "markdown": "36-nfo-04.md",
+      "generator": "src/36-nfo-04.mjs",
+      "artDirection": "src/36-nfo-04.art.json",
+      "text": "36-nfo-04.txt"
+    },
+    {
+      "number": 37,
+      "id": "nfo-07",
+      "slug": "37-nfo-07",
+      "formats": [
+        "svg",
+        "text"
+      ],
+      "markdown": "37-nfo-07.md",
+      "generator": "src/37-nfo-07.mjs",
+      "artDirection": "src/37-nfo-07.art.json",
+      "svg": "assets/37-nfo-07.svg",
+      "text": "37-nfo-07.txt"
+    },
+    {
+      "number": 38,
+      "id": "xfer-10",
+      "slug": "38-xfer-10",
+      "formats": [
+        "svg",
+        "text"
+      ],
+      "markdown": "38-xfer-10.md",
+      "generator": "src/38-xfer-10.mjs",
+      "artDirection": "src/38-xfer-10.art.json",
+      "svg": "assets/38-xfer-10.svg",
+      "text": "38-xfer-10.txt"
+    },
+    {
+      "number": 39,
+      "id": "pc-09",
+      "slug": "39-pc-09",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "39-pc-09.md",
+      "generator": "src/39-pc-09.mjs",
+      "artDirection": "src/39-pc-09.art.json",
+      "svg": "assets/39-pc-09.svg"
+    },
+    {
+      "number": 40,
+      "id": "vap-09",
+      "slug": "40-vap-09",
+      "formats": [
+        "svg"
+      ],
+      "markdown": "40-vap-09.md",
+      "generator": "src/40-vap-09.mjs",
+      "artDirection": "src/40-vap-09.art.json",
+      "svg": "assets/40-vap-09.svg"
+    }
+  ]
+}

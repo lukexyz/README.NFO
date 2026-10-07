@@ -1,0 +1,6 @@
+import {R,L,T,write} from './lib.mjs';
+let body=T('HERETIC',34,75,59,'#e5f2e8','font-family="Arial,sans-serif" font-weight="900"')+T('Research challenge board / schematic, no scores',35,108,20,'#93a7b1');
+['MODEL','DIRECTION','ABLATION','SEARCH'].forEach((s,i)=>{const x=35+i*231;body+=R(x,134,216,74,i===2?'#174a39':'#21262d','rx="8" stroke="#46515c"')+T(s,x+108,179,24,i===2?'#b8efcf':'#c9d1d9','text-anchor="middle" font-family="Arial,sans-serif"');});
+body+=R(35,231,475,132,'#101821','rx="6"')+L('M62 337h40v-12h74v-21h84v-36h66v-15h152','#56b7e3',3)+L('M62 337h130v-14h118v-18h84v-37h84','#d2a66d',3)+T('Conceptual search paths',60,256,15,'#8a9dba');
+body+=T('COMPONENT          ROLE',545,252,16,'#8a9dba')+T('Python             implementation',545,286,16,'#c9d1d9')+T('Ablation           intervention',545,320,16,'#c9d1d9')+T('Optuna             parameter search',545,354,16,'#c9d1d9');
+write(23,{body,background:'#0d1117',summary:'A web-native challenge board with research tiles and conceptual stepped search paths instead of invented leaderboard scores.',choices:['Challenge categories name the Heretic workflow','The scoreboard vocabulary becomes a clearly labelled conceptual diagram']});

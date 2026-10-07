@@ -1,0 +1,11 @@
+{
+  "id": "xfer-09",
+  "summary": "A four-quadrant FXP-style exchange window contrasting original and transformed model concepts.",
+  "choices": [
+    "Input and output panes visualise the ablation relationship",
+    "The queue describes the documented workflow rather than fake transfers"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

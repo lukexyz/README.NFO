@@ -1,6 +1,6 @@
 # Examples
 
-Header sets made for real projects. Each folder has a gallery page, one `.md` per header, the animated SVGs in `assets/` and the generators in `src/`.
+Header sets made for real projects. Each folder has a gallery page, one `.md` per header, SVGs in `assets/`, copyable text where offered and the generators in `src/`.
 
 **[Start with twelve picks and animated previews](START-HERE.md)** · [Copying, customisation and validation](../README.md)
 
@@ -13,6 +13,7 @@ Header sets made for real projects. Each folder has a gallery page, one `.md` pe
 | [gl4ss](gl4ss) | GL4SS: place, year and hour as a window through time | Five shared references interpreted as a temporal receiver, field report and time instrument |
 | [st3gg](st3gg) | ST3GG: steganography across images, audio, text and documents | Five shared references interpreted as carrier signals, file areas and decoding services |
 | [readme-nfo](readme-nfo) | README.NFO itself: candidates for the home README | Forty random-draw styles plus a CLI startup-banner reference, with a numbered gallery, text / ASCII and SVG filters, and favourite picker |
+| [heretic](heretic) | Heretic: automatic censorship removal for language models | Forty fixed random styles, independently authored: 32 SVGs, eight text-only headers and five text companions; filter formats and save favourites in the gallery |
 
 **[Compare the three Pliny sets side by side](../comparisons/pliny-first-draw/index.html)** · [The saved draw and rebuild instructions](pliny.md)
 

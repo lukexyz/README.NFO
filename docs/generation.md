@@ -24,10 +24,10 @@ Use `--no-open` to leave the browser closed, `--no-color` to disable terminal co
 
 | Creativity | A batch of ten | Authoring step |
 | --- | --- | --- |
-| `0` (default) | Ten prebuilt scenes | Standalone |
+| `0` | Ten prebuilt scenes | Standalone |
 | `0.5` | Five newly authored, five prebuilt | Codex CLI |
 | `0.9` | Nine newly authored, one prebuilt | Codex CLI |
-| `1` | Ten newly authored | Codex CLI |
+| `1` (default) | Ten newly authored | Codex CLI |
 
 Fresh scenes draw from every distinct entry in the [full catalogue](../styles/INDEX.md), including text treatments rendered as SVG. Each selected style supplies its visual signature, palette, typography, motion guidance and sample source. The assistant authors a new composition with project-specific choices; the saved draw is never silently replaced with easier styles. Every fresh header records its artistic choices.
 

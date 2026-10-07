@@ -1,0 +1,16 @@
+HERETIC RESEARCH CONSOLE  /  POWER-ON HEADER STUDY
+
+File buffers?             (decorative prompt)
+
+heretic
+Python / transformer language models
+Directional ablation / Optuna parameter search
+
+Memory counts omitted: this is artwork, not a device report.
+Ok
+_
+
+load     auto     goto     list     run
+
+https://github.com/p-e-w/heretic
+Project licence: AGPL-3.0

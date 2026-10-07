@@ -1,0 +1,19 @@
+import {write} from './lib.mjs';
+const text=`#TITLE   Heretic / open directions
+#MEMO    Decorative MML score for a README header
+#MEMO    Python + directional ablation + Optuna
+
+; The seven-letter name is an original rhythmic motif.
+; No audio playback or project music is implied.
+
+A  o4 l8  e g a >c <b a e4  r4
+B  o3 l8  c r g r a r e4    r4
+C  o2 l4  c   g   a   e     r2
+D  l8     r c r c r c r c   r4
+
+AB  [ e8 g8 a8 r8 ]2
+
+; Change one direction. Keep the rest of the phrase.
+; https://github.com/p-e-w/heretic
+; Project licence: AGPL-3.0`;
+write(34,{text,summary:'An original MML listing whose seven-note phrase turns the Heretic name into a decorative score.',choices:['The title is expressed as a new rhythmic motif','One modified line echoes directional ablation while the other channels remain']});

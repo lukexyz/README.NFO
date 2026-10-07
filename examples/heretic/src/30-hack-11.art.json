@@ -1,0 +1,11 @@
+{
+  "id": "hack-11",
+  "summary": "A colour-coded IRC channel with an original Heretic art paste and fictional component nicks in a separate member pane.",
+  "choices": [
+    "Component nicks carry the model-direction-search conversation",
+    "The explicitly illustrative chat avoids invented user activity"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

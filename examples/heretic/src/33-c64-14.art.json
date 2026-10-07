@@ -1,0 +1,11 @@
+{
+  "id": "c64-14",
+  "summary": "An embossed chip-jukebox research list with a red selected ablation row, metal studs and a rainbow key legend.",
+  "choices": [
+    "Tracks become the three documented research stages",
+    "Durations are omitted because this is not an audio player or benchmark"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

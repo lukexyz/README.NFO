@@ -1,0 +1,12 @@
+{
+  "id": "xfer-10",
+  "summary": "An SFV-style viewer displaying real CRC32 values for three bundled Heretic header assets.",
+  "choices": [
+    "Checksum columns are computed from this delivery, not invented",
+    "The viewer clearly separates artwork integrity from model verification"
+  ],
+  "formats": [
+    "svg",
+    "text"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "id": "demo-09",
+  "summary": "An Atari-style screen of four-wide pixels and hue-shifted luminance ramps, with a stretched original wordmark.",
+  "choices": [
+    "Colour bands correspond to conceptual transformer layers",
+    "A wide-pixel lettering construction follows the GTIA picture grain"
+  ],
+  "formats": [
+    "svg"
+  ]
+}

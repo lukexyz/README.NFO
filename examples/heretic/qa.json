@@ -1,0 +1,844 @@
+{
+  "seed": "b766732310a6159fa5082e6260669ee1",
+  "candidates": 40,
+  "svg": 32,
+  "text": 13,
+  "checks": [
+    {
+      "width": 1400,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": false,
+      "images": [
+        {
+          "src": "assets/01-vap-12.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/02-idle-02.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/03-nfo-02.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/05-asia-03.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/06-xfer-09.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/08-vap-04.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/09-pc-12.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/11-vap-11.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/12-mach-07.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/13-demo-08.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/14-idle-07.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/15-demo-10.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/16-mach-09.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/17-ansi-04.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/18-hack-10.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/19-mach-15.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/20-nfo-03.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/21-pc-11.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/22-trk-03.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/23-hack-18.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/24-vap-17.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/26-demo-09.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/28-c64-08.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/29-print-05.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/30-hack-11.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/32-mach-12.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/33-c64-14.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/35-hack-15.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/37-nfo-07.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/38-xfer-10.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/39-pc-09.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/40-vap-09.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        }
+      ],
+      "texts": 8
+    },
+    {
+      "width": 1400,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": false,
+      "images": [
+        {
+          "src": "assets/01-vap-12.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/02-idle-02.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/03-nfo-02.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/05-asia-03.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/06-xfer-09.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/08-vap-04.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/09-pc-12.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/11-vap-11.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/12-mach-07.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/13-demo-08.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/14-idle-07.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/15-demo-10.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/16-mach-09.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/17-ansi-04.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/18-hack-10.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/19-mach-15.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/20-nfo-03.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/21-pc-11.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/22-trk-03.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/23-hack-18.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/24-vap-17.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/26-demo-09.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/28-c64-08.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/29-print-05.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/30-hack-11.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/32-mach-12.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/33-c64-14.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/35-hack-15.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/37-nfo-07.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/38-xfer-10.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/39-pc-09.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        },
+        {
+          "src": "assets/40-vap-09.svg",
+          "decoded": true,
+          "width": 656,
+          "height": 273
+        }
+      ],
+      "texts": 8
+    },
+    {
+      "width": 375,
+      "theme": "dark",
+      "reducedMotion": true,
+      "overflow": false,
+      "images": [
+        {
+          "src": "assets/01-vap-12.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/02-idle-02.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/03-nfo-02.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/05-asia-03.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/06-xfer-09.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/08-vap-04.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/09-pc-12.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/11-vap-11.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/12-mach-07.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/13-demo-08.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/14-idle-07.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/15-demo-10.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/16-mach-09.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/17-ansi-04.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/18-hack-10.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/19-mach-15.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/20-nfo-03.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/21-pc-11.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/22-trk-03.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/23-hack-18.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/24-vap-17.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/26-demo-09.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/28-c64-08.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/29-print-05.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/30-hack-11.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/32-mach-12.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/33-c64-14.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/35-hack-15.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/37-nfo-07.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/38-xfer-10.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/39-pc-09.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/40-vap-09.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        }
+      ],
+      "texts": 8
+    },
+    {
+      "width": 375,
+      "theme": "light",
+      "reducedMotion": true,
+      "overflow": false,
+      "images": [
+        {
+          "src": "assets/01-vap-12.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/02-idle-02.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/03-nfo-02.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/05-asia-03.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/06-xfer-09.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/08-vap-04.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/09-pc-12.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/11-vap-11.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/12-mach-07.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/13-demo-08.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/14-idle-07.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/15-demo-10.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/16-mach-09.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/17-ansi-04.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/18-hack-10.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/19-mach-15.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/20-nfo-03.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/21-pc-11.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/22-trk-03.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/23-hack-18.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/24-vap-17.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/26-demo-09.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/28-c64-08.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/29-print-05.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/30-hack-11.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/32-mach-12.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/33-c64-14.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/35-hack-15.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/37-nfo-07.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/38-xfer-10.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/39-pc-09.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        },
+        {
+          "src": "assets/40-vap-09.svg",
+          "decoded": true,
+          "width": 337,
+          "height": 140
+        }
+      ],
+      "texts": 8
+    }
+  ],
+  "visualInspection": "All forty candidates inspected in four contact sheets; the shaded wordmark was repaired and rechecked. Representative SVG and text cards reviewed at 375px in light and dark surroundings.",
+  "limitations": [
+    "Live GitHub rendering was not tested; SVG images were tested in Chromium as external img elements."
+  ],
+  "interactions": [
+    "Text/ASCII, SVG and All filters match actual files",
+    "Favourite selection survives reload",
+    "Clear selection"
+  ],
+  "motion": [
+    "Full title and project pitch present at initial frame",
+    "Initial and later frames captured",
+    "All external SVGs decoded under reduced motion"
+  ],
+  "visualReview": {
+    "candidates": 40,
+    "styleSubstitutions": 0,
+    "repaired": [
+      "03-nfo-02: removed an unintended transform origin that placed the title outside the viewBox"
+    ],
+    "textBehavior": "Column-preserving text art scrolls horizontally on narrow screens; all cards also show a normal-text project pitch.",
+    "screenshots": ".preview/heretic-40-qa/"
+  },
+  "repositoryChecks": {
+    "tests": 31,
+    "headers": 260,
+    "distinctStyles": 153,
+    "svgImages": 317,
+    "markdownFiles": 308,
+    "generatedPagesCompared": 38,
+    "result": "passed"
+  }
+}

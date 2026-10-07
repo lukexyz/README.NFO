@@ -19,7 +19,7 @@ export function parseRepository(value) {
 }
 
 export function parseArguments(args, maximum) {
-  const options = { count: 10, creativity: 0, exclude: [], allowRepeats: false, format: 'all', open: true, color: true };
+  const options = { count: 10, creativity: 1, exclude: [], allowRepeats: false, format: 'all', open: true, color: true };
   const valued = new Set(['repo', 'count', 'out', 'seed', 'project', 'creativity', 'exclude', 'resume', 'format']);
   const assigned = new Set();
   for (let i = 0; i < args.length; i++) {

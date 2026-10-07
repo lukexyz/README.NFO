@@ -105,7 +105,7 @@ test('executable generates an offline batch and reports errors with a nonzero ex
     const cli = fileURLToPath(new URL('./generate.mjs', import.meta.url));
     const fixture = path.join(directory, 'project.json');
     fs.writeFileSync(fixture, JSON.stringify(project));
-    const args = ['--project', fixture, '-10', '--seed', 'cli', '--out', path.join(directory, 'out'), '--no-open'];
+    const args = ['--project', fixture, '-10', '--creativity', '0', '--seed', 'cli', '--out', path.join(directory, 'out'), '--no-open'];
     const result = spawnSync(process.execPath, [cli, ...args], { encoding: 'utf8', cwd: directory });
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.stdout, /Created 10 headers/);
@@ -125,6 +125,7 @@ test('creativity is a batch fraction, including the single-dash alias, not an in
   assert.deepEqual(splitCounts(10, 0), {fresh:0,prebuilt:10});
   assert.deepEqual(splitCounts(10, 1), {fresh:10,prebuilt:0});
   assert.deepEqual(splitCounts(12, .9), {fresh:11,prebuilt:1});
+  assert.equal(parseArguments(['someone/sample']).creativity,1);
   assert.equal(parseArguments(['someone/sample','-creativity','0.9']).creativity,.9);
   for(const value of ['-1','1.1','NaN','Infinity','banana'])assert.throws(()=>parseArguments(['someone/sample','--creativity',value]));
   assert.throws(()=>parseArguments(['someone/sample','--resume','old']));

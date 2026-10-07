@@ -1,0 +1,6 @@
+WELCOME TO THE HERETIC HOMEPAGE
+
+[ PYTHON ] [ AGPL-3.0 ] [ ABLITERATION ] [ OPTUNA ]
+
+Fully automatic censorship removal for language models
+https://github.com/p-e-w/heretic
