@@ -53,7 +53,7 @@ Six more looks to try. Click a preview or its name for the full header and gener
 
 [All examples](examples/README.md) · [Style catalogue](styles/INDEX.md) · [Compare the three Pliny sets](comparisons/pliny-first-draw/index.html)
 
-[MIT licence](LICENSE) · [Development and manual customisation](docs/development.md)
+[MIT licence](LICENSE) · [Development and manual customisation](docs/development.md) · [Musings](MUSINGS.md)
 
 
 ```text
