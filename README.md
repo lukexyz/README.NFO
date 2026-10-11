@@ -3,9 +3,11 @@
   <a href="examples/readme-nfo/16-nfo-01.md"><img src="examples/readme-nfo/assets/16-nfo-01.svg" width="100%" alt="README.NFO: original half-block brush lettering and a compact release-information panel"></a>
 </p>
 
-Generate 90's style retro hacker style headers for all your `README`s. First impressions are everything.
+Generate 90's style retro hacker style headers for all your `README`s.  
 
-Generate ten right now:
+First impressions are everything.  
+</br>
+> Generate ten right now:
 
 ```sh
 npx --yes github:lukexyz/README.NFO github.com/you/project -10
