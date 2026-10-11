@@ -3,7 +3,7 @@
 With Node.js 22+ and Git installed:
 
 ```sh
-npx --yes github:lukexyz/README.NFO github.com/you/project -10 --creativity 0.9
+npx --yes github:lukexyz/README.NFO github.com/you/project -10
 ```
 
 Replace the URL with any GitHub repository, or use `owner/repo` shorthand. The finished gallery opens in your default browser, and the terminal prints its local `file:` link. Copy a chosen SVG into your project's `assets/` folder and paste its matching `.md` into your README. Keep the included MIT notice. Image paths are relative to your README.
