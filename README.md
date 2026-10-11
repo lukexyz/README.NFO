@@ -3,17 +3,19 @@
   <a href="examples/readme-nfo/16-nfo-01.md"><img src="examples/readme-nfo/assets/16-nfo-01.svg" width="100%" alt="README.NFO: original half-block brush lettering and a compact release-information panel"></a>
 </p>
 
-Generate ten headers for your project:
+Generate 90's style retro hacker style headers for all your `README`s. First impressions are everything.
+
+Generate ten right now:
 
 ```sh
 npx --yes github:lukexyz/README.NFO github.com/you/project -10
 ```
 
-Swap in your GitHub URL. The 153-style catalogue supplies briefs for fresh artwork, which requires a signed-in Codex CLI. The finished gallery opens in your default browser. [Setup, options and copying](docs/generation.md).
+Swap in your GitHub URL. We have 153-style catalogue supplies briefs for fresh artwork, which requires a signed-in Codex CLI. The finished gallery opens in your default browser. [Setup, options and copying](docs/generation.md).
 
-## More favourites
+## Examples
 
-Six more looks to try. Click a preview or its name for the full header and generator.
+Click a preview or its name for the full header and generator.
 
 <p align="center">
   <a href="examples/readme-nfo/04-trk-07.md"><img src="examples/readme-nfo/assets/04-trk-07.svg" width="400" alt="Multi-chip tracker: colourful note channels, pattern rows and live scopes"></a>
