@@ -10,10 +10,10 @@ Generate 90's style retro hacker style headers for all your `README`s.
 
 </br>  
 
-> Generate ten right now:
+> You should probably generate 50, but why not start with four:
 
 ```sh
-npx --yes github:lukexyz/README.NFO github.com/you/project -10
+npx --yes github:lukexyz/README.NFO github.com/you/project -4
 ```
 
 Swap in your GitHub URL. We have 153-style catalogue supplies briefs for fresh artwork, which requires a signed-in Codex CLI. The finished gallery opens in your default browser. [Setup, options and copying](docs/generation.md).
