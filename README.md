@@ -6,7 +6,7 @@
 Generate ten headers for your project:
 
 ```sh
-npx --yes github:lukexyz/README.NFO github.com/you/project -10 --creativity 0.9
+npx --yes github:lukexyz/README.NFO github.com/you/project -10
 ```
 
 Swap in your GitHub URL. `0.9` gives nine newly authored scenes and one prebuilt scene; `0` chooses from 26 independently composed local scenes. The 153-style catalogue supplies briefs for fresh artwork, which requires a signed-in Codex CLI. The finished gallery opens in your default browser. [Setup, options and copying](docs/generation.md).
