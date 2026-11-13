@@ -766,7 +766,7 @@ const ENTRIES = [
   ['RUN.OPM', 'RUN IT LOCALLY', 'python -m streamlit run app/app.py   then localhost:8501'],
   ['BUILT.OPM', "HOW IT'S BUILT", 'Python · one Streamlit app · streamlit-aggrid · stlite on Pages'],
   ['CREDITS.OPM', 'DATA & CREDITS', 'greeny/SatisfactoryTools · images from the Satisfactory Wiki'],
-  ['LICENSE.OPM', 'LICENSE', 'Apache 2.0. Protection: none. Copy it, fork it, clip it through a wall.'],
+  ['LICENSE.OPM', 'LICENSE', 'Apache 2.0. Lock-in: none. Copy it, fork it, clip it through a wall.'],
 ];
 function selector() {
   let s = hl(8, BY, W - 16);

@@ -14,14 +14,14 @@ For GitHub the rule is: 7-bit styles survive as plain text; block styles should 
 
 | ID | Style | Medium | Build | Impact |
 | --- | --- | --- | --- | --- |
-| [nfo-01](#nfo-01) | PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED) | Text / ASCII + SVG | Medium | 4/5 |
-| [nfo-02](#nfo-02) | PC NFO: shaded block logo with fades and debris (SAC school) | Animated SVG | Medium | 5/5 |
+| [nfo-01](#nfo-01) | PC NFO: brush-script block logo (after JED) | Text / ASCII + SVG | Medium | 4/5 |
+| [nfo-02](#nfo-02) | PC NFO: shaded block logo with fades and debris | Animated SVG | Medium | 5/5 |
 | [nfo-03](#nfo-03) | Poster NFO: full-canvas shaded illustration with the text set inside it | Animated SVG | Hard | 5/5 |
 | [nfo-04](#nfo-04) | 7-bit outline NFO with dot-leader fields | Text / ASCII | Easy | 3/5 |
 | [nfo-05](#nfo-05) | FILE\_ID.DIZ miniature | Text / ASCII | Easy | 2/5 |
 | [nfo-06](#nfo-06) | Amiga description logos: compact Topaz outline (1992-94) | Text / ASCII + SVG | Medium | 4/5 |
 | [nfo-07](#nfo-07) | Amiga colly era: full-width Latin-1 logos and page layout | Text / ASCII + SVG | Medium | 4/5 |
-| [nfo-08](#nfo-08) | PC newschool ASCII: dollar-fill blob lettering (Remorse 1981 school) | Text / ASCII | Medium | 3/5 |
+| [nfo-08](#nfo-08) | PC newschool ASCII: dollar-fill blob lettering | Text / ASCII | Medium | 3/5 |
 | [nfo-09](#nfo-09) | FIGlet and TOIlet generated banners | Text / ASCII | Easy | 2/5 |
 | [nfo-10](#nfo-10) | Usenet line art and the signed picture (jgs school) | Text / ASCII | Medium | 3/5 |
 | [nfo-11](#nfo-11) | Teletype, line-printer and typewriter pictures | Animated SVG | Medium | 3/5 |
@@ -30,11 +30,11 @@ For GitHub the rule is: 7-bit styles survive as plain text; block styles should 
 
 <a name="nfo-01"></a>
 
-## nfo-01 · PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED)
+## nfo-01 · PC NFO: brush-script block logo (after JED)
 
 **Text / ASCII + SVG** · build: **Medium** · impact: **4/5** · 1992 to the present, PC release scene. Logos drawn 1992-94 by JED of ACiD in the BBS era; Razor 1911 and Fairlight still ship them (files checked: 1993, 1994, 2000, 2011, 2023).
 
-By 1992-93 release groups were commissioning ANSI-group artists for a logo above the typed NFO (the NFO itself dates to a Humble Guys release of January 1990). JED of ACiD drew flat, unshaded brush-script logos for Fairlight and Razor 1911; both groups kept them, so this silhouette is what most people picture as 'a Razor NFO'. It differs from the tool's existing NFO style in being a hand-lettered script silhouette with an oversized initial, not upright block capitals.
+A PC text NFO topped by a hand-drawn brush-script block logo. By 1992-93 release groups were commissioning ANSI-group artists for a logo above the typed NFO (the NFO itself dates to a Humble Guys release of January 1990). JED of ACiD drew flat, unshaded brush-script logos for Fairlight and Razor 1911; both groups kept them, so this silhouette is what most people picture as 'a Razor NFO'. It differs from the tool's existing NFO style in being a hand-lettered script silhouette with an oversized initial, not upright block capitals.
 
 **What it looks like**
 
@@ -79,7 +79,7 @@ By 1992-93 release groups were commissioning ANSI-group artists for a logo above
 
 <a name="nfo-02"></a>
 
-## nfo-02 · PC NFO: shaded block logo with fades and debris (SAC school)
+## nfo-02 · PC NFO: shaded block logo with fades and debris
 
 **Animated SVG** · build: **Medium** · impact: **5/5** · 1992 to the 2010s, PC release scene; from December 1994 dominated by Superior Art Creations (Germany), whose packs on 16colo.rs run 1994/12 to 2009/12
 
@@ -344,11 +344,11 @@ By the mid-90s the logo had grown to the full 80 columns and the colly, one text
 
 <a name="nfo-08"></a>
 
-## nfo-08 · PC newschool ASCII: dollar-fill blob lettering (Remorse 1981 school)
+## nfo-08 · PC newschool ASCII: dollar-fill blob lettering
 
 **Text / ASCII** · build: **Medium** · impact: **3/5** · 1994-2005, PC ASCII-only art groups
 
-Katharsis!Ascii, started by Tinyz in March 1994, was the first ASCII-only group on the PC; Remorse followed in October 1994, founded by Necromancer and Necronite, and released 57 packs to June 2005. Their 'newschool' went beyond outline to filling and shading: letters poured solid from heavy characters with edges softened by punctuation. Roy of SAC argues the label is a misnomer for classic text art making a comeback.
+PC ASCII lettering poured solid from heavy characters, with edges softened by punctuation. Katharsis!Ascii, started by Tinyz in March 1994, was the first ASCII-only group on the PC; Remorse followed in October 1994, founded by Necromancer and Necronite, and released 57 packs to June 2005. Their 'newschool' went beyond outline to filling and shading: letters poured solid from heavy characters with edges softened by punctuation. Roy of SAC argues the label is a misnomer for classic text art making a comeback.
 
 **What it looks like**
 

@@ -12,7 +12,7 @@ const defs=`<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#0863c3"/><
 let blocks='';for(let i=0;i<54;i++)blocks+=`<rect x="${152+i*16}" y="275" width="11" height="16" rx="1" fill="url(#progress)"/>`;
 const image=svg({height:410,background:'#86c7ed',defs,
  css:'.clouds{animation:cloud 50s linear infinite alternate}.progress{animation:load 10s linear infinite}@keyframes cloud{to{transform:translateX(40px)}}@keyframes load{from{transform:translateX(-180px)}to{transform:translateX(0)}}',
- description:'An original green-hill desktop with a nostalgic blue-and-cream window for README.NFO. The library contains 152 styles across thirteen families and uses the MIT licence.',
+ description:'An original green-hill desktop with a nostalgic blue-and-cream window for README.NFO. The library contains 153 styles across thirteen families and uses the MIT licence.',
  body:`<rect width="960" height="410" fill="url(#sky)"/>
  <g class="clouds" fill="#fff" opacity=".76" filter="url(#soft)"><ellipse cx="139" cy="55" rx="84" ry="17"/><ellipse cx="193" cy="38" rx="56" ry="22"/><ellipse cx="754" cy="38" rx="97" ry="16"/></g>
  <path d="M0 276Q197 173 441 278T960 252V410H0Z" fill="url(#hill)"/>
@@ -32,7 +32,7 @@ const image=svg({height:410,background:'#86c7ed',defs,
  ${px('README.NFO',248,133,6,'#132d6c')}
  ${px('YOUR NEXT REPOSITORY, IN CHARACTER.',248,190,2,'#394858')}
  <rect x="248" y="221" width="219" height="31" rx="3" fill="#fffdf4" stroke="#b7b8a6"/>
- ${px('152 STYLES',268,231,2,'#316426')}
+ ${px('153 STYLES',268,231,2,'#316426')}
  <rect x="479" y="221" width="219" height="31" rx="3" fill="#fffdf4" stroke="#b7b8a6"/>
  ${px('13 FAMILIES',499,231,2,'#316426')}
  <rect x="145" y="269" width="667" height="28" rx="3" fill="#fff" stroke="#789dbc"/>

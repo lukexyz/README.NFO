@@ -3,7 +3,7 @@ import { svg, px, writeHeader } from './lib.mjs';
 const voices = ['PULSE 1','PULSE 2','TRIANGLE','NOISE','FM'];
 const modules = ['TEXT','SVG','STYLES','GALLERY','TOOLS'];
 const colours = ['#5be8a0','#68ceff','#c5e978','#ffb0db','#bba6ff'];
-let body = `<rect x="12" y="12" width="936" height="366" rx="5" fill="#121b25" stroke="#425163"/>${px('README.NFO',30,27,4,'#fff2ce')}${px('CHIP HEADER COLLECTION',294,40,1.5,'#8ea0b1')}${px('152 STYLES / 13 FAMILIES / MIT',628,32,1.5,'#b5c9d9')}<path d="M24 68H936" stroke="#425163"/>`;
+let body = `<rect x="12" y="12" width="936" height="366" rx="5" fill="#121b25" stroke="#425163"/>${px('README.NFO',30,27,4,'#fff2ce')}${px('CHIP HEADER COLLECTION',294,40,1.5,'#8ea0b1')}${px('153 STYLES / 13 FAMILIES / MIT',628,32,1.5,'#b5c9d9')}<path d="M24 68H936" stroke="#425163"/>`;
 body += `<rect x="24" y="82" width="134" height="278" fill="#09121a" stroke="#394b59"/>${px('ORDER',34,94,2,'#d4e693')}`;
 for(let row=0;row<8;row++) body += `${row===2?'<rect x="30" y="164" width="122" height="24" fill="#31535d"/>':''}${px(String(row).padStart(2,'0'),34,128+row*20,1.5,row===2?'#f6f8c9':'#6b8492')}${px(`${row.toString(16).toUpperCase().padStart(2,'0')} ${((row+1)%8).toString(16).toUpperCase().padStart(2,'0')} 00`,69,128+row*20,1.5,row===2?'#ffc15c':'#80ba88')}`;
 body+=px('TEMPO  140',34,309,1.5,'#7aa3b8')+px('SPEED  06',34,331,1.5,'#7aa3b8');

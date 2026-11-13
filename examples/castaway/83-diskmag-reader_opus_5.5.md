@@ -123,7 +123,7 @@ What happens, and how often, lives in [activities.toml](activities.toml): more t
  | Signal. Currently one bar, and    |  +- LESSONS -------------------------+
  | only at the very top of the palm. |  | Fire by friction. Hammocks. Spear |
  +-----------------------------------+  | fishing. A lookout up the palm.   |
- +- SWAPPER -------------------------+  +-----------------------------------+
+ +- PEN PAL -------------------------+  +-----------------------------------+
  | Seeks contacts, by bottle. Quick  |  +- LOST ----------------------------+
  | replies: my first came straight   |  | One coconut. Last seen walking    |
  | back.                             |  | off, worn by a hermit crab.       |

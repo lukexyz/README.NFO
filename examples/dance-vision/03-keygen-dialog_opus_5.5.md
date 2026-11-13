@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="#run-the-app"><img src="assets/03-keygen-dialog_opus_5.5.svg" width="100%" alt="Dance Vision keygen: an oddly shaped, dark mid-2000s keygen window, cracked by the made-up PERi-PERi POSSE and supplied by a bloke in Dalston, with a spinning record badge in the corner. A chrome and lime pixel logo reads DANCE VISION, a ticker plays dance_vision_keygen.xm and a spectrum analyser pumps. NAME reads: your phone + a telly. SERIAL scrambles into 33-JOINTS-0-PIXELS, NO-APP-NO-ACCOUNT, PHONE-RELAY-TELLY and 3AM-CHICKEN-SHOP-DISCO. Below, a phone sends 33 joints over a websocket relay to a telly where three stick figures dance; the status bar says 0 pixels uploaded, and the chin reads: dance like the neighbours are out."></a>
+  <a href="#run-the-app"><img src="assets/03-keygen-dialog_opus_5.5.svg" width="100%" alt="Dance Vision as a keygen-style dialog: an oddly shaped, dark mid-2000s window, made by the made-up PERi-PERi POSSE and tested by a bloke in Dalston, with a spinning record badge in the corner. A chrome and lime pixel logo reads DANCE VISION, a ticker plays dance_vision.xm and a spectrum analyser pumps. NAME reads: your phone + a telly. MOTTO scrambles into 33-JOINTS-0-PIXELS, NO-APP-NO-ACCOUNT, PHONE-RELAY-TELLY and 3AM-CHICKEN-SHOP-DISCO. Below, a phone sends 33 joints over a websocket relay to a telly where three stick figures dance; the status bar says 0 pixels uploaded, and the chin reads: dance like the neighbours are out."></a>
 </p>
 
 <h3 align="center">Dance Vision &middot; <code>dance_vision_keygen.exe</code></h3>
@@ -26,13 +26,13 @@
 ║        ░▒▓█  P E R i - P E R i   P O S S E   p r e s e n t s  █▓▒░         ║
 ║                                                                            ║
 ║                          D A N C E   V I S I O N                           ║
-║              phone in  ·  telly out  ·  keygen music optional              ║
+║              phone in  ·  telly out  ·  chip music: optional               ║
 ║                                                                            ║
 ╠══════════════════════════════[ RELEASE iNFO ]══════════════════════════════╣
 ║   RELEASE ...... dance-vision, browser build (first steps 2026-09-13)      ║
-║   SUPPLIER ..... a bloke in Dalston                                        ║
+║   TESTER ....... a bloke in Dalston                                        ║
 ║   ORIGIN ....... a Unity prototype from 2021, finally out of the loft      ║
-║   CRACKER ...... not needed. protection: none                              ║
+║   LOCK-IN ...... none. nothing to unlock                                   ║
 ║   TYPE ......... phone -> websocket relay -> telly                         ║
 ║   PAYLOAD ...... 33 joints x {x,y,z}, ~1.6 KB a frame, 0 bytes of video    ║
 ║   REQUIRES ..... a PC, a telly, a phone with a camera, some floor          ║

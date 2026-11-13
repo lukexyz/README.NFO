@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 export const DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DRAWS = ['draw.json', 'draw-2.json'].map(file => JSON.parse(fs.readFileSync(path.join(DIR, file), 'utf8')));
 export const DRAW = { project: 'README.NFO', options: DRAWS.flatMap(draw => draw.options) };
-export const INFO = Object.freeze({ name: 'README.NFO', styles: 152, families: 13, candidates: DRAW.options.length,
+export const INFO = Object.freeze({ name: 'README.NFO', styles: 153, families: 13, candidates: DRAW.options.length,
   tagline: 'RETRO HEADERS / TEXT + SVG', license: 'MIT' });
 export const esc = (value) => String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 export const option = (number) => {
@@ -67,7 +67,7 @@ export function writeHeader(number, { image, markdown, alt, summary }) {
     `  <img src="assets/${pick.slug}.svg" width="100%" alt="${esc(alt || summary)}">`,
     '</p>', '',
     '<p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>',
-    '152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>', '',
+    '153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>', '',
     '<p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>',
   ].join('\n');
   const body = [

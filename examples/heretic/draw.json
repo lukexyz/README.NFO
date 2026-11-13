@@ -170,7 +170,7 @@
     },
     {
       "id": "nfo-02",
-      "name": "PC NFO: shaded block logo with fades and debris (SAC school)",
+      "name": "PC NFO: shaded block logo with fades and debris",
       "era": "1992 to the 2010s, PC release scene; from December 1994 dominated by Superior Art Creations (Germany), whose packs on 16colo.rs run 1994/12 to 2009/12",
       "what_it_is": "The other NFO school uses the three CP437 shade characters as paint: carved letters, gradients and rubble. SAC was founded in December 1994 at The Party in Herning by Roy, Hetero, Dream Design, Kaethe, Raiser and Toxic Trancer and became the main supplier of NFO and FILE_ID.DIZ logos to release groups. The same kit, with a small half-block heading font added, is still visible in RELOADED, CODEX and CPY NFOs of 2012-2018.",
       "visual_signature": [
@@ -633,7 +633,7 @@
     },
     {
       "id": "pc-12",
-      "name": "Neon cube field: the rez-era Razor look",
+      "name": "Neon cube field: the 2010-era scanline look",
       "era": "2010-2012, Windows; Razor 1911 cracktros and 64k intros coded by rez with music by Dubmood (The Settlers 7 cracktro, 27 Apr 2010; StarCraft 2 cracktro, 31 July 2010; Insert No Coins, 2 Oct 2010; The Scene Is Dead, 8 Apr 2012). A DOS ancestor exists in Razor Crack Intro #13.",
       "what_it_is": "When Razor's demo section came back around 2010 it had a consistent look: fields of glowing rainbow cubes and glenz shapes, a pixel logo, scanlines and a Dubmood chiptune. Insert No Coins won the 64k competition at Main 2010 and the public-choice award at the Scene.org Awards; The Scene Is Dead placed third in PC 64k at Revision 2012. For many people this is 'the Razor 1911 one'. The rainbow-cubes idea is older than rez's use of it: the undated DOS Crack Intro #13 already shows a 9x7 grid of cubes, one hue per cube.",
       "visual_signature": [

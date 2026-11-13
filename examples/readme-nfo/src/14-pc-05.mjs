@@ -14,7 +14,7 @@ let letters='';const scroll='TEXT ART + SVG / PICK A LOOK / MAKE IT YOURS / ';
 for(let i=0;i<scroll.length;i++)letters+=`<g transform="translate(${140+i*17} 325)"><g class="wave" style="animation-delay:${-i*.13}s">${px(scroll[i],0,0,2.4,'#f6b8ff')}</g></g>`;
 const image=svg({height:380,background:'#05050a',defs,
  css:'.slice{transform:scaleX(.7);animation:twist 5s ease-in-out infinite}.wave{animation:sine 4s ease-in-out infinite}.scroller{animation:scroll 25s linear infinite}@keyframes twist{0%,100%{transform:scaleX(.9)}50%{transform:scaleX(.08)}}@keyframes sine{0%,100%{transform:translateY(-8px)}50%{transform:translateY(8px)}}@keyframes scroll{to{transform:translateX(-150px)}}',
- description:'A large original chrome pixel logo for README.NFO, with purple ribbon twisters, a mirror reflection and a pink sine-wave scroller. 152 researched styles across thirteen families.',
+ description:'A large original chrome pixel logo for README.NFO, with purple ribbon twisters, a mirror reflection and a pink sine-wave scroller. 153 researched styles across thirteen families.',
  body:`<path d="M107 302H853M129 309H831" stroke="#58306c" stroke-width="1"/>
  <g fill="#a7acc7" opacity=".6"><rect x="183" y="43" width="2" height="2"/><rect x="778" y="78" width="2" height="2"/><rect x="648" y="39" width="2" height="2"/><rect x="303" y="82" width="2" height="2"/><rect x="499" y="59" width="2" height="2"/><rect x="195" y="245" width="2" height="2"/><rect x="807" y="247" width="2" height="2"/></g>
  ${twist}
@@ -22,7 +22,7 @@ const image=svg({height:380,background:'#05050a',defs,
  ${logo}
  <g mask="url(#reflection)"><g transform="translate(0 396) scale(1 -1)">${logo}</g></g>
  ${center('THE RETRO HEADER COLLECTION',44,2,'#bf9bde')}
- ${center('152 RESEARCHED STYLES / 13 FAMILIES',255,2,'#d3d9e3')}
+ ${center('153 RESEARCHED STYLES / 13 FAMILIES',255,2,'#d3d9e3')}
  ${center('ORIGINAL TEXT + SVG / MIT LICENSE',282,1.8,'#949ba9')}
  <g clip-path="url(#scrollclip)"><g class="scroller">${letters}</g></g>`
 });

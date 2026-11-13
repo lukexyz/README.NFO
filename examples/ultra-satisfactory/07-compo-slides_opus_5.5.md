@@ -98,7 +98,7 @@ python -m streamlit run app/app.py
                  477 buildings, 9 of them production machines
                  5 Space Elevator phases
  licence ....... Apache 2.0 for the code
- protection .... none. it is open source. there is nothing to unlock
+ lock-in ....... none. it is open source. there is nothing to unlock
 
 === SLIDE TEXT (this goes on the big screen) ==================================
  Every recipe, building and Space Elevator objective, one click apart.

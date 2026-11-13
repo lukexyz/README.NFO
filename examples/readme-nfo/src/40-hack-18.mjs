@@ -5,7 +5,7 @@ const first=counts(previous),all=counts(DRAW.options);
 const leaders=Object.entries(all).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,3);
 const colours=['#5eddaa','#da9fff','#6ebcfa'];
 const svgCount=DRAW.options.filter(p=>p.medium!=='text-only').length;
-const rows=[['REFERENCE',[['CATALOGUE','152'],['FAMILIES','13']]],['CANDIDATES',[['HEADERS','40'],['SVG ART',String(svgCount)]]],['WORKSHOP',[['PREVIEW','READY'],['LICENCE','MIT']]]];
+const rows=[['REFERENCE',[['CATALOGUE','153'],['FAMILIES','13']]],['CANDIDATES',[['HEADERS','40'],['SVG ART',String(svgCount)]]],['WORKSHOP',[['PREVIEW','READY'],['LICENCE','MIT']]]];
 let tiles='',graph='',ranking='';
 for(const [r,[name,entries]]of rows.entries()){
  tiles+=px(name,37,126+r*91,1.7,'#9dacbe');
@@ -20,7 +20,7 @@ for(const [i,[family,count]]of leaders.entries()){
  graph+=`<path class="curve c${i}" d="${d}" fill="none" stroke="${colours[i]}" stroke-width="3" pathLength="1"/>`+px(family.toUpperCase(),565+i*107,289,1.5,colours[i]);
  ranking+=px(String(i+1).padStart(2,'0'),556,348+i*23,1.6,'#8d9ba8')+px(family.toUpperCase(),605,348+i*23,1.6,colours[i])+px(String(count).padStart(2,'0'),849,348+i*23,1.6,'#e6f4ed');
 }
-const image=svg({height:431,background:'#0b1017',css:'.curve{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 4s ease-out both}.c1{animation-delay:.25s}.c2{animation-delay:.5s}@keyframes draw{0%{stroke-dashoffset:1}95%,100%{stroke-dashoffset:0}}',title:'README.NFO — challenge board of the saved headers',description:'A challenge board reports 152 catalogue styles, 13 families, 40 candidates and their SVG count. A stepped chart and family ranking use real counts from the two saved draws.',body:
+const image=svg({height:431,background:'#0b1017',css:'.curve{stroke-dasharray:1;stroke-dashoffset:0;animation:draw 4s ease-out both}.c1{animation-delay:.25s}.c2{animation-delay:.5s}@keyframes draw{0%{stroke-dashoffset:1}95%,100%{stroke-dashoffset:0}}',title:'README.NFO — challenge board of the saved headers',description:'A challenge board reports 153 catalogue styles, 13 families, 40 candidates and their SVG count. A stepped chart and family ranking use real counts from the two saved draws.',body:
 '<path d="M25 99h910" stroke="#2f3b47"/>'+px('README.NFO',36,32,5,'#e9eef1')+px('THE FIRST-IMPRESSION CHALLENGE',422,38,2.2,'#8daaac')+px('TEXT + SVG / MIT / TWO SAVED DRAWS',422,67,1.4,'#93a4b4')+
 tiles+px('BUILT CANDIDATES BY FAMILY',548,126,1.5,'#9dacbe')+
 '<path d="M557 158v100h332M557 210h332M557 162h332" fill="none" stroke="#303e4c"/>'+graph+

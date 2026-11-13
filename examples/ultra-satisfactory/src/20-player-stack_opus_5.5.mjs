@@ -49,7 +49,7 @@ const TRACKS = [
   { row: 'WAITING ON SCREWS - DATA & CREDITS (FEAT. GREENY/SATISFACTORYTOOLS)',
     more: 'PICTURES: THE SATISFACTORY WIKI', len: 12 },
   { row: 'THE FUSE BLEW AGAIN - LICENSE (APACHE 2.0 UNPLUGGED)',
-    more: 'PROTECTION: NONE', len: 8 },
+    more: 'LOCK-IN: NONE', len: 8 },
 ];
 const LOOP = TRACKS.reduce((a, t) => a + t.len, 0); // 60 s
 const STARTS = TRACKS.map((t, i) => TRACKS.slice(0, i).reduce((a, u) => a + u.len, 0));

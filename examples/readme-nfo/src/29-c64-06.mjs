@@ -2,7 +2,7 @@ import {svg,px,center,writeHeader} from './lib.mjs';
 
 let stars='';
 for(let i=0;i<100;i++)stars+=`<rect x="${(i*179+47)%960}" y="${(i*73+19)%464}" width="${i%13?1:2}" height="${i%13?1:2}" fill="${i%3?'#7089a9':'#ffffff'}" opacity="${i%3?.45:.9}"/>`;
-const options=[['STYLE CATALOGUE','152'],['VISUAL FAMILIES','013'],['TEXT + SVG','YES'],['EDITABLE SOURCES','YES'],['BROAD REUSE','MIT']];
+const options=[['STYLE CATALOGUE','153'],['VISUAL FAMILIES','013'],['TEXT + SVG','YES'],['EDITABLE SOURCES','YES'],['BROAD REUSE','MIT']];
 let list='';
 for(const [index,[name,value]] of options.entries()){
  const line=`${name}${'.'.repeat(26-name.length)}${value}`;

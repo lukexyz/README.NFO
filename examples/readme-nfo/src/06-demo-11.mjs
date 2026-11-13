@@ -17,7 +17,7 @@ const image = svg({ height: 448, background: '#000000', title: 'README.NFO — s
     <rect x="70" y="218" width="820" height="7" fill="#00fa32"/>
     <rect x="70" y="232" width="820" height="7" fill="#f343ff"/>
     ${center('RETRO HEADERS FOR YOUR REPOSITORY', 265, 3, '#ffffff')}
-    ${center('152 STYLES / 13 FAMILIES', 304, 3, '#00fa32')}
+    ${center('153 STYLES / 13 FAMILIES', 304, 3, '#00fa32')}
     ${center('WRITTEN IN TEXT + SVG', 343, 3, '#ff9800')}
     ${center('DISTRIBUTED UNDER MIT', 378, 2, '#ffffff')}
     <rect x="70" y="432" width="820" height="2" fill="#303039"/>
@@ -25,7 +25,7 @@ const image = svg({ height: 448, background: '#000000', title: 'README.NFO — s
 const lines = [
   'PRESENTS', '', 'README.NFO', '',
   'RETRO HEADERS FOR YOUR REPOSITORY',
-  '152 STYLES / 13 FAMILIES', '',
+  '153 STYLES / 13 FAMILIES', '',
   'WRITTEN IN TEXT + SVG',
   'DISTRIBUTED UNDER MIT', '',
   'THANKS TO THE OPEN SOURCE COMMUNITY',

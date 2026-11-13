@@ -521,7 +521,7 @@ const FIELDS = [
   [[['140 items, 211 recipes', 't']], 'PAYLOAD', 'BUILDINGS', [['477, nine of them machines', 't']]],
   [[['Objectives', 'o'], [', ', 't'], ['Items', 'i'], [', ', 't'], ['Buildings', 'b']], 'TABS', 'ELEVATOR', [['5 phases, no refunds', 't']]],
   [[['python -m streamlit run app/app.py', 't']], 'RUN', 'WEB', [['lukexyz.github.io/ULTRA-SATISFACTORY', 'u']]],
-  [[['none, it\'s Apache 2.0', 't']], 'PROTECTION', 'AFFILIATION', [['none, unofficial fan project', 't']]],
+  [[['none, it\'s Apache 2.0', 't']], 'LOCK-IN', 'AFFILIATION', [['none, unofficial fan project', 't']]],
 ];
 {
   const half = (FIELD.c1 - FIELD.c0 + 1 - 4) / 2;
@@ -777,7 +777,7 @@ const DESC = 'The header of a companion app for the game Satisfactory, drawn as 
   + 'Below, between two pillars, the name again letter-spaced, the line "every recipe, building and Space Elevator objective, one click apart", '
   + 'and five mirrored dot-leader rows: a companion app for the game Satisfactory; 140 items, 211 recipes, 477 buildings, nine of them machines; '
   + 'tabs Objectives, Items, Buildings; 5 Space Elevator phases; run with python -m streamlit run app/app.py; live at lukexyz.github.io/ULTRA-SATISFACTORY; '
-  + 'protection none, it is Apache 2.0; affiliation none, an unofficial fan project. Signed: blocks by soot of HALF-PASTA.';
+  + 'lock-in none, it is Apache 2.0; affiliation none, an unofficial fan project. Signed: blocks by soot of HALF-PASTA.';
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VBW} ${VBH}" width="${VBW}" height="${VBH}" role="img" aria-labelledby="t d">
 <title id="t">${TITLE}</title>
@@ -849,7 +849,7 @@ const MD = path.join(HERE, '..', `${SLUG}.md`);
   mirror('140 items', 'PAYLOAD', 'RECIPES', '211, 88 alternate');
   mirror('477, all buildable', 'BUILDINGS', 'MACHINES', '9 that do the work');
   mirror('Python + Streamlit', 'MADE OF', 'LICENCE', 'Apache 2.0');
-  mirror('none, it is open', 'PROTECTION', 'AFFILIATION', 'none, fan project');
+  mirror('none, it is open', 'LOCK-IN', 'AFFILIATION', 'none, fan project');
 
   section('THE PAINTING, LEFT TO RIGHT');
   para('The stack on the left margin smokes all day and holds this text up.');

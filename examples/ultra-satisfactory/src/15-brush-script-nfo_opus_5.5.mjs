@@ -415,7 +415,7 @@ const BOX_LEFT = [
   ['Title', 'ULTRA-SATISFACTORY', HI],
   ['Type', 'companion app (fan-made)'],
   ['Made for', 'the game Satisfactory'],
-  ['Protection', "none. it's Apache 2.0"],
+  ['Lock-in', "none. it's Apache 2.0"],
   ['Platform', 'Python 3.10+ / a browser'],
 ];
 const BOX_RIGHT = [
@@ -449,9 +449,9 @@ const LBL = '#808080';
 
 // Top right, outside the contour, in the step it makes down from the capital: who is presenting.
 // A block cursor blinks after it.
-const PRESENTS = `${CREW} proudly presents`;
+const PRESENTS = `${CREW} proudly unveils`;
 const presentsAt = COLS - 2 - len(PRESENTS) - 1;
-put(R.presents, put(R.presents, presentsAt, CREW, HI), ' proudly presents', INK);
+put(R.presents, put(R.presents, presentsAt, CREW, HI), ' proudly unveils', INK);
 const CURSOR = { r: R.presents, c: presentsAt + len(PRESENTS) };
 
 // In the notch the contour leaves between the f and the y: version, letter-spaced, and the artist tag.
@@ -515,7 +515,7 @@ const CAPTION = 'v 0 . 0 . 1';
 //          dries out, then is re-inked with a white wet edge that settles back to colour
 //   5.0 s  the die-cut contour is traced from its top-left corner, both ways round at once
 //   7.2 s  the typed part of the file is redrawn a row at a time, the way a 2400 baud line would
-// The block cursor after "presents" blinks throughout.
+// The block cursor after "unveils" blinks throughout.
 // ---------------------------------------------------------------------------------------------
 const LOOP = 18;
 const TM = { brush: 1.0, colStep: 0.036, dry: 0.3, wait: 0.75, settle: 0.45, trace: 5.0, traceStep: 0.016, rows: 7.2, rowDur: 0.3 };
@@ -627,7 +627,7 @@ const css = [
 ].join('');
 
 const TITLE = 'ULTRA-SATISFACTORY: a brush-script .NFO header';
-const DESC = 'An 80-column DOS text screen in grey on black. The word Ultra is brushed in flat block characters as a slanted script in neon cyan, with an oversized capital U twelve rows tall whose tail runs out under the other letters; Satisfactory sits beneath it in a bold near-white brush italic. A thin die-cut contour is traced round the whole logo, with the version 0.0.1 and the tag bristle/2C in a notch at its foot. Top right: SECOND COAT proudly presents, with a blinking block cursor. Below the logo: every recipe, building and Space Elevator objective, one click apart. Then a single-line box with two columns of label and value pairs (title, type, protection: none, platform, the three tabs, counts) and an Install Notes heading underlined with tildes above the two commands and the live link.';
+const DESC = 'An 80-column DOS text screen in grey on black. The word Ultra is brushed in flat block characters as a slanted script in neon cyan, with an oversized capital U twelve rows tall whose tail runs out under the other letters; Satisfactory sits beneath it in a bold near-white brush italic. A thin die-cut contour is traced round the whole logo, with the version 0.0.1 and the tag bristle/2C in a notch at its foot. Top right: SECOND COAT proudly unveils, with a blinking block cursor. Below the logo: every recipe, building and Space Elevator objective, one click apart. Then a single-line box with two columns of label and value pairs (title, type, lock-in: none, platform, the three tabs, counts) and an Install Notes heading underlined with tildes above the two commands and the live link.';
 const defs = [...glyphIds].map(([ch, id]) => `<path id="${id}" d="${glyphPath(FONT.get(ch))}"/>`).join('');
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${VBW} ${VBH}" width="${VBW}" height="${VBH}" shape-rendering="crispEdges" role="img" aria-labelledby="t d">
 <title id="t">${TITLE}</title>
@@ -739,11 +739,11 @@ const NFO = [
   '    both camps do to a clean floor.',
   '  - Overclocking the app has no effect. People keep trying.',
   '',
-  ...head('Parts Supplied By'),
+  ...head('Parts From'),
   ['  Game data ... ', link('https://github.com/greeny/SatisfactoryTools', 'greeny/SatisfactoryTools')],
   ['  Images ...... the Satisfactory Wiki, under ', link('https://creativecommons.org/licenses/by-nc-sa/4.0/', 'CC BY-NC-SA 4.0')],
   '  The game .... Coffee Stain Studios, who are not involved and not to blame',
-  ['  Protection .. none. the code is ', link('LICENSE', 'Apache 2.0'), ': read it, fork it, rewire it'],
+  ['  Lock-in ..... none. the code is ', link('LICENSE', 'Apache 2.0'), ': read it, fork it, rewire it'],
   ['  Small print . ', link('#data--credits', '#data--credits'), ' and ', link('#license', '#license')],
   '',
   ...head('Greets'),
@@ -766,7 +766,7 @@ NFO.forEach((line, i) => {
   if (/[^\x20-\x7E]/.test(t)) throw new Error(`NFO line ${i + 1} is not 7-bit: ${t}`);
 });
 
-const ALT = `ULTRA-SATISFACTORY as a brush-script .NFO file on an 80-column DOS screen. The word Ultra is lettered in flat cyan block characters as a slanted brush script, with an oversized capital U twelve rows tall whose tail runs out under the rest of the word; Satisfactory sits beneath it in a bold white brush italic, and a die-cut contour line is traced round the pair. Top right: ${CREW} proudly presents. Under the logo: every recipe, building and Space Elevator objective, one click apart. A single-line box lists Title: ULTRA-SATISFACTORY, Type: companion app (fan-made), Made for: the game Satisfactory, Protection: none, it is Apache 2.0, Platform: Python 3.10+ or a browser; and the three tabs, Objectives (5 phases), Items (140 craftable) and Buildings (477), with 211 recipes, 88 of them alternates, version 0.0.1. Install Notes: python -m pip install -r requirements.txt, then python -m streamlit run app/app.py, or install nothing and open lukexyz.github.io/ULTRA-SATISFACTORY. Every 18 seconds the brush goes back over the lettering, the contour is retraced and the text is redrawn a line at a time.`;
+const ALT = `ULTRA-SATISFACTORY as a brush-script .NFO file on an 80-column DOS screen. The word Ultra is lettered in flat cyan block characters as a slanted brush script, with an oversized capital U twelve rows tall whose tail runs out under the rest of the word; Satisfactory sits beneath it in a bold white brush italic, and a die-cut contour line is traced round the pair. Top right: ${CREW} proudly unveils. Under the logo: every recipe, building and Space Elevator objective, one click apart. A single-line box lists Title: ULTRA-SATISFACTORY, Type: companion app (fan-made), Made for: the game Satisfactory, Lock-in: none, it is Apache 2.0, Platform: Python 3.10+ or a browser; and the three tabs, Objectives (5 phases), Items (140 craftable) and Buildings (477), with 211 recipes, 88 of them alternates, version 0.0.1. Install Notes: python -m pip install -r requirements.txt, then python -m streamlit run app/app.py, or install nothing and open lukexyz.github.io/ULTRA-SATISFACTORY. Every 18 seconds the brush goes back over the lettering, the contour is retraced and the text is redrawn a line at a time.`;
 const md = `<!-- Header ${SLUG} for ULTRA-SATISFACTORY. Generated by src/${SLUG}.mjs: edit that, not this. -->
 
 <p align="center">
@@ -779,7 +779,7 @@ const md = `<!-- Header ${SLUG} for ULTRA-SATISFACTORY. Generated by src/${SLUG}
 
 ⚡ **ULTRA-SATISFACTORY** is a companion app for the factory-building game *Satisfactory*: every recipe, building and Space Elevator objective, one click apart. Three tabs, all wired into each other: **Objectives** (pick a Space Elevator phase, see what it wants and how many), **Items** (search as you type; every recipe card has the per-minute rates, the machine, its cycle time and its power draw) and **Buildings** (what each one makes, tier by tier, with Mk-by-Mk upgrade paths). Keep it on the second monitor, a phone, or a well-worn alt-tab, and look things up before the Assembler notices it is starving.
 
-⚡ [Open it live in your browser](${LIVE}), nothing to install, or [run it locally](#run-it-locally) with two commands. Copy protection: none, it is [Apache 2.0](LICENSE). Unofficial fan project, not affiliated with Coffee Stain Studios, who would have used a nicer font.
+⚡ [Open it live in your browser](${LIVE}), nothing to install, or [run it locally](#run-it-locally) with two commands. Lock-in: none, it is [Apache 2.0](LICENSE). Unofficial fan project, not affiliated with Coffee Stain Studios, who would have used a nicer font.
 
 <details>
 <summary>⚡ <b>ULTRA.NFO</b> · the rest of the file: release notes, all five phases, screw arithmetic, known issues, greets</summary>

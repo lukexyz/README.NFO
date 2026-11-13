@@ -127,7 +127,7 @@ const OPTIONS = [
   ["112-party-results_opus_5.5","Demoparty results.txt","Pure text: a 79-column demoparty results.txt with a signed outline ASCII logo, scored by seconds on screen in one simulated 10-hour run, plus an invitation text with rules, prizes and how to run it.","demo-06"],
   ["113-atari-8-bit-demo_opus_5.5","Atari 8-Bit Demo Screen","Animated SVG: an Atari 8-bit demo screen with CASTAWAY in 16-shade wide-pixel chrome under rolling hue bands, a wide-pixel island with sprites, and the real 10-hour schedule scrolling as a four-colour row.","demo-09"],
   ["114-cpc-demo-screen_opus_5.5","Amstrad CPC Demo Screen","Animated SVG: a borderless 8-bit demo screen in double-wide pixels and three-level RGB, with a dithered CASTAWAY logo, a raster-band island scene, a split-colour strip and a wide scroller.","demo-10"],
-  ["115-swapper-floppy_opus_5.5","Swapper's Floppy","Animated SVG: a flat lay of hand-labelled 3.5-inch swap disks on sand, CASTAWAY in marker, a dot-matrix gag list, a bottle, a letter and a coconut-wearing crab.","print-01"],
+  ["115-swapper-floppy_opus_5.5","Hand-labelled Floppy","Animated SVG: a flat lay of hand-labelled 3.5-inch swap disks on sand, CASTAWAY in marker, a dot-matrix gag list, a bottle, a letter and a coconut-wearing crab.","print-01"],
   ["116-scene-paperwork_opus_5.5","Scene Paperwork","Animated SVG: a photocopied scene-style tick-box swap letter from the island lying on sunny sand, ticked box by box with a red pen, plus a text party pre-invitation with a reply coupon.","print-05"],
 ];
 const styleLink = (id) => `[${id}](../../styles/${id.split('-')[0]}.md#${id})`;

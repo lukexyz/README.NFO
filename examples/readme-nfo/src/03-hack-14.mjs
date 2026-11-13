@@ -16,8 +16,8 @@ for(let col=0; col<48; col++) {
 }
 const image = svg({width:960,height:324,background:'#000503',defs,
   title: 'README.NFO — digital rain',
-  description: 'Independent streams of fixed phosphor glyphs light downward behind a locked README.NFO title. A green code rain header with 152 styles and thirteen families.',
+  description: 'Independent streams of fixed phosphor glyphs light downward behind a locked README.NFO title. A green code rain header with 153 styles and thirteen families.',
   css: '.shade{animation:down 12s linear infinite}.lock{opacity:1;animation:lock 12s ease-in-out infinite}@keyframes down{from{transform:translateY(-250px)}to{transform:translateY(390px)}}@keyframes lock{0%,28%,80%,100%{opacity:1}37%,65%{opacity:.83}}',
-  body: `${rain}<ellipse cx="480" cy="162" rx="410" ry="150" fill="url(#quiet)"/><g class="lock">${center('README.NFO',118,10,'#d7ffe2')}${center('152 STYLES / 13 FAMILIES',216,2,'#55eb82')}${center('MAKE YOUR FIRST IMPRESSION.',250,2,'#a1caae')}</g>`,
+  body: `${rain}<ellipse cx="480" cy="162" rx="410" ry="150" fill="url(#quiet)"/><g class="lock">${center('README.NFO',118,10,'#d7ffe2')}${center('153 STYLES / 13 FAMILIES',216,2,'#55eb82')}${center('MAKE YOUR FIRST IMPRESSION.',250,2,'#a1caae')}</g>`,
 });
 writeHeader(3, {image, summary:'Independent phosphor streams keep falling while the repository title locks into the centre.', alt:'README.NFO glows pale green in a field of slowly falling digital rain.'});

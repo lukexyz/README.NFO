@@ -36,7 +36,7 @@ https://github.com/p-e-w/heretic
 
 ---
 
-## 03 · PC NFO: shaded block logo with fades and debris (SAC school)
+## 03 · PC NFO: shaded block logo with fades and debris
 
 [nfo-02](../../styles/nfo.md#nfo-02) · [Generator](src/03-nfo-02.mjs) · [Copy this header](03-nfo-02.md)
 
@@ -134,7 +134,7 @@ https://github.com/p-e-w/heretic
 
 ---
 
-## 09 · Neon cube field: the rez-era Razor look
+## 09 · Neon cube field: the 2010-era scanline look
 
 [pc-12](../../styles/pc.md#pc-12) · [Generator](src/09-pc-12.mjs) · [Copy this header](09-pc-12.md)
 

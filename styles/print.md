@@ -10,7 +10,7 @@ This family is the objects the scene traded and kept rather than the screens it 
 
 | ID | Style | Medium | Build | Impact |
 | --- | --- | --- | --- | --- |
-| [print-01](#print-01) | Swapper's floppy: hand-labelled 3.5-inch disk, fanned as 'disk 1 of N' | Static SVG | Medium | 4/5 |
+| [print-01](#print-01) | Hand-labelled floppy: 3.5-inch disk, fanned as 'disk 1 of N' | Static SVG | Medium | 4/5 |
 | [print-02](#print-02) | Netlabel cassette: J-card with obi strip, and a shell whose reels turn | Animated SVG | Easy | 5/5 |
 | [print-03](#print-03) | Magazine type-in listing: BASIC, DATA blocks and a checksum column | Text / ASCII | Easy | 3/5 |
 | [print-04](#print-04) | Tractor-feed printout: green-bar paper, banner page in giant letters, punched-card strip | Text / ASCII + SVG | Easy | 4/5 |
@@ -20,11 +20,11 @@ This family is the objects the scene traded and kept rather than the screens it 
 
 <a name="print-01"></a>
 
-## print-01 · Swapper's floppy: hand-labelled 3.5-inch disk, fanned as 'disk 1 of N'
+## print-01 · Hand-labelled floppy: 3.5-inch disk, fanned as 'disk 1 of N'
 
 **Static SVG** · build: **Medium** · impact: **4/5** · 1986-1996, C64 and Amiga mail-swapping scene in Europe (5.25-inch on the C64, 3.5-inch on the Amiga); the 3.5-inch shell itself dates from Sony's 1981 design, standardised in 1983
 
-Before any cracktro ran, a release arrived as a disk in an envelope, and the first thing a swapper saw was the label. Got Papers? shows a German Amiga swapper's disks, which it describes as "full of stickers and scribbles", and C64 disks that came in photocopied, hand-drawn paper sleeves called disk covers. In 1987 a Zurich C64 group even ran a postal competition for the best painted, sprayed or stickered disk.
+A hand-labelled 3.5-inch floppy, fanned out as 'disk 1 of N'. Before any cracktro ran, a release arrived as a disk in an envelope, and the first thing a swapper saw was the label. Got Papers? shows a German Amiga swapper's disks, which it describes as "full of stickers and scribbles", and C64 disks that came in photocopied, hand-drawn paper sleeves called disk covers. In 1987 a Zurich C64 group even ran a postal competition for the best painted, sprayed or stickered disk.
 
 **What it looks like**
 
@@ -207,7 +207,7 @@ Continuous paper with sprocket holes down both edges is the paper of computing: 
 
 **Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1986-1996, European C64 and Amiga scene, exchanged by post and handed out at copy parties and demoparties; preserved by Got Papers? (a research project with scene.org and Demozoo, endorsed by the University of Zurich) and Scene Letters
 
-Swappers kept dozens of postal contacts going at once, so the paperwork became standardised: a short note with every disk, and sometimes a pre-printed form where the sender only ticked boxes. Parties were announced on photocopied sheets with a coupon to post back, and competitions were judged on paper votesheets. One archive alone holds 269 letters from 127 people in 16 countries sent to a single German C64 swapper. It is the scene's office stationery, and it is mostly plain monospaced text.
+Postal paperwork from the disk-mail era: a tick-box letter, a party pre-invitation with a reply coupon and a hand-drawn votesheet. Swappers kept dozens of postal contacts going at once, so the paperwork became standardised: a short note with every disk, and sometimes a pre-printed form where the sender only ticked boxes. Parties were announced on photocopied sheets with a coupon to post back, and competitions were judged on paper votesheets. One archive alone holds 269 letters from 127 people in 16 countries sent to a single German C64 swapper. It is the scene's office stationery, and it is mostly plain monospaced text.
 
 **What it looks like**
 

@@ -1000,7 +1000,7 @@ function page4(ink) {
   const y0 = 146;
   s += adBox(ink, CX1, y0, 50, 'FOR SALE', ['Cream headphones, as new. Came', 'by drone. Already had a pair.']);
   s += adBox(ink, CX1, y0 + 66, 50, 'WANTED', ['Signal. Currently one bar, and', 'only at the very top of the palm.']);
-  s += adBox(ink, CX1, y0 + 132, 50, 'SWAPPER', ['Seeks contacts, by bottle. Quick', 'replies: my first came straight back.']);
+  s += adBox(ink, CX1, y0 + 132, 50, 'PEN PAL', ['Seeks contacts, by bottle. Quick', 'replies: my first came straight back.']);
   s += adBox(ink, CX2, y0, 50, 'STUDIO', ['Every sound synthesized from code.', 'No samples, stock loops or recordings.', '80 BPM, F major: {t|tools/make_audio.py}']);
   s += adBox(ink, CX2, y0 + 66, 50, 'LESSONS', ['Fire by friction. Hammocks. Spear', 'fishing. A lookout up the palm.']);
   s += adBox(ink, CX2, y0 + 132, 50, 'LOST', ['One coconut. Last seen walking', 'off, worn by a hermit crab.']);

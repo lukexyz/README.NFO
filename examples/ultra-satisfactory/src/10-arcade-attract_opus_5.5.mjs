@@ -500,7 +500,7 @@ const marquee = [];
     marquee.push(`<g transform="translate(${w.x} ${y0})">${ex}<use href="#${w.id}" fill="${w.face}"/><path fill="${w.top}" d="${scaled(topOf(w.bm))}"/></g>`);
   }
   const sy = MQ.y + MQ.h - 14;
-  marquee.push(txt(MQ.x + 14, sy, 'THROUGHPUT AMUSEMENT CO. PRESENTS', 'gd'));
+  marquee.push(txt(MQ.x + 14, sy, 'FROM THROUGHPUT AMUSEMENT CO.', 'gd'));
   const tag = 'A COMPANION APP FOR SATISFACTORY · UNOFFICIAL FAN PROJECT';
   marquee.push(txt(MQ.x + MQ.w - 14 - len(tag) * 8 + 1, sy, tag, 'cr'));
   marquee.push(`<rect x="${MQ.x + 1}" y="${MQ.y + 1}" width="${MQ.w - 2}" height="${MQ.h - 2}" rx="4" fill="none" stroke="${COL.gold}" stroke-width="2"/>`);

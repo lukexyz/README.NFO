@@ -25,7 +25,7 @@ python -m streamlit run app/app.py     # then open http://localhost:8501
   <a href="#whats-inside">[O] Objectives</a> ... 5 phases          <a href="#how-its-built">[H] How it's built</a> . one Streamlit app
   <a href="#whats-inside">[I] Items</a> ........ 211 recipes       <a href="#data--credits">[D] Data &amp; credits</a> . who to thank
   <a href="#whats-inside">[B] Buildings</a> .... 477 to build      <a href="app/app.py">[S] Source</a> ......... app/app.py
-  <a href="#run-it-locally">[R] Run it</a> ....... two commands      <a href="#license">[A] Apache 2.0</a> ..... protection: none
+  <a href="#run-it-locally">[R] Run it</a> ....... two commands      <a href="#license">[A] Apache 2.0</a> ..... lock-in: none
   <a href="https://lukexyz.github.io/ULTRA-SATISFACTORY/">[L] Live</a> ......... in your browser   <a href="#top">[G] Goodbye</a> ........ ATH0, NO CARRIER
 ══════════════════════════════════════════════════════════════════════════════
  Select [O I B R L H D S A G] or press any key (still a README) &gt; _
@@ -48,10 +48,10 @@ python -m streamlit run app/app.py     # then open http://localhost:8501
    Type ............. companion app for the game Satisfactory. a lookup tool
    The game ......... not included, not ours. go and buy it, it's very good
    Released by ...... THE CLOGGED MERGER BBS (sysop: Belt Daddy)
-   Supplied by ...... greeny/SatisfactoryTools (the data)
+   Data from ........ greeny/SatisfactoryTools (the data)
                       the Satisfactory Wiki (the images)
-   Cracked by ....... nobody. this app was never locked
-   Protection ....... none. it's Apache 2.0
+   Locked by ........ nobody. this app was never locked
+   Lock-in .......... none. it's Apache 2.0
    Format ........... one Streamlit app, app/app.py. Python 3.10+
    Contents ......... 140 items, 211 recipes (88 alternates), 477 buildings,
                       5 Space Elevator phases

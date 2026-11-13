@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/28-flat-silhouette-intro_opus_5.5.svg" width="100%" alt="ULTRA-SATISFACTORY as an early-90s flat-colour Amiga intro. ULTRA and SATISFACTORY in heavy black capitals ride two waves across three flat bands, hot pink, mustard and green, whose edges are cut into stepped factory skylines that slide slowly sideways. On the right a Space Elevator stands in black silhouette in front of a sun of slowly expanding orange and violet rings, with a pod climbing its tether. A scroller of black capitals flows along a curve like parts on a belt: Stencil Shift presents ULTRA-SATISFACTORY, every recipe, building and Space Elevator objective, one click apart. 140 items, 211 recipes, 477 buildings, 0 gradients. Along the black ground stand a constructor feeding parts down a belt, storage boxes and a tiny supervisor with a clipboard. A two-tone tag in the top corner reads stencil shift, proudly presents. The small print lists the tabs, objectives, items and buildings, and the address lukexyz.github.io/ULTRA-SATISFACTORY">
+  <img src="assets/28-flat-silhouette-intro_opus_5.5.svg" width="100%" alt="ULTRA-SATISFACTORY as an early-90s flat-colour Amiga intro. ULTRA and SATISFACTORY in heavy black capitals ride two waves across three flat bands, hot pink, mustard and green, whose edges are cut into stepped factory skylines that slide slowly sideways. On the right a Space Elevator stands in black silhouette in front of a sun of slowly expanding orange and violet rings, with a pod climbing its tether. A scroller of black capitals flows along a curve like parts on a belt: Stencil Shift unveils ULTRA-SATISFACTORY, every recipe, building and Space Elevator objective, one click apart. 140 items, 211 recipes, 477 buildings, 0 gradients. Along the black ground stand a constructor feeding parts down a belt, storage boxes and a tiny supervisor with a clipboard. A two-tone tag in the top corner reads stencil shift, proudly unveils. The small print lists the tabs, objectives, items and buildings, and the address lukexyz.github.io/ULTRA-SATISFACTORY">
 </p>
 
 <h3 align="center">⚡ ULTRA-SATISFACTORY: every recipe, building and Space Elevator objective, one click apart.</h3>
@@ -32,11 +32,11 @@ python -m streamlit run app/app.py
 <!-- SCROLLER.TXT:BEGIN (generated: node src/28-flat-silhouette-intro_opus_5.5.mjs) -->
 
 ```text
- stencil shift proudly presents ........................ ULTRA-SATISFACTORY
+ stencil shift proudly unveils ......................... ULTRA-SATISFACTORY
 
  THE SCROLLER, FOR ANYONE WHO READS FASTER THAN 120 PIXELS A SECOND
  --------------------------------------------------------------------------
-  * STENCIL SHIFT PRESENTS
+  * STENCIL SHIFT UNVEILS
   * ULTRA-SATISFACTORY
   * EVERY RECIPE, BUILDING AND SPACE ELEVATOR OBJECTIVE, ONE CLICK APART
   * 140 ITEMS. 211 RECIPES. 477 BUILDINGS. 0 GRADIENTS
@@ -44,7 +44,7 @@ python -m streamlit run app/app.py
     PER SMELTER
   * THIS IS NOT A SCROLLER, IT IS A CONVEYOR BELT FOR WORDS
   * MANIFOLD PEOPLE AND LOAD BALANCER PEOPLE MAY SHARE THIS TAB IN PEACE
-  * PROTECTION: NONE. IT'S APACHE 2.0
+  * LOCK-IN: NONE. IT'S APACHE 2.0
   * UNOFFICIAL FAN PROJECT, NOT AFFILIATED WITH COFFEE STAIN STUDIOS
 
  THE COLOUR BUDGET, SCREEN ONE
@@ -77,7 +77,7 @@ python -m streamlit run app/app.py
   Item & building images...............Satisfactory Wiki (CC BY-NC-SA 4.0)
   Graphics & design.......................Stencil Shift (an invented crew)
   Music..........................................none. hum something brisk
-  Protection.........................................none. it's Apache 2.0
+  Lock-in............................................none. it's Apache 2.0
   Affiliation.................................none. unofficial fan project
 ```
 
@@ -138,7 +138,7 @@ python -m streamlit run app/app.py
 <summary>⚡ <b>CREDITS.IFF</b>: screen three, the end credits on regulation grey-blue</summary>
 
 <p align="center">
-  <img src="assets/28-flat-silhouette-intro_opus_5.5-credits.svg" width="100%" alt="The credits screen: small bright green type with dotted leaders between two thin rules on a grey-blue field. Code: lukexyz. Game data: greeny/SatisfactoryTools. Item and building images: Satisfactory Wiki (CC BY-NC-SA 4.0). Graphics and design: Stencil Shift, an invented crew. Music: none, hum something brisk. Protection: none, it's Apache 2.0. Affiliation: none, unofficial fan project.">
+  <img src="assets/28-flat-silhouette-intro_opus_5.5-credits.svg" width="100%" alt="The credits screen: small bright green type with dotted leaders between two thin rules on a grey-blue field. Code: lukexyz. Game data: greeny/SatisfactoryTools. Item and building images: Satisfactory Wiki (CC BY-NC-SA 4.0). Graphics and design: Stencil Shift, an invented crew. Music: none, hum something brisk. Lock-in: none, it's Apache 2.0. Affiliation: none, unofficial fan project.">
 </p>
 
 </details>

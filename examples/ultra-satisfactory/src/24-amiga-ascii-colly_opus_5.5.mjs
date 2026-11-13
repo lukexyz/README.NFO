@@ -419,7 +419,7 @@ const INDEX = [
   ['02', 'run it locally', '#run-it-locally', sc('two commands and a python')],
   ['03', "how it's built", '#how-its-built', sc('one streamlit file, one very large json')],
   ['04', 'data & credits', '#data--credits', sc('respects where they are due')],
-  ['05', 'license', '#license', sc('apache 2.0. protection: none.')],
+  ['05', 'license', '#license', sc('apache 2.0. lock-in: none.')],
 ];
 INDEX.forEach(([n, name, href, note], i) => {
   const nm = sc(name);
@@ -427,7 +427,7 @@ INDEX.forEach(([n, name, href, note], i) => {
 });
 header(R + 11, 'intro');
 para(R + 14, 'you are standing in your factory holding a conveyor belt, and you have forgotten what goes into a modular frame. again. this file is for that.', 2);
-para(R + 17, 'ultra-satisfactory is a lookup tool you keep open beside the game: second monitor, phone, or one alt-tab away. three tabs, and everything is a link. click an ingredient or a product for its recipe, the machine for its building. it is an unofficial fan project, not affiliated with coffee stain studios, and it is free: apache 2.0, no protection to remove.', 6);
+para(R + 17, 'ultra-satisfactory is a lookup tool you keep open beside the game: second monitor, phone, or one alt-tab away. three tabs, and everything is a link. click an ingredient or a product for its recipe, the machine for its building. it is an unofficial fan project, not affiliated with coffee stain studios, and it is free: apache 2.0, nothing is locked away. help yourself.', 6);
 
 // ---- page 3: logo 01, OBJECTIVES --------------------------------------------------------------------
 R = PAGE * 2;
@@ -770,7 +770,7 @@ ${preBlock(PAGE + 1, PAGE + 10, false)}
 
 ⚡ Keep it open beside the game: second monitor, phone, or one alt-tab away. Three tabs. **Objectives**: pick a Space Elevator phase and see the parts it wants and how many. **Items**: search as you type, and every recipe card shows per-minute rates, the machine, its cycle time and its power draw. **Buildings**: every building and what it makes, grouped by tier, with Mk-by-Mk upgrade paths. Everything links, so finding out which input your Assembler is starving for costs one click and none of your dignity.
 
-⚡ [Open it live in your browser](${LIVE}): nothing to install, no modem required. Or run it yourself with Python 3.10+ and the two commands under [Run it locally](#run-it-locally). Unofficial fan project, not affiliated with Coffee Stain Studios. Protection: none, it is Apache 2.0. The crew, the artist, the board and everyone in the greets exist only in this file.
+⚡ [Open it live in your browser](${LIVE}): nothing to install, no modem required. Or run it yourself with Python 3.10+ and the two commands under [Run it locally](#run-it-locally). Unofficial fan project, not affiliated with Coffee Stain Studios. Lock-in: none, it is Apache 2.0. The crew, the artist, the board and everyone in the greets exist only in this file.
 
 <details>
 <summary>⚡ <b>m&amp;c!-uSAT.tXT</b>: the whole collection as the text file it is. Three more logos, a recipe card, greets and respects</summary>

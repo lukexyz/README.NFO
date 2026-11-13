@@ -15,7 +15,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -30,7 +30,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -45,7 +45,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 ```text
 README.NFO
 Retro headers. Ready to rewrite.
-152 styles / 13 families / text + SVG
+153 styles / 13 families / text + SVG
 Copy, customise, share under MIT.
 ```
 
@@ -62,7 +62,7 @@ Copy, customise, share under MIT.
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -76,7 +76,7 @@ Copy, customise, share under MIT.
 
 ```text
 README.NFO / THE HEADER ARCHIVE
-152 styles / 13 families / text + SVG
+153 styles / 13 families / text + SVG
 Bring some character to your next repository.
 Copy the header. Make it yours. MIT license.
 [DOWNLOAD COMPLETE]  2400 BAUD  20 CANDIDATES
@@ -86,13 +86,13 @@ Copy the header. Make it yours. MIT license.
 
 ---
 
-## 16 · PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED)
+## 16 · PC NFO: brush-script block logo (after JED)
 
 **Format: SVG** · [Copy this header](16-nfo-01.md) · [nfo-01](../../styles/nfo.md#nfo-01) · [Generator](src/16-nfo-01.mjs)
 
 <p align="center"><img src="assets/16-nfo-01.svg" width="100%" alt="README.NFO brush-script release header"></p>
 
-Retro README headers, made to be copied and customised. **152 styles · 13 families · MIT.**
+Retro README headers, made to be copied and customised. **153 styles · 13 families · MIT.**
 
 <details><summary>Copy the half-block text version</summary>
 
@@ -120,7 +120,7 @@ Retro README headers, made to be copied and customised. **152 styles · 13 famil
                            R E A D M E . N F O
 ┌────────────────────────────────────────────────────────────────────────────┐
 │  COLLECTION : README.NFO              FORMAT : TEXT + SVG                   │
-│  STYLE POOL : 152                     FAMILY : 13                           │
+│  STYLE POOL : 153                     FAMILY : 13                           │
 │  LICENCE    : MIT                     STATUS : READY TO CUSTOMISE           │
 └────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -140,7 +140,7 @@ Retro README headers, made to be copied and customised. **152 styles · 13 famil
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -151,11 +151,11 @@ Retro README headers, made to be copied and customised. **152 styles · 13 famil
 **Format: ANIMATED SVG** · [Copy this header](18-hack-17.md) · [hack-17](../../styles/hack.md#hack-17) · [Generator](src/18-hack-17.mjs)
 
 <p align="center">
-  <img src="assets/18-hack-17.svg" width="100%" alt="A blue tone pad, sixteen ivory keys and real dual-frequency scope traces; it silently dials 152 / 13.">
+  <img src="assets/18-hack-17.svg" width="100%" alt="A blue tone pad, sixteen ivory keys and real dual-frequency scope traces; it silently dials 153 / 13.">
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -177,7 +177,7 @@ README.NFO — THE HEADER EXCHANGE
 You dock at a quiet station full of forgotten display hardware.
 Orange dots glow above the airlock. Copper bars ripple down a wall.
 On every shelf: another way to make a repository feel like yours.
-The curator hands you 152 styles and a licence to take them home...
+The curator hands you 153 styles and a licence to take them home...
 
 Sector: 013        Cargo: TEXT + SVG        Credits: MIT
 
@@ -200,7 +200,7 @@ Command [READ ME]: _
 ; +--------------------------------------------------------------------+
 #Title     README.NFO - eight bars for a blank repository
 #Composer  lukexyz / README.NFO
-#Memo      Retro headers: 152 styles, 13 families, text art + SVG
+#Memo      Retro headers: 153 styles, 13 families, text art + SVG
 #Memo      MIT licence. Copy the header. Change the arrangement.
 
 ; PMD-inspired MML. A = melody / B = answering voice / G = bass.
@@ -220,7 +220,7 @@ G  t132 v8 o3 l4      c g c g | e b e b | f c f c | c g c g
 G                    a e a e | f c f c | g d g d | c2 r2
 
 ; FILE MAP -------------------------------------------------------------
-; styles/    : the score book           13 families / 152 distinct looks
+; styles/    : the score book           13 families / 153 distinct looks
 ; examples/  : the finished mixes       copyable Markdown + SVG headers
 ; tools/     : the rehearsal room       preview / galleries / validation
 ; LICENSE    : the permission slip      MIT

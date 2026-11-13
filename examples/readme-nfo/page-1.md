@@ -11,11 +11,11 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 **Format: ANIMATED SVG** · [Copy this header](01-mach-11.md) · [mach-11](../../styles/mach.md#mach-11) · [Generator](src/01-mach-11.mjs)
 
 <p align="center">
-  <img src="assets/01-mach-11.svg" width="100%" alt="README.NFO in orange dot-matrix letters; the display cycles through 152 styles and 13 families.">
+  <img src="assets/01-mach-11.svg" width="100%" alt="README.NFO in orange dot-matrix letters; the display cycles through 153 styles and 13 families.">
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -39,7 +39,7 @@ Welcome, visitor. Your adventure begins with a blank README.
 
 README.NFO — The Hall of First Impressions
 You stand beneath an arch made of glowing text. Thirteen doors
-lead to 152 different styles: terminals, trackers, arcades and
+lead to 153 different styles: terminals, trackers, arcades and
 stranger places. Every header is yours to copy and customise.
 A small brass plaque beside the door reads: MIT.
 
@@ -66,7 +66,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -81,7 +81,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -96,13 +96,13 @@ You see twenty possible beginnings. Choose the one that feels like you.
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
 ---
 
-## 06 · Apple II crack screen: six-colour hi-res panels and 40-column credits
+## 06 · Apple II title screen: six-colour hi-res panels and 40-column credits
 
 **Format: SVG** · [Copy this header](06-demo-11.md) · [demo-11](../../styles/demo.md#demo-11) · [Generator](src/06-demo-11.mjs)
 
@@ -114,7 +114,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
                README.NFO               
                                         
    RETRO HEADERS FOR YOUR REPOSITORY    
-        152 STYLES / 13 FAMILIES        
+        153 STYLES / 13 FAMILIES        
                                         
          WRITTEN IN TEXT + SVG          
          DISTRIBUTED UNDER MIT          
@@ -135,7 +135,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -150,13 +150,13 @@ You see twenty possible beginnings. Choose the one that feels like you.
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
 ---
 
-## 09 · Razor 1911 Amiga cracktro (Sector9, 1990-91): logo plate, deep-blue panel, rainbow copper text
+## 09 · Amiga cracktro (1990-91): logo plate, deep-blue panel, rainbow copper text
 
 **Format: SVG** · [Copy this header](09-c64-05.md) · [c64-05](../../styles/c64.md#c64-05) · [Generator](src/09-c64-05.mjs)
 
@@ -167,7 +167,7 @@ You see twenty possible beginnings. Choose the one that feels like you.
 |                          README.NFO                          |
 |                  RETRO HEADERS / TEXT + SVG                  |
 +--------------------------------------------------------------+
-|  BUILT FROM    152 researched styles                         |
+|  BUILT FROM    153 researched styles                         |
 |  ORGANIZED IN  13 visual families                            |
 |  SUPPLIED AS   Markdown + editable SVG                       |
 |  RELEASED AS   MIT / copy, customise, share                  |
@@ -186,9 +186,9 @@ You see twenty possible beginnings. Choose the one that feels like you.
 
 ```text
 +--------------------------------------------------------------------+
-| README.NFO       STYLES: 152   FAMILIES: 13   LICENCE: MIT         |
+| README.NFO       STYLES: 153   FAMILIES: 13   LICENCE: MIT         |
 +----+-------------+-------+-----------------------------------------+
-| 01 | STYLES/     | 152   | Researched retro style catalogue        |
+| 01 | STYLES/     | 153   | Researched retro style catalogue        |
 | 02 | EXAMPLES/   | 13    | Text and SVG visual families            |
 | 03 | TOOLS/      | SVG   | Local previews and validation           |
 | 04 | LICENSE     | MIT   | Copy, customise and share               |

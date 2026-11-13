@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/02-amiga-cracktro_opus_5.5.svg" width="100%" alt="Amiga-style cracktro banner. 'The Joint Venture presents' above DANCE VISION in chunky chrome letters over sweeping copper raster bars and a parallax starfield, with the subtitle 'Your phone is the mocap rig, your telly is the dance floor'. Below it seven stick-figure dancers bob to the beat under a roving spotlight (the purple one is half a beat late), a sine-wave scroller opens with 'No video leaves the phone: just joints!', and the footer reads npm run party, then http://127.0.0.1:8787">
+  <img src="assets/02-amiga-cracktro_opus_5.5.svg" width="100%" alt="Amiga-style cracktro banner. 'A Joint Venture production' above DANCE VISION in chunky chrome letters over sweeping copper raster bars and a parallax starfield, with the subtitle 'Your phone is the mocap rig, your telly is the dance floor'. Below it seven stick-figure dancers bob to the beat under a roving spotlight (the purple one is half a beat late), a sine-wave scroller opens with 'No video leaves the phone: just joints!', and the footer reads npm run party, then http://127.0.0.1:8787">
 </p>
 
 <h3 align="center">Dance Vision turns your phone into a mocap rig and your telly into a dance floor.</h3>
@@ -12,9 +12,9 @@
 </p>
 
 <p align="center">
-  <code>SUPPLIED&nbsp;BY:&nbsp;your&nbsp;phone</code>&nbsp;
-  <code>CRACKED&nbsp;BY:&nbsp;a&nbsp;pose&nbsp;model</code>&nbsp;
-  <code>PROTECTION:&nbsp;none</code>&nbsp;
+  <code>INPUT:&nbsp;your&nbsp;phone</code>&nbsp;
+  <code>TRACKED&nbsp;BY:&nbsp;a&nbsp;pose&nbsp;model</code>&nbsp;
+  <code>LOCK-IN:&nbsp;none</code>&nbsp;
   <code>VIDEO&nbsp;SENT:&nbsp;0&nbsp;bytes</code>
 </p>
 
@@ -57,13 +57,13 @@ npm run party
    ██▀▀█▄ ▄█▀▀█▄ ██▄ ██ ▄█▀▀▀▀ ██▀▀▀▀   ██  ██ ██ ▄█▀▀▀▀ ██ ▄█▀▀█▄ ██▄ ██
    ██  ██ ██▄▄██ ██▀███ ██     ██▀▀▀    ██  ██ ██  ▀▀▀█▄ ██ ██  ██ ██▀███
    ██▄▄█▀ ██  ██ ██  ██ ▀█▄▄▄▄ ██▄▄▄▄    ▀██▀  ██ ▄▄▄▄█▀ ██ ▀█▄▄█▀ ██  ██
-     ═════  T H E   J O I N T   V E N T U R E   P R E S E N T S  ═════
+     ═════  A   J O I N T   V E N T U R E   P R O D U C T I O N  ═════
 
 ╔══════════════════════════════════════════════════════════════════════════╗
 ║ RELEASE ..... Dance Vision            DATE ....... 2026-09-13            ║
-║ SUPPLIED BY . your phone              CRACKED BY . a pose model          ║
+║ INPUT ....... your phone              TRACKED BY . a pose model          ║
 ║ FORMAT ...... 33 joints x {x,y,z}     BANDWIDTH .. ~1.6 KB a frame       ║
-║ PROTECTION .. none                    VIDEO SENT . 0 bytes               ║
+║ LOCK-IN ..... none                    VIDEO SENT . 0 bytes               ║
 ║ HARDWARE .... a phone, a PC, a telly  PLAYERS .... up to 6 + a crew      ║
 ╚══════════════════════════════════════════════════════════════════════════╝
 

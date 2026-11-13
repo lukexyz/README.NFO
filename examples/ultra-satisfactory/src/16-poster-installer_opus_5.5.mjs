@@ -35,7 +35,7 @@ const SLUG = '16-poster-installer_opus_5.5';
 // ---------------------------------------------------------------- the words
 // Every string on the poster lives here, so the SVG and the text poster agree.
 const CREW = 'SOFT CLEARANCE';     // invented for this header; no such group exists
-const PLATE = `${CREW} PRESENTS:`;
+const PLATE = `${CREW}  UNVEILS:`; // 24 characters: the plate must stay a multiple of four wide
 const STRIP = 'THE UNOFFICIAL SATISFACTORY COMPANION APP';
 const TABS = 'OBJECTIVES + ITEMS + BUILDINGS, ONE CLICK APART';
 const RUN_CMD = 'python -m streamlit run app/app.py';
@@ -1159,7 +1159,7 @@ css.push('@media (prefers-reduced-motion:reduce){*{animation:none!important}}');
 const title = 'ULTRA-SATISFACTORY';
 const desc = 'A one-screen text-mode installer poster in black, cyan, white and gold. ULTRA fills the top in giant cyan '
   + 'block letters and SATISFACTORY sits under it in white ones, packed edge to edge inside a hazard-tape border with a '
-  + `name plate let into the top of the tape, reading ${CREW} PRESENTS. Every stroke of ULTRA has a belt channel down its middle and small `
+  + `name plate let into the top of the tape, reading ${CREW} UNVEILS. Every stroke of ULTRA has a belt channel down its middle and small `
   + 'gold parts tick along it; more parts run along the gap between the two words and drop down between the letters of '
   + 'SATISFACTORY. A hexagon-and-cog emblem sits in the notch of the L. Underneath: a title strip reading '
   + `${STRIP}, the line ${TABS}, a path field holding ${RUN_CMD}, a twelve-cell progress bar that unpacks `

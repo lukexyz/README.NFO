@@ -233,7 +233,7 @@ const info = frame({
       kv('type', 'companion app', 13),
       kv('for', 'the game Satisfactory', 13),
       kv('official', 'no. a fan project', 13),
-      kv('protection', 'none. it\'s ' + A('Apache 2.0', 'LICENSE'), 13),
+      kv('lock-in', 'none. it\'s ' + A('Apache 2.0', 'LICENSE'), 13),
       kv('format', 'Python + Streamlit', 13),
       kv('price', '0. sleep not included', 13),
     ],
@@ -291,7 +291,7 @@ const flow = [
 ];
 
 const main = [
-  center('░▒▓█   ' + B('JUST ONE MORE BELT') + '   proudly presents   █▓▒░'),
+  center('░▒▓█   ' + B('JUST ONE MORE BELT') + '   proudly brings you   █▓▒░'),
   '',
   ...renderLogo(),
   beltLine('every recipe, building and objective, one click apart'),
@@ -493,7 +493,7 @@ const rest = [
     'the live build is stlite: Streamlit running in your browser on WebAssembly. GitHub Actions republishes it on every push to main.',
     'it also deploys as a full Streamlit server on Modal (' + A('modal_app.py') + '). more in ' + A('#how-its-built') + '.',
   ]),
-  ...section('PROTECTiON'),
+  ...section('LOCK-iN'),
   ...wrap('none. the code is ' + A('Apache 2.0', 'LICENSE') + ': read it, fork it, bolt a fourth tab on. the game data and the images keep their own licences, see ' + A('#data--credits') + '.', W - 2, '  ', '  '),
   ...section('REQUiREMENTS'),
   ...kvWrap('to run it', 'Python 3.10+ and two commands. or a browser and zero.', 13),
@@ -583,7 +583,7 @@ const greetz = [
   ...section('THE CREW'),
   '  ' + kv('code', 'one Streamlit file that got out of hand', 18),
   '  ' + kv('packer', 'stlite. the whole app, in a tab, on WebAssembly', 18),
-  '  ' + kv('courier', 'GitHub Actions. ships on every push to main', 18),
+  '  ' + kv('delivery', 'GitHub Actions. ships on every push to main', 18),
   '  ' + kv('quality control', 'the Space Elevator. it counts. it always counts', 18),
   '  ' + kv('ascii', 'J1MB art division, drawn between belts', 18),
   '',

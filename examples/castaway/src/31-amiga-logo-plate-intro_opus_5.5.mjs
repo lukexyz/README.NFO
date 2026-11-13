@@ -351,7 +351,7 @@ const PAGES = [
   ['90+ ACTIVITIES.', '4 TIMERS. EACH ONE', 'STARTS ON THE BAR.'],
   ['EVERY SOUND IS CODE.', 'NO SAMPLES. 80 BPM.', 'F MAJOR. NO SEAMS.'],
   ['PYTHON TOOLS/SERVE.PY', 'OPEN 127.0.0.1:8765', 'AND WAIT. CALMLY.'],
-  ['SUPPLIED BY THE TIDE.', 'RETURNED BY THE TIDE.', 'ALWAYS DAYTIME.'],
+  ['DELIVERED BY THE TIDE.', 'RETURNED BY THE TIDE.', 'ALWAYS DAYTIME.'],
 ];
 const CYCLE = PAGES.length * PAGE; // 48 s
 const FOLD = 0.25;                 // one letter folds in this long
@@ -897,7 +897,7 @@ const TP = [
   [{ t: 'A TEN-HOUR LO-FI ISLAND VIDEO IN WHICH', c: 'm2', center: true }],
   [{ t: 'VERY LITTLE HAPPENS, ON PURPOSE.', c: 'm2', center: true }],
   '', '~', '',
-  info('SUPPLIED BY', 'THE TIDE'),
+  info('DELIVERED BY', 'THE TIDE'),
   info('RETURNED BY', 'ALSO THE TIDE'),
   info('BUILT BY', 'THE PALM READERS'),
   info('INSPIRED BY', 'A 1992 SCREENSAVER'),

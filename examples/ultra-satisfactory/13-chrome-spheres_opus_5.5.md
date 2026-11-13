@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/13-chrome-spheres_opus_5.5.svg" width="100%" alt="A README banner in the demoscene's oldest style: chrome spheres over a checkerboard. REFLECTIVE ASSETS DIVISION presents ULTRA-SATISFACTORY as a thick italic chrome logo floating in the sky, steel blue with a bright break line across the letters and its sides running back to the vanishing point. Under it, on a small plate: every recipe, building and Space Elevator objective, one click apart. Below, a grey and white checker floor of foundations flies towards the viewer and fades into haze at a low horizon, and six mirror balls tinted from cyan through purple to pink bounce over it in a wave, each reflecting the moving floor and the sky. The sky runs a one-minute day: a dusty mauve afternoon, the sun setting on the right, a starry indigo night with the moon up and coloured light pooling under the spheres, then dawn. A small gold scroller at the horizon lists the tabs Objectives, Items and Buildings, the counts (140 items, 211 recipes of which 88 are alternates, 477 buildings, 5 Space Elevator phases), the two commands to run it, the no-install address lukexyz.github.io/ULTRA-SATISFACTORY, and that it is an unofficial fan project.">
+  <img src="assets/13-chrome-spheres_opus_5.5.svg" width="100%" alt="A README banner in the demoscene's oldest style: chrome spheres over a checkerboard. REFLECTIVE ASSETS DIVISION unveils ULTRA-SATISFACTORY as a thick italic chrome logo floating in the sky, steel blue with a bright break line across the letters and its sides running back to the vanishing point. Under it, on a small plate: every recipe, building and Space Elevator objective, one click apart. Below, a grey and white checker floor of foundations flies towards the viewer and fades into haze at a low horizon, and six mirror balls tinted from cyan through purple to pink bounce over it in a wave, each reflecting the moving floor and the sky. The sky runs a one-minute day: a dusty mauve afternoon, the sun setting on the right, a starry indigo night with the moon up and coloured light pooling under the spheres, then dawn. A small gold scroller at the horizon lists the tabs Objectives, Items and Buildings, the counts (140 items, 211 recipes of which 88 are alternates, 477 buildings, 5 Space Elevator phases), the two commands to run it, the no-install address lukexyz.github.io/ULTRA-SATISFACTORY, and that it is an unofficial fan project.">
 </p>
 
 <p align="center">
@@ -32,7 +32,7 @@ python -m streamlit run app/app.py
 <summary>⚡ <b>R.A.D. QUARTERLY REFLECTION</b>: the banner again in 80 columns, the asset register, a sample lookup, how the floor moves, greetz</summary>
 
 ```text
-                   REFLECTIVE ASSETS DIVISION   presents
+                   REFLECTIVE ASSETS DIVISION   unveils
             ______________________________________________________
            /                                                      /
           /        U L T R A  -  S A T I S F A C T O R Y         /

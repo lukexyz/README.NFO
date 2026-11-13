@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/14-neon-cube-field_opus_5.5.svg" width="100%" alt="A README banner in the style of a 2010-era 64k intro. CUBIC METRES PER MINUTE presents ULTRA SATISFACTORY on a glowing segment display, ULTRA in cyan and SATISFACTORY in white, over a starfield. Below it a floor of 378 small neon cubes in an isometric grid, coloured as one continuous rainbow, rolls in a slow wave while the hues drift across it, under scanlines. Three signs stand on the floor, one per tab: OBJECTIVES, ITEMS and BUILDINGS. A text writer types four pages: a companion app for the factory game Satisfactory, every recipe, building and Space Elevator objective, one click apart; 140 items, 211 recipes (88 alternate), 477 buildings, 5 Space Elevator phases, 3 tabs, 0 spreadsheets required; the two commands that run it; and no install at lukexyz.github.io/ULTRA-SATISFACTORY, unofficial fan project, protection: none, it's Apache 2.0.">
+  <img src="assets/14-neon-cube-field_opus_5.5.svg" width="100%" alt="A README banner in the style of a 2010-era 64k intro. CUBIC METRES PER MINUTE unveils ULTRA SATISFACTORY on a glowing segment display, ULTRA in cyan and SATISFACTORY in white, over a starfield. Below it a floor of 378 small neon cubes in an isometric grid, coloured as one continuous rainbow, rolls in a slow wave while the hues drift across it, under scanlines. Three signs stand on the floor, one per tab: OBJECTIVES, ITEMS and BUILDINGS. A text writer types four pages: a companion app for the factory game Satisfactory, every recipe, building and Space Elevator objective, one click apart; 140 items, 211 recipes (88 alternate), 477 buildings, 5 Space Elevator phases, 3 tabs, 0 spreadsheets required; the two commands that run it; and no install at lukexyz.github.io/ULTRA-SATISFACTORY, unofficial fan project, lock-in: none, it's Apache 2.0.">
 </p>
 
 <p align="center">
@@ -53,7 +53,7 @@ python -m streamlit run app/app.py
   WHAT ......... companion app for the factory game Satisfactory
   INSIDE ....... 140 items, 211 recipes (88 alternate), 477 buildings,
                  5 Space Elevator phases, 3 tabs
-  PROTECTION ... none. It is Apache 2.0. Read it, fork it.
+  LOCK-IN ...... none. It is Apache 2.0. Read it, fork it.
   REQUIRES ..... Python 3.10+, or nothing but a browser tab
   SIZE ......... the banner is one SVG under 65,536 bytes: a 64k
                  intro's whole allowance. The generator refuses to

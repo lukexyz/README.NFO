@@ -332,7 +332,7 @@ const stats = [
   ...say(226, `${PHASES.length} phases, ${ORDERS} orders, ${PARTS} parts. P: parts. F: lines on the order form. the ${B('OBJECTiVES')} tab lists them like this: pick a phase, click a part, get its recipe. no spreadsheet was harmed.`),
 ];
 
-// ---------------------------------------------------------------- details 3: who, nukes, credits
+// ---------------------------------------------------------------- details 3: who, flags, credits
 const whoRow = (name, verb, what, rate) => `| ${padR(name, 21)} ${verb} ${padR(what, 29)} ${padL(rate, 9)} |`;
 const who = frameCheck([
   RULE_TOP,
@@ -351,14 +351,14 @@ const rest = [
   cmd('site dupe screw'),
   ...reply(200, `${B('Screw')}: 1 Iron Rod -> 4 Screw. Constructor, 6 s, 4 MW. 40/min.`,
     'dupe. you already own nine storage boxes of these.'),
-  cmd('site nuke Spaghetti.Bus.v2.FINAL-YOU 3 belts.run.the.wrong.way'),
-  ...reply(200, 'nuked x3. the tidy-factory people send their regards.'),
-  cmd('site nuke Load.Balancer.For.Two.Smelters-YOU 2 use.a.manifold'),
-  ...reply(200, 'nuked x2. the manifold people send theirs.'),
-  cmd('site nuke Pipe.Clipped.Through.A.Wall-YOU 1 we.all.saw.it'),
+  cmd('site flag Spaghetti.Bus.v2.FINAL-YOU 3 belts.run.the.wrong.way'),
+  ...reply(200, 'flagged x3. the tidy-factory people send their regards.'),
+  cmd('site flag Load.Balancer.For.Two.Smelters-YOU 2 use.a.manifold'),
+  ...reply(200, 'flagged x2. the manifold people send theirs.'),
+  cmd('site flag Pipe.Clipped.Through.A.Wall-YOU 1 we.all.saw.it'),
   ...reply(550, 'what pipe. nobody here saw a pipe.'),
-  cmd('site unnuke Temporary.Belt.Now.Load.Bearing-YOU'),
-  ...reply(550, 'it was never nuked. nobody dares. it is holding up the roof.'),
+  cmd('site unflag Temporary.Belt.Now.Load.Bearing-YOU'),
+  ...reply(550, 'it was never flagged. nobody dares. it is holding up the roof.'),
   '',
   cmd('site credits'),
   ...reply(211,
@@ -408,7 +408,7 @@ const md = [
   '',
   ...details('<b>ftp&gt; ls</b> &nbsp;what is in the directory: three tabs, two commands, and the things you left (incomplete)', listing),
   ...details('<b>ftp&gt; site stat buildings</b> &nbsp;all 477 buildings by category, and what the Space Elevator wants in all five phases', stats),
-  ...details('<b>ftp&gt; site who</b> &nbsp;who is uploading right now, a few nukes, and the real credits', rest),
+  ...details('<b>ftp&gt; site who</b> &nbsp;who is uploading right now, a few flags, and the real credits', rest),
 ].join('\n') + '\n';
 fs.mkdirSync(path.dirname(OUT), { recursive: true });
 fs.writeFileSync(OUT, md);

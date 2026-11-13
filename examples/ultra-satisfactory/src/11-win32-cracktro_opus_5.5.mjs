@@ -409,11 +409,11 @@ defs.push(vgrad('rfs', ROWS[1].y, ROWS[1].y + ROWS[1].h, [[0, '#7c8aa6'], [0.5, 
 // (a simplified copy: walls, metal and faces only; re-drawing the full row costs too much per frame)
 const reflSvg = `<g clip-path="url(#rfc)"><g transform="translate(0 ${2 * FLOOR}) scale(1 -1)"><use href="#ws" fill="${PAL.s.ext[1]}"/><use href="#os" fill-rule="evenodd" fill="${PAL.s.bevel[1]}"/><use href="#fs" fill-rule="evenodd" fill="url(#rfs)"/></g><rect y="${FLOOR}" width="${W}" height="${RCOV}" fill="url(#rff)"/></g>`;
 
-// "presents" line above the logo, widely tracked, with a rule either side
+// crew credit line above the logo, widely tracked, with a rule either side
 const CREW = 'TORQUE DIRTY';
 let presentsSvg = '';
 {
-  const y = 9, cell = 8, tail = 'PRESENTS';
+  const y = 9, cell = 8, tail = 'UNVEILS';
   const cols = CREW.length + 3 + tail.length;
   const half = ((cols * cell - 3) * PX) / 2;
   presentsSvg = `<g transform="translate(${n1(W / 2 - half)} ${y}) scale(${PX})"><g fill="#f4f8ff">${textUses(CREW, 0, cell)}</g>`
@@ -568,7 +568,7 @@ const PAGES = [
   ] },
   { align: 'centre', lines: [
     [['140', 'y'], [' ITEMS · ', 'w'], ['211', 'y'], [' RECIPES (88 ALTERNATE) · ', 'w'], ['477', 'y'], [' BUILDINGS', 'w']],
-    [['5', 'y'], [' SPACE ELEVATOR PHASES · PROTECTION: ', 'w'], ['NONE', 'c'], [' (APACHE 2.0)', 'w']],
+    [['5', 'y'], [' SPACE ELEVATOR PHASES · LOCK-IN: ', 'w'], ['NONE', 'c'], [' (APACHE 2.0)', 'w']],
     [[`GIRDERS TWISTED BY ${CREW}. THEY SIGNED A WAIVER.`, 'g']],
     [['UNOFFICIAL FAN PROJECT. THE GAME IS SOLD SEPARATELY.', 'g']],
   ] },
@@ -654,11 +654,11 @@ let PAGE_T = 0;
 // Dot-matrix capitals riding a stationary sine, right to left.
 const SC = { y: 373, pitch: 5, adv: 30, amp: 11, speed: 116, dot: 4, phases: 12 };
 const SCROLL_TEXT = [
-  `${CREW} PROUDLY PRESENTS`, // exactly one screen wide: this is the first frame
+  `${CREW} PROUDLY UNVEILS`, // one screen wide with the next item's leading space: this is the first frame
   ' ULTRA-SATISFACTORY ...',
   ' EVERY RECIPE, BUILDING AND SPACE ELEVATOR OBJECTIVE, ONE CLICK APART ...',
   ' 140 ITEMS * 211 RECIPES * 477 BUILDINGS ...',
-  ' PROTECTION: NONE. IT IS APACHE 2.0 ...',
+  ' LOCK-IN: NONE. IT IS APACHE 2.0 ...',
   ' REQUIRES: NO DIRECTX, NO INSTALLER WIZARD, NO BROWSER TOOLBAR ...',
   ' GREETZ TO EVERYONE WHO ALT-TABBED OUT AT 3 A.M. FOR ONE RECIPE',
   ' AND CAME BACK WITH A WHOLE NEW FACTORY ...',
@@ -723,11 +723,11 @@ const body = [
 ];
 css.push('@media (prefers-reduced-motion:reduce){*{animation-play-state:paused!important}}');
 
-const desc = `A Windows-era cracktro banner. ${CREW} presents ULTRA-SATISFACTORY as a bevelled chrome logo (ULTRA in cyan chrome, SATISFACTORY in silver) standing on a mirror floor with its reflection, a starfield flying outward behind it. `
+const desc = `A Windows-era cracktro banner. ${CREW} unveils ULTRA-SATISFACTORY as a bevelled chrome logo (ULTRA in cyan chrome, SATISFACTORY in silver) standing on a mirror floor with its reflection, a starfield flying outward behind it. `
   + 'On each side a square girder with hazard tape, riveted plate, a light bar and a lattice face is twisted like a wrung towel between two chucks. '
   + 'A text writer types three pages: a companion app for the factory game Satisfactory, every recipe, building and Space Elevator objective, one click apart, with tabs Objectives, Items and Buildings; '
   + 'how to run it (python -m pip install -r requirements.txt, then python -m streamlit run app/app.py, or install nothing at lukexyz.github.io/ULTRA-SATISFACTORY); '
-  + 'and the numbers: 140 items, 211 recipes of which 88 are alternates, 477 buildings, 5 Space Elevator phases, protection none (Apache 2.0), unofficial fan project. '
+  + 'and the numbers: 140 items, 211 recipes of which 88 are alternates, 477 buildings, 5 Space Elevator phases, lock-in none (Apache 2.0), unofficial fan project. '
   + 'A gold dot-matrix scroller rides a sine wave along the bottom.';
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">
@@ -770,7 +770,7 @@ if (process.argv.includes('--ascii')) {
     'WHAT ......... companion app for Satisfactory',
     'INSIDE ....... 140 items, 211 recipes (88 alt),',
     '               477 buildings, 5 elevator phases',
-    'PROTECTION ... none. It is Apache 2.0.',
+    'LOCK-IN ...... none. It is Apache 2.0.',
     'REQUIRES ..... Python 3.10+, or a browser tab',
     'DIRECTX ...... not required',
     'INTRO ........ 1 SVG, 0 lines of JavaScript',
@@ -783,7 +783,7 @@ if (process.argv.includes('--ascii')) {
   const card = [
     '',
     [...CREW].join(' ').replace('   ', '     '),
-    'proudly presents',
+    'proudly unveils',
     '',
     `╔${'═'.repeat(title.length)}╗`,
     `║${title}║`,

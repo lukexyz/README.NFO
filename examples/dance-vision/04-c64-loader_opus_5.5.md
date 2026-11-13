@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/04-c64-loader_opus_5.5.svg" width="800" alt="Dance Vision on a Commodore 64: it boots to READY., types LOAD&quot;DANCE VISION&quot;,8,1, loads with rolling turbo stripes in the border and types RUN. Then a cracktro title screen: the colour-cycling DANCE VISION logo over raster bars, PHONE = MOCAP RIG, TELLY = DANCE FLOOR, five stick figures dancing in sync on a light-up floor, a dance spotlight countdown that puts YOU in the zone while the crew cheers, then everybody hands up; a SID panel playing Chicken Shop Shuffle by DJ Last Orders, a sine scroller, and the line: no video leaves your phone, just joints.">
+  <img src="assets/04-c64-loader_opus_5.5.svg" width="800" alt="Dance Vision on a Commodore 64: it boots to READY., types LOAD&quot;DANCE VISION&quot;,8,1, loads with rolling turbo stripes in the border and types RUN. Then an intro title screen: the colour-cycling DANCE VISION logo over raster bars, PHONE = MOCAP RIG, TELLY = DANCE FLOOR, five stick figures dancing in sync on a light-up floor, a dance spotlight countdown that puts YOU in the zone while the crew cheers, then everybody hands up; a SID panel playing Chicken Shop Shuffle by DJ Last Orders, a sine scroller, and the line: no video leaves your phone, just joints.">
 </p>
 
 <h1 align="center">Dance Vision</h1>
@@ -19,7 +19,7 @@
 </p>
 
 ```text
-10 REM *** DANCE VISION QUICK START *** PROTECTION: NONE
+10 REM *** DANCE VISION QUICK START *** LOCK-IN: NONE
 20 SYS "npm run party"
 30 OPEN "http://127.0.0.1:8787/" : REM THAT'S CONTROLLER
 40 REM CLICK "OPEN TV STUDIO", DRAG IT TO THE TELLY, SCAN THE QR
@@ -31,7 +31,7 @@ READY.
 ```
 
 <details>
-<summary><b>DANCEVIS.NFO</b>: how it works, credits, greetz (protection: none)</summary>
+<summary><b>DANCEVIS.NFO</b>: how it works, credits, greetz (lock-in: none)</summary>
 
 ```text
      ████████          ████      ████    ████    ████████    ████████████
@@ -52,14 +52,14 @@ READY.
       ░░░░      ░░░░░░░░    ░░░░░░░░    ░░░░░░░░    ░░░░░░░░    ░░░░    ░░░░
 
 ═════════════════════════════════════════════════════════════════════════════
-  THE HACKNEY 1541 MASSIVE PRESENTS ..................... DANCE VISION
+  THE HACKNEY 1541 MASSIVE UNVEILS ...................... DANCE VISION
 ═════════════════════════════════════════════════════════════════════════════
 
   RELEASE TYPE .. party game / mocap rig / reason to move the sofa
   ORIGINAL ...... Unity prototype, 2021: three players on webcams,
                   instructor video on the wall
   BROWSER CUT ... 2026-09-13: one webcam, pose model on-device, 18 fps
-  PROTECTION .... none. no app, no account, no video, no excuses
+  LOCK-IN ....... none. no app, no account, no video, no excuses
   FORMAT ........ 33 joints x {x,y,z}, ~1.6 KB a frame, 0 bytes of video
                   (33 joints, 33 rpm: it's basically vinyl)
   PLAYERS ....... up to 6 phones + a backing crew, one telly

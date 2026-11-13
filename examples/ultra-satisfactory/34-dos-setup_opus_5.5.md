@@ -21,7 +21,7 @@ python -m streamlit run app/app.py
 
 ⚡ Then open `http://localhost:8501`. That is port 8501: ports 220 to 280 were only ever in the list for old times' sake. More under [Run it locally](#run-it-locally).
 
-<sub>⚡ An unofficial fan project, not affiliated with Coffee Stain Studios. The game is not on this disk: bring your own factory. Code is <a href="LICENSE">Apache 2.0</a>, so copy protection is none and there is no code wheel.</sub>
+<sub>⚡ An unofficial fan project, not affiliated with Coffee Stain Studios. The game is not on this disk: bring your own factory. Code is <a href="LICENSE">Apache 2.0</a>, so there is no lock-in and no code wheel.</sub>
 
 <details>
 <summary>⚡ <b>README.1ST</b>: supported devices, troubleshooting, credits</summary>

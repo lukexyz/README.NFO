@@ -26,7 +26,7 @@ for(let y=0;y<H;y+=2)art.push(Array.from({length:W},(_,x)=>lit(x,y)?(lit(x,y+1)?
 const box=[
 '┌────────────────────────────────────────────────────────────────────────────┐',
 '│  COLLECTION : README.NFO              FORMAT : TEXT + SVG                   │',
-'│  STYLE POOL : 152                     FAMILY : 13                           │',
+'│  STYLE POOL : 153                     FAMILY : 13                           │',
 '│  LICENCE    : MIT                     STATUS : READY TO CUSTOMISE           │',
 '└────────────────────────────────────────────────────────────────────────────┘'];
 const image=svg({height:390,background:'#050505',title:'README.NFO — original half-block brush NFO',description:'An oversized script R joins a brushed Readme wordmark, with NFO caption and a two-column release information box.',body:
@@ -35,9 +35,9 @@ px('ORIGINAL LETTERING / PUBLIC FILES',90,25,2,'#8b8b8b')+
 px('.NFO',642,258,4,'#d3d3d3')+
 '<path d="M80 297h800v65H80zM477 297v65" fill="none" stroke="#858585"/>'+
 px('COLLECTION: README.NFO',100,310,2,'#c0c0c0')+px('FORMAT: TEXT + SVG',500,310,2,'#c0c0c0')+
-px('STYLE POOL: 152',100,339,2,'#c0c0c0')+px('LICENCE: MIT / COPY FREELY',500,339,2,'#c0c0c0')});
+px('STYLE POOL: 153',100,339,2,'#c0c0c0')+px('LICENCE: MIT / COPY FREELY',500,339,2,'#c0c0c0')});
 writeHeader(16,{image,summary:'An original oversized brush R, joined half-block lettering and a two-column NFO information panel.',markdown:[
 '<p align="center"><img src="assets/16-nfo-01.svg" width="100%" alt="README.NFO brush-script release header"></p>',
-'','Retro README headers, made to be copied and customised. **152 styles · 13 families · MIT.**',
+'','Retro README headers, made to be copied and customised. **153 styles · 13 families · MIT.**',
 '','<details><summary>Copy the half-block text version</summary>','','```text',...art,'                           R E A D M E . N F O',...box,'```','','</details>','',
 '[Style catalogue](../../styles/INDEX.md) · [Example galleries](../README.md)'].join('\n')});

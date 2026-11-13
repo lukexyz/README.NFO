@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// DANCE VISION 87.87 FM: an ANSI BBS login screen crossed with a pirate radio rave flyer.
+// DANCE VISION 87.87 FM: an ANSI BBS login screen crossed with a rooftop radio rave flyer.
 //
 // Regenerate:  node examples/dance-vision/src/06-ansi-bbs-pirate-fm_opus_5.5.mjs
 //
@@ -276,7 +276,7 @@ put(0, 82, '87.87 MHz', LCY);
 
 // Row 7: the flyer tagline.
 {
-  const parts = [['░▒▓█ ', LBL], ['THE PIRATE MOTION-CAPTURE SOUND SYSTEM', YEL], [' ░ ', DGR], ['87.87 FM', LMG], [' ░ ', DGR], ['EAST LONDON', LCY], [' █▓▒░', LBL]];
+  const parts = [['░▒▓█ ', LBL], ['THE ROOFTOP MOTION-CAPTURE SOUND SYSTEM', YEL], [' ░ ', DGR], ['87.87 FM', LMG], [' ░ ', DGR], ['EAST LONDON', LCY], [' █▓▒░', LBL]];
   const n = parts.reduce((a, [t]) => a + len(t), 0);
   seg(7, centre(n), parts);
 }
@@ -292,7 +292,7 @@ const ARROWS = [{ c0: 14, c1: 32, r: 11 }, { c0: 47, c1: 61, r: 11 }];
 for (const a of ARROWS) { put(a.r, a.c0, '·'.repeat(a.c1 - a.c0 + 1), DGR); put(a.r, a.c1 + 1, '►', LCY); }
 seg(10, 14, [['33 joints ', WHT], ['× {x,y,z}', LGR]]);
 put(12, 15, 'no video. ever.', LGN);
-// The relay is the pirate rig on the tower block roof: a mast (drawn below) rises from the ┴.
+// The relay is the radio rig on the tower block roof: a mast (drawn below) rises from the ┴.
 const MAST_C = 40;
 put(10, 35, '┌────┴────┐', LGR);
 put(11, 35, '│', LGR); put(11, 37, 'ws', LGR); put(11, 40, ':8787', YEL); put(11, 45, '│', LGR);
@@ -328,7 +328,7 @@ const DANCER_COLS = [67, 73, 79, 85, 91];
   row(r0 + 3, 'Uplink', ['33 joints', WHT], [' · ', DGR], ['~1.6 KB a frame', WHT]);
   row(r0 + 4, 'Video', ['NONE.', LGN], [' never leaves the phone', WHT]);
   row(r0 + 5, 'App', ['none', WHT], ['   Account ', LGR], ['····', DGR], [' none', WHT]);
-  row(r0 + 6, 'Protection', ['none', WHT], ['   Phones ', LGR], ['·····', DGR], [' 6 a room', WHT]);
+  row(r0 + 6, 'Lock-in', ['none', WHT], ['   Phones ', LGR], ['·····', DGR], [' 6 a room', WHT]);
   row(r0 + 7, 'Time left', ['all night', YEL]);
   seg(r0 + 8, x, [['Last caller: ', LGR], ['your nan. did the robot.', LMG]]);
 }
@@ -594,7 +594,7 @@ function figure(col, row, seq, color) {
   layers.push(`<g clip-path="url(#pkclip)">${out}</g>`);
 }
 
-// Pirate radio mast on the relay: a little lattice pylon with a red beacon (blinking with ON AIR)
+// Radio mast on the relay: a little lattice pylon with a red beacon (blinking with ON AIR)
 // and three pairs of radio-wave arcs. Dim arcs are always there; a bright ripple travels outward
 // once every two beats. 1 px lines to match the box-drawing weight.
 {
@@ -638,7 +638,7 @@ layers.push(['|', '/', '─', '\\'].map((ch, k) => `<g class="c14 p${k}">${uses(
 
 // Shout-out scroller: white text through a fixed palette gradient mask, 1 px per step.
 {
-  const text = '     ♪ YOU\'RE LOCKED TO DANCE VISION 87.87 FM ♪ THE PIRATE MOTION-CAPTURE SOUND SYSTEM, '
+  const text = '     ♪ YOU\'RE LOCKED TO DANCE VISION 87.87 FM ♪ THE ROOFTOP MOTION-CAPTURE SOUND SYSTEM, '
     + 'TRANSMITTING FROM A PHONE PROPPED AGAINST THE TELLY ♪ NO APP ♪ NO ACCOUNT ♪ NO VIDEO LEAVES YOUR PHONE, '
     + 'JUST THE JOINTS ♪ HOLD TIGHT HACKNEY WICK, SHOREDITCH, DALSTON AND EVERYONE ON THE NIGHT TUBE ♪ '
     + 'SPOTLIGHT MOMENTS EVERY MINUTE OR SO, SO KEEP YOUR ELBOWS WHERE THE CREW CAN SEE THEM ♪ '
@@ -724,7 +724,7 @@ const glyphDefs = [...glyphIds].map(([ch, id]) => `<path id="${id}" d="${glyphPa
 
 const TITLE = 'Dance Vision 87.87 FM: an ANSI BBS login screen';
 const DESC = 'A modem dials in and a 1990s ANSI screen draws itself: the DANCE VISION logo between bouncing VU meters, '
-  + 'a phone sending only 33 joints through a websocket relay on port 8787, crowned with a pirate radio mast, '
+  + 'a phone sending only 33 joints through a websocket relay on port 8787, crowned with a rooftop radio mast, '
   + 'to a TV studio where five stick figures dance under a hopping spotlight, '
   + 'a caller panel (no video, no app, no account, 6 phones a room), tonight\'s line-up of six East London venues, a blinking PRESS ANY KEY, '
   + 'a shout-out scroller and the quick start command npm run party.';

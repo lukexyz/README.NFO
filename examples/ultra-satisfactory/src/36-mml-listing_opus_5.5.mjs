@@ -339,7 +339,7 @@ const liner = [
   dots('Live build', 'stlite: Streamlit in your browser on WebAssembly.'),
   cont('GitHub Actions republishes it on every push to main'),
   dots('Also deploys', `as a full Streamlit server on Modal (${A('modal_app.py')})`),
-  dots('Licence', `Apache 2.0 (${A('LICENSE')}). Copy protection: none. Help yourself`),
+  dots('Licence', `Apache 2.0 (${A('LICENSE')}). Lock-in: none. Help yourself`),
   dots('The game', 'Satisfactory is by Coffee Stain Studios. This is an'),
   cont('unofficial fan project and has nothing to do with them'),
   dots('The dialect', 'PMD, the PC-98 music driver by M. Kajihara (KAJA).'),

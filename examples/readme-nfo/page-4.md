@@ -15,7 +15,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -30,7 +30,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -45,13 +45,13 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
 ---
 
-## 34 · Text-mode poster installer (Razor 1911, 2024-26)
+## 34 · Text-mode poster installer (2024-26)
 
 **Format: SVG** · [Copy this header](34-pc-07.md) · [pc-07](../../styles/pc.md#pc-07) · [Generator](src/34-pc-07.mjs)
 
@@ -80,7 +80,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 |                 ████     ██      ████ ██           ████    ████             |
 |                 ████     ██        ██ ██             ████████               |
 |                                                                             |
-| 152 STYLES / 13 FAMILIES / TEXT + SVG / MIT                                 |
+| 153 STYLES / 13 FAMILIES / TEXT + SVG / MIT                                 |
 |                                                                             |
 | COPY TO: your-next-repo/README.md                                           |
 |                                                                             |
@@ -107,7 +107,7 @@ STYLE COVERAGE COMPO
 - ---- -------------------------------------------------------------- ---- -
  Rank  Cards  Family
 
- 01.    18   Hacker, phreak and zine culture
+ 01.    19   Hacker, phreak and zine culture
  02.    17   Vaporwave and internet-era aesthetics
  03.    14   C64, Amiga and Atari ST
  04.    14   PC cracktros and keygen intros
@@ -125,13 +125,13 @@ STYLE COVERAGE COMPO
 
 DELIVERY COMPO
 - ---- -------------------------------------------------------------- ---- -
- 01.   152   Researched style cards             by styles/
+ 01.   153   Researched style cards             by styles/
  02.    40   README.NFO header candidates         by examples/readme-nfo/
  03.    13   Distinct visual families           by the catalogue
  04.     2   Header formats: text art + SVG     by the examples
 
 ----------------------------------------------------------------------------
- 152 distinct styles / 13 families / original recipes / MIT licence
+ 153 distinct styles / 13 families / original recipes / MIT licence
  <a href="../../styles/INDEX.md">[ STYLE CATALOGUE ]</a>   <a href="README.md">[ ALL CANDIDATES ]</a>   <a href="../../LICENSE">[ MIT LICENCE ]</a>
 ----------------------------------------------------------------------------
 </pre>
@@ -147,7 +147,7 @@ DELIVERY COMPO
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -163,7 +163,7 @@ DELIVERY COMPO
 |                           PUBLIC FILES / 2026                            |
 +--------------------------------------------------------------------------+
 |                  Retro headers for your next repository                  |
-|               152 styles / 13 families / text + SVG / MIT                |
+|               153 styles / 13 families / text + SVG / MIT                |
 +--------------------------------------------------------------------------+
 
                               M A I N   I N D E X
@@ -185,7 +185,7 @@ DELIVERY COMPO
         ---------
         AREA           CONTENT                  POSITION
         ---------------------------------------------------------
-        styles/        152 researched looks     reference library
+        styles/        153 researched looks     reference library
         examples/      Markdown + SVG           finished productions
         tools/         build + preview          workshop
         LICENSE        MIT                      permission slip
@@ -208,7 +208,7 @@ DELIVERY COMPO
 
 ---
 
-## 38 · Vertical copper bars ('Kefrens bars' / 'Alcatraz bars'): ribbons twisting down the screen
+## 38 · Vertical copper bars: ribbons twisting down the screen
 
 **Format: ANIMATED SVG** · [Copy this header](38-c64-07.md) · [c64-07](../../styles/c64.md#c64-07) · [Generator](src/38-c64-07.mjs)
 
@@ -217,7 +217,7 @@ DELIVERY COMPO
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -232,7 +232,7 @@ DELIVERY COMPO
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -247,7 +247,7 @@ DELIVERY COMPO
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 

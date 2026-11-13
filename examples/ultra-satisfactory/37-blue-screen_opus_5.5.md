@@ -129,7 +129,7 @@ instead of a guess.
                       80 columns by 25 rows, two-pixel stems, no smoothing
     Game data ....... greeny/SatisfactoryTools
     Images .......... the Satisfactory Wiki, CC BY-NC-SA 4.0
-    Code ............ Apache 2.0. Protection: none. Dump it, fork it, ship it.
+    Code ............ Apache 2.0. Lock-in: none. Dump it, fork it, ship it.
     The game ........ Satisfactory, by Coffee Stain Studios. Not included and
                       not ours: this is an unofficial fan project.
 

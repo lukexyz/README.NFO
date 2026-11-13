@@ -402,7 +402,7 @@ push(rect(52, 11, 316, 11, 'url(#titleBar)'));
 push(rect(52, 22, 316, 1, '#020305'));
 // tiny dancing-man icon
 push(`<path fill="${C.lime}" d="${bitmapPath('#.###.#|.#.#.#.|..###..|...#...|..###..|.#...#.|.#...#.'.split('|'), 56, 13)}"/>`);
-push(text(f5, 'dance_vision_keygen.exe', 67, 12, `fill="${C.txt}"`));
+push(text(f5, 'dance_vision.exe', 67, 12, `fill="${C.txt}"`));
 push(spans(f5, [['[', C.dim], ['PPP', C.mag], [']', C.dim]], 296, 12));
 for (const [bx, glyph] of [[334, '_'], [347, 'x']]) {
   push(raised(bx, 12, 11, 10));
@@ -486,12 +486,12 @@ const logoDefs =
   push(g);
 }
 
-// crack credits under the logo
+// credits under the logo
 {
   const line = [
-    ['CRACKED BY ', C.dim], ['PERI-PERI POSSE', C.mag], ['  ·  ', C.dim2],
-    ['SUPPLIED BY ', C.dim], ['A BLOKE IN DALSTON', C.cyan], ['  ·  ', C.dim2],
-    ['PROTECTION: ', C.dim], ['NONE', C.lime],
+    ['MADE BY ', C.dim], ['PERI-PERI POSSE', C.mag], ['  ·  ', C.dim2],
+    ['TESTED BY ', C.dim], ['A BLOKE IN DALSTON', C.cyan], ['  ·  ', C.dim2],
+    ['LOCK-IN: ', C.dim], ['NONE', C.lime],
   ];
   push(spans(t3, line, Math.round((W - lineWidth(t3, line)) / 2), 74));
 }
@@ -502,7 +502,7 @@ push(sunken(MQ.x, MQ.y, MQ.w, MQ.h, C.lcd));
 push(rect(MQ.x + 1, MQ.y + 1, 44, MQ.h - 2, C.lime));
 push(text(f5, '♪ XM>', MQ.x + 6, MQ.y + 4, `fill="${C.lcd}"`));
 const tick =
-  '♪ now playing: dance_vision_keygen.xm ♪   4 channels, 1 tracker, 0 regrets   ::   ' +
+  '♪ now playing: dance_vision.xm ♪   4 channels, 1 tracker, 0 regrets   ::   ' +
   'phone in, telly out: not one frame of video leaves your phone, just 33 joints, one per rpm on your nan\'s records   ::   ' +
   'scan the qr, prop the phone against the telly, become a stick figure   ::   ' +
   'greetz to hackney, dalston, shoreditch, the 3am chicken shop and everyone still waiting for the overground   ::   ' +
@@ -519,13 +519,13 @@ const TICK_SPEED = 30; // logical px per second
 }
 push(rect(MQ.x + 1, MQ.y + 1, MQ.w - 2, MQ.h - 2, 'url(#scan)', 'shape-rendering="auto"'));
 
-// ---------------------------------------------------------------- NAME / SERIAL
+// ---------------------------------------------------------------- NAME / MOTTO
 const FX = 68;
 const FW = 188;
 const NAME_Y = 102;
 const SER_Y = 121;
 push(text(f5, 'NAME:', 22, NAME_Y + 4, `fill="${C.dim}"`));
-push(text(f5, 'SERIAL:', 22, SER_Y + 4, `fill="${C.dim}"`));
+push(text(f5, 'MOTTO:', 22, SER_Y + 4, `fill="${C.dim}"`));
 push(sunken(FX, NAME_Y, FW, 14));
 push(sunken(FX, SER_Y, FW, 14));
 const NAME = 'your phone + a telly';
@@ -533,7 +533,7 @@ push(text(f5, NAME, FX + 4, NAME_Y + 3, `fill="${C.txt}"`));
 push(rect(FX + 4 + [...NAME].length * 6, NAME_Y + 3, 5, 8, C.lime, 'class="caret"'));
 css.push('.caret{animation:blink 1s step-end infinite}@keyframes blink{50%{opacity:0}}');
 
-// The serial generator. Four phases of 5 s each, one serial per phase.
+// The motto generator. Four phases of 5 s each, one motto per phase.
 const PHASE = 5;
 const SERIALS = ['33-JOINTS-0-PIXELS', 'NO-APP-NO-ACCOUNT', 'PHONE-RELAY-TELLY', '3AM-CHICKEN-SHOP-DISCO'];
 const STATUS = [
@@ -553,7 +553,7 @@ const SCRAMBLE_DT = 0.06;
 const SCRAMBLE_CHARS = '0123456789ABCDEFGHJKLMNPQRSTUVWXYZ#$%&*+=?@';
 const maxLen = Math.max(...SERIALS.map((s) => s.length));
 // Every phase-timed element runs OFFSET seconds ahead, so the first thing a
-// visitor sees is serial #1 already cracked, then the next one generating.
+// visitor sees is motto #1 already resolved, then the next one generating.
 const OFFSET = 3;
 for (let i = 0; i < maxLen; i++) {
   const settle = T_SETTLE0 + i * T_STEP;
@@ -940,7 +940,7 @@ const defs =
 
 const svg =
   `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W * 2}" height="${H * 2}" shape-rendering="crispEdges">` +
-  `<title>Dance Vision keygen by the (fictional) PERi-PERi POSSE</title>` +
+  `<title>Dance Vision keygen-style dialog by the (fictional) PERi-PERi POSSE</title>` +
   `<style>${style}</style><defs>${defs}</defs>${parts.join('')}</svg>\n`;
 
 mkdirSync(dirname(OUT), { recursive: true });

@@ -4,7 +4,7 @@
 
 A curated starting point across three projects: eight animated previews and four text-only options. These picks favour different shapes, palettes and amounts of information, rather than ranking all the artwork.
 
-[Project README and copying instructions](../README.md) · [All 164 headers](README.md) · [Style index](../styles/INDEX.md)
+[Project README and copying instructions](../README.md) · [All headers](README.md) · [Style index](../styles/INDEX.md)
 
 ## Animated previews
 

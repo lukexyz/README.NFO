@@ -8,17 +8,17 @@ Browse [Text / ASCII, SVG, or styles that support both](INDEX.md#browse-by-outpu
 - One page per family (below): each style with what it looks like, palette, lettering, motion, how it becomes a README header, how to build it, what must not be copied, and links to the references.
 - [styles.json](styles.json): the same data, for the tool to read. `node tools/build-styles.mjs` rebuilds the pages from it.
 
-The six styles built before this research (scene NFO, Amiga cracktro, keygen dialog, C64 loader, CRT terminal, ANSI BBS) are in [../examples](../examples), and nothing here repeats them. Since then, every one of the 152 distinct styles here has been built as a header: 36 for ULTRA-SATISFACTORY ([../examples/ultra-satisfactory](../examples/ultra-satisfactory)) and the other 116 for Castaway ([../examples/castaway](../examples/castaway)). Each set's index links every header to its style entry.
+The six styles built before this research (scene NFO, Amiga cracktro, keygen dialog, C64 loader, CRT terminal, ANSI BBS) are in [../examples](../examples), and nothing here repeats them. Since then, every one of the 153 distinct styles here has been built as a header: of the original 152, 36 for ULTRA-SATISFACTORY ([../examples/ultra-satisfactory](../examples/ultra-satisfactory)) and the other 116 for Castaway ([../examples/castaway](../examples/castaway)), and the CLI startup banner for [README.NFO itself](../examples/readme-nfo/41-hack-19.md). Each set's index links every header to its style entry.
 
 ## The four things you asked for
 
-### "Where's the Razor 1911 one"
+### Late-90s PC intro looks
 
-There isn't one Razor 1911 cracktro look. Their logo and effects changed almost every release across 40 years. The one thing that stayed the same is the NFO: the same brush-script logo, signed by JED of ACiD, opens their NFOs from 1994 to 2023. So "the Razor one" is seven styles:
+There isn't one PC intro look. The best-known logos and effects changed almost every release across 40 years. The one thing that stayed the same is the NFO: the same brush-script logo, signed by JED, opened NFOs from 1994 to 2023. So that look is seven styles:
 
 | ID | Style | Years |
 | --- | --- | --- |
-| [nfo-01](nfo.md#nfo-01) | Brush-script block logo NFO (also Fairlight's look) | 1992 to now |
+| [nfo-01](nfo.md#nfo-01) | Brush-script block logo NFO | 1992 to now |
 | [c64-05](c64.md#c64-05) | Amiga cracktro: logo plate, deep-blue panel, rainbow wavy text | 1990-91 |
 | [pc-01](pc.md#pc-01) | DOS cracktro: flat colour field, pixel logo, centred presents-text | 1996-98 |
 | [pc-12](pc.md#pc-12) | Neon cube field with scanlines | 2010-12 |
@@ -26,7 +26,7 @@ There isn't one Razor 1911 cracktro look. Their logo and effects changed almost 
 | [pc-07](pc.md#pc-07) | Text-mode poster installer: giant block letters in two flat colours | 2024-26 |
 | [pc-11](pc.md#pc-11) | BIOS setup screen that starts misbehaving | 2025 |
 
-A header can be drawn in any of these manners. It must not use the Razor 1911 name, numerals, logos or slogans as its own.
+A header can be drawn in any of these manners. It must not use any group's name, numerals, logos or slogans as its own.
 
 ### "Or chiptune ones"
 
@@ -47,16 +47,16 @@ All eleven tracker and player styles are in [trk.md](trk.md).
 
 ### "Other epic NFO ascii artist ones"
 
-| ID | School | Named artists and groups |
+| ID | School | Named artists |
 | --- | --- | --- |
-| [nfo-01](nfo.md#nfo-01) | PC brush-script block logo | JED of ACiD |
-| [nfo-02](nfo.md#nfo-02) | PC shaded block logo with fades and debris | Superior Art Creations: Roy, Hetero, cH, Ferrex, nerv |
-| [nfo-03](nfo.md#nfo-03) | Poster NFO: a full-canvas shaded painting with the text set inside | ISO-era release groups |
+| [nfo-01](nfo.md#nfo-01) | PC brush-script block logo | JED |
+| [nfo-02](nfo.md#nfo-02) | PC shaded block logo with fades and debris | Roy, Hetero, cH, Ferrex, nerv |
+| [nfo-03](nfo.md#nfo-03) | Poster NFO: a full-canvas shaded painting with the text set inside | 2000s NFO artists |
 | [nfo-06](nfo.md#nfo-06) | Amiga description logos: compact Topaz outline | Rotox, Enforcer, Rat, Skin |
 | [nfo-07](nfo.md#nfo-07) | Amiga colly era: full-width logos and page layout | Desoto, Stylez, Skin; Arclite, DeZign, Low Profile |
-| [nfo-08](nfo.md#nfo-08) | PC newschool: dollar-sign blob lettering | Remorse 1981 |
-| [ansi-01](ansi.md#ansi-01) | ANSI logo colly: gradient block letters between cut lines | ACiD, iCE, Blocktronics |
-| [ansi-03](ansi.md#ansi-03) | Illustrated ANSI: toon mascots and comic-book scrollers | Toon Goon of iCE, Blocktronics |
+| [nfo-08](nfo.md#nfo-08) | PC newschool: dollar-sign blob lettering | Tinyz, Necromancer, Necronite |
+| [ansi-01](ansi.md#ansi-01) | ANSI logo colly: gradient block letters between cut lines | 1990s and current ANSI artists |
+| [ansi-03](ansi.md#ansi-03) | Illustrated ANSI: toon mascots and comic-book scrollers | Toon Goon |
 
 Block-character art shows gaps between rows in GitHub's text blocks, so the shaded schools are best drawn as SVG from the character grid. The slash-and-underscore Amiga schools survive as plain text.
 
@@ -82,7 +82,7 @@ The researchers rated these 5 out of 5.
 | ID | Style | Build |
 | --- | --- | --- |
 | [pc-03](pc.md#pc-03) | Chrome spheres over a checkerboard | Medium |
-| [c64-11](c64.md#c64-11) | Spaceballs "State of the Art": silhouette cut out of moire rings | Medium |
+| [c64-11](c64.md#c64-11) | Moire silhouette demo: silhouette cut out of moire rings | Medium |
 | [trk-01](trk.md#trk-01) | ProTracker editor screen | Medium |
 | [nfo-02](nfo.md#nfo-02) | Shaded block NFO logo with fades and debris | Medium |
 | [nfo-03](nfo.md#nfo-03) | Poster NFO | Hard |

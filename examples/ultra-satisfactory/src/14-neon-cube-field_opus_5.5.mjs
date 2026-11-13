@@ -389,10 +389,10 @@ const LOGO = { y: 40 };
     + '</g>';
 }
 
-// ---------------------------------------------------------------- presents
+// ---------------------------------------------------------------- crew credit
 let presentsSvg = '';
 {
-  const str = `${CREW}  PRESENTS`;
+  const str = `${CREW}  UNVEILS`;
   const cell = 7.5; // letter-spaced
   const wpx = (str.length - 1) * cell * 1.5 + 5 * 1.5;
   const x = (W - wpx) / 2;
@@ -417,7 +417,7 @@ const PAGES = [
   ],
   [
     [['NO INSTALL: ', 'w'], ['lukexyz.github.io/ULTRA-SATISFACTORY', 'y']],
-    [['UNOFFICIAL FAN PROJECT · PROTECTION: ', 'w'], ['NONE', 'c'], [", IT'S APACHE 2.0", 'w']],
+    [['UNOFFICIAL FAN PROJECT · LOCK-IN: ', 'w'], ['NONE', 'c'], [", IT'S APACHE 2.0", 'w']],
   ],
 ];
 let pagesSvg = '';
@@ -537,9 +537,9 @@ const body = [backSvg, starSvg, fieldSvg, signsSvg, presentsSvg, logoSvg, pagesS
 css.push('@media (prefers-reduced-motion:reduce){*{animation-play-state:paused!important}}');
 
 const desc = `A demoscene cube field: a floor of ${cubes.length} small glowing cubes in an isometric grid, coloured as one rainbow, rolling in a slow wave under scanlines. `
-  + `${CREW} presents ULTRA SATISFACTORY on a segment display. A text writer types: a companion app for the factory game Satisfactory, every recipe, building and Space Elevator objective, one click apart; `
+  + `${CREW} unveils ULTRA SATISFACTORY on a segment display. A text writer types: a companion app for the factory game Satisfactory, every recipe, building and Space Elevator objective, one click apart; `
   + '140 items, 211 recipes (88 alternate), 477 buildings, 5 Space Elevator phases; python -m pip install -r requirements.txt, then python -m streamlit run app/app.py; '
-  + "no install at lukexyz.github.io/ULTRA-SATISFACTORY; unofficial fan project; protection none, it's Apache 2.0. "
+  + "no install at lukexyz.github.io/ULTRA-SATISFACTORY; unofficial fan project; lock-in none, it's Apache 2.0. "
   + 'Three signs stand on the floor, one per tab: OBJECTIVES, ITEMS, BUILDINGS.';
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="ti de">

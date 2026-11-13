@@ -15,7 +15,7 @@ const OPTIONS=[
   {
     "slug": "03-nfo-02",
     "id": "nfo-02",
-    "name": "PC NFO: shaded block logo with fades and debris (SAC school)",
+    "name": "PC NFO: shaded block logo with fades and debris",
     "family": "nfo"
   },
   {
@@ -51,7 +51,7 @@ const OPTIONS=[
   {
     "slug": "09-pc-12",
     "id": "pc-12",
-    "name": "Neon cube field: the rez-era Razor look",
+    "name": "Neon cube field: the 2010-era scanline look",
     "family": "pc"
   },
   {

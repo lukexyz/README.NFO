@@ -28,7 +28,7 @@ const image=svg({height:424,background:'#e7e4db',title:'README.NFO — cassette 
     <path d="M533 80V241M557 80V241" stroke="#263848" stroke-width="1"/>
     <g transform="translate(551 91) rotate(90)">${px('RETRO ARCHIVE',0,0,2,'#243549')}</g>
     <rect x="522" y="252" width="232" height="112" fill="#f6f2e6"/>
-    ${px('README.NFO',546,270,3,'#252e38')}${px('RETRO HEADERS',547,310,2,'#2978b0')}${px('152 STYLES / 13 FAMILIES',537,341,1,'#394452')}
+    ${px('README.NFO',546,270,3,'#252e38')}${px('RETRO HEADERS',547,310,2,'#2978b0')}${px('153 STYLES / 13 FAMILIES',537,341,1,'#394452')}
     <rect x="754" y="70" width="155" height="294" fill="#f6f2e6"/>
     <path d="M754 70V364" stroke="#d1cabb" stroke-dasharray="3 4"/>
     ${px('SIDE A',770,88,2,'#2978b0')}${px('01 STYLES',770,121,1.6,'#283544')}${px('02 EXAMPLES',770,149,1.6,'#283544')}${px('03 PREVIEW',770,177,1.6,'#283544')}

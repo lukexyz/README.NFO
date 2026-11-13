@@ -10,7 +10,7 @@ This family is the plumbing around a release, not the release itself: the screen
 
 | ID | Style | Medium | Build | Impact |
 | --- | --- | --- | --- | --- |
-| [xfer-01](#xfer-01) | Topsite race: zipscript box, progress-bar directory and complete bar | Text / ASCII | Easy | 4/5 |
+| [xfer-01](#xfer-01) | FTP upload race: zipscript box, progress-bar directory and complete bar | Text / ASCII | Easy | 4/5 |
 | [xfer-02](#xfer-02) | FidoNet echomail message in a GoldED reader (with the Russian CP866 variant) | Text / ASCII + SVG | Easy | 4/5 |
 | [xfer-03](#xfer-03) | XDCC pack list: numbered packs, gets, sizes and the slots line | Text / ASCII | Easy | 3/5 |
 | [xfer-04](#xfer-04) | Userbar kit: the 350x19 forum signature strip | Static SVG | Easy | 3/5 |
@@ -25,11 +25,11 @@ This family is the plumbing around a release, not the release itself: the screen
 
 <a name="xfer-01"></a>
 
-## xfer-01 · Topsite race: zipscript box, progress-bar directory and complete bar
+## xfer-01 · FTP upload race: zipscript box, progress-bar directory and complete bar
 
 **Text / ASCII** · build: **Easy** · impact: **4/5** · 1998-2008, private FTP topsites running glFTPd (first public release early 1998) with the Project-ZS zipscript (development stopped 2002) and its successor pzs-ng (from April 2004)
 
-A topsite is a private high-bandwidth FTP server where release groups pre and couriers race files for upload credits. After every uploaded file the server's zipscript checks it against the release's SFV and answers with a small ASCII box, and it keeps a fake directory in the listing whose name is a progress bar. Racers never saw a GUI for this: the site spoke to them in framed monospace text inside their FTP client's log.
+An FTP upload race shown as framed monospace text: a check box after every file and a progress-bar directory name. A topsite is a private high-bandwidth FTP server where release groups pre and couriers race files for upload credits. After every uploaded file the server's zipscript checks it against the release's SFV and answers with a small ASCII box, and it keeps a fake directory in the listing whose name is a progress bar. Racers never saw a GUI for this: the site spoke to them in framed monospace text inside their FTP client's log.
 
 **What it looks like**
 
@@ -248,7 +248,7 @@ This is the caller's side of a BBS: the program you ran at home to make the mode
 
 **Animated SVG** · build: **Easy** · impact: **3/5** · About 2002-2008, invite-only IRC channels attached to topsites; the bot is an Eggdrop (first written December 1993 by Robey Pointer) running a Tcl announce script such as pzs-ng's dZSbot
 
-Every topsite had a private IRC channel where a bot narrated the site's life one line at a time: a new directory appears, someone starts racing, the halfway mark, a new leader, completion with a hall of fame, a pre, a nuke. It is a sports commentary for file transfers, and the fixed-width tags in square brackets make a channel log read like a results ticker.
+An IRC bot narrating an FTP site's uploads one bracketed line at a time, like a results ticker. Every topsite had a private IRC channel where a bot narrated the site's life one line at a time: a new directory appears, someone starts racing, the halfway mark, a new leader, completion with a hall of fame, a pre, a nuke. It is a sports commentary for file transfers, and the fixed-width tags in square brackets make a channel log read like a results ticker.
 
 **What it looks like**
 

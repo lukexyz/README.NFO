@@ -733,7 +733,7 @@ const about = [
   '[credits]',
   'game_data    = greeny/SatisfactoryTools',
   'images       = the Satisfactory Wiki (CC BY-NC-SA 4.0)',
-  'licence      = Apache 2.0, for the code. copy protection: none. remix it',
+  'licence      = Apache 2.0, for the code. lock-in: none. remix it',
   'visualiser   = a homage to MilkDrop by Ryan Geiss. the look only: no preset,',
   '               no code and no artwork was borrowed. nothing is listening',
   '',

@@ -15,7 +15,7 @@ Keep the numbers of your favourites. Each header below is also saved in its own 
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -47,7 +47,7 @@ screen keys on your chosen BASIC system. Keep your favourite style.
 110 IF N=2 THEN GOSUB 1100                    :REM 239
 120 IF N=3 THEN GOSUB 1200                    :REM 242
 130 GOTO 80                                   :REM 117
-200 DATA 152,13,2026,10,5,0                   :REM  84
+200 DATA 153,13,2026,10,5,0                   :REM  85
 1000 PRINT &quot;STYLES/INDEX.MD&quot;:RETURN           :REM  54
 1100 PRINT &quot;EXAMPLES/README.MD&quot;:RETURN        :REM 232
 1200 PRINT &quot;NPM RUN PREVIEW&quot;:RETURN           :REM  48
@@ -73,7 +73,7 @@ brace tokens are counted literally, before keyboard substitution.
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -88,7 +88,7 @@ brace tokens are counted literally, before keyboard substitution.
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -99,11 +99,11 @@ brace tokens are counted literally, before keyboard substitution.
 **Format: ANIMATED SVG** · [Copy this header](25-pc-13.md) · [pc-13](../../styles/pc.md#pc-13) · [Generator](src/25-pc-13.mjs)
 
 <p align="center">
-  <img src="assets/25-pc-13.svg" width="100%" alt="README.NFO beside a translucent rotating cyan icosahedron, with 152 styles, thirteen families and MIT licence.">
+  <img src="assets/25-pc-13.svg" width="100%" alt="README.NFO beside a translucent rotating cyan icosahedron, with 153 styles, thirteen families and MIT licence.">
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -118,7 +118,7 @@ brace tokens are counted literally, before keyboard substitution.
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -133,7 +133,7 @@ brace tokens are counted literally, before keyboard substitution.
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 
@@ -148,7 +148,7 @@ brace tokens are counted literally, before keyboard substitution.
 ```text
 README.NFO / ARCHIVE MENU / DISK 028
 
-1 ... STYLE CATALOGUE .............. 152 STYLES
+1 ... STYLE CATALOGUE .............. 153 STYLES
 2 ... EXAMPLE GALLERIES ............ 13 FAMILIES
 3 ... PREVIEW + VALIDATE ........... LOCAL TOOLS
 SPACE ... COPY, CUSTOMISE, SHARE ... MIT
@@ -168,7 +168,7 @@ SPACE ... COPY, CUSTOMISE, SHARE ... MIT
 README.NFO / RETRO HEADER ARCHIVE
 
 - SELECT YOUR NEXT LOOK -
-STYLE CATALOGUE  ...........................  152
+STYLE CATALOGUE  ...........................  153
 VISUAL FAMILIES  ...........................  013
 TEXT + SVG  ................................  YES
 EDITABLE SOURCES  ..........................  YES
@@ -205,12 +205,12 @@ OPEN THE ARCHIVE / COPY / CUSTOMISE / SHARE
 ┌─ README.NFO ────────────────────────────────────────────┐
 │ RETRO HEADERS / TEXT + SVG                              │
 ├──────────────────┬───────────────────┬──────────────────┤
-│ 152 STYLES       │ 13 FAMILIES       │ MIT LICENCE      │
+│ 153 STYLES       │ 13 FAMILIES       │ MIT LICENCE      │
 │ RESEARCHED       │ VISUAL CATALOGUE  │ COPY + REUSE     │
 └──────────────────┴───────────────────┴──────────────────┘
 ```
 
-[152 researched styles](../../styles/INDEX.md) · [Example galleries](../README.md) · [MIT licence](../../LICENSE)
+[153 researched styles](../../styles/INDEX.md) · [Example galleries](../README.md) · [MIT licence](../../LICENSE)
 
 ---
 

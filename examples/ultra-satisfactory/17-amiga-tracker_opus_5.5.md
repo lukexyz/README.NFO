@@ -114,7 +114,7 @@ STATUS LINE, IN ORDER OF APPEARANCE
 CREDITS
   Game data ....... greeny/SatisfactoryTools
   Item images ..... Satisfactory Wiki, CC BY-NC-SA 4.0
-  Code ............ Apache 2.0. Protection: none. Copy it to a friend.
+  Code ............ Apache 2.0. Lock-in: none. Copy it to a friend.
   Unofficial fan project, not affiliated with Coffee Stain Studios.
 ```
 

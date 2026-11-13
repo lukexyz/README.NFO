@@ -5,7 +5,7 @@
 </p>
 
 <p align="center"><b>README.NFO</b> — retro headers for your next repository.<br>
-152 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
+153 styles, thirteen families, text art and animated SVG. Pick a look. Make it yours.</p>
 
 <p align="center"><a href="../../styles/INDEX.md">Style catalogue</a> · <a href="../README.md">Example galleries</a> · <a href="../../LICENSE">MIT licence</a></p>
 

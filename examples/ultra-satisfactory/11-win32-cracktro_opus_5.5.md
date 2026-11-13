@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="assets/11-win32-cracktro_opus_5.5.svg" width="100%" alt="A README banner in the style of a mid-2000s Windows cracktro. TORQUE DIRTY presents ULTRA-SATISFACTORY as a bevelled chrome logo: ULTRA in cyan chrome above SATISFACTORY in silver, standing on a mirror floor with its reflection, stars flying outward behind it, a sheen sweeping across the letters. On each side a square steel girder (one face hazard tape, one riveted plate, one a cyan light bar, one a lattice truss) is twisted like a wrung towel between two chucks. A text writer types three pages: a companion app for the factory game Satisfactory, every recipe, building and Space Elevator objective, one click apart, tabs Objectives, Items and Buildings; then the two commands to run it and the no-install address lukexyz.github.io/ULTRA-SATISFACTORY; then 140 items, 211 recipes (88 alternate), 477 buildings, 5 Space Elevator phases, protection none (Apache 2.0), unofficial fan project. Along the bottom a gold dot-matrix scroller rides a sine wave.">
+  <img src="assets/11-win32-cracktro_opus_5.5.svg" width="100%" alt="A README banner in the style of a mid-2000s Windows cracktro. TORQUE DIRTY unveils ULTRA-SATISFACTORY as a bevelled chrome logo: ULTRA in cyan chrome above SATISFACTORY in silver, standing on a mirror floor with its reflection, stars flying outward behind it, a sheen sweeping across the letters. On each side a square steel girder (one face hazard tape, one riveted plate, one a cyan light bar, one a lattice truss) is twisted like a wrung towel between two chucks. A text writer types three pages: a companion app for the factory game Satisfactory, every recipe, building and Space Elevator objective, one click apart, tabs Objectives, Items and Buildings; then the two commands to run it and the no-install address lukexyz.github.io/ULTRA-SATISFACTORY; then 140 items, 211 recipes (88 alternate), 477 buildings, 5 Space Elevator phases, lock-in none (Apache 2.0), unofficial fan project. Along the bottom a gold dot-matrix scroller rides a sine wave.">
 </p>
 
 <p align="center">
   ⚡ <b>ULTRA-SATISFACTORY</b>: every recipe, building and Space Elevator objective, one click apart.<br>
-  <sub>⚡ wrung out by TORQUE DIRTY &middot; protection: none, it's Apache 2.0 &middot; an unofficial fan project, not affiliated with Coffee Stain Studios</sub>
+  <sub>⚡ wrung out by TORQUE DIRTY &middot; lock-in: none, it's Apache 2.0 &middot; an unofficial fan project, not affiliated with Coffee Stain Studios</sub>
 </p>
 
 ⚡ A companion app for the factory-building game *Satisfactory*. It lives next to the game (the other monitor, a phone, the far side of an alt-tab) and answers the 3&nbsp;a.m. question: what goes into that, how many a minute, and which machine do I blame? Your spreadsheet may now retire.
@@ -34,7 +34,7 @@ python -m streamlit run app/app.py
 ```text
 [=====o=====]                                                      [=====o=====]
   |=======|                T O R Q U E     D I R T Y                |##|\\\\\\|
- |#|=======|                    proudly presents                   |####|\\\\\\|
+ |#|=======|                    proudly unveils                    |####|\\\\\\|
 |####|======|                                                      |#####|\\\\\|
 |######|====|     ╔═════════════════════════════════════════╗      |######|\\\\|
 |#######|===|     ║   U L T R A - S A T I S F A C T O R Y   ║      |#######|\\\|
@@ -45,7 +45,7 @@ python -m streamlit run app/app.py
 |////|######|   WHAT ......... companion app for Satisfactory      |====|######|
 |/////|#####|   INSIDE ....... 140 items, 211 recipes (88 alt),    |======|####|
 |//////|####|                  477 buildings, 5 elevator phases     |======|##|
-|///////|###|   PROTECTION ... none. It is Apache 2.0.               |=======|
+|///////|###|   LOCK-IN ...... none. It is Apache 2.0.               |=======|
  |///////|#|    REQUIRES ..... Python 3.10+, or a browser tab       |X|=======|
   |///////|     DIRECTX ...... not required                        |XXXXX|=====|
  ||////////|    INTRO ........ 1 SVG, 0 lines of JavaScript        |XXXXXXX|===|

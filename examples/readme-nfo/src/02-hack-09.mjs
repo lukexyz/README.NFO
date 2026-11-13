@@ -14,7 +14,7 @@ Welcome, visitor. Your adventure begins with a blank README.
 
 README.NFO — The Hall of First Impressions
 You stand beneath an arch made of glowing text. Thirteen doors
-lead to 152 different styles: terminals, trackers, arcades and
+lead to 153 different styles: terminals, trackers, arcades and
 stranger places. Every header is yours to copy and customise.
 A small brass plaque beside the door reads: MIT.
 

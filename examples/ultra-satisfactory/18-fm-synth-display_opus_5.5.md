@@ -14,7 +14,7 @@
 - ⚡ `03 RUN.OPM` **[Run it locally](#run-it-locally)**: two commands and Python 3.10+, from the repo root. They are right under this list.
 - ⚡ `04 BUILT.OPM` **[How it's built](#how-its-built)**: Python, one Streamlit app ([`app/app.py`](app/app.py)), streamlit-aggrid for the grids, stlite for the browser build.
 - ⚡ `05 CREDITS.OPM` **[Data & credits](#data--credits)**: game data from greeny/SatisfactoryTools, images from the Satisfactory Wiki.
-- ⚡ `06 LICENSE.OPM` **[License](#license)**: [Apache 2.0](LICENSE). Protection: none. Copy it, fork it, clip it through a wall and pretend not to notice.
+- ⚡ `06 LICENSE.OPM` **[License](#license)**: [Apache 2.0](LICENSE). Lock-in: none. Copy it, fork it, clip it through a wall and pretend not to notice.
 
 ```sh
 python -m pip install -r requirements.txt

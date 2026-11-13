@@ -151,7 +151,7 @@ python -m streamlit run app/app.py     # then open http://localhost:8501
   images ................ the Satisfactory Wiki (CC BY-NC-SA 4.0)
   the game .............. Satisfactory, by Coffee Stain Studios. Not
                           included, not ours, not affiliated.
-  protection ............ none. It's Apache 2.0. Read it, fork it.
+  lock-in ............... none. It's Apache 2.0. Read it, fork it.
 
  GREETZ (invented, every one)
   Hex Shift Union, Local 0F · the Wrong-Way Belt Quartet · the Clipped

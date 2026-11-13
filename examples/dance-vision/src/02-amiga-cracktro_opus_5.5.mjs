@@ -414,7 +414,7 @@ const SPOT_MOVE = 0.5;
 // ------------------------------------------------------------ sine scroller
 const SCROLL = [
   'NO VIDEO LEAVES THE PHONE: JUST JOINTS! ',
-  '      YO HACKNEY! THE JOINT VENTURE PROUDLY PRESENTS ... DANCE VISION!  ^ ^ ^  ',
+  '      YO HACKNEY! THE JOINT VENTURE PROUDLY UNVEILS ... DANCE VISION!  ^ ^ ^  ',
   'YOUR PHONE IS THE MOCAP RIG, YOUR TELLY IS THE DANCE FLOOR.  ',
   'SCAN THE QR, PROP THE PHONE AGAINST THE TELLY AND BOOM: YOU ARE A STICK FIGURE ON TV.  ',
   "NO APP. NO ACCOUNT. THE POSE MODEL RUNS IN THE PHONE'S BROWSER AND ONLY 33 JOINTS (X,Y,Z) ",
@@ -429,7 +429,7 @@ const SCROLL = [
   'BIG SHOUT TO THE PURPLE ONE ON THE RIGHT: HALF A BEAT LATE SINCE 2021.  ',
   'GREETZ: DALSTON DISCO DIVISION * KINGSLAND ROAD KNEE POPPERS * HOMERTON HIP ENGINEERS * ',
   'EVERYONE STILL WAITING FOR THE OVERGROUND * WHOEVER DID THE WORM IN THE CHICKEN SHOP AT 3AM.  ',
-  "PROTECTION: NONE. DIGNITY: ALSO NONE.  $ $ $  LET'S WRAP ...        ",
+  "LOCK-IN: NONE. DIGNITY: ALSO NONE.  $ $ $  LET'S WRAP ...        ",
 ].join('');
 const SPEED = 80; // px per second
 const WAVE = 160; // wavelength in px
@@ -504,7 +504,7 @@ const HUES = ['#ff2a55', '#ff5a2a', '#ff9a1a', '#ffd21a', '#d6ff2a', '#6aff3a', 
 // tiny text lines
 {
   const top = new Grid(W, H);
-  const presents = '-=*  THE JOINT VENTURE PRESENTS  *=-';
+  const presents = '-=*  A JOINT VENTURE PRODUCTION  *=-';
   drawTiny(top, presents, Math.round((W - tinyWidth(presents)) / 2), PRESENTS_Y);
   body.push(`<path class="aa" fill="#8c8cff" d="${gridPath(top)}"/>`);
   const subA = 'YOUR PHONE IS THE MOCAP RIG';

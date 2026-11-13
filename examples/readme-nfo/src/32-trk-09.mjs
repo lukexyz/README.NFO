@@ -22,7 +22,7 @@ for(const [i,c] of cells.entries()) {
 }
 const image=svg({height:374,background:'#000',defs,
   css:'.trace{animation:run 7s linear infinite}.hash{animation:run 6s steps(24) infinite}@keyframes run{to{transform:translateX(-160px)}}',
-  description:'README.NFO in white above four oscilloscope cells. Styles use a pulse wave, examples a triangle, gallery an FM waveform and tools a noise trace. The collection has 152 styles and thirteen families.',
-  body:`${center('README.NFO',28,8,'#fff')}${center('152 STYLES / 13 FAMILIES / TEXT + SVG / MIT',96,1.8,'#9dc8ec')}${body}`
+  description:'README.NFO in white above four oscilloscope cells. Styles use a pulse wave, examples a triangle, gallery an FM waveform and tools a noise trace. The collection has 153 styles and thirteen families.',
+  body:`${center('README.NFO',28,8,'#fff')}${center('153 STYLES / 13 FAMILIES / TEXT + SVG / MIT',96,1.8,'#9dc8ec')}${body}`
 });
 writeHeader(32,{image,summary:'Four clean white scopes give the styles, examples, gallery and tools their own waveform personality.',alt:'README.NFO with four white oscilloscope traces labelled styles, examples, gallery and tools on a black background.'});

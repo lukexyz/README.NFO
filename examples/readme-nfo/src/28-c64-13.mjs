@@ -23,11 +23,11 @@ const image=svg({height:444,background:'#050000',title:'README.NFO — menu disk
     <rect x="35" y="151" width="501" height="167" fill="#15040b" stroke="#dd5544" stroke-width="2"/>
     ${px('1...STYLE CATALOGUE',59,173,3,'#ffffaa')}${px('2...EXAMPLE GALLERIES',59,210,3,'#ffffff')}${px('3...PREVIEW + VALIDATE',59,247,3,'#ffffff')}${px('SPACE...MAKE IT YOURS',59,284,2.5,'#ffcc77')}
     <rect x="572" y="139" width="280" height="177" fill="#13000d" stroke="#aa4466" stroke-width="3"/>${picture}
-    ${px('152 STYLES / 13 FAMILIES',578,297,1.6,'#fff0aa')}
+    ${px('153 STYLES / 13 FAMILIES',578,297,1.6,'#fff0aa')}
     <rect x="24" y="342" width="912" height="69" fill="#0c0312"/><path d="M24 342H936M24 411H936" stroke="#dd6644" stroke-width="2"/>
     <g clip-path="url(#scrollclip)"><g class="scroll">${scroller}</g></g>
     ${px('SELECT A SECTION ABOVE. COPY / CUSTOMISE / SHARE UNDER MIT.',35,425,1.6,'#ffd2aa')}`});
-const entries=['1 ... STYLE CATALOGUE .............. 152 STYLES','2 ... EXAMPLE GALLERIES ............ 13 FAMILIES','3 ... PREVIEW + VALIDATE ........... LOCAL TOOLS','SPACE ... COPY, CUSTOMISE, SHARE ... MIT'];
+const entries=['1 ... STYLE CATALOGUE .............. 153 STYLES','2 ... EXAMPLE GALLERIES ............ 13 FAMILIES','3 ... PREVIEW + VALIDATE ........... LOCAL TOOLS','SPACE ... COPY, CUSTOMISE, SHARE ... MIT'];
 const text=['README.NFO / ARCHIVE MENU / DISK 028','',...entries].join('\n');
 const markdown=`<p align="center"><img src="assets/28-c64-13.svg" width="100%" alt="README.NFO menu disk with orange logo, red rasters, numbered menu and pixel sunset"></p>\n\n\`\`\`text\n${text}\n\`\`\`\n\n[1: Styles](../../styles/INDEX.md) · [2: Examples](../README.md) · [3: Preview tools](../../tools/preview.mjs) · [Space: MIT reuse](../../LICENSE)`;
 writeHeader(28,{image,markdown,summary:'A menu disk with red scanline rasters, warm logo, numbered keys and a pixel sunset.'});

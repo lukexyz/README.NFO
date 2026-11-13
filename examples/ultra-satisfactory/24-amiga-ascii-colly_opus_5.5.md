@@ -20,12 +20,12 @@
 :   <b>02</b> · <a href="#run-it-locally">rUN iT lOCALLY</a> .... tWO cOMMANDS aND a pYTHON
 :   <b>03</b> · <a href="#how-its-built">hOW iT'S bUiLT</a> .... oNE sTREAMLiT fiLE, oNE vERY lARGE jSON
 :   <b>04</b> · <a href="#data--credits">dATA &amp; cREDiTS</a> .... rESPECTS wHERE tHEY aRE dUE
-:   <b>05</b> · <a href="#license">liCENSE</a> ........... aPACHE 2.0. pROTECTiON: nONE.
+:   <b>05</b> · <a href="#license">liCENSE</a> ........... aPACHE 2.0. lOCK-iN: nONE.
 </pre>
 
 ⚡ Keep it open beside the game: second monitor, phone, or one alt-tab away. Three tabs. **Objectives**: pick a Space Elevator phase and see the parts it wants and how many. **Items**: search as you type, and every recipe card shows per-minute rates, the machine, its cycle time and its power draw. **Buildings**: every building and what it makes, grouped by tier, with Mk-by-Mk upgrade paths. Everything links, so finding out which input your Assembler is starving for costs one click and none of your dignity.
 
-⚡ [Open it live in your browser](https://lukexyz.github.io/ULTRA-SATISFACTORY/): nothing to install, no modem required. Or run it yourself with Python 3.10+ and the two commands under [Run it locally](#run-it-locally). Unofficial fan project, not affiliated with Coffee Stain Studios. Protection: none, it is Apache 2.0. The crew, the artist, the board and everyone in the greets exist only in this file.
+⚡ [Open it live in your browser](https://lukexyz.github.io/ULTRA-SATISFACTORY/): nothing to install, no modem required. Or run it yourself with Python 3.10+ and the two commands under [Run it locally](#run-it-locally). Unofficial fan project, not affiliated with Coffee Stain Studios. Lock-in: none, it is Apache 2.0. The crew, the artist, the board and everyone in the greets exist only in this file.
 
 <details>
 <summary>⚡ <b>m&amp;c!-uSAT.tXT</b>: the whole collection as the text file it is. Three more logos, a recipe card, greets and respects</summary>
@@ -68,7 +68,7 @@
 :   <b>02</b> · <a href="#run-it-locally">rUN iT lOCALLY</a> .... tWO cOMMANDS aND a pYTHON                         :
 :   <b>03</b> · <a href="#how-its-built">hOW iT'S bUiLT</a> .... oNE sTREAMLiT fiLE, oNE vERY lARGE jSON           :
 :   <b>04</b> · <a href="#data--credits">dATA &amp; cREDiTS</a> .... rESPECTS wHERE tHEY aRE dUE                       :
-:   <b>05</b> · <a href="#license">liCENSE</a> ........... aPACHE 2.0. pROTECTiON: nONE.                     :
+:   <b>05</b> · <a href="#license">liCENSE</a> ........... aPACHE 2.0. lOCK-iN: nONE.                        :
 :                                                                              :
 :    ___________                                                               :
 : __/ <b>i N T R O</b> \_____________________________________________________________ :
@@ -80,8 +80,8 @@
 :   second monitor, phone, or one alt-tab away. three tabs, and everything     :
 :   is a link. click an ingredient or a product for its recipe, the machine    :
 :   for its building. it is an unofficial fan project, not affiliated with     :
-:   coffee stain studios, and it is free: apache 2.0, no protection to         :
-:   remove.                                                                    :
+:   coffee stain studios, and it is free: apache 2.0, nothing is locked        :
+:   away. help yourself.                                                       :
 :                                                                              :
 :                                                                              :
 :         ______ _____      __ ______ ______ ______ __ __  __ ______ ______    :

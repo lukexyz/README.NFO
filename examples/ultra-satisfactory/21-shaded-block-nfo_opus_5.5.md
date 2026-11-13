@@ -1,11 +1,11 @@
 <!-- Header 21-shaded-block-nfo_opus_5.5 for ULTRA-SATISFACTORY. The banner is drawn by src/21-shaded-block-nfo_opus_5.5.mjs: edit that and re-run it. -->
 
 <p align="center">
-  <img src="assets/21-shaded-block-nfo_opus_5.5.svg" width="800" alt="ULTRA-SATISFACTORY, drawn as a 1990s shaded block NFO: a text screen built from block and dither characters. The crew MERGED CELLS presents ULTRA in cyan slab capitals with a dithered shadow down the right of every stroke, each stem dissolving below the baseline through dark, medium and light shade into single dots. Under a thin frame rule, SATISFACTORY is set in grey two-tone capitals, with debris scattered round both words, broken bands of light shade behind them and frame walls of fading shade blocks down both margins. A highlight sweeps across the logo one character cell at a time. Caption: every recipe, building and objective, one click apart. Two headings in a three-row half-block font grow out of the frame. WHAT IT IS: release ULTRA-SATISFACTORY, type Satisfactory companion app, status unofficial fan project, protection none (it's Apache 2.0), 140 craftable items, 211 recipes of which 88 are alternates, 477 player-buildable buildings, 5 Space Elevator phases. Three tabs: Objectives, Items, Buildings. RUN IT: python -m pip install -r requirements.txt, then python -m streamlit run app/app.py, or open lukexyz.github.io/ULTRA-SATISFACTORY in a browser. Footer: greetz to every spreadsheet that outgrew its factory. Signed dr!MRG.">
+  <img src="assets/21-shaded-block-nfo_opus_5.5.svg" width="800" alt="ULTRA-SATISFACTORY, drawn as a 1990s shaded block NFO: a text screen built from block and dither characters. The crew MERGED CELLS unveils ULTRA in cyan slab capitals with a dithered shadow down the right of every stroke, each stem dissolving below the baseline through dark, medium and light shade into single dots. Under a thin frame rule, SATISFACTORY is set in grey two-tone capitals, with debris scattered round both words, broken bands of light shade behind them and frame walls of fading shade blocks down both margins. A highlight sweeps across the logo one character cell at a time. Caption: every recipe, building and objective, one click apart. Two headings in a three-row half-block font grow out of the frame. WHAT IT IS: release ULTRA-SATISFACTORY, type Satisfactory companion app, status unofficial fan project, lock-in none (it's Apache 2.0), 140 craftable items, 211 recipes of which 88 are alternates, 477 player-buildable buildings, 5 Space Elevator phases. Three tabs: Objectives, Items, Buildings. RUN IT: python -m pip install -r requirements.txt, then python -m streamlit run app/app.py, or open lukexyz.github.io/ULTRA-SATISFACTORY in a browser. Footer: greetz to every spreadsheet that outgrew its factory. Signed dr!MRG.">
 </p>
 
 <p align="center">
-  ⚡ <b>ULTRA-SATISFACTORY</b> · a MERGED CELLS release · protection: none, it's <a href="LICENSE">Apache 2.0</a><br>
+  ⚡ <b>ULTRA-SATISFACTORY</b> · a MERGED CELLS release · lock-in: none, it's <a href="LICENSE">Apache 2.0</a><br>
   <sub>⚡ unofficial fan project, not affiliated with Coffee Stain Studios · the game is not included, go and buy it, it's very good</sub>
 </p>
 
@@ -29,7 +29,7 @@ python -m streamlit run app/app.py     # then open http://localhost:8501
       "somebody merged A1:F1. nothing has sorted since"
  ·:· ────────────────────────────────────────────────────────────────── ·:·
 
-                          p r e s e n t s
+                           u n v e i l s
 
                         ULTRA-SATISFACTORY
           every recipe, building & objective. one click apart.
@@ -40,9 +40,9 @@ python -m streamlit run app/app.py     # then open http://localhost:8501
    game data ....: greeny/SatisfactoryTools, with thanks (data/data.json)
    pictures .....: the Satisfactory Wiki, CC BY-NC-SA 4.0
    packager .....: one Streamlit app, app/app.py, grids by streamlit-aggrid
-   couriers .....: GitHub Actions, to GitHub Pages, on every push to main
+   delivery .....: GitHub Actions, to GitHub Pages, on every push to main
    also seen on .: Modal, as a full Streamlit server (modal_app.py)
-   protection ...: none. it's Apache 2.0. there was nothing to remove
+   lock-in ......: none. it's Apache 2.0. nothing is locked away
    the game .....: not included and not ours. buy it, it's very good
    affiliation ..: none. unofficial fan project, not Coffee Stain Studios
    contents .....: 140 craftable items, 211 machine recipes (88 of them
@@ -117,7 +117,7 @@ python -m streamlit run app/app.py     # then open http://localhost:8501
 
    overclocking is not a personality. underclocking is, regrettably.
 
-   wanted: one courier able to find the splitter that faces the wrong way.
+   wanted: one runner able to find the splitter that faces the wrong way.
    no experience needed. nobody has any.
 
  ───■ GREETZ ■─────────────────────────────────────────────────────────────

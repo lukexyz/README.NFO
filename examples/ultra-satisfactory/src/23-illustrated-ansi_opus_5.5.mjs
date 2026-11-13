@@ -735,7 +735,7 @@ const smoke = (x, y) => { toon([[circle(x + 4, y, 11), WHT]], 5); toon([[circle(
   const mid = (r, str, fg) => put(r, centre(str), str, fg);
   mid(E + 1, 'UNOFFICIAL FAN PROJECT. NOT AFFILIATED WITH COFFEE STAIN STUDIOS.', WHT);
   mid(E + 2, 'DATA: greeny/SatisfactoryTools · IMAGES: Satisfactory Wiki (CC BY-NC-SA 4.0)', LGR);
-  mid(E + 3, 'CODE: APACHE 2.0 · PROTECTION: NONE · DRAWN IN 16 COLOURS BY pj/SWF', LGR);
+  mid(E + 3, 'CODE: APACHE 2.0 · LOCK-IN: NONE · DRAWN IN 16 COLOURS BY pj/SWF', LGR);
   mid(E + 5, `SAUCE00 · ULTRA-SATISFACTORY · pallet jack · SWARF · 80x${ROWS} · iCE colors`, DGR);
 }
 

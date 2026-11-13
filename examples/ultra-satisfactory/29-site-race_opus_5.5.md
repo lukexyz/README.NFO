@@ -148,7 +148,7 @@ ftp&gt; <b>ls -R /elevator</b>
 </details>
 
 <details>
-<summary>⚡ <b>ftp&gt; site who</b> &nbsp;who is uploading right now, a few nukes, and the real credits</summary>
+<summary>⚡ <b>ftp&gt; site who</b> &nbsp;who is uploading right now, a few flags, and the real credits</summary>
 
 <pre>
 ftp&gt; <b>site who</b>
@@ -172,14 +172,14 @@ ftp&gt; <b>site who</b>
 ftp&gt; <b>site dupe screw</b>
 200- <b>Screw</b>: 1 Iron Rod -&gt; 4 Screw. Constructor, 6 s, 4 MW. 40/min.
 200  dupe. you already own nine storage boxes of these.
-ftp&gt; <b>site nuke Spaghetti.Bus.v2.FINAL-YOU 3 belts.run.the.wrong.way</b>
-200 nuked x3. the tidy-factory people send their regards.
-ftp&gt; <b>site nuke Load.Balancer.For.Two.Smelters-YOU 2 use.a.manifold</b>
-200 nuked x2. the manifold people send theirs.
-ftp&gt; <b>site nuke Pipe.Clipped.Through.A.Wall-YOU 1 we.all.saw.it</b>
+ftp&gt; <b>site flag Spaghetti.Bus.v2.FINAL-YOU 3 belts.run.the.wrong.way</b>
+200 flagged x3. the tidy-factory people send their regards.
+ftp&gt; <b>site flag Load.Balancer.For.Two.Smelters-YOU 2 use.a.manifold</b>
+200 flagged x2. the manifold people send theirs.
+ftp&gt; <b>site flag Pipe.Clipped.Through.A.Wall-YOU 1 we.all.saw.it</b>
 550 what pipe. nobody here saw a pipe.
-ftp&gt; <b>site unnuke Temporary.Belt.Now.Load.Bearing-YOU</b>
-550 it was never nuked. nobody dares. it is holding up the roof.
+ftp&gt; <b>site unflag Temporary.Belt.Now.Load.Bearing-YOU</b>
+550 it was never flagged. nobody dares. it is holding up the roof.
 
 ftp&gt; <b>site credits</b>
 211- game data  <a href="https://github.com/greeny/SatisfactoryTools">greeny/SatisfactoryTools</a> (data/data.json). none of

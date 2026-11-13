@@ -33,10 +33,10 @@ for(const [i,digit]of seq.entries()){
 }
 readout+=px('/',174,372,1.6,'#ffc46b');
 const image=svg({height:426,background:'#080f1e',defs:'<linearGradient id="case" x2="0" y2="1"><stop stop-color="#2a6295"/><stop offset="1" stop-color="#122c51"/></linearGradient><pattern id="scopeGrid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0v22" fill="none" stroke="#143a2c"/></pattern>',css:'.key{opacity:0}.k00{opacity:1}.sum{stroke-dasharray:3 0;animation:scope 4s linear infinite}@keyframes scope{50%{transform:translateY(-2px)}}'+css,
-title:'README.NFO — dual-tone pad',description:'A blue retro keypad with sixteen keys, row and column frequencies, and two real sine waves plus their summed trace. The decorative readout dials 152 styles and 13 families without audio.',body:
+title:'README.NFO — dual-tone pad',description:'A blue retro keypad with sixteen keys, row and column frequencies, and two real sine waves plus their summed trace. The decorative readout dials 153 styles and 13 families without audio.',body:
 '<rect x="20" y="20" width="920" height="386" rx="22" fill="url(#case)" stroke="#5d8fad"/>'+center('README.NFO',42,5,'#eef2e7')+
 center('PUBLIC FILES / SILENT DUAL-TONE EDITION',89,1.6,'#b3cbd9')+
 '<rect x="422" y="133" width="480" height="225" rx="8" fill="#06170f" stroke="#7b9e8d"/><rect x="432" y="143" width="460" height="205" fill="url(#scopeGrid)"/>'+bars+pad+scopes+
 px('SUM / TWO TONES',451,272,1.2,'#aee0c7')+
 '<rect x="46" y="365" width="854" height="24" rx="4" fill="#071526"/>'+readout+px('STYLES / FAMILIES / TEXT + SVG / MIT',401,372,1.5,'#a7bbcb')});
-writeHeader(18,{image,summary:'A blue tone pad, sixteen ivory keys and real dual-frequency scope traces; it silently dials 152 / 13.'});
+writeHeader(18,{image,summary:'A blue tone pad, sixteen ivory keys and real dual-frequency scope traces; it silently dials 153 / 13.'});

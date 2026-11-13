@@ -17,7 +17,7 @@
 </p>
 
 ```text
-10 REM *** ULTRA-SATISFACTORY QUICK START ***  PROTECTION: NONE (APACHE 2.0)
+10 REM *** ULTRA-SATISFACTORY QUICK START ***  LOCK-IN: NONE (APACHE 2.0)
 20 REM PYTHON 3.10+, FROM THE REPO ROOT:
 30 SYS "python -m pip install -r requirements.txt"
 40 SYS "python -m streamlit run app/app.py"
@@ -34,7 +34,7 @@ READY.
 </p>
 
 <details>
-<summary>⚡ <b>ULTRASAT.NFO</b>: release notes, the click path, the Space Elevator's shopping list, greetz (protection: none)</summary>
+<summary>⚡ <b>ULTRASAT.NFO</b>: release notes, the click path, the Space Elevator's shopping list, greetz (lock-in: none)</summary>
 
 ```text
        ████    ████  ████          ████████████  ██████████        ████
@@ -49,7 +49,7 @@ READY.
         S  A  T  I  S  F  A  C  T  O  R  Y             control terminal v1.0
 
 ═════════════════════════════════════════════════════════════════════════════
-  MANIFOLD DESTINY PRESENTS ............................ ULTRA-SATISFACTORY
+  A MANIFOLD DESTINY PRODUCTION ........................ ULTRA-SATISFACTORY
 ═════════════════════════════════════════════════════════════════════════════
 
   RELEASE TYPE .. companion app / second-monitor furniture / 3 a.m. enabler
@@ -57,12 +57,12 @@ READY.
                   this is a lookup tool, the game is not in the box)
   CONTENTS ...... 140 items, 211 recipes (88 of them alternates),
                   477 buildings, 5 Space Elevator phases, 0 excuses
-  PROTECTION .... none. it's Apache 2.0. go on, read the source
+  LOCK-IN ....... none. it's Apache 2.0. go on, read the source
   PACKED WITH ... Python, one Streamlit app (app/app.py), streamlit-aggrid
   LOADER ........ python -m streamlit run app/app.py
   ALSO RUNS ..... in a browser tab (stlite: Streamlit on WebAssembly,
                   republished on every push to main) and as a server on Modal
-  SUPPLIED BY ... greeny/SatisfactoryTools (game data)
+  DATA FROM ..... greeny/SatisfactoryTools (game data)
                   Satisfactory Wiki (images, CC BY-NC-SA 4.0)
   FILENAME ...... 18 characters. a real 1541 takes 16. we asked nicely
 

@@ -819,7 +819,7 @@ let title = '';
 
 // ---------- header
 {
-  const s = 'HACKNEY 1541 MASSIVE PRESENTS';
+  const s = 'HACKNEY 1541 MASSIVE UNVEILS';
   title += text(s, centerX(s), 5, `fill="${P.lgrey}"`);
 }
 
@@ -1136,7 +1136,7 @@ const baseCss = [
 ].join('\n');
 
 const desc = 'A Commodore 64 boots to READY., types LOAD"DANCE VISION",8,1, searches, loads with '
-  + 'rolling turbo stripes in the border and types RUN. It flips to a cracktro title screen: a colour-cycling '
+  + 'rolling turbo stripes in the border and types RUN. It flips to an intro title screen: a colour-cycling '
   + 'DANCE VISION logo over raster bars, "PHONE = MOCAP RIG * TELLY = DANCE FLOOR", five stick figures dancing '
   + 'in sync on a light-up floor, a dance spotlight countdown that puts YOU in the zone while the crew cheers, '
   + 'then everybody hands up; a SID panel playing "Chicken Shop Shuffle" by DJ Last Orders, a sine scroller '

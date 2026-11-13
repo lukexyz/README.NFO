@@ -925,7 +925,7 @@ let title = '';
 
 // ---------- header
 {
-  const s = '▒▒▒ MANIFOLD DESTINY PRESENTS ▒▒▒';
+  const s = '▒▒▒ A MANIFOLD DESTINY PRODUCTION ▒▒▒';
   title += text(s, centerX(s), Y.header, `fill="${P.lgrey}"`);
 }
 
@@ -1322,7 +1322,7 @@ const SCROLL_TEXT = ('    ULTRA-SATISFACTORY  *  EVERY RECIPE, BUILDING AND SPAC
   + "IT IS 3 A.M. AND YOU HAVE ALT-TABBED OUT TO CHECK WHAT GOES IN A MODULAR FRAME. IT'S 3 REINFORCED IRON PLATE AND 12 IRON ROD. GO BACK TO WORK  *  "
   + 'JUST ONE MORE BELT  *  SPAGHETTI IS A LOAD-BEARING ARCHITECTURE  *  '
   + 'RUNS ON THE SECOND MONITOR, THE PHONE, OR STRAIGHT IN THE BROWSER WITH NOTHING TO INSTALL  *  '
-  + 'PROTECTION: NONE, IT IS APACHE 2.0  *  UNOFFICIAL FAN PROJECT, NOT AFFILIATED WITH COFFEE STAIN STUDIOS  *  '
+  + 'LOCK-IN: NONE, IT IS APACHE 2.0  *  UNOFFICIAL FAN PROJECT, NOT AFFILIATED WITH COFFEE STAIN STUDIOS  *  '
   + 'GREETZ TO EVERY PIONEER WHOSE TEMPORARY FACTORY IS NOW PERMANENT  *  '
   + 'EFFICIENCY IS MANDATORY. SLEEP IS AN ALTERNATE RECIPE  *  ').toUpperCase();
 {
@@ -1411,7 +1411,7 @@ const baseCss = [
 
 const desc = `A Commodore 64 boots to READY., types LOAD"${NAME}",8,1, searches, and loads with gentle turbo `
   + 'stripes rolling in the border while it lists what comes off the disk: 140 items, 211 recipes, 477 buildings, '
-  + '5 phases. It types RUN and flips to a demoscene intro screen: "Manifold Destiny presents" the ULTRA SATISFACTORY '
+  + '5 phases. It types RUN and flips to a demoscene intro screen: "A Manifold Destiny production", the ULTRA SATISFACTORY '
   + 'logo, colour-cycling between two hexagon emblems with turning cogs, and the line "Every recipe and building, one '
   + 'click apart". A pointer clicks through the three tabs: OBJECTIVES (Space Elevator phase 2 needs Modular Frame '
   + 'x500), ITEMS (Modular Frame: 3 Reinforced Iron Plate and 12 Iron Rod in an Assembler, 60 second cycle, 15 MW, '

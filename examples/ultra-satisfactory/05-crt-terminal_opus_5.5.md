@@ -39,7 +39,7 @@ https://lukexyz.github.io/ULTRA-SATISFACTORY/   (the whole app, in a tab)
 ```
 
 <details>
-<summary>⚡ <b>CTRLTERM.NFO</b>: release info, protection: none, greetz</summary>
+<summary>⚡ <b>CTRLTERM.NFO</b>: release info, lock-in: none, greetz</summary>
 
 ```text
 ╔══════════════════════════════════════════════════════════════════════════════╗
@@ -48,9 +48,9 @@ https://lukexyz.github.io/ULTRA-SATISFACTORY/   (the whole app, in a tab)
 ║                                                                              ║
 ║   release ......... ULTRA-SATISFACTORY, amber phosphor edition               ║
 ║   released by ..... the Spaghetti Logic night shift                          ║
-║   supplied by ..... greeny/SatisfactoryTools (the game data)                 ║
+║   data from ....... greeny/SatisfactoryTools (the game data)                 ║
 ║   images by ....... the Satisfactory Wiki (CC BY-NC-SA 4.0)                  ║
-║   protection ...... none. the app is Apache 2.0: read it, fork it, ship it   ║
+║   lock-in ......... none. the app is Apache 2.0: read it, fork it, ship it   ║
 ║   generates ....... recipes. only ever recipes                               ║
 ║   requires ........ Python 3.10+, or nothing but a browser tab               ║
 ║   the game ........ Satisfactory, by Coffee Stain Studios. sold separately   ║

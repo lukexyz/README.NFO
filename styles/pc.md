@@ -18,18 +18,18 @@ Motion is inferred from comments and effect names, not watched: every visual des
 
 | ID | Style | Medium | Build | Impact |
 | --- | --- | --- | --- | --- |
-| [pc-01](#pc-01) | Razor 1911 DOS cracktro: flat field, pixel logo, presents-text | Animated SVG | Easy | 3/5 |
+| [pc-01](#pc-01) | Numbered DOS intro (1996-98): flat field, pixel logo, presents-text | Animated SVG | Easy | 3/5 |
 | [pc-02](#pc-02) | Plasma field with the logo embossed in it | Animated SVG | Medium | 4/5 |
 | [pc-03](#pc-03) | Chrome spheres over a checkerboard | Animated SVG | Medium | 5/5 |
 | [pc-04](#pc-04) | Early DOS VGA loader: metal logo, gradient bars, one big scroller | Animated SVG | Easy | 3/5 |
 | [pc-05](#pc-05) | Win32 new old-school cracktro: metal logo, twister, sine scroller | Animated SVG | Medium | 4/5 |
-| [pc-06](#pc-06) | Skinned rip installer: INSTALL / NFO / MUSIC / EXIT | Text / ASCII + SVG | Easy | 4/5 |
-| [pc-07](#pc-07) | Text-mode poster installer (Razor 1911, 2024-26) | Text / ASCII + SVG | Easy | 4/5 |
+| [pc-06](#pc-06) | Skinned game installer: INSTALL / NFO / MUSIC / EXIT | Text / ASCII + SVG | Easy | 4/5 |
+| [pc-07](#pc-07) | Text-mode poster installer (2024-26) | Text / ASCII + SVG | Easy | 4/5 |
 | [pc-08](#pc-08) | Trainer menu: F-key toggles under a logo | Text / ASCII + SVG | Easy | 3/5 |
 | [pc-09](#pc-09) | Pencil on paper: the cracktro that draws itself | Animated SVG | Medium | 4/5 |
 | [pc-10](#pc-10) | Fake desktop takeover | Animated SVG | Easy | 4/5 |
 | [pc-11](#pc-11) | BIOS setup hijack: the firmware screen that starts misbehaving | Text / ASCII + SVG | Easy | 4/5 |
-| [pc-12](#pc-12) | Neon cube field: the rez-era Razor look | Animated SVG | Medium | 4/5 |
+| [pc-12](#pc-12) | Neon cube field: the 2010-era scanline look | Animated SVG | Medium | 4/5 |
 | [pc-13](#pc-13) | Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs | Animated SVG | Medium | 4/5 |
 | [pc-14](#pc-14) | Texture movers: rotozoomer and tunnel | Animated SVG | Medium | 3/5 |
 
@@ -37,11 +37,11 @@ Motion is inferred from comments and effect names, not watched: every visual des
 
 <a name="pc-01"></a>
 
-## pc-01 · Razor 1911 DOS cracktro: flat field, pixel logo, presents-text
+## pc-01 · Numbered DOS intro (1996-98): flat field, pixel logo, presents-text
 
 **Animated SVG** · build: **Easy** · impact: **3/5** · 1996-1998, MS-DOS (320x240x8 Mode-X, GUS/SoundBlaster per Demozoo); Razor 1911's numbered cracktro series made with Superior Art Creations, code by Hetero
 
-The small numbered intros that ran in front of Razor's mid-90s game releases: one flat colour field, a pixel logo across the top, a few centred lines of blocky text, one background effect and a looping tracker tune. Almost all are PC conversions of older Amiga intros (Pouet commenters name Paso for \#7, Aspect for \#01, Supplex for Arnie 3, Skid Row for \#06, and Demozoo tags \#10 melon-dezign-inspired), which is exactly why they feel 'Amiga' on a PC. The release titles shown in them are filler: Demozoo lists blank template versions.
+Small numbered DOS intros of the mid-90s: one flat colour field, a pixel logo across the top, a few centred lines of blocky text, one background effect and a looping tracker tune. Almost all are PC conversions of older Amiga intros (Pouet commenters name Paso for \#7, Aspect for \#01, Supplex for Arnie 3, Skid Row for \#06, and Demozoo tags \#10 melon-dezign-inspired), which is exactly why they feel 'Amiga' on a PC. The release titles shown in them are filler: Demozoo lists blank template versions.
 
 **What it looks like**
 
@@ -210,7 +210,7 @@ The first generation of graphical intros on the IBM PC, made before the platform
 
 **Animated SVG** · build: **Medium** · impact: **4/5** · 2004-2011, Windows (DirectX/OpenGL, often 64k or less); Hoodlum, Deviance, Reloaded, Skid Row with Titan and Electric Druggies, Genesis with TRSI
 
-The mid-2000s revival in which demoscene coders (hitchhikr, the Titan people, anesthetic) and pixel artists (Alien^PDX, H2o, iks/irokos, bull) built deliberately old-school cracktros for ISO groups on modern hardware. It is what most people picture for a 2000s cracktro: a big airbrushed chrome or graffiti logo, a twisting column, a bouncing scroller and a chiptune. This entry now also absorbs the 'shiny' sub-look (logo on a mirror floor, lit relief) that was submitted as a separate style.
+A mid-2000s Windows intro look: a big airbrushed chrome logo, a twisting column, a bouncing scroller and a chiptune. The mid-2000s revival in which demoscene coders (hitchhikr, the Titan people, anesthetic) and pixel artists (Alien^PDX, H2o, iks/irokos, bull) built deliberately old-school cracktros for ISO groups on modern hardware. It is what most people picture for a 2000s cracktro: a big airbrushed chrome or graffiti logo, a twisting column, a bouncing scroller and a chiptune. This entry now also absorbs the 'shiny' sub-look (logo on a mirror floor, lit relief) that was submitted as a separate style.
 
 **What it looks like**
 
@@ -251,11 +251,11 @@ The mid-2000s revival in which demoscene coders (hitchhikr, the Titan people, an
 
 <a name="pc-06"></a>
 
-## pc-06 · Skinned rip installer: INSTALL / NFO / MUSIC / EXIT
+## pc-06 · Skinned game installer: INSTALL / NFO / MUSIC / EXIT
 
 **Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · 1997-2004, Windows (Class and Myth game-rip installers); a DOS precedent in Razor's 1997 'Arnie 3' cracktro, a fake GUI window converted from an Amiga trainer
 
-Rip groups cut games down to small packages and shipped their own installer, which doubled as the intro: a custom-shaped window with a logo sign, three or four buttons, an info viewport and a chiptune playlist. Wikipedia describes Class's rips, its custom installation software and its rivalry with Myth; Pouet commenters remember the Class installers mainly for the Maktone tunes and complain about hearing them recycled. It is a different object from the keygen dialog: no serial field, a release menu instead.
+A custom-shaped installer window that doubles as the intro, with a logo sign, a few buttons, an info viewport and a chiptune playlist. Rip groups cut games down to small packages and shipped their own installer, which doubled as the intro: a custom-shaped window with a logo sign, three or four buttons, an info viewport and a chiptune playlist. Wikipedia describes Class's rips, its custom installation software and its rivalry with Myth; Pouet commenters remember the Class installers mainly for the Maktone tunes and complain about hearing them recycled. It is a different object from the keygen dialog: no serial field, a release menu instead.
 
 **What it looks like**
 
@@ -292,11 +292,11 @@ Rip groups cut games down to small packages and shipped their own installer, whi
 
 <a name="pc-07"></a>
 
-## pc-07 · Text-mode poster installer (Razor 1911, 2024-26)
+## pc-07 · Text-mode poster installer (2024-26)
 
 **Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · May 2024 onward, Windows; Razor 1911 game installers with code by Black Panther, graphics by Goto80 and music by Dubmood, plus the text-art passages of the 2026 anniversary demo Razor1911
 
-Razor's current house look, and the one most directly usable as plain text: each installer is a single character-cell poster in two or three flat colours, with the game title and the group name built as enormous block letters that fill the frame, and two small buttons. A Pouet commenter credits these with taking cracktro style somewhere new 'like Melon Dezign used to'. The same vocabulary (PETSCII, ANSI, ASCII, BBS file lists) runs through the group's 40th-anniversary demo, which won the PC demo competition at Revision 2026.
+A single character-cell poster in two or three flat colours, with the title built as enormous block letters that fill the frame. Razor's current house look, and the one most directly usable as plain text: each installer is a single character-cell poster in two or three flat colours, with the game title and the group name built as enormous block letters that fill the frame, and two small buttons. A Pouet commenter credits these with taking cracktro style somewhere new 'like Melon Dezign used to'. The same vocabulary (PETSCII, ANSI, ASCII, BBS file lists) runs through the group's 40th-anniversary demo, which won the PC demo competition at Revision 2026.
 
 **What it looks like**
 
@@ -493,11 +493,11 @@ A demo staged inside a PC BIOS setup screen: the familiar navy text-mode page wi
 
 <a name="pc-12"></a>
 
-## pc-12 · Neon cube field: the rez-era Razor look
+## pc-12 · Neon cube field: the 2010-era scanline look
 
 **Animated SVG** · build: **Medium** · impact: **4/5** · 2010-2012, Windows; Razor 1911 cracktros and 64k intros coded by rez with music by Dubmood (The Settlers 7 cracktro, 27 Apr 2010; StarCraft 2 cracktro, 31 July 2010; Insert No Coins, 2 Oct 2010; The Scene Is Dead, 8 Apr 2012). A DOS ancestor exists in Razor Crack Intro \#13.
 
-When Razor's demo section came back around 2010 it had a consistent look: fields of glowing rainbow cubes and glenz shapes, a pixel logo, scanlines and a Dubmood chiptune. Insert No Coins won the 64k competition at Main 2010 and the public-choice award at the Scene.org Awards; The Scene Is Dead placed third in PC 64k at Revision 2012. For many people this is 'the Razor 1911 one'. The rainbow-cubes idea is older than rez's use of it: the undated DOS Crack Intro \#13 already shows a 9x7 grid of cubes, one hue per cube.
+Fields of glowing rainbow cubes and glenz shapes with a pixel logo, scanlines and a chiptune, as seen in early-2010s 64k intros. When Razor's demo section came back around 2010 it had a consistent look: fields of glowing rainbow cubes and glenz shapes, a pixel logo, scanlines and a Dubmood chiptune. Insert No Coins won the 64k competition at Main 2010 and the public-choice award at the Scene.org Awards; The Scene Is Dead placed third in PC 64k at Revision 2012. For many people this is 'the Razor 1911 one'. The rainbow-cubes idea is older than rez's use of it: the undated DOS Crack Intro \#13 already shows a 9x7 grid of cubes, one hue per cube.
 
 **What it looks like**
 

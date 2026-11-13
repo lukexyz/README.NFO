@@ -122,7 +122,7 @@ F:\ELEVATOR>_
 ├────────────────────────────────────────────────────────────────────────────┤
 │   Game data ....... greeny/SatisfactoryTools                               │
 │   Images .......... the Satisfactory Wiki, CC BY-NC-SA 4.0                 │
-│   Code ............ Apache 2.0. Protection: none. Take it, fork it.        │
+│   Code ............ Apache 2.0. Lock-in: none. Take it, fork it.           │
 │   The game ........ not included and not ours. This is an unofficial fan   │
 │                     project, not affiliated with Coffee Stain Studios.     │
 ├────────────────────────────────────────────────────────────────────────────┤

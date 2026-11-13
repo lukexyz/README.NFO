@@ -11,17 +11,17 @@ const OPTIONS = [
   ['03-hack-14','Digital rain banner (light falling through fixed glyph columns, resolving into the title)','hack-14','animated-svg'],
   ['04-trk-07','Multi-chip tracker (FamiTracker / DefleMask / Furnace)','trk-07','animated-svg'],
   ['05-trk-10','Piano roll and falling notes (up to black MIDI)','trk-10','animated-svg'],
-  ['06-demo-11','Apple II crack screen: six-colour hi-res panels and 40-column credits','demo-11','text-plus-svg'],
+  ['06-demo-11','Apple II title screen: six-colour hi-res panels and 40-column credits','demo-11','text-plus-svg'],
   ['07-demo-01','PC demo opening titles and part-credit cards (Second Reality manner)','demo-01','animated-svg'],
   ['08-vap-03','VHS tape and late-night lo-fi: OSD, tracking and chroma bleed','vap-03','animated-svg'],
-  ['09-c64-05','Razor 1911 Amiga cracktro (Sector9, 1990-91): logo plate, deep-blue panel, rainbow copper text','c64-05','text-plus-svg'],
+  ['09-c64-05','Amiga cracktro (1990-91): logo plate, deep-blue panel, rainbow copper text','c64-05','text-plus-svg'],
   ['10-ansi-05','BBS data screens: stats header, last callers, file-area table','ansi-05','text-plus-svg'],
   ['11-demo-04','256-byte intro: bit-pattern textures in the default VGA palette','demo-04','animated-svg'],
   ['12-vap-09','Windows XP Luna: blue title bars and the green hill','vap-09','animated-svg'],
   ['13-hack-15','Decrypt reveal: a scrambled text block that resolves into plaintext','hack-15','animated-svg'],
   ['14-pc-05','Win32 new old-school cracktro: metal logo, twister, sine scroller','pc-05','animated-svg'],
   ['15-ansi-04','ANSImation: the modem-speed draw-in','ansi-04','animated-svg'],
-  ['16-nfo-01','PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED)','nfo-01','text-plus-svg'],
+  ['16-nfo-01','PC NFO: brush-script block logo (after JED)','nfo-01','text-plus-svg'],
   ['17-hack-16','3D file-system landscape (pedestals and wires, or the glass-tower data city)','hack-16','animated-svg'],
   ['18-hack-17','Phreak tone pad: 4x4 keypad matrix with dual-tone scope traces','hack-17','animated-svg'],
   ['19-ansi-06','Door game screen (narrated location, bracketed hotkeys, command prompt)','ansi-06','text-plus-svg'],
@@ -39,11 +39,11 @@ const OPTIONS = [
   ["31-idle-01","Atari Video Music: pulsing two-part diamonds in a tiled array","idle-01","animated-svg"],
   ["32-trk-09","Oscilloscope view (one scope per channel)","trk-09","animated-svg"],
   ["33-c64-08","Bobs and dot objects: a sphere chain on a Lissajous path, a rotating dot cube","c64-08","animated-svg"],
-  ["34-pc-07","Text-mode poster installer (Razor 1911, 2024-26)","pc-07","text-plus-svg"],
+  ["34-pc-07","Text-mode poster installer (2024-26)","pc-07","text-plus-svg"],
   ["35-demo-06","Demoparty results.txt (with the invitation text as its companion)","demo-06","text-only"],
   ["36-idle-10","Off-air idle: colour bars, test card and the hopping 'no signal' box","idle-10","animated-svg"],
   ["37-demo-02","PC demo READ.ME: paged info file with index, member table and cut-here form","demo-02","text-only"],
-  ["38-c64-07","Vertical copper bars ('Kefrens bars' / 'Alcatraz bars'): ribbons twisting down the screen","c64-07","animated-svg"],
+  ["38-c64-07","Vertical copper bars: ribbons twisting down the screen","c64-07","animated-svg"],
   ["39-vap-11","Classic Mac OS: 1-bit System 6/7 desktop","vap-11","static-svg"],
   ["40-hack-18","CTF challenge board and scoreboard (category tiles, top-ten score graph, rank table)","hack-18","animated-svg"],
   ['41-hack-19','CLI startup banner: teal block lettering and diagnostic log','hack-19','text-plus-svg'],
@@ -75,7 +75,7 @@ const picks = OPTIONS.map(([slug,name,id,medium]) => {
 
 const index = [
   '# README.NFO — 41 headers to choose from', '',
-  'Forty original headers for [README.NFO itself](../../README.md), drawn in two random batches from the original 152 distinct catalogue styles on 5 October 2026, plus [41 — CLI startup banner](41-hack-19.md), an additional screenshot-inspired reference. [Draw one](draw.json) and [draw two](draw-2.json) record the random selections; the second batch excludes every style used in the first.', '',
+  'Forty original headers for [README.NFO itself](../../README.md), drawn in two random batches from the original retro styles in the catalogue on 5 October 2026, plus [41 — CLI startup banner](41-hack-19.md), an additional screenshot-inspired reference. [Draw one](draw.json) and [draw two](draw-2.json) record the random selections; the second batch excludes every style used in the first.', '',
   '**Home README:** [16 — Brush-script NFO](16-nfo-01.md) is the main header. The favourites below it are [04 — Tracker](04-trk-07.md), [26 — Cassette](26-print-02.md), [36 — Off-air test card](36-idle-10.md) and [38 — Copper ribbons](38-c64-07.md), with [12 — Luna desktop](12-vap-09.md) and [25 — Vector objects](25-pc-13.md) completing the preview gallery. [See the home README](../../README.md). All 41 candidates remain available to copy and compare.', '',
   '**New batch:** [Candidates 21–30](page-3.md) · [Candidates 31–40](page-4.md) · [Interactive new batch](gallery.html#batch-2).', '',
   '**Browse all:** [Interactive gallery and favourites](gallery.html) · [01–10](page-1.md) · [11–20](page-2.md) · [21–30](page-3.md) · [31–40](page-4.md) · [41](page-5.md). Filter the gallery by **Text / ASCII** or **SVG**. Format labels describe the actual header file; an ASCII-looking SVG belongs with images. Tick favourites in the browser and copy their numbers. Your existing selection is retained when local storage is available.', '',
@@ -179,6 +179,6 @@ const html = `<!doctype html>
 <section class="selection" aria-label="Your favourites"><strong id="count">0 selected</strong><input id="selected" aria-label="Selected candidate numbers" readonly placeholder="Tick favourites below"><button id="copy" type="button">Copy favourites</button><button id="clear" type="button">Clear</button><button id="theme" type="button">Light / dark</button><span id="status" role="status" aria-live="polite"></span></section>
 <section class="grid" aria-label="Forty-one header candidates">${cards}</section>
 <p id="empty" class="closing" role="status" hidden>No headers match these filters. Choose All formats or All 41 to see more.</p>
-<p class="closing">Two non-repeating draws saved on 5 October 2026 from the original 152 catalogue styles; 41 is an additional reference for new style hack-19. Selection stays in this browser when local storage is available. <a href="../../LICENSE">MIT licence</a> · <a href="../README.md">Other galleries</a> · <a href="../../README.md">Repository README</a>.</p></main><script>${script}</script></body></html>\n`;
+<p class="closing">Two non-repeating draws saved on 5 October 2026 from the original retro styles in the catalogue; 41 is an additional reference for new style hack-19. Selection stays in this browser when local storage is available. <a href="../../LICENSE">MIT licence</a> · <a href="../README.md">Other galleries</a> · <a href="../../README.md">Repository README</a>.</p></main><script>${script}</script></body></html>\n`;
 fs.writeFileSync(path.join(DIR,'gallery.html'),html);
 console.log('wrote README.NFO index, five full-header pages and interactive gallery');

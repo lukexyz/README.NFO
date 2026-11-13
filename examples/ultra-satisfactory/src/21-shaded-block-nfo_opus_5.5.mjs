@@ -416,7 +416,7 @@ function heading(r, str) {
 // Row 0: who is to blame.
 {
   caps(R.cap);
-  const parts = [[spaced('MERGED CELLS'), 'hi'], ['   ·   ', 'dm'], [spaced('presents'), 'fr']];
+  const parts = [[spaced('MERGED CELLS'), 'hi'], ['   ·   ', 'dm'], [spaced('unveils'), 'fr']];
   seg(R.cap, centre(width(parts)), parts);
 }
 // Two letter-spaced caption rows under the logo.
@@ -433,7 +433,7 @@ function heading(r, str) {
     ['ULTRA-SATISFACTORY', 'cy', 'RELEASE', 'iTEMS', [['140', 'go'], [' craftable', 'hi']]],
     ['Satisfactory companion app', 'hi', 'TYPE', 'RECiPES', [['211', 'go'], [' (', 'hi'], ['88', 'go'], [' of them alternates)', 'hi']]],
     ['unofficial fan project', 'hi', 'STATUS', 'BUiLDiNGS', [['477', 'go'], [' player-buildable', 'hi']]],
-    ["none. it's Apache 2.0", 'hi', 'PROTECTiON', 'ELEVATOR', [['5', 'go'], [' phases of demands', 'hi']]],
+    ["none. it's Apache 2.0", 'hi', 'LOCK-iN', 'ELEVATOR', [['5', 'go'], [' phases of demands', 'hi']]],
   ];
   const LV = 31, LC = 33, LL = 45, M0 = 47, RL = 50, RC = 62, RV = 64;   // columns
   rows.forEach(([lv, lvInk, ll, rl, rv], i) => {
@@ -742,7 +742,7 @@ const glyphDefs = [...glyphIds].map(([ch, id]) => `<path id="${id}" d="${glyphPa
 const TITLE = 'ULTRA-SATISFACTORY: a shaded block NFO header';
 const DESC = 'A 1990s release-scene NFO screen drawn in block and shade characters. ULTRA stands in cyan slab capitals with a dark dithered band on the shadow side of every stroke; below the baseline each stem dissolves through dark, medium and light dither into single dots. '
   + 'Under it SATISFACTORY is set in grey two-tone condensed capitals, with debris around both words, broken bands of light shade behind them, and frame walls stacked from fading shade blocks down both margins. '
-  + 'Caption: every recipe, building and objective, one click apart. Field rows: release ULTRA-SATISFACTORY, type Satisfactory companion app, status unofficial fan project, protection none (it is Apache 2.0); '
+  + 'Caption: every recipe, building and objective, one click apart. Field rows: release ULTRA-SATISFACTORY, type Satisfactory companion app, status unofficial fan project, lock-in none (it is Apache 2.0); '
   + '140 craftable items, 211 recipes of which 88 are alternates, 477 player-buildable buildings, 5 Space Elevator phases. Three tabs: Objectives, Items, Buildings. '
   + 'Run it: python -m pip install -r requirements.txt, then python -m streamlit run app/app.py, or open https://lukexyz.github.io/ULTRA-SATISFACTORY/ in a browser. Presented by the invented crew Merged Cells, signed dr!MRG.';
 

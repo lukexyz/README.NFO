@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://lukexyz.github.io/ULTRA-SATISFACTORY/"><img src="assets/03-keygen-dialog_opus_5.5.svg" width="100%" alt="ULTRA-SATISFACTORY recipe generator: an animated pixel-art parody of a mid-2000s keygen window, oddly shaped and dark, released by the made-up Dept. of Spaghetti Logistics, with a hexagon-and-cog emblem bolted over one corner. A neon cyan and chrome logo reads ULTRA SATISFACTORY above a ticker playing ultra_satisfactory.xm and a pumping spectrum analyser. It makes recipes, not keys: an item is typed in, GENERATE is clicked, and the RECIPE and MACHINE fields scramble and then settle on the real answer. First Modular Frame: 3 Reinforced Iron Plate + 12 Iron Rod, Assembler, 60 s, 15 MW, out 2/min; then Versatile Framework, Iron Plate and Rotor. A readout says PROTECTION: NONE, LICENCE: APACHE 2.0, and the EXIT button turns into NOPE when the mouse gets close. Below, conveyor belts link the three tabs: OBJECTIVES (Space Elevator, 5 phases), click a part, ITEMS (140 items, 211 recipes, 88 alternates), click the machine, BUILDINGS (477 buildings, 9 machines). The chin reads: makes recipes, not keys, unofficial fan tool."></a>
+  <a href="https://lukexyz.github.io/ULTRA-SATISFACTORY/"><img src="assets/03-keygen-dialog_opus_5.5.svg" width="100%" alt="ULTRA-SATISFACTORY recipe generator: an animated pixel-art parody of a mid-2000s keygen window, oddly shaped and dark, released by the made-up Dept. of Spaghetti Logistics, with a hexagon-and-cog emblem bolted over one corner. A neon cyan and chrome logo reads ULTRA SATISFACTORY above a ticker playing ultra_satisfactory.xm and a pumping spectrum analyser. It makes recipes, not keys: an item is typed in, GENERATE is clicked, and the RECIPE and MACHINE fields scramble and then settle on the real answer. First Modular Frame: 3 Reinforced Iron Plate + 12 Iron Rod, Assembler, 60 s, 15 MW, out 2/min; then Versatile Framework, Iron Plate and Rotor. A readout says LOCK-IN: NONE, LICENCE: APACHE 2.0, and the EXIT button turns into NOPE when the mouse gets close. Below, conveyor belts link the three tabs: OBJECTIVES (Space Elevator, 5 phases), click a part, ITEMS (140 items, 211 recipes, 88 alternates), click the machine, BUILDINGS (477 buildings, 9 machines). The chin reads: makes recipes, not keys, unofficial fan tool."></a>
 </p>
 
 <h1 align="center">ULTRA-SATISFACTORY &middot; <code>recipegen.exe</code></h1>
@@ -18,7 +18,7 @@
 - ⚡ **Everything links.** Click a part to open its recipe, click the machine to open its building, lose forty minutes, call it planning.
 - ⚡ **Zero install.** It runs live in your browser at [lukexyz.github.io/ULTRA-SATISFACTORY](https://lukexyz.github.io/ULTRA-SATISFACTORY/).
 - ⚡ **Quick start.** `python -m pip install -r requirements.txt`, then `python -m streamlit run app/app.py`, then open `http://localhost:8501`. Python 3.10+, run from the repo root: see [Run it locally](#run-it-locally).
-- ⚡ **Unofficial fan project**, not affiliated with Coffee Stain Studios. Protection: none. Licence: [Apache 2.0](LICENSE).
+- ⚡ **Unofficial fan project**, not affiliated with Coffee Stain Studios. Lock-in: none. Licence: [Apache 2.0](LICENSE).
 
 <details>
 <summary>⚡ <b>[ ABOUT ]</b> read <code>ultra_satisfactory.nfo</code>: release info, install, the Space Elevator shopping list, greetz</summary>
@@ -26,15 +26,15 @@
 ```text
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                                                                            ║
-║         ░▒▓█  DEPT. OF SPAGHETTI LOGISTICS   p r e s e n t s  █▓▒░         ║
+║         ░▒▓█  DEPT. OF SPAGHETTI LOGISTICS    u n v e i l s  █▓▒░          ║
 ║                                                                            ║
 ║                    U L T R A - S A T I S F A C T O R Y                     ║
 ║     recipe generator  ·  generates recipes  ·  that is the whole trick     ║
 ║                                                                            ║
 ╠══════════════════════════════[ RELEASE iNFO ]══════════════════════════════╣
 ║   RELEASE ....... ULTRA-SATISFACTORY, control terminal v1.0                ║
-║   SUPPLIER ...... a pioneer at 3 a.m. who alt-tabbed "for a second"        ║
-║   CRACKER ....... not needed. protection: none. licence: Apache 2.0        ║
+║   TESTER ........ a pioneer at 3 a.m. who alt-tabbed "for a second"        ║
+║   LOCK-IN ....... none. licence: Apache 2.0                                ║
 ║   TYPE .......... companion app. it generates recipes, never keys          ║
 ║   PAYLOAD ....... 140 items, 211 recipes (88 alternates), 477 buildings    ║
 ║   REQUIRES ...... a browser. Python 3.10+ to run it on your own machine    ║
@@ -72,7 +72,7 @@
 ║              Ballistic Warp Drive ..................... x100               ║
 ║                                                                            ║
 ║   The OBJECTIVES tab does this per phase. Click a part, get its recipe.    ║
-╠══════════════════════════════[ SUPPLiED BY ]═══════════════════════════════╣
+╠════════════════════════════════[ CREDiTS ]═════════════════════════════════╣
 ║   GAME DATA ..... greeny/SatisfactoryTools                                 ║
 ║   iMAGES ........ the Satisfactory Wiki, CC BY-NC-SA 4.0                   ║
 ║   CODE .......... Apache 2.0. take it, fork it, overclock it               ║

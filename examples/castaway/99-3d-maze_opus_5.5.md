@@ -137,7 +137,7 @@ With reduced motion turned on, the banner holds still on the walk up the first c
  │  Ceiling ........... pale tiles, speckled, fifty per cent nostalgia │
  │  Overlay map ....... [x] on                                         │
  │  Rat ............... [x] replaced by a crab in a coconut            │
- │  Rocks ............. [x] one, supplied by The Left Hand Lodge       │
+ │  Rocks ............. [x] one, a gift from The Left Hand Lodge       │
  │  Pictures .......... [x] by the Dead End Bottling Co.               │
  │  Exit .............. a sun, translucent, smiling, never sets        │
  │  Hand on wall ...... right (left after rocks)                       │

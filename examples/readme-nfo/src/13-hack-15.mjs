@@ -3,7 +3,7 @@ import { svg, px, writeHeader } from './lib.mjs';
 const lines=[
  {s:'README.NFO',x:94,y:95,size:9},
  {s:'RETRO HEADERS. READY TO REWRITE.',x:98,y:188,size:2.5},
- {s:'152 STYLES   13 FAMILIES   TEXT + SVG',x:98,y:235,size:2},
+ {s:'153 STYLES   13 FAMILIES   TEXT + SVG',x:98,y:235,size:2},
  {s:'COPY / CUSTOMISE / SHARE UNDER MIT',x:98,y:268,size:2},
 ];
 const symbols='0123456789#/?%+*=<>[]';
@@ -18,7 +18,7 @@ for (const line of lines) for(let i=0;i<line.s.length;i++) {
 }
 const image=svg({height:340,background:'#090e15',
  css:'.truth{opacity:1;animation:resolve .12s steps(1) both}.noise{opacity:0;animation:erase .12s steps(1) both}@keyframes resolve{0%,49%{opacity:0}50%,100%{opacity:1}}@keyframes erase{0%,49%{opacity:1}50%,100%{opacity:0}}',
- description:'A scrambled block resolves once into README.NFO, retro headers ready to rewrite, 152 styles and thirteen families. Copy, customise and share under MIT. Reduced motion displays the complete message.',
+ description:'A scrambled block resolves once into README.NFO, retro headers ready to rewrite, 153 styles and thirteen families. Copy, customise and share under MIT. Reduced motion displays the complete message.',
  body:`<rect x="26" y="26" width="908" height="288" rx="3" fill="#0a111b" stroke="#263648"/>
  <path d="M27 63H933M66 64V313" stroke="#233345"/>
  ${px('READONLY STREAM / HEADER.NFO',45,42,1.6,'#778da6')}
@@ -32,7 +32,7 @@ const markdown=`<p align="center"><img src="assets/13-hack-15.svg" width="100%" 
 \`\`\`text
 README.NFO
 Retro headers. Ready to rewrite.
-152 styles / 13 families / text + SVG
+153 styles / 13 families / text + SVG
 Copy, customise, share under MIT.
 \`\`\`
 

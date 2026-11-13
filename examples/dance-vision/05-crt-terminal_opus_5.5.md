@@ -35,7 +35,7 @@ you@hackney:~/dance-vision$ traceroute --from=phone --to=telly
 ```
 
 <details>
-<summary><b>DVTERM.NFO</b>: release info, protection: none, greetz</summary>
+<summary><b>DVTERM.NFO</b>: release info, lock-in: none, greetz</summary>
 
 ```text
 ╔════════════════════════════════════════════════════════════════════════════╗
@@ -43,9 +43,9 @@ you@hackney:~/dance-vision$ traceroute --from=phone --to=telly
 ╠════════════════════════════════[ release ]═════════════════════════════════╣
 ║                                                                            ║
 ║   release ......... dance-vision, green phosphor edition                   ║
-║   supplied by ..... the Mare Street Moonwalkers                            ║
-║   cracked by ...... nobody. there was nothing to crack                     ║
-║   protection ...... none needed: camera pixels never leave the phone       ║
+║   tested by ....... the Mare Street Moonwalkers                            ║
+║   checked by ...... nobody. there was nothing to check                     ║
+║   lock-in ......... none needed: camera pixels never leave the phone       ║
 ║   payload ......... 33 joints x {x,y,z}, ~1.6 KB a frame, 0 bytes of face  ║
 ║   players ......... up to 6 phones. dignity optional                       ║
 ║   requires ........ a phone, a pc, a telly, npm. rhythm not enforced       ║

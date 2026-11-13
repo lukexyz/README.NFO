@@ -23,12 +23,12 @@ for(let i=0;i<familyRows.length;i++) {
  lines.push(` ${String(i+1).padStart(2,'0')}.   ${String(f.count).padStart(3)}   ${label}`);
 }
 lines.push('',rule,'','DELIVERY COMPO','- ---- -------------------------------------------------------------- ---- -',
- ' 01.   152   Researched style cards             by styles/',
+ ' 01.   153   Researched style cards             by styles/',
  ` 02.   ${String(INFO.candidates).padStart(3)}   README.NFO header candidates         by examples/readme-nfo/`,
  ' 03.    13   Distinct visual families           by the catalogue',
  ' 04.     2   Header formats: text art + SVG     by the examples',
  '',rule,
- ' 152 distinct styles / 13 families / original recipes / MIT licence',
+ ' 153 distinct styles / 13 families / original recipes / MIT licence',
  ' [ STYLE CATALOGUE ]   [ ALL CANDIDATES ]   [ MIT LICENCE ]',
  rule);
 for(const line of lines)if(line.length>80)throw Error(`Text row exceeds 80 columns: ${line}`);

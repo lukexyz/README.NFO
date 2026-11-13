@@ -468,7 +468,7 @@ What happens, and how often, lives in [activities.toml](activities.toml): more t
  | Signal. Currently one bar, and    |  +- LESSONS -------------------------+
  | only at the very top of the palm. |  | Fire by friction. Hammocks. Spear |
  +-----------------------------------+  | fishing. A lookout up the palm.   |
- +- SWAPPER -------------------------+  +-----------------------------------+
+ +- PEN PAL -------------------------+  +-----------------------------------+
  | Seeks contacts, by bottle. Quick  |  +- LOST ----------------------------+
  | replies: my first came straight   |  | One coconut. Last seen walking    |
  | back.                             |  | off, worn by a hermit crab.       |
@@ -3006,7 +3006,7 @@ With reduced motion turned on, the banner holds still on the walk up the first c
  │  Ceiling ........... pale tiles, speckled, fifty per cent nostalgia │
  │  Overlay map ....... [x] on                                         │
  │  Rat ............... [x] replaced by a crab in a coconut            │
- │  Rocks ............. [x] one, supplied by The Left Hand Lodge       │
+ │  Rocks ............. [x] one, a gift from The Left Hand Lodge       │
  │  Pictures .......... [x] by the Dead End Bottling Co.               │
  │  Exit .............. a sun, translucent, smiling, never sets        │
  │  Hand on wall ...... right (left after rocks)                       │

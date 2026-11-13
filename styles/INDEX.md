@@ -15,7 +15,7 @@ These groups describe supported output formats. A terminal or ASCII-looking imag
 - [trk-06](trk.md#trk-06) · SID tracker in plain text mode (GoatTracker three-voice screen)
 - [nfo-04](nfo.md#nfo-04) · 7-bit outline NFO with dot-leader fields
 - [nfo-05](nfo.md#nfo-05) · FILE\_ID.DIZ miniature
-- [nfo-08](nfo.md#nfo-08) · PC newschool ASCII: dollar-fill blob lettering (Remorse 1981 school)
+- [nfo-08](nfo.md#nfo-08) · PC newschool ASCII: dollar-fill blob lettering
 - [nfo-09](nfo.md#nfo-09) · FIGlet and TOIlet generated banners
 - [nfo-10](nfo.md#nfo-10) · Usenet line art and the signed picture (jgs school)
 - [ansi-02](ansi.md#ansi-02) · TheDraw font banner (outline and block typefaces)
@@ -29,7 +29,7 @@ These groups describe supported output formats. A terminal or ASCII-looking imag
 - [hack-09](hack.md#hack-09) · MUD session transcript (login banner, room block, exits line, HP prompt)
 - [asia-05](asia.md#asia-05) · MML listing: the project name as a tune in plain text
 - [asia-07](asia.md#asia-07) · Kaomoji and one-line AA: the font-proof subset
-- [xfer-01](xfer.md#xfer-01) · Topsite race: zipscript box, progress-bar directory and complete bar
+- [xfer-01](xfer.md#xfer-01) · FTP upload race: zipscript box, progress-bar directory and complete bar
 - [xfer-03](xfer.md#xfer-03) · XDCC pack list: numbered packs, gets, sizes and the slots line
 - [demo-02](demo.md#demo-02) · PC demo READ.ME: paged info file with index, member table and cut-here form
 - [demo-05](demo.md#demo-05) · Tiny-intro info file: the 40-column note that is longer than the program
@@ -38,24 +38,24 @@ These groups describe supported output formats. A terminal or ASCII-looking imag
 
 ### SVG only (94)
 
-- [pc-01](pc.md#pc-01) · Razor 1911 DOS cracktro: flat field, pixel logo, presents-text
+- [pc-01](pc.md#pc-01) · Numbered DOS intro (1996-98): flat field, pixel logo, presents-text
 - [pc-02](pc.md#pc-02) · Plasma field with the logo embossed in it
 - [pc-03](pc.md#pc-03) · Chrome spheres over a checkerboard
 - [pc-04](pc.md#pc-04) · Early DOS VGA loader: metal logo, gradient bars, one big scroller
 - [pc-05](pc.md#pc-05) · Win32 new old-school cracktro: metal logo, twister, sine scroller
 - [pc-09](pc.md#pc-09) · Pencil on paper: the cracktro that draws itself
 - [pc-10](pc.md#pc-10) · Fake desktop takeover
-- [pc-12](pc.md#pc-12) · Neon cube field: the rez-era Razor look
+- [pc-12](pc.md#pc-12) · Neon cube field: the 2010-era scanline look
 - [pc-13](pc.md#pc-13) · Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs
 - [pc-14](pc.md#pc-14) · Texture movers: rotozoomer and tunnel
-- [c64-01](c64.md#c64-01) · C64 one-screen crack intro: raster-split logo and text on colour bars
+- [c64-01](c64.md#c64-01) · C64 one-screen intro: raster-split logo and text on colour bars
 - [c64-02](c64.md#c64-02) · C64 DYCP demo part: sine-wave letters under a chunky multicolour logo
 - [c64-03](c64.md#c64-03) · PETSCII picture: C64 text-mode art on the 40-column grid
-- [c64-07](c64.md#c64-07) · Vertical copper bars ('Kefrens bars' / 'Alcatraz bars'): ribbons twisting down the screen
+- [c64-07](c64.md#c64-07) · Vertical copper bars: ribbons twisting down the screen
 - [c64-08](c64.md#c64-08) · Bobs and dot objects: a sphere chain on a Lissajous path, a rotating dot cube
 - [c64-09](c64.md#c64-09) · Copper-only screen: full-screen colour fields with no bitmap at all
-- [c64-10](c64.md#c64-10) · Melon Dezign: flat colour fields, stepped silhouettes, curved black text
-- [c64-11](c64.md#c64-11) · Spaceballs 'State of the Art': recoloured silhouette cut out of moire rings
+- [c64-10](c64.md#c64-10) · Flat-colour Amiga intro: flat colour fields, stepped silhouettes, curved black text
+- [c64-11](c64.md#c64-11) · Moire silhouette demo: recoloured silhouette cut out of moire rings
 - [c64-12](c64.md#c64-12) · 16-bit hand-pixelled chrome logo (static)
 - [trk-01](trk.md#trk-01) · Amiga 4-channel tracker (ProTracker 2.3D editor screen)
 - [trk-03](trk.md#trk-03) · FastTracker II (dense DOS GUI tracker with scope grid)
@@ -64,7 +64,7 @@ These groups describe supported output formats. A terminal or ASCII-looking imag
 - [trk-09](trk.md#trk-09) · Oscilloscope view (one scope per channel)
 - [trk-10](trk.md#trk-10) · Piano roll and falling notes (up to black MIDI)
 - [trk-11](trk.md#trk-11) · Winamp 2 classic stack (player, equaliser, playlist)
-- [nfo-02](nfo.md#nfo-02) · PC NFO: shaded block logo with fades and debris (SAC school)
+- [nfo-02](nfo.md#nfo-02) · PC NFO: shaded block logo with fades and debris
 - [nfo-03](nfo.md#nfo-03) · Poster NFO: full-canvas shaded illustration with the text set inside it
 - [nfo-11](nfo.md#nfo-11) · Teletype, line-printer and typewriter pictures
 - [ansi-03](ansi.md#ansi-03) · Illustrated ANSI: toon mascot and comic-book / graffiti scroller
@@ -130,22 +130,22 @@ These groups describe supported output formats. A terminal or ASCII-looking imag
 - [demo-08](demo.md#demo-08) · ZX Spectrum / Pentagon demo screen: effects in the attribute grid
 - [demo-09](demo.md#demo-09) · Atari 8-bit demo screen: 16-shade GTIA ramps recoloured by display-list interrupts
 - [demo-10](demo.md#demo-10) · Amstrad CPC demo screen: Mode 0 fat pixels, three-level RGB, full overscan
-- [print-01](print.md#print-01) · Swapper's floppy: hand-labelled 3.5-inch disk, fanned as 'disk 1 of N'
+- [print-01](print.md#print-01) · Hand-labelled floppy: 3.5-inch disk, fanned as 'disk 1 of N'
 - [print-02](print.md#print-02) · Netlabel cassette: J-card with obi strip, and a shell whose reels turn
 
 ### Text / ASCII or SVG (34)
 
-- [pc-06](pc.md#pc-06) · Skinned rip installer: INSTALL / NFO / MUSIC / EXIT
-- [pc-07](pc.md#pc-07) · Text-mode poster installer (Razor 1911, 2024-26)
+- [pc-06](pc.md#pc-06) · Skinned game installer: INSTALL / NFO / MUSIC / EXIT
+- [pc-07](pc.md#pc-07) · Text-mode poster installer (2024-26)
 - [pc-08](pc.md#pc-08) · Trainer menu: F-key toggles under a logo
 - [pc-11](pc.md#pc-11) · BIOS setup hijack: the firmware screen that starts misbehaving
-- [c64-05](c64.md#c64-05) · Razor 1911 Amiga cracktro (Sector9, 1990-91): logo plate, deep-blue panel, rainbow copper text
+- [c64-05](c64.md#c64-05) · Amiga cracktro (1990-91): logo plate, deep-blue panel, rainbow copper text
 - [c64-06](c64.md#c64-06) · Amiga megademo menu and trainer menu: chrome logo, giant scroller, dotted-leader option list
 - [c64-13](c64.md#c64-13) · Atari ST menu disk: key-numbered game list, big gradient scroller, scanline rasters
 - [c64-14](c64.md#c64-14) · Chip-music jukebox: track list with times, embossed panel, 'hit a key' legend
 - [trk-04](trk.md#trk-04) · DOS text-mode trackers (Scream Tracker 3 gold, Impulse Tracker tan, AdLib Tracker II navy)
 - [trk-08](trk.md#trk-08) · Open Cubic Player (DOS module player with text-mode spectrum analyser)
-- [nfo-01](nfo.md#nfo-01) · PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED)
+- [nfo-01](nfo.md#nfo-01) · PC NFO: brush-script block logo (after JED)
 - [nfo-06](nfo.md#nfo-06) · Amiga description logos: compact Topaz outline (1992-94)
 - [nfo-07](nfo.md#nfo-07) · Amiga colly era: full-width Latin-1 logos and page layout
 - [ansi-01](ansi.md#ansi-01) · ANSI logo colly (gradient block-letter logos between cut lines)
@@ -166,7 +166,7 @@ These groups describe supported output formats. A terminal or ASCII-looking imag
 - [xfer-08](xfer.md#xfer-08) · Sysop's waiting-for-caller screen: the BBS status dashboard
 - [xfer-10](xfer.md#xfer-10) · SFV file and check result (with an NFO viewer frame)
 - [demo-07](demo.md#demo-07) · Big-screen compo slide sequence (beamer)
-- [demo-11](demo.md#demo-11) · Apple II crack screen: six-colour hi-res panels and 40-column credits
+- [demo-11](demo.md#demo-11) · Apple II title screen: six-colour hi-res panels and 40-column credits
 - [print-04](print.md#print-04) · Tractor-feed printout: green-bar paper, banner page in giant letters, punched-card strip
 - [print-05](print.md#print-05) · Scene paperwork: tick-box swap letter, party pre-invitation with reply coupon, hand-drawn votesheet
 
@@ -174,18 +174,18 @@ These groups describe supported output formats. A terminal or ASCII-looking imag
 
 | ID | Style | Medium | Build | Impact | What it is |
 | --- | --- | --- | --- | --- | --- |
-| [pc-01](pc.md#pc-01) | Razor 1911 DOS cracktro: flat field, pixel logo, presents-text | Animated SVG | Easy | 3/5 | The small numbered intros that ran in front of Razor's mid-90s game releases: one flat colour field, a pixel logo across the top, a few centred lines of blocky text, one... |
+| [pc-01](pc.md#pc-01) | Numbered DOS intro (1996-98): flat field, pixel logo, presents-text | Animated SVG | Easy | 3/5 | Small numbered DOS intros of the mid-90s: one flat colour field, a pixel logo across the top, a few centred lines of blocky text, one background effect and a looping... |
 | [pc-02](pc.md#pc-02) | Plasma field with the logo embossed in it | Animated SVG | Medium | 4/5 | A full-screen single-hue plasma in which the group's wordmark appears as part of the plasma, as if pressed into it. |
 | [pc-03](pc.md#pc-03) | Chrome spheres over a checkerboard | Animated SVG | Medium | 5/5 | Mirror balls bouncing above an endless checker floor under a chrome logo: the scene's own in-joke for 'a demo'. |
 | [pc-04](pc.md#pc-04) | Early DOS VGA loader: metal logo, gradient bars, one big scroller | Animated SVG | Easy | 3/5 | The first generation of graphical intros on the IBM PC, made before the platform had its own demoscene. |
-| [pc-05](pc.md#pc-05) | Win32 new old-school cracktro: metal logo, twister, sine scroller | Animated SVG | Medium | 4/5 | The mid-2000s revival in which demoscene coders (hitchhikr, the Titan people, anesthetic) and pixel artists (Alien^PDX, H2o, iks/irokos, bull) built deliberately... |
-| [pc-06](pc.md#pc-06) | Skinned rip installer: INSTALL / NFO / MUSIC / EXIT | Text / ASCII + SVG | Easy | 4/5 | Rip groups cut games down to small packages and shipped their own installer, which doubled as the intro: a custom-shaped window with a logo sign, three or four buttons,... |
-| [pc-07](pc.md#pc-07) | Text-mode poster installer (Razor 1911, 2024-26) | Text / ASCII + SVG | Easy | 4/5 | Razor's current house look, and the one most directly usable as plain text: each installer is a single character-cell poster in two or three flat colours, with the game... |
+| [pc-05](pc.md#pc-05) | Win32 new old-school cracktro: metal logo, twister, sine scroller | Animated SVG | Medium | 4/5 | A mid-2000s Windows intro look: a big airbrushed chrome logo, a twisting column, a bouncing scroller and a chiptune. |
+| [pc-06](pc.md#pc-06) | Skinned game installer: INSTALL / NFO / MUSIC / EXIT | Text / ASCII + SVG | Easy | 4/5 | A custom-shaped installer window that doubles as the intro, with a logo sign, a few buttons, an info viewport and a chiptune playlist. |
+| [pc-07](pc.md#pc-07) | Text-mode poster installer (2024-26) | Text / ASCII + SVG | Easy | 4/5 | A single character-cell poster in two or three flat colours, with the title built as enormous block letters that fill the frame. |
 | [pc-08](pc.md#pc-08) | Trainer menu: F-key toggles under a logo | Text / ASCII + SVG | Easy | 3/5 | A trainer patches a running game to give cheats, and its screen is a cracktro with a job to do: a logo on top and a list of function-key toggles underneath. |
 | [pc-09](pc.md#pc-09) | Pencil on paper: the cracktro that draws itself | Animated SVG | Medium | 4/5 | A cracktro with no logo bitmap and no scroller: a shaded pencil lies on blue paper at the end of a chalk-white line drawing and a handwritten message. |
 | [pc-10](pc.md#pc-10) | Fake desktop takeover | Animated SVG | Easy | 4/5 | A cracktro that pretends to be, or takes over, the user's own desktop. |
 | [pc-11](pc.md#pc-11) | BIOS setup hijack: the firmware screen that starts misbehaving | Text / ASCII + SVG | Easy | 4/5 | A demo staged inside a PC BIOS setup screen: the familiar navy text-mode page with a double-line frame and a key legend, whose main panel then fills with text-mode... |
-| [pc-12](pc.md#pc-12) | Neon cube field: the rez-era Razor look | Animated SVG | Medium | 4/5 | When Razor's demo section came back around 2010 it had a consistent look: fields of glowing rainbow cubes and glenz shapes, a pixel logo, scanlines and a Dubmood... |
+| [pc-12](pc.md#pc-12) | Neon cube field: the 2010-era scanline look | Animated SVG | Medium | 4/5 | Fields of glowing rainbow cubes and glenz shapes with a pixel logo, scanlines and a chiptune, as seen in early-2010s 64k intros. |
 | [pc-13](pc.md#pc-13) | Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs | Animated SVG | Medium | 4/5 | The family of effects where one geometric object rotates in the middle of the screen while the text does the talking. |
 | [pc-14](pc.md#pc-14) | Texture movers: rotozoomer and tunnel | Animated SVG | Medium | 3/5 | Two effects that fill the frame by moving a texture rather than an object. |
 
@@ -193,19 +193,19 @@ These groups describe supported output formats. A terminal or ASCII-looking imag
 
 | ID | Style | Medium | Build | Impact | What it is |
 | --- | --- | --- | --- | --- | --- |
-| [c64-01](c64.md#c64-01) | C64 one-screen crack intro: raster-split logo and text on colour bars | Animated SVG | Easy | 3/5 | The single-screen C64 intro: a group logo at the top, a few centred lines naming the game, cracker and date, and a scroller, all on black. |
+| [c64-01](c64.md#c64-01) | C64 one-screen intro: raster-split logo and text on colour bars | Animated SVG | Easy | 3/5 | The single-screen C64 intro: a group logo at the top, a few centred lines naming the title, the makers and the date, and a scroller, all on black. |
 | [c64-02](c64.md#c64-02) | C64 DYCP demo part: sine-wave letters under a chunky multicolour logo | Animated SVG | Medium | 4/5 | DYCP ("Different Y Character Position") is the C64 scroller in which every character sits at its own height, so a line of text ripples along a sine curve as it scrolls. |
 | [c64-03](c64.md#c64-03) | PETSCII picture: C64 text-mode art on the 40-column grid | Static SVG | Medium | 3/5 | Pictures and logos built only from the C64's built-in character set: 40x25 cells, each an 8x8 glyph in one foreground colour over a single shared background colour. |
 | [c64-04](c64.md#c64-04) | C64 disk directory art (dir art) | Text / ASCII | Easy | 3/5 | Art drawn inside a 1541 disk directory listing: when the disk is listed, the file names themselves form a picture or a framed title. |
-| [c64-05](c64.md#c64-05) | Razor 1911 Amiga cracktro (Sector9, 1990-91): logo plate, deep-blue panel, rainbow copper text | Text / ASCII + SVG | Easy | 4/5 | Razor 1911 began on the C64 in 1985 as Razor 2992 and moved to the Amiga in 1987-88, before its PC years. |
+| [c64-05](c64.md#c64-05) | Amiga cracktro (1990-91): logo plate, deep-blue panel, rainbow copper text | Text / ASCII + SVG | Easy | 4/5 | An Amiga intro with a chrome logo plate, a deep-blue panel and rainbow copper text. |
 | [c64-06](c64.md#c64-06) | Amiga megademo menu and trainer menu: chrome logo, giant scroller, dotted-leader option list | Text / ASCII + SVG | Medium | 3/5 | Two related Amiga list screens. |
-| [c64-07](c64.md#c64-07) | Vertical copper bars ('Kefrens bars' / 'Alcatraz bars'): ribbons twisting down the screen | Animated SVG | Medium | 4/5 | A one-trick Amiga effect: shaded vertical bars that sway left and right as they descend, leaving a woven ribbon pattern. |
+| [c64-07](c64.md#c64-07) | Vertical copper bars: ribbons twisting down the screen | Animated SVG | Medium | 4/5 | A one-trick Amiga effect: shaded vertical bars that sway left and right as they descend, leaving a woven ribbon pattern. |
 | [c64-08](c64.md#c64-08) | Bobs and dot objects: a sphere chain on a Lissajous path, a rotating dot cube | Animated SVG | Medium | 4/5 | A black screen with one moving object made of many identical pieces: a chain of shaded balls snaking along a figure-eight, or a lattice of dots rotating in space, above... |
 | [c64-09](c64.md#c64-09) | Copper-only screen: full-screen colour fields with no bitmap at all | Animated SVG | Medium | 4/5 | Screens drawn with the Amiga's copper alone: the display list changes the background colour every scanline and several times along each line, so the picture is pure... |
-| [c64-10](c64.md#c64-10) | Melon Dezign: flat colour fields, stepped silhouettes, curved black text | Animated SVG | Easy | 4/5 | Melon Dezign was founded by Paleface and Seen after they left Quartex, at first as the demo and intro arm of Crystal. |
-| [c64-11](c64.md#c64-11) | Spaceballs 'State of the Art': recoloured silhouette cut out of moire rings | Animated SVG | Medium | 5/5 | A demo by the Norwegian group Spaceballs built around traced silhouettes of dancers cut to techno, over interference patterns and flat colour. |
+| [c64-10](c64.md#c64-10) | Flat-colour Amiga intro: flat colour fields, stepped silhouettes, curved black text | Animated SVG | Easy | 4/5 | An Amiga intro look that swaps chrome and starfields for flat colour fields, stepped silhouettes and curved black text. |
+| [c64-11](c64.md#c64-11) | Moire silhouette demo: recoloured silhouette cut out of moire rings | Animated SVG | Medium | 5/5 | Traced dancer silhouettes cut out of moire rings and recoloured over flat colour, from an early-90s Amiga demo. |
 | [c64-12](c64.md#c64-12) | 16-bit hand-pixelled chrome logo (static) | Static SVG | Medium | 4/5 | The group logo as a piece of pixel art: metal letters reflecting an imaginary sky and desert, drawn dot by dot. |
-| [c64-13](c64.md#c64-13) | Atari ST menu disk: key-numbered game list, big gradient scroller, scanline rasters | Text / ASCII + SVG | Easy | 4/5 | On the ST, UK crackers packed several games onto one floppy and put a menu in front. |
+| [c64-13](c64.md#c64-13) | Atari ST menu disk: key-numbered game list, big gradient scroller, scanline rasters | Text / ASCII + SVG | Easy | 4/5 | An Atari ST menu disk: a key-numbered game list under a big gradient scroller and scanline rasters. |
 | [c64-14](c64.md#c64-14) | Chip-music jukebox: track list with times, embossed panel, 'hit a key' legend | Text / ASCII + SVG | Easy | 3/5 | A screen whose whole purpose is choosing chip tunes. |
 
 ## [Trackers and chiptune visuals](trk.md)
@@ -228,14 +228,14 @@ These groups describe supported output formats. A terminal or ASCII-looking imag
 
 | ID | Style | Medium | Build | Impact | What it is |
 | --- | --- | --- | --- | --- | --- |
-| [nfo-01](nfo.md#nfo-01) | PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED) | Text / ASCII + SVG | Medium | 4/5 | By 1992-93 release groups were commissioning ANSI-group artists for a logo above the typed NFO (the NFO itself dates to a Humble Guys release of January 1990). |
-| [nfo-02](nfo.md#nfo-02) | PC NFO: shaded block logo with fades and debris (SAC school) | Animated SVG | Medium | 5/5 | The other NFO school uses the three CP437 shade characters as paint: carved letters, gradients and rubble. |
+| [nfo-01](nfo.md#nfo-01) | PC NFO: brush-script block logo (after JED) | Text / ASCII + SVG | Medium | 4/5 | A PC text NFO topped by a hand-drawn brush-script block logo. |
+| [nfo-02](nfo.md#nfo-02) | PC NFO: shaded block logo with fades and debris | Animated SVG | Medium | 5/5 | The other NFO school uses the three CP437 shade characters as paint: carved letters, gradients and rubble. |
 | [nfo-03](nfo.md#nfo-03) | Poster NFO: full-canvas shaded illustration with the text set inside it | Animated SVG | Hard | 5/5 | The most extravagant NFOs stop being a logo over a text file and become a painting you scroll through: dozens of rows of shaded block art before the first word, with the... |
 | [nfo-04](nfo.md#nfo-04) | 7-bit outline NFO with dot-leader fields | Text / ASCII | Easy | 3/5 | Some PC groups and divisions used plain keyboard characters instead of CP437 blocks: a slanted outline logo in the Amiga manner over release data set with rows of dots. |
 | [nfo-05](nfo.md#nfo-05) | FILE\_ID.DIZ miniature | Text / ASCII | Easy | 2/5 | FILE\_ID.DIZ was created by Clark Development for its PCBDescribe utility as a plain description of up to 10 lines of 45 characters, shown automatically in BBS file... |
 | [nfo-06](nfo.md#nfo-06) | Amiga description logos: compact Topaz outline (1992-94) | Text / ASCII + SVG | Medium | 4/5 | The Amiga character set is ASCII plus Latin-1 with no block or box characters, and Topaz is spaced so tightly that an underscore followed by a slash looks like one line,... |
 | [nfo-07](nfo.md#nfo-07) | Amiga colly era: full-width Latin-1 logos and page layout | Text / ASCII + SVG | Medium | 4/5 | By the mid-90s the logo had grown to the full 80 columns and the colly, one text file of logos with title, index, greets and respects, was the unit of competition. |
-| [nfo-08](nfo.md#nfo-08) | PC newschool ASCII: dollar-fill blob lettering (Remorse 1981 school) | Text / ASCII | Medium | 3/5 | Katharsis!Ascii, started by Tinyz in March 1994, was the first ASCII-only group on the PC; Remorse followed in October 1994, founded by Necromancer and Necronite, and... |
+| [nfo-08](nfo.md#nfo-08) | PC newschool ASCII: dollar-fill blob lettering | Text / ASCII | Medium | 3/5 | PC ASCII lettering poured solid from heavy characters, with edges softened by punctuation. |
 | [nfo-09](nfo.md#nfo-09) | FIGlet and TOIlet generated banners | Text / ASCII | Easy | 2/5 | FIGlet began in spring 1991 as a 170-line C program called newban by Glenn Chappell, inspired by Frank Sheeran's email signature and urged on by Ian Chai; FIGlet 2.0 in... |
 | [nfo-10](nfo.md#nfo-10) | Usenet line art and the signed picture (jgs school) | Text / ASCII | Medium | 3/5 | On Usenet, ASCII art meant small figurative drawings in plain ASCII posted in messages and signatures. |
 | [nfo-11](nfo.md#nfo-11) | Teletype, line-printer and typewriter pictures | Animated SVG | Medium | 3/5 | Before home computers, pictures were typed: ornaments in Pitman's Typewriter Manual of 1893, Flora Stacey's butterfly of 1898, concrete poetry in the 1950s-70s, radio... |
@@ -355,12 +355,12 @@ These groups describe supported output formats. A terminal or ASCII-looking imag
 
 | ID | Style | Medium | Build | Impact | What it is |
 | --- | --- | --- | --- | --- | --- |
-| [xfer-01](xfer.md#xfer-01) | Topsite race: zipscript box, progress-bar directory and complete bar | Text / ASCII | Easy | 4/5 | A topsite is a private high-bandwidth FTP server where release groups pre and couriers race files for upload credits. |
+| [xfer-01](xfer.md#xfer-01) | FTP upload race: zipscript box, progress-bar directory and complete bar | Text / ASCII | Easy | 4/5 | An FTP upload race shown as framed monospace text: a check box after every file and a progress-bar directory name. |
 | [xfer-02](xfer.md#xfer-02) | FidoNet echomail message in a GoldED reader (with the Russian CP866 variant) | Text / ASCII + SVG | Easy | 4/5 | Echomail was FidoNet's public conferencing: messages hopped between hobbyist BBSes overnight by modem, each system appending its address to the control lines at the... |
 | [xfer-03](xfer.md#xfer-03) | XDCC pack list: numbered packs, gets, sizes and the slots line | Text / ASCII | Easy | 3/5 | An XDCC bot is a file server living in an IRC channel. |
 | [xfer-04](xfer.md#xfer-04) | Userbar kit: the 350x19 forum signature strip | Static SVG | Easy | 3/5 | Userbars were tiny banner images stacked in forum signatures to declare what you used, played or belonged to. |
 | [xfer-05](xfer.md#xfer-05) | Terminal program session: modem lines, dialing directory and the Zmodem transfer box | Animated SVG | Easy | 4/5 | This is the caller's side of a BBS: the program you ran at home to make the modem dial, show the remote screen and pull files down. |
-| [xfer-06](xfer.md#xfer-06) | Sitebot announce: bracketed race lines in the site channel | Animated SVG | Easy | 3/5 | Every topsite had a private IRC channel where a bot narrated the site's life one line at a time: a new directory appears, someone starts racing, the halfway mark, a new... |
+| [xfer-06](xfer.md#xfer-06) | Sitebot announce: bracketed race lines in the site channel | Animated SVG | Easy | 3/5 | An IRC bot narrating an FTP site's uploads one bracketed line at a time, like a results ticker. |
 | [xfer-07](xfer.md#xfer-07) | P2P client transfer window: results grid, per-file bars, chunk map and status bar | Animated SVG | Medium | 4/5 | The window a generation left running overnight: a list of files, each with a progress bar, a speed and an estimate, above a second list of what you were giving back. |
 | [xfer-08](xfer.md#xfer-08) | Sysop's waiting-for-caller screen: the BBS status dashboard | Text / ASCII + SVG | Easy | 3/5 | When nobody was connected, the BBS machine showed its owner a local console: today's numbers, lifetime totals, the last thing the modem said, and a grid of keys for... |
 | [xfer-09](xfer.md#xfer-09) | FXP client: two site panes, a queue and a raw log | Animated SVG | Medium | 3/5 | FXP is the trick of making one FTP server send a file straight to another while your own slow connection only issues the commands. |
@@ -380,17 +380,17 @@ These groups describe supported output formats. A terminal or ASCII-looking imag
 | [demo-08](demo.md#demo-08) | ZX Spectrum / Pentagon demo screen: effects in the attribute grid | Animated SVG | Medium | 4/5 | The Spectrum's picture is 256x192 pixels, but colour exists only on a 32x24 grid: each 8x8 cell has one ink and one paper from eight colours plus a shared bright bit. |
 | [demo-09](demo.md#demo-09) | Atari 8-bit demo screen: 16-shade GTIA ramps recoloured by display-list interrupts | Animated SVG | Easy | 4/5 | The Atari 8-bit builds its screen from a display list: a program that chooses the graphics mode row by row and can fire an interrupt on any row to change colours. |
 | [demo-10](demo.md#demo-10) | Amstrad CPC demo screen: Mode 0 fat pixels, three-level RGB, full overscan | Animated SVG | Medium | 3/5 | The CPC has no sprites and no copper: a 6845 video controller and a gate array, three modes, and 27 colours made from three levels of red, green and blue. |
-| [demo-11](demo.md#demo-11) | Apple II crack screen: six-colour hi-res panels and 40-column credits | Text / ASCII + SVG | Easy | 4/5 | The oldest layer of the whole tradition. |
+| [demo-11](demo.md#demo-11) | Apple II title screen: six-colour hi-res panels and 40-column credits | Text / ASCII + SVG | Easy | 4/5 | The oldest layer of the whole tradition. |
 
 ## [Physical media and print ephemera](print.md)
 
 | ID | Style | Medium | Build | Impact | What it is |
 | --- | --- | --- | --- | --- | --- |
-| [print-01](print.md#print-01) | Swapper's floppy: hand-labelled 3.5-inch disk, fanned as 'disk 1 of N' | Static SVG | Medium | 4/5 | Before any cracktro ran, a release arrived as a disk in an envelope, and the first thing a swapper saw was the label. |
+| [print-01](print.md#print-01) | Hand-labelled floppy: 3.5-inch disk, fanned as 'disk 1 of N' | Static SVG | Medium | 4/5 | A hand-labelled 3.5-inch floppy, fanned out as 'disk 1 of N'. |
 | [print-02](print.md#print-02) | Netlabel cassette: J-card with obi strip, and a shell whose reels turn | Animated SVG | Easy | 5/5 | A J-card is the folded card inside a cassette case, named for its shape seen from the side: a front panel, a narrow spine and a flap behind the tape. |
 | [print-03](print.md#print-03) | Magazine type-in listing: BASIC, DATA blocks and a checksum column | Text / ASCII | Easy | 3/5 | Magazines printed whole programs for readers to type in: BASIC, with machine code carried as numbers in DATA statements. |
 | [print-04](print.md#print-04) | Tractor-feed printout: green-bar paper, banner page in giant letters, punched-card strip | Text / ASCII + SVG | Easy | 4/5 | Continuous paper with sprocket holes down both edges is the paper of computing: mainframe listings on green-striped sheets, a banner page in huge letters in front of... |
-| [print-05](print.md#print-05) | Scene paperwork: tick-box swap letter, party pre-invitation with reply coupon, hand-drawn votesheet | Text / ASCII + SVG | Easy | 4/5 | Swappers kept dozens of postal contacts going at once, so the paperwork became standardised: a short note with every disk, and sometimes a pre-printed form where the... |
+| [print-05](print.md#print-05) | Scene paperwork: tick-box swap letter, party pre-invitation with reply coupon, hand-drawn votesheet | Text / ASCII + SVG | Easy | 4/5 | Postal paperwork from the disk-mail era: a tick-box letter, a party pre-invitation with a reply coupon and a hand-drawn votesheet. |
 
 ## Overlaps and shared building blocks
 
@@ -401,8 +401,8 @@ Noted by the final reviewer. Styles that share a primitive should share one impl
 - Winamp appears twice: 'Winamp 2 classic stack (player, equaliser, playlist)' in trackers/chiptune and 'Winamp classic skin: player, equaliser, playlist' in vaporwave/internet-era. Same object, same three windows; merge into one and keep it in the chiptune family, cross-referenced from vaporwave.
 - The Windows 9x blue screen appears twice: 'Blue Screen of Death / fatal exception' in vaporwave/internet-era and 'Windows 9x text-mode blue screen' in retro machine screens. Identical 80x25 white-on-blue screen; merge into one (the second entry's own text admits it was re-added).
 - Trainer menus appear twice: 'Trainer menu: F-key toggles under a logo' (PC cracktro family) and the trainer half of 'Amiga megademo menu and trainer menu' (C64/Amiga/ST family). Make one trainer-menu style with PC and Amiga variants, and leave the Amiga entry as megademo part-list menu only.
-- Ball and dot objects appear twice: 'Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs' (PC family) and 'Bobs and dot objects: a sphere chain on a Lissajous path, a rotating dot cube' (Amiga family, which itself cites the vectorballs part of Red Sector's Megademo). Move vector balls and dot objects into the bobs entry and keep 'Vector objects' for wireframe, glenz and metaballs, or merge the two outright.
-- 'Fake desktop takeover' (PC cracktro family; Fairlight's teal Win9x desktop with a release dialog) and 'Windows 95/98 desktop: dialogs, error cascade, setup wizard, Defrag' (vaporwave family) build the same Win9x chrome. Keep both only if the takeover entry is reduced to its distinct idea (the desktop that shatters or gets hijacked); otherwise fold the Fairlight variant into the Windows 95 entry as one more set piece.
+- Ball and dot objects appear twice: 'Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs' (PC family) and 'Bobs and dot objects: a sphere chain on a Lissajous path, a rotating dot cube' (Amiga family). Move vector balls and dot objects into the bobs entry and keep 'Vector objects' for wireframe, glenz and metaballs, or merge the two outright.
+- 'Fake desktop takeover' (PC cracktro family; a teal Win9x desktop with a release dialog) and 'Windows 95/98 desktop: dialogs, error cascade, setup wizard, Defrag' (vaporwave family) build the same Win9x chrome. Keep both only if the takeover entry is reduced to its distinct idea (the desktop that shatters or gets hijacked); otherwise fold the teal-desktop variant into the Windows 95 entry as one more set piece.
 - 'BIOS setup hijack' (PC cracktro family) and 'PC power-on: BIOS POST screen' (retro machine family) are two pages of the same firmware look and the hijack's payload is exactly 'Text-mode demo effect (plasma in character cells)' (ANSI family). Treat as one BIOS style with POST and SETUP variants, with the text-mode effect as the optional animation layer rather than three separate builds.
 - Plasma is described three times: 'Plasma field with the logo embossed in it' (PC), the plasma relative inside 'Copper-only screen' (Amiga) and 'Text-mode demo effect (plasma in character cells)' (ANSI). They should share one plasma implementation with three renderers (smooth, scanline-banded, character-cell); keep the entries but cross-link them and avoid a fourth.
 - Chrome/metal logos recur as the main asset in '16-bit hand-pixelled chrome logo (static)', 'Win32 new old-school cracktro: metal logo, twister, sine scroller', 'Early DOS VGA loader: metal logo, gradient bars', 'Amiga megademo menu ... chrome logo' and 'Synthwave / outrun: sunset, laser grid, chrome logo'. Not a merge, but the hand-pixelled chrome logo should be treated as a shared component that the others reference, not re-specified five times.
@@ -413,7 +413,7 @@ Noted by the final reviewer. Styles that share a primitive should share one impl
 - Three text-game screens overlap in grammar: 'Door game screen (narrated location, bracketed hotkeys, command prompt)' (ANSI family) and 'MUD session transcript (login banner, room block, exits line, HP prompt)' (hacker family) are both titled-location-plus-prose-plus-status-prompt; merge them or make MUD a variant of the door game, and keep 'Roguelike dungeon screen' separate because it is a map, not prose.
 - 'Chip-music jukebox: track list with times' (ST/Amiga family), 'Module sample list as message board' and 'Open Cubic Player' (chiptune family) and the playlist pane of Winamp are all 'a list of tunes or samples as text'. Keep them, but file the jukebox under the chiptune family so the track-list idea is specified once and the others are presented as variants.
 - Colly structure is described twice: 'ANSI logo colly (gradient block-letter logos between cut lines)' (ANSI family) and 'Amiga colly era: full-width Latin-1 logos and page layout' (NFO/ASCII family). Different character sets so both stay, but the document skeleton (title, index, cut lines, greets) is identical and should be one shared layout with two lettering schools.
-- 'Poster NFO: full-canvas shaded illustration with the text set inside it' (NFO family) and 'Text-mode poster installer (Razor 1911, 2024-26)' (PC cracktro family) are both the full-frame character-cell poster. Keep both (one shaded CP437, one flat two-colour block letters) but present them as a pair so users are not offered the same idea under two family headings.
+- 'Poster NFO: full-canvas shaded illustration with the text set inside it' (NFO family) and 'Text-mode poster installer (2024-26)' (PC cracktro family) are both the full-frame character-cell poster. Keep both (one shaded CP437, one flat two-colour block letters) but present them as a pair so users are not offered the same idea under two family headings.
 - Treatments, not styles: 'Glitch art' (already flagged as an overlay), 'VHS tape and late-night lo-fi', 'Decrypt reveal', 'Digital rain banner' and 'ANSImation: the modem-speed draw-in' are all effects applied over another style. Group them in one 'overlays and transitions' list instead of scattering them across the vaporwave, hacker and ANSI families.
 - Receding-plane scenes share one primitive: 'Chrome spheres over a checkerboard', 'Synthwave / outrun: sunset, laser grid' and 'SNES Mode 7: rotating textured ground plane'. No merge, but build the perspective floor once; and note 'Neon cube field' and 'Vector objects' both claim glenz, so say in one place only which entry owns it.
 - 'Minitel / viewdata service page' and the merged Teletext entry use the same 40-column mosaic cell grid, and 'RIPscrip ... with NAPLPS/Telidon' is their vector videotex cousin. Keep three entries but put them under one videotex heading with a shared cell renderer, since they currently sit in two families.

@@ -20,7 +20,7 @@ This family covers what demosceners themselves make and keep, as opposed to crac
 | [demo-08](#demo-08) | ZX Spectrum / Pentagon demo screen: effects in the attribute grid | Animated SVG | Medium | 4/5 |
 | [demo-09](#demo-09) | Atari 8-bit demo screen: 16-shade GTIA ramps recoloured by display-list interrupts | Animated SVG | Easy | 4/5 |
 | [demo-10](#demo-10) | Amstrad CPC demo screen: Mode 0 fat pixels, three-level RGB, full overscan | Animated SVG | Medium | 3/5 |
-| [demo-11](#demo-11) | Apple II crack screen: six-colour hi-res panels and 40-column credits | Text / ASCII + SVG | Easy | 4/5 |
+| [demo-11](#demo-11) | Apple II title screen: six-colour hi-res panels and 40-column credits | Text / ASCII + SVG | Easy | 4/5 |
 
 ---
 
@@ -454,7 +454,7 @@ The CPC has no sprites and no copper: a 6845 video controller and a gate array, 
 
 <a name="demo-11"></a>
 
-## demo-11 · Apple II crack screen: six-colour hi-res panels and 40-column credits
+## demo-11 · Apple II title screen: six-colour hi-res panels and 40-column credits
 
 **Text / ASCII + SVG** · build: **Easy** · impact: **4/5** · About 1981 to the mid-1980s; Apple II, II+ and IIe; North American BBS pirate groups. Dated screens in the textfiles.com archive run from 1982 to 1985, and Pouet lists a crack screen from September 1981
 

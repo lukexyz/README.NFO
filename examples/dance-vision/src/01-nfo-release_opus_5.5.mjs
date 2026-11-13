@@ -187,10 +187,10 @@ const kv = (k, v, keyWidth = 14) => `${k} ${'.'.repeat(keyWidth - len(k) - 1)} $
 const logoLines = renderLogo();
 
 const release = box('RELEASE iNFO', [
-  kv('cracked by', 'O.L.F. (E8 division)'),
-  kv('supplier', 'your cracked phone'),
-  kv('cracker', 'on-device pose model'),
-  kv('protection', 'none whatsoever'),
+  kv('crew', 'O.L.F. (E8 division)'),
+  kv('hardware', 'any camera phone'),
+  kv('engine', 'on-device pose model'),
+  kv('privacy', 'video stays local'),
   kv('requires', 'a browser. no app'),
   kv('account', 'lol, no'),
   kv('format', '33 pose landmarks'),
@@ -236,7 +236,7 @@ const flow = [
 ];
 
 const main = [
-  center('·  •  ·   ' + B('THE OVERGROUND LIBERATION FRONT') + '   proudly presents   ·  •  ·', W),
+  center('·  •  ·   ' + B('THE OVERGROUND LIBERATION FRONT') + '   proudly brings you   ·  •  ·', W),
   '',
   ...logoLines,
   center('♪  your phone is the mocap rig  ·  your telly is the dance floor  ♪', W),
@@ -294,8 +294,8 @@ const rest = [
     'YouTube dance videos can be downloaded, reviewed and mapped into editable choreography in /mapper. see ' + A('YOUTUBE_WORKFLOW.md', 'YOUTUBE_WORKFLOW.md') + '.',
     'camera pixels never leave the phone. the relay carries landmarks, and phones get room state back, never each other\'s poses.',
   ]),
-  ...section('PROTECTiON'),
-  '  none. no DRM, no login, no video uploads. the only thing tracking you is you.',
+  ...section('PRiVACY'),
+  '  no DRM, no login, no video uploads. the only thing tracking you is you.',
   ...section('REQUiREMENTS'),
   '  ' + kv('the PC', 'Node + npm, a browser, an HDMI cable', 13),
   '  ' + kv('the telly', 'anything with an HDMI port', 13),
@@ -309,7 +309,7 @@ const rest = [
   '  ' + kv('2026-09', 'phones, the telly, dance maps, six venues. you are here', 13),
 ];
 
-// Tracker pattern: the chiptune in the keygen you never had to run.
+// Tracker pattern: the chiptune in the intro you never had to sit through.
 function tracker() {
   const cell = (s) => ` ${s} `;
   const rows = [
@@ -328,7 +328,7 @@ function tracker() {
   // LED meters use ■ rather than shades: Windows draws ░▒▓ from a taller fallback font.
   const meter = (n, w = 10) => '■'.repeat(n) + '·'.repeat(w - n);
   const out = [
-    '  ♪ now playing: olf-keygen.xm ─ "Last Overground Home" ─ 4ch ─ 125 bpm',
+    '  ♪ now playing: olf-intro.xm ─ "Last Overground Home" ─ 4ch ─ 125 bpm',
     '',
     '  ┌────┬' + heads.map(() => '─'.repeat(12)).join('┬') + '┐',
     '  │ ## │' + heads.map((h) => cell(padR(h, 10))).join('│') + '│',
@@ -349,11 +349,11 @@ const diz = box('FiLE_iD.DiZ', [
   'phone = mocap rig. telly = floor.',
   '33 landmarks out. 0 bytes of video.',
   'up to 6 phones. no app. no account.',
-  center('cracked by O.L.F. (E8 division)', 34),
+  center('by O.L.F. (E8 division)', 34),
 ], 40, SINGLE);
-const keygen = box('OLF KEYGEN v17', [
+const keygen = box('OLF STAGE NAMER v17', [
   'name    [ your stage name      ]',
-  'serial  [ NONE-NEEDED-0BYTES   ]',
+  'code    [ NONE-NEEDED-0BYTES   ]',
   '',
   '[ Generate ] [ Scan QR ] [ Exit ]',
   '♪ last_overground_home.xm',
@@ -377,15 +377,15 @@ const greetz = [
   ...section('NOW PLAYiNG'),
   ...tracker(),
   ...section('THE CREW'),
-  '  ' + kv('cracker', 'the pose model. it did all the work', 17),
-  '  ' + kv('supplier', 'your phone. it did not consent to this', 17),
-  '  ' + kv('courier', 'the websocket relay', 17),
+  '  ' + kv('choreography', 'the pose model. it did all the work', 17),
+  '  ' + kv('camera', 'your phone. it did not consent to this', 17),
+  '  ' + kv('messenger', 'the websocket relay', 17),
   '  ' + kv('quality control', 'the telly', 17),
   '  ' + kv('ascii', 'O.L.F. art division, somewhere off Mare Street', 17),
   '',
   ...sideBySide(diz, keygen),
   '',
-  center('░▒▓█  O.L.F. ─ we don\'t crack software, we crack hips  █▓▒░', W),
+  center('░▒▓█  O.L.F. ─ we don\'t push pixels, we push hips  █▓▒░', W),
 ];
 
 // ---------------------------------------------------------------- write + verify
@@ -417,7 +417,7 @@ const md = [
   '</details>',
   '',
   '<details>',
-  '<summary><b>[ GREETZ ]</b> &nbsp;plus the keygen music, the crew and a FILE_ID.DIZ</summary>',
+  '<summary><b>[ GREETZ ]</b> &nbsp;plus the chip music, the crew and a FILE_ID.DIZ</summary>',
   '',
   pre(greetz),
   '',

@@ -87,7 +87,7 @@ python -m streamlit run app/app.py     # then open http://localhost:8501
    Date ........ 20260930
    Size ........ 80 x 139
    Flags ....... iCE colors on          (16 backgrounds. blink was the price)
-   Protection .. none (not a real SAUCE field. it's Apache 2.0, the
+   Lock-in ..... none (not a real SAUCE field. it's Apache 2.0, the
                  source is right there)
 
  HOW IT WAS DRAWN

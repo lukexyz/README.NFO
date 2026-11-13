@@ -22,7 +22,7 @@ screen keys on your chosen BASIC system. Keep your favourite style.
 110 IF N=2 THEN GOSUB 1100                    :REM 239
 120 IF N=3 THEN GOSUB 1200                    :REM 242
 130 GOTO 80                                   :REM 117
-200 DATA 152,13,2026,10,5,0                   :REM  84
+200 DATA 153,13,2026,10,5,0                   :REM  85
 1000 PRINT &quot;STYLES/INDEX.MD&quot;:RETURN           :REM  54
 1100 PRINT &quot;EXAMPLES/README.MD&quot;:RETURN        :REM 232
 1200 PRINT &quot;NPM RUN PREVIEW&quot;:RETURN           :REM  48

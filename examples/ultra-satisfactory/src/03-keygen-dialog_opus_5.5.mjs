@@ -510,7 +510,7 @@ push(
     t3,
     [
       ['RELEASED BY ', C.dim], ['DEPT. OF SPAGHETTI LOGISTICS', C.gold], ['  ·  ', C.dim2],
-      ['SUPPLIED BY ', C.dim], ['A PIONEER AT 3AM', C.cyan], ['  ·  ', C.dim2],
+      ['TESTED BY ', C.dim], ['A PIONEER AT 3AM', C.cyan], ['  ·  ', C.dim2],
       ['V1.0', C.txt],
     ],
     W / 2 + 4,
@@ -713,7 +713,7 @@ css.push(`.stA{animation:stA ${PHASE}s step-end infinite -${OFFSET}s}.stB{animat
   );
 }
 
-// ---------------------------------------------------------------- protection readout + buttons
+// ---------------------------------------------------------------- lock-in readout + buttons
 const BY = 151;
 const BH = 17;
 {
@@ -729,7 +729,7 @@ const BH = 17;
       BY + 4,
     ),
   );
-  push(spans(t3, [['PROTECTION: ', C.dim], ['NONE', C.gold]], x + 19, BY + 3));
+  push(spans(t3, [['LOCK-IN: ', C.dim], ['NONE', C.gold]], x + 19, BY + 3));
   push(spans(t3, [['LICENCE: ', C.dim], ['APACHE 2.0', C.cyan]], x + 19, BY + 10));
   push(rect(x + 1, BY + 1, w - 2, BH - 2, 'url(#scan)', 'shape-rendering="auto"'));
 }

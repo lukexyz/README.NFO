@@ -20,7 +20,7 @@ rows.push(edge,row(' README.NFO / COPY-READY HEADER ART'),row(''));
 for(let y=0;y<7;y++)rows.push(centered(ink('README',y)));
 rows.push(row(''));
 for(let y=0;y<7;y++)rows.push(centered(ink('.NFO',y)));
-rows.push(row(''),row(' 152 STYLES / 13 FAMILIES / TEXT + SVG / MIT'),row(''));
+rows.push(row(''),row(' 153 STYLES / 13 FAMILIES / TEXT + SVG / MIT'),row(''));
 rows.push(row(' COPY TO: your-next-repo/README.md'));
 rows.push(row(''),row(' '.repeat(50)+'[ GALLERIES ] [ DOCS ]'),edge);
 const cellW=12,cellH=13,pad=6,height=rows.length*cellH+pad*2;
@@ -38,10 +38,10 @@ for(let y=0;y<rows.length;y++) {
 let frame='';for(let x=0;x<cols;x++) for(const y of [0,rows.length-1])frame+=`<rect x="${pad+x*cellW}" y="${pad+y*cellH}" width="12" height="13" fill="${x%2?'#923811':'#e08040'}"/>`;
 for(let y=1;y<rows.length-1;y++)for(const x of [0,cols-1])frame+=`<rect x="${pad+x*cellW}" y="${pad+y*cellH}" width="12" height="13" fill="${y%2?'#e08040':'#923811'}"/>`;
 const image=svg({height,background:'#e0b080',
- description:'An original three-colour character-grid poster spells README.NFO in giant packed blocks. The title strip names copy-ready header art, with 152 styles, thirteen families and gallery and documentation controls.',
+ description:'An original three-colour character-grid poster spells README.NFO in giant packed blocks. The title strip names copy-ready header art, with 153 styles, thirteen families and gallery and documentation controls.',
  body:`<g shape-rendering="crispEdges">${frame}${shapes}<rect x="18" y="19" width="924" height="24" fill="#923811"/>
  ${px('README.NFO / COPY-READY HEADER ART',30,26,1.9,'#e0b080')}
- ${px('152 STYLES / 13 FAMILIES / TEXT + SVG / MIT',30,pad+19*cellH+2,1.9,'#923811')}
+ ${px('153 STYLES / 13 FAMILIES / TEXT + SVG / MIT',30,pad+19*cellH+2,1.9,'#923811')}
  ${px('COPY TO: YOUR-NEXT-REPO/README.MD',30,pad+21*cellH+2,1.8,'#923811')}
  <rect x="605" y="302" width="330" height="22" fill="#e08040"/>
  ${px('[ GALLERIES ] [ DOCS ]',618,307,1.8,'#923811')}</g>`

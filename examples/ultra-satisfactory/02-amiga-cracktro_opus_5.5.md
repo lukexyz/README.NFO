@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/02-amiga-cracktro_opus_5.5.svg" width="100%" alt="Amiga demoscene-style intro banner. 'Manifold Destiny presents' above ULTRA-SATISFACTORY in chunky chrome letters: ULTRA in ice cyan between two turning hex-cog emblems, SATISFACTORY in silver and gold, over sweeping copper raster bars and a parallax starfield. The subtitle reads Objectives, Items, Buildings, every recipe one click apart. Below it, in front of a distant factory skyline with blinking chimney beacons, a pixel production line runs on a conveyor belt: ingots leave a glowing Smelter, a Constructor's press thumps on the beat, an Assembler bolts parts into frames and a Space Elevator sends a pod up a tether that rises out of the frame. A sine-wave scroller opens with 'Every recipe, one click apart!' and the footer reads: live in your browser, lukexyz.github.io/ULTRA-SATISFACTORY">
+  <img src="assets/02-amiga-cracktro_opus_5.5.svg" width="100%" alt="Amiga demoscene-style intro banner. 'A Manifold Destiny production' above ULTRA-SATISFACTORY in chunky chrome letters: ULTRA in ice cyan between two turning hex-cog emblems, SATISFACTORY in silver and gold, over sweeping copper raster bars and a parallax starfield. The subtitle reads Objectives, Items, Buildings, every recipe one click apart. Below it, in front of a distant factory skyline with blinking chimney beacons, a pixel production line runs on a conveyor belt: ingots leave a glowing Smelter, a Constructor's press thumps on the beat, an Assembler bolts parts into frames and a Space Elevator sends a pod up a tether that rises out of the frame. A sine-wave scroller opens with 'Every recipe, one click apart!' and the footer reads: live in your browser, lukexyz.github.io/ULTRA-SATISFACTORY">
 </p>
 
 <h3 align="center">⚡ ULTRA-SATISFACTORY: every recipe, building and Space Elevator objective, one click apart.</h3>
@@ -17,7 +17,7 @@
   <code>ITEMS:&nbsp;140</code>&nbsp;
   <code>RECIPES:&nbsp;211&nbsp;(88&nbsp;alt)</code>&nbsp;
   <code>BUILDINGS:&nbsp;477</code>&nbsp;
-  <code>PROTECTION:&nbsp;none&nbsp;(Apache&nbsp;2.0)</code>&nbsp;
+  <code>LOCK-IN:&nbsp;none&nbsp;(Apache&nbsp;2.0)</code>&nbsp;
   <code>BELTS:&nbsp;just&nbsp;one&nbsp;more</code>
 </p>
 
@@ -68,12 +68,12 @@ python -m streamlit run app/app.py
 ▄█▀▀▀▀ ▄█▀▀█▄ ▀▀██▀▀ ██ ▄█▀▀▀▀ ██▀▀▀▀ ▄█▀▀█▄ ▄█▀▀▀▀ ▀▀██▀▀ ▄█▀▀█▄ ██▀▀█▄ ██  ██
  ▀▀▀█▄ ██▄▄██   ██   ██  ▀▀▀█▄ ██▀▀▀  ██▄▄██ ██       ██   ██  ██ ██▄▄█▀  ▀██▀
 ▄▄▄▄█▀ ██  ██   ██   ██ ▄▄▄▄█▀ ██     ██  ██ ▀█▄▄▄▄   ██   ▀█▄▄█▀ ██ ▀█▄   ██
-        ═════  M A N I F O L D   D E S T I N Y   P R E S E N T S  ═════
+    ═════  A   M A N I F O L D   D E S T I N Y   P R O D U C T I O N  ═════
 
 ╔═════════════════════════════════════════════════════════════════════════════╗
 ║ RELEASE ..... ULTRA-SATISFACTORY         TYPE ....... companion app         ║
-║ SUPPLIED BY . greeny/SatisfactoryTools   PACKED BY .. one Streamlit file    ║
-║ PROTECTION .. none (Apache 2.0)          RUNS ON .... Python or a browser   ║
+║ DATA FROM ... greeny/SatisfactoryTools   PACKED BY .. one Streamlit file    ║
+║ LOCK-IN ..... none (Apache 2.0)          RUNS ON .... Python or a browser   ║
 ║ ITEMS ....... 140 craftable              RECIPES .... 211 (88 alternates)   ║
 ║ BUILDINGS ... 477                        PHASES ..... 5, Space Elevator     ║
 ║ GAME ........ sold separately            SLEEP ...... an alternate recipe   ║
@@ -101,7 +101,7 @@ python -m streamlit run app/app.py
   ultra_satisfactory/data.py ... loads the game data
   data/data.json ............... the recipe book
   modal_app.py ................. the same app as a server on Modal
-  LICENSE ...................... Apache 2.0. Protection: none.
+  LICENSE ...................... Apache 2.0. Lock-in: none.
 
 ── THE SPACE ELEVATOR SHOPPING LIST (AS THE APP LISTS IT) ─────────────────────
   1 Automation basics .... Smart Plating x50 * Versatile Framework x100

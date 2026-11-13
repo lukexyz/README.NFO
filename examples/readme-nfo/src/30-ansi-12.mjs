@@ -46,8 +46,8 @@ const heading='─ README.NFO ';
 const panel=[
   '┌'+heading+'─'.repeat(panelWidth-heading.length)+'┐',
   '│'+' RETRO HEADERS / TEXT + SVG'.padEnd(panelWidth)+'│',
-  rule('├','┬','┤'),panelRow(['152 STYLES','13 FAMILIES','MIT LICENCE']),
+  rule('├','┬','┤'),panelRow(['153 STYLES','13 FAMILIES','MIT LICENCE']),
   panelRow(['RESEARCHED','VISUAL CATALOGUE','COPY + REUSE']),rule('└','┴','┘'),
 ].join('\n');
-const markdown=`**README.NFO** — retro headers in text and SVG.\n\n\`\`\`text\n${art}\n\`\`\`\n\n\`\`\`text\n${panel}\n\`\`\`\n\n[152 researched styles](../../styles/INDEX.md) · [Example galleries](../README.md) · [MIT licence](../../LICENSE)`;
+const markdown=`**README.NFO** — retro headers in text and SVG.\n\n\`\`\`text\n${art}\n\`\`\`\n\n\`\`\`text\n${panel}\n\`\`\`\n\n[153 researched styles](../../styles/INDEX.md) · [Example galleries](../README.md) · [MIT licence](../../LICENSE)`;
 writeHeader(30,{markdown,summary:'A stippled Braille-dot wordmark and decorative sine trace with ordinary text labels.'});

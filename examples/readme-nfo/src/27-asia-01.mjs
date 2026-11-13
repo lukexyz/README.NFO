@@ -1,6 +1,6 @@
 import {svg,px,writeHeader} from './lib.mjs';
 
-const channels=[['FM 01','STYLE CATALOGUE','152'],['FM 02','FAMILY INDEX','013'],['FM 03','TEXT + SVG','MIT'],['FM 04','EDITABLE SOURCES','NFO']];
+const channels=[['FM 01','STYLE CATALOGUE','153'],['FM 02','FAMILY INDEX','013'],['FM 03','TEXT + SVG','MIT'],['FM 04','EDITABLE SOURCES','NFO']];
 let keyboards='';
 for(const [index,row] of channels.entries()){
  const y=133+index*59;
@@ -24,7 +24,7 @@ const image=svg({height:465,background:'#030306',title:'README.NFO — FM archiv
  css:`.lit{animation:key 7s steps(4,end) infinite}.lit1{animation-delay:-2s}.lit2{animation-delay:-4s}.lit3{animation-delay:-6s}.meter{animation:meter 5s steps(5,end) infinite;transform-origin:0 0}@keyframes key{0%,100%{transform:translateX(0)}25%{transform:translateX(19px)}50%{transform:translateX(-10px)}75%{transform:translateX(29px)}}@keyframes meter{0%,100%{transform:scaleY(.6)}25%{transform:scaleY(.92)}50%{transform:scaleY(.48)}75%{transform:scaleY(1)}}`,
  body:`<g shape-rendering="crispEdges"><rect x="23" y="22" width="914" height="422" fill="none" stroke="#5b4388" stroke-width="2"/>
   <path d="M23 104H937M543 104V362M23 362H937M23 415H937" stroke="#5b4388"/>
-  ${px('README.NFO',41,39,7,'#b6a3ff')}${px('FM ARCHIVE MONITOR',574,41,2,'#b6a3ff')}${px('152 STYLES / 13 FAMILIES',574,72,1.7,'#8b79c8')}
+  ${px('README.NFO',41,39,7,'#b6a3ff')}${px('FM ARCHIVE MONITOR',574,41,2,'#b6a3ff')}${px('153 STYLES / 13 FAMILIES',574,72,1.7,'#8b79c8')}
   ${keyboards}${px('SPECTRUM / DEMO MODE',570,122,2,'#b6a3ff')}
   <rect x="570" y="154" width="288" height="35" fill="#17112a" stroke="#5b4388"/>
   ${px('PLAY  STOP  LOOP',592,164,2,'#b6a3ff')}${bars}

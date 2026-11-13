@@ -208,7 +208,7 @@ comment, so this is still a valid song file. It has just become chatty.
   Live build ....... stlite: Streamlit in your browser on WebAssembly.
                      GitHub Actions republishes it on every push to main
   Also deploys ..... as a full Streamlit server on Modal (<a href="modal_app.py">modal_app.py</a>)
-  Licence .......... Apache 2.0 (<a href="LICENSE">LICENSE</a>). Copy protection: none. Help yourself
+  Licence .......... Apache 2.0 (<a href="LICENSE">LICENSE</a>). Lock-in: none. Help yourself
   The game ......... Satisfactory is by Coffee Stain Studios. This is an
                      unofficial fan project and has nothing to do with them
   The dialect ...... PMD, the PC-98 music driver by M. Kajihara (KAJA).

@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="assets/16-poster-installer_opus_5.5.svg" width="832" alt="ULTRA-SATISFACTORY as a one-screen text-mode installer poster in black, cyan, white and gold. Giant cyan block letters spell ULTRA over white ones spelling SATISFACTORY, packed edge to edge inside a hazard-tape border with a name plate let into the top of the tape: SOFT CLEARANCE PRESENTS. The lettering is a factory seen from above: a belt runs down the middle of every stroke of ULTRA, along the gap between the two words and down between the letters of SATISFACTORY, and small gold parts tick along it. A hexagon-and-cog emblem sits in the notch of the L. Underneath: a title strip reading THE UNOFFICIAL SATISFACTORY COMPANION APP, the line OBJECTIVES + ITEMS + BUILDINGS, ONE CLICK APART, a path field holding python -m streamlit run app/app.py, a progress bar unpacking 140 items, 211 recipes, 477 buildings and 5 phases, and two tiny buttons at the bottom right: INSTALL and QUIT. When the bar is full, the path field changes to lukexyz.github.io/ULTRA-SATISFACTORY and the status reads NO INSTALL NEEDED.">
+  <img src="assets/16-poster-installer_opus_5.5.svg" width="832" alt="ULTRA-SATISFACTORY as a one-screen text-mode installer poster in black, cyan, white and gold. Giant cyan block letters spell ULTRA over white ones spelling SATISFACTORY, packed edge to edge inside a hazard-tape border with a name plate let into the top of the tape: SOFT CLEARANCE UNVEILS. The lettering is a factory seen from above: a belt runs down the middle of every stroke of ULTRA, along the gap between the two words and down between the letters of SATISFACTORY, and small gold parts tick along it. A hexagon-and-cog emblem sits in the notch of the L. Underneath: a title strip reading THE UNOFFICIAL SATISFACTORY COMPANION APP, the line OBJECTIVES + ITEMS + BUILDINGS, ONE CLICK APART, a path field holding python -m streamlit run app/app.py, a progress bar unpacking 140 items, 211 recipes, 477 buildings and 5 phases, and two tiny buttons at the bottom right: INSTALL and QUIT. When the bar is full, the path field changes to lukexyz.github.io/ULTRA-SATISFACTORY and the status reads NO INSTALL NEEDED.">
 </p>
 
 <p align="right">
-  ⚡ <code>SOFT CLEARANCE</code> <code>ULTRA-SATISFACTORY</code> <a href="LICENSE"><code>protection: none, it's Apache 2.0</code></a> &nbsp; <a href="#run-it-locally"><kbd>INSTALL</kbd></a> <a href="https://lukexyz.github.io/ULTRA-SATISFACTORY/"><kbd>DON'T</kbd></a>
+  ⚡ <code>SOFT CLEARANCE</code> <code>ULTRA-SATISFACTORY</code> <a href="LICENSE"><code>lock-in: none, it's Apache 2.0</code></a> &nbsp; <a href="#run-it-locally"><kbd>INSTALL</kbd></a> <a href="https://lukexyz.github.io/ULTRA-SATISFACTORY/"><kbd>DON'T</kbd></a>
 </p>
 
 ⚡ **ULTRA-SATISFACTORY** is a companion app for the factory-building game *Satisfactory*: every recipe, building and Space Elevator objective, one click apart. Default install path: your second monitor. A phone or one alt-tab will also do. It answers "what goes in that again?" before you have finished typing the question.
@@ -27,7 +27,7 @@ python -m streamlit run app/app.py     # then open http://localhost:8501
  ════════════════════════════════════════════════════════════════════════════
   installing ...... ULTRA-SATISFACTORY (the lookup tool. not the game)
   install to ...... second monitor / phone / one alt-tab away
-  protection ...... none. this app is Apache 2.0. there was never a lock
+  lock-in ......... none. this app is Apache 2.0. there was never a lock
   disk space ...... zero if you press DON'T: it runs in a browser tab
   reboot .......... not required. sleep: apparently also not required
 
@@ -91,7 +91,7 @@ python -m streamlit run app/app.py     # then open http://localhost:8501
 <!-- POSTER.TXT:BEGIN (generated: node src/16-poster-installer_opus_5.5.mjs) -->
 
 <pre>
-////////////////////////////////// SOFT CLEARANCE PRESENTS: ///////////////////////////////////
+////////////////////////////////// SOFT CLEARANCE  UNVEILS: ///////////////////////////////////
 ███████   ███████   ███████             ███████████████   █████████████████      ███████████
 ███▀███   ███▀███   ███▀███             ███▀▀▀▀▀▀▀▀▀███   ███▀▀▀▀▀▀▀▀▀▀▀███      ███▀▀▀▀▀███
 ███ ███   ███ ███   ███ ███             ███████ ███████   ███ █████████ ███      ███████████

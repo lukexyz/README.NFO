@@ -102,7 +102,7 @@ python -m streamlit run app/app.py
  LIVE BUILD ..... stlite: Streamlit in the browser via WebAssembly,
                   republished by GitHub Actions on every push to main
  ALSO RUNS ON ... Modal, as a full Streamlit server (modal_app.py)
- LICENCE ........ Apache 2.0 for the code. Copy protection: none. Trace it
+ LICENCE ........ Apache 2.0 for the code. Lock-in: none. Trace it
  THE GAME ....... Satisfactory, by Coffee Stain Studios. Not ours, not
                   affiliated, not included. Buy it, then come back
 

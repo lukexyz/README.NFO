@@ -455,14 +455,14 @@ function skyline(steps, base) {
 
 // ---- the scroller, and the wave it rides (quarter-sine cubics, right to left)
 const SCROLL_PARTS = [
-  'STENCIL SHIFT PRESENTS',
+  'STENCIL SHIFT UNVEILS',
   'ULTRA-SATISFACTORY',
   'EVERY RECIPE, BUILDING AND SPACE ELEVATOR OBJECTIVE, ONE CLICK APART',
   '140 ITEMS. 211 RECIPES. 477 BUILDINGS. 0 GRADIENTS',
   'NO CHROME. NO STARFIELD. NO COPPER BARS, ONLY COPPER INGOTS: 30 A MINUTE PER SMELTER',
   'THIS IS NOT A SCROLLER, IT IS A CONVEYOR BELT FOR WORDS',
   'MANIFOLD PEOPLE AND LOAD BALANCER PEOPLE MAY SHARE THIS TAB IN PEACE',
-  "PROTECTION: NONE. IT'S APACHE 2.0",
+  "LOCK-IN: NONE. IT'S APACHE 2.0",
   'UNOFFICIAL FAN PROJECT, NOT AFFILIATED WITH COFFEE STAIN STUDIOS',
 ];
 const SCROLL_TEXT = SCROLL_PARTS.map((s) => `${s}  *  `).join('');
@@ -655,7 +655,7 @@ function buildMain() {
   body += `<g fill="${K}"><path d="${tower}${fg}${figure}"/><path class="pt" d="${parts}"/></g>`;
 
   // ---- the two-tone tag, top left
-  body += crewTag(px, 30, 24, 2.5, 'proudly presents');
+  body += crewTag(px, 30, 24, 2.5, 'proudly unveils');
 
   // ---- small print on the ground strip
   const GREY = '#8d8a94';
@@ -803,7 +803,7 @@ const CREDITS = [
   ['Item & building images', 'Satisfactory Wiki (CC BY-NC-SA 4.0)'],
   ['Graphics & design', 'Stencil Shift (an invented crew)'],
   ['Music', 'none. hum something brisk'],
-  ['Protection', "none. it's Apache 2.0"],
+  ['Lock-in', "none. it's Apache 2.0"],
   ['Affiliation', 'none. unofficial fan project'],
 ];
 const CREDIT_COLS = 64;
@@ -866,7 +866,7 @@ function scrollerTxt() {
   const rule = ` ${'-'.repeat(TXT_COLS - 2)}`;
   const out = [];
   const section = (title) => out.push('', ` ${title}`, rule);
-  out.push(` ${leader('stencil shift proudly presents ', ' ULTRA-SATISFACTORY', TXT_COLS - 2)}`);
+  out.push(` ${leader('stencil shift proudly unveils ', ' ULTRA-SATISFACTORY', TXT_COLS - 2)}`);
   section(`THE SCROLLER, FOR ANYONE WHO READS FASTER THAN ${SCR.speed} PIXELS A SECOND`);
   for (const part of SCROLL_PARTS) {
     let line = '  *';

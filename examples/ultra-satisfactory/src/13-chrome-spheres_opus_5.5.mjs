@@ -306,7 +306,7 @@ const fogSvg = `<rect y="${HY - 1}" width="${W}" height="131" fill="url(#fgd)"/>
 const PX = 2;
 const CREW = 'REFLECTIVE ASSETS DIVISION';
 const SCROLL = [
-  'R.A.D. PRESENTS ULTRA-SATISFACTORY',
+  'R.A.D. UNVEILS ULTRA-SATISFACTORY',
   'TABS: OBJECTIVES * ITEMS * BUILDINGS',
   'A COMPANION APP FOR THE FACTORY GAME SATISFACTORY: EVERY RECIPE, BUILDING AND SPACE ELEVATOR OBJECTIVE, ONE CLICK APART',
   '140 ITEMS * 211 RECIPES (88 ALTERNATE) * 477 BUILDINGS * 5 SPACE ELEVATOR PHASES',
@@ -557,7 +557,7 @@ let typeSvg = '';
   const pw = ((PITCH.length - 1) * 6 + 5) * 2 / 2 + 16, py = 192, ph = 24, cut = 7;
   const plate = polyD([[CX - pw + cut, py], [CX + pw, py], [CX + pw - cut, py + ph], [CX - pw, py + ph]]);
   typeSvg = `<path d="${plate}" fill="#0a1238" fill-opacity=".4"/><path d="M${n1(CX - pw + cut)} ${py + 0.5}H${n1(CX + pw)}" stroke="#fff" stroke-opacity=".35"/>`
-    + shadowed(line(`${CREW}  PRESENTS`, 9, 1.5, '#f4f8ff', 8) + line(PITCH, 197, 2, 'url(#tyg)'));
+    + shadowed(line(`${CREW}  UNVEILS`, 9, 1.5, '#f4f8ff', 8) + line(PITCH, 197, 2, 'url(#tyg)'));
 }
 
 const logoSvg = `<g class="lf">${rowS.svg}${rowU.svg}${logoTint}${sheenSvg}</g>`;
@@ -657,7 +657,7 @@ css.push('@media (prefers-reduced-motion:reduce){*{animation-play-state:paused!i
 const desc = 'A demoscene banner: chrome spheres over a checkerboard. ULTRA SATISFACTORY floats in the sky as a thick italic chrome logo, steel blue with a bright break line across each row of letters, its sides running back to the vanishing point. '
   + 'Below it a grey and white checker floor of foundations flies towards the viewer and drifts sideways, fading into haze at a low horizon. Six mirror balls tinted from cyan through purple to pink bounce over it in a wave, each reflecting the moving floor and the sky, each with a soft shadow. '
   + 'The sky runs a one-minute day: dusty mauve afternoon, the sun setting at the right, a starry indigo night with the moon and coloured light pooling under the spheres, then dawn. '
-  + `Small type above the logo says ${CREW} presents; under it: every recipe, building and Space Elevator objective, one click apart. `
+  + `Small type above the logo says ${CREW} unveils; under it: every recipe, building and Space Elevator objective, one click apart. `
   + 'A small gold scroller at the horizon lists the three tabs (Objectives, Items, Buildings), the counts (140 items, 211 recipes of which 88 are alternates, 477 buildings, 5 Space Elevator phases), how to run it (python -m pip install -r requirements.txt, then python -m streamlit run app/app.py, or nothing to install at lukexyz.github.io/ULTRA-SATISFACTORY), and that it is an unofficial fan project.';
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">

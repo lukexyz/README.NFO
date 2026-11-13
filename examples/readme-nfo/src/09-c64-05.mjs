@@ -20,12 +20,12 @@ const image=svg({height:410,background:'#03050a',title:'README.NFO — copper-pa
     <g transform="translate(38 0) skewX(-10)">${wave}</g>
     ${center('PRESENTS',250,4,'url(#copper)')}
     ${center('RETRO HEADERS / TEXT + SVG',291,3,'#d1d9ff')}
-    ${center('152 STYLES  /  13 FAMILIES  /  MIT',350,2,'#82b7e6')}
+    ${center('153 STYLES  /  13 FAMILIES  /  MIT',350,2,'#82b7e6')}
     ${px('09',43,368,1,'#728ac1')}${px('OPEN THE ARCHIVE',716,368,1,'#728ac1')}`});
 const border = `+${'-'.repeat(62)}+`;
 const row = (line, centred = false) => `|${centred ? line.padStart(Math.floor((62+line.length)/2)).padEnd(62) : line.padEnd(62)}|`;
 const text = [border, row('README.NFO', true), row('RETRO HEADERS / TEXT + SVG', true), border,
-  row('  BUILT FROM    152 researched styles'), row('  ORGANIZED IN  13 visual families'),
+  row('  BUILT FROM    153 researched styles'), row('  ORGANIZED IN  13 visual families'),
   row('  SUPPLIED AS   Markdown + editable SVG'), row('  RELEASED AS   MIT / copy, customise, share'), border].join('\n');
 const markdown=`<p align="center"><img src="assets/09-c64-05.svg" width="100%" alt="README.NFO in rainbow copper lettering beneath an original red capsule plate"></p>\n\n\`\`\`text\n${text}\n\`\`\`\n\n[Style catalogue](../../styles/INDEX.md) · [Example galleries](../README.md) · [MIT licence](../../LICENSE)`;
 writeHeader(9,{image,markdown,summary:'A red logo plate, deep-blue panel and gently waving rainbow copper title.'});

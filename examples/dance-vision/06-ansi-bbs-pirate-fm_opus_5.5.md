@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="assets/06-ansi-bbs-pirate-fm_opus_5.5.svg" width="832" alt="Dance Vision 87.87 FM, drawn as a 1990s ANSI BBS login screen. A modem dials in and the screen draws itself row by row: a magenta and cyan DANCE VISION logo between bouncing VU meters, then a diagram of a phone sending only 33 joints through a websocket relay on port 8787, topped with a pirate radio mast, to a TV studio where five stick figures dance under a hopping spotlight. Below that, a caller panel (video: none, app: none, account: none, phones: 6 a room) and tonight's line-up of six East London venues, a blinking PRESS ANY KEY, a shout-out scroller and a status bar with the quick start, npm run party.">
+  <img src="assets/06-ansi-bbs-pirate-fm_opus_5.5.svg" width="832" alt="Dance Vision 87.87 FM, drawn as a 1990s ANSI BBS login screen. A modem dials in and the screen draws itself row by row: a magenta and cyan DANCE VISION logo between bouncing VU meters, then a diagram of a phone sending only 33 joints through a websocket relay on port 8787, topped with a rooftop radio mast, to a TV studio where five stick figures dance under a hopping spotlight. Below that, a caller panel (video: none, app: none, account: none, phones: 6 a room) and tonight's line-up of six East London venues, a blinking PRESS ANY KEY, a shout-out scroller and a status bar with the quick start, npm run party.">
 </p>
 
 <p align="center">
-  <b>DANCE VISION · 87.87 FM</b> · the pirate motion-capture sound system<br>
+  <b>DANCE VISION · 87.87 FM</b> · the rooftop motion-capture sound system<br>
   <sub>broadcasting from a phone propped against your telly to E8 and surrounding areas · keep it locked</sub>
 </p>
 
@@ -37,14 +37,14 @@ npm run party    # then open http://127.0.0.1:8787/ and it opens Controller
      | |) | / _ \ | .` || (__ | _|     \ V /  | | \__ \ | | | (_) || .` |
      |___/ /_/ \_\|_|\_| \___||___|     \_/  |___||___/|___| \___/ |_|\_|
 
-        -=[ 87.87 FM · the pirate motion-capture sound system · E8 ]=-
+       -=[ 87.87 FM · the rooftop motion-capture sound system · E8 ]=-
 
  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
   RELEASE INFO
    Title ............ Dance Vision (dance-vision)
-   Supplied by ...... the Overground Offset Sound System
-   Cracked by ....... nobody. there is nothing to crack
-   Protection ....... none. no app, no account, no video
+   Tested by ........ the Overground Offset Sound System
+   Checked by ....... nobody. there is nothing to check
+   Lock-in .......... none. no app, no account, no video
    Format ........... 33 joints x {x,y,z} per frame, ~1.6 KB, up to 20 fps
    Transmitter ...... your phone, propped against the telly
    Aerial ........... a websocket relay on :8787 (spiritually, a tower block)

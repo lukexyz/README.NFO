@@ -91,7 +91,7 @@
 
 - ⚡ **The player.** FUSEBOX is invented for this README. The skin is original pixel art drawn by a script: no fonts, no bitmaps, no real player's artwork. Official slogan: plays until something trips.
 - ⚡ **The durations.** Real. Each track lasts exactly as long as its row says, and the banner loops in 1:00.
-- ⚡ **The credits.** Game data from [greeny/SatisfactoryTools](https://github.com/greeny/SatisfactoryTools). Item and building images from the [Satisfactory Wiki](https://satisfactory.wiki.gg), CC BY-NC-SA 4.0. The code is [Apache 2.0](LICENSE): protection none, skins welcome.
+- ⚡ **The credits.** Game data from [greeny/SatisfactoryTools](https://github.com/greeny/SatisfactoryTools). Item and building images from the [Satisfactory Wiki](https://satisfactory.wiki.gg), CC BY-NC-SA 4.0. The code is [Apache 2.0](LICENSE): lock-in none, skins welcome.
 - ⚡ **"The playlist will not click."** It is a picture. The working copy is the numbered list above.
 - ⚡ **"SPAGHETTI is lit and TIDY is not."** It is an indicator lamp, not a judgement. It is also a judgement.
 - ⚡ **"OVERCLOCK is stuck on."** Working as intended. Fuses are a consumable.

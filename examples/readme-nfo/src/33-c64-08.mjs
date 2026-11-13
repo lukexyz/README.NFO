@@ -25,6 +25,6 @@ const image=svg({height:350,background:'#000',
   css:'.bobx{transform:translateX(var(--x));animation:bx 12s cubic-bezier(.37,0,.63,1) infinite}.boby{transform:translateY(var(--y));animation:by 6s cubic-bezier(.37,0,.63,1) infinite}.depth{transform:scale(var(--size));animation:depth 12s ease-in-out infinite}.frame{opacity:0;animation:turn 16s steps(1) infinite}.frame0{opacity:1}@keyframes bx{0%,100%{transform:translateX(-230px)}50%{transform:translateX(230px)}}@keyframes by{0%,100%{transform:translateY(-61px)}50%{transform:translateY(61px)}}@keyframes depth{0%,100%{transform:scale(.65)}50%{transform:scale(1.18)}}@keyframes turn{0%,12%{opacity:1}12.5%,100%{opacity:0}}',
   description:'Thirty blue shaded bobs follow a figure-eight curve next to an original rotating dot lattice. Rainbow hairlines frame the effect, with a violet-to-cyan README.NFO title below.',
   body:`<rect x="25" y="25" width="910" height="2" fill="url(#rainbow)"/>${balls}${cube}<rect x="25" y="230" width="910" height="2" fill="url(#rainbow)"/>
-  ${center('README.NFO',255,8,'url(#logo)')}${center('152 STYLES / 13 FAMILIES / MAKE IT YOURS / MIT',329,1.6,'#c0c4dc')}`
+  ${center('README.NFO',255,8,'url(#logo)')}${center('153 STYLES / 13 FAMILIES / MAKE IT YOURS / MIT',329,1.6,'#c0c4dc')}`
 });
 writeHeader(33,{image,summary:'A blue sphere chain follows a figure-eight beside a rotating dot lattice, framed by rainbow hairlines.',alt:'Blue shaded balls loop on a figure-eight curve alongside a rotating dot cube, above a violet and cyan README.NFO logo.'});

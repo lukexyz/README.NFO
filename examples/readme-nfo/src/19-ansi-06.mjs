@@ -6,7 +6,7 @@ const story=[
 'You dock at a quiet station full of forgotten display hardware.',
 'Orange dots glow above the airlock. Copper bars ripple down a wall.',
 'On every shelf: another way to make a repository feel like yours.',
-'The curator hands you 152 styles and a licence to take them home...',
+'The curator hands you 153 styles and a licence to take them home...',
 '',
 'Sector: 013        Cargo: TEXT + SVG        Credits: MIT',
 '',
@@ -21,7 +21,7 @@ center('THE HEADER EXCHANGE / SECTOR 013',109,1.8,'#dea1e9')+
 ['YOU DOCK AT A STATION FULL OF FORGOTTEN DISPLAY HARDWARE.',
 'ORANGE DOTS GLOW ABOVE THE AIRLOCK. COPPER BARS RIPPLE.',
 'ON EVERY SHELF: A WAY TO MAKE A REPOSITORY FEEL LIKE YOURS.',
-'TAKE 152 STYLES AND A LICENCE TO BRING THEM HOME...'].map((s,i)=>px(s,51,208+i*26,1.8,'#77d598')).join('')+
+'TAKE 153 STYLES AND A LICENCE TO BRING THEM HOME...'].map((s,i)=>px(s,51,208+i*26,1.8,'#77d598')).join('')+
 px('CARGO: TEXT + SVG    LICENCE: MIT',51,323,1.8,'#deb871')+
 px('[C] CATALOGUE   [G] GALLERIES   [T] TOOLS   [L] LICENCE',39,370,1.9,'#e8db6d')+
 px('COMMAND [READ ME]:',39,399,1.9,'#d588ca')+'<rect class="cursor" x="263" y="399" width="12" height="14" fill="#d588ca"/>'});

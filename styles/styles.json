@@ -9,9 +9,9 @@
    "styles": [
     {
      "id": "pc-01",
-     "name": "Razor 1911 DOS cracktro: flat field, pixel logo, presents-text",
+     "name": "Numbered DOS intro (1996-98): flat field, pixel logo, presents-text",
      "era": "1996-1998, MS-DOS (320x240x8 Mode-X, GUS/SoundBlaster per Demozoo); Razor 1911's numbered cracktro series made with Superior Art Creations, code by Hetero",
-     "what_it_is": "The small numbered intros that ran in front of Razor's mid-90s game releases: one flat colour field, a pixel logo across the top, a few centred lines of blocky text, one background effect and a looping tracker tune. Almost all are PC conversions of older Amiga intros (Pouet commenters name Paso for #7, Aspect for #01, Supplex for Arnie 3, Skid Row for #06, and Demozoo tags #10 melon-dezign-inspired), which is exactly why they feel 'Amiga' on a PC. The release titles shown in them are filler: Demozoo lists blank template versions.",
+     "what_it_is": "Small numbered DOS intros of the mid-90s: one flat colour field, a pixel logo across the top, a few centred lines of blocky text, one background effect and a looping tracker tune. Almost all are PC conversions of older Amiga intros (Pouet commenters name Paso for #7, Aspect for #01, Supplex for Arnie 3, Skid Row for #06, and Demozoo tags #10 melon-dezign-inspired), which is exactly why they feel 'Amiga' on a PC. The release titles shown in them are filler: Demozoo lists blank template versions.",
      "visual_signature": [
       "One saturated flat background per intro: deep aubergine (#09), pale grey-green (#10), lilac (#7), navy (#5)",
       "A different hand-pixelled logo each time, pinned to the top edge: tan bevelled italic capitals with pointed serifs (#09, logo by Poise per Demozoo), a multicolour script wordmark with a flower (#7, logo by Dream Design), a green outline logo on navy (#5)",
@@ -231,7 +231,7 @@
      "id": "pc-05",
      "name": "Win32 new old-school cracktro: metal logo, twister, sine scroller",
      "era": "2004-2011, Windows (DirectX/OpenGL, often 64k or less); Hoodlum, Deviance, Reloaded, Skid Row with Titan and Electric Druggies, Genesis with TRSI",
-     "what_it_is": "The mid-2000s revival in which demoscene coders (hitchhikr, the Titan people, anesthetic) and pixel artists (Alien^PDX, H2o, iks/irokos, bull) built deliberately old-school cracktros for ISO groups on modern hardware. It is what most people picture for a 2000s cracktro: a big airbrushed chrome or graffiti logo, a twisting column, a bouncing scroller and a chiptune. This entry now also absorbs the 'shiny' sub-look (logo on a mirror floor, lit relief) that was submitted as a separate style.",
+     "what_it_is": "A mid-2000s Windows intro look: a big airbrushed chrome logo, a twisting column, a bouncing scroller and a chiptune. The mid-2000s revival in which demoscene coders (hitchhikr, the Titan people, anesthetic) and pixel artists (Alien^PDX, H2o, iks/irokos, bull) built deliberately old-school cracktros for ISO groups on modern hardware. It is what most people picture for a 2000s cracktro: a big airbrushed chrome or graffiti logo, a twisting column, a bouncing scroller and a chiptune. This entry now also absorbs the 'shiny' sub-look (logo on a mirror floor, lit relief) that was submitted as a separate style.",
      "visual_signature": [
       "A large custom logo as the centrepiece: brushed-chrome 3D block letters (Reloaded), liquid-chrome script with drips (Deviance), gold wildstyle graffiti on black (Skidrow 2007), chrome-purple extruded capitals (Hoodlum Stronghold 2), grey-green metal (Genesis)",
       "Twisters: a vertical bar that appears to twist like a wrung towel, one each side of the logo (Shrek 2 by Genesis/TRSI, praised as sine-twisters; Deviance 'Mission completed' is praised for its twister)",
@@ -292,9 +292,9 @@
     },
     {
      "id": "pc-06",
-     "name": "Skinned rip installer: INSTALL / NFO / MUSIC / EXIT",
+     "name": "Skinned game installer: INSTALL / NFO / MUSIC / EXIT",
      "era": "1997-2004, Windows (Class and Myth game-rip installers); a DOS precedent in Razor's 1997 'Arnie 3' cracktro, a fake GUI window converted from an Amiga trainer",
-     "what_it_is": "Rip groups cut games down to small packages and shipped their own installer, which doubled as the intro: a custom-shaped window with a logo sign, three or four buttons, an info viewport and a chiptune playlist. Wikipedia describes Class's rips, its custom installation software and its rivalry with Myth; Pouet commenters remember the Class installers mainly for the Maktone tunes and complain about hearing them recycled. It is a different object from the keygen dialog: no serial field, a release menu instead.",
+     "what_it_is": "A custom-shaped installer window that doubles as the intro, with a logo sign, a few buttons, an info viewport and a chiptune playlist. Rip groups cut games down to small packages and shipped their own installer, which doubled as the intro: a custom-shaped window with a logo sign, three or four buttons, an info viewport and a chiptune playlist. Wikipedia describes Class's rips, its custom installation software and its rivalry with Myth; Pouet commenters remember the Class installers mainly for the Maktone tunes and complain about hearing them recycled. It is a different object from the keygen dialog: no serial field, a release menu instead.",
      "visual_signature": [
       "A non-rectangular window skin floating on the desktop: a sci-fi gadget with pipes, cables and a riveted blue viewport (Class 'orcus' installer, 2002), an isometric slab in translucent teal with the group name extruded on top (Myth 4-02)",
       "The group name as a lit sign: orange-to-yellow capitals in a red bevelled frame bolted to the top-left of the gadget (Class orcus)",
@@ -345,9 +345,9 @@
     },
     {
      "id": "pc-07",
-     "name": "Text-mode poster installer (Razor 1911, 2024-26)",
+     "name": "Text-mode poster installer (2024-26)",
      "era": "May 2024 onward, Windows; Razor 1911 game installers with code by Black Panther, graphics by Goto80 and music by Dubmood, plus the text-art passages of the 2026 anniversary demo Razor1911",
-     "what_it_is": "Razor's current house look, and the one most directly usable as plain text: each installer is a single character-cell poster in two or three flat colours, with the game title and the group name built as enormous block letters that fill the frame, and two small buttons. A Pouet commenter credits these with taking cracktro style somewhere new 'like Melon Dezign used to'. The same vocabulary (PETSCII, ANSI, ASCII, BBS file lists) runs through the group's 40th-anniversary demo, which won the PC demo competition at Revision 2026.",
+     "what_it_is": "A single character-cell poster in two or three flat colours, with the title built as enormous block letters that fill the frame. Razor's current house look, and the one most directly usable as plain text: each installer is a single character-cell poster in two or three flat colours, with the game title and the group name built as enormous block letters that fill the frame, and two small buttons. A Pouet commenter credits these with taking cracktro style somewhere new 'like Melon Dezign used to'. The same vocabulary (PETSCII, ANSI, ASCII, BBS file lists) runs through the group's 40th-anniversary demo, which won the PC demo competition at Revision 2026.",
      "visual_signature": [
       "Title and group name as giant letters built from solid character cells with maze-like notches, packed edge to edge so the lettering is the whole composition (Red Dead Redemption 2 installer: orange letters on a tan field inside a rope-pattern border)",
       "Strict two- or three-colour schemes per screen: tan/orange/brown; blue/yellow/red with a lattice of yellow triangles above a red band (GTA III); lavender blocks on steel blue (Half-Life 2); lime and dark green checker borders on black (Little Kitty Big City)",
@@ -582,9 +582,9 @@
     },
     {
      "id": "pc-12",
-     "name": "Neon cube field: the rez-era Razor look",
+     "name": "Neon cube field: the 2010-era scanline look",
      "era": "2010-2012, Windows; Razor 1911 cracktros and 64k intros coded by rez with music by Dubmood (The Settlers 7 cracktro, 27 Apr 2010; StarCraft 2 cracktro, 31 July 2010; Insert No Coins, 2 Oct 2010; The Scene Is Dead, 8 Apr 2012). A DOS ancestor exists in Razor Crack Intro #13.",
-     "what_it_is": "When Razor's demo section came back around 2010 it had a consistent look: fields of glowing rainbow cubes and glenz shapes, a pixel logo, scanlines and a Dubmood chiptune. Insert No Coins won the 64k competition at Main 2010 and the public-choice award at the Scene.org Awards; The Scene Is Dead placed third in PC 64k at Revision 2012. For many people this is 'the Razor 1911 one'. The rainbow-cubes idea is older than rez's use of it: the undated DOS Crack Intro #13 already shows a 9x7 grid of cubes, one hue per cube.",
+     "what_it_is": "Fields of glowing rainbow cubes and glenz shapes with a pixel logo, scanlines and a chiptune, as seen in early-2010s 64k intros. When Razor's demo section came back around 2010 it had a consistent look: fields of glowing rainbow cubes and glenz shapes, a pixel logo, scanlines and a Dubmood chiptune. Insert No Coins won the 64k competition at Main 2010 and the public-choice award at the Scene.org Awards; The Scene Is Dead placed third in PC 64k at Revision 2012. For many people this is 'the Razor 1911 one'. The rainbow-cubes idea is older than rez's use of it: the undated DOS Crack Intro #13 already shows a 9x7 grid of cubes, one hue per cube.",
      "visual_signature": [
       "Hundreds of small cubes in a regular grid, each a different hue, so the field reads as a continuous rainbow ramp",
       "The field bent into a tunnel, a rolling wave landscape, or a wall seen in perspective (the four panels of the Insert No Coins screenshot)",
@@ -769,9 +769,9 @@
    "styles": [
     {
      "id": "c64-01",
-     "name": "C64 one-screen crack intro: raster-split logo and text on colour bars",
+     "name": "C64 one-screen intro: raster-split logo and text on colour bars",
      "era": "1986-1989, Commodore 64 cracking scene (Europe, plus NTSC intros from the US such as Eagle Soft); small intros placed in front of cracked games",
-     "what_it_is": "The single-screen C64 intro: a group logo at the top, a few centred lines naming the game, cracker and date, and a scroller, all on black. Commenters on the C64 intro database call the Fairlight one \"one of the most used intros ever\" and the Eagle Soft one \"THE C64-intro\". It differs from the existing C64 boot/loader style: no BASIC screen and no loading stripes, only the intro itself.",
+     "what_it_is": "The single-screen C64 intro: a group logo at the top, a few centred lines naming the title, the makers and the date, and a scroller, all on black. Commenters on the C64 intro database call the Fairlight one \"one of the most used intros ever\" and the Eagle Soft one \"THE C64-intro\". It differs from the existing C64 boot/loader style: no BASIC screen and no loading stripes, only the intro itself.",
      "visual_signature": [
       "Pure black screen and border, everything centred on a 40-column grid",
       "Logo as one flat shape whose colour changes in horizontal bands by scanline: Dynamic Duo's two-row logo in red/green/yellow/blue bands; Ikari's upright slab capitals in blue and yellow bands",
@@ -972,9 +972,9 @@
     },
     {
      "id": "c64-05",
-     "name": "Razor 1911 Amiga cracktro (Sector9, 1990-91): logo plate, deep-blue panel, rainbow copper text",
+     "name": "Amiga cracktro (1990-91): logo plate, deep-blue panel, rainbow copper text",
      "era": "1990-1991, Amiga OCS; cracktros and text screens by the Norwegian group's Amiga section, mostly credited to Sector9",
-     "what_it_is": "Razor 1911 began on the C64 in 1985 as Razor 2992 and moved to the Amiga in 1987-88, before its PC years. Pouet lists about fifteen Amiga cracktros from 1989 to 1994. 'Birds of Prey' (December 1991, code and graphics Sector9, with Sim; music 'Necroscope' by Mantronix) is the one commenters call \"a great famous crack intro by the REAL razor 1911\", praising its chiptune and \"wavy colour cycling with the swirling letters\". It is a sub-variant of the existing Amiga cracktro: no starfield and no copper-bar stack, but a framed two-panel layout in which the text itself carries the colour.",
+     "what_it_is": "An Amiga intro with a chrome logo plate, a deep-blue panel and rainbow copper text. Razor 1911 began on the C64 in 1985 as Razor 2992 and moved to the Amiga in 1987-88, before its PC years. Pouet lists about fifteen Amiga cracktros from 1989 to 1994. 'Birds of Prey' (December 1991, code and graphics Sector9, with Sim; music 'Necroscope' by Mantronix) is the one commenters call \"a great famous crack intro by the REAL razor 1911\", praising its chiptune and \"wavy colour cycling with the swirling letters\". It is a sub-variant of the existing Amiga cracktro: no starfield and no copper-bar stack, but a framed two-panel layout in which the text itself carries the colour.",
      "visual_signature": [
       "Two stacked panels on black, separated by thin light-blue rules: a short mid-grey strip on top, a tall deep navy panel below",
       "In the grey strip, a small logo plate: a dark rounded capsule with a chrome rim holding the group name in red outlined capitals with a white highlight, and a small bar ornament either side",
@@ -1085,7 +1085,7 @@
     },
     {
      "id": "c64-07",
-     "name": "Vertical copper bars ('Kefrens bars' / 'Alcatraz bars'): ribbons twisting down the screen",
+     "name": "Vertical copper bars: ribbons twisting down the screen",
      "era": "1989-1991 on Amiga; seen on the Atari ST by 1991",
      "what_it_is": "A one-trick Amiga effect: shaded vertical bars that sway left and right as they descend, leaving a woven ribbon pattern. It is made by showing a single line of video memory on every scanline and drawing a new bar into that line as the beam moves down. It carries Kefrens' name, but a Pouet commenter (hitchhikr) says it was invented by Metalwar of Alcatraz in 'We are first' in Megademo 3 (February 1989).",
      "visual_signature": [
@@ -1222,9 +1222,9 @@
     },
     {
      "id": "c64-10",
-     "name": "Melon Dezign: flat colour fields, stepped silhouettes, curved black text",
+     "name": "Flat-colour Amiga intro: flat colour fields, stepped silhouettes, curved black text",
      "era": "November 1991 onward, Amiga; the classic run is 1992-93, including cracktros made for the cracking group Crystal (Denmark and France)",
-     "what_it_is": "Melon Dezign was founded by Paleface and Seen after they left Quartex, at first as the demo and intro arm of Crystal. Their intros replaced chrome and starfields with flat colour, simple shapes and graphic-design layout. A Pouet commenter says 'Human Target' (1st at the Easter Conference, April 1992) \"totally changed the way demos were designed\". It is the clearest break from the look the existing six styles share.",
+     "what_it_is": "An Amiga intro look that swaps chrome and starfields for flat colour fields, stepped silhouettes and curved black text. Melon Dezign was founded by Paleface and Seen after they left Quartex, at first as the demo and intro arm of Crystal. Their intros replaced chrome and starfields with flat colour, simple shapes and graphic-design layout. A Pouet commenter says 'Human Target' (1st at the Easter Conference, April 1992) \"totally changed the way demos were designed\". It is the clearest break from the look the existing six styles share.",
      "visual_signature": [
       "Large areas of flat, unshaded colour: in the 'Zool' cracktro three stacked bands, hot pink, mustard yellow and mid green",
       "Band edges cut as stepped rectangles like a city skyline, with no outline between colours",
@@ -1272,9 +1272,9 @@
     },
     {
      "id": "c64-11",
-     "name": "Spaceballs 'State of the Art': recoloured silhouette cut out of moire rings",
+     "name": "Moire silhouette demo: recoloured silhouette cut out of moire rings",
      "era": "29 December 1992, Amiga OCS; 1st in the demo competition at The Party 1992",
-     "what_it_is": "A demo by the Norwegian group Spaceballs built around traced silhouettes of dancers cut to techno, over interference patterns and flat colour. Demozoo tags it character-animation, dance-animations, rave and epilepsy-warning, and a Pouet commenter calls it the first demo he could show to non-scene friends and get a good reaction. It is the rave-flyer end of the Amiga look, as far from copper bars as the platform gets.",
+     "what_it_is": "Traced dancer silhouettes cut out of moire rings and recoloured over flat colour, from an early-90s Amiga demo. A demo by the Norwegian group Spaceballs built around traced silhouettes of dancers cut to techno, over interference patterns and flat colour. Demozoo tags it character-animation, dance-animations, rave and epilepsy-warning, and a Pouet commenter calls it the first demo he could show to non-scene friends and get a good reaction. It is the rave-flyer end of the Amiga look, as far from copper bars as the platform gets.",
      "visual_signature": [
       "One human silhouette, large and centred, arms spread wide, with no interior detail",
       "A background of fine concentric rings from two offset centres whose overlap makes a moire interference pattern of crescents and swirls",
@@ -1373,7 +1373,7 @@
      "id": "c64-13",
      "name": "Atari ST menu disk: key-numbered game list, big gradient scroller, scanline rasters",
      "era": "1988-1991, Atari ST; the UK compilation scene (Automation, Medway Boys, Pompey Pirates) and the megademos whose tricks they borrowed",
-     "what_it_is": "On the ST, UK crackers packed several games onto one floppy and put a menu in front. Zippy of the Medway Boys made more than 100 of them, starting with menu 9, and a Pouet commenter says of Automation's intros that \"there are hundreds\". Each menu is a small intro with a job: list the games, say which key loads which, and scroll the news. Megademos such as The Union Demo (January 1989) and The Carebears' Cuddly Demos (July 1989) supplied the effects and the game-like main menu.",
+     "what_it_is": "An Atari ST menu disk: a key-numbered game list under a big gradient scroller and scanline rasters. On the ST, UK crackers packed several games onto one floppy and put a menu in front. Zippy of the Medway Boys made more than 100 of them, starting with menu 9, and a Pouet commenter says of Automation's intros that \"there are hundreds\". Each menu is a small intro with a job: list the games, say which key loads which, and scroll the news. Megademos such as The Union Demo (January 1989) and The Carebears' Cuddly Demos (July 1989) supplied the effects and the game-like main menu.",
      "visual_signature": [
       "A short key list of the disk's contents: '1...GAME ONE, 2...GAME TWO' or 'F1: ...' to 'F4: ...', in small white or yellow capitals",
       "Utility keys in the same block: '0...TOGGLE 50/60 HZ', 'SPACE...READ DOC FILE', 'M TO CHANGE MUSIC'",
@@ -2111,9 +2111,9 @@
    "styles": [
     {
      "id": "nfo-01",
-     "name": "PC NFO: brush-script block logo (the Razor 1911 and Fairlight look, after JED)",
+     "name": "PC NFO: brush-script block logo (after JED)",
      "era": "1992 to the present, PC release scene. Logos drawn 1992-94 by JED of ACiD in the BBS era; Razor 1911 and Fairlight still ship them (files checked: 1993, 1994, 2000, 2011, 2023).",
-     "what_it_is": "By 1992-93 release groups were commissioning ANSI-group artists for a logo above the typed NFO (the NFO itself dates to a Humble Guys release of January 1990). JED of ACiD drew flat, unshaded brush-script logos for Fairlight and Razor 1911; both groups kept them, so this silhouette is what most people picture as 'a Razor NFO'. It differs from the tool's existing NFO style in being a hand-lettered script silhouette with an oversized initial, not upright block capitals.",
+     "what_it_is": "A PC text NFO topped by a hand-drawn brush-script block logo. By 1992-93 release groups were commissioning ANSI-group artists for a logo above the typed NFO (the NFO itself dates to a Humble Guys release of January 1990). JED of ACiD drew flat, unshaded brush-script logos for Fairlight and Razor 1911; both groups kept them, so this silhouette is what most people picture as 'a Razor NFO'. It differs from the tool's existing NFO style in being a hand-lettered script silhouette with an oversized initial, not upright block capitals.",
      "visual_signature": [
       "Flat silhouette: strokes built only from full blocks, with upper-half, lower-half, left-half and right-half blocks finishing the ends; no shade characters anywhere in the logo",
       "Script construction: one oversized capital 12-15 rows tall whose leg or tail runs under the rest of the word; the following letters are 6-8 rows tall, joined along the baseline, with stems 3 cells wide and thin joins made from half-width blocks",
@@ -2190,7 +2190,7 @@
     },
     {
      "id": "nfo-02",
-     "name": "PC NFO: shaded block logo with fades and debris (SAC school)",
+     "name": "PC NFO: shaded block logo with fades and debris",
      "era": "1992 to the 2010s, PC release scene; from December 1994 dominated by Superior Art Creations (Germany), whose packs on 16colo.rs run 1994/12 to 2009/12",
      "what_it_is": "The other NFO school uses the three CP437 shade characters as paint: carved letters, gradients and rubble. SAC was founded in December 1994 at The Party in Herning by Roy, Hetero, Dream Design, Kaethe, Raiser and Toxic Trancer and became the main supplier of NFO and FILE_ID.DIZ logos to release groups. The same kit, with a small half-block heading font added, is still visible in RELOADED, CODEX and CPY NFOs of 2012-2018.",
      "visual_signature": [
@@ -2557,9 +2557,9 @@
     },
     {
      "id": "nfo-08",
-     "name": "PC newschool ASCII: dollar-fill blob lettering (Remorse 1981 school)",
+     "name": "PC newschool ASCII: dollar-fill blob lettering",
      "era": "1994-2005, PC ASCII-only art groups",
-     "what_it_is": "Katharsis!Ascii, started by Tinyz in March 1994, was the first ASCII-only group on the PC; Remorse followed in October 1994, founded by Necromancer and Necronite, and released 57 packs to June 2005. Their 'newschool' went beyond outline to filling and shading: letters poured solid from heavy characters with edges softened by punctuation. Roy of SAC argues the label is a misnomer for classic text art making a comeback.",
+     "what_it_is": "PC ASCII lettering poured solid from heavy characters, with edges softened by punctuation. Katharsis!Ascii, started by Tinyz in March 1994, was the first ASCII-only group on the PC; Remorse followed in October 1994, founded by Necromancer and Necronite, and released 57 packs to June 2005. Their 'newschool' went beyond outline to filling and shading: letters poured solid from heavy characters with edges softened by punctuation. Roy of SAC argues the label is a misnomer for classic text art making a comeback.",
      "visual_signature": [
       "Solid fill from runs of the dollar sign; The Upright Man fills with the CP437 double-cross line character instead",
       "Stroke tops opened with lowercase d and b and bottoms closed with P, Y and 7, so corners look rounded",
@@ -6969,9 +6969,9 @@
    "styles": [
     {
      "id": "xfer-01",
-     "name": "Topsite race: zipscript box, progress-bar directory and complete bar",
+     "name": "FTP upload race: zipscript box, progress-bar directory and complete bar",
      "era": "1998-2008, private FTP topsites running glFTPd (first public release early 1998) with the Project-ZS zipscript (development stopped 2002) and its successor pzs-ng (from April 2004)",
-     "what_it_is": "A topsite is a private high-bandwidth FTP server where release groups pre and couriers race files for upload credits. After every uploaded file the server's zipscript checks it against the release's SFV and answers with a small ASCII box, and it keeps a fake directory in the listing whose name is a progress bar. Racers never saw a GUI for this: the site spoke to them in framed monospace text inside their FTP client's log.",
+     "what_it_is": "An FTP upload race shown as framed monospace text: a check box after every file and a progress-bar directory name. A topsite is a private high-bandwidth FTP server where release groups pre and couriers race files for upload credits. After every uploaded file the server's zipscript checks it against the release's SFV and answers with a small ASCII box, and it keeps a fake directory in the listing whose name is a progress bar. Racers never saw a GUI for this: the site spoke to them in framed monospace text inside their FTP client's log.",
      "visual_signature": [
       "Per-file reply box about 52 columns wide: a top rule that starts with a full stop and carries the zipscript's name between '-==' and '==-', body rows that start with '| + ' (SFV-file ok, CRC-Check ok, written in mixed case such as 'oK!'), and a closing rule that starts with a backtick and ends with an apostrophe",
       "The closing rule of the box embeds a bracketed bar built from '#' for files present and ':' for files missing, followed by a bracketed done/total file counter",
@@ -7268,7 +7268,7 @@
      "id": "xfer-06",
      "name": "Sitebot announce: bracketed race lines in the site channel",
      "era": "About 2002-2008, invite-only IRC channels attached to topsites; the bot is an Eggdrop (first written December 1993 by Robey Pointer) running a Tcl announce script such as pzs-ng's dZSbot",
-     "what_it_is": "Every topsite had a private IRC channel where a bot narrated the site's life one line at a time: a new directory appears, someone starts racing, the halfway mark, a new leader, completion with a hall of fame, a pre, a nuke. It is a sports commentary for file transfers, and the fixed-width tags in square brackets make a channel log read like a results ticker.",
+     "what_it_is": "An IRC bot narrating an FTP site's uploads one bracketed line at a time, like a results ticker. Every topsite had a private IRC channel where a bot narrated the site's life one line at a time: a new directory appears, someone starts racing, the halfway mark, a new leader, completion with a hall of fame, a pre, a nuke. It is a sports commentary for file transfers, and the fixed-width tags in square brackets make a channel log read like a results ticker.",
      "visual_signature": [
       "Each line opens with the site's short name in bold, then a double colon separator",
       "A first bracket holding a lower-case event tag padded to six characters so the brackets align: new, racer, sfv, update, 50%, leader, done, stats, pre, nuke, unnuke, delete, wipe, req, filled, bwinfo, space, plus a jokey tag for a release going incomplete",
@@ -8125,7 +8125,7 @@
     },
     {
      "id": "demo-11",
-     "name": "Apple II crack screen: six-colour hi-res panels and 40-column credits",
+     "name": "Apple II title screen: six-colour hi-res panels and 40-column credits",
      "era": "About 1981 to the mid-1980s; Apple II, II+ and IIe; North American BBS pirate groups. Dated screens in the textfiles.com archive run from 1982 to 1985, and Pouet lists a crack screen from September 1981",
      "what_it_is": "The oldest layer of the whole tradition. The introduction to the textfiles.com archive explains that Apple II pirates began giving themselves group names and turning a program's splash screen into a credit: who cracked it, who is thanked, which bulletin board to call. It suggests around 1981 as a starting point and calls the screens a likely root of the later art scenes. The archive holds 794 captures, in colour and in monochrome. Wikipedia's crack-intro article likewise places the first ones on the Apple II. Unlike the C64 and Amiga entries there is no music, no scroller and usually no animation: it is a still title card.",
      "visual_signature": [
@@ -8211,9 +8211,9 @@
    "styles": [
     {
      "id": "print-01",
-     "name": "Swapper's floppy: hand-labelled 3.5-inch disk, fanned as 'disk 1 of N'",
+     "name": "Hand-labelled floppy: 3.5-inch disk, fanned as 'disk 1 of N'",
      "era": "1986-1996, C64 and Amiga mail-swapping scene in Europe (5.25-inch on the C64, 3.5-inch on the Amiga); the 3.5-inch shell itself dates from Sony's 1981 design, standardised in 1983",
-     "what_it_is": "Before any cracktro ran, a release arrived as a disk in an envelope, and the first thing a swapper saw was the label. Got Papers? shows a German Amiga swapper's disks, which it describes as \"full of stickers and scribbles\", and C64 disks that came in photocopied, hand-drawn paper sleeves called disk covers. In 1987 a Zurich C64 group even ran a postal competition for the best painted, sprayed or stickered disk.",
+     "what_it_is": "A hand-labelled 3.5-inch floppy, fanned out as 'disk 1 of N'. Before any cracktro ran, a release arrived as a disk in an envelope, and the first thing a swapper saw was the label. Got Papers? shows a German Amiga swapper's disks, which it describes as \"full of stickers and scribbles\", and C64 disks that came in photocopied, hand-drawn paper sleeves called disk covers. In 1987 a Zurich C64 group even ran a postal competition for the best painted, sprayed or stickered disk.",
      "visual_signature": [
       "3.5-inch shell, 90 x 94 mm (slightly taller than wide), in saturated mid-blue or black, with a brushed-metal shutter at the bottom centre holding one rectangular window, a small moulded arrow near one lower corner and a square write-protect hole in a corner",
       "A white label covering roughly the upper half of the face, almost full width, slightly yellowed and scuffed at the edges",
@@ -8483,7 +8483,7 @@
      "id": "print-05",
      "name": "Scene paperwork: tick-box swap letter, party pre-invitation with reply coupon, hand-drawn votesheet",
      "era": "1986-1996, European C64 and Amiga scene, exchanged by post and handed out at copy parties and demoparties; preserved by Got Papers? (a research project with scene.org and Demozoo, endorsed by the University of Zurich) and Scene Letters",
-     "what_it_is": "Swappers kept dozens of postal contacts going at once, so the paperwork became standardised: a short note with every disk, and sometimes a pre-printed form where the sender only ticked boxes. Parties were announced on photocopied sheets with a coupon to post back, and competitions were judged on paper votesheets. One archive alone holds 269 letters from 127 people in 16 countries sent to a single German C64 swapper. It is the scene's office stationery, and it is mostly plain monospaced text.",
+     "what_it_is": "Postal paperwork from the disk-mail era: a tick-box letter, a party pre-invitation with a reply coupon and a hand-drawn votesheet. Swappers kept dozens of postal contacts going at once, so the paperwork became standardised: a short note with every disk, and sometimes a pre-printed form where the sender only ticked boxes. Parties were announced on photocopied sheets with a coupon to post back, and competitions were judged on paper votesheets. One archive alone holds 269 letters from 127 people in 16 countries sent to a single German C64 swapper. It is the scene's office stationery, and it is mostly plain monospaced text.",
      "visual_signature": [
       "Tick-box form letter (Belgian Amiga group, November 1990): group logo across the top, a place-and-date line, a 'hi ... of ...' line with two dotted blanks, then two columns of small square boxes under headings for what the sender is thanking you for, what they would like sent, how your last sending rated (from cool down to damaged), where they hope to meet you, and a long list of stock messages",
       "Stock messages on that form include asking for the stamps and the envelope to be sent back, asking you not to write the group's name on the envelope, to check disks for viruses, to use better envelopes and to greet them; then a 'this sending contains N disks' section, a PO box to write back to, and a sign-off line; boxes ticked in red pen",
@@ -8580,8 +8580,8 @@
   "Winamp appears twice: 'Winamp 2 classic stack (player, equaliser, playlist)' in trackers/chiptune and 'Winamp classic skin: player, equaliser, playlist' in vaporwave/internet-era. Same object, same three windows; merge into one and keep it in the chiptune family, cross-referenced from vaporwave.",
   "The Windows 9x blue screen appears twice: 'Blue Screen of Death / fatal exception' in vaporwave/internet-era and 'Windows 9x text-mode blue screen' in retro machine screens. Identical 80x25 white-on-blue screen; merge into one (the second entry's own text admits it was re-added).",
   "Trainer menus appear twice: 'Trainer menu: F-key toggles under a logo' (PC cracktro family) and the trainer half of 'Amiga megademo menu and trainer menu' (C64/Amiga/ST family). Make one trainer-menu style with PC and Amiga variants, and leave the Amiga entry as megademo part-list menu only.",
-  "Ball and dot objects appear twice: 'Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs' (PC family) and 'Bobs and dot objects: a sphere chain on a Lissajous path, a rotating dot cube' (Amiga family, which itself cites the vectorballs part of Red Sector's Megademo). Move vector balls and dot objects into the bobs entry and keep 'Vector objects' for wireframe, glenz and metaballs, or merge the two outright.",
-  "'Fake desktop takeover' (PC cracktro family; Fairlight's teal Win9x desktop with a release dialog) and 'Windows 95/98 desktop: dialogs, error cascade, setup wizard, Defrag' (vaporwave family) build the same Win9x chrome. Keep both only if the takeover entry is reduced to its distinct idea (the desktop that shatters or gets hijacked); otherwise fold the Fairlight variant into the Windows 95 entry as one more set piece.",
+  "Ball and dot objects appear twice: 'Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs' (PC family) and 'Bobs and dot objects: a sphere chain on a Lissajous path, a rotating dot cube' (Amiga family). Move vector balls and dot objects into the bobs entry and keep 'Vector objects' for wireframe, glenz and metaballs, or merge the two outright.",
+  "'Fake desktop takeover' (PC cracktro family; a teal Win9x desktop with a release dialog) and 'Windows 95/98 desktop: dialogs, error cascade, setup wizard, Defrag' (vaporwave family) build the same Win9x chrome. Keep both only if the takeover entry is reduced to its distinct idea (the desktop that shatters or gets hijacked); otherwise fold the teal-desktop variant into the Windows 95 entry as one more set piece.",
   "'BIOS setup hijack' (PC cracktro family) and 'PC power-on: BIOS POST screen' (retro machine family) are two pages of the same firmware look and the hijack's payload is exactly 'Text-mode demo effect (plasma in character cells)' (ANSI family). Treat as one BIOS style with POST and SETUP variants, with the text-mode effect as the optional animation layer rather than three separate builds.",
   "Plasma is described three times: 'Plasma field with the logo embossed in it' (PC), the plasma relative inside 'Copper-only screen' (Amiga) and 'Text-mode demo effect (plasma in character cells)' (ANSI). They should share one plasma implementation with three renderers (smooth, scanline-banded, character-cell); keep the entries but cross-link them and avoid a fourth.",
   "Chrome/metal logos recur as the main asset in '16-bit hand-pixelled chrome logo (static)', 'Win32 new old-school cracktro: metal logo, twister, sine scroller', 'Early DOS VGA loader: metal logo, gradient bars', 'Amiga megademo menu ... chrome logo' and 'Synthwave / outrun: sunset, laser grid, chrome logo'. Not a merge, but the hand-pixelled chrome logo should be treated as a shared component that the others reference, not re-specified five times.",
@@ -8592,7 +8592,7 @@
   "Three text-game screens overlap in grammar: 'Door game screen (narrated location, bracketed hotkeys, command prompt)' (ANSI family) and 'MUD session transcript (login banner, room block, exits line, HP prompt)' (hacker family) are both titled-location-plus-prose-plus-status-prompt; merge them or make MUD a variant of the door game, and keep 'Roguelike dungeon screen' separate because it is a map, not prose.",
   "'Chip-music jukebox: track list with times' (ST/Amiga family), 'Module sample list as message board' and 'Open Cubic Player' (chiptune family) and the playlist pane of Winamp are all 'a list of tunes or samples as text'. Keep them, but file the jukebox under the chiptune family so the track-list idea is specified once and the others are presented as variants.",
   "Colly structure is described twice: 'ANSI logo colly (gradient block-letter logos between cut lines)' (ANSI family) and 'Amiga colly era: full-width Latin-1 logos and page layout' (NFO/ASCII family). Different character sets so both stay, but the document skeleton (title, index, cut lines, greets) is identical and should be one shared layout with two lettering schools.",
-  "'Poster NFO: full-canvas shaded illustration with the text set inside it' (NFO family) and 'Text-mode poster installer (Razor 1911, 2024-26)' (PC cracktro family) are both the full-frame character-cell poster. Keep both (one shaded CP437, one flat two-colour block letters) but present them as a pair so users are not offered the same idea under two family headings.",
+  "'Poster NFO: full-canvas shaded illustration with the text set inside it' (NFO family) and 'Text-mode poster installer (2024-26)' (PC cracktro family) are both the full-frame character-cell poster. Keep both (one shaded CP437, one flat two-colour block letters) but present them as a pair so users are not offered the same idea under two family headings.",
   "Treatments, not styles: 'Glitch art' (already flagged as an overlay), 'VHS tape and late-night lo-fi', 'Decrypt reveal', 'Digital rain banner' and 'ANSImation: the modem-speed draw-in' are all effects applied over another style. Group them in one 'overlays and transitions' list instead of scattering them across the vaporwave, hacker and ANSI families.",
   "Receding-plane scenes share one primitive: 'Chrome spheres over a checkerboard', 'Synthwave / outrun: sunset, laser grid' and 'SNES Mode 7: rotating textured ground plane'. No merge, but build the perspective floor once; and note 'Neon cube field' and 'Vector objects' both claim glenz, so say in one place only which entry owns it.",
   "'Minitel / viewdata service page' and the merged Teletext entry use the same 40-column mosaic cell grid, and 'RIPscrip ... with NAPLPS/Telidon' is their vector videotex cousin. Keep three entries but put them under one videotex heading with a shared cell renderer, since they currently sit in two families."
