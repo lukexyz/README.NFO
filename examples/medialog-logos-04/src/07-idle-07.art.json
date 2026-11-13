@@ -1,0 +1,20 @@
+{
+  "id": "idle-07",
+  "name": "Library walk",
+  "description": "A first-person walk down an endless corridor of book spines toward a warm exit light, after the old 3D maze screensaver.",
+  "choices": [
+    "Brick maze walls become shelves of spines in one-point perspective; the floating exit becomes a lit doorway",
+    "Spines use brand navy, steel, paper and tan; the floor keeps a wooden warmth"
+  ],
+  "animated": true,
+  "motion": "A slow, continuous walk forward: shelves, floor joints and beams glide past and loop every twelve seconds.",
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

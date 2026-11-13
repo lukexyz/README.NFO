@@ -1,0 +1,19 @@
+{
+  "id": "pc-12",
+  "name": "Collected moments",
+  "description": "Three faceted layers make a small stack of keepsakes, with one warm band crossing the top.",
+  "choices": [
+    "The cube-field grammar becomes a tangible collection of media objects",
+    "A limited palette and three large layers replace the rainbow field and tiny cells"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

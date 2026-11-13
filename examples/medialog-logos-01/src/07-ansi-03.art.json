@@ -1,0 +1,17 @@
+{
+  "id": "ansi-03",
+  "name": "Little culture goblin",
+  "description": "An original pocket-sized mascot: a happy little creature made from a saved story. Thick comic outlines, cream lettering and a purple swoosh keep it clear at tiny sizes.",
+  "choices": [
+    "The mascot is a folded saved-story shape with a face, not a generic animal",
+    "Its raised hand turns the logo into a friendly invitation to share a favourite"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

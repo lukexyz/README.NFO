@@ -1,0 +1,13 @@
+{
+  "id": "hack-08",
+  "summary": "A dungeon of remembered things",
+  "choices": [
+    "Six media rooms open onto a single corridor through time",
+    "The player is you and the party is friends; uncertain dates are valid inventory, not missing data"
+  ],
+  "formats": [
+    "svg",
+    "text"
+  ],
+  "animated": false
+}

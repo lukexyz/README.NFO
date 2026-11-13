@@ -1,0 +1,17 @@
+{
+  "id": "c64-10",
+  "name": "Good company",
+  "description": "Two friends inside a record-like circle, paired with a gently curved wordmark and a stepped stripe. Bold shapes, warm colours, no fine print.",
+  "choices": [
+    "The circle combines a record groove with a shared social space",
+    "Two silhouettes and the continuous stepped baseline turn the diary into something you share"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

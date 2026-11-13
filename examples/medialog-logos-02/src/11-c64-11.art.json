@@ -1,0 +1,17 @@
+{
+  "id": "c64-11",
+  "name": "Shared frequency",
+  "description": "A pair of golden headphones cuts through bold overlapping rings. Music, films and conversations share the same frequency.",
+  "choices": [
+    "The original headphone silhouette is readable even when the ring pattern becomes texture",
+    "The paired ear cups give the symbol a social reading as well as a music one"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

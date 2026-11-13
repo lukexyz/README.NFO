@@ -1,0 +1,17 @@
+{
+  "id": "idle-09",
+  "name": "One more watch",
+  "description": "An oversized oblique wordmark above a compressed timeline-disc. A restrained screensaver ricochet changes colour while the name stays easy to read.",
+  "choices": [
+    "The disc carries three saved moments instead of a secondary tiny caption",
+    "Motion is kept within a few screen pixels so the mark remains a usable navigation logo"
+  ],
+  "animated": true,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

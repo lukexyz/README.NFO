@@ -1,0 +1,110 @@
+{
+  "name": "MediaLog",
+  "description": "Everything you’ve watched, read, played, listened to, on one timeline.",
+  "pitch": "A media diary you share.",
+  "repository": null,
+  "facts": [
+    {
+      "fact": "Log films, books, shows, games, albums and podcasts.",
+      "source": "User-provided project description, 2026-10-10"
+    },
+    {
+      "fact": "Entries record when something was experienced and how it was.",
+      "source": "User-provided project description, 2026-10-10"
+    },
+    {
+      "fact": "See what the people you know have been into.",
+      "source": "User-provided project description, 2026-10-10"
+    },
+    {
+      "fact": "The supplied design groups its timeline into five-year periods and supports approximate dates.",
+      "source": "User's MediaLog landing-page screenshot, 2026-10-10"
+    },
+    {
+      "fact": "Media types have distinct accent colours; navy typography sits on a pale blue-grey background.",
+      "source": "User's two MediaLog screenshots, 2026-10-10"
+    }
+  ],
+  "artwork": "New static vector symbols beside a consistent plain, licensed sans-serif wordmark converted to paths. Each symbol redraws one of collection 05’s ten styles around a book, with fewer details and no tile or border; user brand constraints override catalogue palettes and ornamental typography.",
+  "batch": "Seventh compact logo set: the ten styles of collection 05, each redrawn as a simpler symbol built around a book, all static and free-standing.",
+  "brief": {
+    "nativeWidth": 203,
+    "nativeHeight": 74,
+    "viewBox": [
+      0,
+      0,
+      812,
+      296
+    ],
+    "subject": "MediaLog logo and brand title",
+    "motif": "Collection 05’s ten styles again, at the same 203 × 74 size and in the same output format, with a book in every symbol, less busy, and not every symbol on a tile or border.",
+    "detail": "Plain wordmark. Original static vector symbols readable at small size; no animation, ASCII or text-screen styles, tiny labels, neon cyan-pink pair or tagline. Light/dark and icon-only exports."
+  },
+  "brand": {
+    "primary": "#18223a",
+    "darkInverse": "#f6f3eb",
+    "secondary": [
+      "#74889a",
+      "#ae8660"
+    ],
+    "typography": "DejaVu Sans Bold, plain and consistent, outlined for portable SVGs",
+    "feedback": [
+      {
+        "source": "User, 2026-10-10",
+        "instruction": "The brand color is #18223a."
+      },
+      {
+        "source": "User, 2026-10-10",
+        "instruction": "The MediaLog text does not need to be fancy."
+      },
+      {
+        "source": "User-shared feedback from Dan and Tim, 2026-10-10",
+        "instruction": "Gently favour the book variant and dial back colours that evoke TikTok."
+      },
+      {
+        "source": "User old-logo attachment, 2026-10-10",
+        "instruction": "Book/pen/media heritage is a reference, not a requirement to copy the old mark."
+      },
+      {
+        "source": "User, 2026-10-10",
+        "instruction": "Ten new random styles that have not already been made; no ASCII ones."
+      },
+      {
+        "source": "User, 2026-10-10",
+        "instruction": "They do not have to look like the book/play/pen logo; be creative and cool. Keep the book theme when you can, but not every time."
+      },
+      {
+        "source": "User, 2026-10-10",
+        "instruction": "Ten more, using the styles, but directed more towards media types: books, films, TV and so on."
+      },
+      {
+        "source": "User, 2026-10-10",
+        "instruction": "Do not animate them."
+      },
+      {
+        "source": "User choice, 2026-10-10",
+        "instruction": "Use the ten never-used styles: the last seven unused graphic styles plus three media-led styles (TV test card, pinball dot-matrix display, FM-synth keyboard display)."
+      },
+      {
+        "source": "User, 2026-10-11",
+        "instruction": "Ten more new ones, in the same output format as collection 05."
+      },
+      {
+        "source": "User, 2026-10-11",
+        "instruction": "Focus a bit more on books in each one, and make them a little less busy; they do not all need a border around them."
+      },
+      {
+        "source": "User choice, 2026-10-11",
+        "instruction": "Every unused style is a text-screen style, so repeat favourite graphic styles from earlier collections, redrawn around books."
+      },
+      {
+        "source": "User, 2026-10-11",
+        "instruction": "No text or ASCII styles."
+      },
+      {
+        "source": "User, 2026-10-11",
+        "instruction": "Do collection 05’s ten again (shared its contact sheet), with the same steer as before: focus more on books in each one, make them a bit less busy, and they do not all need a border around them."
+      }
+    ]
+  }
+}

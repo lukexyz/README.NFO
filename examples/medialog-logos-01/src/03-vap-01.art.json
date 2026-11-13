@@ -1,0 +1,17 @@
+{
+  "id": "vap-01",
+  "name": "Museum of you",
+  "description": "A marble heart on a tiny plinth: the things you love become your personal collection. Mint lettering and a pink checker plinth keep the vaporwave reference instantly readable.",
+  "choices": [
+    "An original heart sculpture replaces the historical bust",
+    "The checker plinth turns personal taste into a miniature collection"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

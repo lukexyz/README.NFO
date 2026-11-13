@@ -1,0 +1,787 @@
+{
+  "schema_version": 1,
+  "project": "MediaLog",
+  "created_at": "2026-10-10T18:41:36.678Z",
+  "catalogue_source": "https://github.com/lukexyz/README.NFO",
+  "catalogue_researched": "2026-09-30",
+  "seed": "49bf448fb0d46c2918bda02b731b0ce2",
+  "method": "User-chosen scope, no random selection: every graphic style still unused for MediaLog (seven) plus three media-led styles newly admitted to the graphic pool (idle-10, mach-11, asia-01); numbered in the order shown to the user",
+  "pool": "images",
+  "eligible_count": 10,
+  "families": [],
+  "excluded_ids": [
+    "pc-01",
+    "pc-02",
+    "pc-03",
+    "pc-04",
+    "pc-06",
+    "pc-07",
+    "pc-08",
+    "pc-09",
+    "pc-10",
+    "pc-11",
+    "pc-12",
+    "pc-13",
+    "pc-14",
+    "c64-01",
+    "c64-02",
+    "c64-03",
+    "c64-04",
+    "c64-05",
+    "c64-06",
+    "c64-07",
+    "c64-08",
+    "c64-09",
+    "c64-10",
+    "c64-11",
+    "c64-12",
+    "c64-13",
+    "trk-01",
+    "trk-02",
+    "trk-03",
+    "trk-04",
+    "trk-05",
+    "trk-06",
+    "trk-07",
+    "trk-08",
+    "trk-09",
+    "trk-10",
+    "trk-11",
+    "nfo-01",
+    "nfo-02",
+    "nfo-03",
+    "nfo-04",
+    "nfo-05",
+    "nfo-06",
+    "nfo-07",
+    "nfo-08",
+    "nfo-09",
+    "nfo-10",
+    "nfo-11",
+    "ansi-01",
+    "ansi-02",
+    "ansi-03",
+    "ansi-04",
+    "ansi-05",
+    "ansi-06",
+    "ansi-07",
+    "ansi-08",
+    "ansi-09",
+    "ansi-11",
+    "ansi-12",
+    "vap-01",
+    "vap-02",
+    "vap-03",
+    "vap-04",
+    "vap-05",
+    "vap-06",
+    "vap-07",
+    "vap-08",
+    "vap-09",
+    "vap-10",
+    "vap-11",
+    "vap-12",
+    "vap-14",
+    "vap-15",
+    "vap-16",
+    "vap-17",
+    "vap-18",
+    "mach-01",
+    "mach-02",
+    "mach-03",
+    "mach-04",
+    "mach-05",
+    "mach-07",
+    "mach-08",
+    "mach-09",
+    "mach-10",
+    "mach-13",
+    "mach-15",
+    "hack-01",
+    "hack-02",
+    "hack-03",
+    "hack-04",
+    "hack-05",
+    "hack-06",
+    "hack-07",
+    "hack-08",
+    "hack-09",
+    "hack-10",
+    "hack-11",
+    "hack-12",
+    "hack-13",
+    "hack-14",
+    "hack-15",
+    "hack-16",
+    "hack-17",
+    "hack-18",
+    "hack-19",
+    "asia-02",
+    "asia-03",
+    "asia-04",
+    "asia-05",
+    "asia-06",
+    "asia-07",
+    "idle-01",
+    "idle-03",
+    "idle-04",
+    "idle-05",
+    "idle-06",
+    "idle-07",
+    "idle-08",
+    "idle-09",
+    "xfer-01",
+    "xfer-02",
+    "xfer-03",
+    "xfer-04",
+    "xfer-05",
+    "xfer-06",
+    "xfer-07",
+    "xfer-08",
+    "xfer-09",
+    "xfer-10",
+    "demo-01",
+    "demo-02",
+    "demo-03",
+    "demo-04",
+    "demo-05",
+    "demo-06",
+    "demo-07",
+    "demo-09",
+    "demo-10",
+    "print-01",
+    "print-02",
+    "print-03",
+    "print-04"
+  ],
+  "options": [
+    {
+      "id": "mach-12",
+      "name": "VFD and segment-display front panel (hi-fi, VCR, calculator)",
+      "era": "Vacuum fluorescent displays from 1959 (Philips DM160) and 1967 (first multi-segment device, Ise Electronics), peaking in the late 1980s at hundreds of millions of units a year; 14-segment gas-plasma displays on pinball machines 1986 to 1991; seven-segment LED and LCD digits from the 1970s onward",
+      "what_it_is": "The glowing blue-green readout behind smoked glass on VCRs, car radios, microwaves and stacked hi-fi systems, and its cousins the red LED digit and the grey LCD calculator digit. These are not pixel grids: each character is a fixed set of segments that are either lit or faintly visible. Split out from the colleague's pinball entry because its geometry, colour and content differ, and because a hi-fi panel with a track ticker and level bars is the cleanest way in this family to suggest music without sound.",
+      "visual_signature": [
+        "Seven-segment digits: segments a to g plus a decimal point; hex B and D appear as lowercase b and d to avoid reading as 8 and 0",
+        "14- or 16-segment 'starburst' cells for letters: the seven segments plus four diagonals and a split centre bar",
+        "Unlit segments stay faintly visible, so every position shows a ghost of the full figure",
+        "Blue-green light from a phosphor peaking at 505 nm, often behind a filter that pushes it to deep green or deep blue",
+        "Fixed annunciators (small words and symbols that are either on or off) in a second colour such as orange or red",
+        "Level meters as stacks of short horizontal bar segments (general knowledge, not in a fetched source)",
+        "LED variant: red digits on black; LCD variant: dark grey segments on a grey-green ground with no glow"
+      ],
+      "palette": "No measured values found. My own recipes: VFD lit #6FFFE9 with a wider halo of #19C9B5, unlit segment about 8% opacity of the lit colour, glass #061012; annunciators #FF7A1A. Red LED: lit #FF2A1A on #120000. LCD: segments #2B2F2A on #A9B59A.",
+      "typography": "The fixed seven-segment figure for digits (slanted a few degrees on most real parts, from general knowledge) and the starburst cell for letters, which can form the full basic Latin alphabet. Text is one character per cell with fixed gaps; no kerning, no lowercase on most panels.",
+      "motion": "Digits ticking like a clock or counter; a ticker moving through the alphanumeric cells one whole cell at a time; level bars bouncing in stepped heights; an annunciator blinking; a slow left-to-right power-on sweep that lights every segment once.",
+      "references": [
+        {
+          "what": "Wikipedia: Vacuum fluorescent display (1959 and 1967 origins, 505 nm phosphor, filters, segment and dot-matrix forms, VCR, car radio, microwave, calculator and hi-fi use, extra indicator colours)",
+          "url": "https://en.wikipedia.org/wiki/Vacuum_fluorescent_display"
+        },
+        {
+          "what": "Wikipedia: Seven-segment display (segment names, technologies, how hex letters are formed)",
+          "url": "https://en.wikipedia.org/wiki/Seven-segment_display"
+        },
+        {
+          "what": "Wikipedia: Fourteen-segment display (starburst layout, full alphabet, gas-plasma versions in pinball 1986 to 1991, VCR and car stereo use)",
+          "url": "https://en.wikipedia.org/wiki/Fourteen-segment_display"
+        },
+        {
+          "what": "Wikipedia: Sixteen-segment display (14 segments plus comma and period on pinball displays)",
+          "url": "https://en.wikipedia.org/wiki/Sixteen-segment_display"
+        },
+        {
+          "what": "Wikipedia: Williams Pinball Controller (16-segment alphanumeric displays on the 1990 generation)",
+          "url": "https://en.wikipedia.org/wiki/Williams_Pinball_Controller"
+        }
+      ],
+      "readme_translation": "A wide, short SVG panel (about 8:1): left, a starburst-cell ticker carrying the project name and pitch; centre, a row of level bars; right, seven-segment digits for version or a live-looking counter, with small annunciators for licence and build status. It sits well directly under another header as a 'now playing' strip. A text-only form is not worthwhile.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Each digit is seven polygons (fourteen for a starburst cell) defined once and reused with <use>. Draw every cell twice: all segments at low opacity for the ghost, then the lit subset on top. Changing digits: stack the ten lit states in one cell and switch them with steps(1) opacity keyframes and staggered delays. Ticker: pre-render the message as cells and move the group by one cell pitch per step inside a clipPath. Level bars: rects whose height steps between a few values with different durations per column. Glow: one small feGaussianBlur on the static lit layer, or a wider low-opacity stroke.",
+      "wow": 4,
+      "caveats": "Do not copy any manufacturer's panel layout, brand marks or format logos (the ones printed on real hi-fi and VCR fronts are trademarks); segment geometry is generic. Starburst letters are harder to read than real text, so keep the ticker short and repeat the information in Markdown. All colours are my own suggestions. The level-meter and slanted-digit details are general knowledge, not from a page I opened.",
+      "family": "mach",
+      "number": 1,
+      "slug": "01-mach-12",
+      "media": [
+        "films"
+      ]
+    },
+    {
+      "id": "idle-10",
+      "name": "Off-air idle: colour bars, test card and the hopping 'no signal' box",
+      "era": "1951-present: RCA bars (1951), Philips PM5544 (designed 1966-67), SMPTE bars (standardised 1978); analogue snow and later 'no signal' boxes on TVs and monitors",
+      "what_it_is": "What a screen shows when there is nothing to show. Broadcasters put up a test pattern at sign-on and sign-off, often with a 1 kHz tone; an untuned analogue set showed snow; modern sets show a plain blue screen or a small 'no signal' box that moves about to avoid burn-in. Wikipedia notes the Philips and SMPTE patterns became pop-culture symbols of the 1980s and 90s, printed on shirts and clocks.",
+      "visual_signature": [
+        "SMPTE bars: seven vertical bars at 75 percent intensity, left to right grey, yellow, cyan, green, magenta, red, blue",
+        "Under them a short strip of 'castellations': blue, black, magenta, black, cyan, black, grey",
+        "A bottom band with a dark blue block, a 100 percent white square, a purple block, then black with three barely different near-black stripes (the PLUGE)",
+        "Philips PM5544: a large circle on a grid of 14 by 19 lines with a castellated black-and-white border, colour bars and a grey staircase inside the circle, and a black box inside the circle for station name, clock and date",
+        "Analogue snow: random black-and-white dots (in Swedish 'war of the ants', in Japanese 'sand storm')",
+        "A small rectangular 'no signal' message box on black or blue that jumps to a new position every few seconds"
+      ],
+      "palette": "75 percent bars: grey #C0C0C0, yellow #C0C000, cyan #00C0C0, green #00C000, magenta #C000C0, red #C00000, blue #0000C0; near-black #131313; dark blue and purple blocks for the -I and +Q patches (the hex values are my RGB approximations, not from the standard). No-signal box: white text on blue or black.",
+      "typography": "Station identification in a plain caps sans or a character-generator font, inside a black box; clock digits in the same face. 'No signal' boxes use the TV's on-screen-display font: coarse monospace capitals.",
+      "motion": "Almost none, which is the point. The ident box hops to a new spot every 4 s (stepped, no easing); a clock can tick; snow flickers. Suggested loop 16 s.",
+      "references": [
+        {
+          "what": "Wikipedia: bar order, castellations, bottom band and PLUGE, Larky and Holmes at RCA (1951), SMPTE ECR 1-1978 by Hank Mahler at CBS, 2002 Emmy, CBS placing it in the public domain, the 1 kHz tone",
+          "url": "https://en.wikipedia.org/wiki/SMPTE_color_bars"
+        },
+        {
+          "what": "Wikipedia on test cards: shown at sign-on and sign-off with tone or music, the named patterns, their afterlife as 1980s-90s pop-culture symbols",
+          "url": "https://en.wikipedia.org/wiki/Test_card"
+        },
+        {
+          "what": "Wikipedia on the Philips PM5544: Finn Hendil, 1966-67, circle, grid, castellated border, station ID and clock inside the circle",
+          "url": "https://en.wikipedia.org/wiki/Philips_circle_pattern"
+        },
+        {
+          "what": "Wikipedia on video noise: snow when no signal is received, replaced on modern sets by a solid (often blue) screen or a 'no signal' message",
+          "url": "https://en.wikipedia.org/wiki/Noise_(video)"
+        },
+        {
+          "what": "muffinlabs on Atari 'attract mode' (Atari 400/800, 1979): colours rotate after about nine minutes idle, an early burn-in guard",
+          "url": "https://muffinlabs.com/screensavers/1-atari/"
+        }
+      ],
+      "readme_translation": "Full-width bars as the header with the project name and tagline in a black ident box laid over the middle, plus a small clock or version number. Variant: a black field with a hopping box reading the project name and one status line. The bars also make a good footer or section divider at 20 pixels tall. As plain text: a row of seven labelled blocks is weak; use the SVG.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Prototyped at 1.7 KB: 7 bar rects, 7 castellation rects, 4 bottom-band rects, one group for the ident box moved by a steps(1) keyframe animation through four positions over 16 s. Renders in headless Chromium through <img>. The PM5544-style circle pattern is about 150 static elements and 8 to 12 KB. Snow is possible with feTurbulence and an animated seed but repaints the whole filter each frame; keep it to a small area or a brief burst. About 20 elements for the bars version.",
+      "wow": 4,
+      "caveats": "The SMPTE bar arrangement is free to use (Wikipedia says CBS put it in the public domain without patents). Do not copy broadcaster test cards that contain artwork or photographs (the BBC's Test Card F is the obvious case) or any station's ident. The Philips pattern's rights status is not stated in the sources; draw a generic circle-and-grid card instead of tracing it. The colour values given are approximations. If the catalogue's VHS entry already uses bars as a tape leader, this entry should be the off-air / no-signal variant only.",
+      "family": "idle",
+      "number": 2,
+      "slug": "02-idle-10",
+      "media": [
+        "shows"
+      ]
+    },
+    {
+      "id": "c64-14",
+      "name": "Chip-music jukebox: track list with times, embossed panel, 'hit a key' legend",
+      "era": "1988-1991: Atari ST (The Exceptions' B.I.G. Demo, January 1988) and Amiga music disks (Kefrens' Jukebox, 29 June 1990; Multi Megamix, November 1991)",
+      "what_it_is": "A screen whose whole purpose is choosing chip tunes. The B.I.G. Demo carried 113 YM2149 tunes by Jochen Hippel (Mad Max), over four hours of conversions of Rob Hubbard's C64 music, behind a menu that lists tune names with running times; Pouet commenters recall listening for hours. Amiga groups turned the idea into music disks with a drawn jukebox or a title picture. It is the closest this family gets to 'chiptune' without any sound.",
+      "visual_signature": [
+        "A scrolling track list in a window: tune name on the left, duration in minutes and seconds on the right, three or four rows visible",
+        "The selected row drawn on a solid red bar, other rows in green and blue text",
+        "A 'TOP OF LIST' header above the list and key instructions below in larger lettering ('Hit 1...3 for ...', 'Hit B for the ... scroller')",
+        "ST version: a light grey embossed metal panel with title letters raised from the same grey by light and shadow edges, and round studs filled with multicolour dither",
+        "A thin strip of rainbow-coloured blocks under the legend, and scrollers running in the area beneath the panel",
+        "Amiga version (Kefrens Jukebox, graphics by Seen): a hand-pixelled jukebox with a pink-white arch, gold side columns and a brown cabinet, the current tune's title on a small display strip, party credits to the right, and a wide blue scroller band at the bottom",
+        "Amiga title-picture version (Multi Megamix): a chrome wordmark with white sparkles, red oscilloscope traces behind it, and a second chrome logo on a blue gradient floor"
+      ],
+      "palette": "ST: mid and light greys for the panel, red for the selection, green and blue list text, a rainbow strip as the only saturated element. Amiga: black background, chrome greys, gold, pink and brown for the jukebox, blue scroller.",
+      "typography": "Embossed block capitals for titles; a small 8-pixel font for the list with times right-aligned; larger rounded lettering for the key legend.",
+      "motion": "The list scrolls when the selection moves; the selection bar steps row by row; scrollers run underneath; the rainbow strip cycles. A visual stand-in for playback (a ticking time counter, a pulsing level strip, a drawn oscilloscope trace) is the natural addition, though no level meter is visible in the stills.",
+      "references": [
+        {
+          "what": "The B.I.G. Demo on Pouet (The Exceptions, January 1988): main menu still with track list and times; comments about hours of listening",
+          "url": "https://www.pouet.net/prod.php?which=11350"
+        },
+        {
+          "what": "Microzeit on the B.I.G. Demo: 113 tunes by Jochen Hippel, over four hours, conversions of Rob Hubbard's C64 music",
+          "url": "https://microzeit.com/blogs/news/the-b-i-g-demo-tex"
+        },
+        {
+          "what": "Wikipedia on The Exceptions: members, demo dates, '113 Tunes, 5 screens'",
+          "url": "https://en.wikipedia.org/wiki/The_Exceptions"
+        },
+        {
+          "what": "Kefrens 'Jukebox' music disk on Pouet (June 1990, Amiga Conference 1990): pixel jukebox with title display and scroller",
+          "url": "https://www.pouet.net/prod.php?which=4719"
+        },
+        {
+          "what": "Jukebox on Demozoo: 29 June 1990; Neon code, S.L.L music, Seen graphics; eight track titles",
+          "url": "https://demozoo.org/productions/248090/"
+        },
+        {
+          "what": "Kefrens 'Multi Megamix' (November 1991): chrome title picture with red waveform traces",
+          "url": "https://www.pouet.net/prod.php?which=4708"
+        }
+      ],
+      "readme_translation": "Above the fold: an animated SVG panel titled with the project name in embossed capitals, and a track list where each 'tune' is a module, command or release with a number on the right (size, count, duration). The highlighted row steps through the list and a 'now playing' line names the current item. Repeat the list as linked text below; the list with right-aligned times also works as a pre block.",
+      "medium": "text-plus-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Emboss: three offset copies of each letter shape (light, dark, face). List: pixel-glyph rows; the selection bar is a rect moved with steps() keyframes. A ticking counter is a vertical strip of digits in a clip window stepped with steps(). A level strip is a handful of rects with scaleY keyframes at different durations. An oscilloscope trace is a polyline with 2-3 alternative point sets toggled by steps(). No sound is possible, so this only suggests music.",
+      "wow": 3,
+      "caveats": "Do not copy the demo titles, group logos, tune names or the specific jukebox drawing. A track list with times and a highlight bar is generic. The B.I.G. Demo still is small, so fine details of its panel may be off. Embossed grey-on-grey lettering is low contrast; keep list text in a strong colour. A tracker pattern view, the more familiar chiptune image, already exists in the project's cracktro style and belongs to another family.",
+      "family": "c64",
+      "number": 3,
+      "slug": "03-c64-14",
+      "media": [
+        "albums"
+      ]
+    },
+    {
+      "id": "mach-11",
+      "name": "Pinball dot-matrix display (orange plasma DMD)",
+      "era": "1991 to the late 1990s: Data East Checkpoint (February 1991, the first pinball DMD), Williams Gilligan's Island (May 1991) and Terminator 2 (July 1991), through WPC-95 (to October 1998)",
+      "what_it_is": "The orange panel in the backbox of 1990s pinball machines showed scores, cartoon animations and mini-games on a grid of 128 by 32 glowing dots. It is a gas-plasma display, so every dot is a small round orange light on dark glass. Its 4:1 shape is already a banner and its attract loop (title, scores, start prompt) is already a header.",
+      "visual_signature": [
+        "128x32 round dots as the standard; the first DMDs (Checkpoint and four other Data East games, 1991 to 1992) were 128x16; four Data East/Sega games of 1994 to 1995 used 192x64",
+        "Monochrome orange glow from gas plasma",
+        "Between 4 and 16 brightness levels per dot, made by rapidly switching dots on and off",
+        "Round dots with dark gaps, so large filled shapes look like perforated sheet",
+        "Several bitmap fonts at once: giant score digits beside a tiny status line",
+        "Full-frame animations, wipes, scrolls, flashing award frames and 'video mode' mini-games (first on Terminator 2)",
+        "An idle loop alternating game title, high scores and a start prompt"
+      ],
+      "palette": "No measured values found. My own recipe for plasma: fully lit #FF7A00, two or three dimmer steps at lower opacity, unlit dot about #2A1200, glass near-black #0A0400.",
+      "typography": "Bitmap fonts designed on the dot grid at several heights (about 5, 7, 9 and up to the full 32 dots), heavy and condensed for scores, all uppercase for the small sizes. Draw original dot fonts at two or three heights.",
+      "motion": "Text scrolling in from the right in whole-dot steps; a big number counting up; a wipe or dissolve between frames; a flashing inverted frame for emphasis; a sparkle sweeping across the logo; the idle loop cycling three or four frames.",
+      "references": [
+        {
+          "what": "Wikipedia: Checkpoint (Data East, February 1991, first pinball DMD, half-height 128x16)",
+          "url": "https://en.wikipedia.org/wiki/Checkpoint_(pinball)"
+        },
+        {
+          "what": "Wikipedia: Terminator 2 pinball (first Williams game designed for a DMD, first video mode; Gilligan's Island shipped first)",
+          "url": "https://en.wikipedia.org/wiki/Terminator_2:_Judgment_Day_(pinball)"
+        },
+        {
+          "what": "Wikipedia: Williams Pinball Controller (16-segment alphanumeric generation from FunHouse, September 1990; 128x32 dot matrix from May 1991; WPC-95 to October 1998)",
+          "url": "https://en.wikipedia.org/wiki/Williams_Pinball_Controller"
+        },
+        {
+          "what": "PinWiki: Data East/Sega display boards by size (128x16, 128x32, 192x64) with the games that used each",
+          "url": "https://pinwiki.com/wiki/index.php/Data_East/Sega"
+        },
+        {
+          "what": "ColorDMD: the original displays were monochrome gas plasma with an orange glow, introduced in 1991",
+          "url": "https://www.colordmd.com/About.html"
+        },
+        {
+          "what": "Google Patents US8773452: pinball DMDs are most commonly 128x32, monochrome, with 4 to 16 intensity levels made by frame sequencing",
+          "url": "https://patents.google.com/patent/US8773452"
+        }
+      ],
+      "readme_translation": "One 4:1 SVG banner is the whole header. Frame 1: project name in tall dot letters with a sparkle pass. Frames 2 to 4: one stat each as a giant number with a small label. Last frame: a start prompt with the install command, held long enough to read. No real text-only equivalent.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Two layers. Bottom: every dot unlit, as a tiled <pattern> of dim circles. Top: the lit content drawn as ordinary rects on the dot grid and shown through a <mask> filled with a tiled pattern of circles, so any shape becomes round dots without emitting 4096 elements. Optional soft halo: one feGaussianBlur copy under the lit layer. Move content with translate in steps() equal to the dot pitch so it always lands on the grid; art must be authored on the grid. Brightness levels are three or four fill opacities. Frame cycling by stepped opacity on groups. At a 6-unit pitch the banner is 768x192.",
+      "wow": 5,
+      "caveats": "Do not use licensed table themes, manufacturer names or logos (Williams, Bally, Data East, Sega, Stern) or any real display animation; the dot grid, orange glow and frame-cycling idea are generic. Keep flash frames slow and brief. Dim shades can vanish on poor screens, so keep essential text at full brightness. All hex colours are my own suggestions.",
+      "family": "mach",
+      "number": 4,
+      "slug": "04-mach-11",
+      "media": [
+        "games"
+      ]
+    },
+    {
+      "id": "asia-01",
+      "name": "FM-synth status display: one piano keyboard per channel, level bars and spectrum (MMDSP / FMDSP lineage)",
+      "era": "Sharp X68000, 1991-94 (the MMDSP screenshot credits version 0.30 beta, 1991-94, Miahmie and Gao); the same layout on NEC PC-98 for FMP and PMD music files; modern re-creations 98fmplayer and MDPlayer",
+      "what_it_is": "On the X68000, MDX music files for the MXDRV driver circulated widely on dial-up networks, and Japanese Wikipedia notes that many players were written to show the performance visually, naming MMDSP and MDXS. MMDSP's own README describes it as a real-time display and file selector for six music drivers, known for its spectrum analyser. It is the Japanese counterpart of the Western tracker screen: there is no pattern grid at all, every sound-chip channel is shown as a keyboard with the sounding key lit.",
+      "visual_signature": [
+        "Left half: one horizontal strip per channel (eight 'OPM TRACK' strips on X68000; FM, SSG and ADPCM strips on PC-98), each a single line of numeric readouts above a miniature full-range piano keyboard",
+        "The key currently sounding is a solid lime-green block on otherwise grey-white keys; nothing else on the screen is green",
+        "Right half: a control panel with boxed transport words joined by dashed rules, the driver name, and clock / elapsed / timer / loop counters in slanted seven-segment-style digits",
+        "Spectrum analyser of about 32 segmented bars with peak-hold ticks, over a frequency axis labelled in Hz (28 to 3.5k on MMDSP, 250 to 4K on the FMDSP re-creation) and a row of mode buttons",
+        "Per-channel level bars built from thin horizontal slices, a row of round pan dials beneath them, then rows of three-digit program and key-code numbers",
+        "Bottom third: a 'now playing' title line and a file selector listing file name plus song title, the titles in large kanji-ROM type with wide letter spacing; a footer strip of toggle words (auto, shuffle, repeat, intro)",
+        "Whole screen in one lavender-blue on black with hairline rules and tiny all-caps pixel labels ending in a small corner tick"
+      ],
+      "palette": "Sampled from the screenshots: black #000000 ground; lavender #8787ff (MMDSP) or #aa99ff with violet #8844dd and plum #553366 (98fmplayer); key white #c2c2ca / #ccccbb; dark navy fills #18183b and #101032; single accent lime #77ff22 for the lit key.",
+      "typography": "Tiny uppercase pixel capitals about 5-6 px high for every label; a wide extended outline wordmark for the program name; slanted segment-style numerals for counters; song titles in the 16-dot kanji ROM gothic, often typed in full-width Latin with spaces between letters.",
+      "motion": "Lit keys jump along each keyboard in steps; level bars snap up and decay; spectrum bars bounce while their peak ticks fall slowly; counters tick; pan dials flip left/right. All of it is stepped, not eased.",
+      "references": [
+        {
+          "what": "MMDSP source repository by Gao, with README and a full screenshot of the X68000 display",
+          "url": "https://github.com/gaolay/MMDSP"
+        },
+        {
+          "what": "98fmplayer by myon98: PC-98 FM driver emulation (PMD, FMP) whose window reproduces the FMDSP status display; screenshots in the README",
+          "url": "https://github.com/myon98/98fmplayer"
+        },
+        {
+          "what": "MDPlayer by kuma4649: plays VGM, MDX, PMD, FMP and many more while drawing a keyboard display per emulated chip",
+          "url": "https://github.com/kuma4649/MDPlayer"
+        },
+        {
+          "what": "Japanese Wikipedia, X68000: MXDRV, MDX files on PC-communication networks, and visual players MMDSP and MDXS",
+          "url": "https://ja.wikipedia.org/wiki/X68000"
+        },
+        {
+          "what": "English Wikipedia, X68000: YM2151 FM chip plus MSM6258 ADPCM, Human68k",
+          "url": "https://en.wikipedia.org/wiki/X68000"
+        }
+      ],
+      "readme_translation": "One wide SVG above the fold. Each 'track' strip becomes a part of the project (modules, languages, CI jobs), with its readout line carrying real numbers (files, tests, coverage). The control panel holds the project name as the wordmark and version / build counters in segment digits. The 'now playing' line is the tagline; the selector list at the bottom is the table of contents. Links cannot live inside an img, so repeat the selector as a plain Markdown list directly under the image.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "One octave of keys as an SVG pattern tiled across each strip; the lit key is a small rect moved with a steps() keyframe on transform. Bars are rects animated with stepped scaleY, given prime-number durations so eight to thirty bars never visibly repeat; peak ticks are a second slower animation. Segment digits and the tiny label font are best drawn as paths (a 5x5 pixel alphabet is a few hundred bytes). Estimated 60-120 KB, not measured. Kanji titles are optional; if used, convert to paths from a free 16-dot bitmap font, since no font can be loaded.",
+      "wow": 5,
+      "caveats": "Do not copy the MMDSP or FMDSP names, wordmarks or the panel pixel-for-pixel, and do not reuse the real song titles and composer credits visible in the screenshots. I could not confirm who wrote the original PC-98 FMDSP; I only saw the 98fmplayer re-creation that carries that title. Labels at 5-6 px become unreadable when GitHub scales the image down on mobile, so keep real information in larger type. Many bars flashing at once is a motion-sensitivity risk: keep rates low and add a prefers-reduced-motion rule. It overlaps in spirit with the catalogue's Open Cubic Player and FastTracker entries; the distinct part is the keyboard-per-channel layout and the FM chip vocabulary.",
+      "family": "asia",
+      "number": 5,
+      "slug": "05-asia-01",
+      "media": [
+        "albums"
+      ]
+    },
+    {
+      "id": "pc-05",
+      "name": "Win32 new old-school cracktro: metal logo, twister, sine scroller",
+      "era": "2004-2011, Windows (DirectX/OpenGL, often 64k or less); Hoodlum, Deviance, Reloaded, Skid Row with Titan and Electric Druggies, Genesis with TRSI",
+      "what_it_is": "The mid-2000s revival in which demoscene coders (hitchhikr, the Titan people, anesthetic) and pixel artists (Alien^PDX, H2o, iks/irokos, bull) built deliberately old-school cracktros for ISO groups on modern hardware. It is what most people picture for a 2000s cracktro: a big airbrushed chrome or graffiti logo, a twisting column, a bouncing scroller and a chiptune. This entry now also absorbs the 'shiny' sub-look (logo on a mirror floor, lit relief) that was submitted as a separate style.",
+      "visual_signature": [
+        "A large custom logo as the centrepiece: brushed-chrome 3D block letters (Reloaded), liquid-chrome script with drips (Deviance), gold wildstyle graffiti on black (Skidrow 2007), chrome-purple extruded capitals (Hoodlum Stronghold 2), grey-green metal (Genesis)",
+        "Twisters: a vertical bar that appears to twist like a wrung towel, one each side of the logo (Shrek 2 by Genesis/TRSI, praised as sine-twisters; Deviance 'Mission completed' is praised for its twister)",
+        "A scroller riding a sine wave or bending in 3D: pink on black (Hoodlum Stronghold 2), made of large LED-dot or cube letters along the bottom (Reloaded #4), a twisted 3D scroller that is famously unreadable (Hoodlum #3)",
+        "A centred text-writer block for release info and credits on a split dark-red background, with translucent red balls bouncing behind it (Deviance 'Old Skool')",
+        "Mirror floor: the chrome logo and a low-poly car standing on a dark glossy floor with their reflections (Reloaded #4); a rotating reflective box under the logo (Reloaded #2)",
+        "White-background variants: a pencil-sketch figure above small black type (Deviance 'Mission completed'), 3D letter sculptures and paper-tear transitions (Hoodlum #3)",
+        "3D starfield on black for the plain ones (Skidrow 2007)",
+        "Fake copper-split bars and a spinning chessboard as explicit Amiga nods (Hoodlum #1)"
+      ],
+      "palette": "Black or near-black with one accent family: Deviance dark red and white; Reloaded steel grey with white LEDs; Hoodlum purple chrome with pink scroller; Skid Row gold on black (2007), purple and pink (2008), blue checker (2009); Genesis grey-green metal. The scroller usually carries the only bright colour.",
+      "typography": "The logo is always custom: chrome extrusion, graffiti with arrows and outlines, or script with drips. Body text in small white bitmap fonts; scroller fonts are big, rounded and gradient-filled or built from dots.",
+      "motion": "Twister rotates and bends on a sine; scroller letters ride a wave right to left; balls bounce; particles assemble into the logo left to right (Reloaded #4 per comments); text-writer types then wipes; starfield flies outward. Loops until a key is pressed.",
+      "references": [
+        {
+          "what": "Hoodlum cracktro #3 on Pouet (May 2005; code hitchhikr, graphics alien^PDX): white backgrounds, tetris break-up, paper tearing, twisted 3D scroller",
+          "url": "https://www.pouet.net/prod.php?which=17202"
+        },
+        {
+          "what": "Deviance 'Old Skool Cracktro' (Mar 2006; graphics H2o, music W.O.T.W.): bouncing translucent balls, text writer, chrome script logo",
+          "url": "https://www.pouet.net/prod.php?which=24391"
+        },
+        {
+          "what": "Deviance and Scoopex 'Mission completed' cracktro (Apr 2006; code anesthetic, graphics mrr and H2o): comments 'Best twistahr', 'Nice twist'",
+          "url": "https://www.pouet.net/prod.php?which=24629"
+        },
+        {
+          "what": "Reloaded Cracktro #4 with Titan (Pouet: Jan 2006; Demozoo: 29 Nov 2005; graphics alien^PDX): chrome block logo, particle-to-logo morph, car on glossy floor, LED scroller",
+          "url": "https://www.pouet.net/prod.php?which=21069"
+        },
+        {
+          "what": "Genesis and TRSI 'Shrek 2' cracktro (June 2004; code hitchhikr, graphics H2o, music estrayk): logo between two sine-twisters",
+          "url": "https://www.pouet.net/prod.php?which=12967"
+        },
+        {
+          "what": "Skidrow cracktro by Titan and Electric Druggies (Aug 2007; Demozoo title '911 First Responders', 13 Aug 2007): gold graffiti logo, 3D stars",
+          "url": "https://www.pouet.net/prod.php?which=31673"
+        },
+        {
+          "what": "Hoodlum and Titan, Stronghold 2 (Apr 2005; graphics bull): chrome-purple logo, z-shaded metaballs, pink sine scroll",
+          "url": "https://www.pouet.net/prod.php?which=16814"
+        },
+        {
+          "what": "Reloaded cracktro #2 with Titan (May 2005): rotating textured box under the logo",
+          "url": "https://www.pouet.net/prod.php?which=17344"
+        },
+        {
+          "what": "Paradox and Chemical Reaction cracktro (Pouet: May 2000): alien^PDX comments that he made 'the paradox logo with head bumpmap thing', the one named bump-mapped logo found",
+          "url": "https://www.pouet.net/prod.php?which=8423"
+        }
+      ],
+      "readme_translation": "SVG hero about 800x320 on near-black: the project wordmark as the metal logo in the upper half with a faded mirror reflection beneath it, a twister column at each side, a sine scroller along the bottom with the tagline, and a centred text-writer block cycling three pages (what it is, install line, credits). Links go underneath in Markdown.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Twister: stack 40-60 thin horizontal slices, each holding two or three coloured rects whose x and width follow one shared keyframe with a negative animation-delay proportional to the row; plain CSS, no filters. Sine scroller: per-letter groups with staggered translateY keyframes inside a parent translating left; keep it to one short line. Chrome logo: layered linearGradients with a hard horizon stop, an inner highlight stroke and a drop shadow; real airbrush texture is not achievable, so aim for clean vector chrome. Mirror floor: a <use> of the logo flipped with scale(1,-1) under a linear-gradient mask. Optional moving light: feSpecularLighting over a blurred alpha height map with an fePointLight whose x is animated by SMIL; the researcher saw it render in Chromium but did not confirm the light moving, so treat it as unverified and keep a plain gradient-sweep fallback (an animated highlight band clipped to the letters). Glyphs must be paths. About 40-60 KB.",
+      "wow": 4,
+      "caveats": "The logos are the credited artists' signature work: describe and link, never trace. Group names and wordmarks are off limits. Twisters, sine scrollers, mirror floors and bouncing balls are common property. Pouet files the 2007-2011 Skid Row cracktros under the same group entry as the Amiga-era group; Demozoo credits Razor founder Sector 9 with graphics on Skid Row's 2008 Gene Troopers, but lineage is still not something I confirmed. The 2009 Genesis cracktro's chrome skull is described by commenters as a Terminator theme: film imagery, not to be imitated. An unbroken sine scroller is hard to read; keep essential text in the static block.",
+      "family": "pc",
+      "number": 6,
+      "slug": "06-pc-05",
+      "media": [
+        "films"
+      ]
+    },
+    {
+      "id": "idle-02",
+      "name": "Minter light synth (Psychedelia): mirrored trails of expanding pattern seeds",
+      "era": "1984-88 on 8-bit and 16-bit home computers (Psychedelia 1984 for C64, VIC-20, C16, Spectrum, MSX, CPC; Colourspace 1985 on Atari 8-bit; Trip-a-Tron 1987/88 on Atari ST and Amiga), continuing as the Virtual Light Machine on Jaguar CD and Nuon and Neon on Xbox 360",
+      "what_it_is": "Jeff Minter's 'light synthesizer': a program you play with a joystick while music is on. A cursor drops pattern seeds along its path and each seed expands and changes shape and colour before fading, mirrored across the screen. Psychedelia takes no audio input at all, which makes it the most honest model for a silent README: the performer, not the sound, drives it.",
+      "visual_signature": [
+        "Black screen with a single cursor pixel; everything else is trail",
+        "Each seed grows outward in seven discrete levels (the manual lets you define up to 7 pixels per level), each level in the next colour of a 7-step colour sequence",
+        "Default 'quad' symmetry: the trail is mirrored through both the X and Y axes, giving a four-fold mandala; the S key steps through other mirror settings or none",
+        "Coarse block grid: the marks are chunky cells, not smooth lines",
+        "Eight built-in seed shapes on keys 1 to 8 (one is llama-shaped) plus eight user-defined",
+        "Line Mode, which the manual describes as like drawing with the Aurora Borealis",
+        "A small graduated bar at the bottom of the screen showing the value of whichever variable is being adjusted (cursor speed, buffer length, pulse speed, pulse width, smoothing delay)"
+      ],
+      "palette": "The host machine's fixed palette on black (on the C64, its 16 colours), walked in a repeating 7-colour sequence per seed so trails read as rainbow ripples. The Amstrad review notes that version used the CPC's larger palette.",
+      "typography": "None in the picture. The only text is the host computer's ROM character set in a one-line status readout naming the current variable. Put the project name there in a monospace face, with the graduated bar beside it.",
+      "motion": "Seeds are emitted along a curved path; each runs the same 7-step expand-and-recolour cycle, delayed by its position in the buffer, so the path looks like a travelling ripple. 'Pulse' settings emit in bursts. Suggested loop 8 to 16 s.",
+      "references": [
+        {
+          "what": "Wikipedia: 1984, platforms, seeds that 'expand and change shape and colour over time', no audio input, about 1 KB of 6502 code, successors Colourspace (1985) and Trip-a-Tron (1987)",
+          "url": "https://en.wikipedia.org/wiki/Psychedelia_(light_synthesizer)"
+        },
+        {
+          "what": "Original C64 manual, transcribed in Rob Hogan's annotated disassembly repo: 16 patterns (8 preset, 8 user), 7 levels, symmetry, Line Mode, buffer length, pulse, sequencer, burst generators",
+          "url": "https://raw.githubusercontent.com/mwenge/psychedelia/master/MANUAL-C64.md"
+        },
+        {
+          "what": "CPC Rulez: Amtix review (1985) of the Amstrad version: default quad symmetry, eight shapes on keys 1-8 including a llama",
+          "url": "https://cpcrulez.fr/GamesTest/psychedelia.htm"
+        },
+        {
+          "what": "Wikipedia on Jeff Minter: the light synth line from Psychedelia to VLM and Neon with dates",
+          "url": "https://en.wikipedia.org/wiki/Jeff_Minter"
+        },
+        {
+          "what": "Wikipedia on the Virtual Light Machine (Jaguar CD, Nuon)",
+          "url": "https://en.wikipedia.org/wiki/Virtual_Light_Machine"
+        }
+      ],
+      "readme_translation": "Black SVG header, four-fold mirrored trail looping a Lissajous path so it never leaves the frame. Bottom row: project name at left in monospace, a 'variable' label and graduated bar at right carrying the tagline or version. A variant writes the project name as the path the cursor traces, so the trail spells it.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Not prototyped; built from techniques that were tested in the other entries. One <symbol> holds seven concentric 'level' groups of small <rect> cells, each level shown for one step by an opacity keyframe with steps() timing and its own fill. 30 to 40 <use> copies placed along a precomputed path with staggered animation-delay make the trail; the whole trail group is then reused three more times with scale(-1,1), scale(1,-1) and scale(-1,-1) for quad symmetry. Roughly 60 rects plus 45 uses, 6 to 10 KB, loop 8 to 16 s. The work is in the generator that lays out the path and delays.",
+      "wow": 4,
+      "caveats": "Do not use the Llamasoft name, the llama seed shape or Minter's preset names. The mechanism (mirrored, expanding, colour-stepping seeds) is a general technique. Sources disagree on dates: Wikipedia's VLM article says it was created in 1990, the Minter article dates VLM-1 to the 1994 Jaguar CD; Trip-a-Tron is given as 1987 in one article and 1988 in another. The Llamasoft history page at minotaurproject.co.uk could not be fetched (TLS error), so the cell resolution of the C64 display is not confirmed.",
+      "family": "idle",
+      "number": 7,
+      "slug": "07-idle-02",
+      "media": [
+        "podcasts"
+      ]
+    },
+    {
+      "id": "demo-08",
+      "name": "ZX Spectrum / Pentagon demo screen: effects in the attribute grid",
+      "era": "Early 1990s to today; ZX Spectrum 128 and its clones, above all the Pentagon built by hobbyists across the former USSR from 1989; trackmos dominant from 1996; shown at Chaos Constructions in Saint Petersburg and at Forever, DiHalt, Multimatograf and CAFe",
+      "what_it_is": "The Spectrum's picture is 256x192 pixels, but colour exists only on a 32x24 grid: each 8x8 cell has one ink and one paper from eight colours plus a shared bright bit. Wikipedia notes the machine reached cult status in the former Soviet territories, where the Pentagon clone became the standard competition machine, and that demos developed multicolour tricks on the 768 attribute cells and effects in the border. Demo coders turned the limit into the medium: whole effects are drawn by changing cell colours only. Pouet commenters on a 2021 intro praise it for using the limitation as a design element instead of fighting it. This differs from the catalogue's tape-loader entry, which is about border stripes and a loading picture, not about moving effects.",
+      "visual_signature": [
+        "Chunky 8x8 effects: plasma, tunnels, twisters and spirals drawn as 32x24 blocks of flat colour, which Pouet commenters call chunky or attribute-block effects",
+        "Seven saturated colours plus black in two brightness levels, with no intermediate shades: pure blue, red, magenta, green, cyan, yellow, white",
+        "Hard cell boundaries: fine one-colour pixel detail inside a cell, but colour changes only at cell edges, so pictures are composed to the grid",
+        "Multicolour parts where attributes are rewritten during the frame to get cells 8 pixels wide but only 1, 2 or 4 lines tall, in a band about 20 columns wide",
+        "Flicker blends: two screens alternated at 50 Hz (gigascreen) to suggest in-between colours; commenters argue about whether it looks good off a CRT",
+        "Effects and rasters pushed into the wide border around the picture area, praised by commenters as breaking the borders",
+        "Results files from Chaos Constructions 2019 list dedicated competitions for ZX Spectrum 640K demo, realtime AY music, ZX graphics and a format called 53c"
+      ],
+      "palette": "Black, blue, red, magenta, green, cyan, yellow, white, each in normal and bright intensity (15 distinct colours, since bright black is black). Emulators conventionally render normal intensity at about 84 percent (#D7 per channel, for example #0000D7, #D70000, #D7D700) and bright at #FF; treat the exact hex values as convention. Bright applies to the whole cell, ink and paper together.",
+      "typography": "8x8 pixel characters on the 32-column grid, one ink and one paper per character cell, so coloured text is naturally block-highlighted. Larger logos are built from whole cells or drawn in pixels but coloured per cell. Draw an original 8x8 font.",
+      "motion": "Cells change colour in steps, never smoothly: colour-cycling plasmas, rotating tunnels and twisters at cell resolution, scrollers that move in pixels while their colour bands stay locked to the grid, and bars moving through the border.",
+      "references": [
+        {
+          "what": "Wikipedia: ZX Spectrum demos (Eastern European scene, Pentagon as competition machine, multicolour on the 768 attribute cells, border effects, Chaos Constructions)",
+          "url": "https://en.wikipedia.org/wiki/ZX_Spectrum_demos"
+        },
+        {
+          "what": "Wikipedia: ZX Spectrum graphic modes (32x24 attribute cells, ink/paper/bright/flash bits, 8x1 and 8x2 multicolour, gigascreen, Pentagon modes, border)",
+          "url": "https://en.wikipedia.org/wiki/ZX_Spectrum_graphic_modes"
+        },
+        {
+          "what": "Wikipedia: Pentagon (clone made by hobbyists across the former USSR, 1989, boards copied 1991-96)",
+          "url": "https://en.wikipedia.org/wiki/Pentagon_(computer)"
+        },
+        {
+          "what": "Wikipedia: Attribute clash (the two-colours-per-cell rule and how it was worked around)",
+          "url": "https://en.wikipedia.org/wiki/Attribute_clash"
+        },
+        {
+          "what": "Pouet: top ZX Spectrum productions by thumbs up",
+          "url": "https://www.pouet.net/prodlist.php?platform%5B%5D=ZX+Spectrum&order=thumbup"
+        },
+        {
+          "what": "Pouet: delightful attributes by Darklite and Offence (2nd, oldskool intro, Revision 2021), praised for designing with the cell limit",
+          "url": "https://www.pouet.net/prod.php?which=88600"
+        },
+        {
+          "what": "Pouet: aeon by Triebkraft and 4th Dimension (1st at The Ultimate Meeting 2008), comments on primary colours and attribute effects",
+          "url": "https://www.pouet.net/prod.php?which=52355"
+        },
+        {
+          "what": "Pouet: across the edge by deMarche (1st at Chaos Constructions 2016), comments on multicolour and border effects",
+          "url": "https://www.pouet.net/prod.php?which=68035"
+        },
+        {
+          "what": "Pouet: Megademica 4K by Serzhsoft (1st, oldskool intro, Revision 2019), chunky attribute tunnels and spirals",
+          "url": "https://www.pouet.net/prod.php?which=81065"
+        },
+        {
+          "what": "Demozoo: Chaos Constructions 2019, Saint Petersburg, competition list",
+          "url": "https://demozoo.org/parties/3925/"
+        },
+        {
+          "what": "Chaos Constructions 2019 results file",
+          "url": "https://archive.scene.org/pub/parties/2019/chaosconstructions19/results.txt"
+        }
+      ],
+      "readme_translation": "An SVG banner built on the real grid: 32 cells wide by 8 to 12 cells tall, inside a plain coloured border. The project name is set in large letters made of whole cells or 8x8 pixel glyphs, in bright white on black; behind or beside it a cell-resolution plasma cycles through the fifteen colours. One line of 32-column text under the logo carries the tagline. Everything below the banner is normal README text.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "A 32x10 grid is 320 rects. Give each a class that selects one of a few shared step-timed colour keyframes and a computed animation-delay, and the grid plays a plasma or tunnel with no script; steps() timing keeps the changes abrupt, as on the hardware. Pixel detail inside cells is one path per colour. Expect 15 to 40 KB. Multicolour bands are just shorter rects. Gigascreen blending should be shown as the static mixed colour, not by flickering.",
+      "wow": 4,
+      "caveats": "Reference only: group names, demo titles and pictures are not to be reused, and the Sinclair ROM character set should be replaced by an original 8x8 font. The technique (two colours per cell, bright flag, cell-resolution effects) is free to use. Unconfirmed: I could not reach zxart.ee, so the description of Russian-scene title pictures asked for in the brief is not covered, and my understanding of 53c (pictures made from attributes alone over a fixed chequer pattern, giving 53 blended colours) comes from memory; the sources I opened only confirm the competition name. I did not confirm the nationality of the named groups. Real 50 Hz flicker and fast cycling of saturated primaries are a photosensitivity risk: cycle slowly and honour prefers-reduced-motion.",
+      "family": "demo",
+      "number": 8,
+      "slug": "08-demo-08",
+      "media": [
+        "games"
+      ]
+    },
+    {
+      "id": "demo-11",
+      "name": "Apple II crack screen: six-colour hi-res panels and 40-column credits",
+      "era": "About 1981 to the mid-1980s; Apple II, II+ and IIe; North American BBS pirate groups. Dated screens in the textfiles.com archive run from 1982 to 1985, and Pouet lists a crack screen from September 1981",
+      "what_it_is": "The oldest layer of the whole tradition. The introduction to the textfiles.com archive explains that Apple II pirates began giving themselves group names and turning a program's splash screen into a credit: who cracked it, who is thanked, which bulletin board to call. It suggests around 1981 as a starting point and calls the screens a likely root of the later art scenes. The archive holds 794 captures, in colour and in monochrome. Wikipedia's crack-intro article likewise places the first ones on the Apple II. Unlike the C64 and Amiga entries there is no music, no scroller and usually no animation: it is a still title card.",
+      "visual_signature": [
+        "Layout A, seen in the captures: a black screen with the release title in large block capitals, each word or letter in a different one of the hi-res colours, and small white credit lines centred beneath",
+        "Layout B: stacked rectangular panels, each with a thick frame in one solid colour (blue, orange, green, violet) and white text inside",
+        "Layout C: the game's own title picture with a credit line added over or under it",
+        "Layout D: a bare 40-column text screen of centred lines, rendered green-on-black in the monochrome captures",
+        "A fixed vocabulary in the archive's captions: presents; cracked, kracked or broken by; brought to you by; distributed by; thanks or thanx to; and the group's name for the release as its 'ware'",
+        "Colour fringing: on a hi-res screen white text picks up green and violet edges because colour depends on pixel position",
+        "Handles instead of names, usually with a definite article, and a bulletin-board name as the only contact"
+      ],
+      "palette": "Six hi-res colours: black, white, green, violet, orange and blue, where green and orange can only appear on odd columns and violet and blue on even ones. In the archive's emulator captures these come out as roughly #00FF00, #FF00FF, #FF9900 and #0000FF. Monochrome variant: phosphor green on black. Lo-res mode offers 16 colours at 40x48 blocks.",
+      "typography": "40-column text, 24 rows. Hi-res pages are 280x192, stored as 40 seven-pixel bytes per row, so drawn lettering sits on a seven-pixel rhythm and effective colour resolution is 140 across. Titles are chunky block capitals a few cells tall; credits are small capitals. The original machines' text was capitals only with inverse and flashing variants (general knowledge, not from the pages I opened).",
+      "motion": "Essentially static. If anything moves it is a flashing line or a slow colour change; the modern Apple II demos on Pouet are a separate, much later development.",
+      "references": [
+        {
+          "what": "textfiles.com: Apple II crack screens archive, with Jason Scott's introduction and 794 captioned captures",
+          "url": "http://artscene.textfiles.com/intros/APPLEII/"
+        },
+        {
+          "what": "Capture with stacked colour-framed panels (Apple Mafia credit screen)",
+          "url": "http://artscene.textfiles.com/intros/APPLEII/amaf.gif"
+        },
+        {
+          "what": "Capture with a multi-coloured block title over white credit lines (Tass Times in Tonetown)",
+          "url": "http://artscene.textfiles.com/intros/APPLEII/tasstimesc.gif"
+        },
+        {
+          "what": "Capture of a plain monochrome text credit screen (Agent USA)",
+          "url": "http://artscene.textfiles.com/intros/APPLEII/agentusa.gif"
+        },
+        {
+          "what": "Wikipedia: Apple II graphics (280x192 hi-res, six colours, 7-pixel bytes, odd/even colour rule, 40x48 lo-res, mixed mode with four text lines)",
+          "url": "https://en.wikipedia.org/wiki/Apple_II_graphics"
+        },
+        {
+          "what": "Wikipedia: Crack intro (first appeared on the Apple II in the late 1970s or early 1980s)",
+          "url": "https://en.wikipedia.org/wiki/Crack_intro"
+        },
+        {
+          "what": "Pouet: a September 1981 Apple II crack screen credited to The Pirate, with comments on how early cracks carried only a text line",
+          "url": "https://www.pouet.net/prod.php?which=33926"
+        },
+        {
+          "what": "Pouet: Apple-Vision by Bob Bishop (1978), a very early Apple II demo with music, scroller and animation",
+          "url": "https://www.pouet.net/prod.php?which=54410"
+        },
+        {
+          "what": "Pouet: Apple II Megademo by VMW Productions (1st at Demosplash 2018), mixing text, lo-res and hi-res mid-screen",
+          "url": "https://www.pouet.net/prod.php?which=78718"
+        }
+      ],
+      "readme_translation": "A 280x192-proportioned SVG card on black: the project name in block capitals, each word in a different hi-res colour with a faint green or violet fringe, inside one or two thick colour-framed panels. Under it, in a <pre> block at exactly 40 columns, centred capital credit lines using the period's verbs: PRESENTS, WRITTEN BY, THANKS TO, DISTRIBUTED BY. The monochrome variant needs no SVG at all: the 40-column text alone, which is the narrowest text header in the catalogue and fits a phone.",
+      "medium": "text-plus-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Flat rectangles and block letters in six colours; the fringe is a one-pixel offset duplicate in green or violet. Keep shapes on a 7-pixel horizontal module for authenticity. A static SVG of a few kilobytes; a single blinking line via a steps() opacity animation is the only motion worth adding.",
+      "wow": 4,
+      "caveats": "Reference only: do not reuse any group or cracker handle, board name or the Apple name and logo, and do not present a project as a crack of someone's software; use the layout for credits, not the piracy framing. The panel layouts and colour rule are free to imitate. I inspected eight captures as coarse colour maps, not as readable images, so the four layouts are reliable as structure but fine detail is not. I could not open 4am's write-ups (the Wikipedia URL I tried does not exist and the archive.org collection page returned no description), so nothing here relies on them. The capitals-only claim is from general knowledge.",
+      "family": "demo",
+      "number": 9,
+      "slug": "09-demo-11",
+      "media": [
+        "books"
+      ]
+    },
+    {
+      "id": "print-05",
+      "name": "Scene paperwork: tick-box swap letter, party pre-invitation with reply coupon, hand-drawn votesheet",
+      "era": "1986-1996, European C64 and Amiga scene, exchanged by post and handed out at copy parties and demoparties; preserved by Got Papers? (a research project with scene.org and Demozoo, endorsed by the University of Zurich) and Scene Letters",
+      "what_it_is": "Swappers kept dozens of postal contacts going at once, so the paperwork became standardised: a short note with every disk, and sometimes a pre-printed form where the sender only ticked boxes. Parties were announced on photocopied sheets with a coupon to post back, and competitions were judged on paper votesheets. One archive alone holds 269 letters from 127 people in 16 countries sent to a single German C64 swapper. It is the scene's office stationery, and it is mostly plain monospaced text.",
+      "visual_signature": [
+        "Tick-box form letter (Belgian Amiga group, November 1990): group logo across the top, a place-and-date line, a 'hi ... of ...' line with two dotted blanks, then two columns of small square boxes under headings for what the sender is thanking you for, what they would like sent, how your last sending rated (from cool down to damaged), where they hope to meet you, and a long list of stock messages",
+        "Stock messages on that form include asking for the stamps and the envelope to be sent back, asking you not to write the group's name on the envelope, to check disks for viruses, to use better envelopes and to greet them; then a 'this sending contains N disks' section, a PO box to write back to, and a sign-off line; boxes ticked in red pen",
+        "Short notes (1990): a few lines in blue ballpoint on a small card with the handle and group in block capitals, a return postal code, the date and a line saying legal material only; or four dot-matrix lines with a handwritten date, a signed handle/group and a postscript",
+        "Party pre-invitation (France, 1992): stacked ruled boxes on one sheet; a title in wide striped capitals; the organising groups named between asterisks; a list of dash-bulleted fields aligned on colons (place, date, expected attendance, contests, duration); a 'write to' box with three address blocks side by side; a tear-off coupon with dotted lines for handle, group and address",
+        "The same sheet carries a 'spread by handle of group' line in red felt-tip along the top and the spreader's own small sticker in the corner",
+        "Copy-party invitation (Denmark, 1987): one page of dot-matrix text, an italic title line, fully justified paragraphs with stretched word spaces, and a list of handles with phone numbers",
+        "Votesheet (Poland, 1996): a hand-drawn bubble-letter party logo in marker, margins filled with spirals and stars, and a grid of twelve competition boxes in four columns, each with a hand-lettered heading and numbered ranks, the gutters between boxes cross-hatched"
+      ],
+      "palette": "Photocopier black on white with blown-out contrast, grey speckle and the occasional toner streak; red pen for ticks and 'spread by' notes; blue ballpoint for handwriting; pale fold creases. As plain text it is monochrome.",
+      "typography": "Dot-matrix or typewriter monospace for the forms and letters, all capitals on the tick-box form; hand-drawn marker logos and bubble letters for headings; ballpoint handwriting for the filled-in parts. Made-up tick-box lines in the same manner:\nTHANX FOR...            PLEASE SEND IF POSSIBLE...\n[x] THE STAR            [x] A BUG REPORT\n[ ] THE FORK            [ ] YOUR PULL REQUEST",
+      "motion": "Static as text. As SVG: red ticks draw themselves into the boxes one after another, a 'spread by' note writes itself across the top, the sheet sits rotated a degree or two. Nothing needs to loop.",
+      "references": [
+        {
+          "what": "Got Papers? swapletters tag: collections of letters 1986-1998, including 269 letters from 127 people in 16 countries to one swapper",
+          "url": "https://gotpapers.scene.org/?tag=swapletters"
+        },
+        {
+          "what": "Got Papers? post: 21 letters of 1990-92 sent to a German Amiga pack editor and swapper",
+          "url": "https://gotpapers.scene.org/?p=3986"
+        },
+        {
+          "what": "Scan: pre-printed tick-box swap letter, 20 November 1990 (the form described above)",
+          "url": "https://gotpapers.scene.org/wp-content/uploads/2021/07/sarcophaser_to_jugger_19901120_p1.jpg"
+        },
+        {
+          "what": "Scan: short ballpoint swap note, 17 October 1990",
+          "url": "https://gotpapers.scene.org/wp-content/uploads/2021/07/mr._lee_to_jugger_19901017.jpg"
+        },
+        {
+          "what": "Scan: dot-matrix swap letter with handwritten date and signature, 21 October 1990",
+          "url": "https://gotpapers.scene.org/wp-content/uploads/2021/07/slider_to_jugger_19901021.jpg"
+        },
+        {
+          "what": "Got Papers? post '32 Years of Computer Parties': invitations, flyers and votesheets 1987-2019",
+          "url": "https://gotpapers.scene.org/?p=3885"
+        },
+        {
+          "what": "Scan: 1992 party pre-invitation with address blocks, reply coupon and a 'spread by' note",
+          "url": "https://archive.scene.org/pub/resources/gotpapers/parties/beach_party_1992_invitation.jpg"
+        },
+        {
+          "what": "scene.org record and scan: invitation to the Danish Gold copy party, 24-26 July 1987, Odense (A4, dot-matrix text)",
+          "url": "https://files.scene.org/view/resources/gotpapers/parties/danish_gold_copy_party_1987_invitation.jpg"
+        },
+        {
+          "what": "scene.org record and preview: Gravity 1996 votesheet (Opole, Poland), credited to Sharp/Anadune, A4 paper",
+          "url": "https://files.scene.org/view/resources/gotpapers/parties/gravity_1996_votesheet.jpg"
+        },
+        {
+          "what": "Got Papers? votesheets tag: party and diskmag votesheets, vote disks and vote keys, 1990s-2009",
+          "url": "https://gotpapers.scene.org/?tag=votesheets"
+        },
+        {
+          "what": "Got Papers? About page: aims, partners, 300 DPI scanning",
+          "url": "https://gotpapers.scene.org/?page_id=4"
+        },
+        {
+          "what": "Scene Letters: archive of letters written while mail swapping (second source for the practice)",
+          "url": "http://www.sceneletters.com/"
+        },
+        {
+          "what": "Wikipedia, Demoscene: defines the swapper as the member who spreads productions by mail",
+          "url": "https://en.wikipedia.org/wiki/Demoscene"
+        }
+      ],
+      "readme_translation": "Best as plain text in a code block. The header is a form letter to the reader: a small ASCII logo, a 'hi ... of ...' line, then two columns of tick boxes that state real project facts (what is included, what is wanted from contributors, current status), a 'this sending contains' line with the project's numbers, and a 'write back to' block that points to the issues page. Links work inside the pre block. A party-invitation variant uses the dash-and-colon field list for install facts and a dotted coupon for 'how to contribute'. A votesheet variant turns a feature matrix into a grid of boxes with ranks. An SVG overlay can add the photocopy look and red ticks, with the text kept underneath as real Markdown.",
+      "medium": "text-plus-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "The text version is ASCII with square brackets for boxes, so it is safe at any width up to 80 columns and reads sensibly in a screen reader. The SVG photocopy look needs no bitmap: system monospace text, a feComponentTransfer step to crush greys to black and white, an feTurbulence speckle, one pale diagonal streak, two fold-crease lines and a one-to-two degree rotate. Red ticks are short paths animated with stroke-dashoffset. About 8-15 KB; a hand-drawn marker logo as paths adds 3-8 KB. A fully hand-drawn votesheet is the expensive variant (30 KB or more of paths) and is better approximated with ruled boxes and one drawn heading.",
+      "wow": 4,
+      "caveats": "These scans contain real handles, postal codes, addresses and phone numbers; the archives themselves black some of them out. Do not reproduce any of them, and do not invent realistic personal addresses: the 'write back to' block should be a project URL. Do not copy group names, logos or the wording of a specific form; the form-letter idea, tick boxes, dotted blanks, colon-aligned field lists, reply coupons and ranked vote boxes are generic and free to reuse. Do not trace the votesheet or flyer artwork. Unconfirmed: I confirmed the request to return stamps only as a tick-box on one 1990 form, and found no written history of the practice (no Wikipedia article on swappers exists at the URL I tried, and the Demoscene article has one sentence); stories about reusing stamps are left out. GitHub's own task-list checkboxes do not render inside a code block, so the boxes are typed characters.",
+      "family": "print",
+      "number": 10,
+      "slug": "10-print-05",
+      "media": [
+        "books",
+        "films",
+        "albums"
+      ]
+    }
+  ],
+  "selection_scope": "No repeats of the eighty styles used in earlier MediaLog sets. Each symbol leads with a media type (books, films, shows, games, albums, podcasts) rather than the diary book.",
+  "user_overrides": {
+    "brand": "#18223a",
+    "wordmark": "Consistent plain sans-serif, no scene lettering",
+    "art": "Original graphic symbols, no ASCII, no animation; aimed at media types (books, films, TV, games, albums, podcasts)",
+    "size": [
+      203,
+      74
+    ]
+  }
+}

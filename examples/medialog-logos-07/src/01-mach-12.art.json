@@ -1,0 +1,26 @@
+{
+  "id": "mach-12",
+  "name": "Now reading",
+  "description": "An open book with smoked-glass pages, its lines of text drawn as rows of hexagonal fluorescent segments: lit teal up to the reading position halfway down the right page and faintly visible beyond it, with an orange bookmark annunciator.",
+  "choices": [
+    "The display’s ghosted unlit segments become the unread part of the page, so the book shows how far you have got",
+    "One orange annunciator, a bookmark, is the only second colour; no digits or lettering"
+  ],
+  "book": "open book",
+  "repeatOf": {
+    "style": "mach-12",
+    "collection": "medialog-logos-05",
+    "slug": "01-mach-12",
+    "name": "Now showing"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

@@ -1,0 +1,19 @@
+{
+  "id": "c64-05",
+  "name": "The bookplate",
+  "description": "A navy badge holding a cream open book, edged like a small stamped ownership plate.",
+  "choices": [
+    "The badge gives the diary a clear standalone app identity",
+    "One warm bookmark replaces the source’s rainbow ornament"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

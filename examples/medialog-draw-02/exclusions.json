@@ -1,0 +1,51 @@
+{
+  "reason": "Existing MediaLog set, CLI reference and shared Pliny draw; other saved draws excluded separately",
+  "options": [
+    {
+      "id": "trk-04"
+    },
+    {
+      "id": "vap-03"
+    },
+    {
+      "id": "demo-09"
+    },
+    {
+      "id": "xfer-08"
+    },
+    {
+      "id": "nfo-02"
+    },
+    {
+      "id": "demo-03"
+    },
+    {
+      "id": "trk-10"
+    },
+    {
+      "id": "mach-08"
+    },
+    {
+      "id": "pc-03"
+    },
+    {
+      "id": "print-04"
+    },
+    {
+      "id": "idle-10"
+    },
+    {
+      "id": "asia-03"
+    },
+    {
+      "id": "demo-01"
+    },
+    {
+      "id": "ansi-09"
+    },
+    {
+      "id": "vap-09"
+    }
+  ],
+  "note": "hack-19 also previously used, but absent from this installed catalogue and therefore ineligible."
+}

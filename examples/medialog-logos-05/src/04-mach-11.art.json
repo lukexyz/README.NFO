@@ -1,0 +1,22 @@
+{
+  "id": "mach-11",
+  "name": "Extra ball",
+  "description": "A game controller drawn in round orange plasma dots on a pinball backbox display, lit at three brightness levels with dark gaps between the dots.",
+  "choices": [
+    "The dot-matrix grid with visible unlit dots and stepped brightness carries the backbox look into a square-ish panel",
+    "A controller, not text or a score, makes it the games mark of the set"
+  ],
+  "media": [
+    "games"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

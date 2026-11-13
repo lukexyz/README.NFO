@@ -1,0 +1,26 @@
+{
+  "id": "pc-09",
+  "name": "First draft",
+  "description": "An open book drawn in rough, doubled pencil lines, still unfinished, with a green pencil lying across it, its point resting at the end of the newest line of text.",
+  "choices": [
+    "The self-drawing cracktro: outline only, no fills, a doubled line that skips like chalk on grain, and the pencil caught mid-stroke",
+    "The blue paper is left out so the sketch sits straight on the page, in navy on light and cream on dark"
+  ],
+  "book": "open book",
+  "repeatOf": {
+    "style": "pc-09",
+    "collection": "medialog-logos-03",
+    "slug": "11-pc-09",
+    "name": "Leave a little note"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

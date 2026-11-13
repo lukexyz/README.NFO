@@ -1,0 +1,17 @@
+{
+  "id": "c64-09",
+  "name": "One continuous loop",
+  "description": "A thick multicolour ribbon folds into an infinity loop. Different kinds of media become one continuous history.",
+  "choices": [
+    "Two looping paths join into a single diary rather than separate libraries",
+    "Broad copper bands survive reduction to 203 pixels"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

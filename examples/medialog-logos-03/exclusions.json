@@ -1,0 +1,441 @@
+{
+  "reason": "Exclude every previous MediaLog style. References used for other projects may recur; all emblems are new. The earlier globally unused graphic pool has fewer than twenty options.",
+  "previous_style_ids": [
+    "trk-04",
+    "vap-03",
+    "demo-09",
+    "xfer-08",
+    "nfo-02",
+    "demo-03",
+    "trk-10",
+    "mach-08",
+    "pc-03",
+    "print-04",
+    "vap-06",
+    "trk-11",
+    "hack-08",
+    "pc-01",
+    "idle-08",
+    "pc-10",
+    "vap-07",
+    "print-01",
+    "xfer-02",
+    "idle-05",
+    "vap-16",
+    "c64-02",
+    "vap-01",
+    "c64-10",
+    "mach-10",
+    "pc-04",
+    "ansi-03",
+    "idle-03",
+    "idle-09",
+    "idle-04",
+    "pc-06",
+    "demo-07",
+    "c64-09",
+    "mach-13",
+    "vap-10",
+    "mach-01",
+    "asia-02",
+    "vap-14",
+    "hack-13",
+    "hack-12",
+    "c64-11",
+    "vap-18",
+    "xfer-04",
+    "trk-01",
+    "pc-02",
+    "xfer-07",
+    "c64-12",
+    "trk-05",
+    "pc-08",
+    "c64-01"
+  ],
+  "eligible_style_ids": [
+    "pc-05",
+    "pc-09",
+    "pc-12",
+    "pc-13",
+    "pc-14",
+    "c64-05",
+    "c64-06",
+    "c64-07",
+    "c64-08",
+    "c64-14",
+    "trk-03",
+    "trk-07",
+    "trk-09",
+    "vap-04",
+    "vap-05",
+    "vap-09",
+    "vap-11",
+    "vap-12",
+    "vap-15",
+    "vap-17",
+    "mach-02",
+    "mach-07",
+    "mach-09",
+    "mach-12",
+    "mach-15",
+    "idle-01",
+    "idle-02",
+    "idle-06",
+    "idle-07",
+    "demo-01",
+    "demo-04",
+    "demo-08",
+    "demo-10",
+    "demo-11",
+    "print-02",
+    "print-05",
+    "ansi-07"
+  ],
+  "options": [
+    {
+      "id": "pc-01"
+    },
+    {
+      "id": "pc-02"
+    },
+    {
+      "id": "pc-03"
+    },
+    {
+      "id": "pc-04"
+    },
+    {
+      "id": "pc-06"
+    },
+    {
+      "id": "pc-07"
+    },
+    {
+      "id": "pc-08"
+    },
+    {
+      "id": "pc-10"
+    },
+    {
+      "id": "pc-11"
+    },
+    {
+      "id": "c64-01"
+    },
+    {
+      "id": "c64-02"
+    },
+    {
+      "id": "c64-03"
+    },
+    {
+      "id": "c64-04"
+    },
+    {
+      "id": "c64-09"
+    },
+    {
+      "id": "c64-10"
+    },
+    {
+      "id": "c64-11"
+    },
+    {
+      "id": "c64-12"
+    },
+    {
+      "id": "c64-13"
+    },
+    {
+      "id": "trk-01"
+    },
+    {
+      "id": "trk-02"
+    },
+    {
+      "id": "trk-04"
+    },
+    {
+      "id": "trk-05"
+    },
+    {
+      "id": "trk-06"
+    },
+    {
+      "id": "trk-08"
+    },
+    {
+      "id": "trk-10"
+    },
+    {
+      "id": "trk-11"
+    },
+    {
+      "id": "nfo-01"
+    },
+    {
+      "id": "nfo-02"
+    },
+    {
+      "id": "nfo-03"
+    },
+    {
+      "id": "nfo-04"
+    },
+    {
+      "id": "nfo-05"
+    },
+    {
+      "id": "nfo-06"
+    },
+    {
+      "id": "nfo-07"
+    },
+    {
+      "id": "nfo-08"
+    },
+    {
+      "id": "nfo-09"
+    },
+    {
+      "id": "nfo-10"
+    },
+    {
+      "id": "nfo-11"
+    },
+    {
+      "id": "ansi-01"
+    },
+    {
+      "id": "ansi-02"
+    },
+    {
+      "id": "ansi-03"
+    },
+    {
+      "id": "ansi-04"
+    },
+    {
+      "id": "ansi-05"
+    },
+    {
+      "id": "ansi-06"
+    },
+    {
+      "id": "ansi-08"
+    },
+    {
+      "id": "ansi-09"
+    },
+    {
+      "id": "ansi-11"
+    },
+    {
+      "id": "ansi-12"
+    },
+    {
+      "id": "vap-01"
+    },
+    {
+      "id": "vap-02"
+    },
+    {
+      "id": "vap-03"
+    },
+    {
+      "id": "vap-06"
+    },
+    {
+      "id": "vap-07"
+    },
+    {
+      "id": "vap-08"
+    },
+    {
+      "id": "vap-10"
+    },
+    {
+      "id": "vap-14"
+    },
+    {
+      "id": "vap-16"
+    },
+    {
+      "id": "vap-18"
+    },
+    {
+      "id": "mach-01"
+    },
+    {
+      "id": "mach-03"
+    },
+    {
+      "id": "mach-04"
+    },
+    {
+      "id": "mach-05"
+    },
+    {
+      "id": "mach-08"
+    },
+    {
+      "id": "mach-10"
+    },
+    {
+      "id": "mach-11"
+    },
+    {
+      "id": "mach-13"
+    },
+    {
+      "id": "hack-01"
+    },
+    {
+      "id": "hack-02"
+    },
+    {
+      "id": "hack-03"
+    },
+    {
+      "id": "hack-04"
+    },
+    {
+      "id": "hack-05"
+    },
+    {
+      "id": "hack-06"
+    },
+    {
+      "id": "hack-07"
+    },
+    {
+      "id": "hack-08"
+    },
+    {
+      "id": "hack-09"
+    },
+    {
+      "id": "hack-10"
+    },
+    {
+      "id": "hack-11"
+    },
+    {
+      "id": "hack-12"
+    },
+    {
+      "id": "hack-13"
+    },
+    {
+      "id": "hack-14"
+    },
+    {
+      "id": "hack-15"
+    },
+    {
+      "id": "hack-16"
+    },
+    {
+      "id": "hack-17"
+    },
+    {
+      "id": "hack-18"
+    },
+    {
+      "id": "asia-01"
+    },
+    {
+      "id": "asia-02"
+    },
+    {
+      "id": "asia-03"
+    },
+    {
+      "id": "asia-04"
+    },
+    {
+      "id": "asia-05"
+    },
+    {
+      "id": "asia-06"
+    },
+    {
+      "id": "asia-07"
+    },
+    {
+      "id": "idle-03"
+    },
+    {
+      "id": "idle-04"
+    },
+    {
+      "id": "idle-05"
+    },
+    {
+      "id": "idle-08"
+    },
+    {
+      "id": "idle-09"
+    },
+    {
+      "id": "idle-10"
+    },
+    {
+      "id": "xfer-01"
+    },
+    {
+      "id": "xfer-02"
+    },
+    {
+      "id": "xfer-03"
+    },
+    {
+      "id": "xfer-04"
+    },
+    {
+      "id": "xfer-05"
+    },
+    {
+      "id": "xfer-06"
+    },
+    {
+      "id": "xfer-07"
+    },
+    {
+      "id": "xfer-08"
+    },
+    {
+      "id": "xfer-09"
+    },
+    {
+      "id": "xfer-10"
+    },
+    {
+      "id": "demo-02"
+    },
+    {
+      "id": "demo-03"
+    },
+    {
+      "id": "demo-05"
+    },
+    {
+      "id": "demo-06"
+    },
+    {
+      "id": "demo-07"
+    },
+    {
+      "id": "demo-09"
+    },
+    {
+      "id": "print-01"
+    },
+    {
+      "id": "print-03"
+    },
+    {
+      "id": "print-04"
+    }
+  ]
+}

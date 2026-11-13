@@ -1,0 +1,22 @@
+{
+  "id": "c64-14",
+  "name": "Jukebox",
+  "description": "An arched navy jukebox with gold columns plays a record under its dome; below, a track list holds the selected album on a red bar.",
+  "choices": [
+    "The chip-music jukebox screen becomes the cabinet itself: a dome, gold columns and a three-row track list with right-aligned times",
+    "A red selection bar and a red record label are the only strong colours against navy and gold"
+  ],
+  "media": [
+    "albums"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

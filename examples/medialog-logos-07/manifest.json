@@ -1,0 +1,561 @@
+{
+  "project": "MediaLog",
+  "collection": "Compact logos 07",
+  "seed": "b02ce2057444ab18697ea9061f8e98a7",
+  "count": 10,
+  "nativeSize": [
+    203,
+    74
+  ],
+  "sourceViewBox": [
+    0,
+    0,
+    812,
+    296
+  ],
+  "ascii": false,
+  "animated": false,
+  "selection": "User-chosen scope with no random selection: the ten styles of collection 05, picked again by the user from its contact sheet, each redrawn as a new, simpler symbol built around a book, with no tile or border. Navy-led colour and a consistent plain wordmark override catalogue palettes and lettering.",
+  "candidates": [
+    {
+      "number": 1,
+      "slug": "01-mach-12",
+      "id": "mach-12",
+      "name": "Now reading",
+      "description": "An open book with smoked-glass pages, its lines of text drawn as rows of hexagonal fluorescent segments: lit teal up to the reading position halfway down the right page and faintly visible beyond it, with an orange bookmark annunciator.",
+      "choices": [
+        "The display’s ghosted unlit segments become the unread part of the page, so the book shows how far you have got",
+        "One orange annunciator, a bookmark, is the only second colour; no digits or lettering"
+      ],
+      "book": "open book",
+      "repeatOf": {
+        "style": "mach-12",
+        "collection": "medialog-logos-05",
+        "slug": "01-mach-12",
+        "name": "Now showing"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/01-mach-12.svg",
+          "sha256": "a9bb406ebd0dee77373095955f105af0368e0fb724913a127c2d97f53403eff4"
+        },
+        {
+          "file": "assets/01-mach-12-icon.svg",
+          "sha256": "56f77e9a0abda2aa9e06ea1d32904086500aaee1eb3322103d531e35675cf94e"
+        },
+        {
+          "file": "assets/01-mach-12-light.png",
+          "sha256": "27348f1a37f2c2707722b97175071f43e66d7191c7e6fd370a2a998f9982b22e"
+        },
+        {
+          "file": "assets/01-mach-12-dark.png",
+          "sha256": "fa4e4285a54ec4142b2496b5dfe591335b0633da071d85a65598170f87de9e5e"
+        },
+        {
+          "file": "01-mach-12.md",
+          "sha256": "b452395ec48074f334d64d4a8cb42a8252ad6369402b5219708836eca1d77fcf"
+        },
+        {
+          "file": "src/01-mach-12.mjs",
+          "sha256": "2a227ac995dd2bee0eb4bc2084b4ed57e9ed6a26d7900540d12cd6e12441d0c9"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "slug": "02-idle-10",
+      "id": "idle-10",
+      "name": "Test card",
+      "description": "A hardback standing in three-quarter view whose cover is a broadcast test pattern: seven colour bars over a strip of castellations and a black-level band with its white square, its cream page edges turned toward you.",
+      "choices": [
+        "The colour bars that fill the screen after closedown fill a book cover instead, so the symbol is a book first and television second",
+        "Bars are pulled toward ochre, teal, plum and brick to keep clear of neon cyan and magenta; no station box or lettering"
+      ],
+      "book": "closed book",
+      "repeatOf": {
+        "style": "idle-10",
+        "collection": "medialog-logos-05",
+        "slug": "02-idle-10",
+        "name": "Off air"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/02-idle-10.svg",
+          "sha256": "d033610dac24b85bc24c92ad4f8a5837e8083427bfd5396abacaf8dc5bb82d1a"
+        },
+        {
+          "file": "assets/02-idle-10-icon.svg",
+          "sha256": "0226c25c2e482ca7ed9f7091f21d9615187301e6289e197b65a6a4557e9132a0"
+        },
+        {
+          "file": "assets/02-idle-10-light.png",
+          "sha256": "54ee32d9cb47fe889ddc5dc092867c93dd7514602a589555ab608b73bbd3c648"
+        },
+        {
+          "file": "assets/02-idle-10-dark.png",
+          "sha256": "8da2ebc5541e542f347d01dfcbd92f7f8254c0fcb2af0f7326c4ffc0433eaf9f"
+        },
+        {
+          "file": "02-idle-10.md",
+          "sha256": "ce43401b2e4a1bbbd5ad5cd802280f49bfd554392b289db06ee93de7668042ec"
+        },
+        {
+          "file": "src/02-idle-10.mjs",
+          "sha256": "5c69ab7b6dc5a8e0f9dc062226e3e264d4453d72c17aefba5664c67bb41db1e2"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "slug": "03-c64-14",
+      "id": "c64-14",
+      "name": "Chapter select",
+      "description": "An open book with embossed grey metal pages on a brown-and-gold binding: the right page is a track list of chapters in green and blue with times set right and the selected one on a red bar, and the left page has a raised title plate over a strip of rainbow blocks.",
+      "choices": [
+        "The music disk’s menu of tunes becomes a contents page, so choosing a chapter looks like choosing a tune",
+        "Embossed grey, a red selection bar and a rainbow strip carry the 16-bit jukebox; the binding takes the brown and gold of the drawn cabinet"
+      ],
+      "book": "open book",
+      "repeatOf": {
+        "style": "c64-14",
+        "collection": "medialog-logos-05",
+        "slug": "03-c64-14",
+        "name": "Jukebox"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/03-c64-14.svg",
+          "sha256": "eca6fc3bd88c0b4937bd92a0dde36024c4083fd0620a622b7c92191001ebec4e"
+        },
+        {
+          "file": "assets/03-c64-14-icon.svg",
+          "sha256": "2f00276514e01d7f9d2b381d9e7a03bb224d21a3782064cfb7278028a05edace"
+        },
+        {
+          "file": "assets/03-c64-14-light.png",
+          "sha256": "bf227aaabfe300aef7f4a49da3dcb1c9dd34c092bf3b7250f3841820dba3d12d"
+        },
+        {
+          "file": "assets/03-c64-14-dark.png",
+          "sha256": "90f939a03d3b11fbebd738fc4e5435ae0478003cf4c8634f0baab2c725ecee6e"
+        },
+        {
+          "file": "03-c64-14.md",
+          "sha256": "7560ed9d72ddee9871a2477d9fddc54cd7405532ea34bcf97473b81629436b93"
+        },
+        {
+          "file": "src/03-c64-14.mjs",
+          "sha256": "037bb00786df2f049c62b9a9f7dbf274a06ed6044d25070e48298429f5d7568d"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "slug": "04-mach-11",
+      "id": "mach-11",
+      "name": "Extra chapter",
+      "description": "A hardback drawn only in round orange plasma dots: bright edges round a dim cover with a hinge line and a bright award star, its page block peeking out, a notched ribbon and a sparkle beside the corner.",
+      "choices": [
+        "The backbox display’s grid of round dots and stepped brightness draw a book, with dark gaps instead of a panel",
+        "A star on the cover and a sparkle are the award frame; no score digits or lettering"
+      ],
+      "book": "closed book",
+      "repeatOf": {
+        "style": "mach-11",
+        "collection": "medialog-logos-05",
+        "slug": "04-mach-11",
+        "name": "Extra ball"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/04-mach-11.svg",
+          "sha256": "47d71a97555fd72966dd1591f6280802a98e197c4a8b4c6ea7fb107bf8344916"
+        },
+        {
+          "file": "assets/04-mach-11-icon.svg",
+          "sha256": "d64973fb871579a77ac27db425e3c2029b2665861bce6e0ccdaf6c02f3c1fa6a"
+        },
+        {
+          "file": "assets/04-mach-11-light.png",
+          "sha256": "08b4c6ffb4d913feb3210a839d06c5ac7d7ef0fdfa6ed5251a56f90921f67516"
+        },
+        {
+          "file": "assets/04-mach-11-dark.png",
+          "sha256": "19196d5cfea38ed1d880005de961309275eb54415c03d104bbee037209443d76"
+        },
+        {
+          "file": "04-mach-11.md",
+          "sha256": "d38f110831d4d18e370cb5508979d0642f6f0586819471a7661a07b817b86d4a"
+        },
+        {
+          "file": "src/04-mach-11.mjs",
+          "sha256": "63a8b5d09f7594d722e2ebd0131fa65f9e8b395612253cac8b266b517964e2b5"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "slug": "05-asia-01",
+      "id": "asia-01",
+      "name": "Three channels",
+      "description": "A stack of three books with plum, violet and lavender covers lies with rounded spines to the left, and the edge of each page block is a miniature piano keyboard with one key lit lime, climbing from book to book like a chord.",
+      "choices": [
+        "The synth player’s one-keyboard-per-channel strips become a stack of books: white pages read as white keys",
+        "Lavender, violet and plum on the covers; lime only on the sounding keys, as on the original displays"
+      ],
+      "book": "book stack",
+      "repeatOf": {
+        "style": "asia-01",
+        "collection": "medialog-logos-05",
+        "slug": "05-asia-01",
+        "name": "Channel keys"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/05-asia-01.svg",
+          "sha256": "036d58eddba52d2a4aeedeab645ddef83fe88316fc5f34fe5a364c48c617b06a"
+        },
+        {
+          "file": "assets/05-asia-01-icon.svg",
+          "sha256": "c9d62ef04dde9d3cd4c0082d0f22a6fa6e54ba2754a65d64b99f61c9077862eb"
+        },
+        {
+          "file": "assets/05-asia-01-light.png",
+          "sha256": "9e38aeaa8337bcb9c2a69c9f5bf185856cd9ad993a49357f6d2e0e23c36b65f4"
+        },
+        {
+          "file": "assets/05-asia-01-dark.png",
+          "sha256": "b4ea8624b16695d8c53e6b8979ba52a6194c6bea5e43d1916766dce189e88b12"
+        },
+        {
+          "file": "05-asia-01.md",
+          "sha256": "f9ac01345c9ab73df5c8352f77cc03011f6e4d35fc6ef5fa122e9aa415085560"
+        },
+        {
+          "file": "src/05-asia-01.mjs",
+          "sha256": "c811dff813d57ca18baa74749f3226052d005752dfb6ed546aab81fe980b0b0e"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "slug": "06-pc-05",
+      "id": "pc-05",
+      "name": "Twisted spine",
+      "description": "A brushed-chrome hardback stands on a glossy mirror floor, its spine a twister column of cream and red slices, with its reflection fading into the floor below.",
+      "choices": [
+        "The cracktro’s metal logo, twister and mirror floor become one book: chrome boards, a twisting spine and a reflection",
+        "The twister’s cream and red are the only colour against the steel"
+      ],
+      "book": "closed book",
+      "repeatOf": {
+        "style": "pc-05",
+        "collection": "medialog-logos-05",
+        "slug": "06-pc-05",
+        "name": "Final cut"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/06-pc-05.svg",
+          "sha256": "ed6469044f70202f00b877f6dba0bd42c95e88c66be62f70e753ea889ea7fa18"
+        },
+        {
+          "file": "assets/06-pc-05-icon.svg",
+          "sha256": "e1b10865f5ff0534f2bf301babf3e03dd82beee54d77cb01cca166604d4aca86"
+        },
+        {
+          "file": "assets/06-pc-05-light.png",
+          "sha256": "669c137c70049f3d54e6e015625ce52a8cb820444d82694966382f8a91161775"
+        },
+        {
+          "file": "assets/06-pc-05-dark.png",
+          "sha256": "4775f323bf5209e56cfe60fced3147d8fc32f0b3dc89087c1a12136fd7183b66"
+        },
+        {
+          "file": "06-pc-05.md",
+          "sha256": "83e9bfc72076d9a7766bbc67c12202968c6f330d6987e4bd7c273cfc3063e139"
+        },
+        {
+          "file": "src/06-pc-05.mjs",
+          "sha256": "f7a034f7d50075fae2551056bdba94c3055934ad2a7f9ca715bea7b2257d49e8"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "slug": "07-idle-02",
+      "id": "idle-02",
+      "name": "Light reading",
+      "description": "An open book traced by a light synthesizer: the trail is mirrored across the gutter, and every seed along it has expanded outward in chunky cells through amber, orange-red, violet and a fading blue, so the outline glows in rainbow ripples round clear pages and amber lines of text.",
+      "choices": [
+        "The light synth’s mirrored, expanding seeds draw the book itself: the trail is the outline, the ripples its glow",
+        "Mirror symmetry about the gutter replaces the four-fold mandala, and there is no black screen or tile"
+      ],
+      "book": "open book",
+      "repeatOf": {
+        "style": "idle-02",
+        "collection": "medialog-logos-05",
+        "slug": "07-idle-02",
+        "name": "On air"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/07-idle-02.svg",
+          "sha256": "db17a2289634e0ab7d92355b49ddbf7c52767bb13ac28e7f46f4b30c486c80b0"
+        },
+        {
+          "file": "assets/07-idle-02-icon.svg",
+          "sha256": "f66ab3fffd90d8776437b34099cf78972f89c30851c51ed9ed522e8649d4c091"
+        },
+        {
+          "file": "assets/07-idle-02-light.png",
+          "sha256": "b601998d75a68c3ce41c351f93c99bf7f69e55ab375706a08d07858a060d1d53"
+        },
+        {
+          "file": "assets/07-idle-02-dark.png",
+          "sha256": "a0e0cced3471f0e3ad4af4fc31306811cfea661ad20ac3825b16574598da77ca"
+        },
+        {
+          "file": "07-idle-02.md",
+          "sha256": "17c59bb2f00aec2153bcb0e198a7cd656147e89e966e44ad9045f7399fbea3f2"
+        },
+        {
+          "file": "src/07-idle-02.mjs",
+          "sha256": "de3106c12eb0eb9b132bb199eedb768f55434444170906b93c3bac7ba588a07c"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "slug": "08-demo-08",
+      "id": "demo-08",
+      "name": "Colour clash",
+      "description": "An open book in 8-bit pixel art on an attribute grid, one ink and one paper to each 8 × 8 cell: yellow pages with black lines of text on a blue cover, and a red ribbon whose cells turn the text beside it red; the cells either side of the gutter lose their bright bit, shading the pages in blocks.",
+      "choices": [
+        "Colour set per cell, not per pixel, so the ribbon clashes with the text it crosses, as sprites did on the hardware",
+        "No border, plasma or tile: the book stands alone, one screen pixel to each art pixel at 203 × 74"
+      ],
+      "book": "open book",
+      "repeatOf": {
+        "style": "demo-08",
+        "collection": "medialog-logos-05",
+        "slug": "08-demo-08",
+        "name": "Fire button"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/08-demo-08.svg",
+          "sha256": "7cc481a0c491595445697f0fe045483d2ef23e3ad641251ed64667feef41beea"
+        },
+        {
+          "file": "assets/08-demo-08-icon.svg",
+          "sha256": "015eedbb5c6903162aa53d79054370d6bac4068d9d7b3bc38a682e7e5b52f3e5"
+        },
+        {
+          "file": "assets/08-demo-08-light.png",
+          "sha256": "42ab35fedc4a989d707590086124f3a7df00f4adbe66c3b69ec40c1b4769174c"
+        },
+        {
+          "file": "assets/08-demo-08-dark.png",
+          "sha256": "4ed006043bc3083a1863d05bed4ac7efc1faa2b81e8daa475cd287a14fdc2f7d"
+        },
+        {
+          "file": "08-demo-08.md",
+          "sha256": "3fdc3793f5c17b382e12f494cd145daf8263953da0229bac751283c50c9241f4"
+        },
+        {
+          "file": "src/08-demo-08.mjs",
+          "sha256": "5bddeb95d2c9f7fa45cc71f7a725662c0c0da7b09e576cc6d80a9e169fb82843"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "slug": "09-demo-11",
+      "id": "demo-11",
+      "name": "Title card",
+      "description": "A hardback whose cover is an early home-computer title card: black inside a thick orange frame banded on the spine side, a title of three chunky blocks in green, violet and blue, and white credit lines fringed violet on one side and green on the other, with a green ribbon and the page block’s white edge fringed the same way.",
+      "choices": [
+        "The crack screen’s framed panel and multicoloured block title become a book cover, with credits in place of any group name",
+        "Colour fringes on every white edge mimic how hi-res white picks up green and violet; nothing is lettered"
+      ],
+      "book": "closed book",
+      "repeatOf": {
+        "style": "demo-11",
+        "collection": "medialog-logos-05",
+        "slug": "09-demo-11",
+        "name": "Stacked"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/09-demo-11.svg",
+          "sha256": "beffea5cbcc8b3e1dc7499219aa8fae1576d3fbe7d4961f0d10e259d6e6ddb2f"
+        },
+        {
+          "file": "assets/09-demo-11-icon.svg",
+          "sha256": "ff023f5537dad21088fb37714d72c4efdfbbc66eaaa7563273f0b06dbd10dacb"
+        },
+        {
+          "file": "assets/09-demo-11-light.png",
+          "sha256": "04da900119976ddd9cb65b66fa58ab68d01461c709362111cb71f321155affd0"
+        },
+        {
+          "file": "assets/09-demo-11-dark.png",
+          "sha256": "0669ba26c2a5c14b91a1b11d1c34ab8ceade2f8c1a3c8512f527f17c371c8ec0"
+        },
+        {
+          "file": "09-demo-11.md",
+          "sha256": "11b42a2a5b04a3bad03872232b5e85b08321c2ec508ff164f3df46ac8c6d9e66"
+        },
+        {
+          "file": "src/09-demo-11.mjs",
+          "sha256": "5a5c44b60089646833a87723460d0eca6009bedb42294292db44b11f575758cf"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "slug": "10-print-05",
+      "id": "print-05",
+      "name": "Book swap",
+      "description": "A blue cloth hardback with a photocopied tick-box slip sticking out of the top as a bookmark: a marker-drawn header bar and two boxes ticked in red pen beside dotted lines, with a little photocopier grain.",
+      "choices": [
+        "The swap letter that travelled with every disk becomes the note tucked into a lent book: what you thought of it, in tick boxes",
+        "Photocopier black on warm white and red pen on the slip; the book is plain cloth with a stamped panel, and no words are typed"
+      ],
+      "book": "closed book",
+      "repeatOf": {
+        "style": "print-05",
+        "collection": "medialog-logos-05",
+        "slug": "10-print-05",
+        "name": "Review slip"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/10-print-05.svg",
+          "sha256": "1138ea276997c926c09e2e97954242f1e6209c0e463de2d523ede6e57c01b9cd"
+        },
+        {
+          "file": "assets/10-print-05-icon.svg",
+          "sha256": "5d094e133d97d58d13bea91e9bc0d097ac7f53a00c490f818f2ae2918df0f1ff"
+        },
+        {
+          "file": "assets/10-print-05-light.png",
+          "sha256": "23a178008ac16846d638e580dac1bb218cc8dedceef9e8185e0d4524fc5ce4fe"
+        },
+        {
+          "file": "assets/10-print-05-dark.png",
+          "sha256": "a901ef1ef98300b105961c695ecc79f46d0fd9a082b88aec471ccce4c9fcd244"
+        },
+        {
+          "file": "10-print-05.md",
+          "sha256": "249b05629872b71111f06186678a038aeeb8407116ed2b2481620df30b077f98"
+        },
+        {
+          "file": "src/10-print-05.mjs",
+          "sha256": "f19da55f60e851db51fa8f85e505ab410984afaae8f69bdac40109cec42c86c9"
+        }
+      ]
+    }
+  ]
+}

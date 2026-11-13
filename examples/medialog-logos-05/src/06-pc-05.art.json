@@ -1,0 +1,22 @@
+{
+  "id": "pc-05",
+  "name": "Final cut",
+  "description": "A brushed-chrome clapperboard stands on a glossy mirror floor between two cream-and-red twister columns, the cracktro centrepiece turned into a film mark.",
+  "choices": [
+    "The metal logo, mirror reflection and twisters of the 2000s cracktro revival frame a clapperboard instead of lettering",
+    "A chrome band with a white horizon gives the steel finish; red and cream twisters are the only colour"
+  ],
+  "media": [
+    "films"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

@@ -1,0 +1,19 @@
+{
+  "id": "trk-07",
+  "name": "Four kinds of favourite",
+  "description": "Four bookmarks hang at different heights above a shared curve. Watching, reading, playing and listening belong together.",
+  "choices": [
+    "The four channels map directly to the four verbs in the brief",
+    "A single baseline turns the marks into one collection instead of separate app buttons"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

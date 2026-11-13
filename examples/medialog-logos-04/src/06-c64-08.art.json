@@ -1,0 +1,20 @@
+{
+  "id": "c64-08",
+  "name": "Endless loop",
+  "description": "Twenty-two shaded spheres ride an endless figure-eight between two hairlines, larger as they swing nearer — a timeline that keeps going.",
+  "choices": [
+    "The blitter-bob chain on a Lissajous path becomes a loop with no beginning or end",
+    "One navy ramp with a white highlight replaces the copper blue; the rainbow hairlines become steel and tan"
+  ],
+  "animated": true,
+  "motion": "The chain circulates continuously, one lap every eleven seconds.",
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

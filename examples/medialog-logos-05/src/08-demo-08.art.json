@@ -1,0 +1,22 @@
+{
+  "id": "demo-08",
+  "name": "Fire button",
+  "description": "A ball-top joystick in red, white and yellow is drawn on the attribute grid of an 8-bit home computer: colour changes only at cell edges, over a chunky blue plasma inside a red border.",
+  "choices": [
+    "Pixels stay fine while colour is set per 8 × 8 cell, so the stick and ball share inks the way the hardware forces",
+    "Two yellow raster stripes run into the border; saturated reds and yellows replace the neon cyan and magenta of the original palette"
+  ],
+  "media": [
+    "games"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

@@ -1,0 +1,1040 @@
+{
+  "project": "MediaLog",
+  "collection": "Compact logos 03",
+  "seed": "bcf68f91a7c5026c50a51750b06d442c",
+  "count": 20,
+  "nativeSize": [
+    203,
+    74
+  ],
+  "sourceViewBox": [
+    0,
+    0,
+    812,
+    296
+  ],
+  "ascii": false,
+  "selection": "Random draw from a predeclared graphic pool, excluding every previous MediaLog style. New navy symbols and a consistent plain wordmark override catalogue palettes and lettering.",
+  "candidates": [
+    {
+      "number": 1,
+      "id": "vap-05",
+      "slug": "01-vap-05",
+      "name": "The next chapter",
+      "description": "An open book becomes a small horizon, with a warm sun rising behind its pages.",
+      "choices": [
+        "The receding landscape becomes the fold of a diary",
+        "One quiet ochre sun replaces the neon palette; the name stays plain"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/01-vap-05.svg",
+          "sha256": "bf31bcdede964a42a0fee59f7da301ac278b92fe4fd1057330ca3095cb7953e9"
+        },
+        {
+          "file": "assets/01-vap-05-icon.svg",
+          "sha256": "d8bf1bbef573c71b6c14d79ee681c723889aa501780e434c4ef7027f39e78c5f"
+        },
+        {
+          "file": "assets/01-vap-05-still.svg",
+          "sha256": "bf31bcdede964a42a0fee59f7da301ac278b92fe4fd1057330ca3095cb7953e9"
+        },
+        {
+          "file": "assets/01-vap-05-light.png",
+          "sha256": "cc98675b4b77d2f66a35c1002386073a868081c290943bb5867c7c889fb184ba"
+        },
+        {
+          "file": "assets/01-vap-05-dark.png",
+          "sha256": "2af7ee781e0b2f138b1d0795928542ad7443d9a38b2e43167439276cfd246eaa"
+        },
+        {
+          "file": "src/01-vap-05.mjs",
+          "sha256": "2c17779379c9fcb124e633c18683cd751571deae02582b13db3f10203f30ed06"
+        },
+        {
+          "file": "01-vap-05.md",
+          "sha256": "f727c791df4f2a203d339326fe19ad71dd6f54586d4202f17d456e27546353e1"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "pc-14",
+      "slug": "02-pc-14",
+      "name": "Stories within stories",
+      "description": "Three nested folds create a small passage into a book, with a strong centre spine.",
+      "choices": [
+        "The tunnel reference becomes layers of remembered stories",
+        "Three broad strokes retain depth without gradients or tiny texture"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/02-pc-14.svg",
+          "sha256": "d1aee5917f1e356b7c3562ccafd0f6a24623b24c41b03999176a954febeaf134"
+        },
+        {
+          "file": "assets/02-pc-14-icon.svg",
+          "sha256": "b7ecdc50422351589f74208e1eac8664ee0a6ddff4279c513b1499ac27e94cbf"
+        },
+        {
+          "file": "assets/02-pc-14-still.svg",
+          "sha256": "d1aee5917f1e356b7c3562ccafd0f6a24623b24c41b03999176a954febeaf134"
+        },
+        {
+          "file": "assets/02-pc-14-light.png",
+          "sha256": "7a9093f5ef122ec954504c85e8fee8b612effa4be120297d52de728b9abace95"
+        },
+        {
+          "file": "assets/02-pc-14-dark.png",
+          "sha256": "47f65d3e05daed8a717d8191fabb0200fcba78bff9f2f6ec3b2fc26f8d99e35e"
+        },
+        {
+          "file": "src/02-pc-14.mjs",
+          "sha256": "54abb1f2511ed83339039e6591ab39b1f3e2e54f9522012b2353a1d3a2eac45f"
+        },
+        {
+          "file": "02-pc-14.md",
+          "sha256": "8a7c86d07092e3b3820ae2e0ad66b0efc59f77697d3d1afbbf6d8ceada889402"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "demo-10",
+      "slug": "03-demo-10",
+      "name": "A shelf of your own",
+      "description": "Three substantial spines and one leaning volume. A small personal library for every kind of media.",
+      "choices": [
+        "Unequal heights suggest different experiences sharing one shelf",
+        "The chunky block reference is confined to the emblem; the title is normal type"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/03-demo-10.svg",
+          "sha256": "894799ea64cbc42e2d2400e3b1e40388413d58fa48469bd74fb2fe3eabd84573"
+        },
+        {
+          "file": "assets/03-demo-10-icon.svg",
+          "sha256": "807a25d5c3333a1ae7d8e4b1163603c2297382f7d01d7218fedc60962259bb1b"
+        },
+        {
+          "file": "assets/03-demo-10-still.svg",
+          "sha256": "894799ea64cbc42e2d2400e3b1e40388413d58fa48469bd74fb2fe3eabd84573"
+        },
+        {
+          "file": "assets/03-demo-10-light.png",
+          "sha256": "def25cea6a01a052b9fd6bd2cb464486a0449986011ea46b98db9f7ff25276ee"
+        },
+        {
+          "file": "assets/03-demo-10-dark.png",
+          "sha256": "3211e05064cc9701a0a7df3d3f3fb6c86242a1d7c69ea2998646f110915a4187"
+        },
+        {
+          "file": "src/03-demo-10.mjs",
+          "sha256": "ec5a8ed2b81bd47d3cf4a85333996d4e36b704b0b2cbe0378b1c690c40a560ef"
+        },
+        {
+          "file": "03-demo-10.md",
+          "sha256": "42113a12a2d260562f6e01ab197cb9de8c9b77c2a976b6d1f80c857db0e61a98"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "vap-15",
+      "slug": "04-vap-15",
+      "name": "In your orbit",
+      "description": "An open diary sits inside one calm orbital line. A single warm point suggests someone else entering the conversation.",
+      "choices": [
+        "The orbit is a connection around a diary rather than a planet",
+        "Chrome and techno lettering are removed in favour of navy, line and space"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/04-vap-15.svg",
+          "sha256": "a17781825d65805a27f04d036b242feed4dd9b6ea463bf161e88ee5c9979fe2a"
+        },
+        {
+          "file": "assets/04-vap-15-icon.svg",
+          "sha256": "c8611f78ccff429994ceb207f177339aa91d9f0e96518aa2adf2ca0f8a108fe2"
+        },
+        {
+          "file": "assets/04-vap-15-still.svg",
+          "sha256": "a17781825d65805a27f04d036b242feed4dd9b6ea463bf161e88ee5c9979fe2a"
+        },
+        {
+          "file": "assets/04-vap-15-light.png",
+          "sha256": "8b1af83fd3fdb02cd40eac39d5f7d170acdb8e6255d2006fb99b75c630582b17"
+        },
+        {
+          "file": "assets/04-vap-15-dark.png",
+          "sha256": "71a3d08f7bd10adb77fbb14dab2d25d3b0e8ad9383b25f53e20fa4b67f9f51ee"
+        },
+        {
+          "file": "src/04-vap-15.mjs",
+          "sha256": "e172dd94c1148d2be61312a8750dedc00933e00d8d5a22189891719d490d8631"
+        },
+        {
+          "file": "04-vap-15.md",
+          "sha256": "d3d59ad14cc9ff3fd28ced08d72ae7b3ce7e8ea061fb41d2822cea09a04b1734"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "vap-12",
+      "slug": "05-vap-12",
+      "name": "The shared journal",
+      "description": "A guestbook becomes a conversation bubble, with a warm bookmark tucked into the right page.",
+      "choices": [
+        "The speech tail makes the diary feel shared",
+        "The personal-web reference comes through its guestbook idea, with all interface clutter removed"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/05-vap-12.svg",
+          "sha256": "536905fddebb48a0a29d554ba3886c5c8be966a984f2c3272569328a9f8fd457"
+        },
+        {
+          "file": "assets/05-vap-12-icon.svg",
+          "sha256": "17f41f42a27d60621c9c70bf1960eee6449dde00e6bb135170ef6601ede9684e"
+        },
+        {
+          "file": "assets/05-vap-12-still.svg",
+          "sha256": "536905fddebb48a0a29d554ba3886c5c8be966a984f2c3272569328a9f8fd457"
+        },
+        {
+          "file": "assets/05-vap-12-light.png",
+          "sha256": "6c57a3ffd98a96c8246cfdee085ff08748fee65a74d7e121d545ce11b106a8d3"
+        },
+        {
+          "file": "assets/05-vap-12-dark.png",
+          "sha256": "039acb6545d04614d7c51c9c9a27bd0d642a8559cd4766b23648fc12e3e212f3"
+        },
+        {
+          "file": "src/05-vap-12.mjs",
+          "sha256": "7fdd3bbfe0831ad93e83038f8da0143797a7af7d9f57c2c0687d3ce4ad26dc5c"
+        },
+        {
+          "file": "05-vap-12.md",
+          "sha256": "698baa28218a6d3673af3c840a647cab35d29fff52507d965eb33968c47edb08"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "trk-09",
+      "slug": "06-trk-09",
+      "name": "Read between the beats",
+      "description": "A simple waveform runs through an open diary. Listening and reading share the same continuous line.",
+      "choices": [
+        "The scope line is turned into one coherent book symbol",
+        "The warm trace is secondary to the large navy silhouette"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/06-trk-09.svg",
+          "sha256": "24592bad34e422c1e78a0df7fc93f695eec15a86031dd66fdc8bf07c0b6ba4af"
+        },
+        {
+          "file": "assets/06-trk-09-icon.svg",
+          "sha256": "84088614713f74ef51222eb2ee9b2665ad1214fbe51640ee2931c4c4b464caf5"
+        },
+        {
+          "file": "assets/06-trk-09-still.svg",
+          "sha256": "24592bad34e422c1e78a0df7fc93f695eec15a86031dd66fdc8bf07c0b6ba4af"
+        },
+        {
+          "file": "assets/06-trk-09-light.png",
+          "sha256": "b17b0491965da26aea30c8718325197cf354bb674496a4216c16e7c3aa1fe17c"
+        },
+        {
+          "file": "assets/06-trk-09-dark.png",
+          "sha256": "afedf127482f028f1c619bc1191a1271ca7309c3b785ef77146157e0ce0537b5"
+        },
+        {
+          "file": "src/06-trk-09.mjs",
+          "sha256": "f4a2a5880ca2b59d9f2f0e31760ff9868c9487cbaa4a4617a69b2415de5583a0"
+        },
+        {
+          "file": "06-trk-09.md",
+          "sha256": "a0229307db4fa4639a54bbcc494159754e27afbf1bd9ec111ce389ffef0217d7"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "mach-15",
+      "slug": "07-mach-15",
+      "name": "A path through it",
+      "description": "Pages unfold into a small landscape, with one warm route running from the foreground to the next chapter.",
+      "choices": [
+        "Perspective makes a timeline feel like a journey through a diary",
+        "The ground-plane reference becomes a solid page silhouette rather than a decorative scene"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/07-mach-15.svg",
+          "sha256": "301209ab9aa1301d928994f39c786733542e64cfcf4dea67c495ae1cbdd1473c"
+        },
+        {
+          "file": "assets/07-mach-15-icon.svg",
+          "sha256": "6cca5a881d9bd0062c008532c23afa7036e002484e1652942b3fb0a01bd50010"
+        },
+        {
+          "file": "assets/07-mach-15-still.svg",
+          "sha256": "301209ab9aa1301d928994f39c786733542e64cfcf4dea67c495ae1cbdd1473c"
+        },
+        {
+          "file": "assets/07-mach-15-light.png",
+          "sha256": "0b8d29c826bb80e5f335265cb9d51a8f43d9a0e5cab55b650cbbac8c8686fe01"
+        },
+        {
+          "file": "assets/07-mach-15-dark.png",
+          "sha256": "044daa815785dee9f0c8b04296bece1b8eac793b3ec7617a972baa6d91f45c01"
+        },
+        {
+          "file": "src/07-mach-15.mjs",
+          "sha256": "a440cb6560a2cb53d9ea31ea134d8cdedf482e423dc3c9500fa5527b78225703"
+        },
+        {
+          "file": "07-mach-15.md",
+          "sha256": "184d6d59a9ed4c4526ceb80b72a212d393114a650a95863bad7731a89e9ce53c"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "idle-01",
+      "slug": "08-idle-01",
+      "name": "Two sides of a story",
+      "description": "Two broad diamond folds create an open-book silhouette, divided by a clear white gutter.",
+      "choices": [
+        "The paired diamond reference becomes pages belonging together",
+        "Two restrained tones leave the centre fold and silhouette easy to recognise"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/08-idle-01.svg",
+          "sha256": "4a9771137f6c6153d4f301ed24fd4be0c818574fbd4a89aae142fe9c820d5f8d"
+        },
+        {
+          "file": "assets/08-idle-01-icon.svg",
+          "sha256": "132bcbad7158910c41cc174cd36309d64f4486565e0fe66a14829d8f5f25811e"
+        },
+        {
+          "file": "assets/08-idle-01-still.svg",
+          "sha256": "4a9771137f6c6153d4f301ed24fd4be0c818574fbd4a89aae142fe9c820d5f8d"
+        },
+        {
+          "file": "assets/08-idle-01-light.png",
+          "sha256": "c51223acfa80d7c440c7cf7e1266c491c864452d9c4691bf496d186d2a373bb8"
+        },
+        {
+          "file": "assets/08-idle-01-dark.png",
+          "sha256": "6f9e9b8b5408e7dc9b9dcf8e2198568f18d7730ab14910455cdbfd2229d24450"
+        },
+        {
+          "file": "src/08-idle-01.mjs",
+          "sha256": "3d0ad50922d10bc924ac7810bb80850b97f9a1979fc5f410cb5a39d42c4b768f"
+        },
+        {
+          "file": "08-idle-01.md",
+          "sha256": "72b2645bbd4934682aff8e847036dbcfa512c077226eb03b53ddaef1675ff4a8"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "trk-03",
+      "slug": "09-trk-03",
+      "name": "Filed favourites",
+      "description": "Four carefully arranged tiles hold a play mark, a line and a bookmark. Different media, one orderly place.",
+      "choices": [
+        "The tracker’s modular panels become a compact collection symbol",
+        "Large cutouts stand in for media types, with no tiny notes, counters or labels"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/09-trk-03.svg",
+          "sha256": "424ae9156bf6ee2a96e80b395368ba834bfe610b69f62d88da33aed96f6d572b"
+        },
+        {
+          "file": "assets/09-trk-03-icon.svg",
+          "sha256": "282ae97e4036700ec508fabbc6a1965a457483b5dc94a805e423d0f310897683"
+        },
+        {
+          "file": "assets/09-trk-03-still.svg",
+          "sha256": "424ae9156bf6ee2a96e80b395368ba834bfe610b69f62d88da33aed96f6d572b"
+        },
+        {
+          "file": "assets/09-trk-03-light.png",
+          "sha256": "1180c013de34c9417c0c4c3807539fd16e4c968917fef27736df5c2c55846b18"
+        },
+        {
+          "file": "assets/09-trk-03-dark.png",
+          "sha256": "f2b7ab17ceb01efb7d0c9bf70c7c3fd5940d89c6ec55887f972c3863357c28ce"
+        },
+        {
+          "file": "src/09-trk-03.mjs",
+          "sha256": "4e4b11e5309051c4c27b33755c557ac8f3c89e2181df7da582ef864092ad425d"
+        },
+        {
+          "file": "09-trk-03.md",
+          "sha256": "236b2da2b5660a4c91ed3319c7798028cf1fe07ab9b03b25302fd932ddfc2f6a"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "ansi-07",
+      "slug": "10-ansi-07",
+      "name": "Open invitation",
+      "description": "A generous open journal with gently fanned pages and a small fabric bookmark.",
+      "choices": [
+        "Strong plotted outlines keep the book friendly and legible",
+        "A slightly asymmetric bookmark gives the simple navy drawing a personal touch"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/10-ansi-07.svg",
+          "sha256": "dd49f5ff09bc7224d9fa097590ffd91de66a0f4e96fc68c5141d933474cfa302"
+        },
+        {
+          "file": "assets/10-ansi-07-icon.svg",
+          "sha256": "962203ace587609dbf7b365cb34e6d29e594959a28de4d3be30fd455b131a914"
+        },
+        {
+          "file": "assets/10-ansi-07-still.svg",
+          "sha256": "dd49f5ff09bc7224d9fa097590ffd91de66a0f4e96fc68c5141d933474cfa302"
+        },
+        {
+          "file": "assets/10-ansi-07-light.png",
+          "sha256": "3b324ec0274931ae73cdd23f51e797c261b2b201d69281e62cbe4f7dc05ff2f8"
+        },
+        {
+          "file": "assets/10-ansi-07-dark.png",
+          "sha256": "8b7c58fcfa8410e7754a8eced3f6dd2f2a8e451f0ec5b6b1e6b0e31eaa4d169a"
+        },
+        {
+          "file": "src/10-ansi-07.mjs",
+          "sha256": "498a74cddca4235a48c5c78d11b7f3fb33776976c9d309307cd222b9548d0b18"
+        },
+        {
+          "file": "10-ansi-07.md",
+          "sha256": "8d10e015850caabd1ed53615fa9ebe1a6cad366aed7b5f66b89f4e36816298c0"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "pc-09",
+      "slug": "11-pc-09",
+      "name": "Leave a little note",
+      "description": "A simple open book and a single confident pen stroke: a quieter continuation of the old MediaLog identity.",
+      "choices": [
+        "The pen records how an experience felt, not just that it happened",
+        "Internal film and music symbols are removed so the familiar silhouette reads at a glance"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/11-pc-09.svg",
+          "sha256": "e2e6d89920b17a1df6f891371e7e72f4911a6eb819a1aac485005aa9fa9d5de5"
+        },
+        {
+          "file": "assets/11-pc-09-icon.svg",
+          "sha256": "4def882f675b1e78978a856b5e633bddc9df23548f9e2c80099e358cf6c5db17"
+        },
+        {
+          "file": "assets/11-pc-09-still.svg",
+          "sha256": "e2e6d89920b17a1df6f891371e7e72f4911a6eb819a1aac485005aa9fa9d5de5"
+        },
+        {
+          "file": "assets/11-pc-09-light.png",
+          "sha256": "cec12637a89dca94c0b9094962b38ddf4325471617b17b7a212d057f71b49b9f"
+        },
+        {
+          "file": "assets/11-pc-09-dark.png",
+          "sha256": "144db3e7863428c8fd0e1bc9bf99cd6b458710b899ef19309988da03cc2ea35f"
+        },
+        {
+          "file": "src/11-pc-09.mjs",
+          "sha256": "3cac6d8760459871390ad76e437d6b7155fcf1120f4b9eaaebc41e2ba5ff71dd"
+        },
+        {
+          "file": "11-pc-09.md",
+          "sha256": "3a63f3cc7f0504f238f6aaf41b8db5a300d11252db991128187050bf4cfcb214"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "demo-04",
+      "slug": "12-demo-04",
+      "name": "Woven together",
+      "description": "Four interlocking corners surround a small play-shaped centre. Separate experiences become a single collection.",
+      "choices": [
+        "The nested-square reference becomes a bold woven emblem",
+        "Broad alternating planes preserve the pattern without pixel noise or character art"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/12-demo-04.svg",
+          "sha256": "c17adf1d865575f150605a302ac3fa70e10d0ba96be2a724d60788670f8ba53b"
+        },
+        {
+          "file": "assets/12-demo-04-icon.svg",
+          "sha256": "11726d810484c2eb14a31bb240a7e92c71ca6048b0ac89dd11656c67327bf12c"
+        },
+        {
+          "file": "assets/12-demo-04-still.svg",
+          "sha256": "c17adf1d865575f150605a302ac3fa70e10d0ba96be2a724d60788670f8ba53b"
+        },
+        {
+          "file": "assets/12-demo-04-light.png",
+          "sha256": "fc8288fda26726096b81665bcde0d7c8df4b6ef27d9cbb61b2e6f16f5d55b1c3"
+        },
+        {
+          "file": "assets/12-demo-04-dark.png",
+          "sha256": "642b1f74588c008d77705cc5f55724182b596b63f2ff9a5b205edf913476524d"
+        },
+        {
+          "file": "src/12-demo-04.mjs",
+          "sha256": "9425e3e26727ad0917f81e525eba920b0ed2f30d42a15e7d6e612cf90810756f"
+        },
+        {
+          "file": "12-demo-04.md",
+          "sha256": "8ac778f90711da1e7251c95dbf584de9dbaf5bf92648dcf5eb75804f921bb6ee"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "id": "c64-07",
+      "slug": "13-c64-07",
+      "name": "Keep your place",
+      "description": "Two pages sweep like ribbons, while a warm bookmark folds over the outside edge.",
+      "choices": [
+        "The vertical ribbon reference becomes a tactile part of the diary",
+        "The folded accent suggests returning to something you loved"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/13-c64-07.svg",
+          "sha256": "0468bb810ed975eca50442f81d5bb729d0715bdd7d3310cff3e56ff13b772451"
+        },
+        {
+          "file": "assets/13-c64-07-icon.svg",
+          "sha256": "bccd34d3075f01d737b6965bc303cdb91963f9bcb6b0f8829c4db0ae7b806493"
+        },
+        {
+          "file": "assets/13-c64-07-still.svg",
+          "sha256": "0468bb810ed975eca50442f81d5bb729d0715bdd7d3310cff3e56ff13b772451"
+        },
+        {
+          "file": "assets/13-c64-07-light.png",
+          "sha256": "008900229b4b74fbc03c30ae35ac198595fe2f06f0b60faf53c34e1790706bb7"
+        },
+        {
+          "file": "assets/13-c64-07-dark.png",
+          "sha256": "e3de045e373a37931cba12c3e43c399a76fc93dfc2228435819aa246d922d737"
+        },
+        {
+          "file": "src/13-c64-07.mjs",
+          "sha256": "6fae6b22e88425ea69df18a9abe721fd063736ec3c0a9087516a2a57a44002c9"
+        },
+        {
+          "file": "13-c64-07.md",
+          "sha256": "fa7d2c5dda58416089b7c24a6246307baeb013f54d991314f48b4ac9bcdb6af4"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "c64-05",
+      "slug": "14-c64-05",
+      "name": "The bookplate",
+      "description": "A navy badge holding a cream open book, edged like a small stamped ownership plate.",
+      "choices": [
+        "The badge gives the diary a clear standalone app identity",
+        "One warm bookmark replaces the source’s rainbow ornament"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/14-c64-05.svg",
+          "sha256": "d1403b4fc10c6d42df35fc6916df9728021ac98fef97aa3288566dd6e5f129a8"
+        },
+        {
+          "file": "assets/14-c64-05-icon.svg",
+          "sha256": "3aae9489ec43adb6ea028505fa99f3189b2f4336a98ee2682ca01499a6908c8e"
+        },
+        {
+          "file": "assets/14-c64-05-still.svg",
+          "sha256": "d1403b4fc10c6d42df35fc6916df9728021ac98fef97aa3288566dd6e5f129a8"
+        },
+        {
+          "file": "assets/14-c64-05-light.png",
+          "sha256": "7f3625ac6b91743006bdc9b156083ffb236046180af0f4540c965cb1b19d09ff"
+        },
+        {
+          "file": "assets/14-c64-05-dark.png",
+          "sha256": "3da91356321a95052f6b92bf53c1a0ee2c189ccb16df7c296c7cddf2c7532638"
+        },
+        {
+          "file": "src/14-c64-05.mjs",
+          "sha256": "444272c4ecd48229e5fc3b0862deb241fe4f343ac785bcf3eefbd31698829f1b"
+        },
+        {
+          "file": "14-c64-05.md",
+          "sha256": "5a3ad41938fe4d5fb7cafd40c1f621b41b9631b472d78c32048817ee2bf0c37f"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "vap-09",
+      "slug": "15-vap-09",
+      "name": "A window into it",
+      "description": "A softly framed book opens onto two quiet landscape shapes. Stories are a way into another world.",
+      "choices": [
+        "The window-and-landscape reference becomes an open volume",
+        "Two broad page planes carry the idea without clouds, buttons or screen labels"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/15-vap-09.svg",
+          "sha256": "a818c9ec33178d5a5da4f5d43447d50cda0f50da93a3861ecf7018ceef332abc"
+        },
+        {
+          "file": "assets/15-vap-09-icon.svg",
+          "sha256": "f2a0dee4fb76a730585ac3d139f7e2f6e91b9519186ec34b6e919fca2b4c0a43"
+        },
+        {
+          "file": "assets/15-vap-09-still.svg",
+          "sha256": "a818c9ec33178d5a5da4f5d43447d50cda0f50da93a3861ecf7018ceef332abc"
+        },
+        {
+          "file": "assets/15-vap-09-light.png",
+          "sha256": "5d198e3533ea5f90ffd1de11349364c39f67e1aa0220a3a1bc87f61c8791b50c"
+        },
+        {
+          "file": "assets/15-vap-09-dark.png",
+          "sha256": "890f1ffe9ac417b84b58333fbb004750da353270b31ab88f69da4825dd0024fc"
+        },
+        {
+          "file": "src/15-vap-09.mjs",
+          "sha256": "7c256b07c0669806cfacf51c9a14c0b708f40264c2e31118f0faf41f4a6d2940"
+        },
+        {
+          "file": "15-vap-09.md",
+          "sha256": "36260b6c3a085d5dc056c21ce642ae6c79796a2a2458247f1e2c3f5e5cd0731e"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "trk-07",
+      "slug": "16-trk-07",
+      "name": "Four kinds of favourite",
+      "description": "Four bookmarks hang at different heights above a shared curve. Watching, reading, playing and listening belong together.",
+      "choices": [
+        "The four channels map directly to the four verbs in the brief",
+        "A single baseline turns the marks into one collection instead of separate app buttons"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/16-trk-07.svg",
+          "sha256": "ea6b51ddc7853e792a36747ba5d177b5eb27e46dd68df5c6ad511cf1b2ebdf26"
+        },
+        {
+          "file": "assets/16-trk-07-icon.svg",
+          "sha256": "8f9e00405d10ae2df52745418a2d2b73920852bf8586e4ea188c0d23884142b5"
+        },
+        {
+          "file": "assets/16-trk-07-still.svg",
+          "sha256": "ea6b51ddc7853e792a36747ba5d177b5eb27e46dd68df5c6ad511cf1b2ebdf26"
+        },
+        {
+          "file": "assets/16-trk-07-light.png",
+          "sha256": "83980c8f53e948a6d444e167c540f0c7dac01a7f1220a4209db6c9c32e212a6d"
+        },
+        {
+          "file": "assets/16-trk-07-dark.png",
+          "sha256": "fa43fb36147ebb150ade473951d7cbd0b8cce88f889fa03567e44a90df99f151"
+        },
+        {
+          "file": "src/16-trk-07.mjs",
+          "sha256": "97d078f62896069ad938bde12a6b2d69c02a6916e628ac8416057ed571229a45"
+        },
+        {
+          "file": "16-trk-07.md",
+          "sha256": "db032cfc1de44e64bdf7d09db856ae6b07b58ce4af3d0792980a2754b8384bbe"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "mach-02",
+      "slug": "17-mach-02",
+      "name": "Pass it on",
+      "description": "A hand offers a small bookmarked journal. The symbol is about keeping something, then sharing it with someone.",
+      "choices": [
+        "The hand echoes the reference’s simple plotted drawing",
+        "The offered object is a diary, connecting personal records with recommendations"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/17-mach-02.svg",
+          "sha256": "ded39038c45f9f0abe33b0a1cc7bfb58248d3f1d889f2bec6b49ed3075995004"
+        },
+        {
+          "file": "assets/17-mach-02-icon.svg",
+          "sha256": "7f63eb675290e3ae00454955e0ca191041829b99307ba457ca530403356eb33c"
+        },
+        {
+          "file": "assets/17-mach-02-still.svg",
+          "sha256": "ded39038c45f9f0abe33b0a1cc7bfb58248d3f1d889f2bec6b49ed3075995004"
+        },
+        {
+          "file": "assets/17-mach-02-light.png",
+          "sha256": "237987360171b4704b57950044fd60c0ec73073af5ea9fa38a0d1723a1abfa69"
+        },
+        {
+          "file": "assets/17-mach-02-dark.png",
+          "sha256": "b021b6e74fb5cbb404419d30e2183830baf26c5a8630a1b00b6cbe9e78a1653f"
+        },
+        {
+          "file": "src/17-mach-02.mjs",
+          "sha256": "580a898e768f9f293465f03161eb90367f0acdcda3937661d2e80977c0c1099b"
+        },
+        {
+          "file": "17-mach-02.md",
+          "sha256": "f5e570992a6a3cd11ac006830a4c00f09ae9c8ddf40f9d97ec7730cdf34495e3"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "vap-04",
+      "slug": "18-vap-04",
+      "name": "Worth remembering",
+      "description": "A diary page and a clear clock face make a small mark for when it happened, as well as what it was.",
+      "choices": [
+        "The daily bulletin reference becomes a personal dated entry",
+        "One clock replaces all the tiny data rows, keeping the symbol readable"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/18-vap-04.svg",
+          "sha256": "d5cca7c9b73b636e0138bb4e7378bf06bf6b42af850868453d701177b0979b3c"
+        },
+        {
+          "file": "assets/18-vap-04-icon.svg",
+          "sha256": "2fe8b030c9e0a14d5247d963c5a269d606450b60c455149099a44ff82b38c4bd"
+        },
+        {
+          "file": "assets/18-vap-04-still.svg",
+          "sha256": "d5cca7c9b73b636e0138bb4e7378bf06bf6b42af850868453d701177b0979b3c"
+        },
+        {
+          "file": "assets/18-vap-04-light.png",
+          "sha256": "424173fb94eccfe493fe2dadd101951d414d439ad0eaf4e0536042ce39ef2574"
+        },
+        {
+          "file": "assets/18-vap-04-dark.png",
+          "sha256": "2850dbb5143b9572c0fa5146e2c6caa02fbbdc1e348ad9fc57f13bafc26a3667"
+        },
+        {
+          "file": "src/18-vap-04.mjs",
+          "sha256": "641c65f9cd2539bdc4043130fdca36714c70aa5a2902cd3de4a4b20caf232175"
+        },
+        {
+          "file": "18-vap-04.md",
+          "sha256": "0bf4da58cf597f295e6da6b371355eb29d65877c486163673e3e6fcaa39693c1"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "vap-17",
+      "slug": "19-vap-17",
+      "name": "A little off-script",
+      "description": "A rounded left page, an angular right page and a folded bookmark. A book with a little personality in its proportions.",
+      "choices": [
+        "The asymmetric shapes carry the playful reference",
+        "A navy foundation and one warm accent keep the composition calm"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/19-vap-17.svg",
+          "sha256": "18444ce0271463cdea32ac0567da89376f8858c645d1546d4ad1f66465fb4fca"
+        },
+        {
+          "file": "assets/19-vap-17-icon.svg",
+          "sha256": "3da59788405a0f026241878a1a2e9e6012c0b95266bb7fd330d744b8ce7f93c6"
+        },
+        {
+          "file": "assets/19-vap-17-still.svg",
+          "sha256": "18444ce0271463cdea32ac0567da89376f8858c645d1546d4ad1f66465fb4fca"
+        },
+        {
+          "file": "assets/19-vap-17-light.png",
+          "sha256": "19146a0d6c64a9f68ec5146c4bd40afc18ad6a6c9c17c2ed86f5096698b0c48d"
+        },
+        {
+          "file": "assets/19-vap-17-dark.png",
+          "sha256": "11b927614f5cc146027322e601deda8fd5d49501c2f9a54bea23fef52cfcc24a"
+        },
+        {
+          "file": "src/19-vap-17.mjs",
+          "sha256": "1636a071bb83f19ae614b7f37daf08c0ee55d145efd5c13991ccfba6ac02300e"
+        },
+        {
+          "file": "19-vap-17.md",
+          "sha256": "a4b65ef36982db98927bccd52f8db95059f928ada5627be08604eed9688cf86b"
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "id": "pc-12",
+      "slug": "20-pc-12",
+      "name": "Collected moments",
+      "description": "Three faceted layers make a small stack of keepsakes, with one warm band crossing the top.",
+      "choices": [
+        "The cube-field grammar becomes a tangible collection of media objects",
+        "A limited palette and three large layers replace the rainbow field and tiny cells"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/20-pc-12.svg",
+          "sha256": "e6a98742fca98d6beb70d41bca6014dde90e148d04ddcd86d7168dd86507356f"
+        },
+        {
+          "file": "assets/20-pc-12-icon.svg",
+          "sha256": "32e2a7f0202456c17eeaa1ce8526727ce561fa219218a77916dab0aa5d658efa"
+        },
+        {
+          "file": "assets/20-pc-12-still.svg",
+          "sha256": "e6a98742fca98d6beb70d41bca6014dde90e148d04ddcd86d7168dd86507356f"
+        },
+        {
+          "file": "assets/20-pc-12-light.png",
+          "sha256": "d882a792ff1e80cfe409e29fd30d4b2cf4149dcf5b494b38c310c0c899153635"
+        },
+        {
+          "file": "assets/20-pc-12-dark.png",
+          "sha256": "96f540cd2a2668f3568da157feb2bd8ff5396fa8f26bf1ee9cd5075ca6400f8f"
+        },
+        {
+          "file": "src/20-pc-12.mjs",
+          "sha256": "d503698f62dd60f7bf85c417beafe508277631ea6d7b84e852e258db6ba49e96"
+        },
+        {
+          "file": "20-pc-12.md",
+          "sha256": "e46304a2a68495eb65b692df4607d058e8891021349227a826d9580ac037ffe3"
+        }
+      ]
+    }
+  ]
+}

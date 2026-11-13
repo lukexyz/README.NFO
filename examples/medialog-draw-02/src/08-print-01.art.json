@@ -1,0 +1,12 @@
+{
+  "id": "print-01",
+  "summary": "The diary swap",
+  "choices": [
+    "A fan of disks separates watched, played and listened memories, with the diary on the front label",
+    "A handwritten note asks when it was and who should hear about it, turning the swap into a social invitation"
+  ],
+  "formats": [
+    "svg"
+  ],
+  "animated": false
+}

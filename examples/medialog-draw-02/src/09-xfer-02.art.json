@@ -1,0 +1,13 @@
+{
+  "id": "xfer-02",
+  "summary": "A message to your people",
+  "choices": [
+    "The quoted conversation makes approximate dates part of remembering",
+    "From and To become you and friends; the six media types share a single echo area"
+  ],
+  "formats": [
+    "svg",
+    "text"
+  ],
+  "animated": false
+}

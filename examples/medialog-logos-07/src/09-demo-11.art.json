@@ -1,0 +1,26 @@
+{
+  "id": "demo-11",
+  "name": "Title card",
+  "description": "A hardback whose cover is an early home-computer title card: black inside a thick orange frame banded on the spine side, a title of three chunky blocks in green, violet and blue, and white credit lines fringed violet on one side and green on the other, with a green ribbon and the page block’s white edge fringed the same way.",
+  "choices": [
+    "The crack screen’s framed panel and multicoloured block title become a book cover, with credits in place of any group name",
+    "Colour fringes on every white edge mimic how hi-res white picks up green and violet; nothing is lettered"
+  ],
+  "book": "closed book",
+  "repeatOf": {
+    "style": "demo-11",
+    "collection": "medialog-logos-05",
+    "slug": "09-demo-11",
+    "name": "Stacked"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

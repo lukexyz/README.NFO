@@ -1,0 +1,70 @@
+{
+  "name": "MediaLog",
+  "description": "Everything you’ve watched, read, played, listened to, on one timeline.",
+  "pitch": "A media diary you share.",
+  "repository": null,
+  "facts": [
+    {
+      "fact": "Log films, books, shows, games, albums and podcasts.",
+      "source": "User-provided project description, 2026-10-10"
+    },
+    {
+      "fact": "Entries record when something was experienced and how it was.",
+      "source": "User-provided project description, 2026-10-10"
+    },
+    {
+      "fact": "See what the people you know have been into.",
+      "source": "User-provided project description, 2026-10-10"
+    },
+    {
+      "fact": "The supplied design groups its timeline into five-year periods and supports approximate dates.",
+      "source": "User's MediaLog landing-page screenshot, 2026-10-10"
+    },
+    {
+      "fact": "Media types have distinct accent colours; navy typography sits on a pale blue-grey background.",
+      "source": "User's two MediaLog screenshots, 2026-10-10"
+    }
+  ],
+  "artwork": "New vector symbols and a consistent plain, licensed sans-serif wordmark converted to paths. Style geometry informs symbols; user brand constraints override catalogue palettes and ornamental typography.",
+  "batch": "Third compact logo draw: twenty original emblems with a consistent plain wordmark, incorporating the latest brand feedback.",
+  "brief": {
+    "nativeWidth": 203,
+    "nativeHeight": 74,
+    "viewBox": [
+      0,
+      0,
+      812,
+      296
+    ],
+    "subject": "MediaLog logo and brand title",
+    "motif": "Invent new symbols appropriate to a shared media diary; the screenshot supplies size and aspect ratio only.",
+    "detail": "Clean normal wordmark. Original, distinct vector emblems readable at small size. No ASCII, tiny labels, neon cyan-pink pair or tagline. Light/dark and icon-only exports."
+  },
+  "brand": {
+    "primary": "#18223a",
+    "darkInverse": "#f6f3eb",
+    "secondary": [
+      "#74889a",
+      "#ae8660"
+    ],
+    "typography": "DejaVu Sans Bold, plain and consistent, outlined for portable SVGs",
+    "feedback": [
+      {
+        "source": "User, 2026-10-10",
+        "instruction": "The brand color is #18223a."
+      },
+      {
+        "source": "User, 2026-10-10",
+        "instruction": "The MediaLog text does not need to be fancy."
+      },
+      {
+        "source": "User-shared feedback from Dan and Tim, 2026-10-10",
+        "instruction": "Gently favour the book variant and dial back colours that evoke TikTok."
+      },
+      {
+        "source": "User old-logo attachment, 2026-10-10",
+        "instruction": "Book/pen/media heritage is a reference, not a requirement to copy the old mark."
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "id": "vap-16",
+  "name": "Signal saved",
+  "description": "A play button becomes a saved moment and a conversation. Cyan and pink signal offsets give the mark a clean, deliberate glitch.",
+  "choices": [
+    "One speech-tail mark joins experiencing and sharing",
+    "The timeline ends in a saved pink dot; glitch is confined to one small stripe"
+  ],
+  "animated": true,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

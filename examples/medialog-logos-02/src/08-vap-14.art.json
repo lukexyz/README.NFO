@@ -1,0 +1,17 @@
+{
+  "id": "vap-14",
+  "name": "You had to be there",
+  "description": "Two overlapping chat bubbles, a green presence light and an easy blue wordmark. A favourite becomes a conversation.",
+  "choices": [
+    "Two distinct bubbles stand for you and the people you know",
+    "The typing dots suggest swapping recommendations, with no fake notification counts"
+  ],
+  "animated": true,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

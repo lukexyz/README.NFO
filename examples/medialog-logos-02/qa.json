@@ -1,0 +1,77 @@
+{
+  "status": "passed",
+  "createdAt": "2026-10-10T13:14:33.621Z",
+  "designs": 20,
+  "svgAssets": 40,
+  "pngExports": 40,
+  "nativeSize": {
+    "width": 203,
+    "height": 74
+  },
+  "ascii": false,
+  "checks": [
+    {
+      "viewport": 1400,
+      "images": 40,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true
+    },
+    {
+      "viewport": 375,
+      "images": 40,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true
+    }
+  ],
+  "controls": [
+    "favourites persist",
+    "filter and clear",
+    "2× enlargement",
+    "motion swaps to static assets",
+    "copy fallback selects snippet"
+  ],
+  "policy": "40 SVGs parsed, loaded, with no remote resources, scripts or text-mode rendering",
+  "visualChecks": [
+    "actual-size light/dark contact sheet",
+    "large still proofs",
+    "normal motion initial and three-second frame"
+  ],
+  "limitations": [
+    "Live GitHub rendering not tested."
+  ],
+  "preview": "preview.png",
+  "staticExportConsistency": {
+    "comparisons": 40,
+    "result": "Every reduced-motion SVG is pixel-identical to its static PNG export on both colour schemes.",
+    "method": "External SVG images with Chromium process-level reduced-motion preference; compared against all forty light/dark static exports."
+  },
+  "visualReview": {
+    "complete": true,
+    "reviewed": "All twenty designs at 203 × 74 on light and dark, four large proof sheets, initial and later frames, and reduced-motion exports.",
+    "repairs": [
+      "Lightened two heavy wordmarks to keep lowercase letter counters open.",
+      "Enlarged the headphone ear cups so the emblem reads at native size.",
+      "Kept the neon treatment static after a browser capture dropped its animated filtered wordmark."
+    ],
+    "findings": "All brand titles remain readable at native size. No tagline, tiny captions or ASCII inside the artwork."
+  },
+  "motion": {
+    "animatedCandidates": [
+      "05-vap-10",
+      "08-vap-14"
+    ],
+    "treatment": "Slow highlight and typing-dot opacity changes only; every essential shape is always present. All other logos are static."
+  },
+  "repositoryValidation": {
+    "status": "passed",
+    "syntaxChecks": 363,
+    "galleryItems": 300,
+    "markdownFiles": 402,
+    "freshGeneratedPages": 81,
+    "svgImagesDecoded": 400
+  }
+}

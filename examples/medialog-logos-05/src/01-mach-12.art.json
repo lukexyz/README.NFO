@@ -1,0 +1,22 @@
+{
+  "id": "mach-12",
+  "name": "Now showing",
+  "description": "A video-recorder front panel reads ▶ 1:58 in teal fluorescent segments behind smoked glass, with an orange film-reel annunciator and a progress bar most of the way through.",
+  "choices": [
+    "Seven-segment digits keep their ghosted unlit segments; annunciators become play, pause, record and a film reel",
+    "A runtime and a part-filled progress bar make the panel about watching films, not hi-fi; no lettering is used"
+  ],
+  "media": [
+    "films"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

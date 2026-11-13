@@ -1,0 +1,17 @@
+{
+  "id": "hack-13",
+  "name": "Culture radar",
+  "description": "A glowing globe carries a few bright recommendation routes. What your friends discover finds its way into your timeline.",
+  "choices": [
+    "The routes represent shared taste rather than geographic tracking",
+    "Three large blips replace the reference’s dense counters and labels"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

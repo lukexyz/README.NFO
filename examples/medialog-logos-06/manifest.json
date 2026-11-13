@@ -1,0 +1,561 @@
+{
+  "project": "MediaLog",
+  "collection": "Compact logos 06",
+  "seed": "992f341719e83627ee33576746c34228",
+  "count": 10,
+  "nativeSize": [
+    203,
+    74
+  ],
+  "sourceViewBox": [
+    0,
+    0,
+    812,
+    296
+  ],
+  "ascii": false,
+  "animated": false,
+  "selection": "User-chosen scope with no random selection: ten graphic styles already used for MediaLog (collections 02 to 04), each redrawn as a new, simpler symbol built around a book, with no tile or border. Navy-led colour and a consistent plain wordmark override catalogue palettes and lettering.",
+  "candidates": [
+    {
+      "number": 1,
+      "id": "c64-12",
+      "slug": "01-c64-12",
+      "name": "Chrome hardback",
+      "description": "A hardback in 16-bit chrome: the cover is filled with banded sky blues above a hard zigzag horizon and warm oranges below, with a dark outline, a light bevel edge, a cream page block for its extruded side and a white sparkle on the corner.",
+      "choices": [
+        "The chrome logo’s banded fill, horizon, outline, bevel and extrusion are applied to a single book instead of lettering",
+        "No tile or border: the book stands on its own beside the wordmark"
+      ],
+      "book": "closed book",
+      "repeatOf": {
+        "style": "c64-12",
+        "collection": "medialog-logos-02",
+        "slug": "17-c64-12",
+        "name": "Chrome keepsake"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/01-c64-12.svg",
+          "sha256": "74e97fab6f58881c314b43274ec578b7289253d8ffbd8f21969f5b605fb6e63f"
+        },
+        {
+          "file": "assets/01-c64-12-icon.svg",
+          "sha256": "c8d4f1266c785f83d3c2fbb00811c4e02504c270a10b5b4ab78294d253409a56"
+        },
+        {
+          "file": "assets/01-c64-12-light.png",
+          "sha256": "531a226dd88b5ca8f175c7843b83ec268919e4a8a55cfb9052e53d1d364801b3"
+        },
+        {
+          "file": "assets/01-c64-12-dark.png",
+          "sha256": "c16337ec0bec233d6569e9d9cf3334b8fd22a075f0782707b8073f2359f45015"
+        },
+        {
+          "file": "01-c64-12.md",
+          "sha256": "f508f144e9915aece99e1b8177f8af80a755105ab7af714440f5b32b87e13ad9"
+        },
+        {
+          "file": "src/01-c64-12.mjs",
+          "sha256": "17c4f7a7a3395091e140c316e21510c659143023c5dd17aa05c2a91874d15de2"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "vap-05",
+      "slug": "02-vap-05",
+      "name": "Sunset chapter",
+      "description": "A slatted synthwave sun, yellow to orange to red, sinks into the gutter of an open book whose night-blue pages carry the violet laser grid.",
+      "choices": [
+        "The outrun horizon becomes the top edge of the pages, and the floor grid recedes toward the gutter",
+        "No sky, palm trees or chrome lettering: just the sun and the book"
+      ],
+      "book": "open book",
+      "repeatOf": {
+        "style": "vap-05",
+        "collection": "medialog-logos-03",
+        "slug": "01-vap-05",
+        "name": "The next chapter"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/02-vap-05.svg",
+          "sha256": "6e5bd25ac952e66bb822eb618d47d6df60b2c8ebc9315209a573cccabda06a7d"
+        },
+        {
+          "file": "assets/02-vap-05-icon.svg",
+          "sha256": "2e2f465ba6da491b6217d3531ed86002afb402a39f9129ad2192bf89861bdb8f"
+        },
+        {
+          "file": "assets/02-vap-05-light.png",
+          "sha256": "df67e69c292647812fbc6f1b3d2c7e570c6b6368b7cdc1b2ac1eeae57b20fe1f"
+        },
+        {
+          "file": "assets/02-vap-05-dark.png",
+          "sha256": "7e2f9a7f1dd242796b20498f54605253862f25e4f9582ca16a3a29dadc002ce1"
+        },
+        {
+          "file": "02-vap-05.md",
+          "sha256": "6fc58b0c7a14f3836a0c37d0c63f8992fbdc9619c5e5a6427b7993e07a2017c8"
+        },
+        {
+          "file": "src/02-vap-05.mjs",
+          "sha256": "6e56258b26301d26351366c581ceb6eb055c90e8dc1eb6e818a5202b2d36053d"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "pc-13",
+      "slug": "03-pc-13",
+      "name": "Glass pages",
+      "description": "An open book lies on its back in glenz glass: blue covers, pale page blocks and one violet page in mid-turn, each a flat translucent pane that deepens where it overlaps another.",
+      "choices": [
+        "Glenz vectors: flat translucent faces in one tint plus a pale partner, with crisp edges, from a single 3D pose",
+        "One object, no turntable, floor or frame"
+      ],
+      "book": "open book",
+      "repeatOf": {
+        "style": "pc-13",
+        "collection": "medialog-logos-04",
+        "slug": "04-pc-13",
+        "name": "Glass book"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/03-pc-13.svg",
+          "sha256": "cd38f511e6bc688b45f3e8f344bf0ddabda18e477a76f50631c93a17b55f6415"
+        },
+        {
+          "file": "assets/03-pc-13-icon.svg",
+          "sha256": "445fcc766e786041c05ad18515b7b8afc79bf43c31749be13c5a025e17b28d35"
+        },
+        {
+          "file": "assets/03-pc-13-light.png",
+          "sha256": "ae26b7c5dd6eeb499ff8767f13a0acee8fd426f1827cdc046f1691686b1d4e1e"
+        },
+        {
+          "file": "assets/03-pc-13-dark.png",
+          "sha256": "ee5fa1b12f3a6899c0d8c81ebd15d3492a1922c414875598d9a3599b434b615d"
+        },
+        {
+          "file": "03-pc-13.md",
+          "sha256": "647580029dfcc352ea1e5f80466e88305c14efd6df7dee83ed6f445a919a05d9"
+        },
+        {
+          "file": "src/03-pc-13.mjs",
+          "sha256": "f2977e5d8ec924df3038a6c10be019c952cb78f4beffe9daebd4e015f6b20d0f"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "mach-02",
+      "slug": "04-mach-02",
+      "name": "Insert book",
+      "description": "The Kickstart insert-disk hand, white with a hard black outline, holds up a periwinkle hardback instead of a floppy; a grey metal title plate with a dark slot stands in for the disk shutter.",
+      "choices": [
+        "The 1.x insert-disk card: flat white, periwinkle and grey with one-weight black outlines",
+        "The book replaces the disk, so the old prompt becomes an invitation to log what you are reading"
+      ],
+      "book": "closed book",
+      "repeatOf": {
+        "style": "mach-02",
+        "collection": "medialog-logos-03",
+        "slug": "17-mach-02",
+        "name": "Pass it on"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/04-mach-02.svg",
+          "sha256": "ca8d4977a61b3487163f86f56f5ef322c5395ee32d002132d0aa5318b1289bc4"
+        },
+        {
+          "file": "assets/04-mach-02-icon.svg",
+          "sha256": "53199961f7097f6aa41c2a113a6fc5eb0c3eeb120b03abef54b0b58178612cad"
+        },
+        {
+          "file": "assets/04-mach-02-light.png",
+          "sha256": "bbaf8be5ea4340b9fa7541354810b0f82d63174280c437392b7896ef53454ff2"
+        },
+        {
+          "file": "assets/04-mach-02-dark.png",
+          "sha256": "16b48931ef4528b11c7b47cd25a773aef059faf392dde2809668131b039ff8a4"
+        },
+        {
+          "file": "04-mach-02.md",
+          "sha256": "e4b93785c8d355a6003088101f6ee6f3d03286676b114a97feec1e2fc3467713"
+        },
+        {
+          "file": "src/04-mach-02.mjs",
+          "sha256": "51ab5e2e343806266e9dbc8a28b63da2f443b3064fc40b16e45a0f65fe2e75e6"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "pc-09",
+      "slug": "05-pc-09",
+      "name": "First draft",
+      "description": "An open book drawn in rough, doubled pencil lines, still unfinished, with a green pencil lying across it, its point resting at the end of the newest line of text.",
+      "choices": [
+        "The self-drawing cracktro: outline only, no fills, a doubled line that skips like chalk on grain, and the pencil caught mid-stroke",
+        "The blue paper is left out so the sketch sits straight on the page, in navy on light and cream on dark"
+      ],
+      "book": "open book",
+      "repeatOf": {
+        "style": "pc-09",
+        "collection": "medialog-logos-03",
+        "slug": "11-pc-09",
+        "name": "Leave a little note"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/05-pc-09.svg",
+          "sha256": "563774a4dd79598e7ea4d242bc4a70211df79bfc47b53e2b6865b67aac5fbfd8"
+        },
+        {
+          "file": "assets/05-pc-09-icon.svg",
+          "sha256": "b067f16a718961ae3bb98184e9d0186571bb0486044c3b65879956bbe5e30c5a"
+        },
+        {
+          "file": "assets/05-pc-09-light.png",
+          "sha256": "200b57d7b259742cd9ddbbce0f2a84ef7443ba449f26eb4f5695ef80b7fc4820"
+        },
+        {
+          "file": "assets/05-pc-09-dark.png",
+          "sha256": "6d076d37baf904c1dcae9a095ca81bbceddb7037c146a2fa25ee38463fe53f8e"
+        },
+        {
+          "file": "05-pc-09.md",
+          "sha256": "a31ccb107be7e8f79e57e751d8011fa8794d833044c301d6ae8a40f8880fc5d9"
+        },
+        {
+          "file": "src/05-pc-09.mjs",
+          "sha256": "f2d024c651e538b6ec244ccb8a86b9ebf709e24afb945398e8a48fe312ee790f"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "vap-10",
+      "slug": "06-vap-10",
+      "name": "Glossy edition",
+      "description": "A glossy sky-blue hardback with a leaf-green spine, a glass-button highlight across its top half and a ribbon bookmark, standing on its own wet-table reflection with a soap bubble at its corner.",
+      "choices": [
+        "Web 2.0 gloss: vertical gradient, a hard-edged highlight band, a mirrored reflection that fades out, and Frutiger Aero bubbles",
+        "Sky blue and leaf green with white, kept to one object"
+      ],
+      "book": "closed book",
+      "repeatOf": {
+        "style": "vap-10",
+        "collection": "medialog-logos-02",
+        "slug": "05-vap-10",
+        "name": "Blue sky diary"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/06-vap-10.svg",
+          "sha256": "85d90dcc9a3922e91a1cf2f24266fed9f9e18499f034652c1c8422856c3b2a8b"
+        },
+        {
+          "file": "assets/06-vap-10-icon.svg",
+          "sha256": "a9c90b817a0686d0b2e04a6741302d04583c481cda181a11c760c65d9ec0fa82"
+        },
+        {
+          "file": "assets/06-vap-10-light.png",
+          "sha256": "428dca0e85ce853d524ebdba2f3856e9f2082ff0d8235635e13a25c43693972f"
+        },
+        {
+          "file": "assets/06-vap-10-dark.png",
+          "sha256": "1cde956ff5f7fa2704a600a8525af64009bb5f2c48838eb9c74441dc15af7d34"
+        },
+        {
+          "file": "06-vap-10.md",
+          "sha256": "cf29d7f63771eaa0e569cf730a1961197d4116d648efc25e08275598d211c186"
+        },
+        {
+          "file": "src/06-vap-10.mjs",
+          "sha256": "b9af1a960462c09393f01a147e83949a0185808d83349c47eb1479bee8c24e95"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "c64-07",
+      "slug": "07-c64-07",
+      "name": "Copper shelf",
+      "description": "A row of book spines drawn as Kefrens copper bars: each spine shaded in hard bands, dark at the edges and bright in the centre, in red-gold, blue and violet ramps, with the last book leaning in whole-pixel steps.",
+      "choices": [
+        "Vertical copper bars with stepped ramps, overlapping as later bars do, become spines with a few dark bands",
+        "No big scroller and no black backdrop: just the shelf"
+      ],
+      "book": "bookshelf",
+      "repeatOf": {
+        "style": "c64-07",
+        "collection": "medialog-logos-03",
+        "slug": "13-c64-07",
+        "name": "Keep your place"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/07-c64-07.svg",
+          "sha256": "822f290b486b57cc4126400fc6a8d11c92775e4261d22d12a070d3ca4b34ac81"
+        },
+        {
+          "file": "assets/07-c64-07-icon.svg",
+          "sha256": "5fe1e78e234819a9b27f391bb839f5f10ce004372df4feeaf5601525db3f845e"
+        },
+        {
+          "file": "assets/07-c64-07-light.png",
+          "sha256": "cb718cff66276a2442de624d0b5cbc7cdf11f4887ef756e8918914bbd8cf6ce1"
+        },
+        {
+          "file": "assets/07-c64-07-dark.png",
+          "sha256": "5f9a1ac3532a7e7a88a3c627260cae7f16c3e156a37fd6ce8c0ceb2fb7074198"
+        },
+        {
+          "file": "07-c64-07.md",
+          "sha256": "9cc36a9a6c2561cc4a5e24deab0df09bcb9fea51c6253a363004b7a0e58f1083"
+        },
+        {
+          "file": "src/07-c64-07.mjs",
+          "sha256": "b7ba4eb1fc58c7c6c3cd08709048d225f65dc7f0fb5cfec46e945ab25bfb6580"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "idle-06",
+      "slug": "08-idle-06",
+      "name": "Pipe dream",
+      "description": "Glossy 3D pipes trace an open book in isometric view: a red pipe round the left page, a blue pipe round the right, a yellow gutter pipe between them and shiny ball joints at every corner, with the screensaver’s black space inside the pages and thinner pipes for the lines of text.",
+      "choices": [
+        "Pipes run only along the three axes and turn at ball joints, which is exactly what an isometric open book needs",
+        "No tangle of pipes: one book-shaped run, with the black space kept inside the pages"
+      ],
+      "book": "open book",
+      "repeatOf": {
+        "style": "idle-06",
+        "collection": "medialog-logos-04",
+        "slug": "08-idle-06",
+        "name": "Growing pipes"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/08-idle-06.svg",
+          "sha256": "2e0556d0b17c8b321a30cde84724d865538fde99339f0ac2320154c8711af22d"
+        },
+        {
+          "file": "assets/08-idle-06-icon.svg",
+          "sha256": "1c458f6786fb874cdca901b976202c5726a07dc1697fa3457fdb0cfdb3424346"
+        },
+        {
+          "file": "assets/08-idle-06-light.png",
+          "sha256": "e4a7af21f3538f4bdc439d7249245124f5aacfe57080be83d2071ce4be55780d"
+        },
+        {
+          "file": "assets/08-idle-06-dark.png",
+          "sha256": "fe1ed76d71d33ce0d780924bd945f236b55adf57e46139cdaaf5ea37f82ccea4"
+        },
+        {
+          "file": "08-idle-06.md",
+          "sha256": "5a32cad871b45f4a0af27c8ec4e5a57dbda4681b36e44e09f91b9eb5e658ed47"
+        },
+        {
+          "file": "src/08-idle-06.mjs",
+          "sha256": "fd67e55847278f4c9dd87da7b30375c42a43630dfa9a3d54b709d561fb1b2be5"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "vap-11",
+      "slug": "09-vap-11",
+      "name": "Read me",
+      "description": "An open book as a 1-bit Kare-style icon: black outlines on white pages, words as runs of black pixels, checker-dithered grey for the cover, a hard black drop shadow and the arrow pointer resting on a page.",
+      "choices": [
+        "Black and white only: every grey is a dither, and the shadow is a hard offset with no blur",
+        "Each icon pixel is exactly two screen pixels at the native 203 × 74 size, so the bitmap stays crisp"
+      ],
+      "book": "open book",
+      "repeatOf": {
+        "style": "vap-11",
+        "collection": "medialog-logos-04",
+        "slug": "05-vap-11",
+        "name": "System diary"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/09-vap-11.svg",
+          "sha256": "61e227e6068c53a6ed75e70f4f08b164b0534b54e2a307ba3eb476d912bfdb68"
+        },
+        {
+          "file": "assets/09-vap-11-icon.svg",
+          "sha256": "a5a6627ceb0ab3052f4ebead2fedf86ff7c745e78898885494b12bf7f501c1ae"
+        },
+        {
+          "file": "assets/09-vap-11-light.png",
+          "sha256": "1824a71d0b4cfe32df9af96a0566f01aca627bd092cb7022b68e5976b3298a09"
+        },
+        {
+          "file": "assets/09-vap-11-dark.png",
+          "sha256": "c5d85956f4e65d569f2a2e7f9e35cc3e27a67a08d4ea376683e06fef61773bf6"
+        },
+        {
+          "file": "09-vap-11.md",
+          "sha256": "81f6f1e4ed8179ed6b1cb0b8a6abf246323f3d156997434aac7c97480037b97b"
+        },
+        {
+          "file": "src/09-vap-11.mjs",
+          "sha256": "e80f2c742789e2351d309b3bfca193a099efdfad01d3b67ad51490c23c671697"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "vap-17",
+      "slug": "10-vap-17",
+      "name": "Paperback party",
+      "description": "A flat yellow paperback in thick black outline with a black-and-white striped spine, a red quarter-circle on its cover and a hard offset shadow, set off-grid against a cobalt circle, a red squiggle and a mint triangle.",
+      "choices": [
+        "Memphis: flat clashing colour, stripes against saturated fills, primitive shapes off-grid and solid offset shadows, with no gradients or perspective",
+        "The scatter is kept to three shapes so the book stays the subject"
+      ],
+      "book": "closed book",
+      "repeatOf": {
+        "style": "vap-17",
+        "collection": "medialog-logos-03",
+        "slug": "19-vap-17",
+        "name": "A little off-script"
+      },
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/10-vap-17.svg",
+          "sha256": "db8141c956c841aedaaa2f39fccf35230cad11de7df908e54e1966dfa7d0b773"
+        },
+        {
+          "file": "assets/10-vap-17-icon.svg",
+          "sha256": "2f13e0dfe59a0eb8848cfbd6cb7350f952781cafe0faf7599dcc9ab24ea15ed9"
+        },
+        {
+          "file": "assets/10-vap-17-light.png",
+          "sha256": "33ecf261fcace373c84c1b98c659884df6b81353125aaae9f1a146af61909d0d"
+        },
+        {
+          "file": "assets/10-vap-17-dark.png",
+          "sha256": "c6d3282298b5f07eb3a986e81459920152ab25365af0c7b1630adc0ece12fcbc"
+        },
+        {
+          "file": "10-vap-17.md",
+          "sha256": "a518eb92c68e9816ac5fd018c8047a4f4e417d4cc6d0354ff59b78fc05d68a69"
+        },
+        {
+          "file": "src/10-vap-17.mjs",
+          "sha256": "0ab6f14e2c536dbed42246aeaadf8eb8d99e6abb8ede0f9e17184f4bab215866"
+        }
+      ]
+    }
+  ]
+}

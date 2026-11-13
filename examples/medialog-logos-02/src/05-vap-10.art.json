@@ -1,0 +1,17 @@
+{
+  "id": "vap-10",
+  "name": "Blue sky diary",
+  "description": "A glossy blue orb holds an open diary, with a green leaf tucked into it. Bright, optimistic glass-era branding with generous, readable lettering.",
+  "choices": [
+    "The orb gathers multiple experiences into a single place",
+    "The leaf suggests a growing personal collection, not a software status badge"
+  ],
+  "animated": true,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

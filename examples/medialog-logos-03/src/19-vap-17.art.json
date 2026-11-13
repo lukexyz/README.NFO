@@ -1,0 +1,19 @@
+{
+  "id": "vap-17",
+  "name": "A little off-script",
+  "description": "A rounded left page, an angular right page and a folded bookmark. A book with a little personality in its proportions.",
+  "choices": [
+    "The asymmetric shapes carry the playful reference",
+    "A navy foundation and one warm accent keep the composition calm"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

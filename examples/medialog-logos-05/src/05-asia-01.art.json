@@ -1,0 +1,22 @@
+{
+  "id": "asia-01",
+  "name": "Channel keys",
+  "description": "A synth status screen in lavender on deep navy: spectrum bars with peak-hold ticks above a piano keyboard where one key is lit green.",
+  "choices": [
+    "One keyboard strip, a sliced spectrum analyser and hairline frames keep the X68000 player look at icon size",
+    "The lit key is the only green on the screen, as on the original displays; tiny labels and counters are left out"
+  ],
+  "media": [
+    "albums"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

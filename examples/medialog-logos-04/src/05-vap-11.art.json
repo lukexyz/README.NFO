@@ -1,0 +1,20 @@
+{
+  "id": "vap-11",
+  "name": "System diary",
+  "description": "A one-bit window with a pinstriped title bar and a hard drop shadow holds an open diary; one page is checkerboard grey and an arrow pointer reaches in.",
+  "choices": [
+    "Desktop-era one-bit rules: pinstripe title bar, close box, hard shadow and dithered grey, aligned to whole pixels",
+    "Black and white become brand navy and warm paper; a tan ribbon is the only extra colour"
+  ],
+  "animated": true,
+  "motion": "The pointer nudges toward the diary every five seconds.",
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

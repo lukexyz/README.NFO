@@ -1,0 +1,19 @@
+{
+  "id": "mach-15",
+  "name": "A path through it",
+  "description": "Pages unfold into a small landscape, with one warm route running from the foreground to the next chapter.",
+  "choices": [
+    "Perspective makes a timeline feel like a journey through a diary",
+    "The ground-plane reference becomes a solid page silhouette rather than a decorative scene"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

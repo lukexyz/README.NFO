@@ -1,0 +1,415 @@
+{
+  "reason": "Prior saved draws excluded. Before random selection, restrict the pool to graphic-first treatments that can become a compact emblem and title at 203 by 74 pixels, with no ASCII, character-art or text-heavy interface scenes.",
+  "eligible_style_ids": [
+    "pc-02",
+    "pc-04",
+    "c64-01",
+    "c64-02",
+    "c64-09",
+    "c64-10",
+    "c64-11",
+    "c64-12",
+    "ansi-03",
+    "ansi-07",
+    "vap-01",
+    "vap-05",
+    "vap-10",
+    "vap-14",
+    "vap-15",
+    "vap-16",
+    "vap-18",
+    "mach-10",
+    "mach-01",
+    "idle-03",
+    "idle-04",
+    "idle-06",
+    "idle-09",
+    "xfer-04"
+  ],
+  "options": [
+    {
+      "id": "ansi-04"
+    },
+    {
+      "id": "ansi-05"
+    },
+    {
+      "id": "ansi-06"
+    },
+    {
+      "id": "ansi-09"
+    },
+    {
+      "id": "ansi-12"
+    },
+    {
+      "id": "asia-01"
+    },
+    {
+      "id": "asia-03"
+    },
+    {
+      "id": "asia-04"
+    },
+    {
+      "id": "asia-05"
+    },
+    {
+      "id": "asia-06"
+    },
+    {
+      "id": "c64-04"
+    },
+    {
+      "id": "c64-05"
+    },
+    {
+      "id": "c64-06"
+    },
+    {
+      "id": "c64-07"
+    },
+    {
+      "id": "c64-08"
+    },
+    {
+      "id": "c64-13"
+    },
+    {
+      "id": "c64-14"
+    },
+    {
+      "id": "demo-01"
+    },
+    {
+      "id": "demo-02"
+    },
+    {
+      "id": "demo-03"
+    },
+    {
+      "id": "demo-04"
+    },
+    {
+      "id": "demo-06"
+    },
+    {
+      "id": "demo-08"
+    },
+    {
+      "id": "demo-09"
+    },
+    {
+      "id": "demo-10"
+    },
+    {
+      "id": "demo-11"
+    },
+    {
+      "id": "hack-03"
+    },
+    {
+      "id": "hack-09"
+    },
+    {
+      "id": "hack-10"
+    },
+    {
+      "id": "hack-11"
+    },
+    {
+      "id": "hack-14"
+    },
+    {
+      "id": "hack-15"
+    },
+    {
+      "id": "hack-16"
+    },
+    {
+      "id": "hack-17"
+    },
+    {
+      "id": "hack-18"
+    },
+    {
+      "id": "idle-01"
+    },
+    {
+      "id": "idle-02"
+    },
+    {
+      "id": "idle-07"
+    },
+    {
+      "id": "idle-10"
+    },
+    {
+      "id": "mach-07"
+    },
+    {
+      "id": "mach-08"
+    },
+    {
+      "id": "mach-09"
+    },
+    {
+      "id": "mach-11"
+    },
+    {
+      "id": "mach-12"
+    },
+    {
+      "id": "mach-15"
+    },
+    {
+      "id": "nfo-01"
+    },
+    {
+      "id": "nfo-02"
+    },
+    {
+      "id": "nfo-03"
+    },
+    {
+      "id": "nfo-04"
+    },
+    {
+      "id": "nfo-07"
+    },
+    {
+      "id": "nfo-10"
+    },
+    {
+      "id": "pc-03"
+    },
+    {
+      "id": "pc-05"
+    },
+    {
+      "id": "pc-07"
+    },
+    {
+      "id": "pc-09"
+    },
+    {
+      "id": "pc-11"
+    },
+    {
+      "id": "pc-12"
+    },
+    {
+      "id": "pc-13"
+    },
+    {
+      "id": "print-02"
+    },
+    {
+      "id": "print-03"
+    },
+    {
+      "id": "print-04"
+    },
+    {
+      "id": "print-05"
+    },
+    {
+      "id": "trk-03"
+    },
+    {
+      "id": "trk-04"
+    },
+    {
+      "id": "trk-07"
+    },
+    {
+      "id": "trk-09"
+    },
+    {
+      "id": "trk-10"
+    },
+    {
+      "id": "vap-03"
+    },
+    {
+      "id": "vap-04"
+    },
+    {
+      "id": "vap-09"
+    },
+    {
+      "id": "vap-11"
+    },
+    {
+      "id": "vap-12"
+    },
+    {
+      "id": "vap-17"
+    },
+    {
+      "id": "xfer-08"
+    },
+    {
+      "id": "xfer-09"
+    },
+    {
+      "id": "xfer-10"
+    },
+    {
+      "id": "vap-06"
+    },
+    {
+      "id": "trk-11"
+    },
+    {
+      "id": "hack-08"
+    },
+    {
+      "id": "pc-01"
+    },
+    {
+      "id": "idle-08"
+    },
+    {
+      "id": "pc-10"
+    },
+    {
+      "id": "vap-07"
+    },
+    {
+      "id": "print-01"
+    },
+    {
+      "id": "xfer-02"
+    },
+    {
+      "id": "idle-05"
+    },
+    {
+      "id": "pc-06"
+    },
+    {
+      "id": "pc-08"
+    },
+    {
+      "id": "pc-14"
+    },
+    {
+      "id": "c64-03"
+    },
+    {
+      "id": "trk-01"
+    },
+    {
+      "id": "trk-02"
+    },
+    {
+      "id": "trk-05"
+    },
+    {
+      "id": "trk-06"
+    },
+    {
+      "id": "trk-08"
+    },
+    {
+      "id": "nfo-05"
+    },
+    {
+      "id": "nfo-06"
+    },
+    {
+      "id": "nfo-08"
+    },
+    {
+      "id": "nfo-09"
+    },
+    {
+      "id": "nfo-11"
+    },
+    {
+      "id": "ansi-01"
+    },
+    {
+      "id": "ansi-02"
+    },
+    {
+      "id": "ansi-08"
+    },
+    {
+      "id": "ansi-11"
+    },
+    {
+      "id": "vap-02"
+    },
+    {
+      "id": "vap-08"
+    },
+    {
+      "id": "mach-02"
+    },
+    {
+      "id": "mach-03"
+    },
+    {
+      "id": "mach-04"
+    },
+    {
+      "id": "mach-05"
+    },
+    {
+      "id": "mach-13"
+    },
+    {
+      "id": "hack-01"
+    },
+    {
+      "id": "hack-02"
+    },
+    {
+      "id": "hack-04"
+    },
+    {
+      "id": "hack-05"
+    },
+    {
+      "id": "hack-06"
+    },
+    {
+      "id": "hack-07"
+    },
+    {
+      "id": "hack-12"
+    },
+    {
+      "id": "hack-13"
+    },
+    {
+      "id": "asia-02"
+    },
+    {
+      "id": "asia-07"
+    },
+    {
+      "id": "xfer-01"
+    },
+    {
+      "id": "xfer-03"
+    },
+    {
+      "id": "xfer-05"
+    },
+    {
+      "id": "xfer-06"
+    },
+    {
+      "id": "xfer-07"
+    },
+    {
+      "id": "demo-05"
+    },
+    {
+      "id": "demo-07"
+    }
+  ]
+}

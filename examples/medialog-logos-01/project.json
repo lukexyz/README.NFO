@@ -1,0 +1,43 @@
+{
+  "name": "MediaLog",
+  "description": "Everything you’ve watched, read, played, listened to, on one timeline.",
+  "pitch": "A media diary you share.",
+  "repository": null,
+  "facts": [
+    {
+      "fact": "Log films, books, shows, games, albums and podcasts.",
+      "source": "User-provided project description, 2026-10-10"
+    },
+    {
+      "fact": "Entries record when something was experienced and how it was.",
+      "source": "User-provided project description, 2026-10-10"
+    },
+    {
+      "fact": "See what the people you know have been into.",
+      "source": "User-provided project description, 2026-10-10"
+    },
+    {
+      "fact": "The supplied design groups its timeline into five-year periods and supports approximate dates.",
+      "source": "User's MediaLog landing-page screenshot, 2026-10-10"
+    },
+    {
+      "fact": "Media types have distinct accent colours; navy typography sits on a pale blue-grey background.",
+      "source": "User's two MediaLog screenshots, 2026-10-10"
+    }
+  ],
+  "artwork": "Original vector emblems and path-drawn wordmarks. The logo screenshot defines the size, not the motif. No ASCII or character-art renderer is used.",
+  "batch": "First compact logo draw: ten graphic styles, excluding all previous saved draws, with no ASCII.",
+  "brief": {
+    "nativeWidth": 203,
+    "nativeHeight": 74,
+    "viewBox": [
+      0,
+      0,
+      812,
+      296
+    ],
+    "subject": "MediaLog logo and brand title",
+    "motif": "Invent new symbols appropriate to a shared media diary; the screenshot supplies size and aspect ratio only.",
+    "detail": "No tagline, mock interface, tiny captions, ASCII or character art. Bold icons and path-based wordmarks."
+  }
+}

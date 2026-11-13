@@ -1,0 +1,12 @@
+{
+  "id": "trk-11",
+  "summary": "Your life, on the playlist",
+  "choices": [
+    "Playlist rows are media memories with exact or approximate dates",
+    "Equaliser channels use watched, read, played and listened, with reactions replacing invented performance metrics"
+  ],
+  "formats": [
+    "svg"
+  ],
+  "animated": true
+}

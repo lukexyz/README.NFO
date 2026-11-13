@@ -1,0 +1,682 @@
+{
+  "schema_version": 1,
+  "project": "MediaLog",
+  "created_at": "2026-10-11T07:27:16.478Z",
+  "catalogue_source": "https://github.com/lukexyz/README.NFO",
+  "catalogue_researched": "2026-09-30",
+  "seed": "992f341719e83627ee33576746c34228",
+  "method": "User-chosen scope, no random selection: ten graphic styles already used for MediaLog (collections 02 to 04), each redrawn as a new, simpler symbol built around a book; repeats by request because every unused style is a text-screen style, which the user ruled out; numbered in the order shown to the user",
+  "pool": "images",
+  "eligible_count": 10,
+  "families": [],
+  "excluded_ids": [
+    "ansi-01",
+    "ansi-02",
+    "ansi-04",
+    "ansi-05",
+    "ansi-06",
+    "ansi-08",
+    "ansi-09",
+    "ansi-10",
+    "ansi-11",
+    "ansi-12",
+    "asia-03",
+    "asia-04",
+    "asia-05",
+    "asia-06",
+    "asia-07",
+    "c64-03",
+    "c64-04",
+    "c64-13",
+    "demo-02",
+    "demo-05",
+    "demo-06",
+    "hack-01",
+    "hack-02",
+    "hack-03",
+    "hack-04",
+    "hack-05",
+    "hack-06",
+    "hack-07",
+    "hack-09",
+    "hack-10",
+    "hack-11",
+    "hack-14",
+    "hack-15",
+    "hack-16",
+    "hack-17",
+    "hack-18",
+    "hack-19",
+    "mach-03",
+    "mach-04",
+    "mach-05",
+    "mach-06",
+    "mach-14",
+    "nfo-01",
+    "nfo-03",
+    "nfo-04",
+    "nfo-05",
+    "nfo-06",
+    "nfo-07",
+    "nfo-08",
+    "nfo-09",
+    "nfo-10",
+    "nfo-11",
+    "pc-07",
+    "pc-11",
+    "print-03",
+    "trk-02",
+    "trk-06",
+    "trk-08",
+    "vap-02",
+    "vap-08",
+    "vap-13",
+    "xfer-01",
+    "xfer-03",
+    "xfer-05",
+    "xfer-06",
+    "xfer-09",
+    "xfer-10"
+  ],
+  "options": [
+    {
+      "id": "c64-12",
+      "name": "16-bit hand-pixelled chrome logo (static)",
+      "era": "1988-1993, Amiga and Atari ST; drawn in Deluxe Paint at 320 pixels wide with 16 or 32 colours",
+      "what_it_is": "The group logo as a piece of pixel art: metal letters reflecting an imaginary sky and desert, drawn dot by dot. Damien Guard's article on Amiga lettering describes the chrome, gradient and lens-flare conventions within 16 or 32 colours, and the book 'Demoscene: The Logo Art' is devoted to logos and their makers. Named hands exist: Demozoo credits Uno with the red and blue logos and charsets in Phenomena's 'Enigma' (1991), and the Amiga Graphics Archive documents a TRSi logo by J.O.E. in 32 colours, 19 used.",
+      "visual_signature": [
+        "Chrome fill split by a horizon about halfway up each letter: cool colours above (violet or deep blue to pale blue to white), a hard zigzag line, warm colours below (dark red to orange to yellow, or grey)",
+        "Banded, stepped gradients of 5-8 colours, because the whole logo shares a 16- or 32-colour palette",
+        "A one-pixel dark outline around every letter, often with a lighter inner edge to fake a bevel",
+        "A solid drop shadow or extruded side offset down and to the right",
+        "Heavy italic or slab capitals, letters touching or overlapping",
+        "Single-hue variant (Enigma): hot red to pink letters cut by thin horizontal slits with white streak highlights, beside a violet chrome wordmark with a white horizon",
+        "Composite title variant (Red Sector Megademo): a second word set vertically beside the main logo, plus a cartoon head with a speech bubble",
+        "Chrome with white sparkle stars on letter corners over a blue gradient floor (Kefrens 'Multi Megamix' title)"
+      ],
+      "palette": "One cool ramp and one warm ramp plus black and white. Amiga colours are 12-bit, so each ramp step is one sixteenth per channel. On the ST the palette is 512 colours with 16 on screen, so ramps are shorter and coarser.",
+      "typography": "Custom-drawn capitals only: wide letterforms with flat tops to give room for the horizon band, light from the upper left, highlights as one-pixel white lines along top edges, sparing checkerboard dither where two bands meet.",
+      "motion": "Static as an image. An optional glint can travel across the letters.",
+      "references": [
+        {
+          "what": "Red Sector Megademo title (1989): violet top, zigzag horizon, orange-red base, vertical second word",
+          "url": "https://www.pouet.net/prod.php?which=3119"
+        },
+        {
+          "what": "Kefrens Megademo 8 menu logo (1990): blue to white to grey banded chrome",
+          "url": "https://www.pouet.net/prod.php?which=5088"
+        },
+        {
+          "what": "Enigma by Phenomena on Demozoo (30 March 1991): Uno credited for the red Enigma logo, blue logo and charsets; Imbecille for a logo; Terminator for charsets",
+          "url": "https://demozoo.org/productions/143/"
+        },
+        {
+          "what": "Enigma on Pouet: stills of the red slit logo and the violet chrome wordmark",
+          "url": "https://www.pouet.net/prod.php?which=394"
+        },
+        {
+          "what": "Amiga Graphics Archive: TRSi logo by J.O.E., used in TRSi's 'Time Zone' demo; lowres PAL, 32 colours, 19 used",
+          "url": "https://amiga.lychesis.net/sceners/JOE.html"
+        },
+        {
+          "what": "Damien Guard, 'The Art of Amiga Lettering' (December 2025): chrome, gradients, lens flares and extrusion within 16 or 32 colours; mostly game titles, with Fairlight, Scoopex, The Silents and Enigma as demo examples",
+          "url": "https://damieng.com/blog/2025/art-of-amiga-lettering/"
+        },
+        {
+          "what": "'Demoscene: The Logo Art' (Editions64K, 400 pages): logos and their makers across Amiga, Atari, C64, Amstrad, PC and consoles",
+          "url": "https://www.editions64k.fr/product/demoscene-the-logo-art/"
+        },
+        {
+          "what": "Fairfax interview (Hugi 35): names Uno first among favourite graphicians for his use of colour and light within Amiga limits",
+          "url": "https://hugi.scene.org/online/hugi35/hugi%2035%20-%20demoscene%20interviews%20magic%20fairfax.htm"
+        },
+        {
+          "what": "Amiga Graphics Archive page for Cougar: several pictures credited as based on album-cover art, evidence for the caveat about adapted sources",
+          "url": "https://amiga.lychesis.net/sceners/Cougar.html"
+        }
+      ],
+      "readme_translation": "Above the fold: a static SVG of the project name as a chrome pixel logo on black, 640-800 pixels wide, optionally with a one-line subtitle in small pixel capitals. It can stand alone or sit on top of any animated style in this family.",
+      "medium": "static-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Draw letters as pixel-grid rects (run-length merged) with shape-rendering: crispEdges at 2x or 3x. Fill through a clipPath with a linearGradient that uses paired hard stops for bands; add the zigzag horizon as a polyline clipped to the letters. Dither between bands with a 2x2 checkerboard pattern. Outline and shadow are offset copies of the letter shape. Sparkles are small 4-point polygons. An optional glint is a narrow skewed white rect animated across the clip. The SVG is simple; convincing letterforms are not, and a generated logo will look mechanical beside a hand-pixelled one.",
+      "wow": 4,
+      "caveats": "Do not copy any existing group logo, the Red Sector head, or an artist's specific letterforms; the chrome recipe is common property. Artist attributions are only those stated by Demozoo and the Amiga Graphics Archive; which logo Imbecille drew in Enigma is not specified. Scene graphics of the period were often adapted from album covers and commercial art, another reason to draw from scratch. The brief also asked about 'graffiti' logos and other named logo artists; I could not source that school and have not described it.",
+      "family": "c64",
+      "number": 1,
+      "slug": "01-c64-12",
+      "book": "closed",
+      "firstUsed": {
+        "collection": "medialog-logos-02",
+        "slug": "17-c64-12",
+        "name": "Chrome keepsake"
+      }
+    },
+    {
+      "id": "vap-05",
+      "name": "Synthwave / outrun: sunset, laser grid, chrome logo",
+      "era": "Music scene from the mid-to-late 2000s in France (College, Kavinsky); breakthrough with the film Drive (2011) and Kavinsky's album OutRun (22 February 2013); name from Sega's 1986 arcade game Out Run (Yu Suzuki).",
+      "what_it_is": "The sincere cousin of vaporwave: an idealised 1980s of sports cars, neon and sunsets. Wikipedia ties 'outrun' to VHS tracking artefacts, magenta neon and gridlines; Know Your Meme's icon for it is a neon pink grid landscape with a sunset between mountains. It is the single most recognisable retro header there is, and also the most overused.",
+      "visual_signature": [
+        "A magenta wireframe floor grid (about #fc14fc in Wikipedia's illustration) receding to a horizon at roughly 55-60 percent of the height, flat or gently undulating",
+        "A large sun disc centred on the horizon, orange to yellow (about #ed9d16 to #ecba16), cut by 5-7 horizontal slits that get thicker toward the base",
+        "Dark desaturated purple sky (about #40324d) or purple-to-navy gradient with a few stars; low-poly or wireframe mountain silhouettes either side of the sun",
+        "Chrome logo: heavy italic sans capitals filled with a two-band gradient (light sky blue to white above a hard dark horizon line at mid-height, then brown-orange to yellow below), a thin bright outline and a four-point star glint on one corner",
+        "A second word in loose brush script across the chrome word at a slight upward angle, in neon pink or mint green (mint, about #12ed83, in Wikipedia's illustration)",
+        "Palm tree silhouettes framing the sides; a soft glow behind every line"
+      ],
+      "palette": "SynthWave '84 editor theme (Robb Owen): background #262335, pink #ff7edb, cyan #36f9f6, yellow #fede5d, orange #ff8b39, green #72f1b8, red #fe4450. Sampled from Wikipedia's synthwave illustration: sky #40324d, grid #fc14fc, sun #ed9d16 to #ecba16, script #12ed83. Gridfiti 'Outrun' swatches: #362FBB, #712275, #F97698, #FFB845.",
+      "typography": "Two-layer logo: heavy italic geometric sans in chrome plus a loose brush script in neon. Small text in a wide, tracked-out sans. 1980s film-title and toy-packaging lettering is the model.",
+      "motion": "Grid lines flow toward the viewer at constant ground speed; sun slits slide downward and wrap; a highlight sweeps across the chrome logo every few seconds; stars twinkle; the script word flickers on once at load.",
+      "references": [
+        {
+          "what": "Synthwave: origins, outrun as VHS artefacts, magenta neon and gridlines, the Out Run game as namesake; its infobox illustration (which I viewed) shows the striped sun, magenta wireframe and script lettering",
+          "url": "https://en.wikipedia.org/wiki/Synthwave"
+        },
+        {
+          "what": "Know Your Meme: Outrun as an aesthetic, key works (Drive, Hotline Miami, Far Cry 3: Blood Dragon, Kung Fury), Kavinsky's OutRun dated 22 February 2013",
+          "url": "https://knowyourmeme.com/memes/cultures/outrun"
+        },
+        {
+          "what": "SynthWave '84 theme file: palette hex values",
+          "url": "https://raw.githubusercontent.com/robb0wen/synthwave-vscode/master/themes/synthwave-color-theme.json"
+        },
+        {
+          "what": "SynthWave '84 README: credits the bands FM-84, Timecop 1983 and The Midnight and the artwork of James White as inspiration",
+          "url": "https://raw.githubusercontent.com/robb0wen/synthwave-vscode/master/README.md"
+        },
+        {
+          "what": "Signalnoise (James White): illustrator whose 1980s-homage posters are a touchstone for the look",
+          "url": "https://signalnoise.com/info"
+        },
+        {
+          "what": "Out Run (Sega, 1986): the namesake; Ferrari Testarossa convertible, palms and coastal scenery",
+          "url": "https://en.wikipedia.org/wiki/Out_Run"
+        }
+      ],
+      "readme_translation": "One wide animated SVG (about 880x320). Above the fold: sky, striped sun, moving grid, and the project name as the chrome logo with the tagline in neon script across it. Stats sit as a thin tracked-out line on the horizon. Everything else is Markdown below.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "All vector. Sun: a circle with a linearGradient under a mask of rects (the slits) that translate down in a loop. Grid: a static fan of lines to the vanishing point plus 8-10 horizontal lines whose y values follow perspective spacing; generate keyframes in the tool so the motion accelerates toward the viewer and loops seamlessly. Chrome: a linearGradient with a hard stop at mid-height plus a stroke; the glint is a narrow white skewed rect clipped to the lettering and translated across. Glow: feGaussianBlur merged under the strokes, with the filter region kept tight. The logo must be outlined to paths or use an embedded font subset. Easily under 40 KB.",
+      "wow": 4,
+      "caveats": "It is the biggest cliche in the family and common on GitHub profile pages, so on its own it reads as a template; I lowered its score from 5 for that reason. Avoid the Out Run logo and sprite car, a Testarossa likeness, and Kavinsky or Drive title lettering. The grid, striped sun and chrome gradient are generic and free. Differentiate by replacing the sun or the horizon with something from the project's subject. The chrome-gradient recipe is the common construction as I know it; I could not tie it to a cited source. Neon pink on dark purple is fine for display sizes only. Not vaporwave: keep it a separate option.",
+      "family": "vap",
+      "number": 2,
+      "slug": "02-vap-05",
+      "book": "open",
+      "firstUsed": {
+        "collection": "medialog-logos-03",
+        "slug": "01-vap-05",
+        "name": "The next chapter"
+      }
+    },
+    {
+      "id": "pc-13",
+      "name": "Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs",
+      "era": "Effect vocabulary from early-90s demos; in PC cracktros 1998-2010 (Razor #12 beta on DOS; Titan with Backlash, FANAiON, Electric Druggies/Skid Row, Class, Hoodlum and Razor on Windows)",
+      "what_it_is": "The family of effects where one geometric object rotates in the middle of the screen while the text does the talking. Wikipedia's demo-effect article lists them under vector graphics and describes glenz as partly see-through models with a diamond-like look. Sceners are openly sentimental about it: a Pouet commenter on a 2005 Hoodlum trainer asks why contemporary crack intros have no glenz. Metaballs, submitted separately, are folded in here as the 'liquid' member of the same family.",
+      "visual_signature": [
+        "Wireframe: a solid drawn as thin single-colour lines, rotating faintly behind huge white block capitals zooming past on a cyan field (Razor #12 beta), or in front of concentric blue circles zooming inward with ASCII text scrolling up (Titan and Backlash, 2005)",
+        "Glenz: small translucent polyhedra in rows, tinted in rainbow order (Razor Settlers 7), or pink-and-purple crystals drifting over a purple checker tunnel with a ribbon logo (Electric Druggies and Skid Row, Gene Troopers)",
+        "Vector balls and dot lettering: shaded dots arranged into shapes or into the group name (FANAiON and Titan trainer; commenters credit a dot effect and 'vectorballs')",
+        "Dot scroller: a band of text made of points, wrapped around a rotating 3D shape that morphs (Class 'orcus' installer)",
+        "Metaballs: three z-shaded blobs fusing and separating under a chrome logo (Hoodlum and Titan, Stronghold 2), or balls morphing up out of a checkerboard (Hoodlum cracktro #1)",
+        "Flat blobs: soft olive-gold discs drifting behind a khaki logo and white text-writer lines (SAC Blizzard cracktro, 1999; a commenter guesses 'fake 2d metaballs')",
+        "Background kept plain so the object reads: flat colour, slow gradient or starfield"
+      ],
+      "palette": "Wireframe: one line colour on a flat field (white on cyan, cyan on black). Glenz: white plus one tint at about 50 percent opacity, brighter where faces overlap. Vector balls: one or two ball colours with a white highlight. Metaballs: one saturated colour with depth shading.",
+      "typography": "Not font-led: text is whatever the host cracktro uses. Razor #12 beta uses huge white block capitals; the Backlash cracktro uses ASCII text.",
+      "motion": "Continuous rotation on two or three axes at different speeds; objects bounce or drift on a sine path; dot objects morph between shapes; glenz faces change tint as they turn; blobs orbit, merge and pinch apart.",
+      "references": [
+        {
+          "what": "Wikipedia, Demo effect: vector graphics list including glenz ('partially see-through models with a diamond-like look'); chunky-pixel list including metaballs and bump mapping",
+          "url": "https://en.wikipedia.org/wiki/Demo_effect"
+        },
+        {
+          "what": "Razor Cracktro #12 beta (DOS, Mar 1998): wireframe object behind zooming text on cyan",
+          "url": "https://www.pouet.net/prod.php?which=633"
+        },
+        {
+          "what": "Razor 1911 Settlers 7 Cracktro (2010): rows of glenz shapes ('Love those glenzes')",
+          "url": "https://www.pouet.net/prod.php?which=54924"
+        },
+        {
+          "what": "Electric Druggies and Skid Row, Gene Troopers (May 2008): glenz cubes and checkerboard",
+          "url": "https://www.pouet.net/prod.php?which=50610"
+        },
+        {
+          "what": "Titan and Backlash cracktro (Oct 2005; code red, graphics bull, music SaxxonPike): zooming circles, rotating wireframe figure, ASCII text scrolling up",
+          "url": "https://www.pouet.net/prod.php?which=19229"
+        },
+        {
+          "what": "FANAiON and Titan Stronghold 2 +6 trainer (Apr 2005): dot effect and vector balls",
+          "url": "https://www.pouet.net/prod.php?which=16885"
+        },
+        {
+          "what": "Hoodlum and Titan, Stronghold 2 (Apr 2005): 'z-shaded metablobs'",
+          "url": "https://www.pouet.net/prod.php?which=16814"
+        },
+        {
+          "what": "Superior Art Creations, Blizzard Cracktro (DOS, Mar 1999): blobs behind a khaki logo",
+          "url": "https://www.pouet.net/prod.php?which=63094"
+        }
+      ],
+      "readme_translation": "The centrepiece of a minimal header: one rotating wireframe or glenz solid (or a trio of metaballs) at the left or centre, project name and tagline set beside it in a pixel or mono face, on a flat field. It also drops into other styles here: a glenz object beside the trainer menu, or in the viewport of the installer.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "The generator does the 3D offline: rotate the vertex list for 40-60 frames and emit SMIL animate elements with a values list for each face's points (the researcher confirmed polygon-points animation in a Chromium <img>) or each edge's endpoints. Glenz: faces at fill-opacity 0.5 in two tints, optionally mix-blend-mode screen so overlaps brighten; no depth sorting needed. Wireframe: lines only, a few KB. Vector balls and dots: circles with animated cx, cy and r; SVG cannot re-sort by depth mid-loop, so keep dots identical and additive, or choose a motion where order never flips. Metaballs: circles moved by CSS keyframes inside a group filtered with feGaussianBlur then an feColorMatrix alpha threshold (the 'gooey' trick, tested by the researcher); the filter re-renders every frame, so keep its region small. CSS rotateY on SVG groups gives no usable perspective: do not rely on CSS 3D. An icosahedron glenz at 48 frames is about 20-40 KB.",
+      "wow": 4,
+      "caveats": "These effects are generic and free to use. Do not lift an object model that doubles as a group's mascot, or the surrounding logos. Removed as unverified: a jelly-cubes cracktro and a dots-on-sine-curves 10k intro that the submitted research cited without links, and the often-repeated claim that Second Reality is the PC reference for glenz (Wikipedia's article on it names no glenz). The red balls in Deviance's 2006 cracktro are called bouncing spheres by commenters, not glenz. Keep rotation slow; flickering translucent faces are unpleasant at header size, and the goo filter can stutter on phones.",
+      "family": "pc",
+      "number": 3,
+      "slug": "03-pc-13",
+      "book": "open",
+      "firstUsed": {
+        "collection": "medialog-logos-04",
+        "slug": "04-pc-13",
+        "name": "Glass book"
+      }
+    },
+    {
+      "id": "mach-02",
+      "name": "Amiga Kickstart 1.x: Guru Meditation banner, with insert-disk hand and blue-and-orange Workbench",
+      "era": "1985 to 1990; Commodore Amiga with Kickstart and Workbench 1.1 to 1.3",
+      "what_it_is": "Three system screens Amiga owners know by heart: the white boot screen with a simple drawing of a hand holding a floppy, the four-colour blue-and-orange Workbench, and the Guru Meditation alert, a short black box across the top of the screen with red text and a flashing red frame. The name was an in-house joke about sitting still on a Joyboard balance controller. The alert is already a wide, short banner, which makes it a natural README header.",
+      "visual_signature": [
+        "Power-on colour steps: dark grey, light grey, then white when ready to boot (red, green, blue, yellow signal faults)",
+        "Insert-disk card: white screen, black one-pixel outlines, a periwinkle-blue 3.5-inch disk with a grey metal shutter held in a white outlined hand, label drawn upside down, small version text beside it",
+        "Workbench 1.x: saturated blue desktop, white, near-black and one orange accent, chosen for contrast on poor TV sets",
+        "Guru alert: black rectangle across the top of the screen, red frame, two centred lines of red text",
+        "Second alert line ends in the error number: a hash sign, eight hex digits, a full stop, eight hex digits",
+        "640x200 (NTSC) or 640x256 (PAL) display, so pixels are tall and text looks stretched vertically",
+        "Flat fills and hard outlines only; on 2.x and 3.x recoverable alerts are yellow (green on very early 2.x)"
+      ],
+      "palette": "Guru: #FF0000 on #000000 (as used in the Wikimedia Commons reproduction; no Commodore document opened). Workbench 1.x: blue #0055AA, white #FFFFFF, near-black #000022, orange #FF8800 (from a modern tribute theme; consistent with the commonly quoted 12-bit values, not checked against Commodore documentation). Insert-disk card: white, black, a periwinkle blue near #7777CC and mid grey, estimated by eye from the Wikimedia image.",
+      "typography": "Topaz 8, the fixed-width ROM font. The 1.x design differs from the 2.0 design (a 2024 amiga-news report confirms the font changed between Kickstart versions; the usual description of 1.x as serif and 2.0 as sans was not confirmed from an opened page). Draw an original 8x8 face with slab-like capitals, or fall back to generic monospace.",
+      "motion": "Minimal version: a static alert whose red frame toggles on and off (the Commons reproduction uses two 0.6 s frames). Longer cut: background steps dark grey, light grey, white; an original insert-disk card appears; hard cut to a blue desktop with one window; then the alert drops in at the top and its frame flashes.",
+      "references": [
+        {
+          "what": "Wikipedia: Guru Meditation (box position, red on 1.x, yellow/green later, number format, Joyboard origin, power LED behaviour)",
+          "url": "https://en.wikipedia.org/wiki/Guru_Meditation"
+        },
+        {
+          "what": "Wikimedia Commons: two-frame animation of the 1.x alert (red frame on and off, 0.6 s each, #FF0000 on black)",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/Amiga_Guru_Meditation.gif"
+        },
+        {
+          "what": "Wikipedia: Kickstart (diagnostic colour sequence and fault colours; boot prompt images)",
+          "url": "https://en.wikipedia.org/wiki/Kickstart_(Amiga)"
+        },
+        {
+          "what": "Wikimedia Commons: Kickstart 1.3 insert-disk image (white ground, black outline, blue disk, grey shutter)",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/e/e8/Kickstart1_3.png"
+        },
+        {
+          "what": "Wikipedia: AmigaOS version history (hand on a white screen with a blue disk; blue/orange scheme; grey 3D look from 2.0)",
+          "url": "https://en.wikipedia.org/wiki/AmigaOS_version_history"
+        },
+        {
+          "what": "Wikipedia: Workbench (blue-and-orange scheme and reason, 640x200/640x256 modes)",
+          "url": "https://en.wikipedia.org/wiki/Workbench_(AmigaOS)"
+        },
+        {
+          "what": "Obsidian theme modelled on Workbench 1.3, listing #0055AA, #FFFFFF, #FF8800, #000022",
+          "url": "https://www.obsidianstats.com/themes/obsidian-theme-inspired-by-amiga-workbench-1.3"
+        },
+        {
+          "what": "amiga-news: Topaz differs between Kickstart versions (1.4 alpha already sans, not yet the 2.0 shape)",
+          "url": "https://amiga-news.de/en/news/AN-2024-10-00095-EN.html"
+        }
+      ],
+      "readme_translation": "Primary: the whole header is one alert box, about 640x100, black with a flashing red frame; line one is the project name and pitch in your own words, line two a version string shaped like the error number (release and short commit hash as two 8-digit hex fields). Optional longer cut adds the boot colour steps and an original insert-disk drawing with the install command under it. Text-only fallback: a box-drawing frame with the same two lines; it keeps the layout but loses the red and the flash.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "A rect with a red stroke toggled by a CSS keyframe with steps(1) at about 0.6 s per state; background colour steps by the same method; text as SVG text in monospace pinned with textLength, or as embedded pixel-glyph paths. The disk drawing is a few flat polygons. Tiny file. Include a prefers-reduced-motion rule that leaves the frame on.",
+      "wow": 4,
+      "caveats": "Do not trace the original hand-and-disk drawing; do not use the Amiga name, checkmark logo, Boing ball or Topaz bitmaps; do not reuse the original alert sentences. The box shape, red-on-black scheme, hex number format and flashing frame are widely parodied and generic. A crash screen as a header can read as 'this project is broken', so the copy must make the joke obvious. Keep the flash at or below one per second. Unconfirmed: the real machine's exact flash rate (the 0.6 s figure is from a reproduction), the documented Workbench palette values, and the Topaz 1.x design details.",
+      "family": "mach",
+      "number": 4,
+      "slug": "04-mach-02",
+      "book": "closed",
+      "firstUsed": {
+        "collection": "medialog-logos-03",
+        "slug": "17-mach-02",
+        "name": "Pass it on"
+      }
+    },
+    {
+      "id": "pc-09",
+      "name": "Pencil on paper: the cracktro that draws itself",
+      "era": "1997-1998, MS-DOS; Razor 1911 Cracktro #11 and 'Razor is back (Postal fix)' with SAC, code and graphics by Hetero, music by Argon (Demozoo)",
+      "what_it_is": "A cracktro with no logo bitmap and no scroller: a shaded pencil lies on blue paper at the end of a chalk-white line drawing and a handwritten message. Pouet commenters love #11 for the comic style and the tune (one calls it the greatest cracktro of all time) and point at its antecedents: one says the authors must have watched 'Paper', another calls it a Crystal rip-off 'in a nice way'.",
+      "visual_signature": [
+        "Mid-blue paper with a visible fine woven grain",
+        "White chalk-like line art, slightly rough and broken, as if dragged over the grain",
+        "A shaded pencil with a green barrel and a yellow band lying diagonally, its point touching the end of the newest line",
+        "A large cartoon figure drawn in outline only, no fills, with speed lines",
+        "A handwritten message in the same line: uneven baseline, mixed case, a dash, an underline",
+        "Nothing else on screen: no bars, no starfield, no frame"
+      ],
+      "palette": "Paper blue about #2b5fa8 with darker grain; line about #e8f0ff at partial opacity; pencil greens about #3cb043 and #1d6b2a with a yellow #ffd400 band. Re-skins that keep the idea: white chalk on blackboard green, graphite on cream.",
+      "typography": "Handwriting, not a font: single-stroke letters with wobble; the group name appears only as handwriting.",
+      "motion": "Inferred from the still and the concept: the pencil travels along each stroke and the line appears behind it; the finished drawing holds, then the page clears for the next one.",
+      "references": [
+        {
+          "what": "Quake 2 Cracktro (2) [Razor Cracktro #11] on Pouet: blue paper, outline cartoon, green pencil; comments on the comic style, 'Paper' and Crystal",
+          "url": "https://www.pouet.net/prod.php?which=634"
+        },
+        {
+          "what": "Same on Demozoo: Hetero code and graphics, music 'CocoPops V1.2 (Yum!)' by Argon; dated 20 Jan 1997 there, Feb 1998 on Pouet",
+          "url": "https://demozoo.org/productions/46191/"
+        },
+        {
+          "what": "'Razor is back (postal fix)' on Pouet, Sept 1997: handwritten message and running figure in the same style",
+          "url": "https://www.pouet.net/prod.php?which=79849"
+        },
+        {
+          "what": "Same on Demozoo: 24 Sep 1997, Hetero code and graphics, Argon music, spread with a fix for a game",
+          "url": "https://demozoo.org/productions/198211/"
+        }
+      ],
+      "readme_translation": "SVG banner about 800x260: textured blue paper, the project name handwritten by a travelling pencil, then a small original line drawing relevant to the project (a gear, a terminal, your own mascot), then one handwritten tagline. Holds a few seconds and loops. The real README text follows in Markdown.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "The drawing technique is easy and standard: each path gets stroke-dasharray equal to its length and a stroke-dashoffset keyframe, chained with animation-delay (the researcher tested this in a Chromium <img>). The pencil follows the same path with SMIL animateMotion timed to match. What pushes it to medium is the input: handwriting needs single-line glyph paths, so the generator must ship a stroke font (a Hershey-style single-stroke set) and compute path lengths, because outline fonts cannot be 'written'. Paper grain: a tiny repeating pattern, or one static feTurbulence at low opacity (static filters cost nothing per frame). Rough chalk edge: a static feDisplacementMap on the strokes. 10-30 KB.",
+      "wow": 4,
+      "caveats": "The original drawings are of a famous newspaper-strip character (a commenter names him); draw an original subject, never an existing cartoon character. Do not copy the message wording or the Razor name. Self-drawing line art on paper is free to use and predates this cracktro according to the comments. The two databases disagree on #11's date by a year. White on mid-blue only passes contrast at thick stroke widths: keep strokes 3px or more at display size, and repeat the project name as real text below the image.",
+      "family": "pc",
+      "number": 5,
+      "slug": "05-pc-09",
+      "book": "open",
+      "firstUsed": {
+        "collection": "medialog-logos-03",
+        "slug": "11-pc-09",
+        "name": "Leave a little note"
+      }
+    },
+    {
+      "id": "vap-10",
+      "name": "Frutiger Aero and Web 2.0 gloss",
+      "era": "About 2005-2013: Windows Vista (2006) and 7 (2009), Nintendo Wii, early smartphone icons; on the web the 'Web 2.0 look' of 2005-2008. Named in 2018 by Sofi Xian (formerly Sofia Lee) of the Consumer Aesthetics Research Institute; revived as an internet aesthetic from 2023.",
+      "what_it_is": "The optimistic glossy decade: glass, water, sky and grass wrapped around technology. CARI lists skeuomorphism, glossy and transparent materials, humanist sans type and nature photography (aurora, bokeh, macro grass). Its web branch is the Web 2.0 look that Jonathan Nicol catalogued in 2006: glass buttons, reflections, starburst badges, rounded corners, gradients, big type and a lot of green.",
+      "visual_signature": [
+        "Glass button: a rounded rectangle with a vertical gradient and a lighter band across the top 40-50 percent that ends in a hard edge",
+        "'Wet table' reflection: the logo or screenshot mirrored directly below itself and faded to nothing within about half its height",
+        "Starburst badge (a seal with 12-24 points) rotated a few degrees, carrying a word such as BETA or FREE",
+        "Translucent window frame with a blurred backdrop showing through and a soft outer glow (Aero glass)",
+        "Floating bubbles with a rim highlight, water droplets, lens flare, bokeh circles",
+        "Sky-blue to white gradient background with a curved strip of green along the bottom; blurred aurora ribbons",
+        "A large, friendly lowercase wordmark in a rounded sans with generous white space"
+      ],
+      "palette": "Named rather than specified in the sources: white, sky blue and leaf green with orange and pink accents; Nicol calls green the unofficial colour of Web 2.0. One fully specified glossy button from 24 ways (2008): #e9ede8 at the top, #8c1b0b at 40 percent, #ce401c at the bottom, border #882d13, white text with a 1px black shadow. 7.css demonstrates a custom glass tint of #805ba5.",
+      "typography": "Humanist sans: Segoe UI on Windows, Myriad on Apple material. Wikipedia notes the Frutiger typeface gave the style its name but was not actually used in the major interfaces associated with it. Web 2.0 logos: rounded sans, lowercase, often two-tone.",
+      "motion": "Bubbles rising and wobbling; a shine sweeping across a glass button or progress bar; aurora ribbons undulating slowly; a gentle pulse on the badge.",
+      "references": [
+        {
+          "what": "CARI entry: about 2005-2013, defining traits; attribution lists Froyo Tam and Sofi Xian",
+          "url": "https://cari.institute/aesthetics/frutiger-aero"
+        },
+        {
+          "what": "Wikipedia: named in 2018 by Sofi Xian, examples (Vista, 7, Wii), also called Web 2.0 Gloss, 2023 revival, the note about the typeface",
+          "url": "https://en.wikipedia.org/wiki/Frutiger_Aero"
+        },
+        {
+          "what": "Jonathan Nicol, 'The visual design of Web 2.0' (21 October 2006): a contemporary catalogue of the look",
+          "url": "https://jonathannicol.com/blog/2006/10/21/the-visual-design-of-web-20/"
+        },
+        {
+          "what": "24 ways, 'Shiny Happy Buttons' (18 December 2008): how the glossy button gradient is built, with values",
+          "url": "https://24ways.org/2008/shiny-happy-buttons/"
+        },
+        {
+          "what": "7.css: a working reconstruction of Windows 7 Aero glass frames, buttons, progress bars and balloons",
+          "url": "https://khang-nd.github.io/7.css/"
+        }
+      ],
+      "readme_translation": "Animated SVG: sky gradient with a green curve along the bottom, a lowercase glossy wordmark with a faded reflection, a rotated starburst carrying the version, and a row of glass buttons for install, docs and so on (each button can be its own small SVG image wrapped in a Markdown link). Bubbles drift behind.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "The vector half is easy: gloss is two stacked gradients with a hard stop, the reflection is a flipped <use> under a gradient mask, the starburst is a generated polygon, bubbles are circles with radial gradients. The photographic half (aurora, grass macro, water, tropical fish) is what the style is remembered for and cannot be carried; blurred gradient ribbons via feGaussianBlur are a passable aurora and the rest has to be dropped. Glass blur works as a filter on a duplicated background region clipped to the window frame.",
+      "wow": 3,
+      "caveats": "Without the photos it can look like a 2007 startup template rather than a tribute; the starburst badge and the reflection are what sell it. Do not use Windows or Apple logos or wallpapers. The generic gloss technique is free. The usual rounded-face example for Web 2.0 logos (VAG Rounded) is not confirmed by any source I opened. Pale-on-pale contrast is a risk.",
+      "family": "vap",
+      "number": 6,
+      "slug": "06-vap-10",
+      "book": "closed",
+      "firstUsed": {
+        "collection": "medialog-logos-02",
+        "slug": "05-vap-10",
+        "name": "Blue sky diary"
+      }
+    },
+    {
+      "id": "c64-07",
+      "name": "Vertical copper bars ('Kefrens bars' / 'Alcatraz bars'): ribbons twisting down the screen",
+      "era": "1989-1991 on Amiga; seen on the Atari ST by 1991",
+      "what_it_is": "A one-trick Amiga effect: shaded vertical bars that sway left and right as they descend, leaving a woven ribbon pattern. It is made by showing a single line of video memory on every scanline and drawing a new bar into that line as the beam moves down. It carries Kefrens' name, but a Pouet commenter (hitchhikr) says it was invented by Metalwar of Alcatraz in 'We are first' in Megademo 3 (February 1989).",
+      "visual_signature": [
+        "Vertical bars: each a narrow column 8-16 pixels wide with a rounded shading ramp, dark edges and a bright centre",
+        "Each bar starts at its own scanline and runs to the bottom, so later bars overlap earlier ones and the top of the screen is emptier than the bottom",
+        "Bar positions follow a sine from one scanline to the next, giving S-curves and braided ribbons",
+        "Visible one-line steps along the curves, because a bar can only shift by whole pixels",
+        "Black background; bars in two or three hues",
+        "Usually paired with a very large scroller in front; in Alcatraz Megademo 3 the big letters are built from a grey stone-block texture",
+        "Atari ST version: yellow and blue stepped bars spinning over a red-to-black scanline gradient, with letters made of dots rotating in front (Pompey Pirates Menu 001 V2)"
+      ],
+      "palette": "Amiga 12-bit colours in ramps of 5-8 steps per bar, for example dark red to yellow to white and back, or deep blue to cyan to white. Commenters describe Razor 1911's 'Vertical Insanity' as a vertical copper rainbow.",
+      "typography": "None of its own; paired with a large block-capital scroller.",
+      "motion": "The whole ribbon pattern swings and twists continuously as the sine phases advance. Steady and hypnotic, not fast. Not watched; taken from the technique description and comments.",
+      "references": [
+        {
+          "what": "Alcatraz Megademo 3 (February 1989) on Pouet: hitchhikr calls it the first vertical 'copper' bars; another commenter lists a giant scroller with vertical bars among the parts",
+          "url": "https://www.pouet.net/prod.php?which=14533"
+        },
+        {
+          "what": "Razor 1911 'Vertical Insanity' (August 1990): comments on the vertical copper rainbow, and hitchhikr's attribution to Metalwar of Alcatraz",
+          "url": "https://www.pouet.net/prod.php?which=4286"
+        },
+        {
+          "what": "Sol's graphics tutorial chapter on the effect: one line of framebuffer repeated down the screen and changed as the display is drawn; the author says he does not know the exact history",
+          "url": "https://solhsa.com/gp2/ch11.html"
+        },
+        {
+          "what": "Wikipedia's demo effect article, which lists Kefrens bars as vertical raster bars",
+          "url": "https://en.wikipedia.org/wiki/Demo_effect"
+        },
+        {
+          "what": "Pompey Pirates Menu 001 V2 (Atari ST, November 1991): the spinning vertical bars behind a game menu; a commenter compares them to the Cuddly Demos reset screen",
+          "url": "https://www.pouet.net/prod.php?which=14508"
+        }
+      ],
+      "readme_translation": "Above the fold: an animated SVG banner, wide and short (for example 800x200), with the ribbon filling the background and the project name in large block capitals in front on a dark plate so it stays readable. All information text stays outside the effect.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Reproduce the real mechanism. For each of 60-100 scanline rows k, draw one rect that starts at row k and runs to the bottom, filled with a shared horizontal shading gradient, and animate its X with translateX (alternate, cubic-bezier(0.37,0,0.63,1)) using a negative delay proportional to k. Later rects paint over earlier ones, which gives the correct overlap for free. Nest a second group with a slower animation for the sum of two sines. About 100 animated elements and two gradients is a few KB.",
+      "wow": 4,
+      "caveats": "The effect is a generic technique; do not attach the Kefrens, Alcatraz or Razor 1911 names to it as branding. The origin claim rests on one commenter repeated on two Pouet pages and should be presented as that. Continuous swaying across the full width can be uncomfortable: add a prefers-reduced-motion rule that freezes the ribbon.",
+      "family": "c64",
+      "number": 7,
+      "slug": "07-c64-07",
+      "book": "shelf",
+      "firstUsed": {
+        "collection": "medialog-logos-03",
+        "slug": "13-c64-07",
+        "name": "Keep your place"
+      }
+    },
+    {
+      "id": "idle-06",
+      "name": "3D Pipes: glossy coloured tubes growing through black space",
+      "era": "1994-2006: Windows NT 3.5 (1994), then Windows 95 through XP; removed in Windows Vista",
+      "what_it_is": "One of four OpenGL savers (with 3D Text, 3D Maze and 3D Flying Objects) written by the Windows OpenGL team for an internal contest meant to show off the new 3D API in NT 3.5; a marketing colleague saw them and had all four shipped before the vote finished. Pipes grow segment by segment, turning at right angles, until the screen is full, then it clears and starts again. Raymond Chen quotes Gizmodo calling it the best screensaver of all time.",
+      "visual_signature": [
+        "Round tubes in a few saturated colours on pure black, lit so each has a bright highlight stripe",
+        "Pipes run only along three axes and turn at right angles on an invisible 3D grid",
+        "Joints at the turns: ball joints (a sphere slightly fatter than the pipe), elbow joints, or a mix; from NT 4.0 the mix was one third balls and two thirds elbows",
+        "Several pipes grow at once and pass in front of and behind one another",
+        "When space fills, the picture is wiped and a new set begins (the 1j01 remake implements this as a dissolve)",
+        "Easter egg: in mixed-joint mode each joint had a 1 in 1000 chance of being a Utah teapot; removed in Windows XP",
+        "A 'flex' pipe style also existed, which used teapots in place of end caps at dead ends"
+      ],
+      "palette": "Black background; pipe colours are strong primaries and secondaries (red, green, blue, yellow, cyan, magenta) with a white specular highlight. The sources I opened do not give the original's colour list; these are the prototype's choices.",
+      "typography": "None. 3D Text, its sibling saver, is the natural title carrier: the project name as thick extruded capitals. In SVG that is a wordmark with six to eight offset copies behind it for depth.",
+      "motion": "Each pipe extends one grid segment every 0.2 s or so; a joint pops in at each turn; after 35 s of growth everything fades or dissolves and the loop restarts. Prototype loop 40 s.",
+      "references": [
+        {
+          "what": "Raymond Chen, The Old New Thing, 11 June 2024: the OpenGL team's contest, the four savers, marketing shipping all of them in NT 3.5",
+          "url": "https://devblogs.microsoft.com/oldnewthing/20240611-00/?p=109881"
+        },
+        {
+          "what": "Raymond Chen, 24 December 2024: the teapot easter egg, the 1 in 1000 odds in mixed-joint mode, ball and elbow ratios before and after NT 4.0, flex pipes",
+          "url": "https://devblogs.microsoft.com/oldnewthing/20241224-00/?p=110675"
+        },
+        {
+          "what": "The Register's write-up of the origin story, noting removal by Vista",
+          "url": "https://www.theregister.com/2024/06/13/windows_3d_pipes_screensaver/"
+        },
+        {
+          "what": "1j01's web remake (Three.js, MIT): notes that the original source shipped in the NT 4.0 SDK, implements the dissolve and the teapot and candy-cane easter eggs",
+          "url": "https://github.com/1j01/pipes"
+        },
+        {
+          "what": "XScreenSaver 'Pipes' by Marcelo Vianna and Jamie Zawinski, 1997: 'A growing plumbing system, with bolts and valves', with curved, ball-joint and bolted styles",
+          "url": "https://raw.githubusercontent.com/Zygo/xscreensaver/master/hacks/config/pipes.xml"
+        },
+        {
+          "what": "Wikipedia: the teapot appears in Pipes only in versions before Windows XP",
+          "url": "https://en.wikipedia.org/wiki/Utah_teapot"
+        }
+      ],
+      "readme_translation": "Black SVG header in which pipes grow around a reserved rectangle holding the project name (the generator simply marks those grid cells as occupied). Tagline in small text under the name. Optional: one pipe colour per top-level module of the project, with a legend. There is no text-only form.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Prototyped and it reads as 3D Pipes at a glance. A generator walks six pipes over a 3D lattice, projects each segment with an oblique projection, and emits per segment a wide coloured stroke plus a thin offset white stroke at 45 percent opacity as the highlight, both with round caps; turns get a filled <circle> as a ball joint. Elements are written in back-to-front depth order so nearer pipes cover farther ones, while growth order is set separately by animation-delay. Draw-in is stroke-dashoffset from 1 to 0 with pathLength=\"1\"; one shared @keyframes block ends in a fade at 94 to 98 percent. 156 segments gave 312 paths and about 90 circles, 49 KB, 40 s loop, rendered correctly in headless Chromium through <img>. Limits: lighting is a painted stripe, not shading; elbow joints need an arc per turn (doable, adds size); a segment cannot pass both in front of one pipe and behind another.",
+      "wow": 5,
+      "caveats": "Do not use the Windows name or flag, and do not copy Microsoft's pipe textures. Pipes on a grid are a generic idea, as XScreenSaver's independent version shows. A teapot joint is a nice homage if you draw your own silhouette. Tested in Chromium only. 300+ animated elements is fine on desktop but should be checked on phones; offer a reduced-motion rule that shows the finished pipes.",
+      "family": "idle",
+      "number": 8,
+      "slug": "08-idle-06",
+      "book": "open",
+      "firstUsed": {
+        "collection": "medialog-logos-04",
+        "slug": "08-idle-06",
+        "name": "Growing pipes"
+      }
+    },
+    {
+      "id": "vap-11",
+      "name": "Classic Mac OS: 1-bit System 6/7 desktop",
+      "era": "1984-1997 (System 1 to System 7; System 7 released 13 May 1991, final version 7.6.1 in April 1997). Revived by Poolsuite FM (Marty Bell; founded 2014, relaunched in 2019 with a classic-Mac-styled desktop) and by system.css.",
+      "what_it_is": "Susan Kare's black-and-white Macintosh: pinstriped title bars, Chicago type, 32x32 icons and dithered greys. It is the calm, elegant counterpart to Windows 95, and the look Poolsuite wrapped around summer music.",
+      "visual_signature": [
+        "Window with a black outline and a hard black drop shadow offset to the bottom-right (2px in system.css), no blur",
+        "Title bar filled with evenly spaced thin horizontal black lines, broken by a white gap holding the centred title, with a small square close box at the left",
+        "Desktop in mid grey made from a 1px black-and-white checker dither",
+        "White menu bar across the full width at the top with bold menu titles; the selected item inverted to white on black",
+        "Rounded-rectangle buttons with a black outline; the default button has a second, thicker outline around it",
+        "Alert box with a double-outline frame and an icon at the left",
+        "32x32 1-bit icons in the Kare manner: a compact computer, a trash can, a document with a folded corner, a wristwatch cursor",
+        "Scroll bar with a dithered track, arrow boxes at the ends and a plain white thumb"
+      ],
+      "palette": "Black #000000 and white #ffffff; every grey is a dither pattern. system.css adds #A5A5A5 and #B6B7B8 only for inactive and disabled states. System 7 introduced a colourised interface on colour machines (Wikipedia; not quantified).",
+      "typography": "Chicago 12pt for menus and titles, Geneva 9pt for body, Monaco for monospace, all originally by Susan Kare. system.css uses recreations of Chicago and Geneva credited to @blogmywiki.",
+      "motion": "Optional and sparse: a window zooming open as a few expanding outline rectangles, the watch cursor's hands ticking, a progress bar filling with a dither pattern, icons appearing one by one. It looks finished with no motion at all.",
+      "references": [
+        {
+          "what": "system.css: a CSS reconstruction of System 6 (title bars, buttons, dialogs, alert boxes, fonts)",
+          "url": "https://sakofchit.github.io/system.css/"
+        },
+        {
+          "what": "system.css source: two-colour variables, 2px hard shadow, striped title bar, checker dither built from gradients",
+          "url": "https://raw.githubusercontent.com/sakofchit/system.css/main/style.css"
+        },
+        {
+          "what": "Susan Kare: Chicago, Geneva and Monaco, the 32x32 icons including the Happy Mac, Clarus and the bomb, later the Windows 3.0 Solitaire deck",
+          "url": "https://en.wikipedia.org/wiki/Susan_Kare"
+        },
+        {
+          "what": "System 7: release date, colourised interface, longevity",
+          "url": "https://en.wikipedia.org/wiki/System_7"
+        },
+        {
+          "what": "Poolsuite (formerly Poolside FM): classic-Mac-styled desktop as a brand, from the 2019 relaunch",
+          "url": "https://en.wikipedia.org/wiki/Poolsuite"
+        }
+      ],
+      "readme_translation": "SVG of a small desktop: a menu bar whose menu titles are the README sections, one document window titled with the project name holding the description, and a row of desktop icons labelled with key facts. A text-only echo is possible too: a box-drawn window whose title bar is a run of horizontal-line characters either side of the name.",
+      "medium": "static-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Two colours, no gradients: rects, 1px lines and two <pattern> dithers (checker and stripes) with shape-rendering=crispEdges. Icons are 32x32 grids drawn as paths. It is safe in GitHub dark mode if the desktop sits inside its own frame. Type is the only issue: Chicago is proprietary, so set titles in a small original bitmap alphabet drawn as paths, or embed a subset of an open recreation whose licence you have checked. Under 20 KB.",
+      "wow": 4,
+      "caveats": "Do not use the Apple logo, the Happy Mac, Clarus the Dogcow, the Finder face or Kare's actual icon bitmaps; draw original icons in the same 1-bit manner. Do not ship Chicago. The pinstripe title bar, dithers and rounded buttons are generic. 1px detail vanishes if GitHub scales the image down, so design at the display width or at 2x. Poolsuite's pastel tint is my recollection; the article does not describe its colours. The imgur screenshot in the system.css README was blocked in my region, so the description rests on its documentation and stylesheet.",
+      "family": "vap",
+      "number": 9,
+      "slug": "09-vap-11",
+      "book": "open",
+      "firstUsed": {
+        "collection": "medialog-logos-04",
+        "slug": "05-vap-11",
+        "name": "System diary"
+      }
+    },
+    {
+      "id": "vap-17",
+      "name": "Memphis: squiggles, confetti and laminate",
+      "era": "Memphis Group founded by Ettore Sottsass in Milan on 6 December 1980; Sottsass left in 1985 and the group disbanded in 1987. Its graphics ran through pop culture from the mid 1980s to the mid 1990s and feed directly into vaporwave.",
+      "what_it_is": "Postmodern Italian furniture design that became the wallpaper of a decade: clashing flat colours, asymmetric geometry and busy surface patterns on cheap plastic laminate. Sottsass's Bacterio squiggle print and the 1981 Carlton bookcase are the emblems. People remember it as the look of late-80s television sets, school folders and arcade carpets, and Wikipedia lists Memphis shapes among vaporwave's ingredients.",
+      "visual_signature": [
+        "Scattered short squiggles, zigzags and confetti dashes at random angles over a flat ground, none touching",
+        "A dense field of small black worm-like marks on white or pastel (the manner of Sottsass's laminate print)",
+        "Primitive shapes overlapping off-grid: circles, quarter-circles, triangles, stepped stairs, thick striped bars",
+        "Black-and-white stripes or checks placed directly against saturated flat colour",
+        "Terrazzo: irregular angular chips of several colours on a pale ground",
+        "Hard offset drop shadows in solid black, 4-8px down and right; no gradients, no perspective"
+      ],
+      "palette": "Flat and clashing: primary red, yellow and blue with pink, teal, mint and black-and-white patterning. The sources describe the palette without hex values. A common '80s' swatch set from Gridfiti: #FF68A8, #64CFF7, #F7E752, #CA7CD8, #3968CB.",
+      "typography": "Bold geometric sans capitals with letters individually tilted or coloured differently; heavy black outlines and offset shadows. Hand-cut and playful, never refined.",
+      "motion": "Optional: shapes jiggle or rotate a few degrees on staggered loops; confetti drifts; stripes scroll inside their shapes; letters bounce in one by one. It works fully static.",
+      "references": [
+        {
+          "what": "Memphis Group: founding date, members, traits, influence on mid-80s to mid-90s pop culture, vaporwave and 'Corporate Memphis'",
+          "url": "https://en.wikipedia.org/wiki/Memphis_Group"
+        },
+        {
+          "what": "Ettore Sottsass: the Bacterio print and the Carlton bookcase (1981)",
+          "url": "https://en.wikipedia.org/wiki/Ettore_Sottsass"
+        },
+        {
+          "what": "Abet Laminati: Bacterio is still sold as a current laminate, which is why it must not be copied",
+          "url": "https://abetlaminati.com/collections/bacterio-ettore-sottsass"
+        },
+        {
+          "what": "CARI on Global Village Coffeehouse, the late-80s to mid-90s style that softened Memphis squiggles (useful for telling the two apart)",
+          "url": "https://cari.institute/aesthetics/global-village-coffeehouse"
+        }
+      ],
+      "readme_translation": "SVG banner with a pastel ground covered in an original squiggle-and-confetti pattern, a few large overlapping primitives, and the project name in chunky tilted capitals with black offset shadows. Pattern tiles can be reused as section dividers. It needs a computing element (a window frame, a cursor, a floppy outline) to tie it to the tool.",
+      "medium": "static-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Pure flat vector: one <pattern> tile of short stroked paths for the squiggle field, a handful of shapes with solid fills, striped fills through a second pattern. No filters or gradients, so it is small (under 20 KB) and renders identically everywhere. Lettering should be outlined. A generator can vary it per repo by seeding the scatter.",
+      "wow": 3,
+      "caveats": "Do not reproduce Bacterio or other named Memphis patterns or furniture designs: Bacterio is a current commercial product of Abet Laminati. Draw your own squiggle tile; the general vocabulary is free. On its own it reads as 1980s children's television rather than computing, which is off-theme for a scene-flavoured tool. It tips easily into the much-mocked Corporate Memphis illustration style; avoid people figures. Bacterio is usually dated 1978, before the group formed; I saw that date only in search results, not on a page I opened.",
+      "family": "vap",
+      "number": 10,
+      "slug": "10-vap-17",
+      "book": "closed",
+      "firstUsed": {
+        "collection": "medialog-logos-03",
+        "slug": "19-vap-17",
+        "name": "A little off-script"
+      }
+    }
+  ],
+  "selection_scope": "Repeats by request: favourite graphic styles from earlier MediaLog collections, redrawn around books, less busy, most without a tile or border. The 67 unused text-screen styles are excluded.",
+  "user_overrides": {
+    "brand": "#18223a",
+    "wordmark": "Consistent plain sans-serif, no scene lettering",
+    "art": "Original graphic symbols, no ASCII or text-screen styles, no animation; a book in every symbol; fewer details; most symbols stand free without a tile or border",
+    "size": [
+      203,
+      74
+    ]
+  }
+}

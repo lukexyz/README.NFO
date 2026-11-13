@@ -1,0 +1,470 @@
+{
+  "project": "MediaLog",
+  "collection": "Compact logos 01",
+  "seed": "2c7454c42fa3fb71a3ccec7c9d0c2440",
+  "count": 10,
+  "nativeSize": [
+    203,
+    74
+  ],
+  "sourceViewBox": [
+    0,
+    0,
+    812,
+    296
+  ],
+  "ascii": false,
+  "selection": "Fresh random draw from a predeclared graphic-first pool, excluding prior saved styles.",
+  "candidates": [
+    {
+      "number": 1,
+      "id": "vap-16",
+      "slug": "01-vap-16",
+      "name": "Signal saved",
+      "description": "A play button becomes a saved moment and a conversation. Cyan and pink signal offsets give the mark a clean, deliberate glitch.",
+      "choices": [
+        "One speech-tail mark joins experiencing and sharing",
+        "The timeline ends in a saved pink dot; glitch is confined to one small stripe"
+      ],
+      "animated": true,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/01-vap-16.svg",
+          "sha256": "ec27720c598303f192b6a75f49b258508320f07ace351a9520df054106f8e3e0"
+        },
+        {
+          "file": "assets/01-vap-16-still.svg",
+          "sha256": "0ad668109c063806b86f443c0c281368307bda76d4142542f7e2b8fd126c7de2"
+        },
+        {
+          "file": "assets/01-vap-16-light.png",
+          "sha256": "3c139e1322b9ea3cfe36ffbd9b20ed5f1fe08aceb61ce00d90ef7011c9b2a397"
+        },
+        {
+          "file": "assets/01-vap-16-dark.png",
+          "sha256": "23782a838ef674fe8356205c0da83490d78feb974d875214bad27f431e4a61e6"
+        },
+        {
+          "file": "src/01-vap-16.mjs",
+          "sha256": "96d2435bbe3d7a9f832e428c58010336987df590b18ea532d321f1df5b0a3ccf"
+        },
+        {
+          "file": "01-vap-16.md",
+          "sha256": "4ec87c732327b7c02841179fd0009780dac717e42ebcf7b1a0c158552dc9cf49"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "c64-02",
+      "slug": "02-c64-02",
+      "name": "Save-slot romance",
+      "description": "A chunky multicolour save-slot heart, with six little timeline moments riding a soft demo-scene wave.",
+      "choices": [
+        "The emblem is a save slot that resolves into a heart",
+        "Six dots stand for films, books, shows, games, albums and podcasts, with no tiny labels"
+      ],
+      "animated": true,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/02-c64-02.svg",
+          "sha256": "df92854f6bf8bfc7e7739f21b59bac9426f2bea3db7800436ac4b653c967826a"
+        },
+        {
+          "file": "assets/02-c64-02-still.svg",
+          "sha256": "af022aaff9c5c7427cb4c5ff96da1159d69fcb4c9414b2506918f6c769d6b6ca"
+        },
+        {
+          "file": "assets/02-c64-02-light.png",
+          "sha256": "7b97cea4507e57d36ad352b0804416d3685ee7857db29ae436d0259fc03df7f2"
+        },
+        {
+          "file": "assets/02-c64-02-dark.png",
+          "sha256": "7b97cea4507e57d36ad352b0804416d3685ee7857db29ae436d0259fc03df7f2"
+        },
+        {
+          "file": "src/02-c64-02.mjs",
+          "sha256": "cef807b028b731e911e737f95c826deccb063056ba113393da0fceb0f39ffeca"
+        },
+        {
+          "file": "02-c64-02.md",
+          "sha256": "171524947efe335f09e0c6f5988d970b2e417904feeb984afa280997670b5383"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "vap-01",
+      "slug": "03-vap-01",
+      "name": "Museum of you",
+      "description": "A marble heart on a tiny plinth: the things you love become your personal collection. Mint lettering and a pink checker plinth keep the vaporwave reference instantly readable.",
+      "choices": [
+        "An original heart sculpture replaces the historical bust",
+        "The checker plinth turns personal taste into a miniature collection"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/03-vap-01.svg",
+          "sha256": "21a22f7cdd97e676b925531aac8a99a403abc27c3ae31c32e77e6d90fd217f80"
+        },
+        {
+          "file": "assets/03-vap-01-still.svg",
+          "sha256": "8fa684f8f729b092bdead31a5c32c577b6d45dc8a1899966f56041eedce0bd9c"
+        },
+        {
+          "file": "assets/03-vap-01-light.png",
+          "sha256": "80902d599d3c320071b9ff65692ea23caebfc3cb57d55747ebf16472fddabae9"
+        },
+        {
+          "file": "assets/03-vap-01-dark.png",
+          "sha256": "80902d599d3c320071b9ff65692ea23caebfc3cb57d55747ebf16472fddabae9"
+        },
+        {
+          "file": "src/03-vap-01.mjs",
+          "sha256": "a8a7d4d15df1ff31111b14494321dce221a15db9ee5a34067ef798a823b8b2ed"
+        },
+        {
+          "file": "03-vap-01.md",
+          "sha256": "221b2bb129860da57dbc873d2477c82827c2acd973be95fb2f004eb90c83f66d"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "c64-10",
+      "slug": "04-c64-10",
+      "name": "Good company",
+      "description": "Two friends inside a record-like circle, paired with a gently curved wordmark and a stepped stripe. Bold shapes, warm colours, no fine print.",
+      "choices": [
+        "The circle combines a record groove with a shared social space",
+        "Two silhouettes and the continuous stepped baseline turn the diary into something you share"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/04-c64-10.svg",
+          "sha256": "cbd4bbf0f216a4987c221fa565b11d5347e5d427c843d075f238fd01ac74a8cd"
+        },
+        {
+          "file": "assets/04-c64-10-still.svg",
+          "sha256": "c1248dea9034f3b6ca6956661aeb5bbaacf11beb4e0ae0c7145c31053dc482df"
+        },
+        {
+          "file": "assets/04-c64-10-light.png",
+          "sha256": "a1811af1e21bc71cc3b6e0f0a2c855b62815886ef82c4f9b4198393687e88fef"
+        },
+        {
+          "file": "assets/04-c64-10-dark.png",
+          "sha256": "7038a6579a94d385d2d6d8d6450f2b77fa89b7824f64673a95f0956cb2a152e1"
+        },
+        {
+          "file": "src/04-c64-10.mjs",
+          "sha256": "a11b7d68e881a837af1752ac45b8b9845abc93201fe8617736d7fc6ab0031df1"
+        },
+        {
+          "file": "04-c64-10.md",
+          "sha256": "4fa4d93869dfbbe9121fcc9e28b33a5fff237ea03c3689ac571563c6c6dcd7e9"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "mach-10",
+      "slug": "05-mach-10",
+      "name": "Orbit trace",
+      "description": "A glowing play arrow sits inside an orbital timeline. One clean phosphor line carries the brand.",
+      "choices": [
+        "Two bright points on the orbit read as shared moments",
+        "The triangular trace suggests watching, while the orbit supplies the timeline"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/05-mach-10.svg",
+          "sha256": "a166ecea786b7a14968d93fe97cacb7bd4900b26230d70afbfdeadd1c0ccb937"
+        },
+        {
+          "file": "assets/05-mach-10-still.svg",
+          "sha256": "218625c7a3d3e956bc4e6a68b8c988f760760ca731c8f319b49f514bd1ceb492"
+        },
+        {
+          "file": "assets/05-mach-10-light.png",
+          "sha256": "aaae58972a3613a6386701f52fcf6014564fd4cc85fbacff57c142467afa992e"
+        },
+        {
+          "file": "assets/05-mach-10-dark.png",
+          "sha256": "aaae58972a3613a6386701f52fcf6014564fd4cc85fbacff57c142467afa992e"
+        },
+        {
+          "file": "src/05-mach-10.mjs",
+          "sha256": "2dbd89a7f3ff145781e3a0b29b51c72676e3a95ba051fc4b58961e80f949e3c4"
+        },
+        {
+          "file": "05-mach-10.md",
+          "sha256": "5e52345e1eae33e031b4ba5c2d46940f983dab92ed7029253d3a1702241dd8ef"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "pc-04",
+      "slug": "06-pc-04",
+      "name": "Memory vault",
+      "description": "A chrome ML medallion and a heavy metal wordmark, crossed by pink VGA bars. Like a collector’s badge for your own cultural history.",
+      "choices": [
+        "An interlocked ML makes the icon work as a standalone avatar",
+        "The two gradient rails join emblem and title like tracks through a collection"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/06-pc-04.svg",
+          "sha256": "9e27d4360f5f9a75d80f4187591d205723d8174bd1a8b21def960c4ba1dc0079"
+        },
+        {
+          "file": "assets/06-pc-04-still.svg",
+          "sha256": "fb9e0ee60d1d82616eb8f5c69e77012ee2fbd58d856ffa98e20a234c717eb654"
+        },
+        {
+          "file": "assets/06-pc-04-light.png",
+          "sha256": "b782b1dc3a5515215aea6c6b0bb7d3045f7f8f35edeb9315fcc4368f3d0af04d"
+        },
+        {
+          "file": "assets/06-pc-04-dark.png",
+          "sha256": "b782b1dc3a5515215aea6c6b0bb7d3045f7f8f35edeb9315fcc4368f3d0af04d"
+        },
+        {
+          "file": "src/06-pc-04.mjs",
+          "sha256": "8e04ff58f00d440ebcf4fbdb60055be744c373397b086fc75d78ae121d63848b"
+        },
+        {
+          "file": "06-pc-04.md",
+          "sha256": "d856e0c31fe531bec3d69579ed76d2333c3baae891b9fb8a5492302a15354c8a"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "ansi-03",
+      "slug": "07-ansi-03",
+      "name": "Little culture goblin",
+      "description": "An original pocket-sized mascot: a happy little creature made from a saved story. Thick comic outlines, cream lettering and a purple swoosh keep it clear at tiny sizes.",
+      "choices": [
+        "The mascot is a folded saved-story shape with a face, not a generic animal",
+        "Its raised hand turns the logo into a friendly invitation to share a favourite"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/07-ansi-03.svg",
+          "sha256": "4a6c45c21e6f9ccd2e0ab0330a0070f47a0fe0a65670fe9c3d6707e10f957fdc"
+        },
+        {
+          "file": "assets/07-ansi-03-still.svg",
+          "sha256": "d3bf002f9516be83f68427953d0701f51a01126bc510135cba5a2cb3dac65120"
+        },
+        {
+          "file": "assets/07-ansi-03-light.png",
+          "sha256": "00d38748f27a416f7eb2fefb7f289f0cf07322fef455e447f1601e08c97f8711"
+        },
+        {
+          "file": "assets/07-ansi-03-dark.png",
+          "sha256": "00d38748f27a416f7eb2fefb7f289f0cf07322fef455e447f1601e08c97f8711"
+        },
+        {
+          "file": "src/07-ansi-03.mjs",
+          "sha256": "15b22bce58fe74a6d422b38a4f6c34f7c427585946a0aea00770050736ffc6b7"
+        },
+        {
+          "file": "07-ansi-03.md",
+          "sha256": "9d8bc771a28e9234738db5ea4b1bbd26cafd94275bd83bb10cc3c2289c13a3a1"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "idle-03",
+      "slug": "08-idle-03",
+      "name": "Still feeling it",
+      "description": "A heart glows inside a feedback flame: the film, book or album that stays with you. A short cooling waveform becomes the underline.",
+      "choices": [
+        "The flame’s core is a heart, making the effect about feeling rather than speed",
+        "The fading waveform is the echo of an experience that remains on your timeline"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/08-idle-03.svg",
+          "sha256": "157aa00ffb00283b8897138a328886f7dd9c7597a222c88ed6f3e17df764fbca"
+        },
+        {
+          "file": "assets/08-idle-03-still.svg",
+          "sha256": "27ec60ebc00c168297ed80b95a439f89c646a482a5ce460ce3e420fe991eae09"
+        },
+        {
+          "file": "assets/08-idle-03-light.png",
+          "sha256": "02317802d3d877332dc7d480dfabc3d596dfee3c17227c67d5dfbc781ac344e5"
+        },
+        {
+          "file": "assets/08-idle-03-dark.png",
+          "sha256": "665c7485237263bece28c551cb128ce571e758029c0802f9e93b851f601c9333"
+        },
+        {
+          "file": "src/08-idle-03.mjs",
+          "sha256": "b995e8ad8433b654c7aed4ae750edd220ad50b6e7bc624b37c8e79ea24179cd1"
+        },
+        {
+          "file": "08-idle-03.md",
+          "sha256": "3d963093f2afac5cccf41f5af97f244317c88cf7c1711c65768793e73c263415"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "idle-09",
+      "slug": "09-idle-09",
+      "name": "One more watch",
+      "description": "An oversized oblique wordmark above a compressed timeline-disc. A restrained screensaver ricochet changes colour while the name stays easy to read.",
+      "choices": [
+        "The disc carries three saved moments instead of a secondary tiny caption",
+        "Motion is kept within a few screen pixels so the mark remains a usable navigation logo"
+      ],
+      "animated": true,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/09-idle-09.svg",
+          "sha256": "c413787a680c73a7e405a1fb51911b3138b768259e88faf9f10e8838ee5da211"
+        },
+        {
+          "file": "assets/09-idle-09-still.svg",
+          "sha256": "5566ddbb06667cca334abe9db71bfa41a1ebceb3fdb2acf84eac296008b9eb5d"
+        },
+        {
+          "file": "assets/09-idle-09-light.png",
+          "sha256": "b66b6d1175bfdf48541b87a603164c436cc30d91b04529d40cbb0a4b1e1d57e5"
+        },
+        {
+          "file": "assets/09-idle-09-dark.png",
+          "sha256": "b66b6d1175bfdf48541b87a603164c436cc30d91b04529d40cbb0a4b1e1d57e5"
+        },
+        {
+          "file": "src/09-idle-09.mjs",
+          "sha256": "b0076339ad0fdadd5f9367ae2c115ad93fc595801e565f9b79d28e9b644bbbf0"
+        },
+        {
+          "file": "09-idle-09.md",
+          "sha256": "92c479e8fece57709776b085c1585b9256dc48fb1904967a30e7faf33163d8f9"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "idle-04",
+      "slug": "10-idle-04",
+      "name": "Taste constellation",
+      "description": "Six coloured waveform loops share one centre: all your kinds of media, and the tastes that overlap with your friends. A gentle visualiser motion keeps the emblem alive.",
+      "choices": [
+        "Six loops represent the six media types named in the brief",
+        "The overlapping orbits describe shared taste, while one line connects the whole name"
+      ],
+      "animated": true,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/10-idle-04.svg",
+          "sha256": "8504e5e3df8fd173c2858e4c59cbd3550d7fcef3c6633bbc29411d5bce09eaf4"
+        },
+        {
+          "file": "assets/10-idle-04-still.svg",
+          "sha256": "1d0753cca652a381fab1c1aadfbbcbfbb929efbed51a2ee07acdc4e4aaf9136d"
+        },
+        {
+          "file": "assets/10-idle-04-light.png",
+          "sha256": "eadadaef1b61096d2458daf49017546b66764f53dedd6ed07a06b4562a18481d"
+        },
+        {
+          "file": "assets/10-idle-04-dark.png",
+          "sha256": "5aa7d1fb6a1141aac763b5511df2f5ea18ca8c6f557de6bf5fb029bc8e25870f"
+        },
+        {
+          "file": "src/10-idle-04.mjs",
+          "sha256": "8be81bce26c3382f7ade6f4ab90539f76964fb380637e75f546a579a3dacda88"
+        },
+        {
+          "file": "10-idle-04.md",
+          "sha256": "c636bd834058a5712b7ccb412abada565ea768809edebc99a75956549adc9cd1"
+        }
+      ]
+    }
+  ]
+}

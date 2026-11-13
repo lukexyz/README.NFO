@@ -1,0 +1,26 @@
+{
+  "id": "print-05",
+  "name": "Book swap",
+  "description": "A blue cloth hardback with a photocopied tick-box slip sticking out of the top as a bookmark: a marker-drawn header bar and two boxes ticked in red pen beside dotted lines, with a little photocopier grain.",
+  "choices": [
+    "The swap letter that travelled with every disk becomes the note tucked into a lent book: what you thought of it, in tick boxes",
+    "Photocopier black on warm white and red pen on the slip; the book is plain cloth with a stamped panel, and no words are typed"
+  ],
+  "book": "closed book",
+  "repeatOf": {
+    "style": "print-05",
+    "collection": "medialog-logos-05",
+    "slug": "10-print-05",
+    "name": "Review slip"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

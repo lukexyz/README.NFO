@@ -1,0 +1,12 @@
+{
+  "id": "pc-10",
+  "summary": "A timeline under the desktop",
+  "choices": [
+    "The crack reveals a continuous diary of watched, read, played and listened",
+    "Desktop icons are My log and Friends, with the core shared-diary pitch in the foreground dialog"
+  ],
+  "formats": [
+    "svg"
+  ],
+  "animated": false
+}

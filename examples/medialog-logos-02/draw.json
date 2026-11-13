@@ -1,0 +1,1497 @@
+{
+  "schema_version": 1,
+  "project": "MediaLog",
+  "created_at": "2026-10-10T12:55:49.631Z",
+  "catalogue_source": "https://github.com/lukexyz/README.NFO",
+  "catalogue_researched": "2026-09-30",
+  "seed": "002855db65fac2ce59f4cc9ee6104c64",
+  "method": "SHA-256 counter stream with rejection-sampled Fisher-Yates; saved draw is authoritative",
+  "pool": "images",
+  "eligible_count": 26,
+  "families": [],
+  "excluded_ids": [
+    "ansi-01",
+    "ansi-02",
+    "ansi-03",
+    "ansi-04",
+    "ansi-05",
+    "ansi-06",
+    "ansi-08",
+    "ansi-09",
+    "ansi-11",
+    "ansi-12",
+    "asia-01",
+    "asia-03",
+    "asia-04",
+    "asia-05",
+    "asia-06",
+    "asia-07",
+    "c64-02",
+    "c64-03",
+    "c64-04",
+    "c64-05",
+    "c64-06",
+    "c64-07",
+    "c64-08",
+    "c64-10",
+    "c64-13",
+    "c64-14",
+    "demo-01",
+    "demo-02",
+    "demo-03",
+    "demo-04",
+    "demo-05",
+    "demo-06",
+    "demo-08",
+    "demo-09",
+    "demo-10",
+    "demo-11",
+    "hack-01",
+    "hack-02",
+    "hack-03",
+    "hack-04",
+    "hack-05",
+    "hack-06",
+    "hack-07",
+    "hack-08",
+    "hack-09",
+    "hack-10",
+    "hack-11",
+    "hack-14",
+    "hack-15",
+    "hack-16",
+    "hack-17",
+    "hack-18",
+    "idle-01",
+    "idle-02",
+    "idle-03",
+    "idle-04",
+    "idle-05",
+    "idle-07",
+    "idle-08",
+    "idle-09",
+    "idle-10",
+    "mach-03",
+    "mach-04",
+    "mach-05",
+    "mach-07",
+    "mach-08",
+    "mach-09",
+    "mach-10",
+    "mach-11",
+    "mach-12",
+    "mach-15",
+    "nfo-01",
+    "nfo-02",
+    "nfo-03",
+    "nfo-04",
+    "nfo-05",
+    "nfo-06",
+    "nfo-07",
+    "nfo-08",
+    "nfo-09",
+    "nfo-10",
+    "nfo-11",
+    "pc-01",
+    "pc-03",
+    "pc-04",
+    "pc-05",
+    "pc-07",
+    "pc-09",
+    "pc-10",
+    "pc-11",
+    "pc-12",
+    "pc-13",
+    "print-01",
+    "print-02",
+    "print-03",
+    "print-04",
+    "print-05",
+    "trk-02",
+    "trk-03",
+    "trk-04",
+    "trk-06",
+    "trk-07",
+    "trk-08",
+    "trk-09",
+    "trk-10",
+    "trk-11",
+    "vap-01",
+    "vap-02",
+    "vap-03",
+    "vap-04",
+    "vap-06",
+    "vap-07",
+    "vap-08",
+    "vap-09",
+    "vap-11",
+    "vap-12",
+    "vap-16",
+    "vap-17",
+    "xfer-01",
+    "xfer-02",
+    "xfer-03",
+    "xfer-05",
+    "xfer-06",
+    "xfer-08",
+    "xfer-09",
+    "xfer-10"
+  ],
+  "options": [
+    {
+      "id": "pc-06",
+      "name": "Skinned rip installer: INSTALL / NFO / MUSIC / EXIT",
+      "era": "1997-2004, Windows (Class and Myth game-rip installers); a DOS precedent in Razor's 1997 'Arnie 3' cracktro, a fake GUI window converted from an Amiga trainer",
+      "what_it_is": "Rip groups cut games down to small packages and shipped their own installer, which doubled as the intro: a custom-shaped window with a logo sign, three or four buttons, an info viewport and a chiptune playlist. Wikipedia describes Class's rips, its custom installation software and its rivalry with Myth; Pouet commenters remember the Class installers mainly for the Maktone tunes and complain about hearing them recycled. It is a different object from the keygen dialog: no serial field, a release menu instead.",
+      "visual_signature": [
+        "A non-rectangular window skin floating on the desktop: a sci-fi gadget with pipes, cables and a riveted blue viewport (Class 'orcus' installer, 2002), an isometric slab in translucent teal with the group name extruded on top (Myth 4-02)",
+        "The group name as a lit sign: orange-to-yellow capitals in a red bevelled frame bolted to the top-left of the gadget (Class orcus)",
+        "A short button column or row, always some subset of INSTALL, NFO, MUSIC, EXIT/QUIT, plus a small music on/off toggle",
+        "A viewport for release info with one modest effect inside it: a rotating, morphing 3D dot scroller (orcus), rising bubbles and a rotating dot logo on navy with cyan frame lines (Class 'bubbles', 2001), faint drifting specks (Myth)",
+        "A credits strip along the bottom edge of the window naming code, graphics and music",
+        "DOS precedent: a grey pseudo-GUI screen with the logo as a title bar, a text pane on the left and a vertical button stack reading Release, Credits, Greets, Contact, Exit on the right (Razor Arnie 3, 1997)"
+      ],
+      "palette": "Per skin: navy and white with cyan frame lines (bubbles); steel grey and blue with an orange neon sign (orcus); teal monochrome (Myth 4-02); flat greys (Arnie 3).",
+      "typography": "Button labels in small capitals, bitmap or monospace; info text in a fixed-width pixel font; the logo as a custom sign.",
+      "motion": "Low key: the viewport effect loops, the dot scroller rotates and morphs, text appears as a pixel cloud and resolves (bubbles installer per comments), a progress bar fills during install. In the originals the music is the main event.",
+      "references": [
+        {
+          "what": "Class 'orcus installer' on Pouet (2002): skinned gadget window; comments on the dot scroller and the Buzz, Maktone and Purple Motion tunes",
+          "url": "https://www.pouet.net/prod.php?which=29809"
+        },
+        {
+          "what": "Same on Demozoo: code Orcus, graphics Andrius; note that the title shown may be a template with no real release behind it",
+          "url": "https://demozoo.org/productions/185982/"
+        },
+        {
+          "what": "Class 'bubbles installer' (Aug 2001; code and graphics zooperdan, music Maktone): 3D bubbles, rotating dot logo, pixel-cloud text",
+          "url": "https://www.pouet.net/prod.php?which=12409"
+        },
+        {
+          "what": "Myth installer 4-02 (2002; graphics and music kenet, music med): teal isometric slab with INSTALL MUSIC .NFO EXIT",
+          "url": "https://www.pouet.net/prod.php?which=29818"
+        },
+        {
+          "what": "Class installer skinned as a handheld console (Feb 1999; graphics ATM, music Maktone): cited only as an example of what not to copy",
+          "url": "https://www.pouet.net/prod.php?which=29807"
+        },
+        {
+          "what": "Razor 1911 Arnie 3 Cracktro (DOS, May 1997; code Hetero, music W.O.T.W. per Demozoo): fake GUI with a button stack; conversion of a Supplex Amiga trainer per comments",
+          "url": "https://www.pouet.net/prod.php?which=637"
+        },
+        {
+          "what": "Wikipedia on Class: rips, installers, rivalry with Myth, 1,234 releases, endtro on 9 Jan 2004",
+          "url": "https://en.wikipedia.org/wiki/Class_(warez)"
+        }
+      ],
+      "readme_translation": "SVG of a shaped installer window: logo sign, a viewport showing project name, version and one-line description with a small looping effect, a progress bar that fills and resets, and a button column. Links do not work inside an <img>, so repeat the buttons directly below as a row of real Markdown links ([ INSTALL ] [ NFO ] [ DOCS ] [ EXIT ]) or as a text-only <pre> menu with anchors; each button maps to a README section.",
+      "medium": "text-plus-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "All vector. Window silhouette as one path with gradient fill and inner bevel strokes; viewport is a clipPath holding circles on a translateY keyframe (bubbles) or a ring of dots whose positions are precomputed per frame and animated with SMIL values lists (dot scroller); progress bar is a rect with a width keyframe using steps(). 15-40 KB depending on the dot count.",
+      "wow": 4,
+      "caveats": "Do not imitate real hardware or brand trade dress: the 1999 Class installer reproduces a commercial handheld console including the maker's logo, and its music is a remix of a well-known game theme; neither may be copied. Do not reuse Class, Myth or Razor wordmarks. A shaped window with INSTALL/NFO/MUSIC/EXIT is generic. A MUSIC button promises sound a README cannot deliver: drop it or link it to a tracker module. Demozoo titles the 1999 Class installer after the game it shipped with and dates it 20 Feb 1999.",
+      "number": 1,
+      "family": "pc",
+      "slug": "01-pc-06",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/24-skinned-installer_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/24-skinned-installer_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/24-skinned-installer_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/24-skinned-installer_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "demo-07",
+      "name": "Big-screen compo slide sequence (beamer)",
+      "era": "1990s to today; the projector feed in the main hall of a demoparty, now usually a browser page driven by a party system such as Wuhu",
+      "what_it_is": "Between entries the big screen shows a slide saying what is about to run. It is the scene's equivalent of a title card, and everyone who has sat in a party hall knows its rhythm: countdown, competition name, then entry number, title, author and a comment line, one slide per entry, and finally the results revealed from last place up. The entrants write their own slide comment: the info files at Revision 2023 carry a labelled block of slide text for the organisers.",
+      "visual_signature": [
+        "Five slide types, as defined in the Wuhu beamer code: announcement, competition or event countdown, competition display, prize-giving, and a rotation of general party slides (images, text or video)",
+        "Countdown slide: the competition name with one large timer counting down to its start; the same timer can shrink into a corner overlay while other slides rotate",
+        "Competition display: an intro slide with the competition name and a one-word 'now' cue, then one slide per entry, then an outro slide",
+        "Entry slide fields, in order: number, title, author, comment. The author line is omitted for competitions judged anonymously",
+        "Prize-giving: results walked in reverse order, each row carrying rank, title, author and points, with a horizontal bar whose width is that entry's share of the top score",
+        "Everything is set very large and sparse, a handful of words per slide, because it is read from the back of a dark hall"
+      ],
+      "palette": "Not fixed: each party supplies its own stylesheet (Wuhu ships a template to be customised), so there is no canonical scheme. The common denominator is light text on a dark ground for projector contrast.",
+      "typography": "Party-specific. Structurally: one very large line (title or timer), one medium line (author or competition), one small line (comment), and a big ordinal number.",
+      "motion": "Slide-to-slide transitions, a ticking countdown, and the prize-giving reveal in which rows and their score bars appear one at a time from the bottom rank upward.",
+      "references": [
+        {
+          "what": "Wuhu party system repository (beamer keyboard controls, slide rotation)",
+          "url": "https://github.com/Gargaj/wuhu"
+        },
+        {
+          "what": "Wuhu beamer admin: the four modes and the data each one sends (competition name, start time, entry title/author/comment, reversed results)",
+          "url": "https://raw.githubusercontent.com/Gargaj/wuhu/master/www_admin/beamer.php"
+        },
+        {
+          "what": "Wuhu slide viewer: slide classes and field order for countdown, entry and prize-giving slides, score bars",
+          "url": "https://raw.githubusercontent.com/Gargaj/wuhu/master/www_admin/slideviewer/wuhu.js"
+        },
+        {
+          "what": "A Revision 2023 entry's info file with separate organiser notes and slide text blocks",
+          "url": "https://archive.scene.org/pub/parties/2023/revision23/256-byte-intro/atlantis.diz"
+        },
+        {
+          "what": "Wikipedia: Demoscene (entries shown at night by projector, the demo competition as the main event)",
+          "url": "https://en.wikipedia.org/wiki/Demoscene"
+        }
+      ],
+      "readme_translation": "An SVG 'now showing' slide as the header: a small competition line (the project's category), a big entry number, the project name as title, 'by' the owner, and the tagline as the comment line. Optionally it opens with a three-second countdown and the competition name before the entry slide settles and holds. Below it, in a <pre> block, the prize-giving: the feature or benchmark list as ranked rows with text bars proportional to the numbers, lowest first. Own illustration of a bar row: '03  parser      ############........  214 pts'.",
+      "medium": "text-plus-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Text elements with opacity and transform keyframes; a countdown is a stack of digits shown in turn with steps() timing; prize-giving bars are rects with staggered scaleX animations, or plain text bars in <pre>. Use animation-fill-mode forwards so the final entry slide stays visible after one pass.",
+      "wow": 4,
+      "caveats": "What I confirmed is the information architecture, from the Wuhu source; I did not see any real party's slide design, and those designs are made fresh by each party's artists, so there is nothing canonical to copy and nothing of theirs should be imitated. Do not use a real party's name or logo. The style needs the project to supply its own visual identity; on its own it is a layout, not a look.",
+      "number": 2,
+      "family": "demo",
+      "slug": "02-demo-07",
+      "samples": [
+        {
+          "project": "ultra-satisfactory",
+          "markdown": "references/upstream/examples/ultra-satisfactory/07-compo-slides_opus_5.5.md",
+          "generator": "references/upstream/examples/ultra-satisfactory/src/07-compo-slides_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/ultra-satisfactory/assets/07-compo-slides_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/ultra-satisfactory/07-compo-slides_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "c64-09",
+      "name": "Copper-only screen: full-screen colour fields with no bitmap at all",
+      "era": "1990-1991, Amiga OCS",
+      "what_it_is": "Screens drawn with the Amiga's copper alone: the display list changes the background colour every scanline and several times along each line, so the picture is pure colour with no pixels behind it. Angels' 'Copper Master' and Razor 1911's 'Look! No bitplanes' were both released at the No Limits and IMP-666 party in October 1990. Plasma, which Wikipedia notes was particularly common on the Amiga because it could be done very efficiently there, is the best-known relative.",
+      "visual_signature": [
+        "Soft diagonal bands sweeping across the whole screen in three or four ramps (green, brown, blue, white)",
+        "A diamond of nested colour: red at the edges through orange and yellow to a blue core, mirrored top to bottom and left to right",
+        "A plaid of overlapping vertical and horizontal bars in pure red, green and blue whose crossings mix to yellow, cyan and magenta",
+        "A twisted ribbon made of thin alternating red and grey stripes over a field of cyan horizontal lines",
+        "Colour changes only in chunky steps along a line (cells several pixels wide) but on every scanline vertically, so the texture is wide and short",
+        "Each effect shown in a bordered window with a thin light frame; no logo art, at most a plain text title",
+        "In 'Look! No bitplanes': a big red wordmark with jagged serifs and blue chrome lines of text on black, plus what a commenter calls a copper starfield"
+      ],
+      "palette": "The whole 12-bit range at once: fully saturated red, green and blue and their mixes, in ramps of 16 steps per channel. A Pouet commenter on Copper Master says he had not seen so many colours in a long while.",
+      "typography": "Minimal. Copper Master credits Mistervideo for font and design (Demozoo: Mr. Video, charset); titles are plain capitals.",
+      "motion": "Bands roll, the diamond pulses outward, plaid bars slide across each other, the ribbon twists. Plasma-style movement comes from summing sine waves and cycling the palette. Copper Master's coder commented that matching the colours to Moby's music took a long time. Not watched; from stills and written sources.",
+      "references": [
+        {
+          "what": "Copper Master by Angels on Pouet (October 1990; code Corsair, font and design Mistervideo, music Moby): four stills and comments calling it a 'copper overdose'",
+          "url": "https://www.pouet.net/prod.php?which=3422"
+        },
+        {
+          "what": "Copper Master on Demozoo: 6 October 1990, No Limits and IMP-666 Amiga Conference; note that Corsair later made a similar-looking crack intro for Angels",
+          "url": "https://demozoo.org/productions/123/"
+        },
+        {
+          "what": "Look! No bitplanes by Razor 1911 (October 1990, 3rd at the same party; code Nosferatu, graphics Sector9)",
+          "url": "https://www.pouet.net/prod.php?which=4634"
+        },
+        {
+          "what": "Madness by Anarchy (17 October 1990, tagged plasma on Demozoo; not viewed, listed as a dated plasma example only)",
+          "url": "https://demozoo.org/productions/10324/"
+        },
+        {
+          "what": "Wikipedia on the plasma effect: summed sine waves, palette cycling, common on the Amiga",
+          "url": "https://en.wikipedia.org/wiki/Plasma_effect"
+        }
+      ],
+      "readme_translation": "Above the fold: an animated SVG banner that is nothing but moving colour, with the project name in large solid capitals (black or white with a dark outline) on top and a one-line tagline. It carries its own background, so it works in light and dark themes. Everything informative is Markdown below.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Rolling bands: a stack of 2-pixel-high rects sharing one fill animation through a 16-step palette, each row with a negative delay proportional to its row number. Plaid: two groups of gradient-filled bars, one vertical and one horizontal, translated in opposite directions with mix-blend-mode: screen on the upper group (or an feBlend filter). Plasma: a grid of about 40x12 cells; precompute a sum-of-sines value per cell, quantise it to 16 or 32 levels, give every cell of one level the same class, and run one colour-cycle animation per class with the delay set by the level. That is palette cycling and needs no script; 480 rects is about 20 KB. Keep cells 8 pixels wide and 2-4 tall for the copper look.",
+      "wow": 4,
+      "caveats": "The effects are generic; do not reuse the group names or the Razor wordmark. Full-screen saturated colour cycling is the biggest accessibility risk in this family: keep cycles slower than about one per 3 seconds, avoid red flashing, and freeze it under prefers-reduced-motion. Text over it needs a solid plate or heavy outline to stay legible. I did not confirm that 'Look! No bitplanes' contains a plasma, so none is claimed for it.",
+      "number": 3,
+      "family": "c64",
+      "slug": "03-c64-09",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/33-copper-only-screen_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/33-copper-only-screen_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/33-copper-only-screen_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/33-copper-only-screen_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "mach-13",
+      "name": "Nokia-era 84x48 monochrome phone LCD",
+      "era": "1998 to the early 2000s; Nokia 5110 (April 1998) and 3310 (September 2000, 126 million sold), both 84x48 pixels",
+      "what_it_is": "The tiny green-backlit screen of turn-of-the-century phones: 84 by 48 square pixels, five lines of text, a bitmap operator logo in the middle and Snake. It covers the LCD, pager and handset part of the brief and is distinct from the Game Boy style in being strictly two-tone and four times coarser.",
+      "visual_signature": [
+        "84x48 pixels, 1.75:1, strictly two tones: dark pixels on a pale green backlit ground",
+        "Five lines of text at most",
+        "An operator logo of 72x14 pixels centred on the idle screen; picture messages of 72x28 pixels, which double as screensavers",
+        "Signal-strength and battery indicators as stepped bar stacks at the left and right edges, and a soft-key label centred on the bottom row (general knowledge, not from a fetched source)",
+        "Large square pixels with a hairline gap between them",
+        "Snake: a one-pixel-wide-grid line creature turning at right angles toward a dot, from the 1998 game written by Taneli Armanto"
+      ],
+      "palette": "No official values. Community palette on Lospec ('Nokia 3310', submitted by Marcos Padilha): #C7F0D8 ground, #43523D pixels. Most markets had a green backlight; some variants blue.",
+      "typography": "A proportional bitmap menu font roughly 7 to 8 pixels tall plus a tiny status font (general knowledge). Draw an original 1-bit face; the project logo is a 72x14 bitmap, which is the real design constraint.",
+      "motion": "A snake crawls in from the left and traces around the logo; the logo arrives as if it were a picture message and wipes on; signal bars step up one at a time; text lines appear letter by letter; the screen ends on a static idle screen.",
+      "references": [
+        {
+          "what": "Wikipedia: Nokia 3310 (September 2000, 84x48 monochrome LCD with 5 lines of text, green backlight, Snake II and other games, 126 million sold)",
+          "url": "https://en.wikipedia.org/wiki/Nokia_3310"
+        },
+        {
+          "what": "Wikipedia: Nokia 5110 (April 1998, 84x48, Philips PCD8544 controller, Snake)",
+          "url": "https://en.wikipedia.org/wiki/Nokia_5110"
+        },
+        {
+          "what": "Wikipedia: Smart Messaging (operator logo 72x14, picture message 72x28, logo sits mid-screen, picture message as screensaver)",
+          "url": "https://en.wikipedia.org/wiki/Smart_Messaging"
+        },
+        {
+          "what": "Wikipedia: Snake (1998 video game) (Taneli Armanto, Nokia 6110 and 5110)",
+          "url": "https://en.wikipedia.org/wiki/Snake_(1998_video_game)"
+        },
+        {
+          "what": "Lospec: Nokia 3310 two-colour palette",
+          "url": "https://lospec.com/palette-list/nokia-3310"
+        }
+      ],
+      "readme_translation": "All SVG. Either one 84x48 screen at 6x to 8x centred between flat side panels, or a custom wide LCD of 168x48 that keeps the pixel size and look. Idle screen: project logo as a 72x14 bitmap, version on the line below, a soft-key label naming the install command, bar indicators as simple stats. No text-only form.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "About 4000 pixels at most: emit lit pixels as merged rects with crispEdges, lay a <pattern> of hairlines over them for the pixel gap, and optionally offset a low-opacity copy by a fraction of a pixel for the LCD shadow. Snake: a polyline revealed with stroke-dashoffset in steps() so it advances one cell per tick, with a matching dash gap trailing behind to keep a fixed length. Bars and blinks with steps(1). Very small file.",
+      "wow": 3,
+      "caveats": "Do not use the Nokia name or logo, operator logos, the ringtone, or the original Snake graphics and fonts; an 84x48 two-tone grid, a centred bitmap logo and a snake made of square cells are generic. Two tones and 48 rows leave little room: one logo and two short lines is the limit. Palette is a community approximation. Screen-furniture details are general knowledge because the search budget ran out.",
+      "number": 4,
+      "family": "mach",
+      "slug": "04-mach-13",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/74-mono-phone-lcd_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/74-mono-phone-lcd_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/74-mono-phone-lcd_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/74-mono-phone-lcd_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "vap-10",
+      "name": "Frutiger Aero and Web 2.0 gloss",
+      "era": "About 2005-2013: Windows Vista (2006) and 7 (2009), Nintendo Wii, early smartphone icons; on the web the 'Web 2.0 look' of 2005-2008. Named in 2018 by Sofi Xian (formerly Sofia Lee) of the Consumer Aesthetics Research Institute; revived as an internet aesthetic from 2023.",
+      "what_it_is": "The optimistic glossy decade: glass, water, sky and grass wrapped around technology. CARI lists skeuomorphism, glossy and transparent materials, humanist sans type and nature photography (aurora, bokeh, macro grass). Its web branch is the Web 2.0 look that Jonathan Nicol catalogued in 2006: glass buttons, reflections, starburst badges, rounded corners, gradients, big type and a lot of green.",
+      "visual_signature": [
+        "Glass button: a rounded rectangle with a vertical gradient and a lighter band across the top 40-50 percent that ends in a hard edge",
+        "'Wet table' reflection: the logo or screenshot mirrored directly below itself and faded to nothing within about half its height",
+        "Starburst badge (a seal with 12-24 points) rotated a few degrees, carrying a word such as BETA or FREE",
+        "Translucent window frame with a blurred backdrop showing through and a soft outer glow (Aero glass)",
+        "Floating bubbles with a rim highlight, water droplets, lens flare, bokeh circles",
+        "Sky-blue to white gradient background with a curved strip of green along the bottom; blurred aurora ribbons",
+        "A large, friendly lowercase wordmark in a rounded sans with generous white space"
+      ],
+      "palette": "Named rather than specified in the sources: white, sky blue and leaf green with orange and pink accents; Nicol calls green the unofficial colour of Web 2.0. One fully specified glossy button from 24 ways (2008): #e9ede8 at the top, #8c1b0b at 40 percent, #ce401c at the bottom, border #882d13, white text with a 1px black shadow. 7.css demonstrates a custom glass tint of #805ba5.",
+      "typography": "Humanist sans: Segoe UI on Windows, Myriad on Apple material. Wikipedia notes the Frutiger typeface gave the style its name but was not actually used in the major interfaces associated with it. Web 2.0 logos: rounded sans, lowercase, often two-tone.",
+      "motion": "Bubbles rising and wobbling; a shine sweeping across a glass button or progress bar; aurora ribbons undulating slowly; a gentle pulse on the badge.",
+      "references": [
+        {
+          "what": "CARI entry: about 2005-2013, defining traits; attribution lists Froyo Tam and Sofi Xian",
+          "url": "https://cari.institute/aesthetics/frutiger-aero"
+        },
+        {
+          "what": "Wikipedia: named in 2018 by Sofi Xian, examples (Vista, 7, Wii), also called Web 2.0 Gloss, 2023 revival, the note about the typeface",
+          "url": "https://en.wikipedia.org/wiki/Frutiger_Aero"
+        },
+        {
+          "what": "Jonathan Nicol, 'The visual design of Web 2.0' (21 October 2006): a contemporary catalogue of the look",
+          "url": "https://jonathannicol.com/blog/2006/10/21/the-visual-design-of-web-20/"
+        },
+        {
+          "what": "24 ways, 'Shiny Happy Buttons' (18 December 2008): how the glossy button gradient is built, with values",
+          "url": "https://24ways.org/2008/shiny-happy-buttons/"
+        },
+        {
+          "what": "7.css: a working reconstruction of Windows 7 Aero glass frames, buttons, progress bars and balloons",
+          "url": "https://khang-nd.github.io/7.css/"
+        }
+      ],
+      "readme_translation": "Animated SVG: sky gradient with a green curve along the bottom, a lowercase glossy wordmark with a faded reflection, a rotated starburst carrying the version, and a row of glass buttons for install, docs and so on (each button can be its own small SVG image wrapped in a Markdown link). Bubbles drift behind.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "The vector half is easy: gloss is two stacked gradients with a hard stop, the reflection is a flipped <use> under a gradient mask, the starburst is a generated polygon, bubbles are circles with radial gradients. The photographic half (aurora, grass macro, water, tropical fish) is what the style is remembered for and cannot be carried; blurred gradient ribbons via feGaussianBlur are a passable aurora and the rest has to be dropped. Glass blur works as a filter on a duplicated background region clipped to the window frame.",
+      "wow": 3,
+      "caveats": "Without the photos it can look like a 2007 startup template rather than a tribute; the starburst badge and the reflection are what sell it. Do not use Windows or Apple logos or wallpapers. The generic gloss technique is free. The usual rounded-face example for Web 2.0 logos (VAG Rounded) is not confirmed by any source I opened. Pale-on-pale contrast is a risk.",
+      "number": 5,
+      "family": "vap",
+      "slug": "05-vap-10",
+      "samples": [
+        {
+          "project": "ultra-satisfactory",
+          "markdown": "references/upstream/examples/ultra-satisfactory/42-aero-gloss_opus_5.5.md",
+          "generator": "references/upstream/examples/ultra-satisfactory/src/42-aero-gloss_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/ultra-satisfactory/assets/42-aero-gloss_opus_5.5.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/42-aero-gloss_opus_5.5-btn-live.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/42-aero-gloss_opus_5.5-btn-run.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/42-aero-gloss_opus_5.5-btn-inside.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/42-aero-gloss_opus_5.5-btn-built.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/42-aero-gloss_opus_5.5-tags.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/ultra-satisfactory/42-aero-gloss_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "mach-01",
+      "name": "ZX Spectrum tape loader: border stripes and loading-screen build-up",
+      "era": "1982 to 1992; Sinclair ZX Spectrum cassette software (UK and Europe). Machine released 23 April 1982, discontinued 1992.",
+      "what_it_is": "The Spectrum ROM loader paints the TV border with stripes that visualise the cassette signal while the game's title picture builds up on screen. Owners remember two phases: slow thick red/cyan bands for the pilot tone, then thin jittering blue/yellow bands for header and data. It differs from the existing C64 loader style because the two colour pairs carry meaning and the picture arrives in a peculiar interleaved order dictated by the screen memory layout.",
+      "visual_signature": [
+        "256x192 'paper' area centred in a 384x288 frame, so the border is 64 px wide left and right and 48 px top and bottom",
+        "Pilot phase: slow, thick red and cyan horizontal bands rolling through the border only",
+        "Data phase: thin, irregular blue and yellow stripes; a 1 bit lasts twice as long as a 0 bit, so stripe thickness jitters with the data",
+        "A one-line header message in the ROM font after the first short data burst, of the form 'Program: name' or 'Bytes: name'",
+        "Picture bitmap arrives in three 64-line thirds; inside each third the first pixel line of all eight character rows appears, then the second line of all eight, and so on, giving a venetian-blind fill",
+        "Colour arrives last: attributes sweep in 32 cells per row, top row to bottom row, turning the monochrome picture into colour",
+        "8x8 attribute cells with exactly two colours each (INK and PAPER), so colour changes land on a visible 8-pixel grid (attribute clash)",
+        "15 colours (8 normal, 7 BRIGHT; black has no bright twin) and a FLASH attribute that swaps ink and paper every 0.64 s"
+      ],
+      "palette": "No canonical RGB: Wikipedia states the real colours are unknown and models non-bright as 85% signal (0.55 V) and bright as 100% (0.65 V). The widely used approximation (Lospec 'ZX Spectrum' palette): #000000, #0000D8, #D80000, #D800D8, #00D800, #00D8D8, #D8D800, #D8D8D8, and bright versions #0000FF, #FF0000, #FF00FF, #00FF00, #00FFFF, #FFFF00, #FFFFFF. Border pairs: red/cyan (pilot), blue/yellow (header and data).",
+      "typography": "8x8 pixel ROM font, mixed case, 32 characters per line on a 32x24 grid; the set includes a pound sign, a copyright sign and sixteen 2x2 block-graphics characters. The SVG cannot load fonts, so the generator needs its own original 8x8 glyph table emitted as rects or one path. Logos are bitmap art constrained to the 8x8 two-colour cell rule.",
+      "motion": "Compressed to a few seconds (a real 6912-byte screen took most of a minute). Phase 1: plain paper, thick red/cyan bands. Phase 2: short blue/yellow burst, header line appears. Phase 3: pilot again, then a long blue/yellow phase while the bitmap fills in by thirds with interleaved lines, then colour sweeps down row by row. End: border snaps to one colour and the frame holds as a static title card.",
+      "references": [
+        {
+          "what": "Nostalgia Nerd: loading bands, red/cyan pilot, blue/yellow header and data, ZX81 origin of the effect",
+          "url": "https://www.nostalgianerd.com/what-are-loading-bands-for/"
+        },
+        {
+          "what": "World of Spectrum: annotated ROM load routine (border white, then red/cyan on leader edges, blue/yellow for bytes; 2168 T pilot, 667/735 sync, 855/1710 bit half-pulses)",
+          "url": "https://worldofspectrum.net/legacy-info/spectrum-rom-load-routine/"
+        },
+        {
+          "what": "Wikipedia: ZX Spectrum graphic modes (256x192, 8x8 attributes, 15 colours, 384x288 frame, 0.64 s flash, true colours unknown)",
+          "url": "https://en.wikipedia.org/wiki/ZX_Spectrum_graphic_modes"
+        },
+        {
+          "what": "Spectrum Computing FAQ: display file order (thirds, interleaved pixel lines) and attribute file order (32 bytes per row, top to bottom)",
+          "url": "https://spectrumcomputing.co.uk/faq/Spectrum_Memory.html"
+        },
+        {
+          "what": "ZX Spectrum BASIC manual chapter 20: the on-screen tape messages 'Program:', 'Number array:', 'Character array:', 'Bytes:'",
+          "url": "https://worldofspectrum.org/ZXBasicManual/zxmanchap20.html"
+        },
+        {
+          "what": "Wikipedia: Attribute clash, including Don Priestley's cell-aligned sprite style",
+          "url": "https://en.wikipedia.org/wiki/Attribute_clash"
+        },
+        {
+          "what": "Wikipedia: ZX Spectrum character set (8x8 glyphs, 2x2 block graphics, UDGs, pound and copyright signs)",
+          "url": "https://en.wikipedia.org/wiki/ZX_Spectrum_character_set"
+        },
+        {
+          "what": "Lospec: ZX Spectrum palette with D8/FF hex values",
+          "url": "https://lospec.com/palette-list/zx-spectrum"
+        },
+        {
+          "what": "atomic14: a 2024 rebuild of tape loading with pulse timings and the 170 bytes/s figure",
+          "url": "https://atomic14.substack.com/p/old-school-tape-loading"
+        },
+        {
+          "what": "ZX-Art: archive of Spectrum graphics, demos and music, for studying real loading screens",
+          "url": "https://zxart.ee/eng/"
+        }
+      ],
+      "readme_translation": "One animated SVG, 384 logical pixels wide, cropped to a banner (384x160 still reads because the border is mostly empty). The border carries the stripes; the paper holds the project name as attribute-grid block art plus two or three 8x8 text lines (a 'Program: <repo>' header line, version, one-line pitch). All SVG; no worthwhile text-only form. The animation must end on a static, readable title card.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Stripes: two tiled <pattern> fills of uneven-height rects (pilot and data) on the border, scrolled with animateTransform on patternTransform or CSS keyframes using steps(), swapped by stepped opacity. Interleaved bitmap fill: per third, eight line-layers (layer k holds pixel line k of each character row) switched on in turn with steps(1) and staggered delays, 24 steps in all. Colour sweep: a second coloured copy revealed by a clipPath rect growing in steps(24). Pixel art and glyphs as merged rects or one path with shape-rendering=crispEdges; 768 attribute cells is tiny. The real work is authoring logo art that obeys the two-colours-per-cell rule. Add a prefers-reduced-motion rule that jumps to the final card.",
+      "wow": 4,
+      "caveats": "Do not copy the Sinclair logo, the rainbow-stripe trade dress, the ROM font bitmaps or any real loading screen. Freely reusable: the two stripe phases, border/paper layout, attribute-cell constraint, interleaved fill order. Fast high-contrast stripes are a photosensitivity risk: keep them short and slowed. Hex colours are an emulator convention, not measured values. Recognition is strong in the UK and Europe, weak in North America.",
+      "number": 6,
+      "family": "mach",
+      "slug": "06-mach-01",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/67-tape-loader_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/67-tape-loader_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/67-tape-loader_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/67-tape-loader_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "asia-02",
+      "name": "PC-98 adventure / visual-novel screen: dithered 16-colour picture, command menu, kanji message window",
+      "era": "NEC PC-9801, launched October 1982; 16 colours from a 4096 palette from the VM model (July 1985); adventure and visual-novel heyday late 1980s to mid 1990s, over by about 1996",
+      "what_it_is": "The PC-98 held over 60% of the Japanese market by 1991. It had 640x400 graphics and a separate kanji text layer but no hardware sprites, so, as the Hardcore Gaming 101 history explains, developers made adventure games out of still pictures and text, which turned into visual novels. That article calls the results \"some of the best pixel art in video game history\" (Hardcore Gaming 101), and it is the look people now label 'PC-98 aesthetic'.",
+      "visual_signature": [
+        "640x400 canvas, which is exactly 80x25 cells of 8x16 (half-width) or 40 columns of 16x16 kanji",
+        "At most 16 colours on screen, each from a 12-bit palette, so every colour is a three-digit hex value (#199, #f76, #879 style)",
+        "Dithering used to fake extra shades and gradients: regular checker and ordered mesh fills inside flat areas (confirmed only in general terms, see caveats)",
+        "Picture shown in a framed panel, not full screen: static character art over a background, anime-style with hard one-pixel outlines",
+        "A command or choice menu (look, talk, move style verbs, or branching choices) as a short vertical list",
+        "A message window occupying only part of the screen (the 'ADV' format), white kanji gothic text on a dark panel, advancing on a key press",
+        "A second, independent 8-colour text layer that can sit on top of the graphics (visible in the N88-BASIC(86) screenshot on Commons, where a listing overlays the picture)",
+        "On a 4:3 monitor the 640x400 frame gives pixels slightly taller than wide (5:6, derived arithmetically)"
+      ],
+      "palette": "Any 16 colours of 4096. The Commons N88-BASIC(86) demo screenshot shows the range: teal #119999, salmon #ff7766, dusty violet #887799, pink #ee99aa, brick #cc6666, green #00bb22, deep red #bb0000, plus white and black. The text layer is limited to the 8 pure digital colours.",
+      "typography": "ROM bitmap gothic: 8x16 half-width Latin and katakana, 16x16 full-width kana and kanji, strictly on the 80x25 grid; thin single-pixel strokes; Latin zero drawn with a slash.",
+      "motion": "Mostly static. The natural motion is the message text appearing one character at a time with a blinking 'continue' marker at the end of the line; optionally the menu cursor stepping down the list.",
+      "references": [
+        {
+          "what": "English Wikipedia, PC-98: two uPD7220 controllers (text and graphics), 640x400, 16 of 4096 colours, no sprites, rise of dating sims and visual novels, 60% market share",
+          "url": "https://en.wikipedia.org/wiki/PC-98"
+        },
+        {
+          "what": "Hardcore Gaming 101 / Retro Gamer 67, 'Retro Japanese Computers: Gaming's Final Frontier', hardware page (kanji ROM, dual display controllers)",
+          "url": "http://www.hardcoregaming101.net/JPNcomputers/Japanesecomputers.htm"
+        },
+        {
+          "what": "Same article, software page: still-image adventures becoming visual novels; remarks on dithering and pixel art",
+          "url": "http://www.hardcoregaming101.net/JPNcomputers/Japanesecomputers2.htm"
+        },
+        {
+          "what": "Japanese Wikipedia, PC-9800 series: kanji ROM, text VRAM overlaid on graphics VRAM, 16 of 4096 colours from the VM",
+          "url": "https://ja.wikipedia.org/wiki/PC-9800シリーズ"
+        },
+        {
+          "what": "Wikimedia Commons screenshot: 8-colour text layer over 16-colour graphics in N88-BASIC(86)",
+          "url": "https://commons.wikimedia.org/wiki/File:N88-BASIC(86)_color_text_with_graphics.png"
+        },
+        {
+          "what": "English Wikipedia, Visual novel: ADV versus NVL text-box formats, static character images over background art, menu choices",
+          "url": "https://en.wikipedia.org/wiki/Visual_novel"
+        },
+        {
+          "what": "English Wikipedia, Adventure game: Japanese command-menu adventures from 1983, PC-9801 resolution and its effect on game design",
+          "url": "https://en.wikipedia.org/wiki/Adventure_game"
+        }
+      ],
+      "readme_translation": "A 640x400 (or cropped 640x240) SVG. The picture panel holds an original dithered scene with the project name as a pixel title; the command menu lists the README sections (Install, Usage, Docs, License); the message window types out the one-paragraph description. Everything readable is repeated as normal Markdown below, since the text inside the image is not selectable or linkable.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Dither fills are 2x2 and 4x4 SVG patterns of two palette colours; set shape-rendering to crispEdges and keep the viewBox at 640x400. Text typing is a clip rectangle per line widened with a steps() keyframe, one step per character. Latin text can be a pixel font drawn as paths. Kanji cannot rely on a loaded font: either omit them, or convert a handful of glyphs from a free 16-dot bitmap font (the Shinonome family behind Mona Font is stated to be public domain) into rect paths, roughly 150-300 bytes per glyph. The expensive part is the illustration: a landscape or object scene is medium, a convincing character portrait is hard.",
+      "wow": 5,
+      "caveats": "Do not imitate any particular game's characters, window frames or studio logos; the titles my sources name (Policenauts, YU-NO, Dokyusei, the early Touhou games) are references only. A large share of the PC-98 library is adult software, so keep the header plainly safe for work. NEC and PC-98 are trademarks. Unconfirmed: the specific dither conventions (checker versus mesh, where they were used) come from general knowledge, my sources only confirm that dithering was used; the 5:6 pixel shape is my arithmetic from 640x400 on a 4:3 tube; the claim that vaporwave borrows this look comes from the brief, not from a source I opened.",
+      "number": 7,
+      "family": "asia",
+      "slug": "07-asia-02",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/90-pc-98-adventure-screen_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/90-pc-98-adventure-screen_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/90-pc-98-adventure-screen_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/90-pc-98-adventure-screen_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "vap-14",
+      "name": "Instant messenger window: MSN, AIM, ICQ",
+      "era": "ICQ November 1996 (Mirabilis), AIM May 1997, MSN Messenger 22 July 1999; MSN 6.0 (July 2003) and 7.0 (April 2005) are the remembered versions. AIM closed 15 December 2017, Messenger in 2013 (China 31 October 2014), ICQ on 26 June 2024.",
+      "what_it_is": "The after-school chat window: a contact list with coloured status markers and a conversation pane with display pictures, emoticons and a line saying the other person is typing. It is pure 2000s nostalgia and, unlike most of this family, it is fundamentally about text, so it can carry real README content as dialogue.",
+      "visual_signature": [
+        "Two-part layout: a narrow contact-list window (collapsible groups with counts, names with a status marker and a short personal message) beside a wider conversation window",
+        "Conversation pane: a grey line naming the speaker, with the message indented on the next line in that sender's chosen colour and font",
+        "Two square display-picture frames stacked at the right edge, each with a rounded border",
+        "A formatting strip above the input box (font, emoticon and similar small buttons) and a Send button at the right of the input",
+        "Status line at the bottom saying the other person is typing, with a small pencil glyph",
+        "Toast notification sliding up from the bottom-right corner announcing that a contact has signed in",
+        "AIM variant: a Buddy List of collapsible groups and away messages",
+        "Whole-window shake as a 'nudge'"
+      ],
+      "palette": "MSN 6-7 era: pale blue-to-white gradients in a soft blue frame, with green, amber and red status markers; AIM: grey chrome with yellow and blue accents. These are my descriptions of well-known interfaces; the Wikipedia articles give no colours. The surrounding XP window chrome can take its values from XP.css (#ece9d8 surface, blue title gradient).",
+      "typography": "Tahoma or MS Sans Serif for chrome; message text in whatever the user picked, with Comic Sans MS in a bright colour as the period cliche. Text emoticons such as :) .",
+      "motion": "Messages appear one at a time with an 'is typing' pause between them; a toast slides up and fades; one nudge shakes the whole window for half a second; a status marker switches from away to online. The animation ends on a stable frame with all messages visible.",
+      "references": [
+        {
+          "what": "MSN Messenger: version timeline (1.0 in 1999; 6.0 custom emoticons, display pictures and backgrounds; 7.0 winks; 8.0 rebrand), shutdown dates",
+          "url": "https://en.wikipedia.org/wiki/MSN_Messenger"
+        },
+        {
+          "what": "AIM: May 1997 release, Buddy List, away messages, the yellow running-figure mascot by JoRoan Lazaro, closure in December 2017",
+          "url": "https://en.wikipedia.org/wiki/AIM_(software)"
+        },
+        {
+          "what": "ICQ: Mirabilis, November 1996, numeric UINs, shutdown 26 June 2024",
+          "url": "https://en.wikipedia.org/wiki/ICQ"
+        },
+        {
+          "what": "XP.css: the window chrome these clients sat in",
+          "url": "https://raw.githubusercontent.com/botoxparty/XP.css/main/themes/XP/_window.scss"
+        }
+      ],
+      "readme_translation": "Animated SVG conversation in which a fictional contact asks what this is and the project answers in three or four short messages (what it is, how to install, a number or two). The contact list at the side shows the README sections as 'online' contacts, with personal messages as one-line descriptions. Ends on a stable frame with everything visible, so a viewer who arrives late still reads it all.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Rounded rects, light gradients and text. Message sequencing is opacity keyframes with staggered delays and animation-fill-mode: forwards so the final state persists. Nudge is a short translate shake on the root group. Text can be real <text> in a system sans since nothing depends on pixel-exact type; SVG text does not wrap, so the generator must break lines itself and keep them short.",
+      "wow": 4,
+      "caveats": "Do not use the MSN butterfly, the two-figure Messenger logo, the AIM running man, the ICQ flower or the product names as wordmarks; draw a neutral status dot and a generic person glyph. Invent the contact names and avoid any suggestion that real people said these things. Unconfirmed: which MSN version introduced the nudge (the article does not say and Wikipedia's Nudge page is only a redirect), the ICQ flower status icon (not described in the article text I read), and all colours. Comic Sans is present only on some systems.",
+      "number": 8,
+      "family": "vap",
+      "slug": "08-vap-14",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/62-instant-messenger_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/62-instant-messenger_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/62-instant-messenger_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/62-instant-messenger_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "hack-13",
+      "name": "War-room big board: vector world map, tracks and counters",
+      "era": "1983, the film WarGames (director John Badham); its ancestor is the back-lit big board of Dr. Strangelove (1964).",
+      "what_it_is": "The wall of giant map displays in a fictional command centre, showing coastlines as thin vector lines with tracks arcing across them. The graphics were made by Colin Cantwell on four Hewlett-Packard 9845C desktop computers driving a monochrome vector display, filmed frame by frame through colour filters (about half a million frames) and projected from behind onto 12 screens during shooting. It is the best-known 'big screen in a dark room' image in hacker cinema.",
+      "visual_signature": [
+        "Thin-stroke vector coastlines on black: world, polar, North America and regional maps",
+        "Twelve screens on one wall in the film; a README needs three side by side, each showing a different projection or region",
+        "Tracks drawn as arcs growing from an origin to a destination, with a blip where they land",
+        "Large numeric counters that climb quickly",
+        "Lettering drawn with single strokes like the map itself, all capitals, wide spacing",
+        "Each element in one flat saturated colour with a soft glow, a consequence of filming a monochrome vector display through colour filters",
+        "A separate monochrome monitor showing an upper-case typed dialogue with the machine",
+        "A vector noughts-and-crosses grid that plays itself to a draw over and over (from the film's ending)"
+      ],
+      "palette": "Black background with pure saturated line colours and a soft glow. The sources describe the colour-filter process but not which hue was used for which element, so exact colours are unconfirmed. Working values (mine): coastlines #3FA9FF, tracks #FF4040, text and counters #FFFFFF, secondary #FFD23F.",
+      "typography": "Single-stroke vector capitals with wide spacing, no filled shapes; numerals in the same stroke style. Hershey-style stroke fonts reproduce this construction.",
+      "motion": "Coastlines draw on stroke by stroke; arcs sweep from origin to destination; a blip pulses at the end of each arc; counters tick up; the screen blanks and the cycle restarts.",
+      "references": [
+        {
+          "what": "Wikipedia: WarGames, production of the display screens (HP 9845C, vector display, colour filters, rear projection)",
+          "url": "https://en.wikipedia.org/wiki/WarGames"
+        },
+        {
+          "what": "hp9845.net: the WarGames screen art, map types, colour separation, 12 screens, four computers, half a million frames",
+          "url": "https://www.hp9845.net/9845/software/screenart/wargames/"
+        },
+        {
+          "what": "CIO: the technology of WarGames (12 wall displays, half a million frames, 10 months)",
+          "url": "https://www.cio.com/article/3404461/the-technology-of-wargames.html"
+        },
+        {
+          "what": "GlobalSecurity: the big board in Dr. Strangelove and WarGames",
+          "url": "https://www.globalsecurity.org/wmd/systems/big-board.htm"
+        },
+        {
+          "what": "Wikipedia: Colin Cantwell, his graphics for the film and the 1984 BAFTA nomination",
+          "url": "https://en.wikipedia.org/wiki/Colin_Cantwell"
+        }
+      ],
+      "readme_translation": "Above the fold: a wide SVG of three adjacent screens. Centre: a world map in thin strokes with arcs running from one origin to several destinations, re-themed as deployments, downloads or supply routes. Left and right: a regional map and a stats panel with stroke-font counters (for the factory project: items, recipes, buildings, phases). The project name sits in stroke capitals in a caption strip. Everything else is markdown below.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Coastlines from public-domain Natural Earth 110m data decimated to a few thousand points (about 20-30 KB of path data). Draw-on and arc sweeps use pathLength=1 with stroke-dasharray and an animated stroke-dashoffset; blips are circles with scale and opacity keyframes; glow is one feGaussianBlur merged under the sharp strokes, applied to a group (keep the filter region small for performance); counters are vertical digit strips moved in steps() under a clipPath. Stroke lettering is polylines from a public-domain stroke font, so no font dependency. About 60-90 KB.",
+      "wow": 5,
+      "caveats": "Do not use the film's names, insignia, alert-level signage or dialogue. Taste risk: the source imagery is nuclear war, so theme the arcs as something benign and avoid casualty-style counters. Exact colours are unconfirmed. Sources disagree on production details: HP 1345A (Wikipedia) versus 1347A generator with 1336A display (hp9845.net); seven versus ten months; 16 mm projection (Wikipedia) versus a 35 mm camera (hp9845.net). The generic technique, vector maps with animated arcs, is free to use.",
+      "number": 9,
+      "family": "hack",
+      "slug": "09-hack-13",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/84-war-room-big-board_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/84-war-room-big-board_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/84-war-room-big-board_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/84-war-room-big-board_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "hack-12",
+      "name": "PC diskmag reader (three-band screen, two-column articles, charts, tune player)",
+      "era": "1992 to the 2010s on PC. Imphobia: 12 issues, February 1992 to July 1996, MS-DOS. Hugi: from May 1996, 38 main issues to June 2014 (a 2026 anniversary special is listed on Demozoo), Windows executable from September 1998, Panorama engine by Chris Dragan from issue 18 (December 1999). Earlier roots on C64 and Amiga (Sex'n'Crime, R.A.W.).",
+      "what_it_is": "A diskmag is a magazine shipped as a program: custom interface, painted graphics, background music, and menus of articles, charts and party reports. It is the demoscene's journalism, and its reader interface is a genre of its own, distinct from both the text zine and the BBS. Every issue shipped with several tracker modules, which gives a natural place for a visual 'now playing' element.",
+      "visual_signature": [
+        "Screen split into three horizontal bands: the magazine logo across the top, the reading area in the centre, a strip of background artwork along the bottom (the Imphobia interface from issue 6, at 640x480 in what the historian calls probably 16 colours)",
+        "Article text in two columns of 38 characters each, paged sideways with the cursor keys by a smooth horizontal scroll",
+        "A main menu of categories (editorial, charts, articles, adverts, party invitations) leading to an article-selection menu",
+        "Charts pages: ranked lists voted by readers, in categories such as demo groups, coders, musicians, graphicians, demos and intros",
+        "A box at the bottom of the viewer showing the author, article title and a small country flag (Imphobia issue 5)",
+        "A built-in module player with three or four tunes per issue",
+        "Mouse pointer plus keyboard navigation",
+        "Panorama-engine layout (Showtime 18, 2008): a row of utility buttons across the top (print, music, search, help), a two-column article menu in the centre, section buttons along the bottom (charts, gallery, menu, quit), over full-screen painted background art"
+      ],
+      "palette": "Hand-pixelled VGA: a dark background, a painted and dithered logo, light body text with a few accent colours for headings and highlighted words (Imphobia's viewer had coloured text in issue 5 and used it sparingly again from issue 9). Exact palettes vary per issue and were not verified from screenshots; choose an original 16-colour ramp.",
+      "typography": "Custom bitmap fonts drawn for the mag (the first Imphobia font was called hardly readable and was replaced in issue 4); a pixel-painted logo in demoscene lettering; fixed column widths. A Hugi reviewer criticised fixed-width Courier in articles as looking strange, so a proportional or custom pixel face is the authentic choice.",
+      "motion": "Mostly still pages. In a README: a slow alternation between the menu page and one article page with a sideways slide, a small animated level meter beside the tune name, and a blinking page indicator.",
+      "references": [
+        {
+          "what": "Hugi 13: History of Imphobia by Adok, issue-by-issue interface description",
+          "url": "https://hugi.scene.org/online/hugi13/dmimphb1.htm"
+        },
+        {
+          "what": "Pouet: Imphobia #1 (February 1992, MS-DOS) with comments on the interface",
+          "url": "https://www.pouet.net/prod.php?which=8872"
+        },
+        {
+          "what": "Demozoo: Hugi group page, issue list and platforms",
+          "url": "https://demozoo.org/groups/13716/"
+        },
+        {
+          "what": "Wikipedia: Hugi, editor, engine, resolution and music format changes",
+          "url": "https://en.wikipedia.org/wiki/Hugi"
+        },
+        {
+          "what": "Hugi 36 review of Showtime #18: Panorama engine, three-area screen, utility buttons, two-column menu, chart categories, font criticism",
+          "url": "https://www.hugi.scene.org/online/hugi36/hugi%2036%20-%20international%20diskmags%20adok%20showtime.htm"
+        },
+        {
+          "what": "Rhizome (Markku Reunanen, 2010): Diskmags, underground journalism of the demoscene",
+          "url": "https://old.rhizome.org/editorial/2010/may/20/diskmags-underground-journalism-of-the-demoscene"
+        },
+        {
+          "what": "Wikipedia: Disk magazine, definition and named mags",
+          "url": "https://en.wikipedia.org/wiki/Disk_magazine"
+        }
+      ],
+      "readme_translation": "Above the fold: a 4:3 SVG. Top band: the project wordmark as a pixel logo with an issue number (the version). Centre band: left column is the menu of README sections, right column is either the editorial blurb or a 'charts' list of the project's top facts. Bottom band: a strip of original pixel art plus a status line with a tune name, an animated level meter and 'page 1/N'. Regions of an <img> SVG cannot be clicked, so the real table of contents is repeated as markdown under the image.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Layout is rects and text; the cost is artwork. The pixel logo can be generated from a built-in bitmap font with a vertical dithered gradient and a one-pixel outline, emitted as merged <rect> runs with shape-rendering crispEdges; the bottom strip can be a generated dithered skyline or a small embedded PNG data URI (a 640-wide 16-colour strip is a few KB). Body text as <symbol> pixel glyphs, or a generic sans-serif. Page alternation is two groups moved with translateX; the level meter is four rects animated with scaleY and steps().",
+      "wow": 3,
+      "caveats": "Do not copy the logos, graphics or names of Imphobia, Hugi, Showtime or any other mag; the three-band layout, two-column text, charts and tune player are generic. Descriptions come from written histories and reviews, not from viewing screenshots, so colours are stated only as far as those texts go. No sound is possible, so the player is purely a visual cue. Impact depends heavily on the quality of the pixel art; with weak art this reads as a plain dark panel.",
+      "number": 10,
+      "family": "hack",
+      "slug": "10-hack-12",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/83-diskmag-reader_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/83-diskmag-reader_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/83-diskmag-reader_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/83-diskmag-reader_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "c64-11",
+      "name": "Spaceballs 'State of the Art': recoloured silhouette cut out of moire rings",
+      "era": "29 December 1992, Amiga OCS; 1st in the demo competition at The Party 1992",
+      "what_it_is": "A demo by the Norwegian group Spaceballs built around traced silhouettes of dancers cut to techno, over interference patterns and flat colour. Demozoo tags it character-animation, dance-animations, rave and epilepsy-warning, and a Pouet commenter calls it the first demo he could show to non-scene friends and get a good reaction. It is the rave-flyer end of the Amiga look, as far from copper bars as the platform gets.",
+      "visual_signature": [
+        "One human silhouette, large and centred, arms spread wide, with no interior detail",
+        "A background of fine concentric rings from two offset centres whose overlap makes a moire interference pattern of crescents and swirls",
+        "The silhouette is the same ring pattern in a different colour pair: yellow and red inside the figure, green, red and violet outside, so the figure reads purely by colour change",
+        "Deliberately clashing, fully saturated colours with no outline between figure and ground",
+        "No logo, no scroller and no text on the main screens"
+      ],
+      "palette": "High-saturation pairs: yellow and red for the figure; green, red and violet for the rings. No gradients.",
+      "typography": "Essentially none in the main sequence. Any title should be short, in plain heavy capitals on a flat strip.",
+      "motion": "The silhouette changes pose in short loops (Pouet describes rotoscoped dancers); the ring centres drift so the moire crawls; the colour scheme switches with the music. Demozoo's epilepsy-warning tag indicates fast flashing in the original. Not watched.",
+      "references": [
+        {
+          "what": "State of the Art on Pouet: still of the figure over moire rings, comments on the traced dancers and design",
+          "url": "https://www.pouet.net/prod.php?which=99"
+        },
+        {
+          "what": "State of the Art on Demozoo: date, party placing, credits (code Lone Starr and Major Asshole, graphics TMB Designs, music Travolta), tags including epilepsy-warning",
+          "url": "https://demozoo.org/productions/2/"
+        },
+        {
+          "what": "Jonathan Weinel, 'How Atari and Amiga computers shaped the design of rave culture' (OUP blog, 2018): background on these machines and rave visuals; it does not discuss this demo",
+          "url": "https://blog.oup.com/?p=137516"
+        }
+      ],
+      "readme_translation": "Above the fold: an animated SVG with a bold silhouette of the project's subject (for a factory tool a machine, crane or gear, not a person) recoloured out of slowly crawling moire rings, and the project name in plain heavy capitals on a solid strip at the bottom. All descriptive text goes below in Markdown.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Rings: one rect filled with a radialGradient using spreadMethod=\"repeat\" and hard colour stops gives concentric rings in a single element. Overlay a second copy with a different centre and mix-blend-mode: difference (or feComposite operator xor) for a true moire, and animate the group positions slowly with translate. Figure: draw the same two-layer ring group a second time in the other colour pair inside a clipPath of the silhouette. Pose changes are 3-4 alternative clip shapes toggled with steps() keyframes. Under 10 KB.",
+      "wow": 5,
+      "caveats": "Do not trace the original dancers or use the group name or title. Silhouette and moire are generic. Flashing is the main risk: keep colour changes below three per second, avoid red flashes, keep rings broad (fine high-contrast rings cause visual discomfort on their own), and add a prefers-reduced-motion rule that freezes it. Drawing a recognisable, original silhouette is the real work.",
+      "number": 11,
+      "family": "c64",
+      "slug": "11-c64-11",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/34-moire-silhouette_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/34-moire-silhouette_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/34-moire-silhouette_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/34-moire-silhouette_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "vap-18",
+      "name": "Cyberpunk neon signage",
+      "era": "Blade Runner (1982) and the 1980s dense-city imagery it set; revived constantly since. Adjacent to hardvapour, whose cover art Wikipedia describes as cyberpunk, Matrix-inspired and built on surveillance-footage imagery.",
+      "what_it_is": "Rain, darkness and stacked illuminated signs. Dave Addey's Typeset in the Future study of Blade Runner documents how much of that world is typography: real brand neon across the skyline, including a half-broken beer sign that appears twice; OCR-A on a video-phone booth; Eurostile Bold Extended on a police vehicle. The memorable device is the sign that is partly dead or flickering.",
+      "visual_signature": [
+        "Glass-tube lettering: a bright near-white core line 2-3px wide with a coloured halo, mounted on a dark panel with small standoffs",
+        "Vertical signs stacked down the side of a building, mixing Latin capitals with kanji and katakana",
+        "One letter or one stroke that is dead, or flickering irregularly while the rest stays steady",
+        "Wet-street reflection: the signs mirrored below, stretched vertically and broken into streaks",
+        "Dense small labels in a machine-readable face: serial numbers, warnings, arrows",
+        "Rain as thin diagonal lines; haze that lifts the blacks toward blue-green",
+        "One large billboard panel cycling two or three frames among the static signs"
+      ],
+      "palette": "Near-black blue-green ground with saturated sign colours: hot pink or magenta, cyan, amber and red (my description; the source discusses type rather than colour values). SynthWave '84's #ff7edb pink and #36f9f6 cyan on #262335 are a workable stand-in.",
+      "typography": "Signage: single-stroke rounded script or monoline capitals, as the tube bending dictates. Labels: OCR-A and Eurostile Bold Extended, both identified in the film by Addey. CJK sign text in heavy gothic (sans) forms.",
+      "motion": "Irregular flicker on one tube (on, off, on, long on); a slow brightness wobble on the rest; rain streaks falling; reflection shimmering; a billboard cycling two or three frames.",
+      "references": [
+        {
+          "what": "Typeset in the Future: Blade Runner (Dave Addey, 19 June 2016), a frame-by-frame typographic study of the film's fonts, signage and brands",
+          "url": "https://typesetinthefuture.com/2016/06/19/bladerunner/"
+        },
+        {
+          "what": "Hardvapour: the late-2015 vaporwave offshoot with cyberpunk, Matrix-inspired visuals",
+          "url": "https://en.wikipedia.org/wiki/Hardvapour"
+        },
+        {
+          "what": "SynthWave '84 palette used here as a stand-in for sign colours",
+          "url": "https://raw.githubusercontent.com/robb0wen/synthwave-vscode/master/themes/synthwave-color-theme.json"
+        }
+      ],
+      "readme_translation": "Animated SVG street-sign cluster: the project name as the main neon sign, two or three smaller vertical signs carrying the tagline and key numbers, a faint reflection below, light rain. One stroke of one letter flickers. Section headers further down can reuse a single small neon sign.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Neon is a stroked path drawn three times: a wide blurred coloured copy (feGaussianBlur, stdDeviation 4-6), a narrower coloured stroke, and a thin white core. Flicker is an opacity keyframe list with uneven stops on one element. Reflection: a flipped <use> with a vertical scale, reduced opacity and a gradient mask. Rain: a pattern of short diagonal lines with an animated translate. Blur filters over large areas cost rendering time, so limit the filter region to each sign. Lettering must be monoline paths, which means a single-stroke alphabet drawn for the purpose; ordinary outlined fonts give a double line. CJK must be outlined or embedded as a subset.",
+      "wow": 4,
+      "caveats": "Do not use real brand signs from the film, the Blade Runner title lettering, or Cyberpunk 2077's yellow-and-glitch branding. Decorative Japanese or Chinese on signs must be real, relevant text; using it as exotic texture is the genre's most criticised habit. The neon technique itself is free. Thin glowing strokes on dark pass contrast only at display sizes. Irregular flicker needs a prefers-reduced-motion rule.",
+      "number": 12,
+      "family": "vap",
+      "slug": "12-vap-18",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/66-neon-signage_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/66-neon-signage_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/66-neon-signage_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/66-neon-signage_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "xfer-04",
+      "name": "Userbar kit: the 350x19 forum signature strip",
+      "era": "About 2005-2009, web forum signatures (the period is inferred from the examples; no dated origin was found)",
+      "what_it_is": "Userbars were tiny banner images stacked in forum signatures to declare what you used, played or belonged to. Communities settled on a common template so that bars from different makers lined up, which makes them the direct ancestor of the row of badges at the top of a README. Anyone who posted on a forum in the mid-2000s remembers signatures that were five of these deep.",
+      "visual_signature": [
+        "A strip 350 pixels wide and 19 pixels high with a 1-pixel black border (I measured Commons examples at 350x19, 350x20 and 380x20, so the standard was loosely kept)",
+        "A saturated left-to-right colour gradient as the background",
+        "A logo or picture at the left, cropped by the strip and fading into the gradient",
+        "Semi-transparent diagonal stripes running from lower left to upper right at 45 degrees across the whole bar",
+        "A pale half-ellipse across the upper half giving a glass highlight",
+        "A short upper-case caption at the right in a small pixel font, white with a 1-pixel black outline, not anti-aliased; the caption is nearly always '<SOMETHING> USER'"
+      ],
+      "palette": "One hue per bar, usually a bright two-stop gradient (orange to red, cyan to blue, grey to silver), with white caption, black outline and black border. The stripes and gloss are white at low opacity.",
+      "typography": "German and Polish Wikipedia both name the font as Visitor TT2 BRK at 13 pixels (12 pt), white, 1-pixel black outline, no bold, no anti-aliasing. It is a wide, square, all-capitals pixel face; letters are about 5 pixels tall with 1-pixel gaps.",
+      "motion": "Usually static PNG. Animated GIF versions existed; a restrained SVG equivalent is a highlight that sweeps across the bar once.",
+      "references": [
+        {
+          "what": "German Wikipedia, Userbar: 350 px wide, 19 px high, semi-transparent 45-degree stripes, Visitor TT2 (BRK) white 12 pt with 1 px black outline, PNG or GIF (the article is flagged as lacking citations)",
+          "url": "https://de.wikipedia.org/wiki/Userbar"
+        },
+        {
+          "what": "Polish Wikipedia, Userbar: 350x19 or less often 150x19 with a 1-pixel black border, Visitor TT2 BRK 13 px, half-ellipse glass highlight on the top edge (flagged since 2009 as needing sources)",
+          "url": "https://pl.wikipedia.org/wiki/Userbar"
+        },
+        {
+          "what": "Example userbar on Wikimedia Commons, measured at exactly 350x19, showing the stripes, pixel caption and border",
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Wikipedia-userbar.png"
+        },
+        {
+          "what": "Example on Commons showing the half-ellipse gloss clearly (350x19)",
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Userbar_TiliX.png"
+        },
+        {
+          "what": "Example on Commons measured at 350x20, showing gradient, left-hand picture and right-aligned caption",
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/MacOsX-userbar.png"
+        }
+      ],
+      "readme_translation": "A stack of two to five small SVGs directly under the title, each wrapped in a link, replacing shields-style badges: language and version, licence, build state, latest release, 'made with' the tool itself. Each is its own SVG file shown through <img> at 350x19 or exactly doubled. The caption holds the fact; the left-hand picture is a simple glyph drawn for the project, not a brand logo. A 150x19 short form suits narrow columns.",
+      "medium": "static-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "One rect with a linear gradient, one <pattern> of diagonal lines at low opacity, one ellipse clipped to the bar for the gloss, a 1-pixel stroke, and the caption. The font cannot be loaded, so the caption must be drawn as small rectangles from a home-made 5-pixel-high capital alphabet, with the outline made by drawing the same shapes offset in black underneath. Use shape-rendering crispEdges and integer scaling so it stays sharp. Each file is a few kilobytes.",
+      "wow": 3,
+      "caveats": "Both written sources are Wikipedia articles flagged as unsourced, and they agree with each other and with the files I measured, but no primary userbar-community page could be reached (the userbars.be domain no longer resolves). Do not embed or trace the Visitor font; draw original pixel letters. Real userbars nearly always carried a trademarked product logo: leave those out. At 19 pixels the text is too small on high-density screens, so ship a 2x version and keep strong contrast; give every image alt text since the caption is not selectable.",
+      "number": 13,
+      "family": "xfer",
+      "slug": "13-xfer-04",
+      "samples": [
+        {
+          "project": "ultra-satisfactory",
+          "markdown": "references/upstream/examples/ultra-satisfactory/39-userbar-kit_opus_5.5.md",
+          "generator": "references/upstream/examples/ultra-satisfactory/src/39-userbar-kit_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-objectives.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-items.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-buildings.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-live.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-run.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-fan.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-user.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-ruler.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-monitor.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-alttab.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-phone.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-sheet.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-manifold.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-balancer.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-spaghetti.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-tidy.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-overclock.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-fuse.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-alts.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-screws.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-cone.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/39-userbar-kit_opus_5.5-pipe.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/ultra-satisfactory/39-userbar-kit_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "trk-01",
+      "name": "Amiga 4-channel tracker (ProTracker 2.3D editor screen)",
+      "era": "1987-1993, Commodore Amiga. Ultimate Soundtracker (Karsten Obarski, December 1987), NoiseTracker (Mahoney and Kaktus, 1989; its screen reads 'Northstar - Silents 1989'), ProTracker (Lars Hamre, Anders Hamre, Sven Vahsen, Rune Johnsrud; first release 1990 per its own Wikipedia page, 1991 per the Ultimate Soundtracker page). The 2.3D screen carries the line 'Noxious January 1993'.",
+      "what_it_is": "The editor nearly every Amiga demo, cracktro and game tune was written in: a grey embossed panel of numeric fields and buttons above four black pattern windows, one per hardware channel. It is the ancestor of every later tracker and the picture most people have in mind for 'a MOD tracker'. Distinct from the existing Amiga cracktro style, which only borrows a pattern strip: this is the whole workbench.",
+      "visual_signature": [
+        "Native 320x255 screen shown at 2x (640x510). Top-left stack of nine right-aligned labels, each followed by a 4-digit field and a pair of up/down arrow buttons: POS, PATTERN, LENGTH, FINETUNE, SAMPLE, VOLUME, LENGTH, REPEAT, REPLEN (sample length shows hex such as 1E00)",
+        "A 3-column button grid to the right in wide embossed capitals: PLAY, STOP, PATTERN, CLEAR, EDIT, EDIT OP., RECORD, DISK OP., POS ED., SAMPLER, with a narrow column of 1-4 and A keys at the far right",
+        "A strip titled QUADRASCOPE over four small black windows numbered 1-4, each holding one thin yellow waveform trace",
+        "Two full-width text strips, SONGNAME: and SAMPLENAME:, the value padded to fixed length with underscores, a small LOAD button at the right end",
+        "A status strip: current pattern number in a box, tempo 125 with tiny arrows, STATUS: ALL RIGHT, and TUNE / TIMING readouts at the right",
+        "Four black pattern windows of packed 8-character cells (note letter, sharp or dash, octave, 2-digit sample, 3-digit effect, e.g. a cell shaped like F-201903), decimal row numbers 00-63 in a fifth narrow window at the far left, all in saturated blue on black",
+        "A fixed light-grey edit row across the middle with black digits, the row number enlarged in a bevelled box, and a one-cell red outline cursor",
+        "One fat vertical VU bar per channel standing on the edit row, green at the base shading to yellow (redder only near full height); a chunky yellow arrow mouse pointer"
+      ],
+      "palette": "Re-measured from the pt2-clone screenshot by pixel count: panel grey #888888, bevel highlight #BBBBBB, bevel shadow #555555, windows #000000, pattern text blue #3344FF, scope and pointer yellow #FFDD00. The edit row is a light-grey band (#BBBBBB) with black digits, not white. Ultimate Soundtracker v1.21 variant (researcher-sampled, consistent with the image): tan #997755 panels, #AA8866 highlight, dark brown #553311 shadow, teal-blue pattern digits #006699. NoiseTracker v1.1 is the same layout in mid-grey with blue digits.",
+      "typography": "All-caps 8x8 bitmap face with very wide letterforms, drawn light grey with a one-pixel dark drop shadow so labels look embossed into the panel. Pattern digits are a taller, heavier numeric face. Ultimate Soundtracker labels its four channels in a thin rounded mixed-case face (Melody, Accompany, Bass, Percussions), uses +/- buttons instead of arrows, and spells the field LENGHT. NoiseTracker and Soundtracker put a logo plate (lumpy chiselled capitals; shadowed slab capitals) where ProTracker later put the scopes, and NoiseTracker has VOICE1-4: ON toggles.",
+      "motion": "Pattern rows step upward one row at a time under the fixed edit row; VU bars jump on each note and decay; the four scope traces wobble; POS and PATTERN counters tick at the end of a pattern; the pointer sits idle. All stepped, no easing.",
+      "references": [
+        {
+          "what": "pt2-clone screenshot (642x549 with window chrome): the ProTracker 2.3D pattern screen with quadrascope, VU bars, 'Noxious January 1993' line",
+          "url": "https://16-bits.org/pt2-clone-1.png"
+        },
+        {
+          "what": "pt2-clone repository by 8bitbubsy: states it aims to be a highly accurate clone of ProTracker 2.3D; real and fake VU meters",
+          "url": "https://github.com/8bitbubsy/pt2-clone"
+        },
+        {
+          "what": "The Ultimate Soundtracker v1.21 screenshot: tan panels, Melody/Accompany/Bass/Percussions, LENGHT, '1987 by Karsten Obarski'",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/70/The_Ultimate_Soundtracker_v1.21_by_Karsten_Obarski_1987_01.png"
+        },
+        {
+          "what": "NoiseTracker v1.1 screenshot: grey variant, VOICE1-4: ON, logo plate, DISK STATUS: ALL RIGHT (the Commons file name misspells Kaktus as 'Kartus')",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Noisetracker_v1.1_by_Mahoney_and_Kartus_1989_01.png"
+        },
+        {
+          "what": "Wikipedia: ProTracker (authors, 'Release: 1990', MOD format, the 2.3D clone project)",
+          "url": "https://en.wikipedia.org/wiki/ProTracker"
+        },
+        {
+          "what": "Wikipedia: Ultimate Soundtracker (Obarski, December 1987; NoiseTracker 1989 by Mahoney and Kaktus; ProTracker given as 1991)",
+          "url": "https://en.wikipedia.org/wiki/Ultimate_Soundtracker"
+        },
+        {
+          "what": "Wikipedia: Music tracker (channel labels Melody, Accompany, Bass, Percussions; chronology)",
+          "url": "https://en.wikipedia.org/wiki/Music_tracker"
+        }
+      ],
+      "readme_translation": "One animated SVG at 640x510. SONGNAME carries the repo name padded with underscores; SAMPLENAME carries the tagline. The numeric fields carry real counts (LENGTH = releases, SAMPLE = dependencies, PATTERN = major version). The four channels are the project's four main modules; pattern cells are invented note data, with module names shown in a one-line label strip above the windows rather than forced into 8-character cells. Put the prose and links as ordinary Markdown below the image; pair it with the sample-list style (next entry) if a text block is wanted.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "All rectangles and short text. The cost is the font: define an original 8x8 glyph set as path symbols in defs and place with use. Roughly 60 panel labels, 4 x 15 visible rows x 8 characters plus row numbers = about 600 glyphs, and a looping 32-row pattern is about 1,100, so 40-60 KB total. Row stepping: a g inside a clipPath-ed parent, animated with transform: translateY and steps(n), with the first screenful of rows duplicated at the end so the loop is seamless. VU bars: keep a fixed green-to-yellow linearGradient bar and animate a black cover rect over it (scaleY on the gradient bar itself would squash the colours). Scope traces: a periodic polyline wider than its clip window, translated one period in a linear loop. Embossing is two offset copies of each glyph (dark then light), which doubles label glyph count only. Add @media (prefers-reduced-motion: reduce) inside the SVG style to pause everything.",
+      "wow": 5,
+      "caveats": "Do not copy the ProTracker, NoiseTracker or Soundtracker logos or wordmarks, the author and group credit lines, or the song and sample names visible in the screenshots (they belong to a real, well-known module). Build an original 8x8 face rather than tracing the Amiga font bitmaps. The layout, bevel style, note notation and grid are generic and reusable. Accessibility: authentic #3344FF on black is about 3.4:1, below the 4.5:1 threshold for small text, so carry meaning in the grey-band row, the yellow and the alt text. Unconfirmed: whether the first ProTracker release was 1990 or 1991 (the two Wikipedia pages disagree); which header fields are decimal versus hex beyond what the screenshot shows. Do not make this and the cracktro's pattern strip both defaults.",
+      "number": 14,
+      "family": "trk",
+      "slug": "14-trk-01",
+      "samples": [
+        {
+          "project": "ultra-satisfactory",
+          "markdown": "references/upstream/examples/ultra-satisfactory/17-amiga-tracker_opus_5.5.md",
+          "generator": "references/upstream/examples/ultra-satisfactory/src/17-amiga-tracker_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/ultra-satisfactory/assets/17-amiga-tracker_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/ultra-satisfactory/17-amiga-tracker_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "pc-02",
+      "name": "Plasma field with the logo embossed in it",
+      "era": "1996-1997 on MS-DOS (Razor Crack Intro #02 and #03, code and graphics by Hetero); plasma as a backdrop survives into Windows cracktros (Hoodlum's LUCiD 4000th, Feb 2005). The effect itself is an early-90s demo staple.",
+      "what_it_is": "A full-screen single-hue plasma in which the group's wordmark appears as part of the plasma, as if pressed into it. Razor's two versions are the ones Pouet commenters single out, mostly for the tune and the little cartoon sprite. Demozoo notes that #02 picks its colour scheme at random on start, so the crimson and green seen in screenshots are two rolls of the same intro design.",
+      "visual_signature": [
+        "The whole frame filled with soft, slowly crawling bands of one hue: crimson/magenta in the #02 screenshot, green in #03",
+        "Tall heavy serif capitals of the wordmark visible only as a lighter/darker displacement inside the plasma, tilted back in perspective so the letters lean away",
+        "Thin black letterbox bars top and bottom",
+        "A tiny cartoon sprite and a line of small white text in the top-left corner",
+        "Nothing else on screen: no frame, no starfield; text appears over the plasma in pages",
+        "Later descendant: plasma plus scroller plus chiptune as the default cracktro recipe (a commenter's dismissive summary of LUCiD 4000th)"
+      ],
+      "palette": "Monochrome ramp from near-black through one hue to a pale tint: green about #001a00 to #7dff5a, crimson about #1a0010 to #ff5aa0. Pick the hue at random per build to echo the original's random palette.",
+      "typography": "Roman-style heavy serif capitals for the wordmark, rendered by the effect rather than drawn as a bitmap. Body text in a small white bitmap font.",
+      "motion": "Palette cycling: the field is computed once and the colour index shifts each frame, so the bands crawl while the shapes barely move; a slow sine drift bends the field (mechanism per Lode Vandevenne's tutorial, not observed in the cracktro itself).",
+      "references": [
+        {
+          "what": "Quake 2 Cracktro (1) [Razor Crack Intro #03] on Demozoo: 20 Jan 1997, code Hetero, music Spoon; another version has different music",
+          "url": "https://demozoo.org/productions/167343/"
+        },
+        {
+          "what": "Same on Pouet: green plasma screenshot; comment 'electronic plasma logotype in the background'",
+          "url": "https://www.pouet.net/prod.php?which=642"
+        },
+        {
+          "what": "Razor Crack Intro #02 on Pouet, Dec 1996: crimson plasma screenshot; comments on plasma background, sprite and tune",
+          "url": "https://www.pouet.net/prod.php?which=643"
+        },
+        {
+          "what": "Same on Demozoo ('Hetero Cracktro #02'): code and graphics Hetero, music Croaker; palette chosen at random on start",
+          "url": "https://demozoo.org/productions/351803/"
+        },
+        {
+          "what": "Hoodlum, LUCiD 4000th release (Feb 2005; code hitchhikr, graphics H2o, music Xerxes): commenter sums it up as plasma, scroller and chiptune",
+          "url": "https://www.pouet.net/prod.php?which=15916"
+        },
+        {
+          "what": "Lode Vandevenne's plasma tutorial: summed sines, cyclic palette, palette shift per frame",
+          "url": "https://lodev.org/cgtutor/plasma.html"
+        }
+      ],
+      "readme_translation": "A wide, short SVG strip (about 800x200) that is nothing but plasma with the project name embossed in it, letterboxed top and bottom. Tagline and install line sit underneath as ordinary Markdown. Works well as a thin strip above a text-only NFO block.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Filter route (researcher tested in a Chromium <img>, not re-tested): feTurbulence fractalNoise at low baseFrequency (about 0.012, 2 octaves) into feColorMatrix type=hueRotate with a SMIL animate on values 0 to 360, then feComponentTransfer with discrete tables to band it into one hue. This gives palette-cycling without script, but it is cloud noise rather than true sine plasma and the filter re-rasterises every frame, so keep the strip small. Logo: clip a second copy of the plasma with a phase offset inside the letter shapes, or use the letters as the map for feDisplacementMap. No-filter fallback that is cheaper and closer to sine plasma: four or five large radialGradient ellipses drifting on CSS keyframes with mix-blend-mode screen, with gradient stop colours keyframed. Safari and Firefox behaviour of the animated filter is unverified.",
+      "wow": 4,
+      "caveats": "Do not reuse Razor's wordmark or the corner sprites (commenters identify them as existing cartoon characters). Plasma is generic. Corrections to the submitted research: the Paradox 2000 cracktro cited as 'green plasma' is described by Pouet commenters as a blurred tunnel and has been moved to the tunnel style; the fire effect was removed from this style because no named PC cracktro using it was confirmed. Music for #03 is contested (Demozoo: Spoon; a Pouet commenter: Croaker; Demozoo says versions with different music exist), so it is not credited here. Full-frame colour cycling can be uncomfortable: cycle in 6 seconds or more and freeze under prefers-reduced-motion.",
+      "number": 15,
+      "family": "pc",
+      "slug": "15-pc-02",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/22-plasma-embossed-logo_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/22-plasma-embossed-logo_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/22-plasma-embossed-logo_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/22-plasma-embossed-logo_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "xfer-07",
+      "name": "P2P client transfer window: results grid, per-file bars, chunk map and status bar",
+      "era": "1999-2008, Windows. Three generations: Napster (1 June 1999 to July 2001) and its contemporaries; the eDonkey network (2000) with eMule (13 May 2002), alongside Kazaa (March 2001) and Soulseek (April 2001); then BitTorrent (protocol released 2 July 2001) with Azureus and uTorrent (18 September 2005)",
+      "what_it_is": "The window a generation left running overnight: a list of files, each with a progress bar, a speed and an estimate, above a second list of what you were giving back. Each generation added a layer of visible machinery: Napster showed one bar per file from one user, eMule painted every 9.28 MB chunk of the file by availability, and torrent clients added seeds, peers, ratio and a tabbed detail pane. People remember the colours of the bars as well as they remember the music.",
+      "visual_signature": [
+        "Shared skeleton: a row of section buttons or tabs at the top, the window split horizontally into downloads above and uploads below, sortable column grids, and a status bar of counts and rates",
+        "1999 generation, from the Napster 2.0 beta 7 screenshot: buttons for home, chat, library, search, hot list, transfer, discover and help; columns for file name, size written as bytes received of bytes total, user, status, the other user's line speed (14.4, 56K, Cable, DSL, Unknown), a boxed progress bar with the percentage centred in it, rate and time left; download bars blue, upload bars yellow",
+        "The same screenshot's footer: concurrent download and upload counts, a 'clear finished' button, and a status bar giving files shared by you and the totals of files, gigabytes and libraries on the network",
+        "ed2k generation, from the eMule 0.50a screenshot: large icon toolbar; columns for file name, size, completed, speed, progress, sources written as a number with a second number in parentheses, priority, status and remaining time; an upload pane with user, file, speed, transferred, waited and obtained parts; a 'clients on queue' counter",
+        "eMule's chunk bar, per the official help: black for parts you have, red for parts missing in every known source, shades of blue for availability (darker means more sources), yellow for a part being downloaded, a thin green line along the top for total progress; a finished file turns solid green",
+        "Soulseek's variant: no bars, whole rows of text coloured by state (finished, transferring with a percentage, remotely queued), with a 'place in line' column and a side list of chat rooms with user counts",
+        "BitTorrent generation, from the uTorrent 1.8.3 screenshot: a category sidebar (all, downloading, completed, active, inactive, labels, feeds); columns for name, queue number, size, done, status, seeds, peers, down speed, up speed, ETA, uploaded, ratio, availability, label, added; a bottom pane with tabs General, Trackers, Peers, Pieces, Files, Speed, Logger; a status bar with a DHT node count and download and upload rates with totals",
+        "Azureus splits incomplete torrents above complete ones and adds seeding rank and share ratio columns and round green status lights in the status bar"
+      ],
+      "palette": "White list backgrounds with black text inside grey Windows chrome. Napster: mid-blue and yellow bars in a sunken white box. eMule: black, red, blue range, yellow and green in the chunk bar. Soulseek: green, blue and pale lilac row text. Kazaa: green and orange toolbar accents.",
+      "typography": "Windows system sans-serif at small size (Tahoma or MS Sans Serif), plain column headers, right-aligned numbers, units as KB/s and MB. No display lettering anywhere: the data is the design.",
+      "motion": "Bars creep rightwards at different speeds, rate figures flicker between values, one row flips its status to complete and a queued row starts. In the chunk-map variant individual segments change from blue to yellow to black.",
+      "references": [
+        {
+          "what": "Wikipedia, Napster: Fanning and Parker, launched 1 June 1999, shut down July 2001, 26.4 million verified users in February 2001",
+          "url": "https://en.wikipedia.org/wiki/Napster"
+        },
+        {
+          "what": "Screenshot of Napster 2.0 beta 7's transfer tab (columns, bars, footer and status bar)",
+          "url": "https://en.wikipedia.org/wiki/Special:FilePath/Napster_download_section.webp"
+        },
+        {
+          "what": "Wikipedia, eMule: released 13 May 2002 by Merkur, 9,728,000-byte chunks, queue and credit system, High ID and Low ID",
+          "url": "https://en.wikipedia.org/wiki/EMule"
+        },
+        {
+          "what": "eMule official help, 'Colors of the download bar': the meaning of black, red, blue shades, yellow and the green line",
+          "url": "https://www.emule-project.com/home/perl/help.cgi?l=1&rm=show_topic&topic_id=101"
+        },
+        {
+          "what": "Screenshot of eMule 0.50a's Transfers window",
+          "url": "https://en.wikipedia.org/wiki/Special:FilePath/Emule_screenshot.png"
+        },
+        {
+          "what": "Wikipedia, eDonkey network: created 2000 by Jed McCaleb and Sam Yagan, chunk hashing, overtaken by BitTorrent by 2007",
+          "url": "https://en.wikipedia.org/wiki/EDonkey_network"
+        },
+        {
+          "what": "Screenshot of the Soulseek transfers window (colour-coded rows, place in line, rooms list)",
+          "url": "https://en.wikipedia.org/wiki/Special:FilePath/Soulseek.png"
+        },
+        {
+          "what": "Wikipedia, Soulseek: Nir Arbel, April 2001, single-source downloads, rooms, wishlist",
+          "url": "https://en.wikipedia.org/wiki/Soulseek"
+        },
+        {
+          "what": "Screenshot of Kazaa Media Desktop's search results grid and status bar",
+          "url": "https://en.wikipedia.org/wiki/Special:FilePath/Kazaa_screenshot.jpg"
+        },
+        {
+          "what": "Wikipedia, BitTorrent: Bram Cohen, protocol designed April 2001 and released 2 July 2001; seeds, peers, swarm, tracker, pieces, rarest first",
+          "url": "https://en.wikipedia.org/wiki/BitTorrent"
+        },
+        {
+          "what": "Wikipedia, uTorrent: Ludvig Strigeus, first public version 18 September 2005, acquired by BitTorrent Inc. in December 2006",
+          "url": "https://en.wikipedia.org/wiki/ΜTorrent"
+        },
+        {
+          "what": "Screenshot of uTorrent 1.8.3 (sidebar, columns, detail tabs, status bar)",
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Utorrent_example.png"
+        },
+        {
+          "what": "Screenshot of Azureus 2.5 (incomplete over complete lists, seeding rank, share ratio, status lights)",
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Azureus_2.5.0.0_screenshot.png"
+        }
+      ],
+      "readme_translation": "One SVG window above the fold. Rows are the project's own parts: packages, modules or milestone items, each with its true size and a bar showing something real (test coverage, milestone completion, documentation coverage). 'Sources' becomes contributors per module; the chunk map becomes a strip with one segment per test or per file, coloured passed, failing, running and missing. The lower pane lists what the project 'uploads': releases with download counts. The status bar carries stars, forks and total downloads in the 'users online, files shared' slot. Three presets select the generation: single-bar, chunk-map, or seeds-and-ratio.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Everything is rectangles and small text: a grid with header cells, one rect per bar with an animated width, and for the chunk map a row of 40 to 100 thin rects with staggered fill keyframes. The work is in the amount of small text and keeping it legible at README width (keep to five or six columns and four to six rows). Generic window chrome can be borrowed from the existing Windows 95/98 style.",
+      "wow": 4,
+      "caveats": "Use no client name, logo or mascot, and none of the toolbar icons; the grid, bar and status-bar arrangement is generic. Rows must be the project's own files with no media-style file names, no tracker or server names and no real user names, so the header cannot look like a list of pirated downloads. The screenshots are of particular versions (eMule 0.50a, uTorrent 1.8.3 in Spanish, a Mac build of Azureus), so column sets varied by version. Small grey text on white needs care for contrast, and the eMule colour code relies on hue alone, so add a text percentage.",
+      "number": 16,
+      "family": "xfer",
+      "slug": "16-xfer-07",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/104-p2p-transfer-window_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/104-p2p-transfer-window_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/104-p2p-transfer-window_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/104-p2p-transfer-window_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "c64-12",
+      "name": "16-bit hand-pixelled chrome logo (static)",
+      "era": "1988-1993, Amiga and Atari ST; drawn in Deluxe Paint at 320 pixels wide with 16 or 32 colours",
+      "what_it_is": "The group logo as a piece of pixel art: metal letters reflecting an imaginary sky and desert, drawn dot by dot. Damien Guard's article on Amiga lettering describes the chrome, gradient and lens-flare conventions within 16 or 32 colours, and the book 'Demoscene: The Logo Art' is devoted to logos and their makers. Named hands exist: Demozoo credits Uno with the red and blue logos and charsets in Phenomena's 'Enigma' (1991), and the Amiga Graphics Archive documents a TRSi logo by J.O.E. in 32 colours, 19 used.",
+      "visual_signature": [
+        "Chrome fill split by a horizon about halfway up each letter: cool colours above (violet or deep blue to pale blue to white), a hard zigzag line, warm colours below (dark red to orange to yellow, or grey)",
+        "Banded, stepped gradients of 5-8 colours, because the whole logo shares a 16- or 32-colour palette",
+        "A one-pixel dark outline around every letter, often with a lighter inner edge to fake a bevel",
+        "A solid drop shadow or extruded side offset down and to the right",
+        "Heavy italic or slab capitals, letters touching or overlapping",
+        "Single-hue variant (Enigma): hot red to pink letters cut by thin horizontal slits with white streak highlights, beside a violet chrome wordmark with a white horizon",
+        "Composite title variant (Red Sector Megademo): a second word set vertically beside the main logo, plus a cartoon head with a speech bubble",
+        "Chrome with white sparkle stars on letter corners over a blue gradient floor (Kefrens 'Multi Megamix' title)"
+      ],
+      "palette": "One cool ramp and one warm ramp plus black and white. Amiga colours are 12-bit, so each ramp step is one sixteenth per channel. On the ST the palette is 512 colours with 16 on screen, so ramps are shorter and coarser.",
+      "typography": "Custom-drawn capitals only: wide letterforms with flat tops to give room for the horizon band, light from the upper left, highlights as one-pixel white lines along top edges, sparing checkerboard dither where two bands meet.",
+      "motion": "Static as an image. An optional glint can travel across the letters.",
+      "references": [
+        {
+          "what": "Red Sector Megademo title (1989): violet top, zigzag horizon, orange-red base, vertical second word",
+          "url": "https://www.pouet.net/prod.php?which=3119"
+        },
+        {
+          "what": "Kefrens Megademo 8 menu logo (1990): blue to white to grey banded chrome",
+          "url": "https://www.pouet.net/prod.php?which=5088"
+        },
+        {
+          "what": "Enigma by Phenomena on Demozoo (30 March 1991): Uno credited for the red Enigma logo, blue logo and charsets; Imbecille for a logo; Terminator for charsets",
+          "url": "https://demozoo.org/productions/143/"
+        },
+        {
+          "what": "Enigma on Pouet: stills of the red slit logo and the violet chrome wordmark",
+          "url": "https://www.pouet.net/prod.php?which=394"
+        },
+        {
+          "what": "Amiga Graphics Archive: TRSi logo by J.O.E., used in TRSi's 'Time Zone' demo; lowres PAL, 32 colours, 19 used",
+          "url": "https://amiga.lychesis.net/sceners/JOE.html"
+        },
+        {
+          "what": "Damien Guard, 'The Art of Amiga Lettering' (December 2025): chrome, gradients, lens flares and extrusion within 16 or 32 colours; mostly game titles, with Fairlight, Scoopex, The Silents and Enigma as demo examples",
+          "url": "https://damieng.com/blog/2025/art-of-amiga-lettering/"
+        },
+        {
+          "what": "'Demoscene: The Logo Art' (Editions64K, 400 pages): logos and their makers across Amiga, Atari, C64, Amstrad, PC and consoles",
+          "url": "https://www.editions64k.fr/product/demoscene-the-logo-art/"
+        },
+        {
+          "what": "Fairfax interview (Hugi 35): names Uno first among favourite graphicians for his use of colour and light within Amiga limits",
+          "url": "https://hugi.scene.org/online/hugi35/hugi%2035%20-%20demoscene%20interviews%20magic%20fairfax.htm"
+        },
+        {
+          "what": "Amiga Graphics Archive page for Cougar: several pictures credited as based on album-cover art, evidence for the caveat about adapted sources",
+          "url": "https://amiga.lychesis.net/sceners/Cougar.html"
+        }
+      ],
+      "readme_translation": "Above the fold: a static SVG of the project name as a chrome pixel logo on black, 640-800 pixels wide, optionally with a one-line subtitle in small pixel capitals. It can stand alone or sit on top of any animated style in this family.",
+      "medium": "static-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Draw letters as pixel-grid rects (run-length merged) with shape-rendering: crispEdges at 2x or 3x. Fill through a clipPath with a linearGradient that uses paired hard stops for bands; add the zigzag horizon as a polyline clipped to the letters. Dither between bands with a 2x2 checkerboard pattern. Outline and shadow are offset copies of the letter shape. Sparkles are small 4-point polygons. An optional glint is a narrow skewed white rect animated across the clip. The SVG is simple; convincing letterforms are not, and a generated logo will look mechanical beside a hand-pixelled one.",
+      "wow": 4,
+      "caveats": "Do not copy any existing group logo, the Red Sector head, or an artist's specific letterforms; the chrome recipe is common property. Artist attributions are only those stated by Demozoo and the Amiga Graphics Archive; which logo Imbecille drew in Enigma is not specified. Scene graphics of the period were often adapted from album covers and commercial art, another reason to draw from scratch. The brief also asked about 'graffiti' logos and other named logo artists; I could not source that school and have not described it.",
+      "number": 17,
+      "family": "c64",
+      "slug": "17-c64-12",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/35-hand-pixelled-chrome-logo_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/35-hand-pixelled-chrome-logo_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/35-hand-pixelled-chrome-logo_opus_5.5.svg",
+            "references/upstream/examples/castaway/assets/35-hand-pixelled-chrome-logo_opus_5.5-magnify.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/35-hand-pixelled-chrome-logo_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "trk-05",
+      "name": "LSDj phrase screen (Game Boy tracker), with the nanoloop grid as its minimalist opposite",
+      "era": "2000 onward, Nintendo Game Boy: Little Sound Dj by Johan Kotlinski (project dated to 2000 by the Battle of the Bits lyceum; still updated per its changelog). nanoloop by Oliver Wittchow: a study project at the University of Fine Arts Hamburg, first performed publicly in early 1998, cartridges sold in Germany from late 1999 and worldwide from 2000.",
+      "what_it_is": "The program that made the Game Boy the standard instrument of the 2000s chiptune scene. It squeezes a whole tracker into 160x144 pixels by splitting it into screens (Song, Chain, Phrase, Instrument, Table and more) arranged on a small map. For many people this grid of three-letter codes is what 'chiptune' looks like; nanoloop answers it with almost nothing on screen but a 4x4 grid of squares.",
+      "visual_signature": [
+        "A 160x144 screen of 8x8 tiles: 20 characters wide, 18 rows tall, drawn at integer scale",
+        "Screen title and hex index at top-left (PHRASE 00, SONG, WAVE 00), current channel name at top-right (WAV, PU1)",
+        "Sixteen rows numbered 0-F down the left edge in white digits on a pale pink band",
+        "Song screen: four columns headed PU1, PU2, WAV, NOI holding 2-digit hex chain numbers, double dashes where empty",
+        "Phrase screen: tiny column headers NOTE, INSTR, CMD; notes as C-3 style or, in drum-kit mode, two 3-letter drum names side by side; instruments as I00; commands as a letter plus two hex digits or ---; alternate columns banded in pale cyan",
+        "Right-hand status column: tempo with a note glyph (such as 128), the four mute letters 1 2 W N stacked vertically, a tiny squiggle waveform",
+        "Bottom-right screen map: a cross of single letters (S C P I T in a row with G above and another letter below) with the current screen's letter highlighted",
+        "A solid red-pink block cursor with white text inside, and a small black triangle at the left marking the play row"
+      ],
+      "palette": "Official phrase screenshot (a Game Boy Color palette, researcher-sampled and consistent with the image): field white #FFFFFF, column bands pale cyan #D9FBFD, text black #000000, row-number band pale pink #F8C8FA, cursor red-pink #F4788E. The Song screen photographed on a Game Boy Advance is white text on royal blue with orange row numbers and an orange map. LSDj palettes are user-selectable, so no single scheme is canonical; four greys or four greens give the original-hardware feel. nanoloop on an original Game Boy: dark olive squares on the pea-green LCD.",
+      "typography": "One heavy 8x8 upper-case bitmap face for everything, hex digits throughout, with column headers in a much smaller face about 5 pixels tall. No lower case. nanoloop's later versions use a thin lower-case pixel face and single letters in grid cells.",
+      "motion": "The play-row triangle steps down the 16 rows and wraps; the cursor block blinks; optionally the map highlight moves and the grid swaps to another screen. All stepped, no easing, to keep the LCD feel.",
+      "references": [
+        {
+          "what": "Official Little Sound Dj site (describes it as a Game Boy music sequencer; hosts the two screenshots)",
+          "url": "https://www.littlesounddj.com/lsd/index.php"
+        },
+        {
+          "what": "Official phrase-screen screenshot at native 160x144",
+          "url": "https://www.littlesounddj.com/lsd/shots/phrase.png"
+        },
+        {
+          "what": "Photograph of the LSDj Song screen (PU1 PU2 WAV NOI, tempo, mute letters, screen map) on a Game Boy Advance",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/9e/Gameboytracker.JPG"
+        },
+        {
+          "what": "Battle of the Bits lyceum: LSDj (Johan Kotlinski, begun 2000, song / chain / phrase / instrument views, four channels)",
+          "url": "https://battleofthebits.com/lyceum/View/lsdj%20(format)"
+        },
+        {
+          "what": "nanoloop history from its author: Hamburg study project, first performance early 1998, cartridges from late 1999",
+          "url": "https://nanoloop.com/about.html"
+        },
+        {
+          "what": "nanoloop one running on an original Game Boy: the 4x4 grid of squares on the green LCD",
+          "url": "https://nanoloop.com/one/nanoloopone1.jpg"
+        },
+        {
+          "what": "CDM on nanoloop: 'minimal elements onscreen' versus LSDj's '90s-style tracker interface'",
+          "url": "https://cdm.link/nanoloop-dedicated-devices/"
+        },
+        {
+          "what": "nanoloop mobile-version screen: grey field, white squares, 4x4 note grid, thin lower-case pixel lettering",
+          "url": "https://cdm.link/app/uploads/2011/04/nanoloopscreen.jpg"
+        }
+      ],
+      "readme_translation": "One SVG with two or three 160x144 screens side by side at 3x (each 480x432) or one at 4x (640x576): SONG (the four columns renamed to the project's four modules, rows = releases), PHRASE (NOTE = command, INSTR = module id, CMD = flag) and a PROJECT-style screen (name, version, tempo = build time). The corner screen map becomes a miniature table of contents whose letters are the README sections; the real section links go in text under the image. The nanoloop variant is the opposite extreme: a bare 4x4 grid with a few lit cells and one line of type for the project name.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Only 360 tiles per screen. Define an original 8x8 glyph set as paths once and place with use: three screens are about 700 placements, 25-35 KB. Use shape-rendering: crispEdges and integer scale so pixels stay square. Animation is three small steps() keyframe sets (cursor blink via opacity, play-row marker via translateY with steps(16), map highlight). An LCD look is cheap: a 1px grid from an SVG pattern at low opacity, or a slight green tint.",
+      "wow": 4,
+      "caveats": "Do not draw a Game Boy shell, the Nintendo or Game Boy wordmarks, the LSDj name or its font bitmaps: build an original 8x8 face and an original screen title. The 16-row hex grid, the channel abbreviations as hardware terms and the screen-map idea are reusable. Pale pastel bands are low contrast, so keep text pure black on them. Unconfirmed: LSDj's exact first-release date (2000 comes from the lyceum, not the official site; there is no English Wikipedia article for it); whether nanoloop was begun in 1997 (the author's page documents the 1998 performance only); the CDM article itself does not describe the 4x4 grid, which is confirmed from the two images instead.",
+      "number": 18,
+      "family": "trk",
+      "slug": "18-trk-05",
+      "samples": [
+        {
+          "project": "ultra-satisfactory",
+          "markdown": "references/upstream/examples/ultra-satisfactory/19-handheld-tracker_opus_5.5.md",
+          "generator": "references/upstream/examples/ultra-satisfactory/src/19-handheld-tracker_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/ultra-satisfactory/assets/19-handheld-tracker_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/ultra-satisfactory/19-handheld-tracker_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "pc-08",
+      "name": "Trainer menu: F-key toggles under a logo",
+      "era": "1993-2006: DOS trainers by Razor 1911 (1993-94); Windows trainers by Hoodlum (2004-05), Deviance (2005), FANAiON with Titan (2005) and Razor (2006)",
+      "what_it_is": "A trainer patches a running game to give cheats, and its screen is a cracktro with a job to do: a logo on top and a list of function-key toggles underneath. It is the most list-shaped screen in the family, which makes it the easiest to turn into something useful, and the VU bars in the 1993 Razor one are the natural visual stand-in for the music a README cannot play.",
+      "visual_signature": [
+        "A logo at the top, smaller than in a cracktro: a wordmark whose letters each carry a different rainbow gradient (Razor 1993, logo by Pal per Demozoo), a green-and-yellow graffiti piece (Hoodlum 2005), a grey-teal stone-textured logo (Razor Gothic 3, 2006)",
+        "A title block: 'presents', the game name with a '+N' option count, 'trained by' and the author",
+        "The list: one row per function key, key name at the left, effect at the right, sometimes ending in a bracketed [OFF] state (Razor Gothic 3)",
+        "A full-width magenta highlight bar on the selected row (Razor Alien Breed +11)",
+        "Two stubby yellow VU-meter bars in the bottom corners (same trainer)",
+        "An instruction line at the bottom saying which keys work in-game and how to continue",
+        "Windows-era additions around the centred list: a faceted green polyhedron (Hoodlum #3), a pink vector star drifting on a purple-to-blue gradient (Deviance, Hoodlum Bugdom 2), a sine scroller, or the group name spelled in shaded dots (FANAiON)"
+      ],
+      "palette": "Black background in most. Razor 1993: rainbow logo, white list, magenta bar, yellow meters. Hoodlum 2005: acid green and yellow logo, white list. Deviance 2005 and FANAiON 2005: purple-to-blue gradient field with white text and pink accents. Razor's 1994 Pinball Fantasies trainer is just a dark-red serif logo over grey text.",
+      "typography": "Monospaced bitmap capitals so the key column and the description column align; fixed tabs or leader dots between them. Logos are custom.",
+      "motion": "The highlight bar steps from row to row; VU bars jump; logo colours cycle; in the later ones a scroller runs under the list and the side object rotates (a commenter on Hoodlum's notes parallax stars, a rotating vector star and a sine scroll).",
+      "references": [
+        {
+          "what": "Razor Trainer Alien Breed +11 on Pouet (Nov 1993): rainbow logo, F-key list, magenta bar, yellow VU bars",
+          "url": "https://www.pouet.net/prod.php?which=11760"
+        },
+        {
+          "what": "Same on Demozoo: 4 Nov 1993; menu code Lithium, logo Pal, font Poise, trainer Red Wizard",
+          "url": "https://demozoo.org/productions/139350/"
+        },
+        {
+          "what": "Hoodlum trainer #3 (Apr 2005; graphics H2o): F-key toggles, green polyhedron; the comment asking why modern crack intros have no glenz",
+          "url": "https://www.pouet.net/prod.php?which=16682"
+        },
+        {
+          "what": "Razor 1911 Gothic 3 Trainer (Oct 2006; code blkpanther, graphics kenet, music dubmood): list with [OFF] states",
+          "url": "https://www.pouet.net/prod.php?which=56672"
+        },
+        {
+          "what": "Deviance Trainer (Sep 2005; code SIRIaX and aLpHa oNe): purple gradient, pink star, centred toggle list, scroller",
+          "url": "https://www.pouet.net/prod.php?which=18892"
+        },
+        {
+          "what": "Hoodlum Bugdom 2 trainer (Nov 2004; graphics angelDawn): parallax stars, vector star, sine scroll, called an old-skool trainer menu",
+          "url": "https://www.pouet.net/prod.php?which=14586"
+        },
+        {
+          "what": "FANAiON and Titan, Stronghold 2 +6 trainer (Apr 2005; code and graphics zooperdan, music xerxes): F-key list over dot lettering",
+          "url": "https://www.pouet.net/prod.php?which=16885"
+        },
+        {
+          "what": "Razor Pinball Fantasies trainer (DOS, Jan 1994): red serif logo over grey instruction text",
+          "url": "https://www.pouet.net/prod.php?which=68322"
+        }
+      ],
+      "readme_translation": "The list is the README's feature or command table. Above the fold: a small SVG with the logo, colour cycling and VU bars; then a text-only <pre> block, for example (my own illustration): 'F1  WATCH MODE ............ [ON ]' / 'F2  DRY RUN ............... [OFF]' / 'F3  VERBOSE LOGS .......... [ON ]', each key mapping to a CLI flag or feature, with links on the descriptions. A '+7' after the project name gives the feature count.",
+      "medium": "text-plus-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "The list works as plain monospace text in a code block (links work inside <pre>), so the essential part needs no SVG. Animated version in one SVG: a highlight rect stepping down the rows with steps() timing, a few rects on scaleY keyframes with different durations for VU bars, a per-letter gradient logo whose stops are keyframed. Under 10 KB.",
+      "wow": 3,
+      "caveats": "Do not reuse any group logo or name. The F-key list is generic. Replace cheat wording with the project's own features and avoid implying the README does anything to other software. If ON/OFF states are shown, make them match real defaults or label them as decoration. Commenters note the Deviance trainer borrowed its font and tune from another group's work without credit: a reminder to credit sources.",
+      "number": 19,
+      "family": "pc",
+      "slug": "19-pc-08",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/25-f-key-options-menu_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/25-f-key-options-menu_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/25-f-key-options-menu_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/25-f-key-options-menu_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "c64-01",
+      "name": "C64 one-screen crack intro: raster-split logo and text on colour bars",
+      "era": "1986-1989, Commodore 64 cracking scene (Europe, plus NTSC intros from the US such as Eagle Soft); small intros placed in front of cracked games",
+      "what_it_is": "The single-screen C64 intro: a group logo at the top, a few centred lines naming the game, cracker and date, and a scroller, all on black. Commenters on the C64 intro database call the Fairlight one \"one of the most used intros ever\" and the Eagle Soft one \"THE C64-intro\". It differs from the existing C64 boot/loader style: no BASIC screen and no loading stripes, only the intro itself.",
+      "visual_signature": [
+        "Pure black screen and border, everything centred on a 40-column grid",
+        "Logo as one flat shape whose colour changes in horizontal bands by scanline: Dynamic Duo's two-row logo in red/green/yellow/blue bands; Ikari's upright slab capitals in blue and yellow bands",
+        "Logo drawn as an outline over a block of raster stripes: Fairlight's thin pink outlined letters sit on green/white stripes between two red rules",
+        "Logo as a mosaic of small bevelled squares: Triad's grey block-grid letters, about 6 character rows high, with one block blinking",
+        "Full-width raster bars about 8 pixels tall behind single text lines, shaded in 3-5 luminance steps (Fairlight: a pink bar behind the game title, a blue bar behind the 'CRACKED ... BY ...' line)",
+        "Fixed text block in 8x8 capitals: 'PRESENTS', game title, 'CRACKED ON dd/mm/yy BY handle', often fenced with dashes or dollar signs",
+        "One scroller near the bottom in double-width characters, plus optional 'PRESS SPACE'",
+        "Variants: brick-textured block letters on a blue panel above an orange brick wall panel with big yellow letters (Hotline); a multicolour bitmap picture panel in place of the logo with one grey label bar and a scroller under it (Eagle Soft)"
+      ],
+      "palette": "The 16 fixed VIC-II colours on black. Pepto's measured values: black 000000, white FFFFFF, red 68372B, cyan 70A4B2, purple 6F3D86, green 588D43, blue 352879, yellow B8C76F, orange 6F4F25, brown 433900, light red 9A6759, dark grey 444444, grey 6C6C6C, light green 9AD284, light blue 6C5EB5, light grey 959595. Colours share luminance levels (blue = brown, red = dark grey, purple = orange, light blue = grey, green = light red, cyan = light grey, yellow = light green), so bar shading and fades run in ramps such as blue, light blue, cyan, white or brown, orange, yellow, white.",
+      "typography": "8x8-pixel uppercase character sets, the ROM font or a redrawn one (thin 'computer' capitals, slab capitals). Logos are character mosaics or sprites doubled in X and Y, so edges step in 8-pixel or 2-pixel units. Scroller fonts are 1x1, 1x2 or 2x2 characters. Almost no lower case.",
+      "motion": "Raster colours roll vertically through the logo and the text bars; the scroller moves right to left at constant speed; one element may blink. Everything else is static. Motion is taken from user comments (colour rotation on Dynamic Duo, the logo blink on Triad); only stills were viewed.",
+      "references": [
+        {
+          "what": "Fairlight [FLT] 01 (code Woodo, packing Gollum; on-screen crack date 21.11.87): outlined logo on raster stripes, bars behind the text lines",
+          "url": "https://intros.c64.org/main.php?module=showintro&iid=485"
+        },
+        {
+          "what": "Ikari 02 (code ExCell, music Laxity per comments; on-screen date 11/11/88): blue/yellow banded slab logo, orange and red text lines, blue two-line slogan",
+          "url": "https://intros.c64.org/main.php?module=showintro&iid=631"
+        },
+        {
+          "what": "Triad 01 (on-screen date 87-20-DEC): grey block-grid logo, yellow tagline, one raster-washed info line; page notes say the logo colour coded the game's quality",
+          "url": "https://intros.c64.org/main.php?module=showintro&iid=1142"
+        },
+        {
+          "what": "Dynamic Duo [DD] 01 (1986, made by Flash of FCG/Radwar per the page): colour-banded logo, PRESS SPACE, wide scroller, no music",
+          "url": "https://intros.c64.org/main.php?module=showintro&iid=283"
+        },
+        {
+          "what": "Hotline [HTL] 03 (1987, TMC per comments): brick-textured logo on a blue panel and an orange brick wall panel",
+          "url": "https://intros.c64.org/main.php?module=showintro&iid=573"
+        },
+        {
+          "what": "Eagle Soft Incorporated [ESI] 02 (code Mitch, graphics Lady Hawk per comments): picture-panel variant",
+          "url": "https://intros.c64.org/main.php?module=showintro&iid=368"
+        },
+        {
+          "what": "Cory Arcangel's 2002 interview with Linus Walleij of Triad: intros of 6-8 KB, 24x21 sprites expanded for blocky logotypes, fades ordered by luminosity, raster bars",
+          "url": "https://old.rhizome.org/community/42918/"
+        },
+        {
+          "what": "Pepto's VIC-II palette analysis: colour names and luminance levels",
+          "url": "https://www.pepto.de/projects/colorvic/"
+        },
+        {
+          "what": "Pepto's 2001 palette page: the hex values quoted above",
+          "url": "https://www.pepto.de/projects/colorvic/2001/"
+        }
+      ],
+      "readme_translation": "Above the fold: one animated SVG about 640x240 (2x scale of 320x120). Project name as the block logo with rolling raster bands, then PRESENTS, a one-line description on a raster bar, and a 'CRACKED ON' style line reused for version and date. The scroller carries the tagline or stats. Real links go in normal Markdown directly under the image.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Build the logo from rects on an 8-pixel grid and use it as a clipPath over a tall stack of palette-coloured stripes that translates vertically in a CSS @keyframes loop with steps() timing; that is the raster split. Text bars are rects whose fill steps through 4-5 palette colours. The scroller is one group translated on X with the text duplicated for a seamless loop. No font can load, so define the 8x8 glyphs once as symbol elements and place them with use; about 60 glyphs costs a few KB. shape-rendering: crispEdges keeps the pixels hard.",
+      "wow": 3,
+      "caveats": "Do not copy any group name, logo shape or the Eagle Soft picture; the layout, raster split and block-letter technique are generic. Period scrolltexts often contain slurs (the Fairlight still shows one), so write new text. Dates are those shown on the intro screens and were not cross-checked on CSDb. Partly overlaps the 'SID title screen' part of the existing C64 style; keep this one strictly to the crack-intro layout.",
+      "number": 20,
+      "family": "c64",
+      "slug": "20-c64-01",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/28-c64-one-screen-intro_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/28-c64-one-screen-intro_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/28-c64-one-screen-intro_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/28-c64-one-screen-intro_opus_5.5.md"
+        }
+      ]
+    }
+  ]
+}

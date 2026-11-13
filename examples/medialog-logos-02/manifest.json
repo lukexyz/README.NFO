@@ -1,0 +1,920 @@
+{
+  "project": "MediaLog",
+  "collection": "Compact logos 02",
+  "seed": "002855db65fac2ce59f4cc9ee6104c64",
+  "count": 20,
+  "nativeSize": [
+    203,
+    74
+  ],
+  "sourceViewBox": [
+    0,
+    0,
+    812,
+    296
+  ],
+  "ascii": false,
+  "selection": "Fresh random draw from a predeclared graphic-first pool, excluding prior saved styles.",
+  "candidates": [
+    {
+      "number": 1,
+      "id": "pc-06",
+      "slug": "01-pc-06",
+      "name": "Pocket premiere",
+      "description": "A teal gadget with a glowing play window: your entire cultural life feels like something worth carrying around.",
+      "choices": [
+        "The projector window turns a software skin into a compact media emblem",
+        "Two simple controls suggest remembering and sharing without inventing interface labels"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/01-pc-06.svg",
+          "sha256": "fbde18ea9bc8a1e051b22776ba672e5454a7a956c66d121ab2b17a896ec9f01c"
+        },
+        {
+          "file": "assets/01-pc-06-still.svg",
+          "sha256": "370a4f7ac89713c46de81fc041b6b992c8d0f4f2ce2e29b5fff15ac6909e21a7"
+        },
+        {
+          "file": "assets/01-pc-06-light.png",
+          "sha256": "5db88a6dc6a27248eed3be46c52683387a9f77c6b42871062ed99854d8abf5fc"
+        },
+        {
+          "file": "assets/01-pc-06-dark.png",
+          "sha256": "b8cf8ba664245670fc8d3ba5c50414ac6f2344e355d2890488c39e4f624bdf94"
+        },
+        {
+          "file": "src/01-pc-06.mjs",
+          "sha256": "aa0e9c979018261aa64f09576a5c74fc7c5d56e22267501d72c98fd98887ed71"
+        },
+        {
+          "file": "01-pc-06.md",
+          "sha256": "a122d18c6b2be99a7b0d56887fa388554389dfe520e7b96808fb7002a0927fff"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "demo-07",
+      "slug": "02-demo-07",
+      "name": "Your name on the ticket",
+      "description": "A bold premiere ticket and oversized warm-white lettering. The collection gets the same billing as the films, books and records inside it.",
+      "choices": [
+        "A punched ticket is the shared invitation",
+        "Projector-scale typography is kept large enough to read across a tiny navigation bar"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/02-demo-07.svg",
+          "sha256": "59d6a0ec46be9308293de2b2558e8656085d03844f94e88e87bbad058c24d5d8"
+        },
+        {
+          "file": "assets/02-demo-07-still.svg",
+          "sha256": "055c25cfa8801c74a94fdf5f81d5f506a5556dcd08ba4729fdb2a7e986a1d655"
+        },
+        {
+          "file": "assets/02-demo-07-light.png",
+          "sha256": "c3fd67e5e684eefb1fd4fd2c8dd6935ec7af268bd10c6826ef6cf43111926757"
+        },
+        {
+          "file": "assets/02-demo-07-dark.png",
+          "sha256": "c3fd67e5e684eefb1fd4fd2c8dd6935ec7af268bd10c6826ef6cf43111926757"
+        },
+        {
+          "file": "src/02-demo-07.mjs",
+          "sha256": "f3ee5ded87d4be18307def8f0730972120da6d10a1ef587d77b23e9fa245b4a1"
+        },
+        {
+          "file": "02-demo-07.md",
+          "sha256": "2cf415bdca9122459499c5914ca29e083277b1af691f2dad3623a79800b03ba3"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "c64-09",
+      "slug": "03-c64-09",
+      "name": "One continuous loop",
+      "description": "A thick multicolour ribbon folds into an infinity loop. Different kinds of media become one continuous history.",
+      "choices": [
+        "Two looping paths join into a single diary rather than separate libraries",
+        "Broad copper bands survive reduction to 203 pixels"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/03-c64-09.svg",
+          "sha256": "46f8cea4bc24ebf90417bf62c9d5fffc89f996f526d008d577e603cadda6adb9"
+        },
+        {
+          "file": "assets/03-c64-09-still.svg",
+          "sha256": "e44d015179fb506501d25026916b97fd9789476f0330ff15f5a5bea5702ea4d5"
+        },
+        {
+          "file": "assets/03-c64-09-light.png",
+          "sha256": "cead23e3c1f258f66bd06410bd2d7101cedaabf3526e4662e7edb9f1cf6c5ccf"
+        },
+        {
+          "file": "assets/03-c64-09-dark.png",
+          "sha256": "41faa408aed4857a609f7e1c61c0b3971c07f98c8d6296f532b4c8118f9a9fe8"
+        },
+        {
+          "file": "src/03-c64-09.mjs",
+          "sha256": "386d90df1c0aae8c46647d30a11b537b5668ca03b24e203ba769c571026d40a2"
+        },
+        {
+          "file": "03-c64-09.md",
+          "sha256": "4b9389ae2b678b69a5296a6222d66201e1bcf59b1d2c190c6e631aff84706050"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "mach-13",
+      "slug": "04-mach-13",
+      "name": "Pocket nostalgia",
+      "description": "A two-tone handset badge with a tiny winding path on its screen. A diary that fits in your pocket, with the calm simplicity of an old LCD.",
+      "choices": [
+        "The screen path is a timeline reaching a saved square",
+        "Only two tones and a few large shapes are used; no status text or character art"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/04-mach-13.svg",
+          "sha256": "5616e6951f7e7f115a0f6c41cc17ea364cc7f38656320826dc96f4f565f92d2f"
+        },
+        {
+          "file": "assets/04-mach-13-still.svg",
+          "sha256": "54a8d71a0c9b614ebe1f208b3a24318560ac5c8a037aa158c2c62de1c7d6f0f9"
+        },
+        {
+          "file": "assets/04-mach-13-light.png",
+          "sha256": "0786742c66fd7f197df66ae155e0f94a01237852fac2a3f3f481d51650500a68"
+        },
+        {
+          "file": "assets/04-mach-13-dark.png",
+          "sha256": "0786742c66fd7f197df66ae155e0f94a01237852fac2a3f3f481d51650500a68"
+        },
+        {
+          "file": "src/04-mach-13.mjs",
+          "sha256": "2ecfdad92945bede6e6b6bbe813430be9107a8f4dd90fbf5b6053aa15d164e00"
+        },
+        {
+          "file": "04-mach-13.md",
+          "sha256": "4a8f6af98fc4140c1affaa7900d850c3678379c171450ad8ecd33fcdcf8c751c"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "vap-10",
+      "slug": "05-vap-10",
+      "name": "Blue sky diary",
+      "description": "A glossy blue orb holds an open diary, with a green leaf tucked into it. Bright, optimistic glass-era branding with generous, readable lettering.",
+      "choices": [
+        "The orb gathers multiple experiences into a single place",
+        "The leaf suggests a growing personal collection, not a software status badge"
+      ],
+      "animated": true,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/05-vap-10.svg",
+          "sha256": "50d7c159a3c587ca6b3b3905ce7e4014e70c5b6bfc39098d4128d97fbd1b7202"
+        },
+        {
+          "file": "assets/05-vap-10-still.svg",
+          "sha256": "36069cb8498c7616eb6be942cb8b2de117446219431cce0d49365fd94b7fb61e"
+        },
+        {
+          "file": "assets/05-vap-10-light.png",
+          "sha256": "4d34d8ad267219aa9dbb132d572a1a3bd52e571fd1cc185da5babe7707ce4602"
+        },
+        {
+          "file": "assets/05-vap-10-dark.png",
+          "sha256": "35eb3c1e8be7b24ccf1e9845d88e761a14af0fea4dc5d9b6a111dbcf3c624054"
+        },
+        {
+          "file": "src/05-vap-10.mjs",
+          "sha256": "1ef23bbdddb421d2ea92c053732cd83a134fc36c0d20619c9191b0c09bce3bf8"
+        },
+        {
+          "file": "05-vap-10.md",
+          "sha256": "fd7eca27850af25923a40bb7f568d37c37926bcd25ad323bf7360401e1eef404"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "mach-01",
+      "slug": "06-mach-01",
+      "name": "Colour arrives last",
+      "description": "Four bright memory tabs stack into a play-shaped badge. Spectrum-era loading colours become an instantly recognisable archive mark.",
+      "choices": [
+        "Overlapping tabs suggest moments filed in chronological order",
+        "One shared play cutout unites the stack without adding tiny media icons"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/06-mach-01.svg",
+          "sha256": "4268ad42ab530b79469d7d873f54d9e164b5d8faa77f60f4a3d8e98b3903c5ff"
+        },
+        {
+          "file": "assets/06-mach-01-still.svg",
+          "sha256": "5d1b08d1ab05d994dfe581e45be275464cbba842275976d6f5b75dc398aba24a"
+        },
+        {
+          "file": "assets/06-mach-01-light.png",
+          "sha256": "79d1b61d1f7e1307efb1b53e3ad3e9ea0d12ab89b3421add392fab8e1c19bde3"
+        },
+        {
+          "file": "assets/06-mach-01-dark.png",
+          "sha256": "b6dcf54e1ab79fc903ee9102838a4fb36f6be8f5d3c2b1d106909d4d2a747e67"
+        },
+        {
+          "file": "src/06-mach-01.mjs",
+          "sha256": "f8a21f8d7d08aebbb2f34bdf07dec5e53cd894e5b74843388a450d94bbcefa62"
+        },
+        {
+          "file": "06-mach-01.md",
+          "sha256": "5fc236c5e009a0c046609863b03e9b173d93995536f1165b417f6f3ac826297d"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "asia-02",
+      "slug": "07-asia-02",
+      "name": "One more chapter",
+      "description": "A tiny original cat curls up on a book under a crescent moon. A quiet visual-novel vignette for the stories you keep returning to.",
+      "choices": [
+        "A reader’s companion combines the social and reading sides of MediaLog",
+        "Moon, face and book are reduced to large silhouettes so the mascot survives at small size"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/07-asia-02.svg",
+          "sha256": "b4b228d586b57e581d5c64a11a638a3c9484c627db5655b0cb6e44cd4a280649"
+        },
+        {
+          "file": "assets/07-asia-02-still.svg",
+          "sha256": "9bf60592cc4ddc1d0e2cf19438ad90702ec582d9f473885153e13432dc1c361f"
+        },
+        {
+          "file": "assets/07-asia-02-light.png",
+          "sha256": "238ec207c7f58119c313ecc1865d3530b37c8be692519a897563871d088afc75"
+        },
+        {
+          "file": "assets/07-asia-02-dark.png",
+          "sha256": "e85fdcd663bccbf319010dc8a1b6b315689fd45d7b298150fb37ee4d695ad355"
+        },
+        {
+          "file": "src/07-asia-02.mjs",
+          "sha256": "78c82f51b587914155369966845b7da021142824190f4fb1ecbafe808fefe497"
+        },
+        {
+          "file": "07-asia-02.md",
+          "sha256": "9883557ee95f2e9fdf42fc5ae94a88ed122c39c0c6102b785df416852cbf56e1"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "vap-14",
+      "slug": "08-vap-14",
+      "name": "You had to be there",
+      "description": "Two overlapping chat bubbles, a green presence light and an easy blue wordmark. A favourite becomes a conversation.",
+      "choices": [
+        "Two distinct bubbles stand for you and the people you know",
+        "The typing dots suggest swapping recommendations, with no fake notification counts"
+      ],
+      "animated": true,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/08-vap-14.svg",
+          "sha256": "3ec1063868b6ed360ed9eaf2fdc6f1ee26e9a3143cf210c8473c742c9c3b4e4b"
+        },
+        {
+          "file": "assets/08-vap-14-still.svg",
+          "sha256": "5cf5cb492842504272f61445be451f9b5b198d93822e958b1afc69404b4fb941"
+        },
+        {
+          "file": "assets/08-vap-14-light.png",
+          "sha256": "6e16dc0273b8a98086f4a39ce78090c057738a5aeb5a49a9257f9c4d3f016af3"
+        },
+        {
+          "file": "assets/08-vap-14-dark.png",
+          "sha256": "7e73257cf7ae9e2627d953ed61ddb4c34f6abdac3868cb810608230d367cf4e0"
+        },
+        {
+          "file": "src/08-vap-14.mjs",
+          "sha256": "1c3ce52c951f4c1c6e1e0b89c00da16fd721adc331a546e62ea38fb0b241a6f9"
+        },
+        {
+          "file": "08-vap-14.md",
+          "sha256": "892235266d887a5a5b6683f02a63801c238ce3cd07ac169a452b49459c8deda9"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "hack-13",
+      "slug": "09-hack-13",
+      "name": "Culture radar",
+      "description": "A glowing globe carries a few bright recommendation routes. What your friends discover finds its way into your timeline.",
+      "choices": [
+        "The routes represent shared taste rather than geographic tracking",
+        "Three large blips replace the reference’s dense counters and labels"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/09-hack-13.svg",
+          "sha256": "dd2ae5f9fa2ddd67a22c48cba4ce87056aff933a5bb106dbb42cbf08667d1d8f"
+        },
+        {
+          "file": "assets/09-hack-13-still.svg",
+          "sha256": "639ce3df86caa61e424ef0fd9f3de02883a7ab8d8d194a14acbdd15d2f1764b8"
+        },
+        {
+          "file": "assets/09-hack-13-light.png",
+          "sha256": "eac7216436e8c5d76a37294ed89ca8d60d66a4879187731352b3cef9044cab32"
+        },
+        {
+          "file": "assets/09-hack-13-dark.png",
+          "sha256": "eac7216436e8c5d76a37294ed89ca8d60d66a4879187731352b3cef9044cab32"
+        },
+        {
+          "file": "src/09-hack-13.mjs",
+          "sha256": "093ddedb97ba12d83f7ba54b2fa824101fbbe7a0cb2ef1b93e3b85d0f864ff49"
+        },
+        {
+          "file": "09-hack-13.md",
+          "sha256": "17d866c9e30f6a9021e7e072b16d0cdf6d5e14d5b0a7b2996088d49480b2d3a1"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "hack-12",
+      "slug": "10-hack-12",
+      "name": "Margin notes",
+      "description": "A folded culture zine with a purple star tucked into its pages. A painted editorial identity for a diary with opinions.",
+      "choices": [
+        "The star is a remembered favourite, drawn into the open publication",
+        "Broad serif lettering echoes a diskmag masthead without reproducing its tiny article columns"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/10-hack-12.svg",
+          "sha256": "fc60276ded96e0edb571e18a80b80cd95a188b0ad6b4c7e8fd9b2d0804a2ee1f"
+        },
+        {
+          "file": "assets/10-hack-12-still.svg",
+          "sha256": "f7ea5a9ea290f7a072bc780c26e9c532cc428a56aecf2674edb2bd7d69cdee60"
+        },
+        {
+          "file": "assets/10-hack-12-light.png",
+          "sha256": "b6bbcb4307e7fe22c44eeb7537b129be2fe35fbd47d6dfdd32abcdfe2d031563"
+        },
+        {
+          "file": "assets/10-hack-12-dark.png",
+          "sha256": "29a004a53d1c0dee9af3d17ffc994dcce3fc5a835b3a5928429ac4a07c70da1b"
+        },
+        {
+          "file": "src/10-hack-12.mjs",
+          "sha256": "0eeb657faa133cd054a0b9a772c1217c03ff20953ce4358733ed8ad121fbddb3"
+        },
+        {
+          "file": "10-hack-12.md",
+          "sha256": "0b23a10ce1e5f3b119a6788b914bb457c6e6081596fd11471995b8464125f4a9"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "c64-11",
+      "slug": "11-c64-11",
+      "name": "Shared frequency",
+      "description": "A pair of golden headphones cuts through bold overlapping rings. Music, films and conversations share the same frequency.",
+      "choices": [
+        "The original headphone silhouette is readable even when the ring pattern becomes texture",
+        "The paired ear cups give the symbol a social reading as well as a music one"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/11-c64-11.svg",
+          "sha256": "0cf03423ee5a7ef7e72ab03515c9afb35e994914997443e0dd6d96cfee58b1d8"
+        },
+        {
+          "file": "assets/11-c64-11-still.svg",
+          "sha256": "5ae5f396cd15845c1f148c538eca498bb49557dd22e4ba10296ca73a9ba9bc92"
+        },
+        {
+          "file": "assets/11-c64-11-light.png",
+          "sha256": "e7ce785410ec264ee96259eef59caf172f2e3ddbbc38b21f7c1b32d00a29c50a"
+        },
+        {
+          "file": "assets/11-c64-11-dark.png",
+          "sha256": "babc6dc791d1fc5587e0eb399393024654b5cd7b7b908b9b636774e222e2db0d"
+        },
+        {
+          "file": "src/11-c64-11.mjs",
+          "sha256": "3b5741bdfaeca47bbfdddc92d3746606407d0b2514fa44a544463d155905fb28"
+        },
+        {
+          "file": "11-c64-11.md",
+          "sha256": "851e81b0778d3a273b7b2c456698e750cdfa69717b8a57307f8ca0cc446432bb"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "vap-18",
+      "slug": "12-vap-18",
+      "name": "After-hours favourites",
+      "description": "A pink neon heart with a cyan play cutout, beside a clean tube-letter wordmark. Your late-night discoveries have a place to glow.",
+      "choices": [
+        "A heart and play sign combine emotional reaction with watching",
+        "The composition removes street labels and rain so the name stays clear at navigation size"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/12-vap-18.svg",
+          "sha256": "57ea4c5666b95934ac8c275d7fdb493d41391df7850b1d52ff2f3efbe2885477"
+        },
+        {
+          "file": "assets/12-vap-18-still.svg",
+          "sha256": "d408c39c04a1fbc034cddbaa05f73bf056772547e92bdd16d24746e78b029c6c"
+        },
+        {
+          "file": "assets/12-vap-18-light.png",
+          "sha256": "5422e4ae09cdc1fbaf12cf6388a2629467f0e1c812f771b30209a1fad3249551"
+        },
+        {
+          "file": "assets/12-vap-18-dark.png",
+          "sha256": "5422e4ae09cdc1fbaf12cf6388a2629467f0e1c812f771b30209a1fad3249551"
+        },
+        {
+          "file": "src/12-vap-18.mjs",
+          "sha256": "71da2d59717c4c57e041df668eccdf9bd1b709d888ca84426146b0bc8ee49621"
+        },
+        {
+          "file": "12-vap-18.md",
+          "sha256": "fcbdfa045d72f66defd8d832d0189d11ad704a51c680a7da83dc1b840ae3d81f"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "id": "xfer-04",
+      "slug": "13-xfer-04",
+      "name": "Culture club card",
+      "description": "A blue forum-era membership strip with a gold heart badge. A compact identity that feels like belonging to a small club of people with good recommendations.",
+      "choices": [
+        "The badge identifies shared taste rather than a rank or paid membership",
+        "The userbar gloss and stripes are broad enough to remain legible without microscopic captions"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/13-xfer-04.svg",
+          "sha256": "d1a72743aeb86a92cbb01b2e77316974db97b04c25b96d31f22bd30935af3026"
+        },
+        {
+          "file": "assets/13-xfer-04-still.svg",
+          "sha256": "acf5757c29cece1d7d4ab6646f532fbf0833704b7dd92579d117bec0f7fd7805"
+        },
+        {
+          "file": "assets/13-xfer-04-light.png",
+          "sha256": "31bc9361d1e80bca047021961ebce0ed6fcfe27c0fa134ade635a6ba6c1c1fd8"
+        },
+        {
+          "file": "assets/13-xfer-04-dark.png",
+          "sha256": "31bc9361d1e80bca047021961ebce0ed6fcfe27c0fa134ade635a6ba6c1c1fd8"
+        },
+        {
+          "file": "src/13-xfer-04.mjs",
+          "sha256": "284c74c532bef51fdc164173dfd4f7fd6eb73ddc3f8be41f87cd4cf6b1298817"
+        },
+        {
+          "file": "13-xfer-04.md",
+          "sha256": "4783013e509741a77eef1e5a4d2f122707b25944e39b61aba58da387673142b6"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "trk-01",
+      "slug": "14-trk-01",
+      "name": "Four-track mind",
+      "description": "Four chunky tracks and a golden waveform sit inside a brushed-grey badge. Watching, reading, playing and listening become parts of the same mix.",
+      "choices": [
+        "Four large tracks directly reference the four verbs in the brief",
+        "The waveform runs continuously across them, expressing one shared timeline"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/14-trk-01.svg",
+          "sha256": "d6654a561ccc733d48fd8a988112450f87d2a4d297e86cc46007281c549f2611"
+        },
+        {
+          "file": "assets/14-trk-01-still.svg",
+          "sha256": "3cdfbc3fff1dc30b99e7148a3b6bed0cf2fd1ed1daade2fdc3fb94dee4965a8c"
+        },
+        {
+          "file": "assets/14-trk-01-light.png",
+          "sha256": "45ac2e23340dfa4870a120d3f921253bfdd357ad0e65684d66697d88c1141f4a"
+        },
+        {
+          "file": "assets/14-trk-01-dark.png",
+          "sha256": "b353cb73b254342aed5dcc4e075e35c4424856ff0f98c9c8d0cdcc7319d5d308"
+        },
+        {
+          "file": "src/14-trk-01.mjs",
+          "sha256": "a6b721e887914b8c0567f323ed3e6220fda7ddfcffa2df894dd064df82a636dc"
+        },
+        {
+          "file": "14-trk-01.md",
+          "sha256": "d5587ed62926fac31d1202c8faae2431556bfc073dfc449c3b1a5c0bd7a51b00"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "id": "pc-02",
+      "slug": "15-pc-02",
+      "name": "Pressed into memory",
+      "description": "An emerald plasma seal with carved, pale serif lettering. The emblem is a moment preserved inside a triangular frame.",
+      "choices": [
+        "The enclosed bright point is a saved experience",
+        "Embossed lettering suggests a memory pressed into a lasting material"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/15-pc-02.svg",
+          "sha256": "992022d23476753735be8a41506f3daaf59b9e6a204af82265377ec99bfbf67a"
+        },
+        {
+          "file": "assets/15-pc-02-still.svg",
+          "sha256": "9da910592f5dae3dd44d9cee848e354e2f54eeaa31c99324cb6b2a8bdf1d12c5"
+        },
+        {
+          "file": "assets/15-pc-02-light.png",
+          "sha256": "ddf0974cc671aa9fd05e11354c005e55b0ebdbe46f12ed2012aac11105c36c49"
+        },
+        {
+          "file": "assets/15-pc-02-dark.png",
+          "sha256": "ddf0974cc671aa9fd05e11354c005e55b0ebdbe46f12ed2012aac11105c36c49"
+        },
+        {
+          "file": "src/15-pc-02.mjs",
+          "sha256": "34893b54b288ae5ee7742d7f52a05e8ee3a45ca3cfe6cf536c7f70d1b24280d4"
+        },
+        {
+          "file": "15-pc-02.md",
+          "sha256": "169eb04e3f933329b1a3accbc732cb56674687e9bedc64d62fb783dbff03d06c"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "id": "xfer-07",
+      "slug": "16-xfer-07",
+      "name": "Passed around",
+      "description": "Three coloured tiles travel in a circle at the end of a two-tone wordmark. One person’s discovery becomes another person’s next favourite.",
+      "choices": [
+        "The P2P chunk vocabulary becomes a social exchange rather than transfer statistics",
+        "The emblem follows the title, making a different horizontal rhythm from the other marks"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/16-xfer-07.svg",
+          "sha256": "d55dd08effc4e980a8a8c3adccc296389f5a4a6685466be12e75d2df4f9cf011"
+        },
+        {
+          "file": "assets/16-xfer-07-still.svg",
+          "sha256": "049e53516aec77d3ee71bb5f0d45290cbf411417fbf0a32d128a92ee61677ce4"
+        },
+        {
+          "file": "assets/16-xfer-07-light.png",
+          "sha256": "29cbd2dce6c175694e068f8c8e6d0f783ba75e90a0b569a983ac8a96b9c9a351"
+        },
+        {
+          "file": "assets/16-xfer-07-dark.png",
+          "sha256": "1ab440eabf04d39acef226ea44f366629f18de52c1c84ae18d978093578e6adf"
+        },
+        {
+          "file": "src/16-xfer-07.mjs",
+          "sha256": "298c2455656fbfd2fc8b277ddcc37a42deae09de7c73f6ac9cc8b4f643148688"
+        },
+        {
+          "file": "16-xfer-07.md",
+          "sha256": "b4a09442b30cde843b3fc76336f3b177fc0bbc59a507c861a6208f8fad13c746"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "c64-12",
+      "slug": "17-c64-12",
+      "name": "Chrome keepsake",
+      "description": "A polished, faceted keepsake and an extruded wordmark with a sharp reflected horizon. More like an engraved personal badge than a screen.",
+      "choices": [
+        "Two folded chevrons inside the gem suggest stacked saved moments",
+        "Cool sky and warm ground share the same lettering, linking past and present"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/17-c64-12.svg",
+          "sha256": "80154c19e83c8eef7c27e6d2798f01893e3cbf72b3e317b72c9d51c3c34d4244"
+        },
+        {
+          "file": "assets/17-c64-12-still.svg",
+          "sha256": "1724b0ba442a50f072322df93366db7d8b56cf1fe5878296eeba74cbf1e1ce34"
+        },
+        {
+          "file": "assets/17-c64-12-light.png",
+          "sha256": "6c6606e15b1d974b5fc2461639b22d80ada04c1ddc921a3ca34754f9621a5593"
+        },
+        {
+          "file": "assets/17-c64-12-dark.png",
+          "sha256": "6c6606e15b1d974b5fc2461639b22d80ada04c1ddc921a3ca34754f9621a5593"
+        },
+        {
+          "file": "src/17-c64-12.mjs",
+          "sha256": "4f633a854426dec2db1ceca8036f53889faa7a2a8b290b556a083aa453383b27"
+        },
+        {
+          "file": "17-c64-12.md",
+          "sha256": "0ee13f501f40633ec0e36cca7b16dc778186b8a4996bdd1946f1350b1ea01bb0"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "trk-05",
+      "slug": "18-trk-05",
+      "name": "Pocket mixtape",
+      "description": "A cyan-and-pink phrase grid forms a heart inside a handheld badge. A playful identity for the patterns in what you love.",
+      "choices": [
+        "The tracker cursor becomes a play arrow for your own mix",
+        "One large heart replaces tiny note codes while retaining the reference’s palette and grid structure"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/18-trk-05.svg",
+          "sha256": "cf72a68071af493b53dc7a4e646c2c1784ce9a58199300ffaaa174857f6aeb0d"
+        },
+        {
+          "file": "assets/18-trk-05-still.svg",
+          "sha256": "f50d82a7330992372105e09b7a84db4ce4d9227529d53fc6ca84a781819a2a7e"
+        },
+        {
+          "file": "assets/18-trk-05-light.png",
+          "sha256": "ae0c74be2aa1dc2520676fda795eb13b83cb5da0f5f1709f8ceec1b81c88c5e0"
+        },
+        {
+          "file": "assets/18-trk-05-dark.png",
+          "sha256": "bf318686039f3f8ab6ee4e62f8216857240bcaacf97b3815a669c55344a7576c"
+        },
+        {
+          "file": "src/18-trk-05.mjs",
+          "sha256": "6da896491bd3ab8bdfe46973e094759940877d0256c9736cdc4db3fd2348b282"
+        },
+        {
+          "file": "18-trk-05.md",
+          "sha256": "f914dda75f3e2b5fa06d7f968faefa559cae08d614f2ab5b986f4b165d7cd230"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "pc-08",
+      "slug": "19-pc-08",
+      "name": "Favourite mode",
+      "description": "An oversized green toggle with a heart built into its switch. The trainer-screen energy becomes a simple invitation to save what you loved.",
+      "choices": [
+        "The toggle expresses a personal favourite instead of a software cheat or capability",
+        "A heavy slanted title carries the arcade energy without tiny key labels"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/19-pc-08.svg",
+          "sha256": "75aec5196cafce25dc5b8c7f3dc2e616885e3865f043dbcf1f9ff5befe3bcd2b"
+        },
+        {
+          "file": "assets/19-pc-08-still.svg",
+          "sha256": "07a6702f952f4fc61b387494fd1def88738c749590801773f2e171b5601f41e2"
+        },
+        {
+          "file": "assets/19-pc-08-light.png",
+          "sha256": "41d3270144df930b1006e2f51b6b43a9b9c527d5c9cef2dc2216a587784c93e6"
+        },
+        {
+          "file": "assets/19-pc-08-dark.png",
+          "sha256": "2f5f774530ff7daceb25bc6f4b8709e5130dcc30b7ff69f884e2f8269ab36559"
+        },
+        {
+          "file": "src/19-pc-08.mjs",
+          "sha256": "1fabf9ce974afe068eaa91acd85dc2614d41280f59f1e535f64c55d6b70dab14"
+        },
+        {
+          "file": "19-pc-08.md",
+          "sha256": "fea437d4c6a7c95c39315ebd010f340026d2ce7880d70a6d69c65b1e448ba1ee"
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "id": "c64-01",
+      "slug": "20-c64-01",
+      "name": "The watching eye",
+      "description": "A raster-banded eye hides a play arrow at its centre. Watching becomes noticing—and keeping a record of what mattered.",
+      "choices": [
+        "The eye is drawn as a single memorable silhouette rather than a literal screen",
+        "One palette flows through both emblem and wordmark, making the whole lockup feel unified"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/20-c64-01.svg",
+          "sha256": "1145109b5985618ff741e431e9d813c47913499548eaee4001b5cb28efc534c1"
+        },
+        {
+          "file": "assets/20-c64-01-still.svg",
+          "sha256": "460d64820ade1842cd5eaa2a6db22716c696cc863123abcdcb0a43014e0d6dfa"
+        },
+        {
+          "file": "assets/20-c64-01-light.png",
+          "sha256": "2d376a49bccf5202f8b4ee5c2f2eab9e6395756e74c675d1bba398a0fc0b804e"
+        },
+        {
+          "file": "assets/20-c64-01-dark.png",
+          "sha256": "2d376a49bccf5202f8b4ee5c2f2eab9e6395756e74c675d1bba398a0fc0b804e"
+        },
+        {
+          "file": "src/20-c64-01.mjs",
+          "sha256": "05e936ac6b644556fa56b0cec8014ca8d36981a58cedc321486815cb0137ec0e"
+        },
+        {
+          "file": "20-c64-01.md",
+          "sha256": "0b9163c7d877c5a5441d3b1797e95795d52d6cac44366a43fb86dd0ece0b1bc4"
+        }
+      ]
+    }
+  ]
+}

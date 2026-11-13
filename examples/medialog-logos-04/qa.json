@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "createdAt": "2026-10-10T17:41:13.035Z",
+  "designs": 10,
+  "svgAssets": 30,
+  "pngExports": 20,
+  "nativeSize": {
+    "width": 203,
+    "height": 74
+  },
+  "ascii": false,
+  "checks": [
+    {
+      "viewport": 1400,
+      "images": 30,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true,
+      "consoleErrors": 0
+    },
+    {
+      "viewport": 375,
+      "images": 30,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true,
+      "consoleErrors": 0
+    }
+  ],
+  "controls": [
+    "pause motion swaps every preview to its static SVG",
+    "favourites persist",
+    "filter and clear",
+    "2× enlargement",
+    "copy fallback selects snippet"
+  ],
+  "policy": "30 SVGs parsed and decoded, with no scripts, remote resources, embedded images or text elements; static and icon SVGs contain no animation",
+  "visualChecks": [
+    "Actual-size 203 × 74 light/dark contact sheet (preview.png)",
+    "2× and 3× proof sheets on light and dark",
+    "All ten icon-only SVGs at 32 and 64 px (icons.png)",
+    "Live captures at 0.3, 1.2, 2.5 and 5 s for six animated designs"
+  ],
+  "limitations": [
+    "Live GitHub rendering not tested.",
+    "SVG (SMIL) animation in logos 3, 4, 6 and 7 does not follow the reduced-motion setting; use the static SVG where motion must stay off.",
+    "SVG colours follow the viewer’s system colour scheme, not GitHub’s theme setting."
+  ],
+  "preview": "preview.png",
+  "symbols": "icons.png",
+  "brandChecks": {
+    "primary": "#18223a",
+    "typography": "Same plain DejaVu Sans Bold wordmark for all ten; glyphs converted to paths and licensed source bundled.",
+    "ascii": false,
+    "priorMediaLogStyleRepeats": 0
+  },
+  "motion": {
+    "animatedCandidates": [
+      "01-mach-07",
+      "02-demo-01",
+      "03-print-02",
+      "04-pc-13",
+      "05-vap-11",
+      "06-c64-08",
+      "07-idle-07",
+      "08-idle-06",
+      "09-mach-09",
+      "10-c64-06"
+    ],
+    "treatment": "CSS animation stops under prefers-reduced-motion; SVG path, position and radius animation (SMIL) runs regardless. Play-once motion: 01, 02 (fade), 08. Every static SVG holds the designed resting pose."
+  },
+  "repositoryValidation": {
+    "status": "passed",
+    "syntaxChecks": 402,
+    "galleryItems": 340,
+    "markdownFiles": 465,
+    "freshGeneratedPages": 114,
+    "svgImagesDecoded": 490
+  }
+}

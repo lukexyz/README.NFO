@@ -1,0 +1,7 @@
+# Review slip
+
+Copy the image to the path below, keep the MIT notice, and paste this into your README. [Preview](../10-print-05.md).
+
+```html
+<img src="docs/brand/medialog-logos-05/assets/10-print-05.svg" width="203" height="74" alt="MediaLog">
+```

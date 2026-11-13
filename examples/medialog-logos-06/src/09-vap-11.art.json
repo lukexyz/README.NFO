@@ -1,0 +1,26 @@
+{
+  "id": "vap-11",
+  "name": "Read me",
+  "description": "An open book as a 1-bit Kare-style icon: black outlines on white pages, words as runs of black pixels, checker-dithered grey for the cover, a hard black drop shadow and the arrow pointer resting on a page.",
+  "choices": [
+    "Black and white only: every grey is a dither, and the shadow is a hard offset with no blur",
+    "Each icon pixel is exactly two screen pixels at the native 203 × 74 size, so the bitmap stays crisp"
+  ],
+  "book": "open book",
+  "repeatOf": {
+    "style": "vap-11",
+    "collection": "medialog-logos-04",
+    "slug": "05-vap-11",
+    "name": "System diary"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

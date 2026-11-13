@@ -1,0 +1,17 @@
+{
+  "id": "mach-10",
+  "name": "Orbit trace",
+  "description": "A glowing play arrow sits inside an orbital timeline. One clean phosphor line carries the brand.",
+  "choices": [
+    "Two bright points on the orbit read as shared moments",
+    "The triangular trace suggests watching, while the orbit supplies the timeline"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

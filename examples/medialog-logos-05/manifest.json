@@ -1,0 +1,523 @@
+{
+  "project": "MediaLog",
+  "collection": "Compact logos 05",
+  "seed": "49bf448fb0d46c2918bda02b731b0ce2",
+  "count": 10,
+  "nativeSize": [
+    203,
+    74
+  ],
+  "sourceViewBox": [
+    0,
+    0,
+    812,
+    296
+  ],
+  "ascii": false,
+  "animated": false,
+  "selection": "User-chosen scope with no random selection: the seven graphic styles still unused for MediaLog plus three media-led styles added to the graphic pool (idle-10, mach-11, asia-01). Each symbol leads with a media type; navy-led colour and a consistent plain wordmark override catalogue palettes and lettering.",
+  "candidates": [
+    {
+      "number": 1,
+      "id": "mach-12",
+      "slug": "01-mach-12",
+      "name": "Now showing",
+      "description": "A video-recorder front panel reads ▶ 1:58 in teal fluorescent segments behind smoked glass, with an orange film-reel annunciator and a progress bar most of the way through.",
+      "choices": [
+        "Seven-segment digits keep their ghosted unlit segments; annunciators become play, pause, record and a film reel",
+        "A runtime and a part-filled progress bar make the panel about watching films, not hi-fi; no lettering is used"
+      ],
+      "media": [
+        "films"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/01-mach-12.svg",
+          "sha256": "09ce8b35b3aee3ef41a8e8f052f99dcbb643aa2fa83b17d53d4e2d73a83b091c"
+        },
+        {
+          "file": "assets/01-mach-12-icon.svg",
+          "sha256": "5878c218eb6c767ae09cc5caa2fb004d8a3bc01c832806ffc24c8602449ee2c5"
+        },
+        {
+          "file": "assets/01-mach-12-light.png",
+          "sha256": "4ab69b19f8e5da9df56b9704b54c9f9283d7a505edea20fcb3a581abe76b027d"
+        },
+        {
+          "file": "assets/01-mach-12-dark.png",
+          "sha256": "33c767f22ea6d1089bff3f4816d99f7ac9567700f3fe04862a65ae29b8de1ffa"
+        },
+        {
+          "file": "01-mach-12.md",
+          "sha256": "1170cc594fc93d397042801271b57a60fb3db9824938c48180a725ae2ded28cb"
+        },
+        {
+          "file": "src/01-mach-12.mjs",
+          "sha256": "ec390b3531af857525033ee26d4c35b0cfa7fa64ac96df304abc52dc7558c16d"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "idle-10",
+      "slug": "02-idle-10",
+      "name": "Off air",
+      "description": "A navy television with rabbit-ear antennas shows broadcast colour bars, castellations and a black-level strip, with a station-ident box holding a small open book.",
+      "choices": [
+        "The colour-bar test pattern reads as television at any size; the ident box carries the diary as the channel logo",
+        "Bars are pulled toward ochre, teal, plum and brick so the screen stays clear of neon cyan and magenta"
+      ],
+      "media": [
+        "shows"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/02-idle-10.svg",
+          "sha256": "dbeddd07242fafe7bb61edf327e6bd05bcad88eadc298cd1b82b23582238320f"
+        },
+        {
+          "file": "assets/02-idle-10-icon.svg",
+          "sha256": "1e138233f5c3a29d90d711e8619379fd3d1f8c03da6446ae3f5ff0514f3d9727"
+        },
+        {
+          "file": "assets/02-idle-10-light.png",
+          "sha256": "9381be1b769ff6ce4ea6f05efb233eea04479a15c642e7ba748581cb8a8e3c3e"
+        },
+        {
+          "file": "assets/02-idle-10-dark.png",
+          "sha256": "3e816f8b19831e796749eaad3a4229da9c5a589bc1b5902b6a33fbfbdd242bda"
+        },
+        {
+          "file": "02-idle-10.md",
+          "sha256": "84d42a7777bb5e1e4231fb06a5c8c0f4203ed26a4e20198539657baf0d6c46dc"
+        },
+        {
+          "file": "src/02-idle-10.mjs",
+          "sha256": "5dc005b9372caf286df3604c6591137741fde2c79ab9df6a05af541eff93ae1a"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "c64-14",
+      "slug": "03-c64-14",
+      "name": "Jukebox",
+      "description": "An arched navy jukebox with gold columns plays a record under its dome; below, a track list holds the selected album on a red bar.",
+      "choices": [
+        "The chip-music jukebox screen becomes the cabinet itself: a dome, gold columns and a three-row track list with right-aligned times",
+        "A red selection bar and a red record label are the only strong colours against navy and gold"
+      ],
+      "media": [
+        "albums"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/03-c64-14.svg",
+          "sha256": "9f2e269ca45f216a0720b629d36d472f219ed112351ff14c10fa95eab3480f03"
+        },
+        {
+          "file": "assets/03-c64-14-icon.svg",
+          "sha256": "6c337abc68d344925c7f5440108b6ddc90f45b34765a2c67524f1492461a2e01"
+        },
+        {
+          "file": "assets/03-c64-14-light.png",
+          "sha256": "e3d644689b7c0d1f95e5f03378fb8d9cc8c979889664e6d486e46ff47ce842c4"
+        },
+        {
+          "file": "assets/03-c64-14-dark.png",
+          "sha256": "750514b84d7481919c3545cf0001420c3ad960214c383f655144f7015d390a96"
+        },
+        {
+          "file": "03-c64-14.md",
+          "sha256": "88c9258169c40b9d1c4b8764a7593d1f0901c0deca0d90132fd2f517a9db9a35"
+        },
+        {
+          "file": "src/03-c64-14.mjs",
+          "sha256": "0dc6f5a04043d3749879da35e4c268647d4c0605e24010d6e8c6df7d5b0ce93f"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "mach-11",
+      "slug": "04-mach-11",
+      "name": "Extra ball",
+      "description": "A game controller drawn in round orange plasma dots on a pinball backbox display, lit at three brightness levels with dark gaps between the dots.",
+      "choices": [
+        "The dot-matrix grid with visible unlit dots and stepped brightness carries the backbox look into a square-ish panel",
+        "A controller, not text or a score, makes it the games mark of the set"
+      ],
+      "media": [
+        "games"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/04-mach-11.svg",
+          "sha256": "94f9acfaa41e4c5882fb41035efc4dca3562c7bfcf8506e9e1846e2abe1afd2c"
+        },
+        {
+          "file": "assets/04-mach-11-icon.svg",
+          "sha256": "907a7a74531a256895471ec58c0f9c021fcdebf7847e499c607acd9c33edd132"
+        },
+        {
+          "file": "assets/04-mach-11-light.png",
+          "sha256": "2c6215e9dd2b7aca46076d347d66652831fe9c726aaf1df3284838f2d9c5ed7b"
+        },
+        {
+          "file": "assets/04-mach-11-dark.png",
+          "sha256": "727c6fbfc203da14b01346b3f4a6ba858e33455389f0545e31c09a18fa6312e6"
+        },
+        {
+          "file": "04-mach-11.md",
+          "sha256": "c9134ab49acfa1edf46e0042d33722b348acd513598826d18605cd5e4eca9a99"
+        },
+        {
+          "file": "src/04-mach-11.mjs",
+          "sha256": "026b14974871651e37a27e8f705d4d859be557a20f5647f735350b349724f4b9"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "asia-01",
+      "slug": "05-asia-01",
+      "name": "Channel keys",
+      "description": "A synth status screen in lavender on deep navy: spectrum bars with peak-hold ticks above a piano keyboard where one key is lit green.",
+      "choices": [
+        "One keyboard strip, a sliced spectrum analyser and hairline frames keep the X68000 player look at icon size",
+        "The lit key is the only green on the screen, as on the original displays; tiny labels and counters are left out"
+      ],
+      "media": [
+        "albums"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/05-asia-01.svg",
+          "sha256": "39ee82ee32d8fa4497745aebb69b019cff2972c81102a2fc4920b3856d289ea0"
+        },
+        {
+          "file": "assets/05-asia-01-icon.svg",
+          "sha256": "30e76f7e825ae2e1b55fc378c6a04c0059e1cdbb4b16ca08f696e9d789fcf717"
+        },
+        {
+          "file": "assets/05-asia-01-light.png",
+          "sha256": "c8d27835ed16b077e1e89247d6374b711c31d087bcaffc9076a0189db4a68b10"
+        },
+        {
+          "file": "assets/05-asia-01-dark.png",
+          "sha256": "51e5635bbb5c87fe86cbbab84803f1f4ca9e6004575357de9d111bbdbcdbd954"
+        },
+        {
+          "file": "05-asia-01.md",
+          "sha256": "e5573f02faa36c36fd41ca8d00f746aa6f2d6e311d9d3deef1ae9d9a07b6de54"
+        },
+        {
+          "file": "src/05-asia-01.mjs",
+          "sha256": "cfc3a43a104dcc66a58cc8496132523bc59d9a30478c16d77279f3aebc8daadb"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "pc-05",
+      "slug": "06-pc-05",
+      "name": "Final cut",
+      "description": "A brushed-chrome clapperboard stands on a glossy mirror floor between two cream-and-red twister columns, the cracktro centrepiece turned into a film mark.",
+      "choices": [
+        "The metal logo, mirror reflection and twisters of the 2000s cracktro revival frame a clapperboard instead of lettering",
+        "A chrome band with a white horizon gives the steel finish; red and cream twisters are the only colour"
+      ],
+      "media": [
+        "films"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/06-pc-05.svg",
+          "sha256": "9844a57c621070ef949d03a17bfc5542a765b0d180b386a400035592c8ae8fde"
+        },
+        {
+          "file": "assets/06-pc-05-icon.svg",
+          "sha256": "cbeccb0e34f35fd39b692232af11c9aa9b44126a2a8394a4d3596c5fb7c293cc"
+        },
+        {
+          "file": "assets/06-pc-05-light.png",
+          "sha256": "333c86b921b32530dab69db850afe58d7892d739cf1852d71539cafc31b85e2e"
+        },
+        {
+          "file": "assets/06-pc-05-dark.png",
+          "sha256": "38db7674fb0611fc5caa2ac5d694ff730b0af2ff5faf3d8a45bc72ee2278db77"
+        },
+        {
+          "file": "06-pc-05.md",
+          "sha256": "85449b4aa0945366e0cb7e0dffd5f2b6a523d45e3e6c59032496c9d1073f063e"
+        },
+        {
+          "file": "src/06-pc-05.mjs",
+          "sha256": "ceb44b49da883e0d1f7cd7678fc8fb98c20599c69e32778211f81d648ff37564"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "idle-02",
+      "slug": "07-idle-02",
+      "name": "On air",
+      "description": "A podcast microphone stands at the centre of a four-fold light-synth mandala: chunky seed patterns ripple outward through seven colours, from cream and amber to deep blue.",
+      "choices": [
+        "Seeds expand through seven levels on a coarse cell grid and are mirrored through both axes, as in the light synth",
+        "The pattern frames a microphone so the symbol reads as listening and talking: podcasts"
+      ],
+      "media": [
+        "podcasts"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/07-idle-02.svg",
+          "sha256": "67793573ac52bbc147a355f23af91350caee6c50dcd481a2b1a8fed437e44e17"
+        },
+        {
+          "file": "assets/07-idle-02-icon.svg",
+          "sha256": "820ba83bc3224f51824180e341e1c4db6fcc592977c4985411b5cfb4be00acef"
+        },
+        {
+          "file": "assets/07-idle-02-light.png",
+          "sha256": "a2f331625e98c5b714e456a41fcbd9a14017b4eb8e685e1015101a23beeb3291"
+        },
+        {
+          "file": "assets/07-idle-02-dark.png",
+          "sha256": "292d7f6f89c0d7bf524451487d2d2385174f20d772e5ef3cff349d361bd10440"
+        },
+        {
+          "file": "07-idle-02.md",
+          "sha256": "e0b79b383de0728ee4384dbf484fdb6fa3229188fbe7deea5e0b84c72d039a07"
+        },
+        {
+          "file": "src/07-idle-02.mjs",
+          "sha256": "1e66776fec97546ee1375be235a1194d45730581b013a1a9a1c8e8dcc8475ee9"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "demo-08",
+      "slug": "08-demo-08",
+      "name": "Fire button",
+      "description": "A ball-top joystick in red, white and yellow is drawn on the attribute grid of an 8-bit home computer: colour changes only at cell edges, over a chunky blue plasma inside a red border.",
+      "choices": [
+        "Pixels stay fine while colour is set per 8 × 8 cell, so the stick and ball share inks the way the hardware forces",
+        "Two yellow raster stripes run into the border; saturated reds and yellows replace the neon cyan and magenta of the original palette"
+      ],
+      "media": [
+        "games"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/08-demo-08.svg",
+          "sha256": "f2cd07b18aa53054bff866454891a5f8663f93bd80b52909a213779d29ca7e6e"
+        },
+        {
+          "file": "assets/08-demo-08-icon.svg",
+          "sha256": "fb4e2ae6a9be9975ba2fad6946c98069ddc82687659ebb157a4a473e5ef97d20"
+        },
+        {
+          "file": "assets/08-demo-08-light.png",
+          "sha256": "b9724bb2a77756c14a191a2f1bbfe4e02e8a1cb5649994db16def68eb1efae30"
+        },
+        {
+          "file": "assets/08-demo-08-dark.png",
+          "sha256": "2051b24c2ad7684aac10a60efad14b3d8755f7e700ca09a6c53f7fec28676d6e"
+        },
+        {
+          "file": "08-demo-08.md",
+          "sha256": "0e1086d71a152ed09c4956678a35380cb3fbcf53d8486d189fd0f76731ac582c"
+        },
+        {
+          "file": "src/08-demo-08.mjs",
+          "sha256": "ed9393e9e0d182e8b7fb9921ac7044fd9cc0c5636f88f72a76672bdac888e63b"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "demo-11",
+      "slug": "09-demo-11",
+      "name": "Stacked",
+      "description": "Three framed crack-screen panels become a stack of books — orange, blue and green covers with white titles that carry green and violet colour fringes — with an open book resting on top.",
+      "choices": [
+        "The thick single-colour frames and white type of early hi-res title cards become book covers and spine titles",
+        "Colour fringes on every white edge mimic how hi-res white picks up green and violet; nothing is lettered"
+      ],
+      "media": [
+        "books"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/09-demo-11.svg",
+          "sha256": "8d607212583e34682f5033b546e026b5e8a20a74f2b83e36c957ce49f16b4616"
+        },
+        {
+          "file": "assets/09-demo-11-icon.svg",
+          "sha256": "b3936ddf60b3c42c9f8d38c47c7e885f20c64fe8d7a9494959ab87d102cd0c3b"
+        },
+        {
+          "file": "assets/09-demo-11-light.png",
+          "sha256": "dc8a568cfe79b9507bf3a860843cb0d9ee178f740389a086efe3ee20fceb02db"
+        },
+        {
+          "file": "assets/09-demo-11-dark.png",
+          "sha256": "e6ef44ce300307040479d55827546996e2503b4909fed57e5e1dd3c8985445f5"
+        },
+        {
+          "file": "09-demo-11.md",
+          "sha256": "cff52f57a6edd64ba3220163330dd89ab391e2e9e07b379c044381ff3862075e"
+        },
+        {
+          "file": "src/09-demo-11.mjs",
+          "sha256": "2a15700fa0df0ad7f5bba558f0c8a3f6a1f8776244590c13617ed66d2d3bd698"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "print-05",
+      "slug": "10-print-05",
+      "name": "Review slip",
+      "description": "A photocopied tick-box slip lists a book, a film and an album; the first two are ticked in red pen and the album is crossed out, above a dotted tear-off coupon.",
+      "choices": [
+        "The swap-letter form becomes a media review card: one box per thing you read, watched or heard",
+        "Photocopier black on warm white, red pen marks, grain and a toner streak; no typed words are needed"
+      ],
+      "media": [
+        "books",
+        "films",
+        "albums"
+      ],
+      "animated": false,
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/10-print-05.svg",
+          "sha256": "e67b75e9cf81035beec4f535431c9664b75ee9f530586c008b9e1b2258a13df8"
+        },
+        {
+          "file": "assets/10-print-05-icon.svg",
+          "sha256": "4c1c29511f2e4440f3580e6a68605e9014c1070dcf0a3842b24cebcdf75486c5"
+        },
+        {
+          "file": "assets/10-print-05-light.png",
+          "sha256": "3b290e775b26abb8ed2eb97ea1046fb979d9a5510182130da7535004fe20ad5b"
+        },
+        {
+          "file": "assets/10-print-05-dark.png",
+          "sha256": "f2c2e8c6caf58b931b0a83d09a621c464f8dbdba16747bc78aacc4b76adf3a11"
+        },
+        {
+          "file": "10-print-05.md",
+          "sha256": "04836d52e468bb8d4e24557bc6d52d8aa808332d64596fb181ceeb48fc440b03"
+        },
+        {
+          "file": "src/10-print-05.mjs",
+          "sha256": "c7c84a0a8b6670c982fd197ca2a7c1c32a18f342ffb0e03222e2a33979ba1b5f"
+        }
+      ]
+    }
+  ]
+}

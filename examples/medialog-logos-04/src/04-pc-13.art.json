@@ -1,0 +1,20 @@
+{
+  "id": "pc-13",
+  "name": "Glass book",
+  "description": "A translucent open book turns slowly in space. Where its pages overlap, the glass deepens, like a glenz object from a nineties demo.",
+  "choices": [
+    "The rotating glenz solid becomes a six-leaf open book with a tan ribbon, projected in true perspective",
+    "Translucent navy faces deepen where they overlap on light pages; on dark pages they brighten like glass"
+  ],
+  "animated": true,
+  "motion": "The book turns once every sixteen seconds and two small glints pulse; the static file holds a three-quarter view.",
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

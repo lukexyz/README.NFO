@@ -1,0 +1,4 @@
+// The drawing-pencil reference is reduced to one decisive pen over a diary.
+import {P,L,ink,paper,accent,save} from './lib.mjs';
+const icon=P('M30 102Q78 88 119 117Q158 88 202 101V213Q155 198 119 223Q76 198 30 213Z',ink)+P('M44 118Q78 108 109 129V201Q80 184 44 194Z',paper)+P('M128 129Q156 110 188 118V194Q155 184 128 201Z',paper)+P('M126 173L148 162L207 70Q211 61 201 56Q192 51 187 60L132 152Z',accent,`stroke="${paper}" stroke-width="5" stroke-linejoin="round"`)+P('M126 173L132 152L148 162Z',ink)+L('M 60 144L88 152',ink,7);
+save(11,{icon,name:'Leave a little note',description:'A simple open book and a single confident pen stroke: a quieter continuation of the old MediaLog identity.',choices:['The pen records how an experience felt, not just that it happened','Internal film and music symbols are removed so the familiar silhouette reads at a glance']});

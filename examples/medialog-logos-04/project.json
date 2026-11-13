@@ -1,0 +1,78 @@
+{
+ "name": "MediaLog",
+ "description": "Everything you’ve watched, read, played, listened to, on one timeline.",
+ "pitch": "A media diary you share.",
+ "repository": null,
+ "facts": [
+  {
+   "fact": "Log films, books, shows, games, albums and podcasts.",
+   "source": "User-provided project description, 2026-10-10"
+  },
+  {
+   "fact": "Entries record when something was experienced and how it was.",
+   "source": "User-provided project description, 2026-10-10"
+  },
+  {
+   "fact": "See what the people you know have been into.",
+   "source": "User-provided project description, 2026-10-10"
+  },
+  {
+   "fact": "The supplied design groups its timeline into five-year periods and supports approximate dates.",
+   "source": "User's MediaLog landing-page screenshot, 2026-10-10"
+  },
+  {
+   "fact": "Media types have distinct accent colours; navy typography sits on a pale blue-grey background.",
+   "source": "User's two MediaLog screenshots, 2026-10-10"
+  }
+ ],
+ "artwork": "New vector symbols, all ten animated with CSS or SVG animation and each with a static pose, beside a consistent plain, licensed sans-serif wordmark converted to paths. Each symbol reinterprets one drawn catalogue style; user brand constraints override catalogue palettes and ornamental typography.",
+ "batch": "Fourth compact logo draw: ten original emblems, every one a style not used before for MediaLog, made cooler and more animated while keeping the plain wordmark.",
+ "brief": {
+  "nativeWidth": 203,
+  "nativeHeight": 74,
+  "viewBox": [
+   0,
+   0,
+   812,
+   296
+  ],
+  "subject": "MediaLog logo and brand title",
+  "motif": "Ten README.NFO style versions of the logo and brand title, for the same 203 × 74 screenshot size. Cool and modern symbols; keep the book theme when it fits but not every time.",
+  "detail": "Plain wordmark. Original vector symbols readable at small size, with motion where it adds something and a static pose for every file. No ASCII, tiny labels, neon cyan-pink pair or tagline. Light/dark and icon-only exports."
+ },
+ "brand": {
+  "primary": "#18223a",
+  "darkInverse": "#f6f3eb",
+  "secondary": [
+   "#74889a",
+   "#ae8660"
+  ],
+  "typography": "DejaVu Sans Bold, plain and consistent, outlined for portable SVGs",
+  "feedback": [
+   {
+    "source": "User, 2026-10-10",
+    "instruction": "The brand color is #18223a."
+   },
+   {
+    "source": "User, 2026-10-10",
+    "instruction": "The MediaLog text does not need to be fancy."
+   },
+   {
+    "source": "User-shared feedback from Dan and Tim, 2026-10-10",
+    "instruction": "Gently favour the book variant and dial back colours that evoke TikTok."
+   },
+   {
+    "source": "User old-logo attachment, 2026-10-10",
+    "instruction": "Book/pen/media heritage is a reference, not a requirement to copy the old mark."
+   },
+   {
+    "source": "User, 2026-10-10",
+    "instruction": "Ten new random styles that have not already been made; no ASCII ones."
+   },
+   {
+    "source": "User, 2026-10-10",
+    "instruction": "They do not have to look like the book/play/pen logo; be creative and cool. Keep the book theme when you can, but not every time."
+   }
+  ]
+ }
+}

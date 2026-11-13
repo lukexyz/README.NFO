@@ -1,0 +1,19 @@
+{
+  "id": "idle-01",
+  "name": "Two sides of a story",
+  "description": "Two broad diamond folds create an open-book silhouette, divided by a clear white gutter.",
+  "choices": [
+    "The paired diamond reference becomes pages belonging together",
+    "Two restrained tones leave the centre fold and silhouette easy to recognise"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

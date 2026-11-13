@@ -1,0 +1,17 @@
+{
+  "id": "xfer-07",
+  "name": "Passed around",
+  "description": "Three coloured tiles travel in a circle at the end of a two-tone wordmark. One person’s discovery becomes another person’s next favourite.",
+  "choices": [
+    "The P2P chunk vocabulary becomes a social exchange rather than transfer statistics",
+    "The emblem follows the title, making a different horizontal rhythm from the other marks"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

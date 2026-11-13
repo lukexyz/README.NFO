@@ -1,0 +1,22 @@
+{
+  "id": "demo-11",
+  "name": "Stacked",
+  "description": "Three framed crack-screen panels become a stack of books — orange, blue and green covers with white titles that carry green and violet colour fringes — with an open book resting on top.",
+  "choices": [
+    "The thick single-colour frames and white type of early hi-res title cards become book covers and spine titles",
+    "Colour fringes on every white edge mimic how hi-res white picks up green and violet; nothing is lettered"
+  ],
+  "media": [
+    "books"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

@@ -1,0 +1,17 @@
+{
+  "id": "c64-12",
+  "name": "Chrome keepsake",
+  "description": "A polished, faceted keepsake and an extruded wordmark with a sharp reflected horizon. More like an engraved personal badge than a screen.",
+  "choices": [
+    "Two folded chevrons inside the gem suggest stacked saved moments",
+    "Cool sky and warm ground share the same lettering, linking past and present"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

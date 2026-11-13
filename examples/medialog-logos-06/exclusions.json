@@ -1,0 +1,146 @@
+{
+  "reason": "Every style never used for MediaLog is a text-screen style (teletext, BBS, DOS, terminal, NFO), and the user ruled those out. This set repeats ten graphic styles from earlier collections instead, each redrawn around a book.",
+  "excluded_style_ids": [
+    "ansi-01",
+    "ansi-02",
+    "ansi-04",
+    "ansi-05",
+    "ansi-06",
+    "ansi-08",
+    "ansi-09",
+    "ansi-10",
+    "ansi-11",
+    "ansi-12",
+    "asia-03",
+    "asia-04",
+    "asia-05",
+    "asia-06",
+    "asia-07",
+    "c64-03",
+    "c64-04",
+    "c64-13",
+    "demo-02",
+    "demo-05",
+    "demo-06",
+    "hack-01",
+    "hack-02",
+    "hack-03",
+    "hack-04",
+    "hack-05",
+    "hack-06",
+    "hack-07",
+    "hack-09",
+    "hack-10",
+    "hack-11",
+    "hack-14",
+    "hack-15",
+    "hack-16",
+    "hack-17",
+    "hack-18",
+    "hack-19",
+    "mach-03",
+    "mach-04",
+    "mach-05",
+    "mach-06",
+    "mach-14",
+    "nfo-01",
+    "nfo-03",
+    "nfo-04",
+    "nfo-05",
+    "nfo-06",
+    "nfo-07",
+    "nfo-08",
+    "nfo-09",
+    "nfo-10",
+    "nfo-11",
+    "pc-07",
+    "pc-11",
+    "print-03",
+    "trk-02",
+    "trk-06",
+    "trk-08",
+    "vap-02",
+    "vap-08",
+    "vap-13",
+    "xfer-01",
+    "xfer-03",
+    "xfer-05",
+    "xfer-06",
+    "xfer-09",
+    "xfer-10"
+  ],
+  "repeated_style_ids": [
+    "c64-12",
+    "vap-05",
+    "pc-13",
+    "mach-02",
+    "pc-09",
+    "vap-10",
+    "c64-07",
+    "idle-06",
+    "vap-11",
+    "vap-17"
+  ],
+  "earlier_logos": [
+    {
+      "id": "c64-12",
+      "collection": "medialog-logos-02",
+      "slug": "17-c64-12",
+      "name": "Chrome keepsake"
+    },
+    {
+      "id": "vap-05",
+      "collection": "medialog-logos-03",
+      "slug": "01-vap-05",
+      "name": "The next chapter"
+    },
+    {
+      "id": "pc-13",
+      "collection": "medialog-logos-04",
+      "slug": "04-pc-13",
+      "name": "Glass book"
+    },
+    {
+      "id": "mach-02",
+      "collection": "medialog-logos-03",
+      "slug": "17-mach-02",
+      "name": "Pass it on"
+    },
+    {
+      "id": "pc-09",
+      "collection": "medialog-logos-03",
+      "slug": "11-pc-09",
+      "name": "Leave a little note"
+    },
+    {
+      "id": "vap-10",
+      "collection": "medialog-logos-02",
+      "slug": "05-vap-10",
+      "name": "Blue sky diary"
+    },
+    {
+      "id": "c64-07",
+      "collection": "medialog-logos-03",
+      "slug": "13-c64-07",
+      "name": "Keep your place"
+    },
+    {
+      "id": "idle-06",
+      "collection": "medialog-logos-04",
+      "slug": "08-idle-06",
+      "name": "Growing pipes"
+    },
+    {
+      "id": "vap-11",
+      "collection": "medialog-logos-04",
+      "slug": "05-vap-11",
+      "name": "System diary"
+    },
+    {
+      "id": "vap-17",
+      "collection": "medialog-logos-03",
+      "slug": "19-vap-17",
+      "name": "A little off-script"
+    }
+  ]
+}

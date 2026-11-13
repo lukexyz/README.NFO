@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "createdAt": "2026-10-10T11:15:16.837Z",
+  "count": 10,
+  "uniqueStyles": 10,
+  "excludedStyles": 76,
+  "checks": [
+    {
+      "width": 1400,
+      "theme": "light",
+      "reducedMotion": true,
+      "decoded": 10,
+      "overflow": false
+    },
+    {
+      "width": 1400,
+      "theme": "dark",
+      "reducedMotion": true,
+      "decoded": 10,
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "theme": "light",
+      "reducedMotion": true,
+      "decoded": 10,
+      "overflow": false
+    },
+    {
+      "width": 375,
+      "theme": "dark",
+      "reducedMotion": true,
+      "decoded": 10,
+      "overflow": false
+    }
+  ],
+  "svgPolicy": "10 passed",
+  "xml": "10 parsed",
+  "textBounds": "all native text within viewBox",
+  "gallery": [
+    "2 text companions",
+    "favourites persist after reload",
+    "clear selection",
+    "Copy button offline fallback and installation snippet destination"
+  ],
+  "motion": [
+    "all 10 external images decoded with reduced motion",
+    "initial and 2.4-second normal-motion captures"
+  ],
+  "limitations": [
+    "Live GitHub rendering has not been checked.",
+    "Only supplied project description and screenshots were used; repository URL was not supplied."
+  ],
+  "visualReview": {
+    "reviewed": "All ten compositions, desktop contact sheets and phone-width contact sheets; normal-motion later frame and reduced-motion still",
+    "findings": "Project names visible; distinct layouts; no unintended title clipping. Small interface details are decorative at phone widths, with the project pitch repeated as ordinary text.",
+    "preview": "preview.png"
+  },
+  "repositoryValidation": {
+    "status": "passed",
+    "javascriptSyntaxChecks": 325,
+    "galleryHeaders": 270,
+    "markdownFiles": 340,
+    "freshGeneratedPages": 49,
+    "svgImagesDecoded": 340
+  }
+}

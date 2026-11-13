@@ -1,0 +1,17 @@
+{
+  "id": "idle-04",
+  "name": "Taste constellation",
+  "description": "Six coloured waveform loops share one centre: all your kinds of media, and the tastes that overlap with your friends. A gentle visualiser motion keeps the emblem alive.",
+  "choices": [
+    "Six loops represent the six media types named in the brief",
+    "The overlapping orbits describe shared taste, while one line connects the whole name"
+  ],
+  "animated": true,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

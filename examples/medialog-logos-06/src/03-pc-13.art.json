@@ -1,0 +1,26 @@
+{
+  "id": "pc-13",
+  "name": "Glass pages",
+  "description": "An open book lies on its back in glenz glass: blue covers, pale page blocks and one violet page in mid-turn, each a flat translucent pane that deepens where it overlaps another.",
+  "choices": [
+    "Glenz vectors: flat translucent faces in one tint plus a pale partner, with crisp edges, from a single 3D pose",
+    "One object, no turntable, floor or frame"
+  ],
+  "book": "open book",
+  "repeatOf": {
+    "style": "pc-13",
+    "collection": "medialog-logos-04",
+    "slug": "04-pc-13",
+    "name": "Glass book"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

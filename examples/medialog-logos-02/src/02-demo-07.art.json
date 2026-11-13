@@ -1,0 +1,17 @@
+{
+  "id": "demo-07",
+  "name": "Your name on the ticket",
+  "description": "A bold premiere ticket and oversized warm-white lettering. The collection gets the same billing as the films, books and records inside it.",
+  "choices": [
+    "A punched ticket is the shared invitation",
+    "Projector-scale typography is kept large enough to read across a tiny navigation bar"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

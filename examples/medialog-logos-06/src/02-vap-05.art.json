@@ -1,0 +1,26 @@
+{
+  "id": "vap-05",
+  "name": "Sunset chapter",
+  "description": "A slatted synthwave sun, yellow to orange to red, sinks into the gutter of an open book whose night-blue pages carry the violet laser grid.",
+  "choices": [
+    "The outrun horizon becomes the top edge of the pages, and the floor grid recedes toward the gutter",
+    "No sky, palm trees or chrome lettering: just the sun and the book"
+  ],
+  "book": "open book",
+  "repeatOf": {
+    "style": "vap-05",
+    "collection": "medialog-logos-03",
+    "slug": "01-vap-05",
+    "name": "The next chapter"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

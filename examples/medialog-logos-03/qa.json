@@ -1,0 +1,89 @@
+{
+  "status": "passed",
+  "createdAt": "2026-10-10T13:28:07.371Z",
+  "designs": 20,
+  "svgAssets": 60,
+  "pngExports": 40,
+  "nativeSize": {
+    "width": 203,
+    "height": 74
+  },
+  "ascii": false,
+  "checks": [
+    {
+      "viewport": 1400,
+      "images": 40,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true
+    },
+    {
+      "viewport": 375,
+      "images": 40,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true
+    }
+  ],
+  "controls": [
+    "favourites persist",
+    "filter and clear",
+    "2× enlargement",
+    "copy fallback selects snippet"
+  ],
+  "policy": "60 SVGs parsed, loaded, with no remote resources, scripts or text-mode rendering",
+  "visualChecks": [
+    "Actual-size 203 × 74 light/dark contact sheets",
+    "Four enlarged proof sheets",
+    "All twenty icon-only SVGs at 32 and 64 px",
+    "Initial and later static captures",
+    "Forty static / reduced-motion PNG comparisons"
+  ],
+  "limitations": [
+    "Live GitHub rendering not tested."
+  ],
+  "preview": "preview.png",
+  "symbolChecks": {
+    "images": 20,
+    "sizes": [
+      32,
+      64
+    ],
+    "schemes": [
+      "light",
+      "dark"
+    ],
+    "imageDecodes": 80,
+    "allPassed": true
+  },
+  "staticExportConsistency": {
+    "comparisons": 40,
+    "result": "Every reduced-motion SVG is pixel-identical to its static PNG export on both colour schemes.",
+    "method": "External SVG image rendering in Chromium with process-level reduced-motion preference; exact comparison with all forty light/dark PNG exports."
+  },
+  "brandChecks": {
+    "primary": "#18223a",
+    "typography": "Same plain DejaVu Sans Bold wordmark for all twenty; glyphs converted to paths and licensed source bundled.",
+    "ascii": false,
+    "priorMediaLogStyleRepeats": 0
+  },
+  "visualReview": {
+    "complete": true,
+    "reviewed": "All twenty logos at 203 × 74 on light and dark; four large proof sheets; every separate symbol at 32 and 64 pixels on both backgrounds.",
+    "findings": "Brand name remains clear, emblems retain their main silhouette at small size, no clipping or tiny captions. The handwriting and decorative title treatments of previous sets are replaced by consistent plain typography."
+  },
+  "motion": {
+    "animatedCandidates": [],
+    "treatment": "All twenty identities are static."
+  },
+  "repositoryValidation": {
+    "status": "passed",
+    "syntaxChecks": 387,
+    "galleryItems": 320,
+    "markdownFiles": 443,
+    "freshGeneratedPages": 102,
+    "svgImagesDecoded": 460
+  }
+}

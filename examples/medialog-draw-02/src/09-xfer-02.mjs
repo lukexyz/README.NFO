@@ -1,0 +1,9 @@
+// A GoldED-inspired reader. Fictional message labels are explicit; no network claims.
+import {R,L,B,T,save} from './lib.mjs';
+let s=B('MEDIALOG',39,31,8.6,'#e8e5c8')+B('MEDIA.DIARY / FRIENDS & ME',39,107,2,'#ffff76');
+s+=R(27,144,946,101,'none','stroke="#728fe0" stroke-width="2"')+B('FROM: YOU',44,161,1.9,'#c9cbcf')+B('TO: FRIENDS',540,161,1.9,'#c9cbcf')+B('SUBJ: WHAT HAVE YOU BEEN INTO?',44,196,2.2,'#ffff76')+B('EXAMPLE MESSAGE / NO NETWORK CONNECTION',487,226,1.35,'#858ba3');
+const lines=[['ME> What did you play?','#ffff76'],['YOU> A game I am still thinking about.','#eee8cc'],['ME> When was it?','#ffff76'],['YOU> Sometime that summer. That counts, too.','#eee8cc']];
+lines.forEach(([line,c],i)=>s+=B(line,44,273+i*33,2.4,c));
+s+=L('M42 418H958','#4e5d84',1)+B('FILMS / BOOKS / SHOWS / GAMES / ALBUMS / PODCASTS',44,438,2.25,'#a7bcf2')+B('... WHEN IT WAS. HOW IT FELT. SHARE IT.',44,481,2,'#bbbebc')+B('--- MEDIALOG',44,514,2,'#fff')+B('* ORIGIN: A MEDIA DIARY YOU SHARE',44,546,1.9,'#fff')+R(27,584,946,32,'#0000a8')+B('ONE TIMELINE                 YOUR WORDS. YOUR PEOPLE.',44,594,1.9,'#fff');
+const text='AREA: MEDIA.DIARY / FRIENDS & ME\nFROM: You                  TO: Friends\nSUBJ: What have you been into?\n\nME> What did you play?\nYOU> A game I am still thinking about.\nME> When was it?\nYOU> Sometime that summer. That counts, too.\n\nFilms / books / shows / games / albums / podcasts\n... When it was. How it felt. Share it.\n--- MediaLog\n * Origin: A media diary you share\n\nIllustrative conversation; no network connection.';
+save(9,{body:s,background:'#050609',height:639,summary:'A message to your people',choices:['The quoted conversation makes approximate dates part of remembering','From and To become you and friends; the six media types share a single echo area'],text});

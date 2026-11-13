@@ -1,0 +1,17 @@
+{
+  "id": "trk-05",
+  "name": "Pocket mixtape",
+  "description": "A cyan-and-pink phrase grid forms a heart inside a handheld badge. A playful identity for the patterns in what you love.",
+  "choices": [
+    "The tracker cursor becomes a play arrow for your own mix",
+    "One large heart replaces tiny note codes while retaining the reference’s palette and grid structure"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

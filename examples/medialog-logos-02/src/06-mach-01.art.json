@@ -1,0 +1,17 @@
+{
+  "id": "mach-01",
+  "name": "Colour arrives last",
+  "description": "Four bright memory tabs stack into a play-shaped badge. Spectrum-era loading colours become an instantly recognisable archive mark.",
+  "choices": [
+    "Overlapping tabs suggest moments filed in chronological order",
+    "One shared play cutout unites the stack without adding tiny media icons"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

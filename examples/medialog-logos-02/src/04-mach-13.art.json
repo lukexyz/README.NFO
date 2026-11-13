@@ -1,0 +1,17 @@
+{
+  "id": "mach-13",
+  "name": "Pocket nostalgia",
+  "description": "A two-tone handset badge with a tiny winding path on its screen. A diary that fits in your pocket, with the calm simplicity of an old LCD.",
+  "choices": [
+    "The screen path is a timeline reaching a saved square",
+    "Only two tones and a few large shapes are used; no status text or character art"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

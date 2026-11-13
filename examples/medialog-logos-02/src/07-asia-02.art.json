@@ -1,0 +1,17 @@
+{
+  "id": "asia-02",
+  "name": "One more chapter",
+  "description": "A tiny original cat curls up on a book under a crescent moon. A quiet visual-novel vignette for the stories you keep returning to.",
+  "choices": [
+    "A reader’s companion combines the social and reading sides of MediaLog",
+    "Moon, face and book are reduced to large silhouettes so the mascot survives at small size"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

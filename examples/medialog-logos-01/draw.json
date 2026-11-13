@@ -1,0 +1,829 @@
+{
+  "schema_version": 1,
+  "project": "MediaLog",
+  "created_at": "2026-10-10T12:39:18.509Z",
+  "catalogue_source": "https://github.com/lukexyz/README.NFO",
+  "catalogue_researched": "2026-09-30",
+  "seed": "2c7454c42fa3fb71a3ccec7c9d0c2440",
+  "method": "SHA-256 counter stream with rejection-sampled Fisher-Yates; saved draw is authoritative",
+  "pool": "images",
+  "eligible_count": 24,
+  "families": [],
+  "excluded_ids": [
+    "ansi-01",
+    "ansi-02",
+    "ansi-04",
+    "ansi-05",
+    "ansi-06",
+    "ansi-08",
+    "ansi-09",
+    "ansi-11",
+    "ansi-12",
+    "asia-01",
+    "asia-02",
+    "asia-03",
+    "asia-04",
+    "asia-05",
+    "asia-06",
+    "asia-07",
+    "c64-03",
+    "c64-04",
+    "c64-05",
+    "c64-06",
+    "c64-07",
+    "c64-08",
+    "c64-13",
+    "c64-14",
+    "demo-01",
+    "demo-02",
+    "demo-03",
+    "demo-04",
+    "demo-05",
+    "demo-06",
+    "demo-07",
+    "demo-08",
+    "demo-09",
+    "demo-10",
+    "demo-11",
+    "hack-01",
+    "hack-02",
+    "hack-03",
+    "hack-04",
+    "hack-05",
+    "hack-06",
+    "hack-07",
+    "hack-08",
+    "hack-09",
+    "hack-10",
+    "hack-11",
+    "hack-12",
+    "hack-13",
+    "hack-14",
+    "hack-15",
+    "hack-16",
+    "hack-17",
+    "hack-18",
+    "idle-01",
+    "idle-02",
+    "idle-05",
+    "idle-07",
+    "idle-08",
+    "idle-10",
+    "mach-02",
+    "mach-03",
+    "mach-04",
+    "mach-05",
+    "mach-07",
+    "mach-08",
+    "mach-09",
+    "mach-11",
+    "mach-12",
+    "mach-13",
+    "mach-15",
+    "nfo-01",
+    "nfo-02",
+    "nfo-03",
+    "nfo-04",
+    "nfo-05",
+    "nfo-06",
+    "nfo-07",
+    "nfo-08",
+    "nfo-09",
+    "nfo-10",
+    "nfo-11",
+    "pc-01",
+    "pc-03",
+    "pc-05",
+    "pc-06",
+    "pc-07",
+    "pc-08",
+    "pc-09",
+    "pc-10",
+    "pc-11",
+    "pc-12",
+    "pc-13",
+    "pc-14",
+    "print-01",
+    "print-02",
+    "print-03",
+    "print-04",
+    "print-05",
+    "trk-01",
+    "trk-02",
+    "trk-03",
+    "trk-04",
+    "trk-05",
+    "trk-06",
+    "trk-07",
+    "trk-08",
+    "trk-09",
+    "trk-10",
+    "trk-11",
+    "vap-02",
+    "vap-03",
+    "vap-04",
+    "vap-06",
+    "vap-07",
+    "vap-08",
+    "vap-09",
+    "vap-11",
+    "vap-12",
+    "vap-17",
+    "xfer-01",
+    "xfer-02",
+    "xfer-03",
+    "xfer-05",
+    "xfer-06",
+    "xfer-07",
+    "xfer-08",
+    "xfer-09",
+    "xfer-10"
+  ],
+  "options": [
+    {
+      "id": "vap-16",
+      "name": "Glitch art: databend, channel split, slice displacement",
+      "era": "Roots in video art (Nam June Paik's magnet on a television, 1965); a named scene from the 2000s (Oslo symposium 2002, GLI.TC/H in Chicago 2010); datamoshing in Takeshi Murata's Monster Movie (2005) and in 2009 music videos for Chairlift and Kanye West; Rosa Menkman's A Vernacular of File Formats and Kim Asendorf's pixel-sorting script, both 2010.",
+      "what_it_is": "Using digital or analogue errors on purpose. Wikipedia lists the techniques: databending (editing a file's bytes), datamoshing (removing key frames so motion smears one image into another), misalignment, misregistration and compression-artefact abuse. Menkman's point, that each file format breaks in its own recognisable way, is what makes it a vocabulary rather than noise. For README.NFO it is a treatment laid over another style, not a style of its own.",
+      "visual_signature": [
+        "Horizontal slices of the image, 4-30px tall, displaced sideways by different amounts with hard edges",
+        "RGB channel separation: red, green and blue copies offset a few pixels from one another",
+        "JPEG-style 8x8 macroblocks: small squares of wrong colour or repeated texture in clusters",
+        "Pixel-sort streaks: runs of pixels dragged vertically or horizontally into smooth comb-like smears starting at a brightness threshold",
+        "Datamosh trails: a shape's colour dragging behind it in blocky steps as it moves",
+        "Colour-table corruption: sudden bands of pure magenta, cyan and acid green",
+        "Stutter: the same strip duplicated several times down the frame"
+      ],
+      "palette": "Whatever the underlying style uses, plus the error colours: pure magenta #FF00FF, cyan #00FFFF, green #00FF00 and black bands (standard primaries; my choice, not sourced).",
+      "typography": "No native type; the treatment is applied to other lettering. Common pairing: a plain bold sans or monospace that is sliced and channel-split, with small hex or filename captions.",
+      "motion": "Bursts, not constant motion: the image is clean for 3-4 seconds, then 200-400 ms of slice displacement and channel split, then it snaps back. Step timing, never eased.",
+      "references": [
+        {
+          "what": "Glitch art: definition, technique list, Paik 1965, Oslo 2002, GLI.TC/H 2010 and its organisers",
+          "url": "https://en.wikipedia.org/wiki/Glitch_art"
+        },
+        {
+          "what": "Compression artifact, 'Artistic use' section (where the Datamoshing URL redirects): practitioners including Murata, and the Chairlift and Kanye West videos",
+          "url": "https://en.wikipedia.org/wiki/Compression_artifact"
+        },
+        {
+          "what": "Takeshi Murata: Monster Movie (2005), made by datamoshing footage from a 1981 film",
+          "url": "https://en.wikipedia.org/wiki/Takeshi_Murata"
+        },
+        {
+          "what": "Rosa Menkman: A Vernacular of File Formats (2010) and the Glitch Studies Manifesto",
+          "url": "https://en.wikipedia.org/wiki/Rosa_Menkman"
+        },
+        {
+          "what": "ASDFPixelSort: Kim Asendorf's Processing script for threshold pixel sorting, dated 2010 in its README",
+          "url": "https://raw.githubusercontent.com/kimasendorf/ASDFPixelSort/master/README.md"
+        },
+        {
+          "what": "MDN feTurbulence: the SVG noise primitive, with a displacement-map example",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/feTurbulence"
+        },
+        {
+          "what": "MDN baseFrequency: the attribute is marked animatable",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/baseFrequency"
+        }
+      ],
+      "readme_translation": "A treatment more than a header: take a strong plain wordmark on a dark ground and glitch it on a timer. Above the fold is the project name, legible most of the time, with a burst every few seconds that slices it, splits its channels and drops a few macroblocks. It layers well on the VHS, terminal or neon styles and could be offered as a switch on any of them.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Slice displacement: 6-10 <use> copies of the artwork, each clipped to a horizontal band and given translateX keyframes with steps() timing that are zero for most of the cycle. Channel split: feColorMatrix to isolate R, G and B into three copies, feOffset each, recombine with feBlend screen. Macroblocks: small rects toggled with opacity. feTurbulence plus feDisplacementMap gives organic tearing but is costly when animated; step it rather than tween it. Real pixel sorting and datamoshing operate on bitmaps and video and cannot be done live; they can only be imitated with pre-drawn streak shapes.",
+      "wow": 3,
+      "caveats": "Accessibility is the main risk: rapid full-frame flashing can trigger photosensitive reactions, so keep bursts short, local and under three flashes per second, and freeze under prefers-reduced-motion. The techniques are free; do not reproduce specific artworks (Menkman, Murata, Asendorf and others). Overused as a lazy 'hacker' effect, and it overlaps the VHS entry's tearing and fringing, so use sparingly. I lowered its score from 4 because it is an overlay, not a header design.",
+      "number": 1,
+      "family": "vap",
+      "slug": "01-vap-16",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/64-glitch-art_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/64-glitch-art_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/64-glitch-art_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/64-glitch-art_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "c64-02",
+      "name": "C64 DYCP demo part: sine-wave letters under a chunky multicolour logo",
+      "era": "1989-1992, Commodore 64 demo scene (one-file demos, later crack intros)",
+      "what_it_is": "DYCP (\"Different Y Character Position\") is the C64 scroller in which every character sits at its own height, so a line of text ripples along a sine curve as it scrolls. It belongs with FLD (whole rows bouncing), tech-tech (each line of a logo shifted sideways) and sprites or scrollers in the opened border as the signature tricks of 1989-90.",
+      "visual_signature": [
+        "A large two-row logo in multicolour character graphics with double-wide pixels, each letter filled with diagonal or vertical colour stripes in 3-4 palette steps and a dark outline (Sphinx: diagonal rainbow stripes)",
+        "The logo sits on a mauve panel made of thin horizontal stripes, closed above and below by grey/white raster rules",
+        "Text whose letters each ride a sine wave, forming an arc or U shape under the logo (The Force: letters hanging in a U beneath a two-row logo, yellow top row, blue-grey metallic bottom row)",
+        "A small static credit line in a second colour ('CODE BY ... MUSIC BY ...') at the very top",
+        "A straight one-line message in a gold gradient font between logo rows",
+        "Optional open-border variant: the scroller or sprites run in the top and bottom border area, outside the 320x200 picture"
+      ],
+      "palette": "C64 16-colour palette on black. Logo fills use luminance ramps (blue, light blue, cyan, white; brown, orange, yellow, white). Multicolour mode means 160 double-wide pixels across, so logo edges step in 2-pixel units.",
+      "typography": "Logo: fat squared capitals about 4-5 character cells high. Scroller: 8x8 custom capitals, one colour per character, sometimes with a raster colour wash.",
+      "motion": "Each letter moves up and down on a sine table, offset in phase from its neighbour, while the whole line scrolls left. FLD: the entire logo bounces vertically. Tech-tech: each scanline of the logo slides horizontally. Motion comes from written descriptions, not from watching.",
+      "references": [
+        {
+          "what": "DYCP Mania by Sphinx, 20 May 1989, Venlo Meeting (code, graphics and charset ABS 3001): striped logo on mauve panels",
+          "url": "https://csdb.dk/release/?id=9788"
+        },
+        {
+          "what": "DYCP Intro by The Force (1991, C64 crack intro, code Nir P.): scroller arcing under the logo",
+          "url": "https://csdb.dk/release/?id=104753"
+        },
+        {
+          "what": "DYCP in 1992 by Chaos-Front (March 1992, one-file demo, code and charset Nuke)",
+          "url": "https://csdb.dk/release/?id=249976"
+        },
+        {
+          "what": "DYCP Part by The Falcons (one-file demo, code Griper, graphics X-Port; undated on CSDb)",
+          "url": "https://csdb.dk/release/?id=208399"
+        },
+        {
+          "what": "Plus/4 World encyclopedia: definition and expansion of DYCP, MegaDYCP and DYSCP",
+          "url": "https://plus4world.powweb.com/plus4encyclopedia/500011"
+        },
+        {
+          "what": "Wikipedia on C64 demo techniques: FLD, FLI, tech-tech ('Tec-Tec'), sprite multiplexing, sprites in the opened border",
+          "url": "https://en.wikipedia.org/wiki/Commodore_64_demos"
+        },
+        {
+          "what": "Albert of Pu-239 on his own 1989 parts: FLD bounce, a border-breaking sinus scroll, a sprite tech-tech",
+          "url": "https://a1bert.kapsi.fi/Pu-239/early.html"
+        }
+      ],
+      "readme_translation": "Above the fold: an animated SVG with the project name as the striped logo on a mauve panel and the tagline as the DYCP line beneath it. Keep the wave amplitude modest (8-12 pixels at 1x) so the line stays readable. Stats or section names go in the static credit line. Links sit in Markdown below.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Each glyph is a use of an 8x8 symbol inside its own group with a CSS translateY animation (animation-direction: alternate, timing cubic-bezier(0.37,0,0.63,1), which is a near-exact sine) and a negative animation-delay that grows per character. One translateX animation on the parent scrolls the line; duplicate the text and make the per-glyph phase repeat over the text length so the loop is seamless. 40-80 animated glyphs is well within budget. FLD is one translateY on the logo group. Tech-tech is the logo cut into 1-row clip strips with staggered translateX. The open-border variant is only a drawn C64 border frame with the scroller placed over it.",
+      "wow": 4,
+      "caveats": "Do not copy the group logos or their charsets; sine text and striped block letters are generic. No source opened says who did DYCP first, so make no such claim. Moving text is harder to read, so repeat the real information as static text. The open-border variant loses its meaning outside a real screen and only reads as a C64 in-joke.",
+      "number": 2,
+      "family": "c64",
+      "slug": "02-c64-02",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/29-c64-dycp-scroller_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/29-c64-dycp-scroller_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/29-c64-dycp-scroller_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/29-c64-dycp-scroller_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "vap-01",
+      "name": "Classic vaporwave: the Floral Shoppe manner",
+      "era": "2010-2013; Bandcamp, Tumblr, 4chan /mu/. Chuck Person's Eccojams Vol. 1 (August 2010) and Far Side Virtual (25 October 2011) are the forerunners; Floral Shoppe by Macintosh Plus (Ramona Langley, also known as Vektroid) came out 9 December 2011 on Beer on the Rug and set the template. The term is first recorded on 13 October 2011 (Know Your Meme).",
+      "what_it_is": "A collage style that treats early-90s corporate computing as a lost luxury resort. Wikipedia lists its ingredients as 1990s web design, glitch art, anime, Greco-Roman statues, Memphis shapes, 3D-rendered objects, cyberpunk tropes, VHS degradation and fullwidth text. People remember it because one album cover became the meme template for the whole genre.",
+      "visual_signature": [
+        "Flat hot-pink ground with no gradient (sampled from the cover thumbnail at about #ff819c)",
+        "Black-and-pink checkerboard floor in one-point perspective, occupying only the lower-right third and running off the right edge",
+        "A white marble classical head on a plain white block plinth, hard-edged cut-out, filling the left half of the frame (the cover uses the Helios head from the Archaeological Museum of Rhodes)",
+        "Two-line title at top right in mint green (sampled at about #6cffb9): Latin capitals plus katakana on line one, katakana, hiragana and kanji on line two, a thin green rule between them and a small square emblem of a warped green checker grid at the right end",
+        "A small landscape rectangle pasted under the title like a low-resolution screenshot: a city skyline at sunset over water in orange, violet and purple",
+        "Windows 95 window chrome used as picture frames: silver #c0c0c0 bevels, navy #000080 title bars, teal #008080 desktop",
+        "Fullwidth Latin lettering with wide tracking for any English words",
+        "Optional props from the wider scene, used sparingly: palm trees, dolphins, pyramids and tori with iridescent marbled texture (the seapunk vocabulary), Memphis squiggles"
+      ],
+      "palette": "Sampled by me from the Wikipedia cover thumbnail (approximate, not an official palette): ground #ff819c, title green #6cffb9, floor black #141218, marble #d9d6d0. From Windows 95/98 chrome (98.css): #c0c0c0, #000080, #808080, #ffffff; desktop teal #008080. A widely circulated but non-canonical swatch set from Gridfiti: #A653F5, #8F8CF2, #65B8BF, #F96CFF, #FA92FB. There is no canonical vaporwave palette.",
+      "typography": "Fullwidth Unicode Latin (U+FF01-FF5E) for titles; Japanese katakana, hiragana and kanji in a plain gothic (sans) face; otherwise default system faces of the period inside window chrome. Deliberately un-designed: centred or ranged left, wide letter-spacing, no kerning care.",
+      "motion": "Slow and drifting, matching the slowed-down music: checker floor creeping toward the viewer, the inset 'screenshot' fading between two skies, a Windows-style window opening, an occasional one-frame horizontal tear. Nothing fast. It also works fully static, as the original cover is.",
+      "references": [
+        {
+          "what": "Floral Shoppe article and cover image. I downloaded and viewed the cover: the title lettering is mint green, although the article prose describes it as pink.",
+          "url": "https://en.wikipedia.org/wiki/Floral_Shoppe"
+        },
+        {
+          "what": "Vaporwave overview: visual ingredients, sub-genre list, dates, fullwidth styling",
+          "url": "https://en.wikipedia.org/wiki/Vaporwave"
+        },
+        {
+          "what": "Know Your Meme timeline: New Dreams Ltd. album 1 July 2011, term first seen 13 October 2011, 'Vaporwave Album Covers' Tumblr 24 January 2013",
+          "url": "https://knowyourmeme.com/memes/cultures/vaporwave"
+        },
+        {
+          "what": "Bandcamp Daily, 'Genre As Method' (Simon Chandler, 21 November 2016): the sub-genre family tree with key releases",
+          "url": "https://daily.bandcamp.com/lists/vaporwave-genres-list"
+        },
+        {
+          "what": "Far Side Virtual (James Ferraro, 25 October 2011): the 'utopian virtual' strand; cover is two iPads over a low-resolution Street View image",
+          "url": "https://en.wikipedia.org/wiki/Far_Side_Virtual"
+        },
+        {
+          "what": "Seapunk: the aquatic Tumblr precursor whose props (dolphins, palms, floating solids) vaporwave absorbed",
+          "url": "https://en.wikipedia.org/wiki/Seapunk"
+        },
+        {
+          "what": "Gridfiti palette list: source of the quoted non-canonical swatch set",
+          "url": "https://gridfiti.com/aesthetic-color-palettes/"
+        }
+      ],
+      "readme_translation": "One SVG banner, about 880x300. Above the fold: flat pink ground, a perspective checker floor in the lower right, the project name in wide-tracked capitals with a real Japanese subtitle in mint green at top right, an original statue drawing at the left, and one Windows 95 window holding the tagline and stats in place of the pasted skyline. Body text and links stay as ordinary Markdown below.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Floor without 3D transforms: draw a static fan of wedges from the vanishing point and an animated stack of horizontal bands spaced by perspective (y = horizon + k/z). Show the band group twice with <use>: one copy clipped to the even wedges, the other phase-shifted by one band and clipped to the odd wedges. That yields a true perspective checker with clipPath only, no filters. Band positions move hyperbolically, so generate 8-12 keyframe values per band in the tool. Window chrome is rects plus 1px lines. The bust is the blocker: a marble photo can only come in as a heavy data: bitmap and the specific photo is not yours, so use a posterised 2-3 tone vector drawing of an original or clearly public-domain sculpture. Japanese glyphs: outline to paths, or embed a font subset as base64 (the readme-typing-svg method). I did not render-test any of this on GitHub.",
+      "wow": 4,
+      "caveats": "Do not copy the Floral Shoppe layout one-to-one, the Macintosh Plus name, or the Helios photo; do not use Arizona, Fiji or Windows logos. The technique (pink ground, checker floor, statue, katakana, Win95 frames) is free to reuse. Japanese text must be real and correctly translated, not decorative filler. Cliches to ration: the bust, the dolphin, the word AESTHETIC. Avoid sun-wheel, rune and crusader motifs: Wikipedia records a far-right 'fashwave' offshoot that used them. Mint on pink fails contrast for body-size text, so keep anything that must be read on a solid panel. Sampled hex values are approximate.",
+      "number": 3,
+      "family": "vap",
+      "slug": "03-vap-01",
+      "samples": [
+        {
+          "project": "ultra-satisfactory",
+          "markdown": "references/upstream/examples/ultra-satisfactory/26-vaporwave_opus_5.5.md",
+          "generator": "references/upstream/examples/ultra-satisfactory/src/26-vaporwave_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/ultra-satisfactory/assets/26-vaporwave_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/ultra-satisfactory/26-vaporwave_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "c64-10",
+      "name": "Melon Dezign: flat colour fields, stepped silhouettes, curved black text",
+      "era": "November 1991 onward, Amiga; the classic run is 1992-93, including cracktros made for the cracking group Crystal (Denmark and France)",
+      "what_it_is": "Melon Dezign was founded by Paleface and Seen after they left Quartex, at first as the demo and intro arm of Crystal. Their intros replaced chrome and starfields with flat colour, simple shapes and graphic-design layout. A Pouet commenter says 'Human Target' (1st at the Easter Conference, April 1992) \"totally changed the way demos were designed\". It is the clearest break from the look the existing six styles share.",
+      "visual_signature": [
+        "Large areas of flat, unshaded colour: in the 'Zool' cracktro three stacked bands, hot pink, mustard yellow and mid green",
+        "Band edges cut as stepped rectangles like a city skyline, with no outline between colours",
+        "Black bold capitals set along a wavy curve across the bands, each letter rotated to follow it, with a small offset shadow ('... proudly presents')",
+        "Concentric rings in two flat colours (orange on violet in 'Mind Expanding') behind solid black silhouettes of two standing people",
+        "A tiny group tag in a top corner: lower-case letters in a small box, half white-on-black and half black-on-white",
+        "A muted grey-blue field with two thin horizontal rules and small centred text in bright green, credits written with dotted leaders ('Graphics & Design...............Seen')",
+        "A grid of identical cubes coloured across the hue range row by row, with a tall cyan outlined wordmark running vertically down the left edge and small white text over the grid ('Striker')"
+      ],
+      "palette": "Few colours, used flat: hot pink, mustard, leaf green, violet, orange, grey-blue, bright green, plus black for text and silhouettes and white for the tag. No metallic shading.",
+      "typography": "Small plain pixel capitals and lower case, centred, with dotted leaders in credits; larger text is bold sans capitals in black placed on a curve. The group tag uses lower case.",
+      "motion": "Rings expand from the centre; curved text travels along its path as a scroller; cubes rotate. One idea per screen. Inferred from stills and comments ('It's ugly and minimal and has a scroller').",
+      "references": [
+        {
+          "what": "Zool cracktro by Crystal and Melon (September 1992): pink, yellow and green skyline bands with curved black text",
+          "url": "https://www.pouet.net/prod.php?which=26918"
+        },
+        {
+          "what": "Mind Expanding (intro, December 1993, 22nd at The Party 1993): orange rings on violet with black silhouettes",
+          "url": "https://www.pouet.net/prod.php?which=4433"
+        },
+        {
+          "what": "Human Target (April 1992, 1st at Easter Conference): comments on its influence on demo design",
+          "url": "https://www.pouet.net/prod.php?which=3459"
+        },
+        {
+          "what": "1000cc turbo cracktro (February 1992): grey-blue field, rules, green credits naming Seen for graphics and design and Tronic for music",
+          "url": "https://www.pouet.net/prod.php?which=4374"
+        },
+        {
+          "what": "Striker cracktro (June 1992): rainbow cube grid with vertical wordmark",
+          "url": "https://www.pouet.net/prod.php?which=4375"
+        },
+        {
+          "what": "Melon Dezign on Demozoo: founders, relation to Crystal and Quartex, members, productions from November 1991",
+          "url": "https://demozoo.org/groups/435/"
+        }
+      ],
+      "readme_translation": "Above the fold: an animated SVG of two or three flat colour bands cut into a stepped silhouette of the project's subject (for a factory tool, a skyline of machines and chimneys), the project name and tagline as curved black text travelling across it, and a small two-tone tag in the corner for the version. It carries its own background, so it reads in both themes.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Everything is flat polygons, so the file is a few KB. Curved text: letters as paths or pixel-glyph symbols, each in a group positioned along a sine with its own rotation, the whole row translated on X and duplicated to loop; SMIL animateMotion along a path with staggered begin times is the alternative. Rings are circles with SMIL-animated radius, three or four staggered for a seamless loop. Bands slide with translate keyframes. Cubes are three flat polygons each.",
+      "wow": 4,
+      "caveats": "Do not copy the melon tag, the Melon or Crystal names, or the specific silhouettes (the two figures in 'Mind Expanding'). Flat fields, rings and curved text are ordinary graphic design and free to use. Expanding high-contrast rings can be uncomfortable; keep them slow. Descriptions are from one still per production plus comments.",
+      "number": 4,
+      "family": "c64",
+      "slug": "04-c64-10",
+      "samples": [
+        {
+          "project": "ultra-satisfactory",
+          "markdown": "references/upstream/examples/ultra-satisfactory/28-flat-silhouette-intro_opus_5.5.md",
+          "generator": "references/upstream/examples/ultra-satisfactory/src/28-flat-silhouette-intro_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/ultra-satisfactory/assets/28-flat-silhouette-intro_opus_5.5.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/28-flat-silhouette-intro_opus_5.5-cubes.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/28-flat-silhouette-intro_opus_5.5-credits.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/ultra-satisfactory/28-flat-silhouette-intro_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "mach-10",
+      "name": "Vector arcade, Vectrex and XY oscilloscope: beam-drawn glowing lines",
+      "era": "1979 to 1984; Atari vector arcade games (Asteroids November 1979, Battlezone November 1980, Tempest October 1981 in colour, Star Wars 1983) and the Vectrex home console (late 1982 to February 1984). Oscilloscope variant: XY-mode 'oscilloscope music' from the 2010s (Jerobeam Fenderson and Hansi Raber, album 2016).",
+      "what_it_is": "These displays have no pixels: the electron beam draws each line directly, so the picture is thin luminous strokes on black with no stair-stepping. Brightness depends on how slowly the beam moves, text is a handful of straight strokes, and colour on monochrome tubes came from plastic overlays. The oscilloscope variant is the same look in green, where the left and right audio channels drive the X and Y axes so the music draws the picture: a rare honest way to evoke sound in a silent header.",
+      "visual_signature": [
+        "Pure black screen with thin, sharp, glowing lines and no pixel structure",
+        "Line brightness varies: brighter where the beam moves slowly",
+        "Lettering built from a few straight strokes per character",
+        "Flicker when a lot is on screen, because everything is redrawn 30 to 40 times a second",
+        "Wireframe 3D objects in outline; a mountain horizon with an erupting volcano and crescent moon (Battlezone); a field of lanes seen down a tube (Tempest); grid lines on an approaching surface (Star Wars)",
+        "Simple outline shapes: a triangular ship, irregular polygon rocks, small saucers",
+        "Colour by overlay on monochrome tubes: Battlezone tints the lower four fifths green and the top fifth red; every Vectrex game shipped with its own translucent overlay sheet",
+        "Oscilloscope variant: one continuous green trace forming Lissajous loops and rotating figures, on a faint measurement graticule"
+      ],
+      "palette": "White phosphor on black for Asteroids, Battlezone and the Vectrex, with overlay tints (green and red zones on Battlezone); saturated coloured lines on the colour tubes (Tempest, Star Wars). No measured hex values were found. My own recipe: a near-white core such as #EAF6FF with a wider cool-blue halo; for the overlay or oscilloscope look, a green core such as #7CFF9B with a darker green halo.",
+      "typography": "Single-stroke capitals built from straight segments, wide and geometric, often with open corners. The Hershey fonts (Dr Allen V. Hershey, Naval Weapons Laboratory, about 1967, designed for vector CRT rendering, publicly available with few restrictions) are a ready-made base for an SVG stroke alphabet; otherwise draw an original segment alphabet.",
+      "motion": "The beam draws the logo stroke by stroke; the finished picture holds with a faint brightness shimmer; wireframe objects drift and rotate; title text pulses slowly. One single-frame flicker now and then is enough. Oscilloscope variant: a closed trace morphs continuously between two or three figures.",
+      "references": [
+        {
+          "what": "Wikipedia: Vector monitor (how the beam draws, brightness by beam speed, stroke text, refresh flicker, colour methods, games list)",
+          "url": "https://en.wikipedia.org/wiki/Vector_monitor"
+        },
+        {
+          "what": "Wikipedia: Asteroids (1979, QuadraScan and the Digital Vector Generator; ship, rocks, two saucers)",
+          "url": "https://en.wikipedia.org/wiki/Asteroids_(video_game)"
+        },
+        {
+          "what": "Wikipedia: Battlezone (1980, wireframe, green lower four fifths and red top fifth overlay, volcano and crescent moon, radar at top)",
+          "url": "https://en.wikipedia.org/wiki/Battlezone_(1980_video_game)"
+        },
+        {
+          "what": "Wikipedia: Tempest (1981, Color-QuadraScan, lanes on a tube viewed from one end, Dave Theurer)",
+          "url": "https://en.wikipedia.org/wiki/Tempest_(video_game)"
+        },
+        {
+          "what": "Wikipedia: Star Wars arcade (1983, 3D colour vectors; yellow grid lines on the Death Star approach spell out messages)",
+          "url": "https://en.wikipedia.org/wiki/Star_Wars_(1983_video_game)"
+        },
+        {
+          "what": "Wikipedia: Vectrex (9-inch monochrome vector tube, per-game overlays, built-in Mine Storm, Smith Engineering, GCE, Milton Bradley)",
+          "url": "https://en.wikipedia.org/wiki/Vectrex"
+        },
+        {
+          "what": "Game Developer: a history of the Vectrex (Jay Smith, overlays seated in grooves in front of the tube, brightness control)",
+          "url": "https://www.gamedeveloper.com/design/a-history-of-gaming-platforms-the-vectrex"
+        },
+        {
+          "what": "Wikipedia: Hershey fonts (stroke fonts from about 1967 for vector CRTs, publicly available, SVG versions exist)",
+          "url": "https://en.wikipedia.org/wiki/Hershey_fonts"
+        },
+        {
+          "what": "Oscilloscope Music (Jerobeam Fenderson and Hansi Raber): the audio signal is fed to an analogue oscilloscope, left and right channels on X and Y, drawing green glowing lines",
+          "url": "https://oscilloscopemusic.com/"
+        }
+      ],
+      "readme_translation": "All SVG; no text-only form makes sense. A black banner where the project name is drawn on by the beam in stroke capitals, a smaller stroke tagline beneath, score-style counters in the top corners for version and stats, and one slowly rotating wireframe object that stands for the project. Optional two-zone tint (one colour for a top strip, another below) to echo overlay colour. Oscilloscope variant: a green trace that draws the project initials as one closed figure, beside a 'now playing' line.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Draw-on: stroke-dasharray with stroke-dashoffset animated per path, staggered. Glow without heavy filters: stack each path three times at stroke widths of about 6, 3 and 1 with opacities of about 0.15, 0.35 and 1; if you use feGaussianBlur instead, keep the filter region tight and do not animate inside it, since blur on moving content is the main CPU cost. Bright vertices: round line caps or small circles at joints. In-plane rotation: animateTransform. Pseudo-3D rotation or figure morphing: SMIL animate on the path 'd' or polyline 'points' between precomputed frames with identical point counts. Stroke text needs a small segment-font table in the generator.",
+      "wow": 5,
+      "caveats": "Do not reuse Atari or Vectrex names, logos, cabinet art, or the specific ship, saucer, tank and web designs, or any oscilloscope-music artist's figures; glowing strokes, wireframes and beam draw-on are generic techniques. Small stroke text is hard to read: keep body copy in Markdown below the image. Flicker and pulsing must be gentle. Phosphor colours are my own suggestion, not sourced. The brighter-dot-at-vertices detail is general knowledge; the source only says slower beam movement is brighter.",
+      "number": 5,
+      "family": "mach",
+      "slug": "05-mach-10",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/72-vector-beam-display_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/72-vector-beam-display_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/72-vector-beam-display_opus_5.5.svg",
+            "references/upstream/examples/castaway/assets/72-vector-beam-display_opus_5.5-scope.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/72-vector-beam-display_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "pc-04",
+      "name": "Early DOS VGA loader: metal logo, gradient bars, one big scroller",
+      "era": "1990-1993, MS-DOS VGA (mode 13h, 256 colours), often silent or AdLib; The Humble Guys, INC, USA/Fairlight, TRSI with The Dream Team, and Razor 1911's first PC intros (with Skillion)",
+      "what_it_is": "The first generation of graphical intros on the IBM PC, made before the platform had its own demoscene. Wikipedia credits The Humble Guys with bringing animated graphical intros, the NFO file and an intro-making tool to the PC. They are blunt next to Amiga work, which is the charm: a big metal logo, gradient bars, one line of oversized scrolling text. Razor's own first PC loaders (1990-93) belong here and are what the group looked like before the numbered series.",
+      "visual_signature": [
+        "Group initials as a heavy framed plate: chrome letters with a blue-to-white 'sky' gradient in the upper half and a brown 'ground' gradient below, inside a grey bevelled frame (THG Lemmings, 1991)",
+        "Fat gold 3D serif capitals on black with specular highlights, and the group's full name set on a sine arc in small magenta capitals beneath (INC, 1992)",
+        "Background of nested concentric diamonds in one hue (electric blue on black), animated by palette rotation",
+        "Horizontal gradient bars in purple, orange and blue top and bottom, or passing through the logo as copper-style bars (INC Europe JOOP #2; a Pouet commenter calls THG's bars pseudo-3D copper bars)",
+        "Razor variant 1 (Silent Shadow, with Skillion): a red logo inside a rounded chrome capsule on deep-blue gradient bars, the partner's logo in a matching capsule below, and a scroller in very large red-to-orange gradient letters across the middle",
+        "Razor variant 2 (1992 loader, Maelstrom 1993): the name in red-to-yellow flame lettering with drips hanging off the bottom of each letter, over a starfield",
+        "Razor variant 3 (Battle Chess 4000, 1993): a huge bronze extruded serif wordmark with '1911' beneath, 'Another crack from' in small white type above, green scroller below",
+        "Single-line scroller in an oversized chunky font along the bottom edge; two crews' logos stacked when they co-released (USA over Fairlight, 1992)"
+      ],
+      "palette": "Smooth VGA ramps: electric blue on black; gold (about #fff2a0 to #8a5a00); chrome (white, sky blue, brown); purple bars (about #ff7bff to #4a0a6a); flame (red #c00000 through orange to yellow). TRSI's Blues Brothers intro uses striped red-brown bars behind a gold skull with red eyes.",
+      "typography": "Logos are hand-drawn block or serif capitals with heavy bevel. Scrollers use oversized 16-32px bitmap fonts with squared counters and a vertical gradient fill.",
+      "motion": "Mostly palette cycling: the background pattern seems to pulse outward while no pixel moves. The scroller steps sideways a few pixels at a time (commenters call TRSI's 'choppy'). In the livelier ones the logo bounces with copper bars behind it, text rotates along a spline (JOOP #2), or the scroller rides an arch (Razor/Skillion Conan intro, 1991).",
+      "references": [
+        {
+          "what": "The Humble Guys, Lemmings Cracktro on Demozoo: 14 May 1991, code Jrok",
+          "url": "https://demozoo.org/productions/139119/"
+        },
+        {
+          "what": "Same on Pouet: blue diamond field, framed chrome plate, big white scroller; comments on the copper bars, no music, and that it remakes an Amiga intro by Mayhem",
+          "url": "https://www.pouet.net/prod.php?which=16670"
+        },
+        {
+          "what": "INC, Indiana Jones 4 cracktro (Pouet: Dec 1992; Demozoo: 6 Nov 1992): gold 3D letters, arc text, purple bars",
+          "url": "https://www.pouet.net/prod.php?which=26962"
+        },
+        {
+          "what": "INC Europe, JOOP #2 (Aug 1992): logo bouncing with copper bars behind it, spline text, scroller",
+          "url": "https://www.pouet.net/prod.php?which=4209"
+        },
+        {
+          "what": "Fairlight and USA, Wordtris (1992): two stacked logos and a scroller (Demozoo credits logo Red Devil, code The Necromancer)",
+          "url": "https://www.pouet.net/prod.php?which=14885"
+        },
+        {
+          "what": "TRSI and The Dream Team, Blues Brothers Cracktro (Demozoo: 12 Apr 1991): colour cycling and choppy scrolling",
+          "url": "https://www.pouet.net/prod.php?which=56847"
+        },
+        {
+          "what": "Razor 1911 and Skillion, Silent Shadow Cracktro (Pouet: Nov 1990; Demozoo: 1991; code Darwin, graphics Sector 9): capsule logos on blue bars, giant gradient scroller",
+          "url": "https://www.pouet.net/prod.php?which=5479"
+        },
+        {
+          "what": "Razor 1911 loader (starfield intro), 1992: flame-lettered logo over stars (Demozoo credits The French Mate with code and music)",
+          "url": "https://www.pouet.net/prod.php?which=74900"
+        },
+        {
+          "what": "Wikipedia on The Humble Guys: first NFO, first graphical PC intros, the THG IntroMaker",
+          "url": "https://en.wikipedia.org/wiki/The_Humble_Guys"
+        }
+      ],
+      "readme_translation": "SVG at about 800x250: black or deep-blue field with a palette-cycled diamond pattern or gradient bars, the project's initials as a framed metal plate (or a flame-lettered wordmark) in the centre, the full project name on an arc beneath, and one oversized gradient scroller along the bottom carrying tagline and greets. A text-only block can follow for the README body.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Palette cycling maps onto keyframed fills on a set of nested polygons with staggered animation-delay, or animated gradient stops: no filters, tiny file. Plate: two or three linearGradients and inset strokes. Flame lettering: a vertical red-to-yellow gradient on glyph paths plus a few hand-placed drip shapes. Arc text: glyph paths placed along a precomputed arc (textPath works but depends on system fonts). Scroller: translateX on a long group with steps() timing to reproduce the choppy scroll. Distinct from the existing Amiga style by the static framed plate, the smooth VGA ramps and the step-scroll.",
+      "wow": 3,
+      "caveats": "Do not reuse THG, INC, USA, Fairlight, TRSI, Skillion or Razor logos or initials. Bevelled metal lettering, flame lettering and palette-cycled bars are generic. The THG plate itself is reported to be a remake of an Amiga intro. Dates differ between databases (INC Indy 4: Dec vs 6 Nov 1992; Silent Shadow: Nov 1990 vs 1991). A concentric pattern pulsing fast is a strobing risk: slow it down and provide a reduced-motion static frame.",
+      "number": 6,
+      "family": "pc",
+      "slug": "06-pc-04",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/23-dos-vga-loader_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/23-dos-vga-loader_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/23-dos-vga-loader_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/23-dos-vga-loader_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "ansi-03",
+      "name": "Illustrated ANSI: toon mascot and comic-book / graffiti scroller",
+      "era": "Toon manner 1993-1996 (16colo.rs 'toon' tag: 58 files, 37 by Toon Goon, 35 in iCE packs, most from 1994-1995). Comic-book figure work from 1992 onward, after Image Comics launched (about 70 Spawn pieces in 1994 alone, per Break Into Chat). Revived from 2008 by Blocktronics, whose 2013 'ACiD Trip' collaboration ran to 3,266 lines and took first place at Demosplash.",
+      "what_it_is": "The figure-drawing schools of the ANSI scene. Public-domain artists of the late 1980s drew flat, cartoony pictures in solid blocks on a single screen; underground artists added shade-character blending and stretched pieces far beyond 25 rows so they scroll. People remember it because a modem painted these pictures line by line as the advert for a board.",
+      "visual_signature": [
+        "80 columns wide and much taller than 25 rows (the 1995 toon piece viewed is 80x153); the figure is tightly cropped and runs off the side edges",
+        "Toon manner: 1-2 cell black outline cut with half blocks, flat saturated fills, shade characters only where two neighbouring colours meet, large plain white areas for eyes and gloves",
+        "Flat single-colour backdrop in a bright hue (royal blue, purple or red in the pieces viewed); bright backgrounds need the iCE-colours mode, which trades blink for 16 background colours",
+        "A header band on black above the picture: the group or 'studio' title in white block letters with grey shading, or the artist's monogram logo",
+        "A small boxed credit plaque inside the picture (artist, group, the word 'production' on three lines, blue box with a drop shadow) plus a short signature",
+        "Comic manner (described in the sources, the long Blocktronics pieces not re-viewed here): heavy black contour, three-step shade-character modelling on every surface, small white highlights",
+        "Wildstyle title lettering: interlocked letters with shards and drips over a drop shadow (the 80x55 'evoke 2013' piece; its colours were not re-viewed)"
+      ],
+      "palette": "16 foreground colours; 8 backgrounds normally, 16 with the iCE-colours flag set in the SAUCE record. Skin from brown, red, light red and yellow; metal from dark grey, light grey, white; the whole thing on black or one flat bright colour.",
+      "typography": "Block-letter headline in white with grey shading, or wildstyle lettering; any body text is the IBM VGA 8x16 font. The SAUCE record carries title (35 characters), author (20), group (20), date and the flags.",
+      "motion": "Static art experienced as a vertical scroll. In SVG, translate a tall piece upward through a 25-row window at constant speed and loop, pausing on the title.",
+      "references": [
+        {
+          "what": "'Confusion ?' by Gangstar, ACiD, 1 September 1995, 80x153 - viewed: white block title on black, flat blue ground, boxed credit plaque",
+          "url": "https://16colo.rs/pack/acdu0995/GAS-CFS2.ANS"
+        },
+        {
+          "what": "16colo.rs 'toon' tag - viewed: thick outlines, flat fills, bright flat backgrounds, monogram headers",
+          "url": "https://16colo.rs/tags/content/toon"
+        },
+        {
+          "what": "Toon Goon artist page: 328 files, 250 in iCE, peak 1994-1997",
+          "url": "https://16colo.rs/artist/toon%20goon"
+        },
+        {
+          "what": "'evoke 2013' by avenging angel, Blocktronics, 80x55, IBM VGA",
+          "url": "https://16colo.rs/pack/blocktronics_acid_trip/avg-EVOKE2013.ANS"
+        },
+        {
+          "what": "Blocktronics ACiD Trip pack (2013), 98 files",
+          "url": "https://16colo.rs/pack/blocktronics_acid_trip/"
+        },
+        {
+          "what": "Break Into Chat, ANSI art and webcomics part 2: public-domain flat style versus underground shading; Jed's toony animations; Image Comics and Spawn",
+          "url": "https://breakintochat.com/blog/2025/12/28/ansi-art-and-webcomics-bbses-and-the-artscene/"
+        },
+        {
+          "what": "Break Into Chat part 3: Eerie's 300-row ANSI comics (Imperial pack, August 1994) and TheDraw's 100-row limit",
+          "url": "https://breakintochat.com/blog/2025/12/31/ansi-art-and-webcomics-part-3-eerie-and-inspector-dangerfuck/"
+        },
+        {
+          "what": "ACiD Productions: founding, ACiD Trip at 3,266 lines, Demosplash first place",
+          "url": "https://en.wikipedia.org/wiki/ACiD_Productions"
+        },
+        {
+          "what": "iCE Advertisements: founded 1991, first monthly pack August 1992",
+          "url": "https://en.wikipedia.org/wiki/ICE_Advertisements"
+        },
+        {
+          "what": "SAUCE specification: 128-byte record, iCE-colour, letter-spacing and aspect flags",
+          "url": "https://www.acid.org/info/sauce/sauce.htm"
+        }
+      ],
+      "readme_translation": "Above the fold: one SVG showing an 80x25 to 80x40 cell window with an original project mascot in the toon manner on a flat bright ground, a block-letter title band and a credit plaque. Optionally the SVG scrolls slowly through 100 or more rows (mascot, then feature panels as comic frames) and loops. All real information stays as text below.",
+      "medium": "animated-svg",
+      "feasibility": "hard",
+      "feasibility_notes": "Rendering is simple: cells become rectangle sub-paths, one path per colour, shade characters as dot patterns; roughly 80x120 cells stays well under 250 KB with run merging, and the scroll is a single translate animation on a group inside a clipped viewport. The blocker is authorship: the picture has to be drawn by a person in an ANSI editor (PabloDraw or Moebius) and converted; it cannot be generated. The toon manner (outline plus flat fills) is the tractable one to commission or draw.",
+      "wow": 5,
+      "caveats": "Most surviving toon and comic ANSIs depict licensed cartoon and comic characters; do not rip those or redraw anyone's ANSI. Use an original mascot. Avoid the gore and explicit imagery common in the genre. The 'first' claims in this area rest on single secondary sources. The original research credited Toon Goon to a Break Into Chat article that does not mention him; the artist and the toon tag are confirmed on 16colo.rs instead. An 'abstract' manner exists (114 tagged files, mostly Mistigris 2016-2019) but is too thin to specify.",
+      "number": 7,
+      "family": "ansi",
+      "slug": "07-ansi-03",
+      "samples": [
+        {
+          "project": "ultra-satisfactory",
+          "markdown": "references/upstream/examples/ultra-satisfactory/23-illustrated-ansi_opus_5.5.md",
+          "generator": "references/upstream/examples/ultra-satisfactory/src/23-illustrated-ansi_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/ultra-satisfactory/assets/23-illustrated-ansi_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/ultra-satisfactory/23-illustrated-ansi_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "idle-03",
+      "name": "Feedback fire (Cthugha / Geiss): a waveform smeared by zoom-and-blur in a fire palette",
+      "era": "1993-98: Cthugha on MS-DOS (written September 1993, first public release 2.0 in March 1994, Linux 1995, Mac 1996) and the Geiss plug-in for Winamp (1998)",
+      "what_it_is": "The first PC visualisers worked by feedback: draw the sound wave into the image, then replace the image with a warped, slightly dimmed copy of itself, many times a second. Ryan Geiss describes his plug-in as exactly two repeated steps, draw the waveform and warp the image. The result is a line that leaves flame-like wakes which swirl, zoom and fade, coloured through a palette; Cthugha named its looks Blue Fire, Metallic Lightning, Solar Flare and Oil Shimmer.",
+      "visual_signature": [
+        "One bright oscilloscope line (the live waveform) as the only sharp thing on screen",
+        "Behind it, older copies of the line dragged outward, rotated and blurred into flame or smoke",
+        "Indexed-palette colour: brightness is mapped through a fire ramp (black, deep blue or red, orange, white), so fading reads as cooling",
+        "Fine grain in the smear: Geiss carried the rounding remainder to the next pixel, which he describes as error-diffusion dithering",
+        "The direction of flow changes at intervals: Geiss built a second warp map in the background and switched to it on a beat",
+        "Low-resolution, full-screen, no window chrome (DOS and early DirectX full-screen)"
+      ],
+      "palette": "Fire ramps on black. Blue Fire: black to navy to electric blue to white. Solar Flare: black to dark red to orange to yellow-white. Metallic Lightning and Oil Shimmer are named in the sources but their exact colours are not described there.",
+      "typography": "None in the effect. Cthugha and Geiss overlay at most a line of system-font text. Put the project name as one line of small monospace text in a corner, styled like a mode or palette name readout.",
+      "motion": "The waveform wriggles at a few cycles per second; its echoes expand and rotate away from the centre and dim; the whole field's hue or palette drifts slowly. Suggested loop 17 to 24 s (the waveform itself loops every 2 to 3 s).",
+      "references": [
+        {
+          "what": "Ryan Geiss's own explanation of the algorithm: two steps, precomputed warp map, bilinear interpolation from the previous frame, error-diffusion grain, two warp maps switched on a beat",
+          "url": "https://www.geisswerks.com/geiss/secrets.html"
+        },
+        {
+          "what": "Geiss plug-in home page: 'written in 1998', 4.6 million downloads, version 4.29 of June 2009",
+          "url": "https://www.geisswerks.com/geiss/"
+        },
+        {
+          "what": "Wikipedia on Cthugha: Kevin 'Zaph' Burfitt, dates, ports, the named flame looks, end of development January 2001",
+          "url": "https://en.wikipedia.org/wiki/Cthugha_(software)"
+        },
+        {
+          "what": "Wikipedia timeline: Cthugha as one of the first visualisers for IBM PC compatibles (1993), Geiss plug-in (1998) as MilkDrop's predecessor",
+          "url": "https://en.wikipedia.org/wiki/Music_visualization"
+        }
+      ],
+      "readme_translation": "A black SVG band with the white waveform across the middle and its coloured wake filling the rest; project name and tagline as one monospace line top-left, a 'palette' name bottom-right. There is no text-only form.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Real feedback cannot be done: SVG has no frame buffer, and a filter only ever sees the current frame, so nothing accumulates. feTurbulence plus feDisplacementMap alone gives a wobble, not a wake. What can be done honestly is an echo stack, which I prototyped: 18 copies of the waveform path, copy k scaled by 1.07^k, rotated 2.5 degrees times k, opacity 0.86^k, its SMIL path animation started 0.09 s times k earlier, all drawn through one filter (feTurbulence fractalNoise at 0.012, feDisplacementMap with its scale animated 6 to 26, then a small feGaussianBlur), with a sharp white copy on top. 61 KB with 41-point paths and 9 keyframes each (halve the points to get near 30 KB), renders in headless Chromium through <img>. It reads as a ribbon of flame behind a scope line. It does not swirl or pool the way the real thing does, because the warp is applied once, not compounded. Mapping grey through a fire ramp with feComponentTransfer would give the indexed-palette look; that step is untested. The animated filter repaints every frame, so keep the canvas small (800 x 240) and numOctaves at 2.",
+      "wow": 4,
+      "caveats": "Do not use the Cthugha or Geiss names or their flame names as if they were your own product. The algorithm is freely reusable (Geiss published it). Be clear that the SVG is an imitation of feedback, not feedback. Cthugha's own site (afn.org) was unreachable, so its details rest on two Wikipedia articles. Tested in Chromium only; filter-heavy SVG animation can stutter on low-power devices.",
+      "number": 8,
+      "family": "idle",
+      "slug": "08-idle-03",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/96-feedback-fire_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/96-feedback-fire_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/96-feedback-fire_opus_5.5.svg",
+            "references/upstream/examples/castaway/assets/96-feedback-fire_opus_5.5-setup.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/96-feedback-fire_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "idle-09",
+      "name": "Bouncing idle logo: wordmark ricochets, changes colour, and eventually hits the corner",
+      "era": "Late 1990s-2000s DVD players left idle; a meme from 2007 (The Office) and again from about 2018-19 (livestreams, recreations)",
+      "what_it_is": "The idle screen built into DVD players: the format logo on black, drifting diagonally and bouncing off the edges, in some versions changing colour at each bounce. Everyone who watched it waited for it to land exactly in a corner. The Office made that the joke of a cold open (Launch Party, aired 11 October 2007), which the writers say came from watching the logo in their own writers' room.",
+      "visual_signature": [
+        "One flat-colour wordmark in a wide oval lozenge on a pure black field, nothing else",
+        "Constant speed on a 45-degree-ish diagonal, reversing one axis at each edge",
+        "The logo's colour changes at each bounce in some versions",
+        "The near miss: it approaches a corner and touches one edge a moment before the other",
+        "The rare perfect corner hit, which the internet treats as an event",
+        "4:3 or 16:9 television framing"
+      ],
+      "palette": "Black background; the logo in one saturated flat colour at a time (blue, red, yellow, green, magenta, cyan, white), switching at bounces.",
+      "typography": "A heavy italic sans wordmark above a flattened ellipse carrying a second small word in spaced capitals. Build your own: the project name in a bold oblique sans over your own lozenge. Do not reproduce the DVD letterforms.",
+      "motion": "Horizontal and vertical travel are independent ping-pongs. A corner hit happens when both reverse at the same instant, so the loop can be designed around one: with 7 s per horizontal crossing and 5 s per vertical crossing the mark hits a corner at 35 s and the whole path repeats at 70 s.",
+      "references": [
+        {
+          "what": "Wikipedia: definition, colour change on collision, corner hit estimates from 2 to 45 minutes, The Office, 2021 Google easter egg, 2022 Coinbase advert",
+          "url": "https://en.wikipedia.org/wiki/DVD_screensaver"
+        },
+        {
+          "what": "Mental Floss (21 August 2023): the corner-hit arithmetic on an 800 x 600 screen (every 2 min 18 s with a 140-pixel logo, 45 min 54 s at 141 pixels), the 2019 livestream",
+          "url": "https://www.mentalfloss.com/technology/did-the-bouncing-dvd-logo-ever-hit-the-corner-of-the-screen"
+        },
+        {
+          "what": "Wikipedia on the episode: season 4, aired 11 October 2007, written by Jennifer Celotta, directed by Ken Whittingham; origin of the cold open",
+          "url": "https://en.wikipedia.org/wiki/Launch_Party"
+        },
+        {
+          "what": "Wikipedia: the DVD format and logo were licensed through the DVD Format and Logo Licensing Corporation, which dissolved on 31 January 2025",
+          "url": "https://en.wikipedia.org/wiki/DVD_Forum"
+        },
+        {
+          "what": "Wikipedia on burn-in: savers that move around 'such as those on DVD players'",
+          "url": "https://en.wikipedia.org/wiki/Screen_burn-in"
+        }
+      ],
+      "readme_translation": "The project name is the bouncing mark, so the header needs no other title. Black SVG, 800 x 240; tagline fixed in small grey text along the bottom edge, or a 'corner hits' counter in one corner as a joke. For a text fallback, a one-line caption is enough.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Prototyped at 1.2 KB. Three nested <g>: the outer animates translateX with 'linear infinite alternate' over 7 s, the middle animates translateY the same way over 5 s, the inner holds the wordmark. Colour change on bounce: a stepped hue animation on the outer group (one step per horizontal bounce) and another on the inner (one per vertical bounce) add up automatically. A white full-frame <rect> flashes briefly at the 35 s corner hit. Rendered in headless Chromium through <img>. Choose crossing times with a small common multiple to stage the corner hit, or unrelated ones to tease for ever. About 8 elements, 70 s loop.",
+      "wow": 4,
+      "caveats": "Never use the DVD logo or letterforms: it was a licensed format trademark. Wikipedia reports the licensing body dissolved in January 2025, but I found nothing saying the mark is free to use, so assume it is not. A bouncing rectangle is generic. The stepped hue change uses a CSS filter on SVG groups, tested in Chromium only; switching the fill colour with an explicit keyframe list is the portable route. Keep the corner-hit flash soft and single. None of the sources I opened say who wrote the original player firmware routine or when it first appeared.",
+      "number": 9,
+      "family": "idle",
+      "slug": "09-idle-09",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/13-bouncing-logo_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/13-bouncing-logo_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/13-bouncing-logo_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/13-bouncing-logo_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "idle-04",
+      "name": "MilkDrop preset: waveform ring in a zooming mandala field, with preset-name ticker",
+      "era": "2001-07 on Windows, as a Winamp plug-in (MilkDrop 1.0 on 5 November 2001, twelve versions to July 2003, MilkDrop 2 with pixel shaders in 2007); alive today through projectM",
+      "what_it_is": "Ryan Geiss's hardware-accelerated successor to his 1998 plug-in. The picture is defined by a preset, a small .milk text file of equations, and the program blends slowly from one preset to the next and reacts to beats, so it never looks the same twice. It is the thing most people actually watched while an MP3 played, and the community wrote presets by the tens of thousands.",
+      "visual_signature": [
+        "A closed waveform ring (or a line, or dots: eight wave modes) at the centre, redrawn every frame",
+        "A field that zooms, rotates and warps about a movable centre and fades by a 'decay' factor (the author recommends 0.98), so old rings fly outward into symmetric mandala or tunnel shapes",
+        "Two coloured frames hugging the screen edge: the outer border and inner border, which get pulled into the field",
+        "A regular grid of short 'motion vector' marks (up to 64 by 48) showing the flow",
+        "Video echo: a second, scaled and optionally flipped copy of the whole image laid over itself, which produces mirror symmetry",
+        "Overlay text in a plain system font: preset name (F4), song title (F2), frame rate (F5), preset rating (F6), a help screen (F1), plus a launched 'song title animation' (T) and custom messages (Y)",
+        "Slow cross-blend from one preset to another"
+      ],
+      "palette": "No fixed palette: each preset sets wave and border colours by equation, usually cycling through the whole hue wheel at high saturation on black, with a gamma boost that blows highlights towards white.",
+      "typography": "The overlay text is ordinary small system sans in white or pale colour, top corners. Presets are files named by their author and title (Wikipedia's example screenshot is one called 'Mandala Chasers'). The project name works best written as a preset name line; the tagline as the 'song title'.",
+      "motion": "Rings are born at the centre every fraction of a second and travel outward while rotating and fading; border frames breathe; every 15 to 20 s the colour scheme cross-fades to a second one (the preset blend). Suggested loop 30 to 40 s covering two presets.",
+      "references": [
+        {
+          "what": "Wikipedia: release dates, .milk presets, interpolation between presets, beat detection, BSD source release of 1.04 in May 2005, projectM",
+          "url": "https://en.wikipedia.org/wiki/MilkDrop"
+        },
+        {
+          "what": "Ryan Geiss's MilkDrop page: 'flying through the actual soundwaves you're hearing', beat detection, copyright Nullsoft",
+          "url": "https://www.geisswerks.com/milkdrop/"
+        },
+        {
+          "what": "Geiss's preset authoring guide: zoom, rot, warp, cx/cy, dx/dy, sx/sy, decay, eight wave modes, outer and inner borders, motion vectors, video echo, bass/mid/treb",
+          "url": "https://www.geisswerks.com/milkdrop/milkdrop_preset_authoring.html"
+        },
+        {
+          "what": "MilkDrop 2.0d documentation (January 2008): the F-key overlays, song title animation, custom messages, sprites, hard cuts",
+          "url": "https://www.geisswerks.com/milkdrop/milkdrop.html"
+        },
+        {
+          "what": "projectM, the LGPL 2.1 cross-platform reimplementation; about 10,000 presets in its default pack and 130,000+ in megapacks",
+          "url": "https://github.com/projectM-visualizer/projectm"
+        },
+        {
+          "what": "Wikipedia on Nullsoft AVS (Justin Frankel, Winamp 2.61, March 2000; render/trans/misc component lists; BSD-style licence May 2005), the sibling preset system",
+          "url": "https://en.wikipedia.org/wiki/Advanced_Visualization_Studio"
+        }
+      ],
+      "readme_translation": "SVG header: black field, ring mandala centred or offset left, project name as the preset-name line in the top-right corner, tagline as a song-title line bottom-left, a tiny fps readout as decoration. A more useful variant puts three or four 'preset names' in rotation, each one a feature of the project, cross-fading with the colour scheme.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Same limit as the feedback-fire entry: no true feedback. The MilkDrop zoom is the easier case to fake because rings flying outward are a self-similar loop. Plan (the echo-stack half of this was tested in the feedback-fire prototype; the ring version was not): 24 static closed paths, each a different snapshot of a wobbling ring; each runs one shared CSS keyframe animation that scales it from 1 to about 5 while rotating 60 degrees and fading to 0, with keyframes at 25 percent steps following an exponential so the speed looks constant; delays are staggered so a new ring is born every 0.4 s. That is one @keyframes block and 24 delays, around 15 KB. Borders are two animated <rect> strokes; motion vectors are one <pattern> of short lines; video echo is a <use> of the whole group with scale(-1,1) at 50 percent opacity; preset blend is a cross-fade between two colour groups. Loop 30 to 40 s, about 60 elements, 15 to 25 KB.",
+      "wow": 4,
+      "caveats": "MilkDrop is copyright Nullsoft (now under later owners) and the name should appear only as a credit; do not reuse real preset names or authors' handles, and do not ship real .milk files as your own. The general look (ring, zoom, borders, overlay text) is free to imitate. Where the overlay text sits on screen and what the song-title animation looks like were not described in the sources I opened; only the key bindings are confirmed. Fast strobing presets are a known seizure risk in the original: keep blends slow and avoid full-field flashes.",
+      "number": 10,
+      "family": "idle",
+      "slug": "10-idle-04",
+      "samples": [
+        {
+          "project": "ultra-satisfactory",
+          "markdown": "references/upstream/examples/ultra-satisfactory/08-milkdrop-visualiser_opus_5.5.md",
+          "generator": "references/upstream/examples/ultra-satisfactory/src/08-milkdrop-visualiser_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/ultra-satisfactory/assets/08-milkdrop-visualiser_opus_5.5.svg",
+            "references/upstream/examples/ultra-satisfactory/assets/08-milkdrop-visualiser_opus_5.5-scope.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/ultra-satisfactory/08-milkdrop-visualiser_opus_5.5.md"
+        }
+      ]
+    }
+  ]
+}

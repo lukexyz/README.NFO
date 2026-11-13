@@ -1,0 +1,17 @@
+{
+  "id": "c64-01",
+  "name": "The watching eye",
+  "description": "A raster-banded eye hides a play arrow at its centre. Watching becomes noticing—and keeping a record of what mattered.",
+  "choices": [
+    "The eye is drawn as a single memorable silhouette rather than a literal screen",
+    "One palette flows through both emblem and wordmark, making the whole lockup feel unified"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

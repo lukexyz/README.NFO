@@ -1,0 +1,17 @@
+{
+  "id": "c64-02",
+  "name": "Save-slot romance",
+  "description": "A chunky multicolour save-slot heart, with six little timeline moments riding a soft demo-scene wave.",
+  "choices": [
+    "The emblem is a save slot that resolves into a heart",
+    "Six dots stand for films, books, shows, games, albums and podcasts, with no tiny labels"
+  ],
+  "animated": true,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

@@ -1,0 +1,17 @@
+{
+  "id": "pc-08",
+  "name": "Favourite mode",
+  "description": "An oversized green toggle with a heart built into its switch. The trainer-screen energy becomes a simple invitation to save what you loved.",
+  "choices": [
+    "The toggle expresses a personal favourite instead of a software cheat or capability",
+    "A heavy slanted title carries the arcade energy without tiny key labels"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

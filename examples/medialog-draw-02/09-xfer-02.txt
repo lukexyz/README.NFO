@@ -1,0 +1,15 @@
+AREA: MEDIA.DIARY / FRIENDS & ME
+FROM: You                  TO: Friends
+SUBJ: What have you been into?
+
+ME> What did you play?
+YOU> A game I am still thinking about.
+ME> When was it?
+YOU> Sometime that summer. That counts, too.
+
+Films / books / shows / games / albums / podcasts
+... When it was. How it felt. Share it.
+--- MediaLog
+ * Origin: A media diary you share
+
+Illustrative conversation; no network connection.

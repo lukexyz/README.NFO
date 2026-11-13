@@ -1,0 +1,20 @@
+{
+  "id": "idle-06",
+  "name": "Growing pipes",
+  "description": "Three glossy tubes in tan, steel blue and paper grow at right angles through a navy disc, with ball joints at every turn, after the classic pipes screensaver.",
+  "choices": [
+    "Right-angle growth, ball joints and over-under crossings carry the screensaver into a round badge",
+    "Primary colours are replaced with brand-friendly tan, steel and paper on navy"
+  ],
+  "animated": true,
+  "motion": "Plays once on load: the pipes grow segment by segment over about four seconds, then hold.",
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

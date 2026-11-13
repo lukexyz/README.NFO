@@ -1,0 +1,17 @@
+{
+  "id": "xfer-04",
+  "name": "Culture club card",
+  "description": "A blue forum-era membership strip with a gold heart badge. A compact identity that feels like belonging to a small club of people with good recommendations.",
+  "choices": [
+    "The badge identifies shared taste rather than a rank or paid membership",
+    "The userbar gloss and stripes are broad enough to remain legible without microscopic captions"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

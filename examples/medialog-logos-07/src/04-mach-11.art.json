@@ -1,0 +1,26 @@
+{
+  "id": "mach-11",
+  "name": "Extra chapter",
+  "description": "A hardback drawn only in round orange plasma dots: bright edges round a dim cover with a hinge line and a bright award star, its page block peeking out, a notched ribbon and a sparkle beside the corner.",
+  "choices": [
+    "The backbox display’s grid of round dots and stepped brightness draw a book, with dark gaps instead of a panel",
+    "A star on the cover and a sparkle are the award frame; no score digits or lettering"
+  ],
+  "book": "closed book",
+  "repeatOf": {
+    "style": "mach-11",
+    "collection": "medialog-logos-05",
+    "slug": "04-mach-11",
+    "name": "Extra ball"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

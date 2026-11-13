@@ -1,0 +1,17 @@
+{
+  "id": "vap-18",
+  "name": "After-hours favourites",
+  "description": "A pink neon heart with a cyan play cutout, beside a clean tube-letter wordmark. Your late-night discoveries have a place to glow.",
+  "choices": [
+    "A heart and play sign combine emotional reaction with watching",
+    "The composition removes street labels and rain so the name stays clear at navigation size"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

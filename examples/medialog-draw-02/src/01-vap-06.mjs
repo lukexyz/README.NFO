@@ -1,0 +1,23 @@
+// City-pop LP sleeve: the pool becomes a diary timeline; media types are the tracks.
+import {R,P,L,C,T,word,icon,colors,media,save} from './lib.mjs';
+let scene=R(0,0,1000,520,'#f6b5ab');
+for(let i=0;i<9;i++)scene+=L(`M${i*145-150} 0L${i*145+60} 520`,'#e69288',1);
+scene+=C(452,253,203,'#162237')+C(452,253,181,'none','stroke="#354057" stroke-width="2"')+C(452,253,159,'none','stroke="#354057" stroke-width="2"')+C(452,253,75,'#f4836c')+C(452,253,7,'#f6b5ab');
+scene+=R(44,40,446,440,'#f9f4e6')+R(96,56,378,408,'url(#sky)');
+scene+=R(96,220,378,244,'#eff4de')+P('M155 278H438L390 429H97Z','#29bebb')+P('M155 278H438L438 294H168L115 449H97V429Z','#fffced');
+for(let i=0;i<6;i++)scene+=L(`M${127+i*43} 290L${97+i*45} 424M119 ${302+i*23}H${430-i*7}`,'#adf9e9',1.3);
+scene+=P('M421 248L332 278L392 287L454 259Z','#cbdac7');
+scene+=P('M389 261Q397 184 420 124L428 124Q401 212 403 261Z','#293d47');
+for(const d of ['M422 126Q373 89 326 122Q377 100 414 140','M422 126Q375 129 354 168Q390 138 418 140','M422 126Q431 79 469 82Q439 95 429 135','M422 126Q449 105 474 128L474 143Q451 122 428 140'])scene+=P(d,'#163f49');
+scene+=R(44,40,48,440,'#fc704f');
+'MEDIA DIARY'.split('').forEach((c,i)=>scene+=T(c,61,75+i*34,20,'#fff9e9','font-weight="700"'));
+scene+=word(114,82,31,'#fff7db');
+scene+=T('ON ONE TIMELINE',114,143,17,'#fff7db','letter-spacing="2"');
+scene+=L('M126 386L186 371L252 352L319 333L384 313','#fff9e9',3);
+for(let i=0;i<5;i++)scene+=C(126+i*64,386-i*18,5,'#fff9e9');
+scene+=`<g class="glint">${P('M331 294l4 12 12 4-12 4-4 12-4-12-12-4 12-4Z','#fff')}</g>`;
+scene+=R(583,42,369,438,'#fff3df')+T('SIDE A / YOUR LIFE IN CULTURE',609,75,13,'#264a56','letter-spacing="1.5"');
+scene+=word(610,99,36,'#183d4c')+T('A media diary you share.',610,162,23,'#183d4c');
+media.forEach((m,i)=>{scene+=L(`M609 ${197+i*36}H923`,'#d9cbb8',1)+T('0'+(i+1),610,220+i*36,14,'#776b68')+icon(i,649,202+i*36,20,colors[i])+T(m,684,220+i*36,17,'#183d4c','letter-spacing="2"');});
+scene+=T('WHEN IT WAS. HOW IT FELT.',610,450,14,'#a15642','letter-spacing="1"');
+save(1,{body:scene,height:520,defs:'<linearGradient id="sky" x2="0" y2="1"><stop stop-color="#247fc1"/><stop offset="1" stop-color="#b2eee3"/></linearGradient>',css:'.glint{animation:glint 5s ease-in-out infinite}@keyframes glint{50%{opacity:.25}}',summary:'Poolside liner notes',choices:['The six media types become the record’s track list','A diagonal string of diary moments crosses the turquoise pool; the sleeve is labelled as a media diary']});

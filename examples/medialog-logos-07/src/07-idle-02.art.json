@@ -1,0 +1,26 @@
+{
+  "id": "idle-02",
+  "name": "Light reading",
+  "description": "An open book traced by a light synthesizer: the trail is mirrored across the gutter, and every seed along it has expanded outward in chunky cells through amber, orange-red, violet and a fading blue, so the outline glows in rainbow ripples round clear pages and amber lines of text.",
+  "choices": [
+    "The light synth’s mirrored, expanding seeds draw the book itself: the trail is the outline, the ripples its glow",
+    "Mirror symmetry about the gutter replaces the four-fold mandala, and there is no black screen or tile"
+  ],
+  "book": "open book",
+  "repeatOf": {
+    "style": "idle-02",
+    "collection": "medialog-logos-05",
+    "slug": "07-idle-02",
+    "name": "On air"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

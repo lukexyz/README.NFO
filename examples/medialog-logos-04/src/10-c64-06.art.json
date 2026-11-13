@@ -1,0 +1,20 @@
+{
+  "id": "c64-06",
+  "name": "Chrome edition",
+  "description": "An open book cast in megademo chrome — deep blue above a white horizon, cool grey below — over a drifting starfield, resting on a gold selection bar.",
+  "choices": [
+    "The chrome logo treatment moves from the lettering to the symbol, so the wordmark stays plain",
+    "The menu’s selection bar becomes a gold shelf; three star layers drift at different speeds"
+  ],
+  "animated": true,
+  "motion": "Stars drift in three layers; a highlight sweeps the chrome and the corner glint flares every five seconds.",
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

@@ -1,0 +1,22 @@
+{
+  "id": "idle-02",
+  "name": "On air",
+  "description": "A podcast microphone stands at the centre of a four-fold light-synth mandala: chunky seed patterns ripple outward through seven colours, from cream and amber to deep blue.",
+  "choices": [
+    "Seeds expand through seven levels on a coarse cell grid and are mirrored through both axes, as in the light synth",
+    "The pattern frames a microphone so the symbol reads as listening and talking: podcasts"
+  ],
+  "media": [
+    "podcasts"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

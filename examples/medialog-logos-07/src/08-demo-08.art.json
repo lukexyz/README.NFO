@@ -1,0 +1,26 @@
+{
+  "id": "demo-08",
+  "name": "Colour clash",
+  "description": "An open book in 8-bit pixel art on an attribute grid, one ink and one paper to each 8 × 8 cell: yellow pages with black lines of text on a blue cover, and a red ribbon whose cells turn the text beside it red; the cells either side of the gutter lose their bright bit, shading the pages in blocks.",
+  "choices": [
+    "Colour set per cell, not per pixel, so the ribbon clashes with the text it crosses, as sprites did on the hardware",
+    "No border, plasma or tile: the book stands alone, one screen pixel to each art pixel at 203 × 74"
+  ],
+  "book": "open book",
+  "repeatOf": {
+    "style": "demo-08",
+    "collection": "medialog-logos-05",
+    "slug": "08-demo-08",
+    "name": "Fire button"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

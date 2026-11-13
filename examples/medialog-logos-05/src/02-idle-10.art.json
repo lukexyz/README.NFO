@@ -1,0 +1,22 @@
+{
+  "id": "idle-10",
+  "name": "Off air",
+  "description": "A navy television with rabbit-ear antennas shows broadcast colour bars, castellations and a black-level strip, with a station-ident box holding a small open book.",
+  "choices": [
+    "The colour-bar test pattern reads as television at any size; the ident box carries the diary as the channel logo",
+    "Bars are pulled toward ochre, teal, plum and brick so the screen stays clear of neon cyan and magenta"
+  ],
+  "media": [
+    "shows"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

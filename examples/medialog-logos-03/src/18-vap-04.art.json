@@ -1,0 +1,19 @@
+{
+  "id": "vap-04",
+  "name": "Worth remembering",
+  "description": "A diary page and a clear clock face make a small mark for when it happened, as well as what it was.",
+  "choices": [
+    "The daily bulletin reference becomes a personal dated entry",
+    "One clock replaces all the tiny data rows, keeping the symbol readable"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

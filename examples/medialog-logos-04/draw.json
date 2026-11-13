@@ -1,0 +1,730 @@
+{
+  "schema_version": 1,
+  "project": "MediaLog",
+  "created_at": "2026-10-10T17:23:07.502Z",
+  "catalogue_source": "https://github.com/lukexyz/README.NFO",
+  "catalogue_researched": "2026-09-30",
+  "seed": "3070bae602ce536ed75f77bd53ba8c39",
+  "method": "SHA-256 counter stream with rejection-sampled Fisher-Yates; saved draw is authoritative",
+  "pool": "images",
+  "eligible_count": 17,
+  "families": [],
+  "excluded_ids": [
+    "pc-01",
+    "pc-02",
+    "pc-03",
+    "pc-04",
+    "pc-06",
+    "pc-07",
+    "pc-08",
+    "pc-09",
+    "pc-10",
+    "pc-11",
+    "pc-12",
+    "pc-14",
+    "c64-01",
+    "c64-02",
+    "c64-03",
+    "c64-04",
+    "c64-05",
+    "c64-07",
+    "c64-09",
+    "c64-10",
+    "c64-11",
+    "c64-12",
+    "c64-13",
+    "trk-01",
+    "trk-02",
+    "trk-03",
+    "trk-04",
+    "trk-05",
+    "trk-06",
+    "trk-07",
+    "trk-08",
+    "trk-09",
+    "trk-10",
+    "trk-11",
+    "nfo-01",
+    "nfo-02",
+    "nfo-03",
+    "nfo-04",
+    "nfo-05",
+    "nfo-06",
+    "nfo-07",
+    "nfo-08",
+    "nfo-09",
+    "nfo-10",
+    "nfo-11",
+    "ansi-01",
+    "ansi-02",
+    "ansi-03",
+    "ansi-04",
+    "ansi-05",
+    "ansi-06",
+    "ansi-07",
+    "ansi-08",
+    "ansi-09",
+    "ansi-10",
+    "ansi-11",
+    "ansi-12",
+    "vap-01",
+    "vap-02",
+    "vap-03",
+    "vap-04",
+    "vap-05",
+    "vap-06",
+    "vap-07",
+    "vap-08",
+    "vap-09",
+    "vap-10",
+    "vap-12",
+    "vap-13",
+    "vap-14",
+    "vap-15",
+    "vap-16",
+    "vap-17",
+    "vap-18",
+    "mach-01",
+    "mach-02",
+    "mach-03",
+    "mach-04",
+    "mach-05",
+    "mach-06",
+    "mach-08",
+    "mach-10",
+    "mach-11",
+    "mach-13",
+    "mach-14",
+    "mach-15",
+    "hack-01",
+    "hack-02",
+    "hack-03",
+    "hack-04",
+    "hack-05",
+    "hack-06",
+    "hack-07",
+    "hack-08",
+    "hack-09",
+    "hack-10",
+    "hack-11",
+    "hack-12",
+    "hack-13",
+    "hack-14",
+    "hack-15",
+    "hack-16",
+    "hack-17",
+    "hack-18",
+    "hack-19",
+    "asia-01",
+    "asia-02",
+    "asia-03",
+    "asia-04",
+    "asia-05",
+    "asia-06",
+    "asia-07",
+    "idle-01",
+    "idle-03",
+    "idle-04",
+    "idle-05",
+    "idle-08",
+    "idle-09",
+    "idle-10",
+    "xfer-01",
+    "xfer-02",
+    "xfer-03",
+    "xfer-04",
+    "xfer-05",
+    "xfer-06",
+    "xfer-07",
+    "xfer-08",
+    "xfer-09",
+    "xfer-10",
+    "demo-02",
+    "demo-03",
+    "demo-04",
+    "demo-05",
+    "demo-06",
+    "demo-07",
+    "demo-09",
+    "demo-10",
+    "print-01",
+    "print-03",
+    "print-04"
+  ],
+  "options": [
+    {
+      "id": "mach-07",
+      "name": "Game Boy DMG boot: logo drop on a four-shade green LCD",
+      "era": "1989 onward; Nintendo Game Boy, original DMG model (Japan 21 April 1989, North America 31 July 1989, Europe 28 September 1990); the 1996 Pocket has a true black-and-white screen",
+      "what_it_is": "On power-up the original Game Boy scrolls a logo slowly down from the top of its small green-tinted screen, stops it in the middle and plays a two-note chime. The four olive shades and the visible pixel grid of that LCD are among the most recognisable looks in gaming. The boot ROM reads the logo from the cartridge and locks up if it does not match its own copy, which is exactly why that logo must never be reproduced.",
+      "visual_signature": [
+        "160x144 pixels, 10:9",
+        "Exactly four shades, from a pale yellow-green 'off' colour to a dark green-black",
+        "A 1-bit wordmark stored as 48 bytes (48x8 pixels), drawn at double size (96x16) and descending from the top edge to the centre",
+        "Visible pixel grid: each pixel a small square with a lighter gap in the LCD-off colour around it",
+        "Slow LCD response: moving things leave a ghost trail",
+        "Everything built from 8x8 tiles; at most 10 sprites on a line",
+        "A hard pause after the logo lands, then a cut to the game's own title screen"
+      ],
+      "palette": "No official RGB: the hardware has four shade indices on a green-tinted reflective STN panel. The bgb emulator's default palette (Lospec): #081820, #346856, #88C070, #E0F8D0. bgb's author separately describes a 'DMG reality' scheme sampled from a real unit by colour-corrected photography, but publishes no hex values for it.",
+      "typography": "No system font: each game carries its own 8x8 tile font, usually uppercase with 1-pixel strokes. For the README, draw the project wordmark as an original 1-bit bitmap about 48x8 and double it, and set body text in an original 8x8 tile font.",
+      "motion": "The wordmark slides straight down at constant speed from above the top edge to the vertical centre (duration not documented; two to three seconds reads right), holds for a beat where the chime would be, then a hard cut to a title card with a blinking start prompt. A faint trailing copy sells the LCD ghosting.",
+      "references": [
+        {
+          "what": "Pan Docs: Power-Up Sequence (logo unpacked to video memory and scrolled down, sound after, lock-up if the check fails, model differences)",
+          "url": "https://gbdev.io/pandocs/Power_Up_Sequence.html"
+        },
+        {
+          "what": "Pan Docs: The Cartridge Header (48-byte logo at $0104 to $0133, scaled by 2 on monochrome models)",
+          "url": "https://gbdev.io/pandocs/The_Cartridge_Header.html"
+        },
+        {
+          "what": "Copetti: Game Boy architecture (160x144, 8x8 tiles, 10 sprites per line, boot sequence)",
+          "url": "https://classic.copetti.org/writings/consoles/game-boy/"
+        },
+        {
+          "what": "bgb 'reality' notes: how a real DMG screen looks (sampled shades, pixel-gap edge in the LCD-off colour, motion blur, contrast wheel)",
+          "url": "https://bgb.bircd.org/reality/index.html"
+        },
+        {
+          "what": "Lospec: bgb default Game Boy palette with hex values",
+          "url": "https://lospec.com/palette-list/nintendo-gameboy-bgb"
+        },
+        {
+          "what": "Wikipedia: Game Boy (release dates, reflective STN LCD, grey/green shades, Pocket's FSTN black-and-white display)",
+          "url": "https://en.wikipedia.org/wiki/Game_Boy"
+        }
+      ],
+      "readme_translation": "All SVG. Either a 160x144 screen at 3x or 4x in the middle of a wide neutral bezel strip with project facts set left and right, or a cropped 160x72 'wide LCD' banner. The project name drops in as the wordmark, lands, and the screen cuts to a title card: tile-built logo, one line of pitch, a blinking start prompt that names the install command. Not suited to a text-only version.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "The drop is one translateY keyframe with linear timing and a hold. Pixel grid: a tiled <pattern> of 1-unit lines in the lightest shade at low opacity over the screen. Ghosting: a second copy of the wordmark delayed by a fraction of a second at low opacity (cheaper than a blur filter on moving content). Title swap with steps(1) opacity. Pixel art as merged rects with crispEdges; very small file.",
+      "wow": 4,
+      "caveats": "Never reproduce the Nintendo logo bitmap or wordmark, the Game Boy name as branding, or the console's shell design; the logo check was built as a legal lock. Reusable: a four-shade green ramp, the 160x144 grid, a wordmark that drops in and pauses. The two lightest shades have very low contrast with each other, so text must be in the darkest shade. Palette values are an emulator convention, not manufacturer data. Drop duration is unconfirmed.",
+      "family": "mach",
+      "number": 1,
+      "slug": "01-mach-07"
+    },
+    {
+      "id": "demo-01",
+      "name": "PC demo opening titles and part-credit cards (Second Reality manner)",
+      "era": "1992-1995, MS-DOS on 386/486 with VGA and Gravis UltraSound or Sound Blaster; the Finnish-led PC demoscene around the Assembly party",
+      "what_it_is": "The early-90s PC demo is a chain of separately coded parts glued together by a loader and one soundtrack; Fabien Sanglard's code review of Second Reality describes 32 self-contained DOS executables started one after another by a loader and a 'demo interrupt server'. Second Reality won the PC demo competition at Assembly 1993 (381 vote points against 334 for the runner-up in the results file) and is remembered for syncing picture to music. Its opening titles and its closing credit cards are the two screens that are already header-shaped: centred words fading over a picture, and a roll-call that pairs a thumbnail of each part with who made it.",
+      "visual_signature": [
+        "Black screen, then three-line centred text cards that fade up, hold about five seconds and fade out (group + 'production', where it was first shown, a sound-format card); confirmed in the opening part's source",
+        "A wide painted horizon picture scrolling sideways while role cards fade in on top of it: a role word on line one, two or three handles below (graphics, music, code, additional design)",
+        "Closing credits as 18 cards: a small 160x100 thumbnail of one part on one side, one to four caps lines of the form ROLE - NAME on the other, the two halves sliding in from opposite edges with a decelerating ease, holding, then accelerating away",
+        "3D scenes letterboxed: black bars above and below a 320x200 frame (visible in the Pouet screenshot of the city fly-through)",
+        "A numbered part list in the source (20 entries, each tagged with its coder): opening texts, glenz, dot tunnel, techno, a vector space battle, mirror-ball scroll, lens, rotozoomer, plasma, plasma cube, mini vector balls, mountain scroller, 3D sine field, second vector part, end picture flash, credits/greetings scroller",
+        "An end scroller of short 45-column lines in a proportional bitmap font crawling upward",
+        "On exit the demo drops back to the DOS prompt and prints a short plain contact block (mail, BBS numbers, fax)"
+      ],
+      "palette": "256-colour VGA with every transition done as a palette fade. The one screenshot I inspected (Pouet, city scene) is steel blue-grey buildings (#9999CC, #666699, #333366) on mid-green ground (#339966, #66CC66) inside black letterbox bars. Title text is light on black; I did not confirm its exact colour.",
+      "typography": "A custom proportional bitmap font about 32 pixels tall with its own glyph-order table. Opening cards use mixed case; the closing credit cards use capitals only, in the pattern ROLE - NAME. No outline, no chrome: plain anti-aliased letters that take their colour from the palette fade.",
+      "motion": "Opacity-style fades between black and text (palette interpolation), a slow horizontal pan of the horizon strip, and for the credit cards a slide-in whose remaining distance shrinks by a fixed ratio each frame (fast start, soft landing), a hold of about 200 frames, then an accelerating exit.",
+      "references": [
+        {
+          "what": "Wikipedia: Second Reality (Assembly 1993 winner, release history, Unlicense source release)",
+          "url": "https://en.wikipedia.org/wiki/Second_Reality"
+        },
+        {
+          "what": "Pouet: Second Reality, with comments naming the city, chessboard, plasma cube and end 3D scenes",
+          "url": "https://www.pouet.net/prod.php?which=63"
+        },
+        {
+          "what": "Demozoo: Second Reality credits (code Psi, Trug, Wildfire; graphics Marvel, Pixel; music Purple Motion, Skaven)",
+          "url": "https://demozoo.org/productions/108/"
+        },
+        {
+          "what": "Source repository: PARTS file listing the 20 named parts with their coders",
+          "url": "https://raw.githubusercontent.com/mtuomi/SecondReality/master/MAIN/PARTS"
+        },
+        {
+          "what": "Source of the opening titles: the fade-in text cards and the scrolling horizon picture",
+          "url": "https://raw.githubusercontent.com/mtuomi/SecondReality/master/ALKU/MAIN.C"
+        },
+        {
+          "what": "Source of the closing credits: 18 thumbnail-plus-role cards and the slide-in code",
+          "url": "https://raw.githubusercontent.com/mtuomi/SecondReality/master/CREDITS/MAIN.C"
+        },
+        {
+          "what": "Fabien Sanglard's Second Reality code review (loader, DIS, parts as separate executables)",
+          "url": "https://fabiensanglard.net/second_reality/index.php"
+        },
+        {
+          "what": "Assembly 1993 results file (PC demo top ten with vote points)",
+          "url": "https://files.scene.org/view/parties/1993/assembly93/results.txt"
+        },
+        {
+          "what": "Pouet: Unreal by Future Crew (1st at Assembly 1992), the predecessor",
+          "url": "https://www.pouet.net/prod.php?which=1274"
+        }
+      ],
+      "readme_translation": "One animated SVG banner, about 800x200, black. Three text cards cross-fade in sequence (owner + 'production'; what it is for; the project name held longest), then a procedural horizon strip pans behind a final held title. Under it, as real text in a <pre> block, the credit roll in the ROLE - NAME form (CODE - ..., DOCS - ..., TESTS - ...). The alternative layout is the credit card: one row per module with a small thumbnail rectangle on the left and its role lines on the right, which suits a repo with several components.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Only opacity and translate keyframes on a few text and path elements: CSS @keyframes with staggered animation-delay gives the card sequence, a seamless tiling path translated in X gives the horizon pan, and a cubic-bezier ease-out reproduces the decaying slide-in. Text must be converted to paths or use a generic font stack because web fonts cannot load. File size is a few kilobytes.",
+      "wow": 4,
+      "caveats": "Reference only: do not use the Future Crew name, the wording of their cards, their font bitmaps, pictures or music. One of the original cards shows a cinema-sound trademark; do not imitate that. The repository README places the 2013 source release in the public domain (Unlicense), but the original 1993 READ.ME describes the demo as freeware to be distributed unmodified, so treat the artwork as not reusable and rebuild everything. Dates differ by source: Wikipedia gives the party showing as 30 July 1993 and public release as October 1993, Demozoo lists 31 July 1993, Pouet lists October 1993. The exact text colours and the look of the horizon picture are not confirmed by an image I could inspect properly; only layout, wording pattern and timing come from the source code.",
+      "family": "demo",
+      "number": 2,
+      "slug": "02-demo-01"
+    },
+    {
+      "id": "print-02",
+      "name": "Netlabel cassette: J-card with obi strip, and a shell whose reels turn",
+      "era": "J-card and Compact Cassette from the 1970s-90s; home-dubbed cassette culture from the mid-1970s (peak 1978-84); revived since the 2000s and now the standard physical format of vaporwave and chiptune labels on Bandcamp (2010s-2026)",
+      "what_it_is": "A J-card is the folded card inside a cassette case, named for its shape seen from the side: a front panel, a narrow spine and a flap behind the tape. Cassette culture made it a do-it-yourself object (Wikipedia describes photocopied J-cards and tapes traded by post), and today's netlabels have kept the format. It answers 'where is the chiptune one, where is the vaporwave' with no sound needed: a track list with running times and two reels turning says 'now playing'.",
+      "visual_signature": [
+        "Unfolded J-card about 4 by 4 1/8 inches: front panel 2 9/16 in wide, spine 1/2 in, track-list flap 1 1/16 in, all 4 in tall",
+        "Shell 4 by 2.5 inches (1.6:1) with two toothed hubs behind a central window, write-protect tabs on the top edge, five screws and a paper or printed label naming side A",
+        "Blank-tape inlay (seen on a Commons photograph): single-colour ink on cream card, an A marker and a B marker each with a down arrow, a small empty box labelled for noise reduction, another for equaliser setting, and ruled lines split into two columns by a centre rule",
+        "Vaporwave tape (seen on a 2026 anniversary cassette): a vertical obi strip over the left third of the front, white with thin double rules, large bold vertical Japanese text, a smaller vertical line in red, the title in extended sans capitals, a price in yen, catalogue number, label name and year, over a blurred blue-to-orange photographic front",
+        "Chiptune tape (seen on a 2026 compilation of cracktro, keygen and installer tunes): dark upper two-thirds with a pixel-stair shape in grey blocks cut by blue horizontal scan bars, off-white lower third with the artist in heavy black extended sans and the title in blue, and a spine with a small boxed catalogue code at the foot",
+        "Coloured shells named as editions: smoked grey, neon orange, crystal clear, royal purple, chrome mirror, plain black or white",
+        "Clear plastic case shown at three-quarter view or flat beside its spine, with shrink-wrap highlights",
+        "Track titles typed as DOS commands, block-character strings or fullwidth text, with running times right-aligned"
+      ],
+      "palette": "Vaporwave tape: navy, white, signal red, gold spine lettering, a blue-to-orange soft gradient. Chiptune tape: charcoal, off-white, one process blue, mid-greys. Blank inlay: cream card with a single green (or red, or blue) ink. Shell: translucent smoke grey or one saturated colour, dark brown tape, white hubs.",
+      "typography": "Heavy extended grotesque capitals for artist and title, set vertically on the spine; a small monospace or condensed sans for the track list and catalogue number; on the obi, large vertical CJK characters. On a home-dubbed tape, ballpoint handwriting on ruled lines. No fonts can be loaded, so display lettering is paths and the track list is system monospace.",
+      "motion": "Both hubs rotate continuously (the take-up side slightly faster), the tape pack on one side grows while the other shrinks over a long loop, a three-digit counter rolls, and one line of the track list is highlighted in turn as 'now playing'. Optional: a level meter of two bars, a side A to side B flip every minute.",
+      "references": [
+        {
+          "what": "Wikipedia, J-card: origin of the name, panel names and the dimensions of front, spine and flap; blank cards with ruled lines",
+          "url": "https://en.wikipedia.org/wiki/J-card"
+        },
+        {
+          "what": "Wikipedia, Cassette tape: shell 4 x 2.5 x 0.5 in, write-protect tabs, tape-type notches, C60/C90, use for home computer data",
+          "url": "https://en.wikipedia.org/wiki/Cassette_tape"
+        },
+        {
+          "what": "Wikimedia Commons photograph of a blank C90 inlay card: side markers, noise-reduction and equaliser boxes, two-column ruled lines",
+          "url": "https://commons.wikimedia.org/wiki/File:TDK_D-C90_cassette_case_showing_blank_inlay_card_IMG_6780-mod_(13845605953).jpg"
+        },
+        {
+          "what": "Wikipedia, Cassette culture: home taping from the mid-1970s, photocopied J-cards, postal distribution, revival since 2000",
+          "url": "https://en.wikipedia.org/wiki/Cassette_culture"
+        },
+        {
+          "what": "My Pet Flamingo (vaporwave, future funk and barber beats label) merch list: cassettes, box sets, a tape sold 'with obi strip'",
+          "url": "https://mypetflamingo.bandcamp.com/merch"
+        },
+        {
+          "what": "Vaporwave cassette page: pearlescent J-card, obi strip, edition of 500, 22-track list with times",
+          "url": "https://mypetflamingo.bandcamp.com/album/news-at-11-10th-anniversary-edition"
+        },
+        {
+          "what": "Package photograph of that cassette (obi strip layout described above)",
+          "url": "https://f4.bcbits.com/img/0047302871_10.jpg"
+        },
+        {
+          "what": "Data Airlines, chiptune and retro-gaming label founded 2007, inspired by demo and crack scenes; dozens of cassette editions with catalogue numbers",
+          "url": "https://dataairlines.bandcamp.com/merch"
+        },
+        {
+          "what": "Dubmood, Lost Floppies Vol 3: compilation of cracktro, keygen and installer chiptunes (one track is a Razor 1911 installer edit), sold as a smoked-grey cassette and in a sleeve die-cut like a 5.25-inch floppy",
+          "url": "https://dubmood.bandcamp.com/album/lost-floppies-vol-3-data127"
+        },
+        {
+          "what": "Package photograph of that cassette with its spine",
+          "url": "https://f4.bcbits.com/img/0046558774_10.jpg"
+        },
+        {
+          "what": "Goto80, Files In Space: a C60 cassette that also carries a data track loadable on a Commodore 64",
+          "url": "https://goto8o.bandcamp.com/album/files-in-space-data036"
+        },
+        {
+          "what": "Wikipedia, Obi (publishing): what an obi strip is and what is printed on it (title, track list, price, catalogue number)",
+          "url": "https://en.wikipedia.org/wiki/Obi_(publishing)"
+        },
+        {
+          "what": "Wikipedia, Commodore Datasette: about 50 bytes per second, turbo loaders, tape counter on later units",
+          "url": "https://en.wikipedia.org/wiki/Commodore_Datasette"
+        }
+      ],
+      "readme_translation": "Above the fold: a wide SVG with the cassette shell on the left (reels turning, project name on the shell label, 'SIDE A') and the J-card laid open on the right. The spine becomes a thin vertical strip with the project name and a catalogue number that is really the version. The flap is the table of contents: side A and side B track lists where each track is a README section and the 'running time' is a real number (line count, item count, read time). An obi strip down the left edge of the front panel can hold the one-line pitch. Text-only fallback in a code block: a two-column SIDE A / SIDE B track list with dot leaders and times, plus tick boxes for the blank-tape fields. Section links go in ordinary Markdown under the image, or inside the pre block.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Reels are two groups with animateTransform rotate (or a CSS keyframe with transform-origin at each hub); the shrinking and growing tape packs are two circles with animated radius. The shell is rectangles, a window clip-path and five small circles. The J-card is flat panels and system-monospace text. Roughly 10-25 KB with no texture, 30 KB with a feTurbulence paper grain and a shrink-wrap highlight gradient. Display lettering in an extended sans must be converted to paths (about 150-300 bytes per letter). Vertical CJK on the obi depends on the viewer's installed fonts unless outlined, so either outline a short phrase or keep the obi in Latin text set vertically.",
+      "wow": 5,
+      "caveats": "No tape-brand names or logos, no noise-reduction trademark symbol (write 'NR' with a tick box), no real label names, catalogue prefixes or artist names; all of those are references only. The object, the J-card proportions, the side A/B track list, coloured shells and the obi strip as a device are free to reuse. If Japanese text is used it must be real, correct and meaningful, not decorative filler. Wikipedia's obi article lists books, LPs, CDs and games but not cassettes; its use on tapes is what I saw on a current vaporwave release, not a documented history. I did not find a written source on how the vaporwave cassette look developed; the description is from two label pages and two package photographs. Continuous rotation is gentle, but honour prefers-reduced-motion by stopping the reels.",
+      "family": "print",
+      "number": 3,
+      "slug": "03-print-02"
+    },
+    {
+      "id": "pc-13",
+      "name": "Vector objects: wireframe, glenz, vector balls, dot scroller, metaballs",
+      "era": "Effect vocabulary from early-90s demos; in PC cracktros 1998-2010 (Razor #12 beta on DOS; Titan with Backlash, FANAiON, Electric Druggies/Skid Row, Class, Hoodlum and Razor on Windows)",
+      "what_it_is": "The family of effects where one geometric object rotates in the middle of the screen while the text does the talking. Wikipedia's demo-effect article lists them under vector graphics and describes glenz as partly see-through models with a diamond-like look. Sceners are openly sentimental about it: a Pouet commenter on a 2005 Hoodlum trainer asks why contemporary crack intros have no glenz. Metaballs, submitted separately, are folded in here as the 'liquid' member of the same family.",
+      "visual_signature": [
+        "Wireframe: a solid drawn as thin single-colour lines, rotating faintly behind huge white block capitals zooming past on a cyan field (Razor #12 beta), or in front of concentric blue circles zooming inward with ASCII text scrolling up (Titan and Backlash, 2005)",
+        "Glenz: small translucent polyhedra in rows, tinted in rainbow order (Razor Settlers 7), or pink-and-purple crystals drifting over a purple checker tunnel with a ribbon logo (Electric Druggies and Skid Row, Gene Troopers)",
+        "Vector balls and dot lettering: shaded dots arranged into shapes or into the group name (FANAiON and Titan trainer; commenters credit a dot effect and 'vectorballs')",
+        "Dot scroller: a band of text made of points, wrapped around a rotating 3D shape that morphs (Class 'orcus' installer)",
+        "Metaballs: three z-shaded blobs fusing and separating under a chrome logo (Hoodlum and Titan, Stronghold 2), or balls morphing up out of a checkerboard (Hoodlum cracktro #1)",
+        "Flat blobs: soft olive-gold discs drifting behind a khaki logo and white text-writer lines (SAC Blizzard cracktro, 1999; a commenter guesses 'fake 2d metaballs')",
+        "Background kept plain so the object reads: flat colour, slow gradient or starfield"
+      ],
+      "palette": "Wireframe: one line colour on a flat field (white on cyan, cyan on black). Glenz: white plus one tint at about 50 percent opacity, brighter where faces overlap. Vector balls: one or two ball colours with a white highlight. Metaballs: one saturated colour with depth shading.",
+      "typography": "Not font-led: text is whatever the host cracktro uses. Razor #12 beta uses huge white block capitals; the Backlash cracktro uses ASCII text.",
+      "motion": "Continuous rotation on two or three axes at different speeds; objects bounce or drift on a sine path; dot objects morph between shapes; glenz faces change tint as they turn; blobs orbit, merge and pinch apart.",
+      "references": [
+        {
+          "what": "Wikipedia, Demo effect: vector graphics list including glenz ('partially see-through models with a diamond-like look'); chunky-pixel list including metaballs and bump mapping",
+          "url": "https://en.wikipedia.org/wiki/Demo_effect"
+        },
+        {
+          "what": "Razor Cracktro #12 beta (DOS, Mar 1998): wireframe object behind zooming text on cyan",
+          "url": "https://www.pouet.net/prod.php?which=633"
+        },
+        {
+          "what": "Razor 1911 Settlers 7 Cracktro (2010): rows of glenz shapes ('Love those glenzes')",
+          "url": "https://www.pouet.net/prod.php?which=54924"
+        },
+        {
+          "what": "Electric Druggies and Skid Row, Gene Troopers (May 2008): glenz cubes and checkerboard",
+          "url": "https://www.pouet.net/prod.php?which=50610"
+        },
+        {
+          "what": "Titan and Backlash cracktro (Oct 2005; code red, graphics bull, music SaxxonPike): zooming circles, rotating wireframe figure, ASCII text scrolling up",
+          "url": "https://www.pouet.net/prod.php?which=19229"
+        },
+        {
+          "what": "FANAiON and Titan Stronghold 2 +6 trainer (Apr 2005): dot effect and vector balls",
+          "url": "https://www.pouet.net/prod.php?which=16885"
+        },
+        {
+          "what": "Hoodlum and Titan, Stronghold 2 (Apr 2005): 'z-shaded metablobs'",
+          "url": "https://www.pouet.net/prod.php?which=16814"
+        },
+        {
+          "what": "Superior Art Creations, Blizzard Cracktro (DOS, Mar 1999): blobs behind a khaki logo",
+          "url": "https://www.pouet.net/prod.php?which=63094"
+        }
+      ],
+      "readme_translation": "The centrepiece of a minimal header: one rotating wireframe or glenz solid (or a trio of metaballs) at the left or centre, project name and tagline set beside it in a pixel or mono face, on a flat field. It also drops into other styles here: a glenz object beside the trainer menu, or in the viewport of the installer.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "The generator does the 3D offline: rotate the vertex list for 40-60 frames and emit SMIL animate elements with a values list for each face's points (the researcher confirmed polygon-points animation in a Chromium <img>) or each edge's endpoints. Glenz: faces at fill-opacity 0.5 in two tints, optionally mix-blend-mode screen so overlaps brighten; no depth sorting needed. Wireframe: lines only, a few KB. Vector balls and dots: circles with animated cx, cy and r; SVG cannot re-sort by depth mid-loop, so keep dots identical and additive, or choose a motion where order never flips. Metaballs: circles moved by CSS keyframes inside a group filtered with feGaussianBlur then an feColorMatrix alpha threshold (the 'gooey' trick, tested by the researcher); the filter re-renders every frame, so keep its region small. CSS rotateY on SVG groups gives no usable perspective: do not rely on CSS 3D. An icosahedron glenz at 48 frames is about 20-40 KB.",
+      "wow": 4,
+      "caveats": "These effects are generic and free to use. Do not lift an object model that doubles as a group's mascot, or the surrounding logos. Removed as unverified: a jelly-cubes cracktro and a dots-on-sine-curves 10k intro that the submitted research cited without links, and the often-repeated claim that Second Reality is the PC reference for glenz (Wikipedia's article on it names no glenz). The red balls in Deviance's 2006 cracktro are called bouncing spheres by commenters, not glenz. Keep rotation slow; flickering translucent faces are unpleasant at header size, and the goo filter can stutter on phones.",
+      "family": "pc",
+      "number": 4,
+      "slug": "04-pc-13"
+    },
+    {
+      "id": "vap-11",
+      "name": "Classic Mac OS: 1-bit System 6/7 desktop",
+      "era": "1984-1997 (System 1 to System 7; System 7 released 13 May 1991, final version 7.6.1 in April 1997). Revived by Poolsuite FM (Marty Bell; founded 2014, relaunched in 2019 with a classic-Mac-styled desktop) and by system.css.",
+      "what_it_is": "Susan Kare's black-and-white Macintosh: pinstriped title bars, Chicago type, 32x32 icons and dithered greys. It is the calm, elegant counterpart to Windows 95, and the look Poolsuite wrapped around summer music.",
+      "visual_signature": [
+        "Window with a black outline and a hard black drop shadow offset to the bottom-right (2px in system.css), no blur",
+        "Title bar filled with evenly spaced thin horizontal black lines, broken by a white gap holding the centred title, with a small square close box at the left",
+        "Desktop in mid grey made from a 1px black-and-white checker dither",
+        "White menu bar across the full width at the top with bold menu titles; the selected item inverted to white on black",
+        "Rounded-rectangle buttons with a black outline; the default button has a second, thicker outline around it",
+        "Alert box with a double-outline frame and an icon at the left",
+        "32x32 1-bit icons in the Kare manner: a compact computer, a trash can, a document with a folded corner, a wristwatch cursor",
+        "Scroll bar with a dithered track, arrow boxes at the ends and a plain white thumb"
+      ],
+      "palette": "Black #000000 and white #ffffff; every grey is a dither pattern. system.css adds #A5A5A5 and #B6B7B8 only for inactive and disabled states. System 7 introduced a colourised interface on colour machines (Wikipedia; not quantified).",
+      "typography": "Chicago 12pt for menus and titles, Geneva 9pt for body, Monaco for monospace, all originally by Susan Kare. system.css uses recreations of Chicago and Geneva credited to @blogmywiki.",
+      "motion": "Optional and sparse: a window zooming open as a few expanding outline rectangles, the watch cursor's hands ticking, a progress bar filling with a dither pattern, icons appearing one by one. It looks finished with no motion at all.",
+      "references": [
+        {
+          "what": "system.css: a CSS reconstruction of System 6 (title bars, buttons, dialogs, alert boxes, fonts)",
+          "url": "https://sakofchit.github.io/system.css/"
+        },
+        {
+          "what": "system.css source: two-colour variables, 2px hard shadow, striped title bar, checker dither built from gradients",
+          "url": "https://raw.githubusercontent.com/sakofchit/system.css/main/style.css"
+        },
+        {
+          "what": "Susan Kare: Chicago, Geneva and Monaco, the 32x32 icons including the Happy Mac, Clarus and the bomb, later the Windows 3.0 Solitaire deck",
+          "url": "https://en.wikipedia.org/wiki/Susan_Kare"
+        },
+        {
+          "what": "System 7: release date, colourised interface, longevity",
+          "url": "https://en.wikipedia.org/wiki/System_7"
+        },
+        {
+          "what": "Poolsuite (formerly Poolside FM): classic-Mac-styled desktop as a brand, from the 2019 relaunch",
+          "url": "https://en.wikipedia.org/wiki/Poolsuite"
+        }
+      ],
+      "readme_translation": "SVG of a small desktop: a menu bar whose menu titles are the README sections, one document window titled with the project name holding the description, and a row of desktop icons labelled with key facts. A text-only echo is possible too: a box-drawn window whose title bar is a run of horizontal-line characters either side of the name.",
+      "medium": "static-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Two colours, no gradients: rects, 1px lines and two <pattern> dithers (checker and stripes) with shape-rendering=crispEdges. Icons are 32x32 grids drawn as paths. It is safe in GitHub dark mode if the desktop sits inside its own frame. Type is the only issue: Chicago is proprietary, so set titles in a small original bitmap alphabet drawn as paths, or embed a subset of an open recreation whose licence you have checked. Under 20 KB.",
+      "wow": 4,
+      "caveats": "Do not use the Apple logo, the Happy Mac, Clarus the Dogcow, the Finder face or Kare's actual icon bitmaps; draw original icons in the same 1-bit manner. Do not ship Chicago. The pinstripe title bar, dithers and rounded buttons are generic. 1px detail vanishes if GitHub scales the image down, so design at the display width or at 2x. Poolsuite's pastel tint is my recollection; the article does not describe its colours. The imgur screenshot in the system.css README was blocked in my region, so the description rests on its documentation and stylesheet.",
+      "family": "vap",
+      "number": 5,
+      "slug": "05-vap-11"
+    },
+    {
+      "id": "c64-08",
+      "name": "Bobs and dot objects: a sphere chain on a Lissajous path, a rotating dot cube",
+      "era": "1989-1990, Amiga OCS; 'bobs' are blitter-drawn sprites, the staple effect of early Amiga intros",
+      "what_it_is": "A black screen with one moving object made of many identical pieces: a chain of shaded balls snaking along a figure-eight, or a lattice of dots rotating in space, above a logo strip. Razor 1911's 'Liquid Bobs' (3rd at the IT, Rawhead, The Band and IMP-666 Megaparty 1989) and 'Space Dots' (January 1990) are compact examples, and Pouet commenters single out the vectorballs part of Red Sector's Megademo.",
+      "visual_signature": [
+        "About 30 shaded spheres in one hue (blue with a white highlight dot at upper left) strung along a figure-eight or infinity-shaped curve",
+        "Sphere size varies along the chain, large near the viewer and small far away, so the loop reads as three-dimensional",
+        "A lattice of single white-blue dots forming a box in perspective, rows of dots converging to one side (Space Dots)",
+        "The effect area is closed above and below by a one-pixel horizontal rule whose colour runs through a rainbow from left to right",
+        "A logo strip at the bottom: wide pixel capitals filled with a vertical gradient (violet to cyan in Space Dots; red over blue chrome with a white horizon in Liquid Bobs)",
+        "Nothing else: black background, no starfield, no picture"
+      ],
+      "palette": "Black; one ball colour in a 4-5 step ramp from dark blue to white; a rainbow hairline; a two-colour gradient logo. Amiga 12-bit steps.",
+      "typography": "Only the logo strip: geometric pixel capitals 24-32 pixels high with gradient fill; Archmage's Pouet comment on Space Dots praises the font.",
+      "motion": "The chain travels along its curve, each ball following the one ahead; the curve itself slowly changes shape as the two sine frequencies drift. The dot box rotates. Shade bobs, a later relative in which overlapping bobs brighten the pixels beneath them (Demozoo's earliest tagged examples are December 1991), leave trails that cannot be reproduced without scripts.",
+      "references": [
+        {
+          "what": "Liquid Bobs by Razor 1911 on Pouet: still of the blue sphere chain with logo strip; Pouet dates it January 1989",
+          "url": "https://www.pouet.net/prod.php?which=7862"
+        },
+        {
+          "what": "Liquid Bobs on Demozoo: dated 26 March 1989; Doctor No code, Sector 9 code and charset, Insane TTM the Razor logo, Hattrick music; tag 'bobs'",
+          "url": "https://demozoo.org/productions/2184/"
+        },
+        {
+          "what": "Space Dots by Razor 1911 (January 1990, code and graphics Sector9): dot lattice between rainbow rules, gradient logo",
+          "url": "https://www.pouet.net/prod.php?which=7864"
+        },
+        {
+          "what": "Red Sector Megademo on Pouet: comments naming the vectorballs part",
+          "url": "https://www.pouet.net/prod.php?which=3119"
+        },
+        {
+          "what": "Demozoo's shade-bobs tag: earliest entries are Anarchy's '3D Demo' and 'Hardwired' by Crionics and The Silents, both December 1991",
+          "url": "https://demozoo.org/productions/tagged/shade-bobs/"
+        }
+      ],
+      "readme_translation": "Above the fold: an animated SVG about 800x260. The sphere chain loops in the upper two thirds between two rainbow hairlines; the project name is the gradient logo strip at the bottom; a one-line tagline in small pixel capitals sits under it. For a factory tool the balls could be items riding the curve like a conveyor. All other text is Markdown.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "A Lissajous path needs no script: nest two groups per ball, the outer animating translateX and the inner translateY, each alternate with cubic-bezier(0.37,0,0.63,1) and different durations (for example 4s and 2s gives a figure-eight). Give each of 30 balls a negative delay offset to form the chain. A third nested animation on scale, a quarter period out of phase, gives depth. Each ball is a circle with one shared radialGradient using hard stops. A dot lattice rotating about the vertical axis is exact in the same way: each dot's X is a sine of time with its own amplitude and phase, and opacity follows a second sine for depth. Z-order cannot change during the loop, a small inaccuracy. 30 balls or 60 dots is a few KB.",
+      "wow": 4,
+      "caveats": "Do not copy the Razor 1911 logo strips or names; balls on a sine path and dot lattices are generic. The two databases disagree on the Liquid Bobs date and credits, as shown. Only stills were seen, so the motion description is inferred. True shade bobs and filled or glenz vector objects are not achievable without scripts beyond a few pre-computed frames.",
+      "family": "c64",
+      "number": 6,
+      "slug": "06-c64-08"
+    },
+    {
+      "id": "idle-07",
+      "name": "3D Maze: brick corridor walk with overlay map",
+      "era": "1995-2000: Windows 95 through Windows ME; removed in Windows XP",
+      "what_it_is": "A first-person walk through a randomly generated maze, solved on screen by following the right-hand wall. It came from the same OpenGL contest as 3D Pipes. People remember the red brick walls, the endless turning, the rat, and the grey rock that flips the whole world upside down.",
+      "visual_signature": [
+        "Red brick walls, a wooden floor and a pale tiled ceiling (Wikipedia calls it asbestos tile), all texture-mapped with visible pixels",
+        "Constant forward motion with 90-degree turns, always keeping to the right-hand wall",
+        "A spinning grey polyhedron 'rock': touching it turns the view upside down and switches to left-wall following",
+        "A flat rat sprite that runs the corridors; floating logo signs; globe pictures on some walls",
+        "The exit is a floating, translucent smiley face",
+        "Optional overlay map drawn in lines: the walker is a blue triangle, the start red, the exit green",
+        "An option to swap the textures for animated psychedelic patterns"
+      ],
+      "palette": "Brick red with pale mortar, brown wood, off-white ceiling, under flat lighting with no shadows; overlay map in thin bright lines with blue, red and green markers.",
+      "typography": "None in the original apart from logo signs. The walls take pictures, so the project name can be a framed 'poster' on the far wall, or the caption of the overlay map.",
+      "motion": "Walk, stop, turn, walk. For SVG the honest versions are a straight corridor dolly that loops every 4 to 6 s, or the overlay map with a triangle tracing the right-hand wall over 30 to 60 s.",
+      "references": [
+        {
+          "what": "Wikipedia: versions, default textures, rat, rock that flips the view, smiley exit, right-hand rule, overlay map colours, XScreenSaver replica in 5.39 (April 2018)",
+          "url": "https://en.wikipedia.org/wiki/3D_Maze"
+        },
+        {
+          "what": "XScreenSaver 'Maze3D' by Sudoer, 2018: 'A re-creation of the 3D Maze screensaver from Windows 95', with overlay, 'acid', inverter and rat options",
+          "url": "https://raw.githubusercontent.com/Zygo/xscreensaver/master/hacks/config/maze3d.xml"
+        },
+        {
+          "what": "Raymond Chen: 3D Maze as one of the four NT 3.5 OpenGL contest savers",
+          "url": "https://devblogs.microsoft.com/oldnewthing/20240611-00/?p=109881"
+        },
+        {
+          "what": "Wikipedia: 3D Maze and Flying Windows removed entirely in Windows XP",
+          "url": "https://en.wikipedia.org/wiki/List_of_features_removed_in_Windows_XP"
+        }
+      ],
+      "readme_translation": "Recommended: a wide header split in two. Left, a corridor view in brick with the project name on a poster on the end wall. Right, the overlay map of a small maze with a blue triangle walking it, red start and green exit, captioned with the tagline. A text-only companion is a small box-drawing maze with the name inside it.",
+      "medium": "animated-svg",
+      "feasibility": "hard",
+      "feasibility_notes": "A turning first-person view needs per-frame perspective texture mapping, which SVG cannot do without scripts: transforms are affine, so bricks cannot foreshorten properly, and every turn would need its own drawn frames. What works: (1) a straight corridor built from 10 to 12 depth slices, each a scaled copy of the last about the vanishing point, the whole set scaled by one slice ratio per loop so it appears to walk forward for ever; bricks are a <pattern> skewed per wall, which looks right at a glance but is not true perspective; about 50 elements and 10 KB. (2) The overlay map: maze walls as one <path>, the walker as a triangle on <animateMotion rotate=\"auto\"> along a precomputed right-hand-rule route; about 5 KB and easy. (3) The flip: rotate the corridor group 180 degrees once per loop when a grey polygon reaches the camera. Neither was prototyped.",
+      "wow": 4,
+      "caveats": "Do not copy Microsoft's brick, floor or ceiling bitmaps, the OpenGL logo signs or the Windows flag; draw your own brick pattern. The layout idea (brick maze, rat, flip rock, smiley exit) can be evoked with original drawings. Be honest that the corridor is a trick: it cannot turn corners. The brief calls this a core vaporwave image; the sources I opened do not say so.",
+      "family": "idle",
+      "number": 7,
+      "slug": "07-idle-07"
+    },
+    {
+      "id": "idle-06",
+      "name": "3D Pipes: glossy coloured tubes growing through black space",
+      "era": "1994-2006: Windows NT 3.5 (1994), then Windows 95 through XP; removed in Windows Vista",
+      "what_it_is": "One of four OpenGL savers (with 3D Text, 3D Maze and 3D Flying Objects) written by the Windows OpenGL team for an internal contest meant to show off the new 3D API in NT 3.5; a marketing colleague saw them and had all four shipped before the vote finished. Pipes grow segment by segment, turning at right angles, until the screen is full, then it clears and starts again. Raymond Chen quotes Gizmodo calling it the best screensaver of all time.",
+      "visual_signature": [
+        "Round tubes in a few saturated colours on pure black, lit so each has a bright highlight stripe",
+        "Pipes run only along three axes and turn at right angles on an invisible 3D grid",
+        "Joints at the turns: ball joints (a sphere slightly fatter than the pipe), elbow joints, or a mix; from NT 4.0 the mix was one third balls and two thirds elbows",
+        "Several pipes grow at once and pass in front of and behind one another",
+        "When space fills, the picture is wiped and a new set begins (the 1j01 remake implements this as a dissolve)",
+        "Easter egg: in mixed-joint mode each joint had a 1 in 1000 chance of being a Utah teapot; removed in Windows XP",
+        "A 'flex' pipe style also existed, which used teapots in place of end caps at dead ends"
+      ],
+      "palette": "Black background; pipe colours are strong primaries and secondaries (red, green, blue, yellow, cyan, magenta) with a white specular highlight. The sources I opened do not give the original's colour list; these are the prototype's choices.",
+      "typography": "None. 3D Text, its sibling saver, is the natural title carrier: the project name as thick extruded capitals. In SVG that is a wordmark with six to eight offset copies behind it for depth.",
+      "motion": "Each pipe extends one grid segment every 0.2 s or so; a joint pops in at each turn; after 35 s of growth everything fades or dissolves and the loop restarts. Prototype loop 40 s.",
+      "references": [
+        {
+          "what": "Raymond Chen, The Old New Thing, 11 June 2024: the OpenGL team's contest, the four savers, marketing shipping all of them in NT 3.5",
+          "url": "https://devblogs.microsoft.com/oldnewthing/20240611-00/?p=109881"
+        },
+        {
+          "what": "Raymond Chen, 24 December 2024: the teapot easter egg, the 1 in 1000 odds in mixed-joint mode, ball and elbow ratios before and after NT 4.0, flex pipes",
+          "url": "https://devblogs.microsoft.com/oldnewthing/20241224-00/?p=110675"
+        },
+        {
+          "what": "The Register's write-up of the origin story, noting removal by Vista",
+          "url": "https://www.theregister.com/2024/06/13/windows_3d_pipes_screensaver/"
+        },
+        {
+          "what": "1j01's web remake (Three.js, MIT): notes that the original source shipped in the NT 4.0 SDK, implements the dissolve and the teapot and candy-cane easter eggs",
+          "url": "https://github.com/1j01/pipes"
+        },
+        {
+          "what": "XScreenSaver 'Pipes' by Marcelo Vianna and Jamie Zawinski, 1997: 'A growing plumbing system, with bolts and valves', with curved, ball-joint and bolted styles",
+          "url": "https://raw.githubusercontent.com/Zygo/xscreensaver/master/hacks/config/pipes.xml"
+        },
+        {
+          "what": "Wikipedia: the teapot appears in Pipes only in versions before Windows XP",
+          "url": "https://en.wikipedia.org/wiki/Utah_teapot"
+        }
+      ],
+      "readme_translation": "Black SVG header in which pipes grow around a reserved rectangle holding the project name (the generator simply marks those grid cells as occupied). Tagline in small text under the name. Optional: one pipe colour per top-level module of the project, with a legend. There is no text-only form.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Prototyped and it reads as 3D Pipes at a glance. A generator walks six pipes over a 3D lattice, projects each segment with an oblique projection, and emits per segment a wide coloured stroke plus a thin offset white stroke at 45 percent opacity as the highlight, both with round caps; turns get a filled <circle> as a ball joint. Elements are written in back-to-front depth order so nearer pipes cover farther ones, while growth order is set separately by animation-delay. Draw-in is stroke-dashoffset from 1 to 0 with pathLength=\"1\"; one shared @keyframes block ends in a fade at 94 to 98 percent. 156 segments gave 312 paths and about 90 circles, 49 KB, 40 s loop, rendered correctly in headless Chromium through <img>. Limits: lighting is a painted stripe, not shading; elbow joints need an arc per turn (doable, adds size); a segment cannot pass both in front of one pipe and behind another.",
+      "wow": 5,
+      "caveats": "Do not use the Windows name or flag, and do not copy Microsoft's pipe textures. Pipes on a grid are a generic idea, as XScreenSaver's independent version shows. A teapot joint is a nice homage if you draw your own silhouette. Tested in Chromium only. 300+ animated elements is fine on desktop but should be checked on phones; offer a reduced-motion rule that shows the finished pipes.",
+      "family": "idle",
+      "number": 8,
+      "slug": "08-idle-06"
+    },
+    {
+      "id": "mach-09",
+      "name": "8-bit console title screen (NES / Famicom era)",
+      "era": "1983 to early 1990s; Nintendo Famicom (Japan, 15 July 1983) and NES (North America from October 1985)",
+      "what_it_is": "The title card a cartridge game showed at power-on: a big tile-built logo, a one- or two-line menu with a small cursor, a copyright line and a blinking start prompt. It is separated from the arcade style because the hardware rules differ: colour is assigned in 16x16-pixel zones from four small palettes, which gives NES screens their particular blocky colour layout. Split out from the colleague's arcade entry, where it was a one-line variant.",
+      "visual_signature": [
+        "256x240 frame built from 8x8 tiles (a 32x30 tile grid)",
+        "Colour assigned per 16x16-pixel zone: each zone picks one of four background palettes, each palette being three colours plus one shared backdrop colour",
+        "At most about 25 colours on screen from 54 usable, so a title card typically uses one flat backdrop colour and three or four small colour groups",
+        "Artwork designed in 16x16 or 32x32 'metatiles' so that colour boundaries fall on the zone grid",
+        "A large logo in the upper half made of tile-built block letters with a hard one- or two-pixel drop shadow or outline in a second colour (general knowledge, not from a fetched source)",
+        "A short menu with a small sprite cursor to the left of the selected line, a copyright line, and a blinking start prompt (general knowledge)",
+        "Sprites limited to 8 per scanline, so a row of many moving objects flickers"
+      ],
+      "palette": "No canonical RGB: the console generates composite video directly and Nintendo never specified a reference monitor, so every hex set in circulation is one emulator's decode. Structure to respect: 64 palette entries of which 54 are distinct usable colours; one backdrop colour plus four background palettes of three colours and four sprite palettes of three. Pick any published emulator palette and state which one.",
+      "typography": "Each game carries its own 8x8 tile font, almost always uppercase, single colour, 1-pixel or 2-pixel strokes; title logos are custom tile art, often two tiles tall per letter. Draw an original font and logo; respect the rule of three colours plus backdrop inside any 16x16 zone.",
+      "motion": "Logo slides or drops into place in whole-pixel steps; one palette entry cycles through three or four colours so the logo shimmers without any pixels moving; the menu cursor steps between lines; the start prompt blinks; after a pause, a hard cut to a demo-style second card and back.",
+      "references": [
+        {
+          "what": "NESdev wiki: PPU palettes (backdrop plus four background and four sprite palettes; no single correct RGB palette; no reference monitor was specified)",
+          "url": "https://www.nesdev.org/wiki/PPU_palettes"
+        },
+        {
+          "what": "NESdev wiki: PPU attribute tables (one byte per 32x32 px area, four 16x16 quadrants each choosing a palette; why games use 16x16 metatiles)",
+          "url": "https://www.nesdev.org/wiki/PPU_attribute_tables"
+        },
+        {
+          "what": "Copetti: NES architecture (256x240, 8x8 tiles, 256-tile pattern tables, 8 sprites per scanline, 16x16 colour blocks)",
+          "url": "https://www.copetti.org/writings/consoles/nes/"
+        },
+        {
+          "what": "Wikipedia: Nintendo Entertainment System (release dates, 256x240, 54 usable colours, up to 25 at once)",
+          "url": "https://en.wikipedia.org/wiki/Nintendo_Entertainment_System"
+        },
+        {
+          "what": "Toshi Omagari: Arcade Game Typography, for the 8x8 lettering tradition these title fonts share",
+          "url": "https://tosche.net/non-fonts/arcade-game-typography"
+        }
+      ],
+      "readme_translation": "All SVG: a 256x240 card cropped to roughly 256x112 for a banner, or shown whole and centred between two flat side panels. Upper half: the project name as an original tile-built logo with a hard shadow; below: a two-line menu whose entries are the main README sections with a cursor on the first, a line for licence and year, and a blinking prompt that names the install command. Repeat the menu as real Markdown links under the image. A text-only version has nothing to offer.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Pixel art as merged rects with crispEdges on a 256-unit grid. Palette cycling: give the cycling colour its own class and animate fill with a steps() keyframe. Cursor and logo movement with translate and steps(); blink with steps(1). The generator should validate the 16x16 zone rule (three colours plus backdrop per zone), since that constraint is what makes it look like the hardware rather than generic pixel art. Small file.",
+      "wow": 3,
+      "caveats": "Do not copy any game's logo, font, characters or title layout, and do not use Nintendo, NES or Famicom names or the seal of quality; the resolution, zone-colour rule and title-card structure are generic. Recognition of real title screens comes from specific games' art, which cannot be borrowed, so a generic card is less striking than the other styles unless the logo art is strong. Title-card conventions described here are general knowledge; the search budget ran out before I could source them. Any hex values are an emulator's interpretation.",
+      "family": "mach",
+      "number": 9,
+      "slug": "09-mach-09"
+    },
+    {
+      "id": "c64-06",
+      "name": "Amiga megademo menu and trainer menu: chrome logo, giant scroller, dotted-leader option list",
+      "era": "1989-1990 for megademos (Red Sector, Kefrens, Alcatraz); 1989 onward for trainer menus in front of cracked games",
+      "what_it_is": "Two related Amiga list screens. A megademo was a disk of separate parts by different coders tied together by a loader screen with a part list: Red Sector's Megademo (9 September 1989, first at the Tristar Party) and Kefrens' Megademo VIII (18 February 1990, first at the Kefrens and Dexion Party). A trainer menu is the screen a cracking group put before a game, asking which cheats to enable. Both differ from the existing copper-bar cracktro by being structured lists with a selection.",
+      "visual_signature": [
+        "Black screen with a sparse field of single-pixel white stars",
+        "A wide chrome logo across the top: blue at the top of the letters, a bright white horizon band, grey below (Kefrens Megademo 8 menu)",
+        "A small spaced-capitals subtitle under the logo in light blue",
+        "One very large scroller, plain white block capitals about a fifth of the screen high, crossing the middle",
+        "A centred list headed by a dashed title line ('- SELECT DEMO TO WATCH -'), then rows of 'PART NAME......CODER' with dotted leaders, tinted by a vertical gradient from blue through violet to pink so each row is a different shade",
+        "A last row that leads to the next disk's menu",
+        "Trainer variant: rows of 'UNLIMITED LIVES ........ NO' (or OFF), a title in a solid blue band, a full-width yellow bar marking the 'START THE GAME' row, all text in one colour on black",
+        "Trainer background: dotted sine curves or a handful of drifting dots, no pictures"
+      ],
+      "palette": "Amiga OCS 12-bit colour, 16 steps per channel, so gradients band finely. Black, white stars, a blue-white-grey chrome logo, a list gradient from mid blue through violet to pink, one accent bar (yellow or blue) for the selection.",
+      "typography": "Logo: heavy squared capitals, hand-pixelled, with horizontal banding. List text: small 8-pixel capitals with wide spacing and dotted leaders. Scroller: block capitals 32 pixels or taller. The fonts in these specific screens were not identified.",
+      "motion": "Stars drift in two or three speed layers; the giant scroller moves right to left; in the trainer variant the highlight bar steps from row to row and the values flip. Inferred from stills and general descriptions, not watched.",
+      "references": [
+        {
+          "what": "Kefrens Megademo 8 on Pouet: menu still with logo, big scroller and the 'select demo to watch' list (entry credits Mellica for code and graphics)",
+          "url": "https://www.pouet.net/prod.php?which=5088"
+        },
+        {
+          "what": "Megademo VIII on Demozoo: 18 February 1990, first at the Kefrens and Dexion Party, eight coders credited, tags copper-wall and glenz-vector",
+          "url": "https://demozoo.org/productions/9857/"
+        },
+        {
+          "what": "Red Sector Megademo on Demozoo: 9 September 1989, first at Tristar Party 1989, full credits",
+          "url": "https://demozoo.org/productions/10297/"
+        },
+        {
+          "what": "Red Sector Megademo on Pouet: title still and comments naming the vectorballs part",
+          "url": "https://www.pouet.net/prod.php?which=3119"
+        },
+        {
+          "what": "Alcatraz 'Bones Brigade trainer' (1989): blue title band, option rows with NO values, yellow bar on START THE GAME, dotted sine curves",
+          "url": "https://www.pouet.net/prod.php?which=27553"
+        },
+        {
+          "what": "Alcatraz 'Black Tiger +6 Trainer' (1989): six option rows with OFF values in blue on black",
+          "url": "https://www.pouet.net/prod.php?which=33639"
+        },
+        {
+          "what": "Wikipedia on trainers: built into the cracked game, shown first, asking which cheats to enable; plus signs in release names, one per option",
+          "url": "https://en.wikipedia.org/wiki/Trainer_(games)"
+        }
+      ],
+      "readme_translation": "Above the fold: an animated SVG with the project name as the chrome logo over a starfield and the tagline as the giant scroller. The list becomes the table of contents: section name, dotted leader, a value on the right (a count, a version). The trainer variant suits feature flags: 'OFFLINE MODE ........ YES'. Image text cannot be a link, so repeat the list as a linked pre block under the image; the dotted-leader list works as plain text on its own.",
+      "medium": "text-plus-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "Stars: 1-pixel rects in three groups translated at different speeds, each group duplicated one screen-width along for a seamless wrap. Chrome logo: pixel letters as a clipPath over a linearGradient with paired hard stops to keep the banding. List gradient: one vertical gradient applied through a mask of the glyphs. Selection bar: a rect moved with steps() keyframes; the value flip is two overlapping glyph groups toggling opacity. The text list is a pre block with period leaders padded to a fixed column.",
+      "wow": 3,
+      "caveats": "Do not copy the Kefrens, Red Sector or Alcatraz names or logo shapes, or the sunglasses face in the Red Sector title. The list structure, starfield and chrome treatment are generic. It shares the chrome logo and starfield with the existing Amiga cracktro, so only the list and the giant scroller make it distinct; hence wow 3. 'Trainer' wording on a legitimate project is a joke some readers will not get.",
+      "family": "c64",
+      "number": 10,
+      "slug": "10-c64-06"
+    }
+  ],
+  "selection_scope": "Exclude every previous MediaLog style (five earlier sets, seventy styles). The draw takes ten of the seventeen remaining graphic styles; references used for other projects may recur. All symbols are new.",
+  "user_overrides": {
+    "brand": "#18223a",
+    "wordmark": "Consistent plain sans-serif, no scene lettering",
+    "art": "Original graphic symbols, no ASCII; cool and modern; keep the book theme often but not always; legible at the screenshot size",
+    "size": [
+      203,
+      74
+    ]
+  }
+}

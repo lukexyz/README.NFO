@@ -1,0 +1,17 @@
+{
+  "id": "pc-04",
+  "name": "Memory vault",
+  "description": "A chrome ML medallion and a heavy metal wordmark, crossed by pink VGA bars. Like a collector’s badge for your own cultural history.",
+  "choices": [
+    "An interlocked ML makes the icon work as a standalone avatar",
+    "The two gradient rails join emblem and title like tracks through a collection"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

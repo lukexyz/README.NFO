@@ -1,0 +1,19 @@
+{
+  "id": "vap-15",
+  "name": "In your orbit",
+  "description": "An open diary sits inside one calm orbital line. A single warm point suggests someone else entering the conversation.",
+  "choices": [
+    "The orbit is a connection around a diary rather than a planet",
+    "Chrome and techno lettering are removed in favour of navy, line and space"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

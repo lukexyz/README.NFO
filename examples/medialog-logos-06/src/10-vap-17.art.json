@@ -1,0 +1,26 @@
+{
+  "id": "vap-17",
+  "name": "Paperback party",
+  "description": "A flat yellow paperback in thick black outline with a black-and-white striped spine, a red quarter-circle on its cover and a hard offset shadow, set off-grid against a cobalt circle, a red squiggle and a mint triangle.",
+  "choices": [
+    "Memphis: flat clashing colour, stripes against saturated fills, primitive shapes off-grid and solid offset shadows, with no gradients or perspective",
+    "The scatter is kept to three shapes so the book stays the subject"
+  ],
+  "book": "closed book",
+  "repeatOf": {
+    "style": "vap-17",
+    "collection": "medialog-logos-03",
+    "slug": "19-vap-17",
+    "name": "A little off-script"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

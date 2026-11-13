@@ -1,0 +1,20 @@
+{
+  "id": "mach-09",
+  "name": "Press start",
+  "description": "A tile-built gold star with a hard red shadow sits on a navy title card above a two-line menu and a blinking cursor: the rating you give, as a cartridge title screen.",
+  "choices": [
+    "An 8-bit title-screen layout: one backdrop, chunky tile-aligned pixels, a hard drop shadow and a two-entry menu",
+    "Palette cycling makes the star’s centre shimmer without moving a pixel; no lettering is placed in the symbol"
+  ],
+  "animated": true,
+  "motion": "The star’s centre cycles through three palette entries and the menu cursor blinks.",
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

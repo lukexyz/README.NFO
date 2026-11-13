@@ -1,0 +1,19 @@
+{
+  "id": "ansi-07",
+  "name": "Open invitation",
+  "description": "A generous open journal with gently fanned pages and a small fabric bookmark.",
+  "choices": [
+    "Strong plotted outlines keep the book friendly and legible",
+    "A slightly asymmetric bookmark gives the simple navy drawing a personal touch"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

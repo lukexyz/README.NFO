@@ -1,0 +1,26 @@
+{
+  "id": "pc-05",
+  "name": "Twisted spine",
+  "description": "A brushed-chrome hardback stands on a glossy mirror floor, its spine a twister column of cream and red slices, with its reflection fading into the floor below.",
+  "choices": [
+    "The cracktro’s metal logo, twister and mirror floor become one book: chrome boards, a twisting spine and a reflection",
+    "The twister’s cream and red are the only colour against the steel"
+  ],
+  "book": "closed book",
+  "repeatOf": {
+    "style": "pc-05",
+    "collection": "medialog-logos-05",
+    "slug": "06-pc-05",
+    "name": "Final cut"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

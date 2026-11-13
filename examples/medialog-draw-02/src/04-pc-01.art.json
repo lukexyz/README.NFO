@@ -1,0 +1,12 @@
+{
+  "id": "pc-01",
+  "summary": "The personal-culture release",
+  "choices": [
+    "The presents screen celebrates your remembered media instead of a software release date",
+    "Two low-contrast film reels replace background cogs; a wooden plaque names the culture collection"
+  ],
+  "formats": [
+    "svg"
+  ],
+  "animated": true
+}

@@ -1,0 +1,19 @@
+{
+  "id": "pc-09",
+  "name": "Leave a little note",
+  "description": "A simple open book and a single confident pen stroke: a quieter continuation of the old MediaLog identity.",
+  "choices": [
+    "The pen records how an experience felt, not just that it happened",
+    "Internal film and music symbols are removed so the familiar silhouette reads at a glance"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

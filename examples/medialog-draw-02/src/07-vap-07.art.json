@@ -1,0 +1,12 @@
+{
+  "id": "vap-07",
+  "summary": "The one-timeline setup wizard",
+  "choices": [
+    "The wizard collects the six supported media types in their screenshot-inspired colours",
+    "Its steps are when, how it was and share; approximate dates remain welcome"
+  ],
+  "formats": [
+    "svg"
+  ],
+  "animated": false
+}

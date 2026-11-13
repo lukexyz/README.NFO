@@ -1,0 +1,163 @@
+{
+  "status": "passed",
+  "createdAt": "2026-10-11T09:01:34.457Z",
+  "designs": 10,
+  "svgAssets": 20,
+  "pngExports": 20,
+  "nativeSize": {
+    "width": 203,
+    "height": 74
+  },
+  "ascii": false,
+  "animated": false,
+  "bookForms": {
+    "open book": [
+      1,
+      3,
+      7,
+      8
+    ],
+    "closed book": [
+      2,
+      4,
+      6,
+      9,
+      10
+    ],
+    "book stack": [
+      5
+    ]
+  },
+  "freeStanding": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "repeats": [
+    {
+      "number": 1,
+      "style": "mach-12",
+      "firstUsed": "medialog-logos-05/01-mach-12"
+    },
+    {
+      "number": 2,
+      "style": "idle-10",
+      "firstUsed": "medialog-logos-05/02-idle-10"
+    },
+    {
+      "number": 3,
+      "style": "c64-14",
+      "firstUsed": "medialog-logos-05/03-c64-14"
+    },
+    {
+      "number": 4,
+      "style": "mach-11",
+      "firstUsed": "medialog-logos-05/04-mach-11"
+    },
+    {
+      "number": 5,
+      "style": "asia-01",
+      "firstUsed": "medialog-logos-05/05-asia-01"
+    },
+    {
+      "number": 6,
+      "style": "pc-05",
+      "firstUsed": "medialog-logos-05/06-pc-05"
+    },
+    {
+      "number": 7,
+      "style": "idle-02",
+      "firstUsed": "medialog-logos-05/07-idle-02"
+    },
+    {
+      "number": 8,
+      "style": "demo-08",
+      "firstUsed": "medialog-logos-05/08-demo-08"
+    },
+    {
+      "number": 9,
+      "style": "demo-11",
+      "firstUsed": "medialog-logos-05/09-demo-11"
+    },
+    {
+      "number": 10,
+      "style": "print-05",
+      "firstUsed": "medialog-logos-05/10-print-05"
+    }
+  ],
+  "checks": [
+    {
+      "viewport": 1400,
+      "images": 40,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true,
+      "consoleErrors": 0
+    },
+    {
+      "viewport": 375,
+      "images": 40,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true,
+      "consoleErrors": 0
+    }
+  ],
+  "controls": [
+    "book-form filter (open 1, 3, 7, 8; closed 2, 4, 6, 9, 10; stack 5)",
+    "favourites persist after reload",
+    "favourites filter and clear",
+    "2× enlargement",
+    "copy fallback selects snippet and says so",
+    "collection 05 logo in the same style shown under Inspect & use"
+  ],
+  "policy": "20 SVGs parsed and decoded, with no scripts, remote resources, embedded images, text elements or animation",
+  "visualChecks": [
+    "Actual-size 203 × 74 light/dark contact sheet (preview.png)",
+    "2× and 3× proofs on light and dark, plus 1× crops enlarged for inspection, on white, #0d1117 and navy",
+    "All ten icon-only SVGs at 32 and 64 px (icons.png)"
+  ],
+  "fixesFromReview": [
+    "Logo 1: flat glass panels read as two screens, so the pages were curved, the lines of text follow the curve and a cover was added; line ends were made ragged so the bookmark annunciator no longer covers text",
+    "Logo 2: the front view read as a test-card tile, so the book was turned to a three-quarter view with its cream page edges toward the viewer",
+    "Logo 4: an isometric book broke up on the coarse dot grid, so it was redrawn square to the grid and enlarged; light-mode levels were reordered so the brightest dots are the deepest orange",
+    "Logo 5: the stack read as synth keyboards, so rounded spines, overhanging boards and a tilted top book were added",
+    "Logo 6: enlarged so the book holds its own beside the wordmark",
+    "Logo 7: ripples filled the pages, so the book was redrawn on the cell grid with ripples outward only and a fading outer ring",
+    "Logo 8: art not composed to the attribute grid left stray clash and a black wedge, so it was redrawn with colour changes on cell edges, clashing only where the ribbon crosses the text and cover",
+    "Logo 9: the framed cover read as a tablet, so a banded spine side, a deeper page block with page lines and a ribbon were added",
+    "Logo 10: the slip was moved up so both ticked boxes show above the cover"
+  ],
+  "limitations": [
+    "Live GitHub rendering not tested.",
+    "SVG colours follow the viewer’s system colour scheme, not GitHub’s theme setting.",
+    "Logo 8 is pixel-exact at 203 × 74 and whole-number multiples; other scales soften its bitmap edges."
+  ],
+  "preview": "preview.png",
+  "symbols": "icons.png",
+  "brandChecks": {
+    "primary": "#18223a",
+    "typography": "Same plain DejaVu Sans Bold wordmark as collections 03 to 06; glyphs converted to paths and licensed source bundled.",
+    "ascii": false,
+    "priorMediaLogStyleRepeats": 10,
+    "repeatsReason": "By user choice: the user shared collection 05’s contact sheet and asked for those ten styles again, built around books"
+  },
+  "repositoryValidation": {
+    "status": "passed",
+    "syntaxChecks": 444,
+    "galleryItems": 370,
+    "markdownFiles": 528,
+    "freshGeneratedPages": 147,
+    "svgImagesDecoded": 550,
+    "unitTests": 35
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "MediaLog",
+  "description": "Everything you’ve watched, read, played, listened to, on one timeline.",
+  "pitch": "A media diary you share.",
+  "repository": null,
+  "facts": [
+    {"fact": "Log films, books, shows, games, albums and podcasts.", "source": "User-provided project description, 2026-10-10"},
+    {"fact": "Entries record when something was experienced and how it was.", "source": "User-provided project description, 2026-10-10"},
+    {"fact": "See what the people you know have been into.", "source": "User-provided project description, 2026-10-10"},
+    {"fact": "The supplied design groups its timeline into five-year periods and supports approximate dates.", "source": "User's MediaLog landing-page screenshot, 2026-10-10"},
+    {"fact": "Media types have distinct accent colours; navy typography sits on a pale blue-grey background.", "source": "User's two MediaLog screenshots, 2026-10-10"}
+  ],
+  "artwork": "Original illustrations. Diary examples, player controls and desktop scenes are illustrative, not screenshots of implemented software.",
+  "batch": "Second MediaLog set; excludes the existing ten MediaLog treatments and prior saved README.NFO, Heretic and Pliny draws."
+}

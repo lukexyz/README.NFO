@@ -1,0 +1,19 @@
+{
+  "id": "trk-03",
+  "name": "Filed favourites",
+  "description": "Four carefully arranged tiles hold a play mark, a line and a bookmark. Different media, one orderly place.",
+  "choices": [
+    "The tracker’s modular panels become a compact collection symbol",
+    "Large cutouts stand in for media types, with no tiny notes, counters or labels"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

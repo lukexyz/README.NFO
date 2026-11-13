@@ -1,0 +1,17 @@
+{
+  "id": "pc-06",
+  "name": "Pocket premiere",
+  "description": "A teal gadget with a glowing play window: your entire cultural life feels like something worth carrying around.",
+  "choices": [
+    "The projector window turns a software skin into a compact media emblem",
+    "Two simple controls suggest remembering and sharing without inventing interface labels"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

@@ -1,0 +1,97 @@
+{
+  "status": "passed",
+  "createdAt": "2026-10-10T18:49:55.453Z",
+  "designs": 10,
+  "svgAssets": 20,
+  "pngExports": 20,
+  "nativeSize": {
+    "width": 203,
+    "height": 74
+  },
+  "ascii": false,
+  "animated": false,
+  "mediaCoverage": {
+    "books": [
+      9,
+      10
+    ],
+    "films": [
+      1,
+      6,
+      10
+    ],
+    "shows": [
+      2
+    ],
+    "games": [
+      4,
+      8
+    ],
+    "albums": [
+      3,
+      5,
+      10
+    ],
+    "podcasts": [
+      7
+    ]
+  },
+  "checks": [
+    {
+      "viewport": 1400,
+      "images": 30,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true,
+      "consoleErrors": 0
+    },
+    {
+      "viewport": 375,
+      "images": 30,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true,
+      "consoleErrors": 0
+    }
+  ],
+  "controls": [
+    "media-type filter",
+    "favourites persist",
+    "favourites filter and clear",
+    "2× enlargement",
+    "copy fallback selects snippet"
+  ],
+  "policy": "20 SVGs parsed and decoded, with no scripts, remote resources, embedded images, text elements or animation",
+  "visualChecks": [
+    "Actual-size 203 × 74 light/dark contact sheet (preview.png)",
+    "2× and 3× proof sheets on light and dark",
+    "All ten icon-only SVGs at 32 and 64 px (icons.png)"
+  ],
+  "fixesFromReview": [
+    "Skewed clapper stripes in logo 10 were drawn outside the sheet; redrawn as explicit parallelograms",
+    "Logo 7 mandala thinned to paired diamond rings so the microphone reads at native size",
+    "Logo 1 film-reel annunciator enlarged"
+  ],
+  "limitations": [
+    "Live GitHub rendering not tested.",
+    "SVG colours follow the viewer’s system colour scheme, not GitHub’s theme setting."
+  ],
+  "preview": "preview.png",
+  "symbols": "icons.png",
+  "brandChecks": {
+    "primary": "#18223a",
+    "typography": "Same plain DejaVu Sans Bold wordmark as collections 03 and 04; glyphs converted to paths and licensed source bundled.",
+    "ascii": false,
+    "priorMediaLogStyleRepeats": 0
+  },
+  "repositoryValidation": {
+    "status": "passed",
+    "syntaxChecks": 416,
+    "galleryItems": 350,
+    "markdownFiles": 486,
+    "freshGeneratedPages": 125,
+    "svgImagesDecoded": 510
+  }
+}

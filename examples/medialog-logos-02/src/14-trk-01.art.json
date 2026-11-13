@@ -1,0 +1,17 @@
+{
+  "id": "trk-01",
+  "name": "Four-track mind",
+  "description": "Four chunky tracks and a golden waveform sit inside a brushed-grey badge. Watching, reading, playing and listening become parts of the same mix.",
+  "choices": [
+    "Four large tracks directly reference the four verbs in the brief",
+    "The waveform runs continuously across them, expressing one shared timeline"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

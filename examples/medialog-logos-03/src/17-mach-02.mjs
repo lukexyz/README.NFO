@@ -1,0 +1,4 @@
+// The boot-screen hand offers a small journal rather than a floppy disk.
+import {P,L,ink,paper,blue,accent,save} from './lib.mjs';
+const icon=P('M71  70 H162Q176 70 176 85V166H71Z',ink)+P('M85 83H158V147H85Z',paper)+P('M131 83H149V123L140 115L131 123Z',accent)+P('M29 198L55 171L91 175L115 160Q126 154 134 165Q140 175 128 184L106 198H151L189 163Q201 154 209 165Q215 175 205 186L166 224H79L50 238Z',blue,`stroke="${ink}" stroke-width="8" stroke-linejoin="round"`)+L('M51 177L77 219',paper,6);
+save(17,{icon,name:'Pass it on',description:'A hand offers a small bookmarked journal. The symbol is about keeping something, then sharing it with someone.',choices:['The hand echoes the reference’s simple plotted drawing','The offered object is a diary, connecting personal records with recommendations']});

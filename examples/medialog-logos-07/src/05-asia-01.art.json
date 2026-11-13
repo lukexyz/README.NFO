@@ -1,0 +1,26 @@
+{
+  "id": "asia-01",
+  "name": "Three channels",
+  "description": "A stack of three books with plum, violet and lavender covers lies with rounded spines to the left, and the edge of each page block is a miniature piano keyboard with one key lit lime, climbing from book to book like a chord.",
+  "choices": [
+    "The synth player’s one-keyboard-per-channel strips become a stack of books: white pages read as white keys",
+    "Lavender, violet and plum on the covers; lime only on the sounding keys, as on the original displays"
+  ],
+  "book": "book stack",
+  "repeatOf": {
+    "style": "asia-01",
+    "collection": "medialog-logos-05",
+    "slug": "05-asia-01",
+    "name": "Channel keys"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

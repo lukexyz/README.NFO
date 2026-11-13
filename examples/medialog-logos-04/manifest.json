@@ -1,0 +1,540 @@
+{
+  "project": "MediaLog",
+  "collection": "Compact logos 04",
+  "seed": "3070bae602ce536ed75f77bd53ba8c39",
+  "count": 10,
+  "nativeSize": [
+    203,
+    74
+  ],
+  "sourceViewBox": [
+    0,
+    0,
+    812,
+    296
+  ],
+  "ascii": false,
+  "selection": "Random draw of ten from the seventeen graphic styles never used for MediaLog (seventy earlier styles excluded). New navy-led symbols and a consistent plain wordmark override catalogue palettes and lettering.",
+  "candidates": [
+    {
+      "number": 1,
+      "id": "mach-07",
+      "slug": "01-mach-07",
+      "name": "Boot log",
+      "description": "A pixel book drops down a navy-tuned four-shade handheld screen and lands, the way a cartridge logo arrives at power-on.",
+      "choices": [
+        "The handheld bezel with its long bottom-right curve frames a dot-matrix screen; the classic olive shades are retuned from pale sage to brand navy",
+        "The book descends in whole-pixel steps with a faint LCD ghost, then holds"
+      ],
+      "animated": true,
+      "motion": "Plays once on load: the book descends in whole-pixel steps for about two seconds and stays.",
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/01-mach-07.svg",
+          "sha256": "0540862dd03de9ccb3915683416dd768bb8b3c173733bb4f3f2b9511883c5394"
+        },
+        {
+          "file": "assets/01-mach-07-still.svg",
+          "sha256": "4c706d6f232e747b8ec3e03a35e4a975504bf1bc906580d2b18066c017e76aa5"
+        },
+        {
+          "file": "assets/01-mach-07-icon.svg",
+          "sha256": "3b7a161bfb993814e21843fb70a70ea4813e0238e77ae5cdc6bf946cece3fada"
+        },
+        {
+          "file": "assets/01-mach-07-light.png",
+          "sha256": "d2b587882d1c938812b675ad89db163ad9b4def5765fa1235a77ba58401e63fb"
+        },
+        {
+          "file": "assets/01-mach-07-dark.png",
+          "sha256": "e2db48810749927af6b33c9dba09339585a2a9f380c20e2367bc32e612881468"
+        },
+        {
+          "file": "01-mach-07.md",
+          "sha256": "3bf888cd72ee16379de7a3fc2556db04a1394a3f727a83e37ee8c6542d5a2b8b"
+        },
+        {
+          "file": "src/01-mach-07.mjs",
+          "sha256": "be37e72f368a1204be0c3fd00a8a6b85f6148fe7ada96fada7ef39ca9a45f203"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "demo-01",
+      "slug": "02-demo-01",
+      "name": "Opening titles",
+      "description": "A letterboxed horizon fades up from black and pans in three parallax layers under a low warm sun, like the first part of a PC demo.",
+      "choices": [
+        "Letterbox bars, a palette fade and a slow sideways pan carry the opening-titles grammar into a single frame",
+        "Steel-blue VGA ranges are pulled toward the brand navy; one warm sun is the only accent"
+      ],
+      "animated": true,
+      "motion": "Fades up from black once, then the ridges pan slowly in parallax and the stars twinkle.",
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/02-demo-01.svg",
+          "sha256": "8c3726ac879827bbb0e782076c6ce4a514c2c05a1ac907316f1b18a706e0024d"
+        },
+        {
+          "file": "assets/02-demo-01-still.svg",
+          "sha256": "c9416f752287af85c13d1fe7fd6216803aef925432a7c104bb3fc332050cc71e"
+        },
+        {
+          "file": "assets/02-demo-01-icon.svg",
+          "sha256": "4ba14c9123c8c9b3dda5caa9aaf84c39c1fa876da9c5fa120b7af43bbf5d33a5"
+        },
+        {
+          "file": "assets/02-demo-01-light.png",
+          "sha256": "c3ad2390d23f655c06606cabdaf67e9cf4efe62c484d3a0ac17a82bb90f467d6"
+        },
+        {
+          "file": "assets/02-demo-01-dark.png",
+          "sha256": "08b2b56e3d82da9e19bdb81e006f20edb1914ee1faee93bcc10d8a41c70d34cd"
+        },
+        {
+          "file": "02-demo-01.md",
+          "sha256": "44467b4ef886d8d7d47037de5d37db672067e627e7d650a1ba26a90a58421698"
+        },
+        {
+          "file": "src/02-demo-01.mjs",
+          "sha256": "e51a7a0ae237f76cf68e8d959b85035486035aef26b362ac63b782501745295e"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "print-02",
+      "slug": "03-print-02",
+      "name": "Side A",
+      "description": "A navy cassette with an obi-strip label ruled like a diary page; the reels keep turning and the tape slowly winds from one side to the other.",
+      "choices": [
+        "The netlabel J-card becomes a cream label with a signal-red obi strip and a drawn side-A mark",
+        "Ruled label lines and a tan underline make the tape a mixtape journal, not a music-only mark"
+      ],
+      "animated": true,
+      "motion": "Reels turn continuously; the tape packs swap size over forty seconds.",
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/03-print-02.svg",
+          "sha256": "8ceacc3b741249844ad72c55fe78ae8559f3ec0ad912c71fa3e82f0410b798a6"
+        },
+        {
+          "file": "assets/03-print-02-still.svg",
+          "sha256": "811e9d429971e1d3b8f1ac12176365affd04c2c8c5128bd404a2c9408722ccee"
+        },
+        {
+          "file": "assets/03-print-02-icon.svg",
+          "sha256": "0f35b62807034e0cf225524ad2c520ea08f067ce2f18414eb51f2278b8fa61f9"
+        },
+        {
+          "file": "assets/03-print-02-light.png",
+          "sha256": "ad74b5869d62091f45260fd953c53cca8dd9bf0fd32856a78c882c58496b7645"
+        },
+        {
+          "file": "assets/03-print-02-dark.png",
+          "sha256": "512d9bac12106836eeb0bd38e84d1f1f3d8186eb2c4cf12d7b3000429da34cd3"
+        },
+        {
+          "file": "03-print-02.md",
+          "sha256": "a502a117044831890f2110216abf6c16bbd85d0b07de2b12b4c30478ecf736c8"
+        },
+        {
+          "file": "src/03-print-02.mjs",
+          "sha256": "5958e6c340b6a3046d9e4d992f3ad0e3dd57e7dd1ed4c793ae9361d6c5099d9e"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "pc-13",
+      "slug": "04-pc-13",
+      "name": "Glass book",
+      "description": "A translucent open book turns slowly in space. Where its pages overlap, the glass deepens, like a glenz object from a nineties demo.",
+      "choices": [
+        "The rotating glenz solid becomes a six-leaf open book with a tan ribbon, projected in true perspective",
+        "Translucent navy faces deepen where they overlap on light pages; on dark pages they brighten like glass"
+      ],
+      "animated": true,
+      "motion": "The book turns once every sixteen seconds and two small glints pulse; the static file holds a three-quarter view.",
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/04-pc-13.svg",
+          "sha256": "798524a163316d0acbabb4c853a8f734b4b9d35793c6e539cf03d5bf4bb916a5"
+        },
+        {
+          "file": "assets/04-pc-13-still.svg",
+          "sha256": "f05a3e7002dfa9c2c9e4cd9e8b74caee7f9e2722fe5d43c8c758a7821548ba52"
+        },
+        {
+          "file": "assets/04-pc-13-icon.svg",
+          "sha256": "f6040a605af9c3f18be9f176f44979d557a10baad8607489f5e67b57c9294e4c"
+        },
+        {
+          "file": "assets/04-pc-13-light.png",
+          "sha256": "ce92411c7e0d84b08a2cb8c230fda31de054574499c91ffaf1fe1df002738ea5"
+        },
+        {
+          "file": "assets/04-pc-13-dark.png",
+          "sha256": "a505d2a4a2124faf64da94e55639269f68d2e316154a1514bb80d04f166cfd69"
+        },
+        {
+          "file": "04-pc-13.md",
+          "sha256": "2656f37d9f9fdfb1f8e7b7568072515e0894543beb6bd43e8dcea8be2b308e99"
+        },
+        {
+          "file": "src/04-pc-13.mjs",
+          "sha256": "11caaa626e963bb63c99089b00072201bb28b9a38f705d99030241487922fede"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "vap-11",
+      "slug": "05-vap-11",
+      "name": "System diary",
+      "description": "A one-bit window with a pinstriped title bar and a hard drop shadow holds an open diary; one page is checkerboard grey and an arrow pointer reaches in.",
+      "choices": [
+        "Desktop-era one-bit rules: pinstripe title bar, close box, hard shadow and dithered grey, aligned to whole pixels",
+        "Black and white become brand navy and warm paper; a tan ribbon is the only extra colour"
+      ],
+      "animated": true,
+      "motion": "The pointer nudges toward the diary every five seconds.",
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/05-vap-11.svg",
+          "sha256": "9ab0a2cc4ebcfc90a03214efd62560539a0997ef0677272321b629904aa7480d"
+        },
+        {
+          "file": "assets/05-vap-11-still.svg",
+          "sha256": "3b80737433d51ed6bee2adb8b1d3970b99519e4f05b6a100e032a4e01fc334ec"
+        },
+        {
+          "file": "assets/05-vap-11-icon.svg",
+          "sha256": "b12244332a49285da36d43b0645a908dbddcf9d82105ea21eecbcba67082588e"
+        },
+        {
+          "file": "assets/05-vap-11-light.png",
+          "sha256": "275a942263bc603063559ed9e7e63d0f40b1e6e2b4ea5d57496b4ac30b71bdcd"
+        },
+        {
+          "file": "assets/05-vap-11-dark.png",
+          "sha256": "212ac567a49d21031db4bbcb0b73cfce5c3c7dfc811a84a16fe2d026eec50c56"
+        },
+        {
+          "file": "05-vap-11.md",
+          "sha256": "7d53df9f2968370c655afe186254b6d76fbdf81d40d19328e5df247ae61af616"
+        },
+        {
+          "file": "src/05-vap-11.mjs",
+          "sha256": "6d7c5990bbde3dcadd454ef0611e20292161ffc347eddbbcd01e7d8c5bfef561"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "id": "c64-08",
+      "slug": "06-c64-08",
+      "name": "Endless loop",
+      "description": "Twenty-two shaded spheres ride an endless figure-eight between two hairlines, larger as they swing nearer — a timeline that keeps going.",
+      "choices": [
+        "The blitter-bob chain on a Lissajous path becomes a loop with no beginning or end",
+        "One navy ramp with a white highlight replaces the copper blue; the rainbow hairlines become steel and tan"
+      ],
+      "animated": true,
+      "motion": "The chain circulates continuously, one lap every eleven seconds.",
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/06-c64-08.svg",
+          "sha256": "99fb515a1164fac94b6f2d30a01b984570883090a7449b3f6050524959913374"
+        },
+        {
+          "file": "assets/06-c64-08-still.svg",
+          "sha256": "6438d2c6c281cb6c1c343eec5339a9bea0c611558aa6d0d46203515585daa304"
+        },
+        {
+          "file": "assets/06-c64-08-icon.svg",
+          "sha256": "e8cc23434ac8afb706d6a127d85071c0155c9ee53fbdf98c2880e00d43f152ed"
+        },
+        {
+          "file": "assets/06-c64-08-light.png",
+          "sha256": "36f827b1f08fbfce7fe93fb2ac754f21320cd6929f1c82dcf880aff0c53d2f75"
+        },
+        {
+          "file": "assets/06-c64-08-dark.png",
+          "sha256": "0b0f4167d1c648e9a2755397ba29b187bc6ce3e987032170a018020f5be87cd8"
+        },
+        {
+          "file": "06-c64-08.md",
+          "sha256": "1f4204c0a35491bcde7837b78664196c921e814c031a8c8e7d895a772dd8dbe9"
+        },
+        {
+          "file": "src/06-c64-08.mjs",
+          "sha256": "f958766eeaf0aba7955a8b6e41083eb9054063c621bea2cc121f9afa932912d9"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "idle-07",
+      "slug": "07-idle-07",
+      "name": "Library walk",
+      "description": "A first-person walk down an endless corridor of book spines toward a warm exit light, after the old 3D maze screensaver.",
+      "choices": [
+        "Brick maze walls become shelves of spines in one-point perspective; the floating exit becomes a lit doorway",
+        "Spines use brand navy, steel, paper and tan; the floor keeps a wooden warmth"
+      ],
+      "animated": true,
+      "motion": "A slow, continuous walk forward: shelves, floor joints and beams glide past and loop every twelve seconds.",
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/07-idle-07.svg",
+          "sha256": "c5901e5adffdb831826cdece40355d0b98dccd3cb4e6e2d4e45c5e4359b72dd4"
+        },
+        {
+          "file": "assets/07-idle-07-still.svg",
+          "sha256": "3d289f7964850d561084841f17a242b8bb164000a0e1ac2b5c6b6986d5f92aa2"
+        },
+        {
+          "file": "assets/07-idle-07-icon.svg",
+          "sha256": "eb90116c9202df5d365866573332951033a6793fb3cc6a84f3e96c918cf1dede"
+        },
+        {
+          "file": "assets/07-idle-07-light.png",
+          "sha256": "3e7de19b127e05451b25843f02bf89a703f9ed47074fd51e52b76eea978e2395"
+        },
+        {
+          "file": "assets/07-idle-07-dark.png",
+          "sha256": "efedc9db672dc09d32a1c556a2859d27406481b4cd9a8d25089b2893b9af058e"
+        },
+        {
+          "file": "07-idle-07.md",
+          "sha256": "d1534867662f9c842d2a5a214caa762e4b073de1dbc832aacf78030e1e9146c1"
+        },
+        {
+          "file": "src/07-idle-07.mjs",
+          "sha256": "a8439567d5c023badd37e27ea27fcd01bcaee9d6ac794d304e52e513248ec5d9"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "idle-06",
+      "slug": "08-idle-06",
+      "name": "Growing pipes",
+      "description": "Three glossy tubes in tan, steel blue and paper grow at right angles through a navy disc, with ball joints at every turn, after the classic pipes screensaver.",
+      "choices": [
+        "Right-angle growth, ball joints and over-under crossings carry the screensaver into a round badge",
+        "Primary colours are replaced with brand-friendly tan, steel and paper on navy"
+      ],
+      "animated": true,
+      "motion": "Plays once on load: the pipes grow segment by segment over about four seconds, then hold.",
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/08-idle-06.svg",
+          "sha256": "13c3883a45d377672d80e8a12304ad2b42808e1f3a12d80f81a7e424128be20a"
+        },
+        {
+          "file": "assets/08-idle-06-still.svg",
+          "sha256": "d04a24ddfe590bbfab5741504916e9112c3da034036bcc166180fb0c81bcf20e"
+        },
+        {
+          "file": "assets/08-idle-06-icon.svg",
+          "sha256": "35efd31a8b743547af32ee5a485b893f8319f386860ad1794c6cf10af61ea2f2"
+        },
+        {
+          "file": "assets/08-idle-06-light.png",
+          "sha256": "926f4102c4783060576c8defb3e2cc2b542f231a6b8915209c3e5a17e40e0c61"
+        },
+        {
+          "file": "assets/08-idle-06-dark.png",
+          "sha256": "6e9b2030cd32f836ecb2bf3b91fb6b09bd99e8b905b3ca0e413c7251f923dd41"
+        },
+        {
+          "file": "08-idle-06.md",
+          "sha256": "19ffb76616decf536d6f45b2b63c1d69f789f27b606ff18456c6ffdece8a0512"
+        },
+        {
+          "file": "src/08-idle-06.mjs",
+          "sha256": "6f10ebc74e364e7139bc0f03cb71842f8df3d98202e9ebb5e387f9167c6cbd17"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "mach-09",
+      "slug": "09-mach-09",
+      "name": "Press start",
+      "description": "A tile-built gold star with a hard red shadow sits on a navy title card above a two-line menu and a blinking cursor: the rating you give, as a cartridge title screen.",
+      "choices": [
+        "An 8-bit title-screen layout: one backdrop, chunky tile-aligned pixels, a hard drop shadow and a two-entry menu",
+        "Palette cycling makes the star’s centre shimmer without moving a pixel; no lettering is placed in the symbol"
+      ],
+      "animated": true,
+      "motion": "The star’s centre cycles through three palette entries and the menu cursor blinks.",
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/09-mach-09.svg",
+          "sha256": "b0e41f96bfa4dc6677a70d307b06fa2fd910ae195c12aa411b046cb3ff377ee4"
+        },
+        {
+          "file": "assets/09-mach-09-still.svg",
+          "sha256": "71af6ab9c4db87d0f2a6738e945ea4651040ab501fd96cbe20899d4b2e728f2b"
+        },
+        {
+          "file": "assets/09-mach-09-icon.svg",
+          "sha256": "eb97f9f35855db78fdb3c378d5f58235172d90134af019098352701a5c0bdcde"
+        },
+        {
+          "file": "assets/09-mach-09-light.png",
+          "sha256": "d061406e6e1e1f1aa4b9b59daaa0e8ef2f8ed24895259ea255a661acba6145bb"
+        },
+        {
+          "file": "assets/09-mach-09-dark.png",
+          "sha256": "e662e2688a566ce5ace444dabd0ed332a6b7b74d13daf77581b2b8c8d4f9ef58"
+        },
+        {
+          "file": "09-mach-09.md",
+          "sha256": "4c2bdb2052e697f09d16e0c255cf7c23b6c565d988344d01122b6e725c07230f"
+        },
+        {
+          "file": "src/09-mach-09.mjs",
+          "sha256": "32248b5a5f422fc17606f2d9e8b4625de85c4e65bf0379e6b9bc2da3edbd254d"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "c64-06",
+      "slug": "10-c64-06",
+      "name": "Chrome edition",
+      "description": "An open book cast in megademo chrome — deep blue above a white horizon, cool grey below — over a drifting starfield, resting on a gold selection bar.",
+      "choices": [
+        "The chrome logo treatment moves from the lettering to the symbol, so the wordmark stays plain",
+        "The menu’s selection bar becomes a gold shelf; three star layers drift at different speeds"
+      ],
+      "animated": true,
+      "motion": "Stars drift in three layers; a highlight sweeps the chrome and the corner glint flares every five seconds.",
+      "format": "SVG",
+      "ascii": false,
+      "brand": "#18223a",
+      "typography": "DejaVu Sans Bold, plain outlined wordmark",
+      "size": {
+        "width": 203,
+        "height": 74
+      },
+      "transparent": true,
+      "files": [
+        {
+          "file": "assets/10-c64-06.svg",
+          "sha256": "3334db508b025f4cc2b5c5442a7e8a87a67f54e520bb56d4adc0e3eebf480865"
+        },
+        {
+          "file": "assets/10-c64-06-still.svg",
+          "sha256": "b24b5388356359a0ba7531471293f6775034c92315411ae7175ba47560517cb0"
+        },
+        {
+          "file": "assets/10-c64-06-icon.svg",
+          "sha256": "3f1285d7d30979ecbe464ab3e46fa31f8e5b5330bb105510ab8e907b1f0456be"
+        },
+        {
+          "file": "assets/10-c64-06-light.png",
+          "sha256": "b6c1ecf4a77dd0e7e1ef9167f1e7eaff421a2ec1bc63a8e7692e9926ccca2d14"
+        },
+        {
+          "file": "assets/10-c64-06-dark.png",
+          "sha256": "393de179be9f64128d4b24f73938be8c4ce34a70fea5025923759c76accfb71a"
+        },
+        {
+          "file": "10-c64-06.md",
+          "sha256": "ea4217d49add8b780bd956409e321ef7f9a164d8f9d1235d1a76a734dcbb415a"
+        },
+        {
+          "file": "src/10-c64-06.mjs",
+          "sha256": "2695377cd8cca57f8b89a0e95165faad5747a5ada80518b85867f5dd4b211f01"
+        }
+      ]
+    }
+  ]
+}

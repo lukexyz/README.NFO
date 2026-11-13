@@ -1,0 +1,19 @@
+{
+  "id": "vap-09",
+  "name": "A window into it",
+  "description": "A softly framed book opens onto two quiet landscape shapes. Stories are a way into another world.",
+  "choices": [
+    "The window-and-landscape reference becomes an open volume",
+    "Two broad page planes carry the idea without clouds, buttons or screen labels"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

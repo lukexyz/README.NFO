@@ -1,0 +1,19 @@
+{
+  "id": "pc-14",
+  "name": "Stories within stories",
+  "description": "Three nested folds create a small passage into a book, with a strong centre spine.",
+  "choices": [
+    "The tunnel reference becomes layers of remembered stories",
+    "Three broad strokes retain depth without gradients or tiny texture"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

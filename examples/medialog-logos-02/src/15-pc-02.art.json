@@ -1,0 +1,17 @@
+{
+  "id": "pc-02",
+  "name": "Pressed into memory",
+  "description": "An emerald plasma seal with carved, pale serif lettering. The emblem is a moment preserved inside a triangular frame.",
+  "choices": [
+    "The enclosed bright point is a saved experience",
+    "Embossed lettering suggests a memory pressed into a lasting material"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

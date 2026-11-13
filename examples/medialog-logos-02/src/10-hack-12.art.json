@@ -1,0 +1,17 @@
+{
+  "id": "hack-12",
+  "name": "Margin notes",
+  "description": "A folded culture zine with a purple star tucked into its pages. A painted editorial identity for a diary with opinions.",
+  "choices": [
+    "The star is a remembered favourite, drawn into the open publication",
+    "Broad serif lettering echoes a diskmag masthead without reproducing its tiny article columns"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

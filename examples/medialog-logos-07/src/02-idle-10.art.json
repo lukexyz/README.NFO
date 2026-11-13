@@ -1,0 +1,26 @@
+{
+  "id": "idle-10",
+  "name": "Test card",
+  "description": "A hardback standing in three-quarter view whose cover is a broadcast test pattern: seven colour bars over a strip of castellations and a black-level band with its white square, its cream page edges turned toward you.",
+  "choices": [
+    "The colour bars that fill the screen after closedown fill a book cover instead, so the symbol is a book first and television second",
+    "Bars are pulled toward ochre, teal, plum and brick to keep clear of neon cyan and magenta; no station box or lettering"
+  ],
+  "book": "closed book",
+  "repeatOf": {
+    "style": "idle-10",
+    "collection": "medialog-logos-05",
+    "slug": "02-idle-10",
+    "name": "Off air"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

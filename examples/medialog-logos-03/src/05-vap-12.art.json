@@ -1,0 +1,19 @@
+{
+  "id": "vap-12",
+  "name": "The shared journal",
+  "description": "A guestbook becomes a conversation bubble, with a warm bookmark tucked into the right page.",
+  "choices": [
+    "The speech tail makes the diary feel shared",
+    "The personal-web reference comes through its guestbook idea, with all interface clutter removed"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

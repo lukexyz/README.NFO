@@ -1,0 +1,160 @@
+{
+  "status": "passed",
+  "createdAt": "2026-10-11T07:52:45.742Z",
+  "designs": 10,
+  "svgAssets": 20,
+  "pngExports": 20,
+  "nativeSize": {
+    "width": 203,
+    "height": 74
+  },
+  "ascii": false,
+  "animated": false,
+  "bookForms": {
+    "closed book": [
+      1,
+      4,
+      6,
+      10
+    ],
+    "open book": [
+      2,
+      3,
+      5,
+      8,
+      9
+    ],
+    "bookshelf": [
+      7
+    ]
+  },
+  "freeStanding": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "repeats": [
+    {
+      "number": 1,
+      "style": "c64-12",
+      "firstUsed": "medialog-logos-02/17-c64-12"
+    },
+    {
+      "number": 2,
+      "style": "vap-05",
+      "firstUsed": "medialog-logos-03/01-vap-05"
+    },
+    {
+      "number": 3,
+      "style": "pc-13",
+      "firstUsed": "medialog-logos-04/04-pc-13"
+    },
+    {
+      "number": 4,
+      "style": "mach-02",
+      "firstUsed": "medialog-logos-03/17-mach-02"
+    },
+    {
+      "number": 5,
+      "style": "pc-09",
+      "firstUsed": "medialog-logos-03/11-pc-09"
+    },
+    {
+      "number": 6,
+      "style": "vap-10",
+      "firstUsed": "medialog-logos-02/05-vap-10"
+    },
+    {
+      "number": 7,
+      "style": "c64-07",
+      "firstUsed": "medialog-logos-03/13-c64-07"
+    },
+    {
+      "number": 8,
+      "style": "idle-06",
+      "firstUsed": "medialog-logos-04/08-idle-06"
+    },
+    {
+      "number": 9,
+      "style": "vap-11",
+      "firstUsed": "medialog-logos-04/05-vap-11"
+    },
+    {
+      "number": 10,
+      "style": "vap-17",
+      "firstUsed": "medialog-logos-03/19-vap-17"
+    }
+  ],
+  "checks": [
+    {
+      "viewport": 1400,
+      "images": 40,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true,
+      "consoleErrors": 0
+    },
+    {
+      "viewport": 375,
+      "images": 40,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true,
+      "consoleErrors": 0
+    }
+  ],
+  "controls": [
+    "book-form filter",
+    "favourites persist",
+    "favourites filter and clear",
+    "2× enlargement",
+    "copy fallback selects snippet",
+    "earlier logo in the same style shown under Inspect & use"
+  ],
+  "policy": "20 SVGs parsed and decoded, with no scripts, remote resources, embedded images, text elements or animation",
+  "visualChecks": [
+    "Actual-size 203 × 74 light/dark contact sheet (preview.png)",
+    "3× proofs on light and dark, plus 1× crops enlarged for inspection, on white, #0d1117 and navy",
+    "All ten icon-only SVGs at 32 and 64 px (icons.png)"
+  ],
+  "fixesFromReview": [
+    "Logo 2: sun enlarged and clipped at the horizon so it no longer shows beneath the pages",
+    "Logo 3: pose changed so the turning page shows as a face rather than an edge, then scaled to keep clear of the wordmark",
+    "Logo 4: metal plate moved down to a title-plate position so the book does not read as a floppy disk",
+    "Logo 6: title plate that read as a minus sign replaced with a ribbon bookmark behind the cover",
+    "Logo 8: pages filled with black space and two thin text pipes each, so the shape reads as a book rather than a box",
+    "Logo 9: bitmap redrawn column by column, text cut to three lines and the gutter shading removed",
+    "Logo 10: confetti removed and the remaining shapes moved clear of the book"
+  ],
+  "limitations": [
+    "Live GitHub rendering not tested.",
+    "SVG colours follow the viewer’s system colour scheme, not GitHub’s theme setting.",
+    "Logo 9 is pixel-exact at 203 × 74 and whole-number multiples; other scales soften its bitmap edges."
+  ],
+  "preview": "preview.png",
+  "symbols": "icons.png",
+  "brandChecks": {
+    "primary": "#18223a",
+    "typography": "Same plain DejaVu Sans Bold wordmark as collections 03 to 05; glyphs converted to paths and licensed source bundled.",
+    "ascii": false,
+    "priorMediaLogStyleRepeats": 10,
+    "repeatsReason": "By user choice: every unused style is a text-screen style, which the user ruled out"
+  },
+  "repositoryValidation": {
+    "status": "passed",
+    "syntaxChecks": 430,
+    "galleryItems": 360,
+    "markdownFiles": 507,
+    "freshGeneratedPages": 136,
+    "svgImagesDecoded": 530
+  }
+}

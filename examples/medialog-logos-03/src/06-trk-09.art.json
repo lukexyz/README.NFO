@@ -1,0 +1,19 @@
+{
+  "id": "trk-09",
+  "name": "Read between the beats",
+  "description": "A simple waveform runs through an open diary. Listening and reading share the same continuous line.",
+  "choices": [
+    "The scope line is turned into one coherent book symbol",
+    "The warm trace is secondary to the large navy silhouette"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

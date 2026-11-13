@@ -1,0 +1,26 @@
+{
+  "id": "c64-07",
+  "name": "Copper shelf",
+  "description": "A row of book spines drawn as Kefrens copper bars: each spine shaded in hard bands, dark at the edges and bright in the centre, in red-gold, blue and violet ramps, with the last book leaning in whole-pixel steps.",
+  "choices": [
+    "Vertical copper bars with stepped ramps, overlapping as later bars do, become spines with a few dark bands",
+    "No big scroller and no black backdrop: just the shelf"
+  ],
+  "book": "bookshelf",
+  "repeatOf": {
+    "style": "c64-07",
+    "collection": "medialog-logos-03",
+    "slug": "13-c64-07",
+    "name": "Keep your place"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

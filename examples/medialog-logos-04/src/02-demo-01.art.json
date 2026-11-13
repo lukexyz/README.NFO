@@ -1,0 +1,20 @@
+{
+  "id": "demo-01",
+  "name": "Opening titles",
+  "description": "A letterboxed horizon fades up from black and pans in three parallax layers under a low warm sun, like the first part of a PC demo.",
+  "choices": [
+    "Letterbox bars, a palette fade and a slow sideways pan carry the opening-titles grammar into a single frame",
+    "Steel-blue VGA ranges are pulled toward the brand navy; one warm sun is the only accent"
+  ],
+  "animated": true,
+  "motion": "Fades up from black once, then the ridges pan slowly in parallax and the stars twinkle.",
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

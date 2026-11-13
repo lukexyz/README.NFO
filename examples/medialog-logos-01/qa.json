@@ -1,0 +1,69 @@
+{
+  "status": "passed",
+  "createdAt": "2026-10-10T12:48:04.926Z",
+  "designs": 10,
+  "svgAssets": 20,
+  "pngExports": 20,
+  "nativeSize": {
+    "width": 203,
+    "height": 74
+  },
+  "ascii": false,
+  "checks": [
+    {
+      "viewport": 1400,
+      "images": 20,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true
+    },
+    {
+      "viewport": 375,
+      "images": 20,
+      "width": 203,
+      "height": 74,
+      "overflow": false,
+      "lightAndDark": true
+    }
+  ],
+  "controls": [
+    "favourites persist",
+    "filter and clear",
+    "2× enlargement",
+    "motion swaps to static assets",
+    "copy fallback selects snippet"
+  ],
+  "policy": "20 SVGs parsed, loaded, with no remote resources, scripts or text-mode rendering",
+  "visualChecks": [
+    "actual-size light/dark contact sheet",
+    "large still proofs",
+    "normal motion initial and three-second frame"
+  ],
+  "limitations": [
+    "Live GitHub rendering not tested."
+  ],
+  "preview": "preview.png",
+  "visualReview": {
+    "complete": true,
+    "reviewed": "All ten designs at 203 x 74 on light and dark, large still proofs, initial and later animation, and reduced motion.",
+    "repairs": [
+      "Stroke gradients changed to user-space coordinates so the letter I has the same fill as the wordmark.",
+      "Static files preserve clipping CSS while disabling animation."
+    ],
+    "findings": "All brand titles read at native size; no small captions inside the artwork."
+  },
+  "staticExportConsistency": {
+    "comparisons": 20,
+    "result": "Every reduced-motion SVG is pixel-identical to its static PNG export on both colour schemes.",
+    "method": "External SVG images with Chromium process-level reduced-motion preference; compared decoded output against all twenty light/dark static exports."
+  },
+  "repositoryValidation": {
+    "status": "passed",
+    "syntaxChecks": 339,
+    "galleryItems": 280,
+    "markdownFiles": 361,
+    "freshGeneratedPages": 60,
+    "svgImagesDecoded": 360
+  }
+}

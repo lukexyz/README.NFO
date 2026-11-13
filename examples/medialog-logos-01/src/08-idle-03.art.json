@@ -1,0 +1,17 @@
+{
+  "id": "idle-03",
+  "name": "Still feeling it",
+  "description": "A heart glows inside a feedback flame: the film, book or album that stays with you. A short cooling waveform becomes the underline.",
+  "choices": [
+    "The flame’s core is a heart, making the effect about feeling rather than speed",
+    "The fading waveform is the echo of an experience that remains on your timeline"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

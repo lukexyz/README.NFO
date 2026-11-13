@@ -1,0 +1,26 @@
+{
+  "id": "vap-10",
+  "name": "Glossy edition",
+  "description": "A glossy sky-blue hardback with a leaf-green spine, a glass-button highlight across its top half and a ribbon bookmark, standing on its own wet-table reflection with a soap bubble at its corner.",
+  "choices": [
+    "Web 2.0 gloss: vertical gradient, a hard-edged highlight band, a mirrored reflection that fades out, and Frutiger Aero bubbles",
+    "Sky blue and leaf green with white, kept to one object"
+  ],
+  "book": "closed book",
+  "repeatOf": {
+    "style": "vap-10",
+    "collection": "medialog-logos-02",
+    "slug": "05-vap-10",
+    "name": "Blue sky diary"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

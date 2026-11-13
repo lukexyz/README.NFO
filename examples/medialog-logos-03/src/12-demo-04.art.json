@@ -1,0 +1,19 @@
+{
+  "id": "demo-04",
+  "name": "Woven together",
+  "description": "Four interlocking corners surround a small play-shaped centre. Separate experiences become a single collection.",
+  "choices": [
+    "The nested-square reference becomes a bold woven emblem",
+    "Broad alternating planes preserve the pattern without pixel noise or character art"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

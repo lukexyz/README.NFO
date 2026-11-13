@@ -1,0 +1,19 @@
+{
+  "id": "c64-07",
+  "name": "Keep your place",
+  "description": "Two pages sweep like ribbons, while a warm bookmark folds over the outside edge.",
+  "choices": [
+    "The vertical ribbon reference becomes a tactile part of the diary",
+    "The folded accent suggests returning to something you loved"
+  ],
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

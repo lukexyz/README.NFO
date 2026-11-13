@@ -1,0 +1,26 @@
+{
+  "id": "c64-14",
+  "name": "Chapter select",
+  "description": "An open book with embossed grey metal pages on a brown-and-gold binding: the right page is a track list of chapters in green and blue with times set right and the selected one on a red bar, and the left page has a raised title plate over a strip of rainbow blocks.",
+  "choices": [
+    "The music disk’s menu of tunes becomes a contents page, so choosing a chapter looks like choosing a tune",
+    "Embossed grey, a red selection bar and a rainbow strip carry the 16-bit jukebox; the binding takes the brown and gold of the drawn cabinet"
+  ],
+  "book": "open book",
+  "repeatOf": {
+    "style": "c64-14",
+    "collection": "medialog-logos-05",
+    "slug": "03-c64-14",
+    "name": "Jukebox"
+  },
+  "animated": false,
+  "format": "SVG",
+  "ascii": false,
+  "brand": "#18223a",
+  "typography": "DejaVu Sans Bold, plain outlined wordmark",
+  "size": {
+    "width": 203,
+    "height": 74
+  },
+  "transparent": true
+}

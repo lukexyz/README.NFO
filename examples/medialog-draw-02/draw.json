@@ -1,0 +1,803 @@
+{
+  "schema_version": 1,
+  "project": "MediaLog",
+  "created_at": "2026-10-10T11:07:51.092Z",
+  "catalogue_source": "https://github.com/lukexyz/README.NFO",
+  "catalogue_researched": "2026-09-30",
+  "seed": "8028bd001e34c35e06bcf368fc040ece",
+  "method": "SHA-256 counter stream with rejection-sampled Fisher-Yates; saved draw is authoritative",
+  "pool": "images",
+  "eligible_count": 61,
+  "families": [],
+  "excluded_ids": [
+    "ansi-04",
+    "ansi-05",
+    "ansi-06",
+    "ansi-09",
+    "ansi-12",
+    "asia-01",
+    "asia-03",
+    "asia-04",
+    "asia-05",
+    "asia-06",
+    "c64-04",
+    "c64-05",
+    "c64-06",
+    "c64-07",
+    "c64-08",
+    "c64-13",
+    "c64-14",
+    "demo-01",
+    "demo-02",
+    "demo-03",
+    "demo-04",
+    "demo-06",
+    "demo-08",
+    "demo-09",
+    "demo-10",
+    "demo-11",
+    "hack-03",
+    "hack-09",
+    "hack-10",
+    "hack-11",
+    "hack-14",
+    "hack-15",
+    "hack-16",
+    "hack-17",
+    "hack-18",
+    "idle-01",
+    "idle-02",
+    "idle-07",
+    "idle-10",
+    "mach-07",
+    "mach-08",
+    "mach-09",
+    "mach-11",
+    "mach-12",
+    "mach-15",
+    "nfo-01",
+    "nfo-02",
+    "nfo-03",
+    "nfo-04",
+    "nfo-07",
+    "nfo-10",
+    "pc-03",
+    "pc-05",
+    "pc-07",
+    "pc-09",
+    "pc-11",
+    "pc-12",
+    "pc-13",
+    "print-02",
+    "print-03",
+    "print-04",
+    "print-05",
+    "trk-03",
+    "trk-04",
+    "trk-07",
+    "trk-09",
+    "trk-10",
+    "vap-03",
+    "vap-04",
+    "vap-09",
+    "vap-11",
+    "vap-12",
+    "vap-17",
+    "xfer-08",
+    "xfer-09",
+    "xfer-10"
+  ],
+  "options": [
+    {
+      "id": "vap-06",
+      "name": "Future funk / city pop sleeve",
+      "era": "Future funk from 2013 (Macross 82-99's Sailorwave series; Skylar Spence, formerly Saint Pepsi; Yung Bae; Night Tempo). Imagery borrowed from 1980s Japanese city pop LP sleeves and from 1980s-90s anime.",
+      "what_it_is": "The upbeat, danceable offshoot of vaporwave built on city pop samples. Its visuals are either anime loops (Wikipedia names Urusei Yatsura, Macross, Kimagure Orange Road and Sailor Moon) or the sun-drenched resort illustration of Hiroshi Nagai, whose sleeve for Eiichi Ohtaki's A Long Vacation (21 March 1981) defined the city pop look.",
+      "visual_signature": [
+        "A flat, hard-edged resort scene with no outlines: a swimming-pool rectangle in perspective, a white building edge or wall, a razor-straight horizon and a cloudless sky graded from deep blue at the top to pale cyan at the horizon",
+        "One or two palm trees with crisp, short midday shadows falling on white paving",
+        "LP-sleeve framing: a square picture with a vertical paper 'obi' strip down the left edge carrying vertical text",
+        "Katakana title with a smaller Latin subtitle in a rounded sans or brush script",
+        "Four-point sparkle glints on water and on any chrome",
+        "Pool water drawn as a flat turquoise with a net of thin white caustic lines"
+      ],
+      "palette": "Saturated sky blue to pale cyan, swimming-pool turquoise, white, coral pink and sunset orange, with deep navy for night-drive variants. This is my description of the manner; the sources give no hex values.",
+      "typography": "Katakana display lettering; rounded sans or brush script for Latin; track titles in fullwidth characters. Obi strips use tight vertical Japanese text on a plain colour.",
+      "motion": "Gentle: caustic lines drifting across the pool, sparkles popping on and off, a palm frond swaying a few degrees, equaliser bars bouncing at a steady dance tempo.",
+      "references": [
+        {
+          "what": "Vaporwave article, Future funk section: French-house-inspired offshoot, anime reference points, Macross 82-99's Sailorwave (2013) and other artists (the separate Future_funk URL is only a redirect to this)",
+          "url": "https://en.wikipedia.org/wiki/Vaporwave"
+        },
+        {
+          "what": "Hiroshi Nagai (born 1947): tropical, clear landscapes for Eiichi Ohtaki's sleeves; Hockney and Americana influences; acknowledged influence on vaporwave",
+          "url": "https://en.wikipedia.org/wiki/Hiroshi_Nagai"
+        },
+        {
+          "what": "A Long Vacation: released 21 March 1981; Nagai's cover",
+          "url": "https://en.wikipedia.org/wiki/A_Long_Vacation"
+        },
+        {
+          "what": "City pop: the music being sampled and its 2010s online rediscovery, listing vaporwave and future funk as derivatives",
+          "url": "https://en.wikipedia.org/wiki/City_pop"
+        }
+      ],
+      "readme_translation": "SVG styled as a record sleeve lying on the page: a square illustration on the left with an obi strip naming the project, and a 'track list' panel on the right that is really the feature list. Animated sparkle and water only. The anime strand cannot be used.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "The resort scene is flat shapes and linear gradients, which SVG does well: pool as a polygon with a <pattern> of wavy white lines animated by translate, palms as a handful of paths, sparkles as four-point polygons with staggered opacity keyframes. The cost is illustration, not technology: it needs one good original drawing, which a generator cannot vary much per repo. What blocks the other half of the style is rights: anime frames are copyrighted and would need embedded bitmaps anyway. Katakana must be outlined or embedded as a font subset.",
+      "wow": 3,
+      "caveats": "Do not trace a Nagai painting or reuse anime characters or stills; an original scene in the same flat manner is fine. Artist names are references only. Japanese text must be real. To viewers who do not know city pop it reads as a generic holiday poster, so it needs the sleeve framing (obi strip, track list) to make sense.",
+      "number": 1,
+      "family": "vap",
+      "slug": "01-vap-06",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/58-city-pop-sleeve_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/58-city-pop-sleeve_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/58-city-pop-sleeve_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/58-city-pop-sleeve_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "trk-11",
+      "name": "Winamp 2 classic stack (player, equaliser, playlist)",
+      "era": "1997-2002, Windows: Winamp by Justin Frankel and Dmitry Boldyrev (Nullsoft); WinAMP 0.20a released 21 April 1997, spectrum analyser added in 1.006, Winamp 2.0 released 8 September 1998. Preserved by Webamp (Jordan Eldredge's browser reimplementation of Winamp 2) and the Winamp Skin Museum; over 100,000 skins archived with the Internet Archive.",
+      "what_it_is": "The desktop player of the MP3 era: three small dark windows snapped into a column. Its skin format spawned a vast body of user designs, now browsable in the Winamp Skin Museum. It is a cousin of the existing keygen-dialog style but a different object: a listening device with a ticker, equaliser and playlist rather than a generator with a serial field.",
+      "visual_signature": [
+        "Three stacked windows, each 275x116 pixels at 1x (the reference image is 275x348 for the stack)",
+        "Thin title bars with the window name centred in tiny bold capitals between two pairs of pale gold horizontal pinstripes, tiny square window buttons at the right",
+        "Main window left: a black display with large green LED-style time digits, a small play-state glyph, and beneath them a spectrum analyser of about 19 narrow bars, red-orange at the tips shading down through yellow to green, with peak caps",
+        "Main window right: a one-line scrolling track-title ticker in green, then small inset boxes for kbps and kHz and mono / stereo indicators with the active one lit green",
+        "Two short sliders (volume with an orange track, balance with a green track), EQ and PL toggle buttons, then a long seek bar with a gold thumb",
+        "A row of five bevelled silver transport buttons (previous, play, pause, stop, next) plus eject, then SHUFFLE and repeat toggles with tiny indicator lamps",
+        "Equaliser window: ON / AUTO buttons at left, PRESETS at right, a small response-curve display, a PREAMP slider and ten band sliders labelled 60, 170, 310, 600, 1K, 3K, 6K, 12K, 14K, 16K, with +20db / +0db / -20db marks and yellow slider tracks",
+        "Playlist window: numbered green track names with right-aligned durations on black, the selected row on a solid blue bar, a vertical scrollbar, and a bottom row of small buttons (+FILE, -FILE, SEL ALL, FILE INF, LOAD LIST) beside a mini time readout"
+      ],
+      "palette": "Re-measured from the Winamp 2 stack screenshot by pixel count: displays black #000000; chrome in a family of dark slate violets #181829, #212139, #292942, #31314A, #313152, #39395A; playlist selection blue #0000BC. Display text and analyser base bright green, analyser tips orange-red, equaliser tracks yellow, pinstripes pale gold (seen, not sampled). User skins recolour everything.",
+      "typography": "A tiny all-caps bitmap face about 5x6 pixels for the ticker, labels and playlist; LED-style digits for the time; bold small capitals for title bars. Bitrate and sample-rate digits use the same pixel face inside inset boxes.",
+      "motion": "The title ticker scrolls right to left and wraps; analyser bars bounce with falling peak caps; the time counts up; the seek thumb creeps; the playlist highlight steps to the next row at the end of the loop.",
+      "references": [
+        {
+          "what": "Winamp 2 main, equaliser and playlist windows (the 275x348 stack)",
+          "url": "https://upload.wikimedia.org/wikipedia/en/b/bc/Winamp2.PNG"
+        },
+        {
+          "what": "Wikipedia: Winamp (21 April 1997 first release, authors, Winamp 2.0 on 8 September 1998, green LED time, skins, skin format reuse)",
+          "url": "https://en.wikipedia.org/wiki/Winamp"
+        },
+        {
+          "what": "Winamp Skin Museum: a scrolling wall of classic skins",
+          "url": "https://skins.webamp.org/"
+        },
+        {
+          "what": "Webamp: 'Winamp 2 in your browser'",
+          "url": "https://webamp.org/"
+        },
+        {
+          "what": "Jordan Eldredge on preserving over 100k Winamp skins with the Internet Archive",
+          "url": "https://jordaneldredge.com/ia-skins/"
+        }
+      ],
+      "readme_translation": "One animated SVG at 2x (550x696 for the full column) or, for a shorter header, the three windows side by side at 825x116 drawn at 1x and displayed at full README width. The ticker scrolls 'repo-name - tagline *** version ***'; the kbps and kHz boxes hold two real numbers; the ten equaliser sliders are ten labelled project metrics or language percentages; the playlist is the table of contents with durations replaced by reading time or file counts. Repeat the playlist as a real linked list in text underneath, because the image cannot be clicked.",
+      "medium": "animated-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "The chrome is small bevels and pinstripes: draw with 1px rects at shape-rendering: crispEdges and an SVG pattern for the pinstripes. The 5x6 pixel face must be path glyphs (about 300 placements for ticker, labels and four playlist rows). Ticker: a group wider than its clipPath moved with a linear translateX loop, the text duplicated once for a seamless wrap. Analyser: 19 fixed gradient bars, each revealed by an animated black cover rect (so the green-to-red mapping stays fixed), plus a 1px cap rect on a delayed, slower keyframe. Time digits: a vertical strip of 0-9 per position translated with steps(10) inside a clip. About 30-60 KB. Do not embed real skin bitmaps as data: images, both for rights reasons and because GitHub's raw-file content security policy does not whitelist them.",
+      "wow": 4,
+      "caveats": "Winamp's name, lightning-bolt logo, llama and default skin artwork are its owner's trademarks and copyrighted assets: build an original skin in the same three-window format and give it another name. Museum skins belong to their authors and often contain third-party brands and photos; treat them as a gallery of ideas only. The three-window stack, LED timer, ticker and ten-band equaliser are generic player conventions. Overlaps with the existing keygen dialog (dark skinned window plus analyser), so lead with the playlist and equaliser. Tiny pixel text is unreadable on phones. Unconfirmed: the Skin Museum's launch year (the pages opened only show the archive being discussed in December 2020); any claim about which module formats Winamp played natively or by plug-in (removed).",
+      "also_see": [
+        "vap-13"
+      ],
+      "number": 2,
+      "family": "trk",
+      "slug": "02-trk-11",
+      "samples": [
+        {
+          "project": "ultra-satisfactory",
+          "markdown": "references/upstream/examples/ultra-satisfactory/20-player-stack_opus_5.5.md",
+          "generator": "references/upstream/examples/ultra-satisfactory/src/20-player-stack_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/ultra-satisfactory/assets/20-player-stack_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/ultra-satisfactory/20-player-stack_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "hack-08",
+      "name": "Roguelike dungeon screen (Rogue / NetHack terminal layout)",
+      "era": "Rogue about 1980 on Unix (Michael Toy, Glenn Wichman, later Ken Arnold, built on Arnold's curses library); Hack 1982; NetHack first released 28 July 1987 and still maintained. Related text-mode looks: ZZT (Tim Sweeney, 1991, CP437 and 16 colours) and classic Dwarf Fortress (80x25 CP437 grid, 16 colours).",
+      "what_it_is": "A game drawn entirely with letters and punctuation on an 80-column terminal: rooms, corridors, the player as an at-sign, monsters as letters and a terse status line. It named a whole genre and is one of the few text layouts a non-programmer may also recognise.",
+      "visual_signature": [
+        "A single message line at the top of the screen narrating the last event (NetHack terminal interface)",
+        "Rooms as rectangles: hyphens for top and bottom walls, pipes for side walls, floor filled with full stops",
+        "Doors set into the walls: a plus sign for a closed door, a hyphen or pipe for an open one, a full stop for an empty doorway; hash-mark corridors wandering between rooms",
+        "The player as @. In Rogue the monsters are the 26 capital letters; NetHack adds lower-case letters, with a pet 'd' or 'f' beside the player",
+        "Items as punctuation: $ gold, ) weapon, [ armour, ? scroll, ! potion, = ring, / wand, ( tool, % food, * gem, + spellbook",
+        "Features: < stairs up, > stairs down, { fountain, _ altar",
+        "Two status lines at the bottom. First: name and rank, then St: Dx: Co: In: Wi: Ch: and alignment. Second: Dlvl: $: HP:current(max) Pw:current(max) AC: Xp: T: and status words",
+        "Mostly empty black screen: only explored rooms are drawn, so the map floats in space. The CP437 variants add a smiley-face player glyph, box-drawing walls and coloured cell backgrounds (ZZT's player is a white smiley on navy blue, on a 60x25 board)"
+      ],
+      "palette": "Classic: single terminal foreground on black. Colour mode: the 16 ANSI colours on black; letters coloured by creature type. Dwarf Fortress classic uses 8 base colours plus bright versions, as foreground and background.",
+      "typography": "Monospace, 80x24. Pure 7-bit ASCII in the classic look; CP437 line-drawing and symbol glyphs in the DOS-era variants. Status lines use short capitalised labels with colons and no space before values.",
+      "motion": "Static as text. As SVG: the @ moves one cell at a time along a corridor into the next room, the message line changes as it arrives, one monster letter shuffles, the turn counter ticks.",
+      "references": [
+        {
+          "what": "NetHack wiki: the two status lines and their field order",
+          "url": "https://nethackwiki.com/wiki/Status_line"
+        },
+        {
+          "what": "NetHack wiki: default symbols for walls, doors, floor, corridors, stairs, fountain, altar",
+          "url": "https://nethackwiki.com/wiki/Dungeon_feature"
+        },
+        {
+          "what": "NetHack wiki: item classes and their symbols",
+          "url": "https://nethackwiki.com/wiki/Item"
+        },
+        {
+          "what": "Wikipedia: Rogue, its symbols, the curses library, the genre name",
+          "url": "https://en.wikipedia.org/wiki/Rogue_(video_game)"
+        },
+        {
+          "what": "Wikipedia: NetHack lineage, DevTeam, interface",
+          "url": "https://en.wikipedia.org/wiki/NetHack"
+        },
+        {
+          "what": "Dwarf Fortress wiki: 80x25 grid, 256-tile CP437 sheets",
+          "url": "https://dwarffortresswiki.org/index.php/Tileset_repository"
+        },
+        {
+          "what": "Dwarf Fortress wiki: the 16-colour scheme",
+          "url": "https://dwarffortresswiki.org/index.php/Color"
+        },
+        {
+          "what": "Wikipedia: ZZT, text-mode graphics and the smiley player",
+          "url": "https://en.wikipedia.org/wiki/ZZT"
+        },
+        {
+          "what": "ZZT wiki: boards are a 60 by 25 grid",
+          "url": "https://wiki.zzt.org/wiki/Board"
+        }
+      ],
+      "readme_translation": "Above the fold: a message line carrying the tagline; a map about 72 columns by 16 rows in which each room is a part of the project, with item glyphs as room contents and a legend beneath mapping glyph to README section; and the two status lines re-labelled with project stats (for the factory project: depth as phase, gold as items, hit points as recipes out of buildings, turn counter as the build number). The text version goes in a code block; an SVG version adds colour and the walking @. Real navigation links sit directly under the header as markdown.",
+      "medium": "text-plus-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Text version needs only ASCII; a small room-and-corridor layout routine (rooms on a 3x2 grid, L-shaped hash corridors between door cells) generates a different map per project from a seed. SVG: one <text> per row with textLength, or per-character x lists; the walking @ is one element with a translate animation using steps() so it jumps cell by cell, covering the floor dot beneath with a background rect; message swaps are opacity keyframes. Well under 50 KB.",
+      "wow": 4,
+      "caveats": "Do not copy actual game levels, in-game message text or the game names; the glyph vocabulary and status-line idea are genre conventions shared by dozens of games. An ASCII map is opaque to screen readers, so give the image alt text and keep a normal link list beneath. Eighty columns overflow on phones; design for 72 if text-only. Rogue's own message and status placement was not confirmed from the sources opened (the layout above is NetHack's). ZZT's 20-column sidebar is inferred from the 60-column board width, not read from a primary page.",
+      "number": 3,
+      "family": "hack",
+      "slug": "03-hack-08",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/79-roguelike-screen_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/79-roguelike-screen_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/79-roguelike-screen_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/79-roguelike-screen_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "pc-01",
+      "name": "Razor 1911 DOS cracktro: flat field, pixel logo, presents-text",
+      "era": "1996-1998, MS-DOS (320x240x8 Mode-X, GUS/SoundBlaster per Demozoo); Razor 1911's numbered cracktro series made with Superior Art Creations, code by Hetero",
+      "what_it_is": "The small numbered intros that ran in front of Razor's mid-90s game releases: one flat colour field, a pixel logo across the top, a few centred lines of blocky text, one background effect and a looping tracker tune. Almost all are PC conversions of older Amiga intros (Pouet commenters name Paso for #7, Aspect for #01, Supplex for Arnie 3, Skid Row for #06, and Demozoo tags #10 melon-dezign-inspired), which is exactly why they feel 'Amiga' on a PC. The release titles shown in them are filler: Demozoo lists blank template versions.",
+      "visual_signature": [
+        "One saturated flat background per intro: deep aubergine (#09), pale grey-green (#10), lilac (#7), navy (#5)",
+        "A different hand-pixelled logo each time, pinned to the top edge: tan bevelled italic capitals with pointed serifs (#09, logo by Poise per Demozoo), a multicolour script wordmark with a flower (#7, logo by Dream Design), a green outline logo on navy (#5)",
+        "A small wooden-looking plaque or bar directly under the logo carrying the release title (#09)",
+        "A centred column of wide, letterspaced capitals: group name between two hearts, stars or arrows, a dashed rule, a 'proudly presents on <date>' line, then the title between asterisks",
+        "Exactly one background effect: large pale cogs meshing slowly behind the text (#10), a lilac-and-white checker floor rotating in perspective with distance fog (#7), or nothing but a fading text writer (#5)",
+        "Text is white with a 1px dark outline so it reads over the effect; #5 sets red and magenta text and magenta dashed rules on navy instead",
+        "#01 variant: the frame split diagonally into a black half and a grey dithered half with a huge lowercase wordmark across the split, waving",
+        "Chunky 320x240 pixels, no anti-aliasing"
+      ],
+      "palette": "One field colour, white text, a two- or three-tone logo. Aubergine about #2a0a3a with tan/gold logo; grey-green about #b9c9c0 with lighter cogs; lilac about #b080e0 with white/lavender checker; navy with green logo, red text and magenta rules. Hex values are read off screenshots, not sampled from the originals.",
+      "typography": "8x8 or 16x16 bitmap capitals, square and wide, usually spaced one cell apart; hearts, stars and arrows as bullets; dashed rules made of hyphens. #5 uses the Amiga Topaz face according to a Pouet comment. Logos are drawn wordmarks, not fonts.",
+      "motion": "Text lines fade or type in one after another, hold, then swap to the next page (credits, greetings). The background loops: cogs turn, the checker floor spins. A Pouet comment on #09 lists a zoomed logo and scrolling text, so some of them do scroll.",
+      "references": [
+        {
+          "what": "Doom 3 Cracktro (Razor Crack Intro #09) on Pouet: aubergine field, tan logo, plaque, centred presents-text; comment lists zoomed logo, scrolling text, music",
+          "url": "https://www.pouet.net/prod.php?which=636"
+        },
+        {
+          "what": "Same on Demozoo: 21 Jan 1997, code Hetero, logo Poise, music Spoon, blank version exists",
+          "url": "https://demozoo.org/productions/167347/"
+        },
+        {
+          "what": "Duke Nukem II Cracktro (Razor Crack Intro #10) on Demozoo: June 1997, code Hetero, music Technix, tag melon-dezign-inspired, blank template version noted",
+          "url": "https://demozoo.org/productions/167348/"
+        },
+        {
+          "what": "Quake 3 Cracktro (Razor Cracktro #7) on Demozoo: 20 Jan 1997, logo Dream Design, music M.C.MP, 320x240x8, Turbo Assembler",
+          "url": "https://demozoo.org/productions/164127/"
+        },
+        {
+          "what": "Same on Pouet: checker floor, fog, zooming text; called a remake of an Amiga intro by Paso",
+          "url": "https://www.pouet.net/prod.php?which=638"
+        },
+        {
+          "what": "Razor cracktro #5 (with SAC): navy field, green outline logo, fading text writer, 'standard topaz' font",
+          "url": "https://www.pouet.net/prod.php?which=67563"
+        },
+        {
+          "what": "Razor Cracktro #01 (with SAC), Mar 1997: diagonal split, waved wordmark; conversion of an Aspect Amiga intro",
+          "url": "https://www.pouet.net/prod.php?which=644"
+        },
+        {
+          "what": "Prestige's 1996 cracktro with the identical cog layout, called a Melon Dezign rip-off by commenters",
+          "url": "https://www.pouet.net/prod.php?which=597"
+        }
+      ],
+      "readme_translation": "One SVG banner about 800x300. Flat colour fill; the project wordmark drawn as pixel rects at the top; a small plaque with the version; then three or four centred lines: project name letterspaced between two glyphs, a dashed rule, a presents-line with the release date, the tagline. One looping background effect behind the text (cogs are the cheap choice). Install command and links go in normal Markdown directly below.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Pure shapes and CSS. Cogs: two or three gear paths with a rotate keyframe, opposite directions, fill a few percent lighter than the field. Text pages: groups with opacity keyframes and staggered delays. Pixel font: emit each glyph as rects or one path (no web fonts, and do not rely on a system monospace for the blocky look). A few KB, no filters. Only the rotating checker-floor variant is harder; use the chrome-spheres style for that.",
+      "wow": 3,
+      "caveats": "Do not copy any Razor wordmark, the 1911 name or the slogans. The compositions are conversions of Amiga intros, so treat cogs-behind-text and checker-floor-under-text as genre conventions and do not trace either. The game titles in these screens are template filler, not releases. Demozoo credits Hetero with code on #02, #03, #09, #10 and #11 but only with the font on #7, so 'coded by Hetero' is not confirmed for every number. Pale text on a pale field fails contrast without the dark outline.",
+      "number": 4,
+      "family": "pc",
+      "slug": "04-pc-01",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/21-flat-field-dos-intro_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/21-flat-field-dos-intro_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/21-flat-field-dos-intro_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/21-flat-field-dos-intro_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "idle-08",
+      "name": "After Dark module format: small sprites drifting diagonally, with a slider control panel",
+      "era": "1989-96: Berkeley Systems, Macintosh 1989, Windows 1991, versions 2.0 (1992), 3.0 (1994), 4.0 (1996)",
+      "what_it_is": "The first screensaver sold as a product: a host program by Jack Eastman and Patrick Beard that ran interchangeable modules, with hundreds of third-party modules written for it. Each module is a small cartoon on a black screen with a couple of sliders. It made the screensaver a piece of desk-toy entertainment and is the reason people think of savers as funny.",
+      "visual_signature": [
+        "Black screen crossed by many copies of one small pixel-art sprite, all travelling the same diagonal, at two or three speeds",
+        "Each sprite has a two- to four-frame animation cycle, redrawn with hard pixels and a limited palette",
+        "A second, simpler companion sprite mixed in among the main ones",
+        "Named modules with one-line premises: Starry Night (a pixelated city skyline under a night sky, the default), Warp (stars at speed), Rainstorm (rain with wind and lightning), Spotlight (a moving light spot revealing the desktop), Confetti Factory, Mowin' Man, Fish!, Messages (a scrolling line of custom text)",
+        "Per-module sliders: the best-known one set how dark the toast was",
+        "Bryan Braun's CSS recreation shows the whole format needs only stepped sprite frames plus a linear translate"
+      ],
+      "palette": "Black background; sprites in the flat colours of early colour Macs and 16-colour Windows, with greys and chrome-like highlights done as two or three flat tones. No gradients.",
+      "typography": "The Mac system bitmap face of the period in the control panel (Braun's recreation uses ChicagoFLF, an open-licensed lookalike). On screen the only text is the Messages module's scrolling line.",
+      "motion": "Sprites enter from the top-right edge and leave at the bottom-left on straight diagonals; faster ones overtake slower ones; each flips through its frames with stepped timing. Suggested loop 12 to 20 s.",
+      "references": [
+        {
+          "what": "Wikipedia: Berkeley Systems, 1989 Mac and 1991 Windows, authors, third-party modules, module list with descriptions, slider, versions, the Delrina (1993) and Jefferson Airplane (1994) cases",
+          "url": "https://en.wikipedia.org/wiki/After_Dark_(software)"
+        },
+        {
+          "what": "Wikipedia on Berkeley Systems: first modular saver to be sold, founders, both lawsuits, Sierra acquisition in 1997",
+          "url": "https://en.wikipedia.org/wiki/Berkeley_Systems"
+        },
+        {
+          "what": "Bryan Braun's 'After Dark in CSS': thirteen modules recreated with CSS animation only",
+          "url": "https://www.bryanbraun.com/after-dark-css/"
+        },
+        {
+          "what": "The repo's README: 'CSS alone', no JavaScript or GIFs; code MIT, font SIL OFL, original artwork copyright Berkeley Systems, 'use at your own risk'",
+          "url": "https://github.com/bryanbraun/after-dark-css"
+        }
+      ],
+      "readme_translation": "Black SVG header with 12 to 20 copies of an original sprite that stands for the project (a package, a gear, a paper plane: anything but a toaster) crossing diagonally, and the project name fixed in the centre or, better, scrolling as a Messages-style line. Alternative layout: a control panel window with a module list at left (the project's features as 'modules'), a small live preview, and two sliders at right carrying real settings or stats.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Not prototyped, but it is the most direct fit in the family and Braun's project proves it in CSS. One <symbol> per animation frame; a sprite instance is a <g> with a translate keyframe animation (linear, 8 to 14 s, staggered delays) holding two to four <use> frames whose opacity is switched by a steps() keyframe. 16 instances of a 3-frame sprite is about 70 elements; pixel art drawn as <rect> runs or a single <path> per frame keeps it at 6 to 15 KB. Use shape-rendering=\"crispEdges\". The control panel variant is static rects and text plus one sprite in the preview.",
+      "wow": 4,
+      "caveats": "The flying toasters must not be used or imitated: Berkeley Systems sued Delrina over a parody module and a US district judge found infringement (Delrina swapped the wings for propellers), and Jefferson Airplane in turn sued Berkeley over winged toasters (dismissed because the album art had not been registered as a trademark). Avoid toasters, toast and winged household objects altogether, and do not use the After Dark name, module names or any Berkeley artwork. The format (many small sprites on a diagonal, a slider panel) is a general idea. The control panel layout described here is from general knowledge of the product, not from a source I opened; only the existence of per-module sliders is confirmed.",
+      "number": 5,
+      "family": "idle",
+      "slug": "05-idle-08",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/100-sprite-saver_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/100-sprite-saver_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/100-sprite-saver_opus_5.5.svg",
+            "references/upstream/examples/castaway/assets/100-sprite-saver_opus_5.5-panel.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/100-sprite-saver_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "pc-10",
+      "name": "Fake desktop takeover",
+      "era": "Fairlight, Quake 3 Arena cracktro (Windows 9x, 2 Dec 1999; code Exeron, music Joule, logo Lek, font Maniac per Demozoo) and Razor 1911, D-cracktro 02 (Windows, 7 Nov 2025; code Anat and Dubmood, graphics Goto80)",
+      "what_it_is": "A cracktro that pretends to be, or takes over, the user's own desktop. Fairlight's 1999 version shows a teal Win9x desktop with the group's name as the wallpaper and the release info in an ordinary-looking dialog; a Pouet commenter recalls running it and finding the wallpaper changed, the icons gone and a small window on screen. Razor's 2025 version captures the real desktop as a texture (confirmed in the comments) and shatters it like glass to show a black void with a red wireframe sheet behind.",
+      "visual_signature": [
+        "Flat teal desktop with the group name as a huge darker-teal lowercase wordmark across the top, like a watermark wallpaper",
+        "Two desktop icons with labels stacked at the top left",
+        "A grey taskbar along the bottom with a start button at the left and a clock at the right",
+        "One small dialog in the centre: grey 3D-bevelled frame, navy title bar with three caption buttons, and a teal-green panel inside holding the release info in small monospace text",
+        "2025 variant: whatever desktop was on screen cracks into a dozen large angular shards radiating from an off-centre impact point; the middle is a jagged black hole",
+        "Through the hole: a red wireframe grid sheet, gently warped, with a tiny group credit beside it",
+        "No logo art beyond the wallpaper wordmark: the joke is that it looks like nothing special"
+      ],
+      "palette": "Period system colours: teal #008080, dialog grey #c0c0c0 with white and dark-grey bevels, navy title bar #000080, white caption text. Shatter variant: black void, red wireframe about #d0202a, thin pale crack lines.",
+      "typography": "A small system UI sans for captions and icon labels; the wallpaper wordmark in a heavy lowercase sans; dialog contents in a monospaced pixel font.",
+      "motion": "1999: essentially static, text in the dialog with a chiptune. 2025 (from the still and comments): shards separate and the wireframe undulates while a scroller runs; a commenter found the scroll hard to read in places.",
+      "references": [
+        {
+          "what": "Fairlight Quake 3 Arena cracktro on Pouet: fake-desktop screenshot; the changed-wallpaper comment",
+          "url": "https://www.pouet.net/prod.php?which=87762"
+        },
+        {
+          "what": "Same on Demozoo: 2 Dec 1999, credits, blank version exists",
+          "url": "https://demozoo.org/productions/289021/"
+        },
+        {
+          "what": "Razor 1911 D-cracktro 02 on Pouet (Nov 2025): broken-glass screenshot; comment that the desktop is taken as a D3D11 texture",
+          "url": "https://www.pouet.net/prod.php?which=106834"
+        },
+        {
+          "what": "Same on Demozoo: 7 Nov 2025; code Anat and Dubmood, graphics Goto80, music covers by Dubmood and MASTER BOOT RECORD",
+          "url": "https://demozoo.org/productions/395873/"
+        },
+        {
+          "what": "Razor Logo 01 (Feb 2009; code replay, graphics sprocket): in the Pouet screenshot a chrome logo sits over a stock OS wallpaper, an earlier desktop gag if it is drawn over the live desktop (not confirmed)",
+          "url": "https://www.pouet.net/prod.php?which=57733"
+        }
+      ],
+      "readme_translation": "SVG of a small period desktop: the project name as the wallpaper watermark, icons named after the repo's real files (README, LICENSE, src), a taskbar whose clock shows the version number, and one dialog whose title bar is the project name and whose body is the install command and tagline. Optional second state: the desktop cracks and a wireframe shows through. Links and the copyable command repeat below in Markdown.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Rectangles, 1px bevel lines and short text: the easiest style here to make pixel-accurate, and real <text> in a generic sans is acceptable because a system UI font is exactly the look (still fix sizes and test widths). Animation: a blinking caret and paging text in the dialog (opacity keyframes), a clock that ticks with steps(). Shatter variant: precompute 10-15 shard polygons as clipPaths over <use> copies of the desktop group and give each a small translate/rotate keyframe; the wireframe is a polyline grid with SMIL-animated points. Under 40 KB with the shards.",
+      "wow": 4,
+      "caveats": "Do not use any operating-system vendor's logos, flag, wordmark or real icons; draw a generic period desktop with your own icons and a plain start button (the 2025 screenshot shows a real OS wallpaper only because that is what was on the uploader's screen). Do not reuse the Fairlight wordmark. A header that imitates an OS dialog must not be mistakable for a real system prompt: keep it decorative and never word it as a security or installer warning. The fake-desktop idea itself is free to reuse.",
+      "number": 6,
+      "family": "pc",
+      "slug": "06-pc-10",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/03-desktop-takeover_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/03-desktop-takeover_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/03-desktop-takeover_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/03-desktop-takeover_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "vap-07",
+      "name": "Windows 95/98 desktop: dialogs, error cascade, setup wizard, Defrag",
+      "era": "1995-2000 (Windows 95, 98, NT 4), with Windows 3.1's Program Manager (1992) as an older variant. Revived by vaporwave covers, the browser parody Windows 93 (jankenpopp and Zombectro, released 1 November 2014), 98.css (Jordan Scales, 2020) and the game Hypnospace Outlaw (2019).",
+      "what_it_is": "The grey bevelled interface everyone over thirty used: silver surfaces, navy title bars, teal desktop. Its set pieces are memes in their own right: the error dialog dragged into a trail of copies, the setup wizard with a segmented progress bar, the Disk Defragmenter's grid of coloured blocks, and the Solitaire win with bouncing cards.",
+      "visual_signature": [
+        "Raised bevel built from 1px lines: window edges are #dfdfdf then #ffffff on the top and left, #808080 then #0a0a0a on the bottom and right; sunken fields reverse the order",
+        "Navy title bar (#000080; Windows 98 adds a horizontal gradient to #1084d0) with a bold white caption and three small square bevelled buttons for minimise, maximise and close",
+        "Flat teal desktop (#008080) with a bottom taskbar, a Start button at the left and a sunken clock tray at the right",
+        "Modal error dialog: red circle with a white cross, one line of text, a centred 75x23 OK button with a dotted focus rectangle 4px inside its edge; repeated along a diagonal as a cascade",
+        "Setup wizard: a tall picture panel on the left, text on the right, a row of Back, Next and Cancel buttons, and a progress bar made of separate navy blocks",
+        "Defrag map: a dense grid of small rectangles in a handful of flat colours with a legend, recolouring in reading order",
+        "Solitaire win: cards dropping from the top stacks and bouncing, each leaving a trail of its earlier positions",
+        "Windows 3.1 variant: no taskbar; a Program Manager window containing child group windows of 32x32 icons with captions"
+      ],
+      "palette": "From 98.css source: surface #c0c0c0, highlight #ffffff, light face #dfdfdf, shadow #808080, frame #0a0a0a, title bar #000080 to #1084d0 (the same end colour appears in Wine's Windows defaults as 16,132,208), inactive title #808080 to #b5b5b5, link #0000ff, text #222222. Desktop teal #008080. Tooltip yellow 255,255,192 (Wine table).",
+      "typography": "MS Sans Serif bitmap at 8pt (98.css uses a recreation it calls Pixelated MS Sans Serif at 11px); bold for title bars. No anti-aliasing.",
+      "motion": "Error dialogs appear one by one down a diagonal; progress blocks fill left to right; Defrag cells recolour in reading order behind a moving cursor cell; cards bounce and leave trails; an hourglass flips.",
+      "references": [
+        {
+          "what": "98.css stylesheet: exact hex values, bevel construction as inset 1px shadows, title gradient, segmented progress indicator",
+          "url": "https://raw.githubusercontent.com/jdan/98.css/main/style.css"
+        },
+        {
+          "what": "98.css documentation: standard button 75px by 23px, dotted focus border set 4px inside, status bar",
+          "url": "https://jdan.github.io/98.css/"
+        },
+        {
+          "what": "Disk Defragmenter history: the Windows 95/98/Me version was licensed from Symantec; colour graph removed in Vista",
+          "url": "https://en.wikipedia.org/wiki/Microsoft_Drive_Optimizer"
+        },
+        {
+          "what": "Microsoft Solitaire: written by intern Wes Cherry in 1988, shipped from Windows 3.0 (1990), cards by Susan Kare, cards fall and bounce on a win",
+          "url": "https://en.wikipedia.org/wiki/Microsoft_Solitaire"
+        },
+        {
+          "what": "Office Assistant: introduced in Office 97; Clippit designed by Kevan Atteberry; removed in Office 2007",
+          "url": "https://en.wikipedia.org/wiki/Office_Assistant"
+        },
+        {
+          "what": "Windows 93: the browser parody of Windows 9x that turned this chrome into an art style",
+          "url": "https://en.wikipedia.org/wiki/Windows_93"
+        },
+        {
+          "what": "Program Manager: the Windows 3.x shell of icon groups in child windows, replaced by the Start menu and taskbar in Windows 95",
+          "url": "https://en.wikipedia.org/wiki/Program_Manager"
+        },
+        {
+          "what": "Wine source, Windows 95 default system colours: title 0,0,128, gradient end 16,132,208, face 192,192,192",
+          "url": "https://goma.googlesource.com/wine/+/refs/tags/wine-990704/windows/syscolor.c"
+        }
+      ],
+      "readme_translation": "Animated SVG showing a teal desktop strip with one main window whose title bar is the project name. Pick one set piece per repo: a setup wizard whose steps are the install instructions; a Defrag map whose cells are the project's items (one block per file, recipe or test) with a legend of real counts; or an error cascade for a joke header. Taskbar buttons name the README sections. Real links go below, or the header is cut into several SVG images in a row, each wrapped in a Markdown link.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "The most SVG-native style in the family: everything is axis-aligned rects and 1px lines with shape-rendering=crispEdges, so files are tiny (10-30 KB). Bevels are four lines per control. Cascade: one dialog in <defs>, reused with <use> at offsets with staggered opacity keyframes. Progress and Defrag: rects with staggered fill or opacity animations using steps() timing. Solitaire trail: many <use> copies of a card revealed in sequence along a precomputed bounce path. Type: pixel-rect glyphs or an embedded subset of an open pixel font for a faithful look, or accept a system sans-serif at 11px. Draw at 2x so 1px detail survives scaling.",
+      "wow": 5,
+      "caveats": "Do not use the Windows flag logo, the word Windows as a wordmark, the real Start button artwork, the Clippit character or the original icons and fonts; draw generic equivalents. Bevels, the grey palette, dialog layout and block maps are generic interface conventions. The teal default desktop is universally remembered and Wikipedia's Teal article repeats it, but the Wine colour table I read lists the background as grey, so I have no primary source for teal as the default. The Office Assistant article does not describe its speech balloon; that detail is from memory. Differs from existing style 3 (keygen dialog): that is a skinned custom window, this is stock system chrome.",
+      "number": 7,
+      "family": "vap",
+      "slug": "07-vap-07",
+      "samples": [
+        {
+          "project": "ultra-satisfactory",
+          "markdown": "references/upstream/examples/ultra-satisfactory/25-desktop-95_opus_5.5.md",
+          "generator": "references/upstream/examples/ultra-satisfactory/src/25-desktop-95_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/ultra-satisfactory/assets/25-desktop-95_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/ultra-satisfactory/25-desktop-95_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "print-01",
+      "name": "Swapper's floppy: hand-labelled 3.5-inch disk, fanned as 'disk 1 of N'",
+      "era": "1986-1996, C64 and Amiga mail-swapping scene in Europe (5.25-inch on the C64, 3.5-inch on the Amiga); the 3.5-inch shell itself dates from Sony's 1981 design, standardised in 1983",
+      "what_it_is": "Before any cracktro ran, a release arrived as a disk in an envelope, and the first thing a swapper saw was the label. Got Papers? shows a German Amiga swapper's disks, which it describes as \"full of stickers and scribbles\", and C64 disks that came in photocopied, hand-drawn paper sleeves called disk covers. In 1987 a Zurich C64 group even ran a postal competition for the best painted, sprayed or stickered disk.",
+      "visual_signature": [
+        "3.5-inch shell, 90 x 94 mm (slightly taller than wide), in saturated mid-blue or black, with a brushed-metal shutter at the bottom centre holding one rectangular window, a small moulded arrow near one lower corner and a square write-protect hole in a corner",
+        "A white label covering roughly the upper half of the face, almost full width, slightly yellowed and scuffed at the edges",
+        "Label type A (seen on a blue disk): a dot-matrix printed file list in two columns, every entry starting with a dash, under an underlined italic title line ending in a number and a colon",
+        "Label type B (seen on a black disk): a plain label with a hand-drawn logo in tall capitals made of two or three parallel pen strokes, a double underline, one handwritten word saying what is on the disk and a disk number inside a hand-drawn circle",
+        "Label type C: a group's pre-printed sticker in two or three flat spot colours, with later contents scribbled over it in pencil",
+        "5.25-inch variant: black square jacket, large hub hole with a reinforcing ring, a small index hole beside it, an oblong head slot below, a write-protect notch in one side edge, a small label in the top-left corner, and a white paper sleeve with a note in blue felt-tip that includes the disk number",
+        "Painted-disk variant (1987 competition entries): the whole jacket painted in diagonal two-colour stripes with stencilled letters",
+        "Disk cover: a photocopied A4 sheet carrying two stacked square panels to fold round a 5.25-inch disk, a graffiti-style logo and issue number on one, a cross-hatched pen-and-ink illustration on the other, and a handwritten 'spread by handle/group' line in the margin"
+      ],
+      "palette": "Disk blue (about #1F5FA8) or matt black shell; brushed aluminium shutter in light-to-mid grey with fine horizontal lines; off-white label (#F3EFE2); blue ballpoint, black marker, grey pencil and red felt-tip for writing; pure black on white for the photocopied sleeve.",
+      "typography": "Three hands on one object: marker capitals built from parallel strokes (an inline or outline logo), quick ballpoint handwriting for the contents line, and 9-pin dot-matrix text for printed file lists. No typeset fonts at all on the swapper version. A publisher's printed label would add ruled lines and a small type block, but I did not examine a manufacturer's label specification.",
+      "motion": "Mostly static. Light options: the disks fan out from a stack once on load; the shutter slides aside and back; the handwritten title draws itself with a stroke-dashoffset animation; the circled disk number steps 1, 2, 3 as each disk comes to the front.",
+      "references": [
+        {
+          "what": "Got Papers? post on a German Amiga swapper's disk collection (36 disk scans, late 1980s to early 1990s)",
+          "url": "https://gotpapers.scene.org/?p=2135"
+        },
+        {
+          "what": "Scan: blue 3.5-inch disk with a dot-matrix two-column file-list label",
+          "url": "https://gotpapers.scene.org/wp-content/uploads/2017/07/thorion-disk07.jpg"
+        },
+        {
+          "what": "Scan: black 3.5-inch disk with a hand-drawn multi-stroke logo, a contents word and a circled number",
+          "url": "https://gotpapers.scene.org/wp-content/uploads/2017/07/thorion-disk23.jpg"
+        },
+        {
+          "what": "Scan: blue disk with a printed three-colour group sticker overwritten in pencil",
+          "url": "https://gotpapers.scene.org/wp-content/uploads/2017/07/thorion-disk15.jpg"
+        },
+        {
+          "what": "Got Papers? post on the Swiss Cracking Association's 1987 disk design competition (painted, sprayed, dyed or stickered disks, entries sent by post)",
+          "url": "https://gotpapers.scene.org/?p=3323"
+        },
+        {
+          "what": "Scan: 1987 5.25-inch swap disk in its white sleeve, small label top-left, striped gold group logo",
+          "url": "https://gotpapers.scene.org/wp-content/uploads/2019/11/swiss_cracking_association_disk_1987.jpg"
+        },
+        {
+          "what": "Scan: painted 5.25-inch competition entry with a felt-tip note and disk number on the sleeve",
+          "url": "https://gotpapers.scene.org/wp-content/uploads/2019/11/sca_disk_competition_entry_by_trp_1_1987_p1.jpg"
+        },
+        {
+          "what": "Got Papers? post listing 50 C64 disk covers, mostly early-to-mid 1990s, each credited to its artist",
+          "url": "https://gotpapers.scene.org/?p=3302"
+        },
+        {
+          "what": "Scan: a 1995 photocopied disk cover sheet with two stacked panels and a 'spread by' note",
+          "url": "https://gotpapers.scene.org/wp-content/uploads/2019/10/antidote_4_disk_cover_by_condic_1995.jpg"
+        },
+        {
+          "what": "World of Jani's C64 disk cover collection: notes most are photocopies worn by the post, addresses removed for privacy",
+          "url": "http://blog.worldofjani.com/?p=2420"
+        },
+        {
+          "what": "Wikipedia, History of the floppy disk: 3.5-inch shell 90.0 x 94.0 mm, rigid case with sliding metal cover, 1981 and 1983 dates",
+          "url": "https://en.wikipedia.org/wiki/History_of_the_floppy_disk"
+        },
+        {
+          "what": "Wikipedia, Floppy disk: write-protect notch on 5.25-inch, two corner holes on 3.5-inch, hub and head-opening details",
+          "url": "https://en.wikipedia.org/wiki/Floppy_disk"
+        },
+        {
+          "what": "A label maker's 2-3/4 inch square label, described as suitable for diskettes (second source for label size, not a disk manufacturer's spec)",
+          "url": "https://www.avery.com/products/labels/5196"
+        }
+      ],
+      "readme_translation": "Above the fold: one wide SVG showing a fan of N overlapping 3.5-inch disks. The front disk's label carries the project name as a hand-lettered multi-stroke logo, a one-line handwritten tagline and a circled '1'; each disk behind it shows only its label edge with a section name (Install, Usage, Data, Credits). Further down the README, a small single-disk SVG ('disk 2 of 5') heads each section. A dot-matrix file-list label is the natural place for real numbers (items, recipes, buildings). The README body and links stay as ordinary Markdown text; nothing here needs a code block, though the two-column dashed file list also works as plain text.",
+      "medium": "static-svg",
+      "feasibility": "medium",
+      "feasibility_notes": "The shell is a handful of rounded rectangles, the shutter a linearGradient plus a thin-line pattern, and label ageing one feTurbulence filter (a few hundred bytes, no bitmap). The cost is handwriting: no web fonts, so every handwritten word must be a path. Budget about 400-800 bytes per word as single-stroke paths, or build a 60-glyph single-stroke alphabet as symbols (8-12 KB) and reuse it. A five-disk header with one drawn logo and a dozen handwritten words lands around 20-40 KB. Dot-matrix label text can be real SVG text in a monospace stack with a dot-pattern mask. Optional draw-on animation is pure CSS stroke-dashoffset.",
+      "wow": 4,
+      "caveats": "Do not copy any scanned label, sticker, logo or disk-cover drawing, and do not put a disk manufacturer's name, density code or logo on the shell; invent the lettering. Group and handle names in the references are credits, not material to reuse. The object, its proportions and the label conventions (title, contents, circled disk number, 'spread by' note) are free to reuse. Unconfirmed: exact label dimensions for 5.25-inch disks and the ruled-line layout of manufacturer labels (I found no manufacturer or museum specification; the 70 mm square figure comes from a label maker). Handwriting is hard to read at small sizes, so the project name must also appear as real text and in the image alt text. The light label reads well on both GitHub themes because the shell frames it.",
+      "number": 8,
+      "family": "print",
+      "slug": "08-print-01",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/115-swapper-floppy_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/115-swapper-floppy_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/115-swapper-floppy_opus_5.5.svg",
+            "references/upstream/examples/castaway/assets/115-swapper-floppy_opus_5.5-disk3.svg",
+            "references/upstream/examples/castaway/assets/115-swapper-floppy_opus_5.5-disk4.svg",
+            "references/upstream/examples/castaway/assets/115-swapper-floppy_opus_5.5-disk5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/115-swapper-floppy_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "xfer-02",
+      "name": "FidoNet echomail message in a GoldED reader (with the Russian CP866 variant)",
+      "era": "1986-2008. FidoNet software June 1984 (Tom Jennings), echomail February 1986 (Jeff Rush), echomail spec derived from Bob Hartman's Conference Mail manual of 12 December 1987; GoldED by Odinn Sorensen until 1999, then GoldED+; Russian Region 50 from 1990",
+      "what_it_is": "Echomail was FidoNet's public conferencing: messages hopped between hobbyist BBSes overnight by modem, each system appending its address to the control lines at the bottom. The message therefore ends in a stack of machine-written lines (tear line, origin line, SEEN-BY, PATH) that every reader learned to recognise, usually with a one-line joke tagline just above them. In Russia and Ukraine the network outlived its Western peak by a decade and GoldED was the standard editor, nicknamed 'naked grandfather' from the sound of its name.",
+      "visual_signature": [
+        "Header window at the top of the screen with a thin border and titles set into the border: message number, From and To names starting at column 8 (36 wide), the node address at column 44 (16 wide), the date right-aligned in the last 20 columns, then the Subj line",
+        "Addresses in the form zone:net/node.point, and dates in the fixed 'DD Mon YY  HH:MM:SS' form with two spaces before the time",
+        "Quoted text prefixed by the quoted person's initials and a chevron (default pattern space, first initial, last initial, chevron, space), odd and even quote levels in two different colours",
+        "Kludge lines, hidden by default and shown dimmed when switched on: MSGID with an address and an eight-digit hexadecimal serial, REPLY, PID, and CHRS naming the character set (for Russian mail 'CP866 2', formerly '+7_FIDO')",
+        "A tagline beginning with three dots directly above the tear line",
+        "Tear line: three dashes, then optionally the editor's name and version",
+        "Origin line: a space, an asterisk, 'Origin:', the system's name or slogan, and the full address in parentheses",
+        "SEEN-BY lines listing net/node pairs (the net is dropped when it repeats) and a final PATH line of the systems the message passed through; a white-on-blue status row along the bottom"
+      ],
+      "palette": "GoldED's shipped default: light grey text on black, light blue window borders, yellow titles on the borders, quotes alternating yellow and white, kludges, hidden lines and tagline in dark grey, tear line and origin in bright white, URLs light blue, selection bar and status line white on blue.",
+      "typography": "80-column DOS text mode. Western mail is CP437; Russian mail is CP866, which the FTSC charset standard lists as 'IBM codepage 866 (Cyrillic Russian)'. Echo names are upper case with dots (the GoldED+ screenshot shows tags such as RU.GOLDED and R50.SYSOP.INFO). Borders are single-line box-drawing characters.",
+      "motion": "Static. An optional SVG touch is the header window 'coming to life' field by field, which is how the GoldED manual describes starting a reply.",
+      "references": [
+        {
+          "what": "FTS-0004 EchoMail Specification: AREA line, tear line, origin line, SEEN-BY and PATH lines with the control-A prefix",
+          "url": "http://ftsc.org/docs/fts-0004.001"
+        },
+        {
+          "what": "FTS-0001: message header fields (fromUserName 36, toUserName 36, subject 72, 20-character DateTime)",
+          "url": "http://ftsc.org/docs/fts-0001.016"
+        },
+        {
+          "what": "FTS-0009: MSGID and REPLY kludges with the eight-character hexadecimal serial",
+          "url": "http://ftsc.org/docs/fts-0009.001"
+        },
+        {
+          "what": "FTS-5003: CHRS kludge and the list of character set identifiers including CP866 and the deprecated +7_FIDO",
+          "url": "http://ftsc.org/docs/fts-5003.001"
+        },
+        {
+          "what": "GoldED+ reference manual: header field positions, QUOTESTRING, TEARLINE length, VIEWKLUDGE/VIEWHIDDEN, the list of colourable reader elements",
+          "url": "https://raw.githubusercontent.com/golded-plus/golded-plus/master/manuals/gold_ref.txt"
+        },
+        {
+          "what": "GoldED+ user manual: the chapter on tagline support and how the tagline sits above the origin line",
+          "url": "https://raw.githubusercontent.com/golded-plus/golded-plus/master/manuals/gold_usr.txt"
+        },
+        {
+          "what": "GoldED+ default colour configuration",
+          "url": "https://raw.githubusercontent.com/golded-plus/golded-plus/master/cfgs/config/gedcolor.cfg"
+        },
+        {
+          "what": "GoldED+ Russian CP866 message template shipped with the editor",
+          "url": "https://raw.githubusercontent.com/golded-plus/golded-plus/master/cfgs/template/rusCP866.tpl"
+        },
+        {
+          "what": "Screenshot of the GoldED+ area list with Russian interface (2006)",
+          "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Goldedplus-20060327-arealist.ru3.png"
+        },
+        {
+          "what": "Russian Wikipedia, GoldED: Sorensen and Mueller, development ended 1999, Aganichev's GoldED+, the nickname",
+          "url": "https://ru.wikipedia.org/wiki/GoldED"
+        },
+        {
+          "what": "Russian Wikipedia, FidoNet: first Soviet node in Novosibirsk in 1990, Region 50, nets 5000/5010/5020/5030",
+          "url": "https://ru.wikipedia.org/wiki/Фидонет"
+        },
+        {
+          "what": "Wikipedia, FidoNet: founding dates, address format, echomail 1986, about 39,000 systems at peak, 50,000 points in 2006 mostly in Russia and Ukraine",
+          "url": "https://en.wikipedia.org/wiki/FidoNet"
+        },
+        {
+          "what": "Wikipedia, Signature block: FidoNet origin lines, taglines and tear lines as the network's signature system",
+          "url": "https://en.wikipedia.org/wiki/Signature_block"
+        }
+      ],
+      "readme_translation": "The whole header is one message. Area = the repository name as an upper-case dotted echo tag; From = the author with an invented address; To = All; Subj = the one-line description; date = last release. The body is the README introduction, optionally with a quoted question ('what does it do?') in initials-and-chevron style. MSGID carries the short commit hash, which is already eight hex digits. Tear line = tool name and version; origin line = project slogan with the version number dressed as an address; SEEN-BY = supported platforms or runtime versions; PATH = the build pipeline stages; the tagline is the joke. As plain text it is a <pre> of about 20 lines; an SVG version adds the GoldED colours and the bordered header.",
+      "medium": "text-plus-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "The message is plain text by definition and fits 80 columns. Show the control-A as a caret-a or an at-sign, since the real control character cannot be displayed. Cyrillic is ordinary UTF-8 inside <pre>. The coloured version is a fixed character grid in SVG with about eight fills.",
+      "wow": 4,
+      "caveats": "FidoNet is still a live network: do not use real node numbers or a real system's origin line. Use an invented zone outside the real ones (othernets did exactly this). The FTSC documents state that Fido and FidoNet are registered marks of Tom Jennings, so use neither the name as a brand nor the dog-with-diskette logo; put the project's own name on the tear line, not GoldED's. The line formats are published standards and free to use. That CP866 keeps its box-drawing characters at the same code points as CP437 is general knowledge I did not confirm from a source in this session. The Novosibirsk 1990 detail rests on Russian Wikipedia alone. I did not see a screenshot of GoldED's message view, only its area list, so the header layout comes from the manual's field positions.",
+      "number": 9,
+      "family": "xfer",
+      "slug": "09-xfer-02",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/101-echomail-reader_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/101-echomail-reader_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/101-echomail-reader_opus_5.5.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/101-echomail-reader_opus_5.5.md"
+        }
+      ]
+    },
+    {
+      "id": "idle-05",
+      "name": "Windows 3.1 saver set: Mystify polylines, Starfield Simulation and Marquee",
+      "era": "1992-2006: shipped with Windows 3.1 and carried through to Windows XP; Marquee, Mystify and Starfield were removed in Windows Vista (which added a different saver also called Mystify)",
+      "what_it_is": "The plain savers that came in the box: Blank Screen, Flying Windows, Marquee, Mystify and Starfield Simulation. They are drawn with simple 2D lines, dots and one line of text on black, and each has a small Setup dialog. Mystify's bouncing polygons with fading trails and the warp-speed starfield are among the most widely seen computer animations ever made, simply because every office PC ran them.",
+      "visual_signature": [
+        "Mystify: polygons bouncing around a black screen with each corner moving independently, each leaving a trail of fading, colour-shifting copies that weave into ribbons (the Microsoft wiki snippet I saw describes a pair of polygons with four corners each)",
+        "Thin 1-pixel lines, no fill, no anti-aliasing",
+        "Starfield Simulation: white dots placed at random in 3D and flown through, each reset to the distance when it passes the camera; Setup offers star density and 'warp speed'",
+        "Flying Windows: the same code as Starfield with a logo glyph taken from the Wingdings font in place of each star",
+        "Marquee: a single line of user text scrolling across a black or coloured background",
+        "A small grey Setup dialog per saver, of the kind Microsoft's own sample shows: a group box, a Fast/Slow scroll bar, OK and Cancel"
+      ],
+      "palette": "Black background. Mystify lines in two saturated hues that drift around the colour wheel; Starfield white and grey dots; Marquee text in one user-chosen colour; dialog in Windows 3.1 grey with a navy title bar.",
+      "typography": "Marquee uses whatever system font the user picked, large. Dialog text is the small system sans (the sample template specifies 8-point MS Shell Dlg). Mystify and Starfield have no text.",
+      "motion": "Mystify: eight independent vertex coordinates per polygon ping-pong between the edges at different speeds; trails follow about a tenth of a second apart. Starfield: dots accelerate outward from the centre. Marquee: constant right-to-left scroll. Mystify need not visibly loop: with unrelated periods the repeat is minutes long.",
+      "references": [
+        {
+          "what": "muffinlabs 'Before Dawn' essay: the five savers, Starfield's Setup options, Flying Windows sharing Starfield's code and taking its logo from Wingdings, Mystify's trails, After Dark's earlier 'warp'",
+          "url": "https://muffinlabs.com/screensavers/2-stars/"
+        },
+        {
+          "what": "Microsoft Learn, 'Handling Screen Savers': why savers exist (phosphor burn, concealing the screen), ScreenSaverProc drawing on WM_TIMER over a black brush, the sample Setup dialog with a Fast/Slow scroll bar",
+          "url": "https://learn.microsoft.com/en-us/windows/win32/lwef/screen-saver-library"
+        },
+        {
+          "what": "Wikipedia: 3D Pipes, Beziers, Marquee, Mystify and Starfield removed in Windows Vista; a different Mystify added",
+          "url": "https://en.wikipedia.org/wiki/List_of_features_removed_in_Windows_Vista"
+        },
+        {
+          "what": "Screensavers Planet listing for the original Mystify: two polygon shapes, settable number of lines and colours",
+          "url": "https://www.screensaversplanet.com/screensavers/mystify-511/"
+        },
+        {
+          "what": "A browser recreation with a description of the original's behaviour (corners drifting independently, fading colour-shifting trail)",
+          "url": "https://jasperbernaers.com/mystify-screensaver/"
+        },
+        {
+          "what": "XScreenSaver's Qix (Jamie Zawinski, 1992), the Unix equivalent: line segments bouncing around the screen",
+          "url": "https://raw.githubusercontent.com/Zygo/xscreensaver/master/hacks/config/qix.xml"
+        }
+      ],
+      "readme_translation": "Two good layouts. (a) Mystify as the header: two trailing quadrilaterals on black with the project name set large in the centre and the tagline as a Marquee line scrolling along the bottom. (b) The Setup dialog as the text carrier: a small grey dialog titled '<project> Setup' floating over the running saver, its fields holding the tagline, install command and a Fast/Slow slider. Marquee alone is already a README header: one scrolling line of text, which also works as plain text without the motion.",
+      "medium": "animated-svg",
+      "feasibility": "easy",
+      "feasibility_notes": "Prototyped Mystify: each polygon is four <line> elements whose x1, y1, x2, y2 each carry a SMIL <animate values=\"0;max;0\"> with its own duration, so no keyframes need computing; each trail copy is the same set started 0.12 s later at lower opacity; colour drift is one hue animation per polygon. Two polygons with 10 trail copies is 80 lines and 320 animate elements, 34 KB, renders in headless Chromium through <img>. Six trail copies brings it under 20 KB. Starfield is 60 to 120 <circle> elements, each on one shared scale-from-centre keyframe animation with staggered delays, 5 to 10 KB. Marquee is one <text> with a translateX loop, under 1 KB. The dialog is static rects and text.",
+      "wow": 4,
+      "caveats": "Do not use the Windows flag (the Flying Windows glyph) or the Microsoft or Windows names as branding; for a 'flying' variant use your own mark. Bouncing polylines, starfields and scrolling text are generic and free. The source essay says 'Windows 3.11, released in 1992'; Windows 3.1 is the 1992 release, so treat that as a slip. The 'two polygons, four corners' detail comes from a search-result snippet of a Microsoft fan wiki I could not open (it returned a payment error). Marquee's exact Setup fields were not confirmed; only Microsoft's generic sample dialog was. Colour animation was done with a CSS hue-rotate filter on a group, tested in Chromium only; animating stroke colour directly is the safer choice across browsers.",
+      "number": 10,
+      "family": "idle",
+      "slug": "10-idle-05",
+      "samples": [
+        {
+          "project": "castaway",
+          "markdown": "references/upstream/examples/castaway/97-classic-saver-set_opus_5.5.md",
+          "generator": "references/upstream/examples/castaway/src/97-classic-saver-set_opus_5.5.mjs",
+          "assets": [
+            "references/upstream/examples/castaway/assets/97-classic-saver-set_opus_5.5.svg",
+            "references/upstream/examples/castaway/assets/97-classic-saver-set_opus_5.5-setup.svg"
+          ],
+          "source_url": "https://github.com/lukexyz/README.NFO/blob/main/examples/castaway/97-classic-saver-set_opus_5.5.md"
+        }
+      ]
+    }
+  ]
+}
