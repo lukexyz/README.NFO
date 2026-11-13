@@ -3,7 +3,7 @@
 <h1 align="center">README.NFO</h1>
 
 <p align="center">Retro headers for your README, drawn fresh for your project by <b>Claude Code</b> or <b>Codex</b>.<br>
-<sub>153 styles · 260 example headers · 8 galleries · MIT</sub></p>
+<sub>153 styles · 370 example headers · 8 galleries · MIT</sub></p>
 
 <p align="center">
 <a href="#door--make-headers-for-your-project"><img src="assets/keys/d.svg" width="132" height="28" alt="[D] Door: make headers"></a>
@@ -118,7 +118,7 @@ delete the block and the folder.
 
 ## [F]iles · the example areas
 
-Every header here was drawn for a real project. 260 of them, in 13 areas.
+Every header here was drawn for a real project. 370 of them, in 13 areas.
 Click any one to see it move and copy its Markdown.
 
 ### Sysop's picks
@@ -168,7 +168,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/gl4ss/04-viewdata.md"><img src="assets/thumbs/ansi-05.jpg" width="148" height="83" alt="05: GL4SS header, Viewdata page"></a><br>
 <sub>01&nbsp;Door&nbsp;game&nbsp;screen · 02&nbsp;Illustrated&nbsp;ANSI · 03&nbsp;Teletext&nbsp;page · 04&nbsp;Modem-speed&nbsp;draw-in · 05&nbsp;Viewdata&nbsp;page</sub></p>
 
-<details><summary>List this area's 20 headers</summary>
+<details><summary>List this area's 22 headers</summary>
 
 - [Castaway 02](../../../examples/castaway/02-bbs-stats_opus_5.5.md) · BBS data screens ►
 - [Castaway 47](../../../examples/castaway/47-ansi-logo-colly_opus_5.5.md) · ANSI logo colly ►
@@ -182,6 +182,8 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 - [Castaway 55](../../../examples/castaway/55-braille-dot-graphics_opus_5.5.md) · Braille-dot dashboard ►
 - [GL4SS 04](../../../examples/gl4ss/04-viewdata.md) · Viewdata page ►
 - [Heretic 17](../../../examples/heretic/17-ansi-04.md) · Modem-speed draw-in ►
+- [medialog-logos-01 07](../../../examples/medialog-logos-01/07-ansi-03.md) · Illustrated ANSI
+- [medialog-logos-03 10](../../../examples/medialog-logos-03/10-ansi-07.md) · Vector BBS screen
 - [NATURALIS-HISTORIA 04](../../../examples/naturalis-historia/04-viewdata.md) · Viewdata page ►
 - [README.NFO 10](../../../examples/readme-nfo/10-ansi-05.md) · BBS data screens
 - [README.NFO 15](../../../examples/readme-nfo/15-ansi-04.md) · Modem-speed draw-in ►
@@ -201,7 +203,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/heretic/03-nfo-02.md"><img src="assets/thumbs/nfo-05.jpg" width="148" height="83" alt="05: Heretic header, Shaded block NFO"></a><br>
 <sub>01&nbsp;Poster&nbsp;NFO · 02&nbsp;Poster&nbsp;NFO · 03&nbsp;FILE_ID.DIZ&nbsp;card · 04&nbsp;Full-width&nbsp;Latin-1&nbsp;colly · 05&nbsp;Shaded&nbsp;block&nbsp;NFO</sub></p>
 
-<details><summary>List this area's 18 headers</summary>
+<details><summary>List this area's 19 headers</summary>
 
 - [Castaway 07](../../../examples/castaway/07-7bit-outline-nfo_opus_5.5.md) · 7-bit outline NFO (text)
 - [Castaway 11](../../../examples/castaway/11-usenet-line-art_opus_5.5.md) · Signed line art (text)
@@ -214,6 +216,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 - [Heretic 20](../../../examples/heretic/20-nfo-03.md) · Poster NFO
 - [Heretic 36](../../../examples/heretic/36-nfo-04.md) · 7-bit outline NFO (text)
 - [Heretic 37](../../../examples/heretic/37-nfo-07.md) · Full-width Latin-1 colly
+- [medialog 05](../../../examples/medialog/05-shaded-block-nfo_opus_5.5.md) · Shaded block NFO ►
 - [README.NFO 16](../../../examples/readme-nfo/16-nfo-01.md) · Brush-script block NFO
 - [ULTRA-SATISFACTORY 01](../../../examples/ultra-satisfactory/01-nfo-release_opus_5.5.md) · Release-info NFO (text)
 - [ULTRA-SATISFACTORY 15](../../../examples/ultra-satisfactory/15-brush-script-nfo_opus_5.5.md) · Brush-script block NFO ►
@@ -232,7 +235,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/heretic/21-pc-11.md"><img src="assets/thumbs/pc-05.jpg" width="148" height="83" alt="05: Heretic header, Firmware setup screen"></a><br>
 <sub>01&nbsp;Skinned&nbsp;installer · 02&nbsp;Neon&nbsp;cube&nbsp;field · 03&nbsp;Vector&nbsp;objects · 04&nbsp;Text-mode&nbsp;poster&nbsp;installer · 05&nbsp;Firmware&nbsp;setup&nbsp;screen</sub></p>
 
-<details><summary>List this area's 17 headers</summary>
+<details><summary>List this area's 28 headers</summary>
 
 - [Castaway 03](../../../examples/castaway/03-desktop-takeover_opus_5.5.md) · Desktop takeover ►
 - [Castaway 12](../../../examples/castaway/12-bios-hijack_opus_5.5.md) · Firmware setup screen ►
@@ -244,6 +247,17 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 - [Heretic 09](../../../examples/heretic/09-pc-12.md) · Neon cube field
 - [Heretic 21](../../../examples/heretic/21-pc-11.md) · Firmware setup screen
 - [Heretic 39](../../../examples/heretic/39-pc-09.md) · Pencil-on-paper intro
+- [medialog 09](../../../examples/medialog/09-chrome-spheres_opus_5.5.md) · Chrome spheres ►
+- [medialog-draw-02 04](../../../examples/medialog-draw-02/04-pc-01.md) · Flat-field DOS intro ►
+- [medialog-draw-02 06](../../../examples/medialog-draw-02/06-pc-10.md) · Desktop takeover
+- [medialog-logos-01 06](../../../examples/medialog-logos-01/06-pc-04.md) · VGA loader with scroller
+- [medialog-logos-02 01](../../../examples/medialog-logos-02/01-pc-06.md) · Skinned installer
+- [medialog-logos-02 15](../../../examples/medialog-logos-02/15-pc-02.md) · Plasma-embossed logo
+- [medialog-logos-03 02](../../../examples/medialog-logos-03/02-pc-14.md) · Rotozoomer and tunnel
+- [medialog-logos-03 11](../../../examples/medialog-logos-03/11-pc-09.md) · Pencil-on-paper intro
+- [medialog-logos-03 20](../../../examples/medialog-logos-03/20-pc-12.md) · Neon cube field
+- [medialog-logos-04 04](../../../examples/medialog-logos-04/04-pc-13.md) · Vector objects ►
+- [medialog-logos-06 03](../../../examples/medialog-logos-06/03-pc-13.md) · Vector objects
 - [README.NFO 14](../../../examples/readme-nfo/14-pc-05.md) · Metal logo and sine scroller ►
 - [README.NFO 25](../../../examples/readme-nfo/25-pc-13.md) · Vector objects ►
 - [README.NFO 34](../../../examples/readme-nfo/34-pc-07.md) · Text-mode poster installer
@@ -262,7 +276,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/castaway/19-megademo-menu_opus_5.5.md"><img src="assets/thumbs/c64-05.jpg" width="148" height="83" alt="05: Castaway header, Megademo menu"></a><br>
 <sub>01&nbsp;Menu&nbsp;disk · 02&nbsp;Flat-colour&nbsp;silhouette&nbsp;intro · 03&nbsp;Character-grid&nbsp;picture · 04&nbsp;Bobs&nbsp;and&nbsp;dot&nbsp;objects · 05&nbsp;Megademo&nbsp;menu</sub></p>
 
-<details><summary>List this area's 18 headers</summary>
+<details><summary>List this area's 31 headers</summary>
 
 - [Castaway 10](../../../examples/castaway/10-dir-art_opus_5.5.md) · Disk directory art ►
 - [Castaway 19](../../../examples/castaway/19-megademo-menu_opus_5.5.md) · Megademo menu ►
@@ -275,6 +289,19 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 - [Heretic 07](../../../examples/heretic/07-c64-04.md) · Disk directory art (text)
 - [Heretic 28](../../../examples/heretic/28-c64-08.md) · Bobs and dot objects ►
 - [Heretic 33](../../../examples/heretic/33-c64-14.md) · Chip-music jukebox
+- [medialog-logos-01 02](../../../examples/medialog-logos-01/02-c64-02.md) · Sine-wave letter scroller ►
+- [medialog-logos-01 04](../../../examples/medialog-logos-01/04-c64-10.md) · Flat-colour silhouette intro
+- [medialog-logos-02 03](../../../examples/medialog-logos-02/03-c64-09.md) · Copper-only screen
+- [medialog-logos-02 11](../../../examples/medialog-logos-02/11-c64-11.md) · Moire silhouette
+- [medialog-logos-02 17](../../../examples/medialog-logos-02/17-c64-12.md) · Hand-pixelled chrome logo
+- [medialog-logos-02 20](../../../examples/medialog-logos-02/20-c64-01.md) · One-screen 8-bit intro
+- [medialog-logos-03 13](../../../examples/medialog-logos-03/13-c64-07.md) · Copper ribbons
+- [medialog-logos-03 14](../../../examples/medialog-logos-03/14-c64-05.md) · Logo plate and copper text
+- [medialog-logos-04 06](../../../examples/medialog-logos-04/06-c64-08.md) · Bobs and dot objects ►
+- [medialog-logos-04 10](../../../examples/medialog-logos-04/10-c64-06.md) · Megademo menu ►
+- [medialog-logos-05 03](../../../examples/medialog-logos-05/03-c64-14.md) · Chip-music jukebox
+- [medialog-logos-06 01](../../../examples/medialog-logos-06/01-c64-12.md) · Hand-pixelled chrome logo
+- [medialog-logos-07 03](../../../examples/medialog-logos-07/03-c64-14.md) · Chip-music jukebox
 - [README.NFO 09](../../../examples/readme-nfo/09-c64-05.md) · Logo plate and copper text ►
 - [README.NFO 28](../../../examples/readme-nfo/28-c64-13.md) · Menu disk ►
 - [README.NFO 29](../../../examples/readme-nfo/29-c64-06.md) · Megademo menu ►
@@ -293,7 +320,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/ultra-satisfactory/41-attribute-grid-demo_opus_5.5.md"><img src="assets/thumbs/demo-05.jpg" width="148" height="83" alt="05: ULTRA-SATISFACTORY header, Attribute-grid demo"></a><br>
 <sub>01&nbsp;Big-screen&nbsp;compo&nbsp;slides · 02&nbsp;Demo&nbsp;opening&nbsp;titles · 03&nbsp;Procedural&nbsp;effects · 04&nbsp;Fat-pixel&nbsp;demo&nbsp;screen · 05&nbsp;Attribute-grid&nbsp;demo</sub></p>
 
-<details><summary>List this area's 22 headers</summary>
+<details><summary>List this area's 30 headers</summary>
 
 - [Castaway 20](../../../examples/castaway/20-apple2-screen_opus_5.5.md) · Six-colour title screen ►
 - [Castaway 107](../../../examples/castaway/107-demo-opening-titles_opus_5.5.md) · Demo opening titles ►
@@ -309,6 +336,14 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 - [Heretic 15](../../../examples/heretic/15-demo-10.md) · Fat-pixel demo screen
 - [Heretic 26](../../../examples/heretic/26-demo-09.md) · Sixteen-shade raster demo
 - [Heretic 31](../../../examples/heretic/31-demo-02.md) · Demo info file (text)
+- [medialog 03](../../../examples/medialog/03-atari-8-bit-demo_opus_5.5.md) · Sixteen-shade raster demo ►
+- [medialog 06](../../../examples/medialog/06-procedural-effects_opus_5.5.md) · Procedural effects ►
+- [medialog-logos-02 02](../../../examples/medialog-logos-02/02-demo-07.md) · Big-screen compo slides
+- [medialog-logos-03 03](../../../examples/medialog-logos-03/03-demo-10.md) · Fat-pixel demo screen
+- [medialog-logos-03 12](../../../examples/medialog-logos-03/12-demo-04.md) · 256-byte intro
+- [medialog-logos-04 02](../../../examples/medialog-logos-04/02-demo-01.md) · Demo opening titles ►
+- [medialog-logos-05 08](../../../examples/medialog-logos-05/08-demo-08.md) · Attribute-grid demo
+- [medialog-logos-07 08](../../../examples/medialog-logos-07/08-demo-08.md) · Attribute-grid demo
 - [NATURALIS-HISTORIA 03](../../../examples/naturalis-historia/03-demo-titles.md) · Demo opening titles ►
 - [README.NFO 06](../../../examples/readme-nfo/06-demo-11.md) · Six-colour title screen
 - [README.NFO 07](../../../examples/readme-nfo/07-demo-01.md) · Demo opening titles ►
@@ -328,7 +363,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/ultra-satisfactory/20-player-stack_opus_5.5.md"><img src="assets/thumbs/trk-05.jpg" width="148" height="83" alt="05: ULTRA-SATISFACTORY header, Media player stack"></a><br>
 <sub>01&nbsp;4-channel&nbsp;tracker · 02&nbsp;Multi-chip&nbsp;tracker · 03&nbsp;Oscilloscope&nbsp;channels · 04&nbsp;GUI&nbsp;tracker&nbsp;with&nbsp;scopes · 05&nbsp;Media&nbsp;player&nbsp;stack</sub></p>
 
-<details><summary>List this area's 15 headers</summary>
+<details><summary>List this area's 23 headers</summary>
 
 - [Castaway 17](../../../examples/castaway/17-module-player_opus_5.5.md) · Module player with spectrum ►
 - [Castaway 38](../../../examples/castaway/38-sample-list-board_opus_5.5.md) · Sample list as message board (text)
@@ -337,6 +372,14 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 - [Castaway 41](../../../examples/castaway/41-sid-tracker-text_opus_5.5.md) · Three-voice tracker ►
 - [Castaway 42](../../../examples/castaway/42-multi-chip-tracker_opus_5.5.md) · Multi-chip tracker ►
 - [Heretic 22](../../../examples/heretic/22-trk-03.md) · GUI tracker with scopes
+- [medialog 01](../../../examples/medialog/01-text-mode-tracker_opus_5.5.md) · Text-mode tracker ►
+- [medialog 07](../../../examples/medialog/07-piano-roll_opus_5.5.md) · Piano roll ►
+- [medialog-draw-02 02](../../../examples/medialog-draw-02/02-trk-11.md) · Media player stack ►
+- [medialog-logos-02 14](../../../examples/medialog-logos-02/14-trk-01.md) · 4-channel tracker
+- [medialog-logos-02 18](../../../examples/medialog-logos-02/18-trk-05.md) · Handheld tracker
+- [medialog-logos-03 06](../../../examples/medialog-logos-03/06-trk-09.md) · Oscilloscope channels
+- [medialog-logos-03 09](../../../examples/medialog-logos-03/09-trk-03.md) · GUI tracker with scopes
+- [medialog-logos-03 16](../../../examples/medialog-logos-03/16-trk-07.md) · Multi-chip tracker
 - [README.NFO 04](../../../examples/readme-nfo/04-trk-07.md) · Multi-chip tracker ►
 - [README.NFO 05](../../../examples/readme-nfo/05-trk-10.md) · Piano roll ►
 - [README.NFO 32](../../../examples/readme-nfo/32-trk-09.md) · Oscilloscope channels ►
@@ -356,7 +399,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/ultra-satisfactory/40-power-on-self-test_opus_5.5.md"><img src="assets/thumbs/mach-05.jpg" width="148" height="83" alt="05: ULTRA-SATISFACTORY header, Power-on self test"></a><br>
 <sub>01&nbsp;Pinball&nbsp;dot&nbsp;matrix · 02&nbsp;Arcade&nbsp;attract&nbsp;mode · 03&nbsp;VFD&nbsp;front&nbsp;panel · 04&nbsp;8-bit&nbsp;console&nbsp;title · 05&nbsp;Power-on&nbsp;self&nbsp;test</sub></p>
 
-<details><summary>List this area's 19 headers</summary>
+<details><summary>List this area's 32 headers</summary>
 
 - [Castaway 01](../../../examples/castaway/01-mode7-island_opus_5.5.md) · Rotating ground plane ►
 - [Castaway 09](../../../examples/castaway/09-pinball-dmd_opus_5.5.md) · Pinball dot matrix ►
@@ -372,6 +415,19 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 - [Heretic 16](../../../examples/heretic/16-mach-09.md) · 8-bit console title
 - [Heretic 19](../../../examples/heretic/19-mach-15.md) · Rotating ground plane
 - [Heretic 32](../../../examples/heretic/32-mach-12.md) · VFD front panel
+- [medialog 08](../../../examples/medialog/08-arcade-attract_opus_5.5.md) · Arcade attract mode ►
+- [medialog-logos-01 05](../../../examples/medialog-logos-01/05-mach-10.md) · Vector beam display
+- [medialog-logos-02 04](../../../examples/medialog-logos-02/04-mach-13.md) · Mono phone LCD
+- [medialog-logos-02 06](../../../examples/medialog-logos-02/06-mach-01.md) · Tape loader
+- [medialog-logos-03 07](../../../examples/medialog-logos-03/07-mach-15.md) · Rotating ground plane
+- [medialog-logos-03 17](../../../examples/medialog-logos-03/17-mach-02.md) · Insert-disk boot
+- [medialog-logos-04 01](../../../examples/medialog-logos-04/01-mach-07.md) · Handheld boot logo ►
+- [medialog-logos-04 09](../../../examples/medialog-logos-04/09-mach-09.md) · 8-bit console title ►
+- [medialog-logos-05 01](../../../examples/medialog-logos-05/01-mach-12.md) · VFD front panel
+- [medialog-logos-05 04](../../../examples/medialog-logos-05/04-mach-11.md) · Pinball dot matrix
+- [medialog-logos-06 04](../../../examples/medialog-logos-06/04-mach-02.md) · Insert-disk boot
+- [medialog-logos-07 01](../../../examples/medialog-logos-07/01-mach-12.md) · VFD front panel
+- [medialog-logos-07 04](../../../examples/medialog-logos-07/04-mach-11.md) · Pinball dot matrix
 - [README.NFO 01](../../../examples/readme-nfo/01-mach-11.md) · Pinball dot matrix ►
 - [README.NFO 23](../../../examples/readme-nfo/23-mach-07.md) · Handheld boot logo ►
 - [ULTRA-SATISFACTORY 10](../../../examples/ultra-satisfactory/10-arcade-attract_opus_5.5.md) · Arcade attract mode ►
@@ -388,7 +444,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/heretic/14-idle-07.md"><img src="assets/thumbs/idle-05.jpg" width="148" height="83" alt="05: Heretic header, 3D maze"></a><br>
 <sub>01&nbsp;Classic&nbsp;saver&nbsp;set · 02&nbsp;Music&nbsp;visualiser · 03&nbsp;Light&nbsp;synth · 04&nbsp;Feedback&nbsp;fire · 05&nbsp;3D&nbsp;maze</sub></p>
 
-<details><summary>List this area's 17 headers</summary>
+<details><summary>List this area's 30 headers</summary>
 
 - [Castaway 13](../../../examples/castaway/13-bouncing-logo_opus_5.5.md) · Bouncing logo ►
 - [Castaway 14](../../../examples/castaway/14-off-air_opus_5.5.md) · Off-air test card ►
@@ -402,6 +458,19 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 - [GL4SS 01](../../../examples/gl4ss/01-off-air.md) · Off-air test card ►
 - [Heretic 02](../../../examples/heretic/02-idle-02.md) · Light synth ►
 - [Heretic 14](../../../examples/heretic/14-idle-07.md) · 3D maze
+- [medialog-draw-02 05](../../../examples/medialog-draw-02/05-idle-08.md) · Sprite saver ►
+- [medialog-draw-02 10](../../../examples/medialog-draw-02/10-idle-05.md) · Classic saver set ►
+- [medialog-logos-01 08](../../../examples/medialog-logos-01/08-idle-03.md) · Feedback fire
+- [medialog-logos-01 09](../../../examples/medialog-logos-01/09-idle-09.md) · Bouncing logo ►
+- [medialog-logos-01 10](../../../examples/medialog-logos-01/10-idle-04.md) · Music visualiser ►
+- [medialog-logos-03 08](../../../examples/medialog-logos-03/08-idle-01.md) · Pulsing diamonds
+- [medialog-logos-04 07](../../../examples/medialog-logos-04/07-idle-07.md) · 3D maze ►
+- [medialog-logos-04 08](../../../examples/medialog-logos-04/08-idle-06.md) · 3D pipes ►
+- [medialog-logos-05 02](../../../examples/medialog-logos-05/02-idle-10.md) · Off-air test card
+- [medialog-logos-05 07](../../../examples/medialog-logos-05/07-idle-02.md) · Light synth
+- [medialog-logos-06 08](../../../examples/medialog-logos-06/08-idle-06.md) · 3D pipes
+- [medialog-logos-07 02](../../../examples/medialog-logos-07/02-idle-10.md) · Off-air test card
+- [medialog-logos-07 07](../../../examples/medialog-logos-07/07-idle-02.md) · Light synth
 - [NATURALIS-HISTORIA 01](../../../examples/naturalis-historia/01-off-air.md) · Off-air test card ►
 - [README.NFO 31](../../../examples/readme-nfo/31-idle-01.md) · Pulsing diamonds ►
 - [README.NFO 36](../../../examples/readme-nfo/36-idle-10.md) · Off-air test card ►
@@ -418,7 +487,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/ultra-satisfactory/26-vaporwave_opus_5.5.md"><img src="assets/thumbs/vap-05.jpg" width="148" height="83" alt="05: ULTRA-SATISFACTORY header, Classic vaporwave"></a><br>
 <sub>01&nbsp;Synthwave&nbsp;sunset · 02&nbsp;Aero&nbsp;gloss · 03&nbsp;VHS&nbsp;tape · 04&nbsp;Rolling-hill&nbsp;desktop · 05&nbsp;Classic&nbsp;vaporwave</sub></p>
 
-<details><summary>List this area's 28 headers</summary>
+<details><summary>List this area's 47 headers</summary>
 
 - [Castaway 04](../../../examples/castaway/04-fullwidth_opus_5.5.md) · Fullwidth text (text)
 - [Castaway 56](../../../examples/castaway/56-vhs-tape_opus_5.5.md) · VHS tape ►
@@ -438,6 +507,25 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 - [Heretic 11](../../../examples/heretic/11-vap-11.md) · 1-bit desktop
 - [Heretic 24](../../../examples/heretic/24-vap-17.md) · Memphis
 - [Heretic 40](../../../examples/heretic/40-vap-09.md) · Rolling-hill desktop
+- [medialog 02](../../../examples/medialog/02-vhs-tape_opus_5.5.md) · VHS tape ►
+- [medialog-draw-02 01](../../../examples/medialog-draw-02/01-vap-06.md) · City-pop sleeve ►
+- [medialog-draw-02 07](../../../examples/medialog-draw-02/07-vap-07.md) · Late-90s desktop
+- [medialog-logos-01 01](../../../examples/medialog-logos-01/01-vap-16.md) · Glitch art ►
+- [medialog-logos-01 03](../../../examples/medialog-logos-01/03-vap-01.md) · Classic vaporwave
+- [medialog-logos-02 05](../../../examples/medialog-logos-02/05-vap-10.md) · Aero gloss ►
+- [medialog-logos-02 08](../../../examples/medialog-logos-02/08-vap-14.md) · Instant messenger ►
+- [medialog-logos-02 12](../../../examples/medialog-logos-02/12-vap-18.md) · Neon signage
+- [medialog-logos-03 01](../../../examples/medialog-logos-03/01-vap-05.md) · Synthwave sunset
+- [medialog-logos-03 04](../../../examples/medialog-logos-03/04-vap-15.md) · Y2K cybercore
+- [medialog-logos-03 05](../../../examples/medialog-logos-03/05-vap-12.md) · Web 1.0 homepage
+- [medialog-logos-03 15](../../../examples/medialog-logos-03/15-vap-09.md) · Rolling-hill desktop
+- [medialog-logos-03 18](../../../examples/medialog-logos-03/18-vap-04.md) · Local forecast screen
+- [medialog-logos-03 19](../../../examples/medialog-logos-03/19-vap-17.md) · Memphis
+- [medialog-logos-04 05](../../../examples/medialog-logos-04/05-vap-11.md) · 1-bit desktop ►
+- [medialog-logos-06 02](../../../examples/medialog-logos-06/02-vap-05.md) · Synthwave sunset
+- [medialog-logos-06 06](../../../examples/medialog-logos-06/06-vap-10.md) · Aero gloss
+- [medialog-logos-06 09](../../../examples/medialog-logos-06/09-vap-11.md) · 1-bit desktop
+- [medialog-logos-06 10](../../../examples/medialog-logos-06/10-vap-17.md) · Memphis
 - [NATURALIS-HISTORIA 05](../../../examples/naturalis-historia/05-luna-desktop.md) · Rolling-hill desktop ►
 - [README.NFO 08](../../../examples/readme-nfo/08-vap-03.md) · VHS tape ►
 - [README.NFO 12](../../../examples/readme-nfo/12-vap-09.md) · Rolling-hill desktop ►
@@ -458,12 +546,17 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/ultra-satisfactory/12-cassette-jcard_opus_5.5.md"><img src="assets/thumbs/print-04.jpg" width="148" height="83" alt="04: ULTRA-SATISFACTORY header, Cassette and J-card"></a><br>
 <sub>01&nbsp;Tractor-feed&nbsp;printout · 02&nbsp;Type-in&nbsp;listing · 03&nbsp;Type-in&nbsp;listing · 04&nbsp;Cassette&nbsp;and&nbsp;J-card</sub></p>
 
-<details><summary>List this area's 8 headers</summary>
+<details><summary>List this area's 13 headers</summary>
 
 - [Castaway 08](../../../examples/castaway/08-tractor-feed_opus_5.5.md) · Tractor-feed printout ►
 - [Castaway 116](../../../examples/castaway/116-scene-paperwork_opus_5.5.md) · Mail-art paperwork ►
 - [Heretic 10](../../../examples/heretic/10-print-03.md) · Type-in listing (text)
 - [Heretic 29](../../../examples/heretic/29-print-05.md) · Mail-art paperwork
+- [medialog 10](../../../examples/medialog/10-tractor-feed_opus_5.5.md) · Tractor-feed printout ►
+- [medialog-draw-02 08](../../../examples/medialog-draw-02/08-print-01.md) · Hand-labelled floppies
+- [medialog-logos-04 03](../../../examples/medialog-logos-04/03-print-02.md) · Cassette and J-card ►
+- [medialog-logos-05 10](../../../examples/medialog-logos-05/10-print-05.md) · Mail-art paperwork
+- [medialog-logos-07 10](../../../examples/medialog-logos-07/10-print-05.md) · Mail-art paperwork
 - [README.NFO 22](../../../examples/readme-nfo/22-print-03.md) · Type-in listing (text)
 - [README.NFO 26](../../../examples/readme-nfo/26-print-02.md) · Cassette and J-card ►
 - [ULTRA-SATISFACTORY 12](../../../examples/ultra-satisfactory/12-cassette-jcard_opus_5.5.md) · Cassette and J-card ►
@@ -479,7 +572,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/heretic/30-hack-11.md"><img src="assets/thumbs/hack-05.jpg" width="148" height="83" alt="05: Heretic header, IRC channel window"></a><br>
 <sub>01&nbsp;File-system&nbsp;landscape · 02&nbsp;Fetch&nbsp;card · 03&nbsp;Dual-tone&nbsp;keypad · 04&nbsp;Falling-letters&nbsp;screen · 05&nbsp;IRC&nbsp;channel&nbsp;window</sub></p>
 
-<details><summary>List this area's 33 headers</summary>
+<details><summary>List this area's 36 headers</summary>
 
 - [Castaway 06](../../../examples/castaway/06-rfc-manpage_opus_5.5.md) · RFC and man page (text)
 - [Castaway 16](../../../examples/castaway/16-tfile_opus_5.5.md) · BBS text file (text)
@@ -505,6 +598,9 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 - [Heretic 25](../../../examples/heretic/25-hack-03.md) · RFC and man page (text)
 - [Heretic 30](../../../examples/heretic/30-hack-11.md) · IRC channel window
 - [Heretic 35](../../../examples/heretic/35-hack-15.md) · Decrypt reveal ►
+- [medialog-draw-02 03](../../../examples/medialog-draw-02/03-hack-08.md) · Roguelike screen
+- [medialog-logos-02 09](../../../examples/medialog-logos-02/09-hack-13.md) · War-room big board
+- [medialog-logos-02 10](../../../examples/medialog-logos-02/10-hack-12.md) · Diskmag reader
 - [README.NFO 02](../../../examples/readme-nfo/02-hack-09.md) · MUD transcript (text)
 - [README.NFO 03](../../../examples/readme-nfo/03-hack-14.md) · Digital rain ►
 - [README.NFO 13](../../../examples/readme-nfo/13-hack-15.md) · Decrypt reveal ►
@@ -525,7 +621,7 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/heretic/05-asia-03.md"><img src="assets/thumbs/asia-05.jpg" width="148" height="83" alt="05: Heretic header, Telnet board"></a><br>
 <sub>01&nbsp;Dithered&nbsp;adventure&nbsp;screen · 02&nbsp;FM-synth&nbsp;display · 03&nbsp;Telnet&nbsp;board · 04&nbsp;Telnet&nbsp;board · 05&nbsp;Telnet&nbsp;board</sub></p>
 
-<details><summary>List this area's 16 headers</summary>
+<details><summary>List this area's 19 headers</summary>
 
 - [Castaway 05](../../../examples/castaway/05-shiftjis-aa_opus_5.5.md) · Text-board art ►
 - [Castaway 90](../../../examples/castaway/90-pc-98-adventure-screen_opus_5.5.md) · Dithered adventure screen ►
@@ -536,6 +632,9 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 - [Heretic 05](../../../examples/heretic/05-asia-03.md) · Telnet board
 - [Heretic 27](../../../examples/heretic/27-asia-06.md) · BASIC power-on (text)
 - [Heretic 34](../../../examples/heretic/34-asia-05.md) · MML tune listing (text)
+- [medialog-logos-02 07](../../../examples/medialog-logos-02/07-asia-02.md) · Dithered adventure screen
+- [medialog-logos-05 05](../../../examples/medialog-logos-05/05-asia-01.md) · FM-synth display
+- [medialog-logos-07 05](../../../examples/medialog-logos-07/05-asia-01.md) · FM-synth display
 - [NATURALIS-HISTORIA 02](../../../examples/naturalis-historia/02-telnet-board.md) · Telnet board ►
 - [README.NFO 20](../../../examples/readme-nfo/20-asia-05.md) · MML tune listing (text)
 - [README.NFO 24](../../../examples/readme-nfo/24-asia-04.md) · Text-board art
@@ -553,10 +652,14 @@ One style brief, three projects. Each run reads its own folder, so each card is 
 <a href="../../../examples/ultra-satisfactory/39-userbar-kit_opus_5.5.md"><img src="assets/thumbs/xfer-04.jpg" width="148" height="83" alt="04: ULTRA-SATISFACTORY header, Forum userbars"></a><br>
 <sub>01&nbsp;Sysop&nbsp;status&nbsp;screen · 02&nbsp;Echomail&nbsp;reader · 03&nbsp;Terminal&nbsp;program · 04&nbsp;Forum&nbsp;userbars</sub></p>
 
-<details><summary>List this area's 5 headers</summary>
+<details><summary>List this area's 9 headers</summary>
 
 - [Castaway 101](../../../examples/castaway/101-echomail-reader_opus_5.5.md) · Echomail reader ►
 - [Castaway 104](../../../examples/castaway/104-p2p-transfer-window_opus_5.5.md) · Transfer window ►
+- [medialog 04](../../../examples/medialog/04-sysop-waiting-screen_opus_5.5.md) · Sysop status screen ►
+- [medialog-draw-02 09](../../../examples/medialog-draw-02/09-xfer-02.md) · Echomail reader
+- [medialog-logos-02 13](../../../examples/medialog-logos-02/13-xfer-04.md) · Forum userbars
+- [medialog-logos-02 16](../../../examples/medialog-logos-02/16-xfer-07.md) · Transfer window
 - [ULTRA-SATISFACTORY 33](../../../examples/ultra-satisfactory/33-sysop-dashboard_opus_5.5.md) · Sysop status screen ►
 - [ULTRA-SATISFACTORY 35](../../../examples/ultra-satisfactory/35-terminal-session_opus_5.5.md) · Terminal program ►
 - [ULTRA-SATISFACTORY 39](../../../examples/ultra-satisfactory/39-userbar-kit_opus_5.5.md) · Forum userbars ►

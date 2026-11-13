@@ -132,12 +132,14 @@ RANK  SCORE GALLERY
 2ND   042   ULTRA-SATISFACTORY
 3RD   041   README.NFO
 4TH   040   HERETIC
-5TH   006   DANCE VISION
-6TH   005   GL4SS
-6TH   005   NATURALIS-HISTORIA
-6TH   005   ST3GG
+5TH   010   MEDIALOG
+5TH   010   MEDIALOG-DRAW-02
+7TH   006   DANCE VISION
+8TH   005   GL4SS
+8TH   005   NATURALIS-HISTORIA
+8TH   005   ST3GG
 
-TOTAL   260   HEADERS
+TOTAL   280   HEADERS
 STYLES  153/153 CLEAR
 ```
 
@@ -224,7 +226,7 @@ Click one for its page.
 
 </details>
 
-<p align="center">All 260 headers in 8 galleries · <a href="styles/INDEX.md">all 153 styles</a></p>
+<p align="center">All 280 headers in 10 galleries · <a href="styles/INDEX.md">all 153 styles</a></p>
 
 ## OPTIONS
 
@@ -271,7 +273,7 @@ More detail: [docs/generation.md](docs/generation.md).
 ┌─────────────────────────────┐
 │ GAME OVER          CREDIT 0 │
 │                             │
-│ HI-SCORE .............. 260 │
+│ HI-SCORE .............. 280 │
 │ STYLES ................ 153 │
 │ FAMILIES ............... 13 │
 │ LICENCE ............... MIT │
