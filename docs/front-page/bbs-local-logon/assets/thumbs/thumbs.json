@@ -1,0 +1,443 @@
+[
+ {
+  "area": "ansi",
+  "n": "01",
+  "md": "examples/castaway/50-door-game-screen_opus_5.5.md",
+  "kind": "svg",
+  "kb": 16.4
+ },
+ {
+  "area": "ansi",
+  "n": "02",
+  "md": "examples/ultra-satisfactory/23-illustrated-ansi_opus_5.5.md",
+  "kind": "svg",
+  "kb": 16
+ },
+ {
+  "area": "ansi",
+  "n": "03",
+  "md": "examples/castaway/52-teletext-page_opus_5.5.md",
+  "kind": "svg",
+  "kb": 17.1
+ },
+ {
+  "area": "ansi",
+  "n": "04",
+  "md": "examples/heretic/17-ansi-04.md",
+  "kind": "svg",
+  "kb": 10.5
+ },
+ {
+  "area": "ansi",
+  "n": "05",
+  "md": "examples/gl4ss/04-viewdata.md",
+  "kind": "svg",
+  "kb": 9.7
+ },
+ {
+  "area": "nfo",
+  "n": "01",
+  "md": "examples/ultra-satisfactory/22-poster-nfo_opus_5.5.md",
+  "kind": "svg",
+  "kb": 13.7
+ },
+ {
+  "area": "nfo",
+  "n": "02",
+  "md": "examples/heretic/20-nfo-03.md",
+  "kind": "svg",
+  "kb": 7.2
+ },
+ {
+  "area": "nfo",
+  "n": "03",
+  "md": "examples/castaway/43-file-id-diz_opus_5.5.md",
+  "kind": "text",
+  "kb": 18.8
+ },
+ {
+  "area": "nfo",
+  "n": "04",
+  "md": "examples/ultra-satisfactory/24-amiga-ascii-colly_opus_5.5.md",
+  "kind": "svg",
+  "kb": 16.6
+ },
+ {
+  "area": "nfo",
+  "n": "05",
+  "md": "examples/heretic/03-nfo-02.md",
+  "kind": "svg",
+  "kb": 9.2
+ },
+ {
+  "area": "pc",
+  "n": "01",
+  "md": "examples/castaway/24-skinned-installer_opus_5.5.md",
+  "kind": "svg",
+  "kb": 17.3
+ },
+ {
+  "area": "pc",
+  "n": "02",
+  "md": "examples/ultra-satisfactory/14-neon-cube-field_opus_5.5.md",
+  "kind": "svg",
+  "kb": 18.5
+ },
+ {
+  "area": "pc",
+  "n": "03",
+  "md": "examples/castaway/26-vector-objects_opus_5.5.md",
+  "kind": "svg",
+  "kb": 12.7
+ },
+ {
+  "area": "pc",
+  "n": "04",
+  "md": "examples/ultra-satisfactory/16-poster-installer_opus_5.5.md",
+  "kind": "svg",
+  "kb": 23.8
+ },
+ {
+  "area": "pc",
+  "n": "05",
+  "md": "examples/heretic/21-pc-11.md",
+  "kind": "svg",
+  "kb": 11.2
+ },
+ {
+  "area": "c64",
+  "n": "01",
+  "md": "examples/castaway/36-st-menu-disk_opus_5.5.md",
+  "kind": "svg",
+  "kb": 22.4
+ },
+ {
+  "area": "c64",
+  "n": "02",
+  "md": "examples/ultra-satisfactory/28-flat-silhouette-intro_opus_5.5.md",
+  "kind": "svg",
+  "kb": 17.2
+ },
+ {
+  "area": "c64",
+  "n": "03",
+  "md": "examples/castaway/30-petscii-picture_opus_5.5.md",
+  "kind": "svg",
+  "kb": 12.2
+ },
+ {
+  "area": "c64",
+  "n": "04",
+  "md": "examples/heretic/28-c64-08.md",
+  "kind": "svg",
+  "kb": 8.2
+ },
+ {
+  "area": "c64",
+  "n": "05",
+  "md": "examples/castaway/19-megademo-menu_opus_5.5.md",
+  "kind": "svg",
+  "kb": 21.7
+ },
+ {
+  "area": "demo",
+  "n": "01",
+  "md": "examples/ultra-satisfactory/07-compo-slides_opus_5.5.md",
+  "kind": "svg",
+  "kb": 14.2
+ },
+ {
+  "area": "demo",
+  "n": "02",
+  "md": "examples/naturalis-historia/03-demo-titles.md",
+  "kind": "svg",
+  "kb": 11
+ },
+ {
+  "area": "demo",
+  "n": "03",
+  "md": "examples/castaway/109-procedural-effects_opus_5.5.md",
+  "kind": "svg",
+  "kb": 16
+ },
+ {
+  "area": "demo",
+  "n": "04",
+  "md": "examples/heretic/15-demo-10.md",
+  "kind": "svg",
+  "kb": 16.9
+ },
+ {
+  "area": "demo",
+  "n": "05",
+  "md": "examples/ultra-satisfactory/41-attribute-grid-demo_opus_5.5.md",
+  "kind": "svg",
+  "kb": 17.5
+ },
+ {
+  "area": "trk",
+  "n": "01",
+  "md": "examples/ultra-satisfactory/17-amiga-tracker_opus_5.5.md",
+  "kind": "svg",
+  "kb": 17.2
+ },
+ {
+  "area": "trk",
+  "n": "02",
+  "md": "examples/castaway/42-multi-chip-tracker_opus_5.5.md",
+  "kind": "svg",
+  "kb": 16.1
+ },
+ {
+  "area": "trk",
+  "n": "03",
+  "md": "examples/ultra-satisfactory/09-oscilloscope_opus_5.5.md",
+  "kind": "svg",
+  "kb": 17.6
+ },
+ {
+  "area": "trk",
+  "n": "04",
+  "md": "examples/heretic/22-trk-03.md",
+  "kind": "svg",
+  "kb": 13.6
+ },
+ {
+  "area": "trk",
+  "n": "05",
+  "md": "examples/ultra-satisfactory/20-player-stack_opus_5.5.md",
+  "kind": "svg",
+  "kb": 15.9
+ },
+ {
+  "area": "mach",
+  "n": "01",
+  "md": "examples/castaway/09-pinball-dmd_opus_5.5.md",
+  "kind": "svg",
+  "kb": 11.3
+ },
+ {
+  "area": "mach",
+  "n": "02",
+  "md": "examples/ultra-satisfactory/10-arcade-attract_opus_5.5.md",
+  "kind": "svg",
+  "kb": 14.4
+ },
+ {
+  "area": "mach",
+  "n": "03",
+  "md": "examples/castaway/73-vfd-front-panel_opus_5.5.md",
+  "kind": "svg",
+  "kb": 12.7
+ },
+ {
+  "area": "mach",
+  "n": "04",
+  "md": "examples/heretic/16-mach-09.md",
+  "kind": "svg",
+  "kb": 9.2
+ },
+ {
+  "area": "mach",
+  "n": "05",
+  "md": "examples/ultra-satisfactory/40-power-on-self-test_opus_5.5.md",
+  "kind": "svg",
+  "kb": 15.6
+ },
+ {
+  "area": "idle",
+  "n": "01",
+  "md": "examples/castaway/97-classic-saver-set_opus_5.5.md",
+  "kind": "svg",
+  "kb": 13
+ },
+ {
+  "area": "idle",
+  "n": "02",
+  "md": "examples/ultra-satisfactory/08-milkdrop-visualiser_opus_5.5.md",
+  "kind": "svg",
+  "kb": 18.4
+ },
+ {
+  "area": "idle",
+  "n": "03",
+  "md": "examples/castaway/95-light-synth_opus_5.5.md",
+  "kind": "svg",
+  "kb": 12.4
+ },
+ {
+  "area": "idle",
+  "n": "04",
+  "md": "examples/castaway/96-feedback-fire_opus_5.5.md",
+  "kind": "svg",
+  "kb": 11.9
+ },
+ {
+  "area": "idle",
+  "n": "05",
+  "md": "examples/heretic/14-idle-07.md",
+  "kind": "svg",
+  "kb": 9.6
+ },
+ {
+  "area": "vap",
+  "n": "01",
+  "md": "examples/castaway/57-synthwave-outrun_opus_5.5.md",
+  "kind": "svg",
+  "kb": 14.4
+ },
+ {
+  "area": "vap",
+  "n": "02",
+  "md": "examples/ultra-satisfactory/42-aero-gloss_opus_5.5.md",
+  "kind": "svg",
+  "kb": 15.1
+ },
+ {
+  "area": "vap",
+  "n": "03",
+  "md": "examples/castaway/56-vhs-tape_opus_5.5.md",
+  "kind": "svg",
+  "kb": 11.6
+ },
+ {
+  "area": "vap",
+  "n": "04",
+  "md": "examples/gl4ss/05-luna-desktop.md",
+  "kind": "svg",
+  "kb": 11
+ },
+ {
+  "area": "vap",
+  "n": "05",
+  "md": "examples/ultra-satisfactory/26-vaporwave_opus_5.5.md",
+  "kind": "svg",
+  "kb": 16
+ },
+ {
+  "area": "print",
+  "n": "01",
+  "md": "examples/castaway/08-tractor-feed_opus_5.5.md",
+  "kind": "svg",
+  "kb": 16.7
+ },
+ {
+  "area": "print",
+  "n": "02",
+  "md": "examples/ultra-satisfactory/31-type-in-listing_opus_5.5.md",
+  "kind": "svg",
+  "kb": 14.3
+ },
+ {
+  "area": "print",
+  "n": "03",
+  "md": "examples/heretic/10-print-03.md",
+  "kind": "text",
+  "kb": 19
+ },
+ {
+  "area": "print",
+  "n": "04",
+  "md": "examples/ultra-satisfactory/12-cassette-jcard_opus_5.5.md",
+  "kind": "svg",
+  "kb": 18.4
+ },
+ {
+  "area": "hack",
+  "n": "01",
+  "md": "examples/castaway/87-file-system-landscape_opus_5.5.md",
+  "kind": "svg",
+  "kb": 13.7
+ },
+ {
+  "area": "hack",
+  "n": "02",
+  "md": "examples/castaway/78-fetch-card_opus_5.5.md",
+  "kind": "svg",
+  "kb": 14.9
+ },
+ {
+  "area": "hack",
+  "n": "03",
+  "md": "examples/castaway/88-tone-pad_opus_5.5.md",
+  "kind": "svg",
+  "kb": 16.3
+ },
+ {
+  "area": "hack",
+  "n": "04",
+  "md": "examples/heretic/18-hack-10.md",
+  "kind": "svg",
+  "kb": 7.1
+ },
+ {
+  "area": "hack",
+  "n": "05",
+  "md": "examples/heretic/30-hack-11.md",
+  "kind": "svg",
+  "kb": 10.6
+ },
+ {
+  "area": "asia",
+  "n": "01",
+  "md": "examples/castaway/90-pc-98-adventure-screen_opus_5.5.md",
+  "kind": "svg",
+  "kb": 18.8
+ },
+ {
+  "area": "asia",
+  "n": "02",
+  "md": "examples/ultra-satisfactory/18-fm-synth-display_opus_5.5.md",
+  "kind": "svg",
+  "kb": 14.9
+ },
+ {
+  "area": "asia",
+  "n": "03",
+  "md": "examples/castaway/91-ptt-telnet-board_opus_5.5.md",
+  "kind": "svg",
+  "kb": 16.8
+ },
+ {
+  "area": "asia",
+  "n": "04",
+  "md": "examples/naturalis-historia/02-telnet-board.md",
+  "kind": "svg",
+  "kb": 13.5
+ },
+ {
+  "area": "asia",
+  "n": "05",
+  "md": "examples/heretic/05-asia-03.md",
+  "kind": "svg",
+  "kb": 10.7
+ },
+ {
+  "area": "xfer",
+  "n": "01",
+  "md": "examples/ultra-satisfactory/33-sysop-dashboard_opus_5.5.md",
+  "kind": "svg",
+  "kb": 20.4
+ },
+ {
+  "area": "xfer",
+  "n": "02",
+  "md": "examples/castaway/101-echomail-reader_opus_5.5.md",
+  "kind": "svg",
+  "kb": 13.6
+ },
+ {
+  "area": "xfer",
+  "n": "03",
+  "md": "examples/ultra-satisfactory/35-terminal-session_opus_5.5.md",
+  "kind": "svg",
+  "kb": 15.9
+ },
+ {
+  "area": "xfer",
+  "n": "04",
+  "md": "examples/ultra-satisfactory/39-userbar-kit_opus_5.5.md",
+  "kind": "svg",
+  "kb": 12.2
+ }
+]

@@ -1,0 +1,62 @@
+{
+  "note": "Concept 02 picks, curated 2026-11-11 from concepts/02-boot-intro.picks.json. Pages are relative to examples/. Captions are original and never catalogue names. Dropped from the concept list: ultra-satisfactory 11 (piracy-adjacent page), castaway 35 (page names real groups; 57 replaces it), castaway 27 (its scroller reads PRESENTS; ultra-satisfactory 42 replaces it as featured 02, so the featured row is not all one project), castaway 105 and 115 (deny list), ultra-satisfactory 21 (deny list), and every ultra-satisfactory page whose NFO joke says 'Protection: none' (07, 08, 09, 18, 20, 22, 23, 28). Castaway 21, 28 and 29 are left out because their stills spell PRESENTS; review swapped ultra-satisfactory 13 (its art reads presents) for castaway 03, and castaway 07 (its NFO reads presents, eventually) for heretic 36. Castaway is capped at 16 of the 40 wall tiles.",
+  "featured": [
+    { "n": 1, "page": "castaway/57-synthwave-outrun_opus_5.5.md", "caption": "sunset road", "pair": 1 },
+    { "n": 2, "page": "ultra-satisfactory/42-aero-gloss_opus_5.5.md", "caption": "aero gloss", "pair": 1 },
+    { "n": 3, "page": "castaway/01-mode7-island_opus_5.5.md", "caption": "mode 7 island", "pair": 2 },
+    { "n": 4, "page": "castaway/14-off-air_opus_5.5.md", "caption": "off-air test card", "pair": 2 },
+    { "n": 5, "page": "castaway/65-memphis_opus_5.5.md", "caption": "memphis poster", "pair": 3 },
+    { "n": 6, "page": "ultra-satisfactory/12-cassette-jcard_opus_5.5.md", "caption": "cassette J-card", "pair": 3 }
+  ],
+  "sameBrief": [
+    { "page": "naturalis-historia/01-off-air.md", "project": "Naturalis Historia" },
+    { "page": "gl4ss/01-off-air.md", "project": "GL4SS" },
+    { "page": "st3gg/01-off-air.md", "project": "ST3GG" }
+  ],
+  "wall": [
+    { "page": "heretic/21-pc-11.md", "caption": "BIOS gone wrong", "family": "PC INTROS" },
+    { "page": "castaway/03-desktop-takeover_opus_5.5.md", "caption": "hijacked desktop", "family": "PC INTROS" },
+    { "page": "castaway/30-petscii-picture_opus_5.5.md", "caption": "PETSCII picture", "family": "8-BIT AND 16-BIT" },
+    { "page": "heretic/33-c64-14.md", "caption": "chip jukebox", "family": "8-BIT AND 16-BIT" },
+    { "page": "heretic/28-c64-08.md", "caption": "bob chain", "family": "8-BIT AND 16-BIT" },
+    { "page": "castaway/42-multi-chip-tracker_opus_5.5.md", "caption": "multi-chip tracker", "family": "TRACKERS" },
+    { "page": "heretic/22-trk-03.md", "caption": "teal tracker desk", "family": "TRACKERS" },
+    { "page": "castaway/44-amiga-description-logo_opus_5.5.md", "caption": "outline logo NFO", "family": "NFO AND ASCII" },
+    { "page": "heretic/03-nfo-02.md", "caption": "shaded slab NFO", "family": "NFO AND ASCII" },
+    { "page": "castaway/52-teletext-page_opus_5.5.md", "caption": "teletext page", "family": "ANSI AND TEXT MODE" },
+    { "page": "castaway/50-door-game-screen_opus_5.5.md", "caption": "door game screen", "family": "ANSI AND TEXT MODE" },
+    { "page": "heretic/17-ansi-04.md", "caption": "ANSI stage", "family": "ANSI AND TEXT MODE" },
+    { "page": "gl4ss/04-viewdata.md", "caption": "viewdata terminal", "family": "ANSI AND TEXT MODE" },
+    { "page": "castaway/58-city-pop-sleeve_opus_5.5.md", "caption": "city-pop sleeve", "family": "INTERNET ERA" },
+        { "page": "gl4ss/05-luna-desktop.md", "caption": "glossy desktop", "family": "INTERNET ERA" },
+    { "page": "ultra-satisfactory/26-vaporwave_opus_5.5.md", "caption": "marble collage", "family": "INTERNET ERA" },
+    { "page": "ultra-satisfactory/27-signalwave-forecast_opus_5.5.md", "caption": "cable forecast", "family": "INTERNET ERA" },
+    { "page": "castaway/60-one-bit-desktop_opus_5.5.md", "caption": "1-bit desktop", "family": "INTERNET ERA" },
+    { "page": "castaway/09-pinball-dmd_opus_5.5.md", "caption": "pinball display", "family": "MACHINES" },
+    { "page": "ultra-satisfactory/10-arcade-attract_opus_5.5.md", "caption": "arcade attract", "family": "MACHINES" },
+    { "page": "ultra-satisfactory/40-power-on-self-test_opus_5.5.md", "caption": "power-on self test", "family": "MACHINES" },
+    { "page": "heretic/16-mach-09.md", "caption": "console title card", "family": "MACHINES" },
+    { "page": "heretic/12-mach-07.md", "caption": "LCD boot plate", "family": "MACHINES" },
+    { "page": "castaway/87-file-system-landscape_opus_5.5.md", "caption": "file-system city", "family": "HACKER AND ZINE" },
+    { "page": "castaway/78-fetch-card_opus_5.5.md", "caption": "fetch card", "family": "HACKER AND ZINE" },
+    { "page": "heretic/18-hack-10.md", "caption": "DOS host screen", "family": "HACKER AND ZINE" },
+    { "page": "castaway/90-pc-98-adventure-screen_opus_5.5.md", "caption": "PC-98 adventure", "family": "JAPAN AND EAST ASIA" },
+    { "page": "castaway/05-shiftjis-aa_opus_5.5.md", "caption": "Shift-JIS text art", "family": "JAPAN AND EAST ASIA" },
+    { "page": "st3gg/02-telnet-board.md", "caption": "telnet board", "family": "JAPAN AND EAST ASIA" },
+        { "page": "castaway/98-3d-pipes_opus_5.5.md", "caption": "3D pipes", "family": "SCREENSAVERS" },
+    { "page": "heretic/02-idle-02.md", "caption": "light synth", "family": "SCREENSAVERS" },
+    { "page": "heretic/14-idle-07.md", "caption": "brick maze", "family": "SCREENSAVERS" },
+    { "page": "ultra-satisfactory/33-sysop-dashboard_opus_5.5.md", "caption": "sysop dashboard", "family": "HOW FILES MOVED" },
+    { "page": "ultra-satisfactory/35-terminal-session_opus_5.5.md", "caption": "terminal session", "family": "HOW FILES MOVED" },
+    { "page": "castaway/110-256-byte-intro_opus_5.5.md", "caption": "256-byte intro", "family": "DEMOSCENE" },
+    { "page": "naturalis-historia/03-demo-titles.md", "caption": "demo titles", "family": "DEMOSCENE" },
+    { "page": "ultra-satisfactory/41-attribute-grid-demo_opus_5.5.md", "caption": "attribute grid", "family": "DEMOSCENE" },
+    { "page": "heretic/15-demo-10.md", "caption": "brick-pixel study", "family": "DEMOSCENE" },
+    { "page": "castaway/08-tractor-feed_opus_5.5.md", "caption": "green-bar paper", "family": "PRINT" },
+    { "page": "ultra-satisfactory/31-type-in-listing_opus_5.5.md", "caption": "type-in listing", "family": "PRINT" }
+  ],
+  "textDisk": [
+    { "page": "castaway/45-newschool-ascii_opus_5.5.md", "caption": "newschool logo" },
+    { "page": "heretic/36-nfo-04.md", "caption": "outline-letter NFO" }
+  ]
+}

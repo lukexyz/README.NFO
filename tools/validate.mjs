@@ -6,6 +6,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 import { checkCatalogue, localReferences, localTarget, svgPolicyIssues } from './lib/checks.mjs';
+import { checkReadme } from './front-page/check.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ignored = new Set(['node_modules', '.git', '.preview', 'readme-headers']);
@@ -13,6 +14,29 @@ const errors = [];
 const fail = (file, message) => errors.push(`${file}: ${message}`);
 const read = (file) => fs.readFileSync(path.join(ROOT, file), 'utf8');
 const normalise = (text) => text.replace(/\r\n?/g, '\n');
+
+// What validation covers. comparisons/ is a scratch workspace for front-page experiments. Untracked
+// files inside examples/ are galleries another session is still building, so a set is checked once
+// git tracks it. Everything else on disk that .gitignore does not exclude is checked, tracked or not.
+const SCRATCH = ['comparisons/'];
+const UNTRACKED_SKIPPED = ['examples/'];
+// Inputs to a generator, not pages anyone reads: their links are filled in at build time.
+const isTemplate = (file) => /\.template\.md$/.test(file);
+
+function repositoryFiles() {
+  const git = (args) => spawnSync('git', args, { cwd: ROOT, encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
+  const tracked = git(['ls-files', '-z', '--cached']);
+  const others = git(['ls-files', '-z', '--others', '--exclude-standard']);
+  // Outside a git checkout (an unpacked tarball, say) fall back to everything on disk.
+  if (tracked.status !== 0 || others.status !== 0) return walk(ROOT).filter((file) => !SCRATCH.some((dir) => file.startsWith(dir)));
+  const split = (result) => result.stdout.split('\0').filter(Boolean);
+  const untracked = split(others).filter((file) => !UNTRACKED_SKIPPED.some((dir) => file.startsWith(dir)));
+  return [...new Set([...split(tracked), ...untracked])]
+    .filter((file) => !SCRATCH.some((dir) => file.startsWith(dir)))
+    .filter((file) => !file.split('/').some((part) => ignored.has(part) || (part.startsWith('.') && part !== '.github')))
+    .filter((file) => fs.existsSync(path.join(ROOT, file)) && !fs.lstatSync(path.join(ROOT, file)).isSymbolicLink())
+    .sort();
+}
 
 function walk(directory, base = directory) {
   return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
@@ -123,7 +147,7 @@ async function checkSvgImages(files) {
 }
 
 async function main() {
-  const files = walk(ROOT);
+  const files = repositoryFiles();
   const scripts = files.filter((file) => file.endsWith('.mjs'));
   for (const file of scripts) {
     const result = spawnSync(process.execPath, ['--check', path.join(ROOT, file)], { encoding: 'utf8' });
@@ -135,8 +159,9 @@ async function main() {
   const checked = checkCatalogue(catalogue);
   for (const error of checked.errors) fail('styles/styles.json', error);
   const coverage = new Set();
+  const listed = new Set(files);
   const sets = fs.readdirSync(path.join(ROOT, 'examples'), { withFileTypes: true })
-    .filter((entry) => entry.isDirectory() && fs.existsSync(path.join(ROOT, 'examples', entry.name, 'src/build-gallery.mjs')))
+    .filter((entry) => entry.isDirectory() && listed.has(`examples/${entry.name}/src/build-gallery.mjs`))
     .map((entry) => ({ name: entry.name, headers: fs.readdirSync(path.join(ROOT, 'examples', entry.name))
       .filter((file) => /^\d.*\.md$/.test(file)).sort() }));
   if (!sets.length) fail('examples', 'no project galleries found');
@@ -181,12 +206,21 @@ async function main() {
     }
   }
 
-  const markdown = files.filter((file) => file.endsWith('.md'));
+  const markdown = files.filter((file) => file.endsWith('.md') && !isTemplate(file));
   for (const file of markdown) checkReferences(file, true);
   // The examples contain links intended for the target projects. Check our navigation separately.
+  // The front-page designs in docs/front-page/ link from their own folders, like any other page.
   for (const file of ['README.md', 'examples/README.md', 'examples/START-HERE.md',
-    ...files.filter((file) => /^styles\/[^/]+\.md$/.test(file))]) checkReferences(file, false);
+    ...files.filter((file) => /^styles\/[^/]+\.md$/.test(file)),
+    ...files.filter((file) => /^docs\/front-page\/(?:[^/]+\/)?README\.md$/.test(file))]) checkReferences(file, false);
   console.log(`Markdown: ${markdown.length} files checked for local images and repository navigation`);
+
+  // The front page: links, code blocks, deny list, counts, commands, reduced motion and weight.
+  try {
+    const front = await checkReadme(path.join(ROOT, 'README.md'), ROOT);
+    for (const [name, section] of Object.entries(front.sections)) for (const problem of section.problems) fail('README.md', `front page ${name}: ${problem}`);
+    console.log(`Front page: ${Object.keys(front.sections).length} checks on README.md (npm run front-page:check for detail)`);
+  } catch (error) { fail('README.md', `front-page check failed to run: ${error.message}`); }
 
   // Invalid source data should fail cleanly before generators try to consume it.
   if (!errors.length) checkGenerated(sets);

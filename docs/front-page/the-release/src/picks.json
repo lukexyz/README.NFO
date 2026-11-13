@@ -1,0 +1,51 @@
+{
+  "note": "The only file a curator edits. Reels of 10 are numbered 01-30 straight through, like batches. Captions are neutral: no catalogue style names, no scene groups. thumbs.mjs resolves each pick's style id and animation from the repo.",
+  "frame_ms": 3000,
+  "reels": [
+    {
+      "title": "Reel 1",
+      "picks": [
+        { "set": "castaway", "slug": "57-synthwave-outrun_opus_5.5", "caption": "sunset, laser grid, chrome" },
+        { "set": "ultra-satisfactory", "slug": "42-aero-gloss_opus_5.5", "caption": "glossy aqua window" },
+        { "set": "heretic", "slug": "09-pc-12", "caption": "neon cube field" },
+        { "set": "castaway", "slug": "52-teletext-page_opus_5.5", "caption": "teletext page, mosaic island" },
+        { "set": "ultra-satisfactory", "slug": "10-arcade-attract_opus_5.5", "caption": "arcade attract screen" },
+        { "set": "st3gg", "slug": "02-telnet-board", "caption": "inverse-video message board" },
+        { "set": "castaway", "slug": "56-vhs-tape_opus_5.5", "caption": "worn camcorder tape" },
+        { "set": "heretic", "slug": "15-demo-10", "caption": "fat-pixel title" },
+        { "set": "ultra-satisfactory", "slug": "41-attribute-grid-demo_opus_5.5", "caption": "attribute-grid demo" },
+        { "set": "castaway", "slug": "09-pinball-dmd_opus_5.5", "caption": "pinball dot-matrix", "frame": 6500 }
+      ]
+    },
+    {
+      "title": "Reel 2",
+      "picks": [
+        { "set": "castaway", "slug": "36-st-menu-disk_opus_5.5", "caption": "numbered menu disk" },
+        { "set": "ultra-satisfactory", "slug": "26-vaporwave_opus_5.5", "caption": "marble bust, pink grid" },
+        { "set": "heretic", "slug": "03-nfo-02", "caption": "shaded block lettering" },
+        { "set": "castaway", "slug": "95-light-synth_opus_5.5", "caption": "mirrored light trails" },
+        { "set": "gl4ss", "slug": "04-viewdata", "caption": "viewdata page" },
+        { "set": "ultra-satisfactory", "slug": "27-signalwave-forecast_opus_5.5", "caption": "factory weather report" },
+        { "set": "castaway", "slug": "87-file-system-landscape_opus_5.5", "caption": "folders as a city" },
+        { "set": "heretic", "slug": "13-demo-08", "caption": "attribute-grid colour" },
+        { "set": "ultra-satisfactory", "slug": "33-sysop-dashboard_opus_5.5", "caption": "sysop dashboard" },
+        { "set": "castaway", "slug": "73-vfd-front-panel_opus_5.5", "caption": "glowing hi-fi panel" }
+      ]
+    },
+    {
+      "title": "Reel 3",
+      "picks": [
+        { "set": "castaway", "slug": "88-tone-pad_opus_5.5", "caption": "keypad and scopes" },
+        { "set": "ultra-satisfactory", "slug": "40-power-on-self-test_opus_5.5", "caption": "power-on self-test" },
+        { "set": "heretic", "slug": "16-mach-09", "caption": "pixel quest title" },
+        { "set": "castaway", "slug": "60-one-bit-desktop_opus_5.5", "caption": "1-bit desktop" },
+        { "set": "naturalis-historia", "slug": "05-luna-desktop", "caption": "blue-and-green desktop" },
+        { "set": "ultra-satisfactory", "slug": "35-terminal-session_opus_5.5", "caption": "terminal session" },
+        { "set": "castaway", "slug": "58-city-pop-sleeve_opus_5.5", "caption": "record sleeve" },
+        { "set": "st3gg", "slug": "03-demo-titles", "caption": "demo title card", "frame": 6000 },
+        { "set": "ultra-satisfactory", "slug": "38-piano-roll_opus_5.5", "caption": "piano roll" },
+        { "set": "castaway", "slug": "90-pc-98-adventure-screen_opus_5.5", "caption": "adventure-game screen" }
+      ]
+    }
+  ]
+}

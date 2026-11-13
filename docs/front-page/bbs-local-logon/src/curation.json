@@ -1,0 +1,159 @@
+{
+  "about": "Concept 05 build curation. File areas = the 13 catalogue families, 5 tiles each (4 where the area has only 4 showable headers). Tiles pass inventory.mjs tileOk (shared deny list plus piracy vocabulary). Captions come from neutral-names.json via inventory.mjs. Castaway is capped near 40% of tiles. Picks are paired so each pair shares a height: 51 (640x549) at 319 px beside 01 (16:9) at 487 px, then 400 px pairs of matching aspect.",
+  "featured": [
+    ["examples/castaway/51-ripscrip-screen_opus_5.5.md", "Vector BBS screen with clickable buttons", 319],
+    ["examples/castaway/01-mode7-island_opus_5.5.md", "Island title screen on a rotating sea", 487],
+    ["examples/castaway/65-memphis_opus_5.5.md", "Squiggles, confetti and a live preview"],
+    ["examples/ultra-satisfactory/12-cassette-jcard_opus_5.5.md", "Cassette, J-card and turning reels"],
+    ["examples/ultra-satisfactory/13-chrome-spheres_opus_5.5.md", "Mirror spheres on a checker floor"],
+    ["examples/castaway/98-3d-pipes_opus_5.5.md", "Screensaver pipes that grow into the title"]
+  ],
+  "callers": [
+    "examples/naturalis-historia/01-off-air.md",
+    "examples/gl4ss/01-off-air.md",
+    "examples/st3gg/01-off-air.md"
+  ],
+  "areas": [
+    {
+      "family": "ansi",
+      "name": "ANSI, BBS & text mode",
+      "tiles": [
+        "castaway/50-door-game-screen_opus_5.5",
+        "ultra-satisfactory/23-illustrated-ansi_opus_5.5",
+        "castaway/52-teletext-page_opus_5.5",
+        "heretic/17-ansi-04",
+        "gl4ss/04-viewdata"
+      ]
+    },
+    {
+      "family": "nfo",
+      "name": "NFO & ASCII art",
+      "tiles": [
+        "ultra-satisfactory/22-poster-nfo_opus_5.5",
+        "heretic/20-nfo-03",
+        "castaway/43-file-id-diz_opus_5.5",
+        "ultra-satisfactory/24-amiga-ascii-colly_opus_5.5",
+        "heretic/03-nfo-02"
+      ]
+    },
+    {
+      "family": "pc",
+      "name": "PC intros & installers",
+      "tiles": [
+        "castaway/24-skinned-installer_opus_5.5",
+        "ultra-satisfactory/14-neon-cube-field_opus_5.5",
+        "castaway/26-vector-objects_opus_5.5",
+        "ultra-satisfactory/16-poster-installer_opus_5.5",
+        "heretic/21-pc-11"
+      ]
+    },
+    {
+      "family": "c64",
+      "name": "8-bit & 16-bit micros",
+      "tiles": [
+        "castaway/36-st-menu-disk_opus_5.5",
+        "ultra-satisfactory/28-flat-silhouette-intro_opus_5.5",
+        "castaway/30-petscii-picture_opus_5.5",
+        "heretic/28-c64-08",
+        "castaway/19-megademo-menu_opus_5.5"
+      ]
+    },
+    {
+      "family": "demo",
+      "name": "Demoscene",
+      "tiles": [
+        "ultra-satisfactory/07-compo-slides_opus_5.5",
+        "naturalis-historia/03-demo-titles",
+        "castaway/109-procedural-effects_opus_5.5",
+        "heretic/15-demo-10",
+        "ultra-satisfactory/41-attribute-grid-demo_opus_5.5"
+      ]
+    },
+    {
+      "family": "trk",
+      "name": "Trackers & chiptune",
+      "tiles": [
+        "ultra-satisfactory/17-amiga-tracker_opus_5.5",
+        "castaway/42-multi-chip-tracker_opus_5.5",
+        "ultra-satisfactory/09-oscilloscope_opus_5.5",
+        "heretic/22-trk-03",
+        "ultra-satisfactory/20-player-stack_opus_5.5"
+      ]
+    },
+    {
+      "family": "mach",
+      "name": "Consoles, arcade & machines",
+      "tiles": [
+        "castaway/09-pinball-dmd_opus_5.5",
+        "ultra-satisfactory/10-arcade-attract_opus_5.5",
+        "castaway/73-vfd-front-panel_opus_5.5",
+        "heretic/16-mach-09",
+        "ultra-satisfactory/40-power-on-self-test_opus_5.5"
+      ]
+    },
+    {
+      "family": "idle",
+      "name": "Screensavers & visualisers",
+      "tiles": [
+        "castaway/97-classic-saver-set_opus_5.5",
+        "ultra-satisfactory/08-milkdrop-visualiser_opus_5.5",
+        "castaway/95-light-synth_opus_5.5",
+        "castaway/96-feedback-fire_opus_5.5",
+        "heretic/14-idle-07"
+      ]
+    },
+    {
+      "family": "vap",
+      "name": "Vaporwave & early web",
+      "tiles": [
+        "castaway/57-synthwave-outrun_opus_5.5",
+        "ultra-satisfactory/42-aero-gloss_opus_5.5",
+        "castaway/56-vhs-tape_opus_5.5",
+        "gl4ss/05-luna-desktop",
+        "ultra-satisfactory/26-vaporwave_opus_5.5"
+      ]
+    },
+    {
+      "family": "print",
+      "name": "Print & physical media",
+      "tiles": [
+        "castaway/08-tractor-feed_opus_5.5",
+        "ultra-satisfactory/31-type-in-listing_opus_5.5",
+        "heretic/10-print-03",
+        "ultra-satisfactory/12-cassette-jcard_opus_5.5"
+      ]
+    },
+    {
+      "family": "hack",
+      "name": "Terminals, hackers & zines",
+      "tiles": [
+        "castaway/87-file-system-landscape_opus_5.5",
+        "castaway/78-fetch-card_opus_5.5",
+        "castaway/88-tone-pad_opus_5.5",
+        "heretic/18-hack-10",
+        "heretic/30-hack-11"
+      ]
+    },
+    {
+      "family": "asia",
+      "name": "Japan & East Asia",
+      "tiles": [
+        "castaway/90-pc-98-adventure-screen_opus_5.5",
+        "ultra-satisfactory/18-fm-synth-display_opus_5.5",
+        "castaway/91-ptt-telnet-board_opus_5.5",
+        "naturalis-historia/02-telnet-board",
+        "heretic/05-asia-03"
+      ]
+    },
+    {
+      "family": "xfer",
+      "name": "Modems & message boards",
+      "tiles": [
+        "ultra-satisfactory/33-sysop-dashboard_opus_5.5",
+        "castaway/101-echomail-reader_opus_5.5",
+        "ultra-satisfactory/35-terminal-session_opus_5.5",
+        "ultra-satisfactory/39-userbar-kit_opus_5.5"
+      ]
+    }
+  ]
+}

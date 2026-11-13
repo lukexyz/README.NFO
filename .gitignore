@@ -1,3 +1,9 @@
 node_modules/
 .preview/
 readme-headers/
+preview.html
+.render-cache/
+comparisons/front-page/**/shots/
+tools/front-page/.cache/
+docs/front-page/*/shots/
+debug.log

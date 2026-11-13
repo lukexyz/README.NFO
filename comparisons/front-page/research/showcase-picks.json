@@ -1,0 +1,922 @@
+[
+ {
+  "tier": 1,
+  "file": "examples/castaway/01-mode7-island_opus_5.5.md",
+  "style": "mach-15 Mode 7 rotating ground plane",
+  "caption": "Island title screen on a rotating sea",
+  "why": "Most charming piece in the repo: pixel island, CASTAWAY painted in the sand, readable even at 150 px; 16:9.",
+  "svgs": [
+   "examples/castaway/assets/01-mode7-island_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/01-mode7-island_opus_5.5.svg 71.9KB"
+  ],
+  "size": "256x144",
+  "kb": 71.9,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.78,
+  "tracked": true
+ },
+ {
+  "tier": 1,
+  "file": "examples/castaway/57-synthwave-outrun_opus_5.5.md",
+  "style": "vap-05 Synthwave / outrun",
+  "caption": "Sunset, laser grid and chrome wordmark",
+  "why": "Instantly recognisable retro look; the huge wordmark survives any thumbnail size.",
+  "svgs": [
+   "examples/castaway/assets/57-synthwave-outrun_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/57-synthwave-outrun_opus_5.5.svg 106.4KB"
+  ],
+  "size": "960x420",
+  "kb": 106.4,
+  "animated": true,
+  "text_only": false,
+  "aspect": 2.29,
+  "tracked": true
+ },
+ {
+  "tier": 1,
+  "file": "examples/ultra-satisfactory/13-chrome-spheres_opus_5.5.md",
+  "style": "pc-03 Chrome spheres over a checkerboard",
+  "caption": "Mirror spheres on a checker floor",
+  "why": "Classic demo spectacle with a different project name; already a START-HERE pick.",
+  "svgs": [
+   "examples/ultra-satisfactory/assets/13-chrome-spheres_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/ultra-satisfactory/assets/13-chrome-spheres_opus_5.5.svg 109.1KB"
+  ],
+  "size": "900x470",
+  "kb": 109.1,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.91,
+  "tracked": true
+ },
+ {
+  "tier": 1,
+  "file": "examples/castaway/65-memphis_opus_5.5.md",
+  "style": "vap-17 Memphis",
+  "caption": "Squiggles, confetti and a live preview",
+  "why": "The only loud light-background piece; breaks up a dark wall and reads at 270 px.",
+  "svgs": [
+   "examples/castaway/assets/65-memphis_opus_5.5.svg",
+   "examples/castaway/assets/65-memphis_opus_5.5-divider.svg",
+   "examples/castaway/assets/65-memphis_opus_5.5-catalogo.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/65-memphis_opus_5.5.svg 95.5KB",
+   "examples/castaway/assets/65-memphis_opus_5.5-divider.svg 8.4KB",
+   "examples/castaway/assets/65-memphis_opus_5.5-catalogo.svg 67.3KB"
+  ],
+  "size": "960x560",
+  "kb": 95.5,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.71,
+  "tracked": true
+ },
+ {
+  "tier": 1,
+  "file": "examples/dance-vision/02-amiga-cracktro_opus_5.5.md",
+  "style": "original six: Amiga-style intro",
+  "caption": "Copper bars, chrome letters, dancing stick figures",
+  "why": "Pure 16-bit intro energy with a third project name; 2.5:1 banner. Its .md page jokes \"CRACKED BY a pose model\", so caption it as an Amiga-style intro.",
+  "svgs": [
+   "examples/dance-vision/assets/02-amiga-cracktro_opus_5.5.svg",
+   "examples/dance-vision/assets/02-amiga-cracktro_opus_5.5-rule.svg"
+  ],
+  "svgDetail": [
+   "examples/dance-vision/assets/02-amiga-cracktro_opus_5.5.svg 102.3KB",
+   "examples/dance-vision/assets/02-amiga-cracktro_opus_5.5-rule.svg 8.2KB"
+  ],
+  "size": "320x128",
+  "kb": 102.3,
+  "animated": true,
+  "text_only": false,
+  "aspect": 2.5,
+  "tracked": true
+ },
+ {
+  "tier": 1,
+  "file": "examples/castaway/14-off-air_opus_5.5.md",
+  "style": "idle-10 Off-air test card",
+  "caption": "Test card with an island inside",
+  "why": "Bold geometry, universally readable; the island in the circle makes it bespoke.",
+  "svgs": [
+   "examples/castaway/assets/14-off-air_opus_5.5.svg",
+   "examples/castaway/assets/14-off-air_opus_5.5-bars.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/14-off-air_opus_5.5.svg 82.5KB",
+   "examples/castaway/assets/14-off-air_opus_5.5-bars.svg 1.4KB"
+  ],
+  "size": "960x540",
+  "kb": 82.5,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.78,
+  "tracked": true
+ },
+ {
+  "tier": 1,
+  "file": "examples/ultra-satisfactory/12-cassette-jcard_opus_5.5.md",
+  "style": "print-02 Cassette and J-card",
+  "caption": "Cassette shell, J-card and obi strip",
+  "why": "Physical-object style; colourful, with turning reels.",
+  "svgs": [
+   "examples/ultra-satisfactory/assets/12-cassette-jcard_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/ultra-satisfactory/assets/12-cassette-jcard_opus_5.5.svg 113.6KB"
+  ],
+  "size": "830x484",
+  "kb": 113.6,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.71,
+  "tracked": true
+ },
+ {
+  "tier": 1,
+  "file": "examples/castaway/98-3d-pipes_opus_5.5.md",
+  "style": "idle-06 3D pipes",
+  "caption": "Screensaver pipes spelling the title",
+  "why": "Everyone knows this screensaver; the pipes grow into the letters.",
+  "svgs": [
+   "examples/castaway/assets/98-3d-pipes_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/98-3d-pipes_opus_5.5.svg 139.0KB"
+  ],
+  "size": "1200x640",
+  "kb": 139,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.88,
+  "tracked": true
+ },
+ {
+  "tier": 1,
+  "file": "examples/castaway/52-teletext-page_opus_5.5.md",
+  "style": "ansi-08 Teletext page",
+  "caption": "Teletext page with mosaic island",
+  "why": "Saturated primaries and blocky type: perfect at 150 to 270 px.",
+  "svgs": [
+   "examples/castaway/assets/52-teletext-page_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/52-teletext-page_opus_5.5.svg 106.6KB"
+  ],
+  "size": "692x548",
+  "kb": 106.6,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.26,
+  "tracked": true
+ },
+ {
+  "tier": 1,
+  "file": "examples/castaway/35-hand-pixelled-chrome-logo_opus_5.5.md",
+  "style": "c64-12 Hand-pixelled chrome logo",
+  "caption": "Hand-pixelled chrome logo, sunset gradient",
+  "why": "The archetypal 16-bit intro logo; a 320x140 pixel canvas scales up crisply.",
+  "svgs": [
+   "examples/castaway/assets/35-hand-pixelled-chrome-logo_opus_5.5.svg",
+   "examples/castaway/assets/35-hand-pixelled-chrome-logo_opus_5.5-magnify.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/35-hand-pixelled-chrome-logo_opus_5.5.svg 82.5KB",
+   "examples/castaway/assets/35-hand-pixelled-chrome-logo_opus_5.5-magnify.svg 28.0KB"
+  ],
+  "size": "320x140",
+  "kb": 82.5,
+  "animated": true,
+  "text_only": false,
+  "aspect": 2.29,
+  "tracked": true
+ },
+ {
+  "tier": 1,
+  "file": "examples/ultra-satisfactory/23-illustrated-ansi_opus_5.5.md",
+  "style": "ansi-03 Illustrated ANSI",
+  "caption": "ANSI mascot with a speech bubble",
+  "why": "Character art with a grin; shows the tool can illustrate, not only letter.",
+  "svgs": [
+   "examples/ultra-satisfactory/assets/23-illustrated-ansi_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/ultra-satisfactory/assets/23-illustrated-ansi_opus_5.5.svg 80.3KB"
+  ],
+  "size": "664x520",
+  "kb": 80.3,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.28,
+  "tracked": true
+ },
+ {
+  "tier": 1,
+  "file": "examples/castaway/09-pinball-dmd_opus_5.5.md",
+  "style": "mach-11 Pinball dot-matrix display",
+  "caption": "Orange dot-matrix pinball attract loop",
+  "why": "Wide 3.3:1 strip, single colour, very legible; a good row divider.",
+  "svgs": [
+   "examples/castaway/assets/09-pinball-dmd_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/09-pinball-dmd_opus_5.5.svg 104.3KB"
+  ],
+  "size": "830x254",
+  "kb": 104.3,
+  "animated": true,
+  "text_only": false,
+  "aspect": 3.27,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/56-vhs-tape_opus_5.5.md",
+  "style": "vap-03 VHS tape",
+  "caption": "Camcorder tape with on-screen timestamp",
+  "why": "Soft pastel tape look with on-screen display; strong mood.",
+  "svgs": [
+   "examples/castaway/assets/56-vhs-tape_opus_5.5.svg",
+   "examples/castaway/assets/56-vhs-tape_opus_5.5-timer.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/56-vhs-tape_opus_5.5.svg 152.6KB",
+   "examples/castaway/assets/56-vhs-tape_opus_5.5-timer.svg 31.5KB"
+  ],
+  "size": "840x640",
+  "kb": 152.6,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.31,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/58-city-pop-sleeve_opus_5.5.md",
+  "style": "vap-06 City-pop record sleeve",
+  "caption": "Record sleeve and vinyl track list",
+  "why": "Light, airy palette; the track list is real project data.",
+  "svgs": [
+   "examples/castaway/assets/58-city-pop-sleeve_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/58-city-pop-sleeve_opus_5.5.svg 108.8KB"
+  ],
+  "size": "1000x560",
+  "kb": 108.8,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.79,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/24-skinned-installer_opus_5.5.md",
+  "style": "pc-06 Skinned installer",
+  "caption": "Chrome installer with a porthole preview",
+  "why": "Big wow, and its INSTALL / NFO / MUSIC / EXIT panel is the shape of a step-by-step guide.",
+  "svgs": [
+   "examples/castaway/assets/24-skinned-installer_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/24-skinned-installer_opus_5.5.svg 141.2KB"
+  ],
+  "size": "1000x584",
+  "kb": 141.2,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.71,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/30-petscii-picture_opus_5.5.md",
+  "style": "c64-03 PETSCII picture",
+  "caption": "Forty-column character-grid island picture",
+  "why": "Friendly purple frame, 56 KB, reads at any size.",
+  "svgs": [
+   "examples/castaway/assets/30-petscii-picture_opus_5.5.svg",
+   "examples/castaway/assets/30-petscii-picture_opus_5.5-colour-off.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/30-petscii-picture_opus_5.5.svg 56.0KB",
+   "examples/castaway/assets/30-petscii-picture_opus_5.5-colour-off.svg 14.7KB"
+  ],
+  "size": "384x256",
+  "kb": 56,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.5,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/50-door-game-screen_opus_5.5.md",
+  "style": "ansi-06 Door game screen",
+  "caption": "BBS door game with countdown clock",
+  "why": "Huge CAST AWAY lettering plus a red 10:00:00 counter.",
+  "svgs": [
+   "examples/castaway/assets/50-door-game-screen_opus_5.5.svg",
+   "examples/castaway/assets/50-door-game-screen_opus_5.5-stats.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/50-door-game-screen_opus_5.5.svg 82.3KB",
+   "examples/castaway/assets/50-door-game-screen_opus_5.5-stats.svg 31.1KB"
+  ],
+  "size": "672x432",
+  "kb": 82.3,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.56,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/26-vector-objects_opus_5.5.md",
+  "style": "pc-13 Vector objects",
+  "caption": "Glenz crystal and vector-ball title",
+  "why": "Translucent crystal and dot scroller; a cool cyan palette for contrast.",
+  "svgs": [
+   "examples/castaway/assets/26-vector-objects_opus_5.5.svg",
+   "examples/castaway/assets/26-vector-objects_opus_5.5-props.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/26-vector-objects_opus_5.5.svg 129.0KB",
+   "examples/castaway/assets/26-vector-objects_opus_5.5-props.svg 57.0KB"
+  ],
+  "size": "1000x400",
+  "kb": 129,
+  "animated": true,
+  "text_only": false,
+  "aspect": 2.5,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/36-st-menu-disk_opus_5.5.md",
+  "style": "c64-13 16-bit menu disk",
+  "caption": "Numbered menu disk with gradient scroller",
+  "why": "Pure game-menu energy, directly on brief for a gaming-NFO front page.",
+  "svgs": [
+   "examples/castaway/assets/36-st-menu-disk_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/36-st-menu-disk_opus_5.5.svg 134.0KB"
+  ],
+  "size": "320x200",
+  "kb": 134,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.6,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/73-vfd-front-panel_opus_5.5.md",
+  "style": "mach-12 VFD front panel",
+  "caption": "Hi-fi front panel with glowing segments",
+  "why": "Hardware-object style; glowing cyan segments, wide 2.3:1.",
+  "svgs": [
+   "examples/castaway/assets/73-vfd-front-panel_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/73-vfd-front-panel_opus_5.5.svg 140.3KB"
+  ],
+  "size": "1200x512",
+  "kb": 140.3,
+  "animated": true,
+  "text_only": false,
+  "aspect": 2.34,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/88-tone-pad_opus_5.5.md",
+  "style": "hack-17 Dual-tone keypad",
+  "caption": "Dual-tone keypad with live scopes",
+  "why": "Bright beach scene around a keypad; distinctive silhouette.",
+  "svgs": [
+   "examples/castaway/assets/88-tone-pad_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/88-tone-pad_opus_5.5.svg 124.0KB"
+  ],
+  "size": "1280x720",
+  "kb": 124,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.78,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/87-file-system-landscape_opus_5.5.md",
+  "style": "hack-16 3D file-system landscape",
+  "caption": "Folders as an isometric island city",
+  "why": "Repository folders become a 3D city: a developer-relevant idea.",
+  "svgs": [
+   "examples/castaway/assets/87-file-system-landscape_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/87-file-system-landscape_opus_5.5.svg 144.8KB"
+  ],
+  "size": "1280x640",
+  "kb": 144.8,
+  "animated": true,
+  "text_only": false,
+  "aspect": 2,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/95-light-synth_opus_5.5.md",
+  "style": "idle-02 Light synth",
+  "caption": "Mirrored pixel trails, pure colour",
+  "why": "Abstract burst of colour; the best thumbnail-only piece in the set.",
+  "svgs": [
+   "examples/castaway/assets/95-light-synth_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/95-light-synth_opus_5.5.svg 93.8KB"
+  ],
+  "size": "824x322",
+  "kb": 93.8,
+  "animated": true,
+  "text_only": false,
+  "aspect": 2.56,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/99-3d-maze_opus_5.5.md",
+  "style": "idle-07 3D maze",
+  "caption": "First-person brick maze with overlay map",
+  "why": "Warm brick perspective with a coconut; strong at 270 px.",
+  "svgs": [
+   "examples/castaway/assets/99-3d-maze_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/99-3d-maze_opus_5.5.svg 141.8KB"
+  ],
+  "size": "960x400",
+  "kb": 141.8,
+  "animated": true,
+  "text_only": false,
+  "aspect": 2.4,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/castaway/60-one-bit-desktop_opus_5.5.md",
+  "style": "vap-11 1-bit desktop",
+  "caption": "Black-and-white desktop with wait dialog",
+  "why": "A monochrome contrast tile with a funny wait dialog.",
+  "svgs": [
+   "examples/castaway/assets/60-one-bit-desktop_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/60-one-bit-desktop_opus_5.5.svg 129.3KB"
+  ],
+  "size": "416x280",
+  "kb": 129.3,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.49,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/ultra-satisfactory/09-oscilloscope_opus_5.5.md",
+  "style": "trk-09 Oscilloscope channels",
+  "caption": "Nine neon scopes, one per machine",
+  "why": "Neon waveforms in a grid: a tracker-family pick that reads small.",
+  "svgs": [
+   "examples/ultra-satisfactory/assets/09-oscilloscope_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/ultra-satisfactory/assets/09-oscilloscope_opus_5.5.svg 112.6KB"
+  ],
+  "size": "1280x720",
+  "kb": 112.6,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.78,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/ultra-satisfactory/16-poster-installer_opus_5.5.md",
+  "style": "pc-07 Text-mode poster installer",
+  "caption": "Bold text-mode installer poster",
+  "why": "Huge yellow-and-cyan block type at only 33.6 KB.",
+  "svgs": [
+   "examples/ultra-satisfactory/assets/16-poster-installer_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/ultra-satisfactory/assets/16-poster-installer_opus_5.5.svg 33.6KB"
+  ],
+  "size": "832x448",
+  "kb": 33.6,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.86,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/ultra-satisfactory/28-flat-silhouette-intro_opus_5.5.md",
+  "style": "c64-10 Flat-colour silhouette intro",
+  "caption": "Flat colour fields and skyline silhouette",
+  "why": "Pink, yellow and green flat colour: unlike anything else on the wall.",
+  "svgs": [
+   "examples/ultra-satisfactory/assets/28-flat-silhouette-intro_opus_5.5.svg",
+   "examples/ultra-satisfactory/assets/28-flat-silhouette-intro_opus_5.5-cubes.svg",
+   "examples/ultra-satisfactory/assets/28-flat-silhouette-intro_opus_5.5-credits.svg"
+  ],
+  "svgDetail": [
+   "examples/ultra-satisfactory/assets/28-flat-silhouette-intro_opus_5.5.svg 86.9KB",
+   "examples/ultra-satisfactory/assets/28-flat-silhouette-intro_opus_5.5-cubes.svg 44.9KB",
+   "examples/ultra-satisfactory/assets/28-flat-silhouette-intro_opus_5.5-credits.svg 16.0KB"
+  ],
+  "size": "1200x660",
+  "kb": 86.9,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.82,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/ultra-satisfactory/07-compo-slides_opus_5.5.md",
+  "style": "demo-07 Demoparty compo slides",
+  "caption": "Big-screen party slide with countdown",
+  "why": "Clean big-screen slide with a crowd silhouette; very legible.",
+  "svgs": [
+   "examples/ultra-satisfactory/assets/07-compo-slides_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/ultra-satisfactory/assets/07-compo-slides_opus_5.5.svg 123.4KB"
+  ],
+  "size": "960x560",
+  "kb": 123.4,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.71,
+  "tracked": true
+ },
+ {
+  "tier": 2,
+  "file": "examples/ultra-satisfactory/08-milkdrop-visualiser_opus_5.5.md",
+  "style": "idle-04 Music visualiser",
+  "caption": "Swirling visualiser behind the wordmark",
+  "why": "Purple mandala motion; a good animated tile.",
+  "svgs": [
+   "examples/ultra-satisfactory/assets/08-milkdrop-visualiser_opus_5.5.svg",
+   "examples/ultra-satisfactory/assets/08-milkdrop-visualiser_opus_5.5-scope.svg"
+  ],
+  "svgDetail": [
+   "examples/ultra-satisfactory/assets/08-milkdrop-visualiser_opus_5.5.svg 93.3KB",
+   "examples/ultra-satisfactory/assets/08-milkdrop-visualiser_opus_5.5-scope.svg 11.3KB"
+  ],
+  "size": "840x440",
+  "kb": 93.3,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.91,
+  "tracked": true
+ },
+ {
+  "tier": 3,
+  "file": "examples/heretic/28-c64-08.md",
+  "style": "c64-08 Bobs and dot objects",
+  "caption": "Sphere chain loops round a dot cube",
+  "why": "Lightest animated pick (9.1 KB), from a fourth project; the bob chain reads as motion even at 150 px. Subtitle is one <text> element, so its font falls back on GitHub.",
+  "svgs": [
+   "examples/heretic/assets/28-c64-08.svg"
+  ],
+  "size": "960x400",
+  "kb": 9.1,
+  "animated": true,
+  "text_only": false,
+  "aspect": 2.4,
+  "tracked": true,
+  "svgDetail": [
+   "examples/heretic/assets/28-c64-08.svg 9.1KB"
+  ]
+ },
+ {
+  "tier": 3,
+  "file": "examples/castaway/115-swapper-floppy_opus_5.5.md",
+  "style": "print-01 Hand-labelled floppies",
+  "caption": "Hand-labelled floppies on the beach",
+  "why": "Tactile object scene. The catalogue name says \"swapper\", so caption it as labelled floppies.",
+  "svgs": [
+   "examples/castaway/assets/115-swapper-floppy_opus_5.5.svg",
+   "examples/castaway/assets/115-swapper-floppy_opus_5.5-disk3.svg",
+   "examples/castaway/assets/115-swapper-floppy_opus_5.5-disk4.svg",
+   "examples/castaway/assets/115-swapper-floppy_opus_5.5-disk5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/115-swapper-floppy_opus_5.5.svg 110.3KB",
+   "examples/castaway/assets/115-swapper-floppy_opus_5.5-disk3.svg 29.4KB",
+   "examples/castaway/assets/115-swapper-floppy_opus_5.5-disk4.svg 45.1KB",
+   "examples/castaway/assets/115-swapper-floppy_opus_5.5-disk5.svg 36.3KB"
+  ],
+  "size": "1000x560",
+  "kb": 110.3,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.79,
+  "tracked": true
+ },
+ {
+  "tier": 3,
+  "file": "examples/castaway/90-pc-98-adventure-screen_opus_5.5.md",
+  "style": "asia-02 PC-98 adventure screen",
+  "caption": "Dithered adventure screen with verb menu",
+  "why": "The only Asian-computing pick; the picture reads, the text panel does not at 270 px.",
+  "svgs": [
+   "examples/castaway/assets/90-pc-98-adventure-screen_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/90-pc-98-adventure-screen_opus_5.5.svg 124.9KB"
+  ],
+  "size": "640x400",
+  "kb": 124.9,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.6,
+  "tracked": true
+ },
+ {
+  "tier": 3,
+  "file": "examples/heretic/13-demo-08.md",
+  "style": "demo-08 Attribute-grid demo screen",
+  "caption": "Hard colour cells around a bitmap title",
+  "why": "Loud rainbow cell frame that survives 150 px and breaks Castaway dominance; static, 53 KB. Two <text> elements fall back to system fonts.",
+  "svgs": [
+   "examples/heretic/assets/13-demo-08.svg"
+  ],
+  "size": "960x400",
+  "kb": 53,
+  "animated": false,
+  "text_only": false,
+  "aspect": 2.4,
+  "tracked": true,
+  "svgDetail": [
+   "examples/heretic/assets/13-demo-08.svg 53.0KB"
+  ]
+ },
+ {
+  "tier": 3,
+  "file": "examples/castaway/101-echomail-reader_opus_5.5.md",
+  "style": "xfer-02 Echomail reader",
+  "caption": "Message-board reader with pixel banner",
+  "why": "The only transfer-family pick; the banner reads, the message body is texture.",
+  "svgs": [
+   "examples/castaway/assets/101-echomail-reader_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/castaway/assets/101-echomail-reader_opus_5.5.svg 63.1KB"
+  ],
+  "size": "668x532",
+  "kb": 63.1,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.26,
+  "tracked": true
+ },
+ {
+  "tier": 3,
+  "file": "examples/ultra-satisfactory/20-player-stack_opus_5.5.md",
+  "style": "trk-11 Media player stack",
+  "caption": "Media player, equaliser and playlist",
+  "why": "An instantly nostalgic skinned-player layout; small details, 1.3:1.",
+  "svgs": [
+   "examples/ultra-satisfactory/assets/20-player-stack_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/ultra-satisfactory/assets/20-player-stack_opus_5.5.svg 110.6KB"
+  ],
+  "size": "415x314",
+  "kb": 110.6,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.32,
+  "tracked": true
+ },
+ {
+  "tier": 3,
+  "file": "examples/ultra-satisfactory/22-poster-nfo_opus_5.5.md",
+  "style": "nfo-03 Poster NFO",
+  "caption": "Shaded NFO poster with release table",
+  "why": "The most NFO-like SVG; tall (1.1:1), so give it a 400 px slot.",
+  "svgs": [
+   "examples/ultra-satisfactory/assets/22-poster-nfo_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/ultra-satisfactory/assets/22-poster-nfo_opus_5.5.svg 55.3KB"
+  ],
+  "size": "830x750",
+  "kb": 55.3,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.11,
+  "tracked": true
+ },
+ {
+  "tier": 3,
+  "file": "examples/heretic/09-pc-12.md",
+  "style": "pc-12 Neon cube field",
+  "caption": "Neon cube field under a wordmark",
+  "why": "A static example (65.6 KB) from a fourth project, with rainbow cubes. It uses 2 <text> elements, so its subtitle depends on fallback fonts.",
+  "svgs": [
+   "examples/heretic/assets/09-pc-12.svg"
+  ],
+  "svgDetail": [
+   "examples/heretic/assets/09-pc-12.svg 65.6KB"
+  ],
+  "size": "960x400",
+  "kb": 65.6,
+  "animated": false,
+  "text_only": false,
+  "aspect": 2.4,
+  "tracked": true
+ },
+ {
+  "tier": 3,
+  "file": "examples/naturalis-historia/03-demo-titles.md",
+  "style": "demo-01 Demo opening titles",
+  "caption": "Demo title card with temple and moon",
+  "why": "The lightest animated pick (21.1 KB); quiet, elegant, and from a fifth project.",
+  "svgs": [
+   "examples/naturalis-historia/assets/03-demo-titles.svg"
+  ],
+  "svgDetail": [
+   "examples/naturalis-historia/assets/03-demo-titles.svg 21.1KB"
+  ],
+  "size": "960x540",
+  "kb": 21.1,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.78,
+  "tracked": true
+ },
+ {
+  "tier": 3,
+  "file": "examples/medialog/05-shaded-block-nfo_opus_5.5.md",
+  "style": "nfo-02 Shaded block NFO",
+  "caption": "Shaded block logo over a timeline",
+  "why": "Strong shaded-block NFO lettering. UNTRACKED in git: commit the set first.",
+  "svgs": [
+   "examples/medialog/assets/05-shaded-block-nfo_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/medialog/assets/05-shaded-block-nfo_opus_5.5.svg 55.7KB"
+  ],
+  "size": "800x656",
+  "kb": 55.7,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.22,
+  "tracked": false
+ },
+ {
+  "tier": 3,
+  "file": "examples/medialog/08-arcade-attract_opus_5.5.md",
+  "style": "mach-08 Arcade attract mode",
+  "caption": "Arcade attract screen with high scores",
+  "why": "A rainbow wordmark in a cabinet bezel. UNTRACKED in git: commit the set first.",
+  "svgs": [
+   "examples/medialog/assets/08-arcade-attract_opus_5.5.svg"
+  ],
+  "svgDetail": [
+   "examples/medialog/assets/08-arcade-attract_opus_5.5.svg 78.8KB"
+  ],
+  "size": "830x520",
+  "kb": 78.8,
+  "animated": true,
+  "text_only": false,
+  "aspect": 1.6,
+  "tracked": false
+ },
+ {
+  "tier": 3,
+  "file": "examples/medialog/10-tractor-feed_opus_5.5.md",
+  "style": "print-04 Tractor-feed printout",
+  "caption": "Green-bar printout banner page",
+  "why": "A wide 2.75:1 strip with punchy lettering. UNTRACKED in git: commit the set first.",
+  "svgs": [
+   "examples/medialog/assets/10-tractor-feed_opus_5.5.svg",
+   "examples/medialog/assets/10-tractor-feed_opus_5.5-cards.svg"
+  ],
+  "svgDetail": [
+   "examples/medialog/assets/10-tractor-feed_opus_5.5.svg 122.3KB",
+   "examples/medialog/assets/10-tractor-feed_opus_5.5-cards.svg 90.0KB"
+  ],
+  "size": "1280x466",
+  "kb": 122.3,
+  "animated": true,
+  "text_only": false,
+  "aspect": 2.75,
+  "tracked": false
+ },
+ {
+  "tier": "text",
+  "file": "examples/castaway/45-newschool-ascii_opus_5.5.md",
+  "style": "nfo-08 Newschool ASCII",
+  "caption": "Dollar-fill blob lettering in plain text",
+  "why": "The best pure-text logo in the repo; 78 columns, copyable, no images needed.",
+  "svgs": [],
+  "svgDetail": [],
+  "size": "78 cols x 24 lines (text)",
+  "kb": 14.9,
+  "animated": false,
+  "text_only": true,
+  "aspect": null,
+  "tracked": true
+ },
+ {
+  "tier": "text",
+  "file": "examples/castaway/07-7bit-outline-nfo_opus_5.5.md",
+  "style": "nfo-04 7-bit outline NFO",
+  "caption": "Slanted outline logo with ASCII island",
+  "why": "A classic slash-and-underscore NFO with dot-leader facts; 78 columns.",
+  "svgs": [],
+  "svgDetail": [],
+  "size": "78 cols x 38 lines (text)",
+  "kb": 10.8,
+  "animated": false,
+  "text_only": true,
+  "aspect": null,
+  "tracked": true
+ },
+ {
+  "tier": "text",
+  "file": "examples/ultra-satisfactory/01-nfo-release_opus_5.5.md",
+  "style": "original six: release-info NFO",
+  "caption": "Shaded block letters with release panels",
+  "why": "The full gaming-NFO layout (logo, RELEASE INFO and PAYLOAD boxes) at 80 columns: the template for a front-page NFO block.",
+  "svgs": [],
+  "svgDetail": [],
+  "size": "80 cols x 44 lines (text)",
+  "kb": 20.7,
+  "animated": false,
+  "text_only": true,
+  "aspect": null,
+  "tracked": true
+ },
+ {
+  "tier": "text",
+  "file": "examples/ultra-satisfactory/32-generated-banner_opus_5.5.md",
+  "style": "nfo-09 Generated banner lettering",
+  "caption": "Stamped block banner and generated lettering",
+  "why": "Two lettering systems stacked; 80 columns.",
+  "svgs": [],
+  "svgDetail": [],
+  "size": "80 cols x 38 lines (text)",
+  "kb": 14,
+  "animated": false,
+  "text_only": true,
+  "aspect": null,
+  "tracked": true
+ },
+ {
+  "tier": "text",
+  "file": "examples/heretic/04-nfo-10.md",
+  "style": "nfo-10 Usenet line art",
+  "caption": "Signed line-art picture, 59 columns",
+  "why": "Short (20 lines, 59 columns): the text pick closest to fitting a phone.",
+  "svgs": [],
+  "svgDetail": [],
+  "size": "59 cols x 20 lines (text)",
+  "kb": 1.2,
+  "animated": false,
+  "text_only": true,
+  "aspect": null,
+  "tracked": true
+ },
+ {
+  "tier": "text",
+  "file": "examples/readme-nfo/37-demo-02.md",
+  "style": "demo-02 Demo READ.ME info file",
+  "caption": "Paged READ.ME index for README.NFO",
+  "why": "Already about this project, with a main index and file crew. It says 152 styles, so it needs 153.",
+  "svgs": [],
+  "svgDetail": [],
+  "size": "76 cols x 47 lines (text)",
+  "kb": 2.6,
+  "animated": false,
+  "text_only": true,
+  "aspect": null,
+  "tracked": true
+ }
+]
