@@ -157,3 +157,13 @@ started,finished,project,filename,style_id,category,model,effort,mode,design_min
 2026-10-01T23:08:45+01:00,2026-10-02T02:11:40+01:00,castaway,114-cpc-demo-screen_opus_5.5.md,demo-10,The demoscene proper,claude-opus-5-5,xhigh,ultracode,32.7,14.6,47.3,182.9,0,165,wf_4996c54a-ca2
 2026-10-01T23:09:22+01:00,2026-10-02T02:09:41+01:00,castaway,115-swapper-floppy_opus_5.5.md,print-01,Physical media and print ephemera,claude-opus-5-5,xhigh,ultracode,31.9,12.9,44.8,180.3,0,176,wf_4996c54a-ca2
 2026-10-01T23:14:36+01:00,2026-10-02T02:18:27+01:00,castaway,116-scene-paperwork_opus_5.5.md,print-05,Physical media and print ephemera,claude-opus-5-5,xhigh,ultracode,31.7,21.1,52.8,183.8,0,188,wf_4996c54a-ca2
+2026-10-10T11:01:41+01:00,2026-10-10T15:53:04+01:00,medialog,01-text-mode-tracker_opus_5.5.md,trk-04,Trackers and chiptune visuals,claude-opus-5-5,max,ultracode,51.4,16.0,67.4,291.4,1,180,wf_d9e652e5-1b5
+2026-10-10T11:01:42+01:00,2026-10-10T15:46:58+01:00,medialog,02-vhs-tape_opus_5.5.md,vap-03,Vaporwave and internet-era aesthetics,claude-opus-5-5,max,ultracode,53.4,7.7,61.2,285.3,1,206,wf_d9e652e5-1b5
+2026-10-10T11:01:42+01:00,2026-10-10T15:47:09+01:00,medialog,03-atari-8-bit-demo_opus_5.5.md,demo-09,The demoscene proper,claude-opus-5-5,max,ultracode,49.3,12.1,61.5,285.4,1,186,wf_d9e652e5-1b5
+2026-10-10T11:01:42+01:00,2026-10-10T15:51:38+01:00,medialog,04-sysop-waiting-screen_opus_5.5.md,xfer-08,How the files moved,claude-opus-5-5,max,ultracode,56.0,9.9,65.9,289.9,1,199,wf_d9e652e5-1b5
+2026-10-10T11:01:42+01:00,2026-10-10T15:47:15+01:00,medialog,05-shaded-block-nfo_opus_5.5.md,nfo-02,NFO and ASCII art schools,claude-opus-5-5,max,ultracode,52.0,9.6,61.6,285.6,1,249,wf_d9e652e5-1b5
+2026-10-10T11:01:42+01:00,2026-10-10T15:46:44+01:00,medialog,06-procedural-effects_opus_5.5.md,demo-03,The demoscene proper,claude-opus-5-5,max,ultracode,50.8,10.3,61.0,285.0,1,225,wf_d9e652e5-1b5
+2026-10-10T11:01:42+01:00,2026-10-10T15:50:53+01:00,medialog,07-piano-roll_opus_5.5.md,trk-10,Trackers and chiptune visuals,claude-opus-5-5,max,ultracode,51.4,13.8,65.1,289.2,1,173,wf_d9e652e5-1b5
+2026-10-10T11:01:42+01:00,2026-10-10T15:50:56+01:00,medialog,08-arcade-attract_opus_5.5.md,mach-08,"Retro machine, console and arcade screens",claude-opus-5-5,max,ultracode,49.9,15.8,65.7,289.2,1,220,wf_d9e652e5-1b5
+2026-10-10T11:01:42+01:00,2026-10-10T15:49:15+01:00,medialog,09-chrome-spheres_opus_5.5.md,pc-03,PC cracktros and keygen intros,claude-opus-5-5,max,ultracode,53.8,9.9,63.7,287.5,1,211,wf_d9e652e5-1b5
+2026-10-10T11:01:42+01:00,2026-10-10T16:02:03+01:00,medialog,10-tractor-feed_opus_5.5.md,print-04,Physical media and print ephemera,claude-opus-5-5,max,ultracode,63.4,13.4,76.8,300.3,1,161,wf_d9e652e5-1b5
