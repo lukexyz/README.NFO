@@ -1,124 +1,94 @@
-import { asciiLettering } from './svg.mjs';
-
+// Kept for rebuilding older saved local-renderer bundles.
 export const runtime = Object.freeze({ engine: 'Local catalogue renderer', model: null, provider: null,
   ai_credits: 0, billing: 'Local CPU; no AI account is billed', author: 'Luke Woods', license: 'MIT' });
 
-export function estimateBatch(count, sampleMs, fresh = 0) {
-  if (fresh) return { minimum: fresh * 60, maximum: fresh * 480, approximate: true };
-  const seconds = Math.max(1, Math.ceil(count * Math.max(sampleMs, 1) / 1000));
-  return { minimum: seconds, maximum: seconds * 3 + 2 };
+// Measured per-header times: Claude Sonnet 39-74 s, Codex 151-378 s (pipeline audit, 2026-11).
+export const SECONDS_PER_HEADER = { claude: [40, 180], codex: [120, 420] };
+export function estimateBatch(count, { jobs = 3, agent = 'claude' } = {}) {
+  const [low, high] = SECONDS_PER_HEADER[agent] || SECONDS_PER_HEADER.codex;
+  const rounds = Math.ceil(count / Math.max(1, Math.min(jobs, count)));
+  return { minimum: rounds * low, maximum: rounds * high, approximate: true };
 }
+export function estimateText(count, options) {
+  const time = estimateBatch(count, options);
+  return `~${Math.max(1, Math.round(time.minimum / 60))}-${Math.ceil(time.maximum / 60)} min estimate`;
+}
+
+const STEP_LABEL = { drawing: 'drawing', repairing: 'repair' };
 
 export function createTerminal({ stream = process.stdout, color = true, now = () => performance.now() } = {}) {
   const colored = color && stream.isTTY && !process.env.NO_COLOR;
   const paint = (value, code = '38;5;141') => colored ? `\x1b[${code}m${value}\x1b[0m` : value;
   const safe = value => String(value).replace(/[\u0000-\u001f\u007f-\u009f]/g, ' ');
-  const width = Math.max(36, Math.min(88, (stream.columns || 90) - 2)), inner = width - 4;
-  const cells = value => [...value].reduce((total, ch) => total + (/\p{Extended_Pictographic}|[\u1100-\u115f\u2329\u232a\u2e80-\ua4cf\uac00-\ud7a3\uf900-\ufaff\ufe10-\ufe6f\uff01-\uff60\uffe0-\uffe6]/u.test(ch) ? 2 : /\p{Mark}/u.test(ch) ? 0 : 1), 0);
-  const clip = (value, size) => {
-    let result='';
-    for (const ch of value) { if (cells(result + ch) > size) break; result += ch; }
-    return result;
+  const cells = value => [...value].reduce((total, ch) => total + (/\p{Extended_Pictographic}|[ᄀ-ᅟ〈〉⺀-꓏가-힣豈-﫿︐-﹯！-｠￠-￦]/u.test(ch) ? 2 : /\p{Mark}/u.test(ch) ? 0 : 1), 0);
+  const clip = (value, size) => { let result = ''; for (const ch of safe(value)) { if (cells(result + ch) > size) break; result += ch; } return result; };
+  const clock = ms => `${Math.floor(ms / 60000)}:${String(Math.floor(ms / 1000) % 60).padStart(2, '0')}`;
+  const pad = number => String(number).padStart(2, '0');
+  let active = false, closed = false, activeRows = 0, started;
+  let count = 0, maximum = 0, completed = 0, skipped = 0, jobs = 3, range = '', project = 'Reading your project';
+  let agent = 'Checking sign-in...', model = '', account = '', gallery = 'Preparing...', estimate = '', notice = '', last = '';
+  const slots = new Map();
+  const line = value => stream.write(`${safe(value).trimEnd()}\n`);
+  const draw = () => {
+    if (!stream.isTTY || closed) return;
+    const width = Math.max(30, Math.min(76, (stream.columns || 78) - 2)), inner = width - 4;
+    const fit = value => cells(safe(value)) > inner ? clip(value, inner - 3) + '...' : safe(value);
+    const row = value => { const text = fit(value); return `${paint('|', '38;5;99')} ${paint(text)}${' '.repeat(Math.max(0, inner - cells(text)))} ${paint('|', '38;5;99')}`; };
+    const tag = '[ README.NFO ]';
+    const top = paint('+--', '38;5;99') + paint(tag, '1;38;5;183') + paint('-'.repeat(width - tag.length - 4) + '+', '38;5;99');
+    const rule = paint('+' + '-'.repeat(width - 2) + '+', '38;5;99');
+    const fraction = count ? (completed + skipped) / count : 0;
+    const size = Math.max(5, Math.min(24, inner - 26));
+    const filled = Math.round(fraction * size);
+    const elapsed = started === undefined ? 0 : Math.max(0, now() - started);
+    const working = [...slots].map(([number, slot]) => `${pad(number)} ${STEP_LABEL[slot.step] || slot.step} ${clock(now() - slot.since)}`).join('  ');
+    const rows = [top,
+      row('///  R E P O S I T O R Y   H E A D E R S'),
+      row(project),
+      row(`DRAW ${count} / ${maximum} STYLES / ${jobs} AT A TIME${range ? ` / ${range}` : ''}`),
+      row(`AGENT    ${agent}`),
+      row(`MODEL    ${model || '-'}`),
+      row(`ACCOUNT  ${account || '-'}`),
+      rule,
+      row(`NOW      ${working || (count && completed + skipped >= count ? 'done' : 'waiting')}`),
+      row(`BATCH [${'#'.repeat(filled)}${'.'.repeat(size - filled)}] ${Math.round(fraction * 100)}% ${completed}/${count} ready${skipped ? `, ${skipped} skipped` : ''}`),
+      row(last || 'Waiting for the first header'),
+      row(notice || `elapsed ${clock(elapsed)}${estimate ? ' / ' + estimate : ''}`),
+      row(`GALLERY  ${gallery}`), rule];
+    stream.write((active ? `\r\x1b[${activeRows - 1}A` : '') + rows.map(text => '\x1b[2K' + text).join('\n'));
+    active = true; activeRows = rows.length;
   };
-  const wrap = value => {
-    let rest=safe(value), rows=[];
-    while (cells(rest)>inner) {
-      let part=clip(rest,inner), split=part.lastIndexOf(' ');
-      if (split>inner/2) part=part.slice(0,split);
-      rows.push(part);rest=rest.slice(part.length).trimStart();
-    }
-    return [...rows,rest];
-  };
-  const row = value => {
-    const text=safe(value), match=text.match(/^([A-Z][A-Z /().>0-9-]*?)(\s{2,})(.*)$/);
-    const content=match ? paint(match[1]) + match[2] + match[3] : text.startsWith('[') ? paint(text) : text;
-    return `${paint('|','38;5;99')} ${content}${' '.repeat(Math.max(0,inner-cells(text)))} ${paint('|','38;5;99')}`;
-  };
-  const border = title => {
-    const tag=title?`[ ${clip(title,inner-4)} ]`:'';
-    return paint('+--','38;5;99') + paint(tag,'1;38;5;141') + paint('-'.repeat(Math.max(0,width-tag.length-4))+'+','38;5;99');
-  };
-  const panel = (title, values) => [border(title), ...values.flatMap(wrap).map(row), border('')];
-  let started, active = false, completed = 0, authoring = false;
-  let totalCount=0, header, headerStarted, activeRows=0, ticks=0, latestLabel='Preparing headers';
-  const finish = () => { if (active) { stream.write('\n'); active=false; } };
-  const show = (title, values) => { finish(); stream.write(panel(title,values).join('\n')+'\n'); };
-  const info = (key,value) => `${key.padEnd(11)} ${safe(value)}`;
-  const drawProgress = () => {
-    const fraction=totalCount?completed/totalCount:0, elapsed=Math.max(0,now()-started);
-    const eta=completed?Math.ceil(elapsed/completed*(totalCount-completed)/1000):null;
-    const headerFraction=header?header.step/header.steps:0;
-    const barWidth=Math.min(28,Math.max(8,inner-20));
-    const bar=(fraction,summary)=>`[${'#'.repeat(Math.round(fraction*barWidth))}${'.'.repeat(barWidth-Math.round(fraction*barWidth))}] ${summary}`;
-    const waiting=header && header.step<header.steps;
-    const spinner=['|','/','-','\\'][ticks++%4];
-    const values=[
-      header?`HEADER ${header.number}/${header.total} / ${header.id}`:'HEADER / WAITING',
-      bar(headerFraction,`${String(Math.round(headerFraction*100)).padStart(3)}% ${header?.step||0}/${header?.steps||5} stages`),
-      header?`${header.label}${waiting?' ['+spinner+']':''} / ${Math.floor(Math.max(0,now()-headerStarted)/1000)}s`:latestLabel,
-      '',
-      `BATCH / ${completed} of ${totalCount} headers saved`,
-      bar(fraction,`${String(Math.round(fraction*100)).padStart(3)}% ${completed}/${totalCount}`),
-      authoring?`elapsed ${Math.floor(elapsed/1000)}s`:eta===null?'ETA measuring':`ETA ${eta}s`,
-    ].map(value=>cells(safe(value))>inner?clip(safe(value),inner-3)+'...':safe(value));
-    const rendered=panel(completed===totalCount?'DRAW COMPLETE':'GENERATING',values);
-    if(stream.isTTY){
-      stream.write((active?`\r\x1b[${activeRows-1}A`:'')+rendered.map(text=>'\x1b[2K'+text).join('\n'));active=true;activeRows=rendered.length;
-    }else stream.write(rendered.join('\n')+'\n');
-    if(completed===totalCount)finish();
-  };
+  const finish = () => { if (active) { stream.write('\n'); active = false; } closed = true; };
+  const plain = value => { if (!stream.isTTY || closed) line(value); };
   return {
-    line(value) { show('LOG', [safe(value).trim()]); }, finish,
-    banner(count, maximum, format) {
-      const art=asciiLettering(inner<59?'NFO':'README.NFO').split('\n').map(line=>line.trimEnd());
-      finish();
-      const artRows=art.flatMap(wrap).map(text=>{
-        const lead=' '.repeat(Math.max(0,Math.floor((inner-cells(text))/2)));
-        return `${paint('|','38;5;99')} ${lead}${paint(text,'1;38;5;141')}${' '.repeat(Math.max(0,inner-cells(text)-lead.length))} ${paint('|','38;5;99')}`;
-      });
-      stream.write([border('README.NFO / HEADER FOUNDRY'),...artRows,row(''),
-        row(clip('R E P O S I T O R Y   H E A D E R   F O U N D R Y',inner)),
-        ...[info('CATALOGUE',`${maximum} distinct styles / DRAW ${count} / ${format.toUpperCase()}`),
-          info('AUTHOR','Luke Woods / README.NFO / MIT'),info('SOURCE','https://github.com/lukexyz/README.NFO')].flatMap(wrap).map(row),border('')].join('\n')+'\n');
-    },
-    runtime(plan, details = {}) {
-      authoring = plan.counts.fresh > 0;
-      show('RUN INFO', [
-        info('ENGINE',`${authoring?'Codex authoring + local rendering':runtime.engine} / Node.js ${process.versions.node}`),
-        info('MIX',`${plan.counts.fresh} newly authored / ${plan.counts.prebuilt} prebuilt`),
-        info('LIBRARY',`${plan.prebuiltLibrarySize} local compositions / ${plan.catalogueSize} catalogue briefs`),
-        info('MODEL',authoring?'Codex configured default; resolved when authoring starts':'None (local rendering)'),
-        info('CREDITS',authoring?details.billing||'Your configured Codex account; usage applies':'0 AI credits / no account is billed'),
-        ...(authoring?[info('USAGE','Exact credits and cost are not measured by README.NFO.')]:[]),
-      ]);
+    line: value => { if (active) finish(); line(value); },
+    finish,
+    banner(total, styles, parallel = 3) { count = total; maximum = styles; jobs = Math.min(parallel, total); closed = false; if (stream.isTTY) draw(); else line(`README.NFO / ${count} new header${count === 1 ? '' : 's'} / ${maximum} styles / ${jobs} at a time`); },
+    project(value) { project = safe(value); draw(); },
+    agent({ label, hint, note, account: billing, model: name }) {
+      agent = `${label}${hint ? ` (${hint})` : ''}${note ? ` / ${note}` : ''}`; account = billing || ''; model = name || '';
+      draw(); plain(`AGENT ${agent}`); if (account) plain(`ACCOUNT ${account}`);
     },
     resolvedRuntime(details) {
-      const rows=[];
-      if(details.model)rows.push(info('MODEL',`${safe(details.model)} (reported by Codex)`));
-      if(details.provider)rows.push(info('PROVIDER',details.provider));
-      if(details.provider && details.provider.toLowerCase()!=='openai')rows.push(info('CREDITS',`Your configured ${safe(details.provider)} provider account; billing depends on that provider.`));
-      if(rows.length)show('AUTHORING SESSION',rows);
+      if (details.model && details.model !== model) { model = safe(details.model); draw(); plain(`MODEL ${model} (reported by the agent)`); }
+      if (details.provider && details.provider.toLowerCase() !== 'openai') { account = `${safe(details.provider)} account; usage applies`; draw(); }
     },
-    estimate(count, sampleMs, offline, fresh = 0) {
-      const time=estimateBatch(count,sampleMs,fresh);
-      const range=fresh?`${Math.ceil(time.minimum/60)}-${Math.ceil(time.maximum/60)} min`:`${time.minimum}-${time.maximum}s`;
-      show(count>15?'LARGE DRAW (>15)':'TIME ESTIMATE',[
-        `~${range}${fresh?' for authoring and rendering':' for local rendering'}${offline?'':'; GitHub lookup adds network time'}.`,
-        fresh?'Rough planning estimate; model speed, workload and retries can change it.':'Estimate uses a timed sample on this machine; npm startup is extra.',
-      ]);
+    plan({ from, to, total, styles }) { range = from === to ? pad(from) : `${pad(from)}-${pad(to)}`; count = total ?? count; maximum = styles ?? maximum; draw(); plain(`DRAW ${range} (${count} header${count === 1 ? '' : 's'})`); },
+    estimate(total, options) { estimate = estimateText(total, options); draw(); plain(`${estimate}; timing depends on the model and plan.`); },
+    destination(value) { gallery = safe(value); draw(); plain(`GALLERY ${gallery}`); },
+    headerStep(pick, step) {
+      started ??= now();
+      const slot = slots.get(pick.number);
+      slots.set(pick.number, { step, since: slot && slot.step === step ? slot.since : now() });
+      draw(); plain(`HEADER ${pad(pick.number)} ${step}`);
     },
-    progress(done, total, label = '') {
-      started ??= now();completed=done;totalCount=total;latestLabel=label;
-      if(!stream.isTTY && done!==0 && done!==total && done%Math.max(1,Math.floor(total/10))!==0)return;
-      drawProgress();
+    headerDone(pick, result, seconds) {
+      slots.delete(pick.number);
+      if (result.ok) { completed++; last = `${pad(pick.number)} ready${seconds !== undefined ? ` in ${seconds} s` : ''}${result.attempts > 1 ? ' after one repair' : ''}`; }
+      else { skipped++; last = `${pad(pick.number)} skipped: ${safe(result.issue || '').slice(0, 120)}`; }
+      draw(); plain(`HEADER ${last}`);
     },
-    headerProgress(details) {
-      started ??= now();totalCount=details.total;
-      if(header?.id!==details.id)headerStarted=now();
-      header=details;
-      if(stream.isTTY || [0,2,5].includes(details.step))drawProgress();
-    },
-    tick() { if(stream.isTTY && totalCount && completed<totalCount)drawProgress(); },
-    warning(value) { show('NOTICE',['! '+safe(value)]); },
+    tick() { if (count && completed + skipped < count) draw(); },
+    warning(value) { notice = '! ' + safe(value); if (closed || !stream.isTTY) line(notice); else draw(); },
   };
 }

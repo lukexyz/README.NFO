@@ -1,12 +1,27 @@
 {
-  "name": "readme.nfo",
-  "version": "0.0.0",
-  "private": true,
+  "name": "readme-nfo",
+  "version": "0.1.0",
   "license": "MIT",
   "engines": {
     "node": ">=22"
   },
-  "description": "Retro scene / keygen / cracktro README headers.",
+  "description": "Retro scene, keygen and cracktro headers for your README, drawn fresh for your project by Claude Code or Codex.",
+  "keywords": [
+    "readme",
+    "header",
+    "svg",
+    "nfo",
+    "ansi",
+    "retro",
+    "claude",
+    "codex",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukexyz/README.NFO.git"
+  },
+  "homepage": "https://github.com/lukexyz/README.NFO#readme",
   "bin": {
     "readme-nfo": "tools/generate.mjs"
   },
@@ -15,21 +30,31 @@
     "tools/generator/",
     "tools/lib/checks.mjs",
     "styles/styles.json",
-    "examples/*/src/",
-    "examples/*/*.md",
+    "styles/samples.json",
     "LICENSE"
   ],
   "scripts": {
     "generate": "node tools/generate.mjs",
     "preview": "node tools/preview.mjs",
-    "gallery": "node examples/dance-vision/src/build-gallery.mjs && node examples/ultra-satisfactory/src/build-gallery.mjs && node examples/castaway/src/build-gallery.mjs && npm run gallery:pliny && npm run gallery:readme-nfo && npm run gallery:heretic && npm run shortlist",
+    "gallery": "node examples/dance-vision/src/build-gallery.mjs && node examples/ultra-satisfactory/src/build-gallery.mjs && node examples/castaway/src/build-gallery.mjs && npm run gallery:pliny && npm run gallery:readme-nfo && npm run gallery:heretic && npm run gallery:medialog-draw-02 && npm run gallery:medialog-logos && npm run gallery:medialog-logos-02 && npm run gallery:medialog-logos-03 && npm run gallery:medialog-logos-04 && npm run gallery:medialog-logos-05 && npm run gallery:medialog-logos-06 && npm run gallery:medialog-logos-07 && npm run shortlist",
     "gallery:pliny": "node tools/pliny-headers/build.mjs",
     "gallery:readme-nfo": "node examples/readme-nfo/src/build-gallery.mjs",
     "gallery:heretic": "node examples/heretic/src/build-gallery.mjs",
+    "gallery:medialog-draw-02": "node examples/medialog-draw-02/src/build-gallery.mjs",
+    "gallery:medialog-logos": "node examples/medialog-logos-01/src/build-gallery.mjs",
+    "gallery:medialog-logos-02": "node examples/medialog-logos-02/src/build-gallery.mjs",
+    "gallery:medialog-logos-03": "node examples/medialog-logos-03/src/build-gallery.mjs",
+    "gallery:medialog-logos-04": "node examples/medialog-logos-04/src/build-gallery.mjs",
+    "gallery:medialog-logos-05": "node examples/medialog-logos-05/src/build-gallery.mjs",
+    "gallery:medialog-logos-06": "node examples/medialog-logos-06/src/build-gallery.mjs",
+    "gallery:medialog-logos-07": "node examples/medialog-logos-07/src/build-gallery.mjs",
     "shortlist": "node tools/build-shortlist.mjs",
     "styles": "node tools/build-styles.mjs",
-    "test": "node --test tools/validate.test.mjs tools/generate.test.mjs tools/cli-display.test.mjs",
-    "validate": "npm test && node tools/validate.mjs"
+    "test": "node --test tools/validate.test.mjs tools/generate.test.mjs tools/cli-display.test.mjs tools/pipeline.test.mjs tools/front-page/check.test.mjs",
+    "validate": "npm test && node tools/build-samples.mjs --check && node tools/validate.mjs",
+    "samples": "node tools/build-samples.mjs",
+    "pack:check": "node tools/check-pack.mjs",
+    "front-page:check": "node tools/front-page/check.mjs"
   },
   "devDependencies": {
     "playwright": "^1.63.0"

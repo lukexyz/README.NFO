@@ -1,0 +1,20 @@
+{
+  "name": "readme-nfo",
+  "interface": {
+    "displayName": "README.NFO"
+  },
+  "plugins": [
+    {
+      "name": "readme-nfo",
+      "source": {
+        "source": "local",
+        "path": "./plugins/readme-nfo"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

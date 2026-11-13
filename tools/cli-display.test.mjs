@@ -8,9 +8,8 @@ import { main } from './generate.mjs';
 import { parseArguments, normaliseProject } from './generator/project.mjs';
 import { catalogue } from './generator/catalogue.mjs';
 import { renderDesign, designs } from './generator/designs.mjs';
-import { generateBatch } from './generator/batch.mjs';
-import { createTerminal } from './generator/terminal.mjs';
-import { inspectAuthorRuntime, createRuntimeReporter } from './generator/codex-runtime.mjs';
+import { createTerminal, estimateBatch, estimateText } from './generator/terminal.mjs';
+import { createRuntimeReporter } from './generator/agents.mjs';
 import { browserCommand, openGallery } from './generator/browser.mjs';
 
 const project=normaliseProject({fullName:'someone/display',name:'DISPLAY',description:'Original headers for a project.',languages:['JavaScript'],license:'MIT'});
@@ -21,29 +20,20 @@ function cleanup(directory) {
   assert.ok(relative.startsWith('readme-nfo-display-')&&!relative.includes(path.sep));
   fs.rmSync(directory,{recursive:true,force:true});
 }
-function loginRunner(message,code=0) {
-  return (command,args,options)=>{
-    assert.equal(command,'codex');assert.deepEqual(args,['login','status']);assert.equal(options.shell,false);
-    const child=new EventEmitter();child.stdout=new EventEmitter();child.stderr=new EventEmitter();child.kill=()=>{};
-    setImmediate(()=>{child.stderr.emit('data',message);child.emit('close',code);});return child;
-  };
-}
+const statuses={claude:{id:'claude',label:'Claude Code',ready:true,installed:true,account:'Claude Max plan'},codex:{id:'codex',label:'Codex',ready:false,installed:false,hint:'Install Codex'}};
+const fixtureDriver=status=>({id:status.id,label:status.label,modelLabel:'fixture-model',account:status.account,
+  author:async(prompt,schema,directory,{onRuntime})=>{
+    onRuntime({model:'claude-fixture'});
+    const id=schema.properties.candidates.items.properties.id.enum[0];
+    return {candidates:[{id,svg:renderDesign(designs[0],normaliseProject({fullName:'display',name:'display'})),artDecisions:['Fixture emblem','Fixture layout']}]};
+  }});
+const fixtureDeps=(directory,stream,extra={})=>({cwd:directory,stream,errStream:capture(),detect:async()=>statuses,driverFactory:fixtureDriver,openBrowser:async()=>true,interactive:false,...extra});
 
-test('count bounds follow the canonical catalogue and display flags work on new and resumed runs',()=>{
+test('count bounds follow the canonical catalogue and display flags parse',()=>{
   for(const count of [15,16,catalogue.length])assert.equal(parseArguments(['someone/display',`-${count}`]).count,count);
   assert.throws(()=>parseArguments(['someone/display',`-${catalogue.length+1}`]),new RegExp(`1 and ${catalogue.length}`));
-  const options=parseArguments(['--resume','saved','--no-open','--no-color']);
+  const options=parseArguments(['more','--no-open','--no-color']);
   assert.equal(options.open,false);assert.equal(options.color,false);
-});
-
-test('account reporting identifies auth type without exposing a key or running inference',async()=>{
-  const chatgpt=await inspectAuthorRuntime({env:{},runner:loginRunner('Logged in using ChatGPT')});
-  assert.equal(chatgpt.auth,'chatgpt');assert.match(chatgpt.billing,/Your signed-in ChatGPT/);
-  const api=await inspectAuthorRuntime({env:{},runner:loginRunner('Logged in using an API key: sk-secret')});
-  assert.equal(api.auth,'api-key');assert.doesNotMatch(JSON.stringify(api),/sk-secret/);
-  const override=await inspectAuthorRuntime({env:{CODEX_API_KEY:'sk-hidden'},runner:()=>assert.fail('Override needs no probe')});
-  assert.equal(override.auth,'api-key');assert.doesNotMatch(JSON.stringify(override),/sk-hidden/);
-  assert.equal((await inspectAuthorRuntime({env:{},runner:loginRunner('Not logged in',1)})).auth,'unknown');
 });
 
 test('model reporting handles split chunks and ignores model-like text in the prompt',()=>{
@@ -54,35 +44,42 @@ test('model reporting handles split chunks and ignores model-like text in the pr
   assert.deepEqual(updates,[{model:'gpt-test',provider:'openai'}]);
 });
 
-test('terminal keeps incomplete authoring progress truthful and respects disabled colours',()=>{
-  const stream=capture(true);let elapsed=0;
-  const terminal=createTerminal({stream,color:false,now:()=>elapsed});
-  terminal.banner(16,catalogue.length,'all');
-  terminal.runtime({counts:{fresh:15,prebuilt:1}},{billing:'Your signed-in ChatGPT account / Codex allowance'});
-  terminal.estimate(16,5,true,15);terminal.progress(1,16,'Saved nfo-01');elapsed=10000;terminal.tick();terminal.finish();
-  const output=stream.read();assert.match(output,/LARGE DRAW \(>15\)/);assert.match(output,/Rough planning estimate/);
-  assert.match(output,/elapsed 10s/);assert.doesNotMatch(output,/100%|0 AI credits|\x1b\[(?:3[0-9]|0)m/);
-  terminal.resolvedRuntime({provider:'custom-gateway'});
-  assert.match(stream.read(),/configured custom-gateway provider account/);
+test('time estimates are honest: per agent, per round of parallel jobs',()=>{
+  assert.deepEqual(estimateBatch(10,{jobs:3,agent:'claude'}),{minimum:160,maximum:720,approximate:true});
+  assert.deepEqual(estimateBatch(10,{jobs:1,agent:'codex'}),{minimum:1200,maximum:4200,approximate:true});
+  assert.equal(estimateText(2,{jobs:3,agent:'claude'}),'~1-3 min estimate');
 });
 
-test('current-header stages and saved batch progress stay separate while authoring waits',()=>{
+test('terminal shows the agent row, parallel headers and truthful batch progress',()=>{
   const stream=capture(true);let elapsed=0;
   const terminal=createTerminal({stream,color:false,now:()=>elapsed});
-  terminal.runtime({counts:{fresh:3,prebuilt:0},prebuiltLibrarySize:26,catalogueSize:153});
-  terminal.progress(0,3,'Preparing');
-  terminal.headerProgress({id:'nfo-01',number:1,total:3,step:2,steps:5,label:'Authoring SVG'});
-  elapsed=60000;terminal.tick();
-  assert.match(stream.read(),/HEADER 1\/3 \/ nfo-01/);
-  assert.match(stream.read(),/40% 2\/5 stages/);
-  assert.match(stream.read(),/BATCH \/ 0 of 3 headers saved/);
-  assert.doesNotMatch(stream.read(),/100%/);
-  terminal.headerProgress({id:'nfo-01',number:1,total:3,step:5,steps:5,label:'Saved'});
-  terminal.progress(1,3,'Saved nfo-01');
-  terminal.headerProgress({id:'nfo-02',number:2,total:3,step:0,steps:5,label:'Queued'});
-  assert.match(stream.read(),/33% 1\/3/);
-  assert.match(stream.read(),/HEADER 2\/3 \/ nfo-02/);
+  terminal.banner(10,catalogue.length,3);
+  terminal.agent({label:'Claude Code',hint:'switch: --codex',account:'Claude Max plan',model:'sonnet'});
+  terminal.plan({from:11,to:20,total:10,styles:153});terminal.estimate(10,{jobs:3,agent:'claude'});
+  terminal.headerStep({number:11},'drawing');terminal.headerStep({number:12},'drawing');
+  elapsed=61000;terminal.headerStep({number:13},'repairing');terminal.tick();
+  const output=stream.read();
+  assert.match(output,/AGENT    Claude Code \(switch: --codex\)/);
+  assert.match(output,/DRAW 10 \/ 153 STYLES \/ 3 AT A TIME \/ 11-20/);
+  assert.match(output,/NOW      11 drawing 1:01  12 drawing 1:01  13 repair 0:00/);
+  assert.match(output,/0% 0\/10 ready/);assert.doesNotMatch(output,/100%|\x1b\[(?:3[0-9]|0)m/);
+  terminal.headerDone({number:11},{ok:true,attempts:2},74);terminal.headerDone({number:12},{ok:false,issue:'Bad SVG'});
+  assert.match(stream.read(),/20% 1\/10 ready, 1 skipped/);
+  assert.match(stream.read(),/12 skipped: Bad SVG/);
+  terminal.resolvedRuntime({provider:'custom-gateway'});
+  assert.match(stream.read(),/custom-gateway account/);
   terminal.finish();
+});
+
+test('redirected output prints one plain line per event and no cursor movement',()=>{
+  const stream=capture(false);
+  const terminal=createTerminal({stream,color:true});
+  terminal.banner(2,153,3);terminal.agent({label:'Codex',hint:'switch: --claude',account:'ChatGPT sign-in'});
+  terminal.plan({from:1,to:2,total:2,styles:153});terminal.headerStep({number:1},'drawing');terminal.headerDone({number:1},{ok:true,attempts:1},40);
+  const output=stream.read();
+  assert.doesNotMatch(output,/\x1b/);
+  assert.match(output,/README\.NFO \/ 2 new headers \/ 153 styles \/ 2 at a time/);
+  assert.match(output,/^AGENT Codex \(switch: --claude\)$/m);assert.match(output,/^HEADER 01 ready in 40 s$/m);
 });
 
 test('browser launcher uses argument arrays and safely passes Windows paths through the environment',async()=>{
@@ -99,49 +96,75 @@ test('browser launcher uses argument arrays and safely passes Windows paths thro
   }
 });
 
-test('a full local-library CLI run warns, completes progress and opens only the finished gallery',async()=>{
-  const directory=temporary(),stream=capture();
-  try {
-    const fixture=path.join(directory,'project.json'),output=path.join(directory,'headers');
-    fs.writeFileSync(fixture,JSON.stringify(project));let opened=0;
-    const result=await main(['--project',fixture,`-${designs.length}`,'--creativity','0','--seed','display','--out',output],{stream,
-      inspectRuntime:()=>assert.fail('Local runs need no Codex account probe'),
-      openBrowser:async file=>{opened++;assert.equal(file,path.join(output,'index.html'));assert.ok(fs.existsSync(file));
-        assert.equal(JSON.parse(fs.readFileSync(path.join(output,'manifest.json'))).status,'complete');return true;},
-    });
-    assert.equal(result.bundle.picks.length,designs.length);assert.equal(opened,1);
-    assert.match(stream.read(),/0 AI credits/);assert.match(stream.read(),/LARGE DRAW \(>15\)/);
-    assert.match(stream.read(),new RegExp(`100% ${designs.length}/${designs.length}`));
-    assert.match(stream.read(),/GALLERY\s+file:/);assert.match(stream.read(),/Opened your default browser/);
-  } finally {cleanup(directory);}
+test('interactive output stays in one fixed frame across ticks, model updates and parallel headers',()=>{
+  for(const columns of [90,42]) {
+    let row=0,highWater=0,elapsed=0;const chunks=[];
+    const stream={isTTY:true,columns,write:value=>{
+      chunks.push(value);
+      for(const token of value.match(/\x1b\[[0-9;]*[A-Za-z]|\n|[^\n\x1b]+/g)||[]) {
+        if(token==='\n')row++;
+        else if(/^\x1b\[\d+A$/.test(token))row-=Number(token.slice(2,-1));
+        highWater=Math.max(highWater,row);
+        assert.ok(row>=0,'Updates never move above the original frame');
+      }
+    }};
+    const terminal=createTerminal({stream,color:true,now:()=>elapsed});
+    terminal.banner(10,153,3);terminal.project('lukexyz/Flightvision');
+    terminal.agent({label:'Claude Code',hint:'switch: --codex',account:'Claude Max plan',model:'sonnet'});
+    terminal.plan({from:1,to:10,total:10,styles:153});terminal.estimate(10,{jobs:3,agent:'claude'});terminal.destination('file:///D:/headers/index.html');
+    for(const number of [1,2,3])terminal.headerStep({number},'drawing');
+    for(let index=0;index<60;index++){elapsed+=1000;terminal.tick();}
+    terminal.resolvedRuntime({model:'fixture-model'});
+    terminal.warning('Fixture notice');
+    terminal.headerDone({number:1},{ok:true,attempts:1},60);
+    terminal.headerStep({number:4},'drawing');
+    assert.equal(highWater,13,'The full running display occupies exactly 14 rows');
+    for(const chunk of chunks) {
+      const plain=chunk.replace(/\x1b\[[0-9;]*[A-Za-z]/g,'').replace(/^\r/,'');
+      assert.equal(plain.split('\n').length,14);
+      assert.ok(plain.split('\n').every(line=>line.length<=columns-2),'No wrapping that would break cursor positioning');
+    }
+    const last=chunks.at(-1).replace(/\x1b\[[0-9;]*[A-Za-z]/g,'');
+    assert.match(last,/01 ready in 60 s/);assert.match(last,/10% 1\/10/);
+    terminal.finish();assert.equal(highWater,14);
+  }
 });
 
-test('fresh CLI display reports resolved model, account and saved progress without invoking an AI service',async()=>{
-  const directory=temporary(),stream=capture();
-  try {
-    const fixture=path.join(directory,'project.json');fs.writeFileSync(fixture,JSON.stringify(project));
-    const observed=[];
-    const batch=(data,options,hooks)=>generateBatch(data,options,{...hooks,authorCheck:async()=>{},
-      author:async(data,picks,output,{onRuntime,onImage})=>{
-        onRuntime({model:'gpt-test',provider:'openai'});
-        const result=new Map();
-        for(const pick of picks){result.set(pick.id,{svg:renderDesign(designs[0],data),artDecisions:['Original emblem','Project-specific composition']});onImage(pick);}
-        return result;
-      },onProgress:(done,total,label)=>{observed.push(done);hooks.onProgress(done,total,label);},
-    });
-    await main(['--project',fixture,'-3','--creativity','1','--out',path.join(directory,'headers'),'--no-open'],{stream,batch,
-      inspectRuntime:async()=>({billing:'Your signed-in ChatGPT account / Codex allowance'}),openBrowser:()=>assert.fail('Disabled browser must stay closed')});
-    assert.deepEqual(observed,[0,1,2,3]);assert.match(stream.read(),/gpt-test \(reported by Codex\)/);
-    assert.match(stream.read(),/Your signed-in ChatGPT account/);assert.doesNotMatch(stream.read(),/0 AI credits/);
-  } finally {cleanup(directory);}
-});
-
-test('failed generation never opens a browser and a launcher failure retains a usable gallery link',async()=>{
+test('nothing is written when no agent is signed in, and the error names both sign-ins',async()=>{
   const directory=temporary();
   try {
-    const fixture=path.join(directory,'project.json');fs.writeFileSync(fixture,JSON.stringify(project));
-    await assert.rejects(main(['--project',fixture,'-1'],{stream:capture(),batch:async()=>{throw new Error('Failed batch');},openBrowser:()=>assert.fail('No browser on failed batch')}),/Failed batch/);
-    const stream=capture();await main(['--project',fixture,'-1','--creativity','0','--out',path.join(directory,'headers')],{stream,openBrowser:async()=>false});
-    assert.match(stream.read(),/GALLERY\s+file:/);assert.match(stream.read(),/Could not open the default browser/);
+    fs.writeFileSync(path.join(directory,'package.json'),JSON.stringify({name:'display'}));
+    const none={claude:{...statuses.claude,ready:false,hint:'run claude, then /login'},codex:{...statuses.codex}};
+    await assert.rejects(main(['-1'],fixtureDeps(directory,capture(),{detect:async()=>none})),/Claude Code: run claude, then \/login[\s\S]*Codex: Install Codex/);
+    await assert.rejects(main(['--claude','-1'],fixtureDeps(directory,capture(),{detect:async()=>none})),/Claude Code is not ready/);
+    assert.equal(fs.existsSync(path.join(directory,'readme-headers')),false);
+  } finally {cleanup(directory);}
+});
+
+test('a CLI run opens the gallery at once, reports progress and ends with next-step lines',async()=>{
+  const directory=temporary(),stream=capture();
+  try {
+    fs.writeFileSync(path.join(directory,'package.json'),JSON.stringify({name:'display',description:'Original headers for a project.'}));
+    let opened=0;
+    const result=await main(['-3','--seed','display'],fixtureDeps(directory,stream,{openBrowser:async file=>{
+      opened++;assert.equal(file,path.join(directory,'readme-headers','index.html'));
+      assert.match(fs.readFileSync(file,'utf8'),/DRAWING&hellip;/,'opened before headers land');return true;}}));
+    assert.equal(opened,1);assert.equal(result.headers.length,3);
+    const output=stream.read();
+    assert.match(output,/MODEL claude-fixture \(reported by the agent\)/);
+    assert.match(output,/READY\s+3 of 3 headers \(01-03\)/);
+    assert.match(output,/GALLERY\s+file:/);
+    assert.match(output,/INSTALL\s+npx readme-nfo use <N>/);assert.match(output,/MORE\s+npx readme-nfo more/);
+    assert.doesNotMatch(output,/RETRY/);
+  } finally {cleanup(directory);}
+});
+
+test('a failed browser launch keeps a usable gallery link; --no-open never launches',async()=>{
+  const directory=temporary();
+  try {
+    fs.writeFileSync(path.join(directory,'package.json'),JSON.stringify({name:'display'}));
+    const stream=capture();await main(['-1'],fixtureDeps(directory,stream,{openBrowser:async()=>false}));
+    assert.match(stream.read(),/Could not open your browser/);assert.match(stream.read(),/GALLERY\s+file:/);
+    await main(['more','-1','--no-open'],fixtureDeps(directory,capture(),{openBrowser:()=>assert.fail('Disabled browser must stay closed')}));
   } finally {cleanup(directory);}
 });

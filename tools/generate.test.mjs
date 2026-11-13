@@ -10,9 +10,9 @@ import { parseRepository, parseArguments, normaliseProject, fetchProject } from 
 import { designs, selectDesigns, renderDesign } from './generator/designs.mjs';
 import { createBundle, defaultOutput, writeBundle } from './generator/output.mjs';
 import { localReferences, localTarget, svgPolicyIssues } from './lib/checks.mjs';
-import { loadCatalogue, makePlan, splitCounts, readHistory } from './generator/hybrid-catalogue.mjs';
-import { generateBatch, readSavedPlan } from './generator/batch.mjs';
-import { validateResponse, imageIssues, authorImages } from './generator/author.mjs';
+import { loadCatalogue, makePlan } from './generator/hybrid-catalogue.mjs';
+import { galleryHtml } from './generator/hybrid-output.mjs';
+import { validateResponse, imageIssues } from './generator/author.mjs';
 
 const project = normaliseProject({ full_name: 'someone/sample', name: 'SAMPLE', description: 'A useful project with a real description.',
   languages: ['JavaScript', 'Python'], topics: ['retro', 'tools'], sections: ['Install', 'Examples'], stars: 123, forks: 7, license: 'MIT' });
@@ -33,10 +33,17 @@ test('repository parsing supports URL, shorthand and .git while excluding non-re
   }
 });
 
-test('CLI shorthand and explicit flags agree; invalid and ambiguous inputs fail', () => {
+test('CLI shorthand and explicit flags agree; subcommands, agents and invalid inputs', () => {
   assert.deepEqual(parseArguments(['github.com/someone/sample', '-10']), parseArguments(['--repo=github.com/someone/sample', '--count', '10']));
+  assert.equal(parseArguments([]).command, 'run');
+  assert.equal(parseArguments([]).repo, undefined, 'no argument means the current folder');
   assert.equal(parseArguments(['--project', 'project.json']).count, 10);
-  for (const args of [[], ['someone/sample', '-0'], ['someone/sample', '-999'], ['someone/sample', '--count', '2.5'], ['someone/sample', '--count'], ['--repo', 'someone/sample', '--project', 'x.json'], ['someone/sample', '--force'], ['someone/sample', '-10', '--count', '6']]) assert.throws(() => parseArguments(args));
+  assert.deepEqual([parseArguments(['more', '-4']).command, parseArguments(['more', '-4']).count], ['more', 4]);
+  assert.deepEqual([parseArguments(['use', '14']).command, parseArguments(['use', '14']).number], ['use', 14]);
+  assert.equal(parseArguments(['--codex', '--model', 'gpt-x', '--jobs', '2']).agent, 'codex');
+  assert.equal(parseArguments(['--jobs', '2']).jobs, 2);
+  assert.equal(parseArguments(['--json']).json, true);
+  for (const args of [['someone/sample', '-0'], ['someone/sample', '-999'], ['someone/sample', '--count', '2.5'], ['someone/sample', '--count'], ['--repo', 'someone/sample', '--project', 'x.json'], ['someone/sample', '--force'], ['someone/sample', '-10', '--count', '6'], ['use'], ['use', 'x'], ['--claude', '--codex'], ['--jobs', '0'], ['--jobs', '9'], ['--model', 'a b'], ['a/b', 'c/d']]) assert.throws(() => parseArguments(args), undefined, JSON.stringify(args));
 });
 
 test('fetch uses real metadata, README description fallback and byte-ranked languages', async () => {
@@ -45,19 +52,20 @@ test('fetch uses real metadata, README description fallback and byte-ranked lang
     calls.push({ url, options });
     if (url.endsWith('/languages')) return response({ Python: 2, JavaScript: 9 });
     if (url.endsWith('/readme')) return response('# Sample\n\nThis is the actual project description.\n\n## Installation\n## [Usage](#usage)\n', 200, true);
-    return response({ full_name: 'someone/sample', name: 'Sample', description: null, stargazers_count: 42, forks_count: 3, license: { spdx_id: 'MIT' }, topics: ['sample'] });
+    return response({ full_name: 'someone/sample', url: 'https://api.github.com/repos/someone/sample', name: 'Sample', description: null, stargazers_count: 42, forks_count: 3, license: { spdx_id: 'MIT' }, topics: ['sample'] });
   } });
   assert.equal(result.description, 'This is the actual project description.');
   assert.deepEqual(result.languages, ['JavaScript', 'Python']);
   assert.deepEqual(result.sections, ['Installation', 'Usage']);
   assert.equal(result.stars, 42);
+  assert.equal(result.url, 'https://github.com/someone/sample');
   assert.ok(calls.every(call => call.options.headers.Authorization === 'Bearer test-token'));
   assert.equal(calls.length, 3);
 });
 
 test('missing optional GitHub data keeps useful metadata; access failures explain the remedy', async () => {
   const warnings = [];
-  const result = await fetchProject(parseRepository('someone/sample'), { token: undefined, warn: message => warnings.push(message), fetcher: async url => {
+  const result = await fetchProject(parseRepository('someone/sample'), { env: {}, tokenSource: async () => undefined, warn: message => warnings.push(message), fetcher: async url => {
     if (url.endsWith('/languages')) return response({}, 403);
     if (url.endsWith('/readme')) return response('', 404, true);
     return response({ full_name: 'someone/sample', language: 'Rust' });
@@ -66,8 +74,8 @@ test('missing optional GitHub data keeps useful metadata; access failures explai
   assert.equal(result.stars, null);
   assert.equal(result.license, 'UNSPECIFIED');
   assert.equal(warnings.length, 1);
-  for (const [status, pattern] of [[404, /not found or private/], [403, /rate limit/], [429, /rate limit/], [500, /HTTP 500/]]) {
-    await assert.rejects(fetchProject(parseRepository('someone/sample'), { fetcher: async () => response({}, status) }), pattern);
+  for (const [status, pattern] of [[404, /not found or private.*project folder/], [403, /rate limit/], [429, /rate limit/], [500, /HTTP 500/]]) {
+    await assert.rejects(fetchProject(parseRepository('someone/sample'), { env: {}, tokenSource: async () => undefined, fetcher: async () => response({}, status) }), pattern);
   }
 });
 
@@ -99,7 +107,7 @@ test('bundle is portable, records the data and seed, and refuses to overwrite ou
   } finally { removeTemporary(directory); }
 });
 
-test('executable generates an offline batch and reports errors with a nonzero exit', () => {
+test('executable rejects retired options without creating a gallery and shows the new help', () => {
   const directory = temporary();
   try {
     const cli = fileURLToPath(new URL('./generate.mjs', import.meta.url));
@@ -107,45 +115,47 @@ test('executable generates an offline batch and reports errors with a nonzero ex
     fs.writeFileSync(fixture, JSON.stringify(project));
     const args = ['--project', fixture, '-10', '--creativity', '0', '--seed', 'cli', '--out', path.join(directory, 'out'), '--no-open'];
     const result = spawnSync(process.execPath, [cli, ...args], { encoding: 'utf8', cwd: directory });
-    assert.equal(result.status, 0, result.stderr);
-    assert.match(result.stdout, /Created 10 headers/);
-    assert.ok(fs.existsSync(path.join(directory, 'out', 'index.html')));
-    const rerun = spawnSync(process.execPath, [cli, ...args], { encoding: 'utf8', cwd: directory });
-    assert.equal(rerun.status, 1);
-    assert.match(rerun.stderr, /already exists/);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /Every header is freshly authored.*Remove the creativity option/);
+    assert.equal(fs.existsSync(path.join(directory, 'out')), false);
+    const resume = spawnSync(process.execPath, [cli, '--resume', 'x', '--json'], { encoding: 'utf8', cwd: directory });
+    assert.equal(resume.status, 1);
+    assert.match(JSON.parse(resume.stdout).error, /npx readme-nfo retry/);
     const help = spawnSync(process.execPath, [cli, '--help'], { encoding: 'utf8', cwd: directory });
     assert.equal(help.status, 0);
-    assert.match(help.stdout, /--creativity/);
-    assert.match(help.stdout, /reusable/);
+    for (const text of ['npx readme-nfo more', 'npx readme-nfo use 3', '--claude, --codex', '--jobs', 'brief', 'check', 'not GitHub']) assert.ok(help.stdout.includes(text), text);
+    assert.doesNotMatch(help.stdout, /creativity|prebuilt|standalone|--resume/i);
   } finally { removeTemporary(directory); }
 });
 
-test('creativity is a batch fraction, including the single-dash alias, not an invalid or clamped temperature', () => {
-  assert.deepEqual(splitCounts(10, .9), {fresh:9,prebuilt:1});
-  assert.deepEqual(splitCounts(10, 0), {fresh:0,prebuilt:10});
-  assert.deepEqual(splitCounts(10, 1), {fresh:10,prebuilt:0});
-  assert.deepEqual(splitCounts(12, .9), {fresh:11,prebuilt:1});
-  assert.equal(parseArguments(['someone/sample']).creativity,1);
-  assert.equal(parseArguments(['someone/sample','-creativity','0.9']).creativity,.9);
-  for(const value of ['-1','1.1','NaN','Infinity','banana'])assert.throws(()=>parseArguments(['someone/sample','--creativity',value]));
+test('all spellings of the retired creativity setting give actionable guidance', () => {
+  assert.equal('creativity' in parseArguments(['someone/sample']),false);
+  for(const value of ['0','0.9','1','banana'])for(const flag of ['--creativity','-creativity']) {
+    assert.throws(()=>parseArguments(['someone/sample',flag,value]),/Remove the creativity option/);
+    assert.throws(()=>parseArguments(['someone/sample',`${flag}=${value}`]),/Remove the creativity option/);
+  }
   assert.throws(()=>parseArguments(['someone/sample','--resume','old']));
 });
 
-test('hybrid draws cover the catalogue, exclude past styles, never substitute, and repeat with the same inputs', () => {
-  const catalogue=loadCatalogue();assert.ok(catalogue.distinct.length>=152);
-  const used=new Set(['nfo-01','trk-07','print-02']);
-  const first=makePlan(project,{count:10,creativity:.9,seed:'hybrid',used,catalogue});
-  assert.deepEqual(first.counts,{fresh:9,prebuilt:1});
-  assert.equal(first.prebuiltLibrarySize,designs.length);
-  assert.equal(new Set(first.options.map(p=>p.id)).size,10);
-  assert.ok(first.options.every(p=>!used.has(p.id)&&!p.style.duplicate_of));
-  assert.deepEqual(first,makePlan(project,{count:10,creativity:.9,seed:'hybrid',used,catalogue}));
-  const full=makePlan(project,{count:catalogue.distinct.length,creativity:1,seed:'all',catalogue});
-  assert.equal(full.options.length,catalogue.distinct.length);
+test('every draw is freshly authored across the full catalogue, excludes used styles and numbers on', () => {
+  const catalogue = loadCatalogue(); assert.ok(catalogue.distinct.length >= 152);
+  const used = new Set(['nfo-01', 'trk-07', 'print-02']);
+  const first = makePlan(project, { count: 10, seed: 'fresh', used, catalogue });
+  assert.ok(first.options.every(p => p.mode === 'fresh' && !p.presetId));
+  assert.equal('creativity' in first, false);
+  assert.equal(new Set(first.options.map(p => p.id)).size, 10);
+  assert.ok(first.options.every(p => !used.has(p.id) && !p.style.duplicate_of));
+  assert.deepEqual(first, makePlan(project, { count: 10, seed: 'fresh', used, catalogue }));
+  assert.deepEqual(first.options.map(p => p.number), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const later = makePlan(project, { count: 3, seed: 'more', start: 11, catalogue });
+  assert.deepEqual(later.options.map(p => p.slug.slice(0, 3)), ['11-', '12-', '13-']);
+  const full = makePlan(project, { count: catalogue.distinct.length, seed: 'all', catalogue });
+  assert.equal(full.options.length, catalogue.distinct.length);
+  assert.throws(() => makePlan(project, { count: 1, used: new Set(catalogue.distinct.map(style => style.id)), catalogue }), /Every one of the/);
 });
 
 test('author response validation rejects missing, repeated, unsafe and malformed SVGs', () => {
-  const options=makePlan(project,{count:2,creativity:1,seed:'check'}).options;
+  const options=makePlan(project,{count:2,seed:'check'}).options;
   const image=renderDesign(designs[0],project);
   const candidates=options.map(p=>({id:p.id,svg:image,artDecisions:['A project metaphor','A specific layout']}));
   assert.equal(validateResponse({candidates},options,project).size,2);
@@ -156,96 +166,15 @@ test('author response validation rejects missing, repeated, unsafe and malformed
   assert.ok(imageIssues('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><g></svg>').length);
 });
 
-test('standalone history excludes both new manifests and legacy preset names and fails on exhaustion',async()=>{
-  const directory=temporary();
-  const dependencies={authorCheck:async()=>{throw new Error('Should not invoke author');},log:()=>{}};
-  try {
-    const one=await generateBatch(project,{count:10,creativity:0,seed:'one',out:path.join(directory,'one')},dependencies);
-    const two=await generateBatch(project,{count:10,creativity:0,seed:'two',out:path.join(directory,'two')},dependencies);
-    assert.ok(two.plan.options.every(p=>!one.plan.options.some(old=>old.id===p.id)));
-    const history=readHistory(project,directory);assert.equal(history.used.size,20);
-    const remaining=designs.length-20;
-    await assert.rejects(generateBatch(project,{count:remaining+1,creativity:0,out:path.join(directory,'three')},dependencies),new RegExp(`Only ${remaining} unused`));
-    assert.equal(fs.existsSync(path.join(directory,'three')),false);
-    const repeat=await generateBatch(project,{count:10,creativity:0,allowRepeats:true,out:path.join(directory,'repeat')},dependencies);
-    assert.equal(repeat.plan.options.length,10);
-    const legacy=path.join(directory,'legacy');fs.mkdirSync(legacy);fs.writeFileSync(path.join(legacy,'manifest.json'),JSON.stringify({project:project.fullName,options:[{id:'tracker'}]}));
-    assert.ok(readHistory(project,directory).used.has('trk-07'));
-  } finally {removeTemporary(directory);}
-});
-
-test('standalone draws never relabel a generic fallback as an unimplemented catalogue scene',()=>{
+test('catalogue scenes without local renderers are still freshly authored',()=>{
   const catalogue=loadCatalogue();
   for(const id of ['vap-04','mach-09','vap-03','xfer-07']) {
     assert.ok(catalogue.byId.has(id));
     assert.ok(!designs.some(design=>design.styleId===id),`${id} requires actual authoring; no generic preset`);
-    const draw=makePlan(project,{count:1,creativity:1,seed:id,used:new Set(catalogue.distinct.filter(style=>style.id!==id).map(style=>style.id)),catalogue});
+    const draw=makePlan(project,{count:1,seed:id,used:new Set(catalogue.distinct.filter(style=>style.id!==id).map(style=>style.id)),catalogue});
     assert.equal(draw.options[0].id,id);assert.equal(draw.options[0].mode,'fresh');
   }
-  assert.throws(()=>makePlan(project,{count:catalogue.distinct.length,creativity:0,catalogue}),/distinct compositions.*--creativity 1/);
   assert.equal(new Set(designs.map(design=>design.render)).size,designs.length);
-});
-
-test('a failed author preserves its draw, resumes without fetching or redrawing, and exports rebuilding sources',async()=>{
-  const directory=temporary(),output=path.join(directory,'batch');let checks=0;
-  try {
-    const deps={log:()=>{},authorCheck:async()=>{checks++;},author:async()=>{throw new Error('Test author failure');}};
-    await assert.rejects(generateBatch(project,{count:10,creativity:.9,seed:'resume',out:output},deps),/Test author/);
-    const original=fs.readFileSync(path.join(output,'draw.json'),'utf8');
-    assert.equal(fs.existsSync(path.join(output,'index.html')),false);
-    const saved=readSavedPlan(output);assert.deepEqual(saved.plan.counts,{fresh:9,prebuilt:1});
-    deps.author=async(p,options)=>new Map(options.map(pick=>[pick.id,{svg:renderDesign(designs[0],p),artDecisions:['Project architecture motif','Custom information layout']}])) ;
-    const finished=await generateBatch(project,{resume:output},deps);
-    assert.equal(fs.readFileSync(path.join(output,'draw.json'),'utf8'),original);
-    const manifest=JSON.parse(fs.readFileSync(path.join(output,'manifest.json'),'utf8'));
-    assert.equal(manifest.status,'complete');assert.deepEqual(manifest.counts,{fresh:9,prebuilt:1});
-    assert.ok(manifest.options.filter(p=>p.mode==='fresh').every(p=>p.artDecisions.length===2));
-    assert.equal(checks,2);
-    const first=finished.plan.options[0],src=path.join(output,'src',`${first.slug}.mjs`),asset=path.join(output,'assets',`${first.slug}.svg`);
-    const before=fs.readFileSync(asset,'utf8');
-    const rebuilt=spawnSync(process.execPath,[src],{encoding:'utf8'});assert.equal(rebuilt.status,0,rebuilt.stderr);
-    assert.equal(fs.readFileSync(asset,'utf8'),before);
-  } finally {removeTemporary(directory);}
-});
-
-test('authoring saves headers individually and preserves completed progress when the next header fails',async()=>{
-  const {EventEmitter}=await import('node:events');
-  const {PassThrough}=await import('node:stream');
-  const directory=temporary(),options=makePlan(project,{count:4,creativity:1,seed:'groups'}).options;
-  let calls=0;const stages=[],saved=[];
-  const runner=(_executable,args)=>{
-    calls++;
-    const child=new EventEmitter();child.stdin=new PassThrough();child.stderr=new PassThrough();child.kill=()=>{};
-    child.stdin.resume();
-    child.stdin.on('finish',()=>queueMicrotask(()=>{
-      if(calls===2){child.stderr.write('Fixture failure');child.emit('exit',1);return;}
-      const schema=JSON.parse(fs.readFileSync(args[args.indexOf('--output-schema')+1],'utf8'));
-      const ids=schema.properties.candidates.items.properties.id.enum;
-      assert.equal(ids.length,1);
-      const result={candidates:ids.map(id=>({id,svg:renderDesign(designs[0],project),artDecisions:['Project motif','Custom composition']}))};
-      fs.writeFileSync(args[args.indexOf('--output-last-message')+1],JSON.stringify(result));child.emit('exit',0);
-    }));
-    return child;
-  };
-  try {
-    await assert.rejects(authorImages(project,options,directory,{runner,log:()=>{},
-      onHeaderProgress:(pick,step)=>stages.push([pick.id,step]),
-      onImage:pick=>{assert.ok(fs.existsSync(path.join(directory,'assets',`${pick.slug}.svg`)));saved.push(pick.id);},
-    }),/Fixture failure/);
-    assert.equal(calls,2);
-    assert.deepEqual(stages.filter(([id])=>id===options[0].id).map(([,step])=>step),[0,1,2,3,4,5]);
-    assert.deepEqual(stages.filter(([id])=>id===options[1].id).map(([,step])=>step),[0,1,2]);
-    assert.deepEqual(saved,[options[0].id]);
-    for(const pick of options.slice(1))assert.equal(fs.existsSync(path.join(directory,'assets',`${pick.slug}.svg`)),false);
-  }finally{removeTemporary(directory);}
-});
-
-test('unavailable fresh authoring fails without creating or substituting a preset batch',async()=>{
-  const directory=temporary(),output=path.join(directory,'missing');
-  try {
-    await assert.rejects(generateBatch(project,{count:10,creativity:.9,out:output},{authorCheck:async()=>{throw new Error('Codex missing');},log:()=>{}}),/Codex missing/);
-    assert.equal(fs.existsSync(output),false);
-  } finally {removeTemporary(directory);}
 });
 
 test('every design is a valid Chromium image with safe SVG content and reduced-motion support', { timeout: 60000 }, async () => {
@@ -276,5 +205,13 @@ test('every design is a valid Chromium image with safe SVG content and reduced-m
     assert.equal(await page.locator('img[onerror]').count(), 0);
     assert.equal(await page.locator('header h1').textContent(), `${hostile.name} — 10 headers`);
     assert.equal(await page.locator('textarea').first().inputValue(), bundle.picks[0].markdown);
+    const state = { batches: [{ batch: 1, from: 1, to: 2, agent: 'claude' }, { batch: 2, from: 3, to: 3, agent: 'codex' }],
+      headers: [1, 2, 3].map(number => ({ number, id: 'nfo-0' + number, family: 'nfo', slug: '0' + number + '-nfo-0' + number, batch: number < 3 ? 1 : 2, status: number === 2 ? 'failed' : 'ok', svg: 'assets/x.svg' })) };
+    await page.setContent(galleryHtml(state, hostile));
+    assert.equal(await page.locator('article').count(), 3);
+    assert.equal(await page.locator('h2.credit').count(), 2);
+    assert.equal(await page.locator('img[onerror]').count(), 0);
+    assert.equal(await page.locator('article .num').first().textContent(), '01');
+    assert.equal(await page.locator('footer code').first().textContent(), 'npx readme-nfo use 1');
   } finally { await browser.close(); }
 });

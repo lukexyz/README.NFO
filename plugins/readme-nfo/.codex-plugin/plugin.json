@@ -1,0 +1,28 @@
+{
+  "name": "readme-nfo",
+  "version": "0.1.0",
+  "description": "Retro scene, keygen and cracktro headers for your README. Ask for 10 headers, pick one by number, ask for 10 more.",
+  "author": {
+    "name": "Luke Woods",
+    "url": "https://github.com/lukexyz"
+  },
+  "homepage": "https://github.com/lukexyz/README.NFO",
+  "repository": "https://github.com/lukexyz/README.NFO",
+  "license": "MIT",
+  "keywords": ["readme", "header", "svg", "nfo", "ansi", "retro"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "README.NFO",
+    "shortDescription": "Retro headers for your README",
+    "longDescription": "Draws numbered retro README headers (scene NFOs, keygens, cracktros, BBS screens and 150 more styles) for the project you are in, in one local gallery. Say \"number 3\" to install one, or \"make 10 more\" for the next numbers with no style repeats. Nothing is committed for you.",
+    "developerName": "Luke Woods",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://github.com/lukexyz/README.NFO",
+    "defaultPrompt": [
+      "Get me 10 headers from README.NFO",
+      "Install README.NFO header number 3",
+      "Make 10 more README.NFO headers"
+    ]
+  }
+}

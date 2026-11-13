@@ -1,62 +1,66 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { randomBytes } from 'node:crypto';
+// The cumulative gallery: readme-headers/index.html, one card per numbered header and one
+// divider per batch. It is rewritten after every header, and refreshes itself while a run is live.
 import { escapeXml } from './svg.mjs';
-import { renderDesign, selectDesigns } from './designs.mjs';
 
-const markdownText = value => String(value).replace(/[\\`*_{}\[\]()#+.!|<>]/g, '\\$&');
-export function createBundle(project, { count = 10, seed = randomBytes(16).toString('hex'), selected = selectDesigns(count, seed), plan } = {}) {
-  const files = new Map(), picks = [];
-  for (const [index, design] of selected.entries()) {
-    const slug = design.slug || `${String(index + 1).padStart(2, '0')}-${design.id}`;
-    const markdown = `<p align="center">\n  <a href="${escapeXml(project.url)}"><img src="assets/${slug}.svg" width="100%" alt="${escapeXml(project.name)} — ${escapeXml(design.name)}"></a>\n</p>\n\n${markdownText(project.description)}\n`;
-    const image = design.svg || renderDesign(design, project);
-    files.set(`${slug}.md`, markdown);
-    files.set(`assets/${slug}.svg`, image);
-    picks.push({ id: design.id, name: design.name, slug, markdown, mode: design.mode || 'prebuilt', artDecisions: design.artDecisions || [] });
-  }
-  files.set('project.json', JSON.stringify(project, null, 2) + '\n');
-  const manifest = { generator: 'README.NFO', version: 2, status: 'complete', seed, count, project: project.fullName,
-    creativity: plan?.creativity || 0, counts: plan?.counts || {fresh: 0, prebuilt: count},
-    options: picks.map(({ id, name, slug, mode, artDecisions }) => ({ id, name, mode, artDecisions, markdown: `${slug}.md`, image: `assets/${slug}.svg` })) };
-  files.set('manifest.json', JSON.stringify(manifest, null, 2) + '\n');
-  files.set('LICENSE', fs.readFileSync(new URL('../../LICENSE', import.meta.url), 'utf8'));
-  files.set('README.md', `# Headers for ${markdownText(project.name)}\n\n[Project](${project.url}) · [Open the visual gallery](index.html)\n\nChoose a header, copy its SVG into your repository's \`assets/\` folder and paste its matching Markdown at the top of your README. Keep the included [MIT notice](LICENSE). Image paths are relative to your README.\n\n` +
-    picks.map(pick => `## ${pick.slug.slice(0, 2)} — ${pick.name}\n\n[Markdown](${pick.slug}.md) · [SVG](assets/${pick.slug}.svg)\n\n![${markdownText(project.name)} — ${pick.name}](assets/${pick.slug}.svg)\n`).join('\n'));
-  files.set('index.html', gallery(project, picks));
-  files.set('CREDITS.md', `# Runtime and credits\n\nREADME.NFO by Luke Woods. MIT licensed.\n\n${manifest.counts.fresh ? `${manifest.counts.fresh} scenes newly authored by your signed-in Codex CLI; account usage applies. The configured CLI model is used. Exact billing is not measured by this generator.` : 'Rendered locally. No AI model or AI account usage.'}\n\n${manifest.counts.prebuilt} reusable catalogue interpretations. References are saved in draw.json; editable SVG snapshots are in src/.\n`);
-  return { files, picks, seed, manifest };
+export const pad = number => String(number).padStart(2, '0');
+// Neutral alt text: never the catalogue style name (some name real groups or trademarks).
+export const altText = (project, number) => `${project.name} header${number ? ` ${pad(number)}` : ''}`;
+export const useCommand = (number, extra = '') => `npx readme-nfo use ${number}${extra}`;
+const AGENT_LABELS = { claude: 'Claude Code', codex: 'Codex', host: 'your agent' };
+
+function card(header, project, extra) {
+  const number = pad(header.number), use = useCommand(header.number, extra);
+  const state = header.status;
+  const art = state === 'ok'
+    ? `<a class="art" href="${escapeXml(header.svg)}"><img src="${escapeXml(header.svg)}" alt="${escapeXml(altText(project, header.number))}" loading="lazy"></a>`
+    : `<div class="art empty ${state}"><span>${state === 'pending' ? 'DRAWING&hellip;' : state === 'briefed' ? 'WAITING FOR SVG' : 'SKIPPED'}</span>${header.issue ? `<small>${escapeXml(String(header.issue).slice(0, 160))}</small>` : ''}${state === 'failed' ? `<small><code>npx readme-nfo retry${escapeXml(extra)}</code></small>` : ''}</div>`;
+  return `<article id="h${number}" class="${state}">
+${art}
+<footer><span class="num">${number}</span>${state === 'ok' ? `<code>${escapeXml(use)}</code><button type="button" data-copy="${escapeXml(use)}">Copy</button>` : `<span class="dim">${escapeXml(header.family || '')} &middot; ${escapeXml(header.id)}</span>`}</footer>
+</article>`;
 }
 
-function gallery(project, picks) {
-  const cards = picks.map(pick => `<article><h2>${pick.slug.slice(0, 2)} · ${escapeXml(pick.name)} · ${pick.mode === 'fresh' ? 'NEWLY AUTHORED' : 'PREBUILT'}</h2>
-<a href="assets/${pick.slug}.svg"><img src="assets/${pick.slug}.svg" alt="${escapeXml(project.name)} — ${escapeXml(pick.name)}"></a>
-<p>${escapeXml(project.description)}</p>
-<p><a href="${pick.slug}.md">Markdown</a> · <a href="assets/${pick.slug}.svg" download>Save SVG</a></p>
-<details><summary>Copy Markdown</summary><textarea readonly aria-label="Markdown for ${escapeXml(pick.name)}">${escapeXml(pick.markdown)}</textarea><button type="button">Copy</button></details></article>`).join('\n');
-  return `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${escapeXml(project.name)} — header gallery</title><style>
-:root{color-scheme:dark;--bg:#11151b;--card:#1b222c;--fg:#e9eff7;--muted:#a9bacd;--line:#38485b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,sans-serif;padding:32px}main{max-width:1500px;margin:auto}h1{font-size:30px;margin:0}h2{font-size:17px;margin:0 0 16px}p{color:var(--muted)}a{color:#8dc6ff}header{margin-bottom:28px}section{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}article{padding:20px;background:var(--card);border:1px solid var(--line);border-radius:12px}img{display:block;width:100%;height:auto}summary,button{cursor:pointer}textarea{display:block;width:100%;height:116px;margin:12px 0;padding:10px;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:13px/1.5 monospace}button{padding:7px 16px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--fg)}@media(max-width:780px){body{padding:16px}section{grid-template-columns:1fr}article{padding:14px}h1{font-size:24px}}
-</style><main><header><h1>${escapeXml(project.name)} — ${picks.length} headers</h1><p><a href="${escapeXml(project.url)}">${escapeXml(project.fullName)}</a></p><p>Choose a look. Save its SVG to your repository's assets/ folder, then paste the matching Markdown into your README. Keep the <a href="LICENSE">MIT notice</a>.</p></header><section>${cards}</section></main>
-<script>document.querySelectorAll('button').forEach(button=>button.addEventListener('click',async()=>{const area=button.previousElementSibling;try{await navigator.clipboard.writeText(area.value);button.textContent='Copied'}catch{area.focus();area.select();button.textContent='Selected — press Ctrl/Cmd+C'}}));</script></html>\n`;
-}
-
-export function defaultOutput(project, cwd = process.cwd()) {
-  const base = path.join(cwd, 'readme-headers', `${project.owner}-${project.repo}`);
-  let output = base, number = 2;
-  while (fs.existsSync(output)) output = `${base}-${number++}`;
-  return output;
-}
-
-export function writeBundle(bundle, output) {
-  const target = path.resolve(output);
-  if (fs.existsSync(target)) throw new Error(`Output already exists: ${target}. Choose a new --out directory.`);
-  fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.mkdirSync(target); // Exclusive destination: an existing directory is never overwritten.
-  for (const [relative, contents] of bundle.files) {
-    const filename = path.join(target, relative);
-    fs.mkdirSync(path.dirname(filename), { recursive: true });
-    fs.writeFileSync(filename, contents, { flag: 'wx' });
-  }
-  return target;
+export function galleryHtml(state, project, { live = false, extra = '' } = {}) {
+  const headers = state.headers || [];
+  const ready = headers.filter(header => header.status === 'ok').length;
+  const sections = (state.batches || []).map(batch => {
+    const items = headers.filter(header => header.batch === batch.batch);
+    if (!items.length) return '';
+    const when = batch.startedAt ? new Date(batch.startedAt).toISOString().slice(0, 10) : '';
+    return `<section aria-labelledby="credit-${batch.batch}"><h2 class="credit" id="credit-${batch.batch}"><b>CREDIT ${batch.batch}</b><span>${batch.from === batch.to ? pad(batch.from) : `${pad(batch.from)}-${pad(batch.to)}`}</span><span>${escapeXml(AGENT_LABELS[batch.agent] || batch.agent || '')}</span><span>${escapeXml(when)}</span></h2>
+<div class="grid">${items.map(header => card(header, project, extra)).join('\n')}</div></section>`;
+  }).join('\n');
+  const running = live && headers.some(header => header.status === 'pending');
+  const link = project.url ? `<a href="${escapeXml(project.url)}">${escapeXml(project.fullName)}</a>` : escapeXml(project.fullName);
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+${running ? '<meta http-equiv="refresh" content="5">' : ''}<title>${escapeXml(project.name)} - README.NFO gallery</title><style>
+:root{color-scheme:dark;--bg:#0c0d14;--panel:#1b1e2b;--ink:#e8ecf8;--dim:#8b93a7;--line:#3a3f55;--amber:#ffb000;--cyan:#7fe3ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-monospace,Consolas,'Liberation Mono',monospace;padding:28px 16px}
+main{max-width:1500px;margin:auto}h1{font-size:24px;margin:0 0 4px;letter-spacing:.06em}a{color:var(--cyan)}p{margin:6px 0;color:var(--dim)}
+.top{border:2px solid var(--line);border-radius:4px;padding:16px 18px;margin-bottom:24px;background:linear-gradient(#1b1e2b,#0c0d14)}
+.top code{color:var(--amber)}.live{color:var(--amber)}
+.credit{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;font-size:15px;font-weight:400;margin:30px 0 14px;padding:6px 0;border-top:2px dashed var(--line);border-bottom:2px dashed var(--line);color:var(--dim)}
+.credit b{color:var(--amber);letter-spacing:.12em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:18px}
+article{display:flex;flex-direction:column;background:var(--panel);border:2px solid var(--line);border-radius:4px;overflow:hidden}
+article:target{border-color:var(--amber)}
+.num{flex:none;background:var(--amber);color:#0b0c12;font-weight:700;font-size:18px;padding:1px 9px;border-radius:3px}
+.art{display:block;flex:1;background:#05060a}.art img{display:block;width:100%;height:auto}
+.empty{aspect-ratio:960/380;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;color:var(--dim);border-bottom:1px solid var(--line);padding:16px;text-align:center}
+.empty span{letter-spacing:.2em}.empty.pending span{color:var(--amber);animation:blink 1.2s steps(2) infinite}.empty small{max-width:90%;overflow-wrap:anywhere}
+@keyframes blink{50%{opacity:.35}}@media(prefers-reduced-motion:reduce){.empty.pending span{animation:none}}
+footer{display:flex;gap:10px;align-items:center;padding:10px 12px;background:#0b0c12;border-top:1px solid var(--line)}
+footer code{flex:1;color:var(--ink);overflow-wrap:anywhere}footer .dim{flex:1}.dim{color:var(--dim)}
+button{font:inherit;cursor:pointer;padding:4px 12px;border:1px solid var(--line);border-radius:3px;background:var(--panel);color:var(--ink)}button:hover{border-color:var(--amber)}
+</style></head><body><main>
+<div class="top"><h1>README.NFO &middot; ${escapeXml(project.name)}</h1>
+<p>${link} &middot; ${ready} header${ready === 1 ? '' : 's'} ready${running ? ' &middot; <span class="live">drawing now, this page refreshes itself</span>' : ''}</p>
+<p>Pick a number: type it in the terminal, or run <code>npx readme-nfo use N</code> in your project folder. It goes at the top of your README. Review with <code>git diff</code>, then commit.</p>
+<p>More styles: <code>npx readme-nfo more</code>. Headers are MIT licensed (<a href="LICENSE">notice</a>).</p></div>
+${sections || '<p>No headers yet.</p>'}
+</main><script>
+try{const y=sessionStorage.getItem('readme-nfo-scroll');if(y)scrollTo(0,+y);addEventListener('scroll',()=>sessionStorage.setItem('readme-nfo-scroll',scrollY));}catch{}
+document.querySelectorAll('button[data-copy]').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent='Copied'}catch{b.textContent='Select the text'}}));
+</script></body></html>
+`;
 }
