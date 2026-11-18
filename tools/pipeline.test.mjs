@@ -479,7 +479,7 @@ test('CLI end to end with a fake agent: run, more, --json, use, brief and check'
     fs.writeFileSync(path.join(directory, 'package.json'), JSON.stringify({ name: 'tidepool', description: 'Tide tables in the terminal.' }));
     const statuses = { claude: { id: 'claude', label: 'Claude Code', ready: true, installed: true, account: 'Claude Max plan' }, codex: { id: 'codex', label: 'Codex', ready: false, installed: true, hint: 'codex login' } };
     const deps = (output, extra = {}) => ({ cwd: directory, stream: { write: value => { output.push(value); } }, errStream: { write: () => {} }, detect: async () => statuses,
-      driverFactory: status => fakeDriver({ id: status.id }), openBrowser: async () => true, interactive: false, ...extra });
+      driverFactory: status => fakeDriver({ id: status.id }), openBrowser: async () => true, interactive: false, env: {}, ...extra });
     const out1 = [];
     await main(['-2', '--no-open', '--no-color'], deps(out1));
     const text1 = out1.join('');
@@ -514,5 +514,57 @@ test('CLI end to end with a fake agent: run, more, --json, use, brief and check'
     await main(['more', '-1', '--json'], deps(quiet, { interactive: true, ask: () => assert.fail('--json never prompts') }));
     const empty = temporary();
     try { await assert.rejects(main(['more'], { ...deps([]), cwd: empty }), /no gallery here yet/i); } finally { cleanup(empty); }
+  } finally { cleanup(directory); }
+});
+
+test('agent mode: check opens the gallery once, when a batch is complete', async () => {
+  const directory = temporary();
+  try {
+    fs.mkdirSync(path.join(directory, '.git', 'info'), { recursive: true });
+    fs.writeFileSync(path.join(directory, 'README.md'), '# tidepool\n\nTide tables in the terminal, for every harbour you know.\n');
+    fs.writeFileSync(path.join(directory, 'package.json'), JSON.stringify({ name: 'tidepool', description: 'Tide tables in the terminal.' }));
+    const opened = [];
+    const deps = (output, extra = {}) => ({ cwd: directory, stream: { write: value => { output.push(value); } }, errStream: { write: () => {} },
+      openBrowser: async file => { opened.push(file); return true; }, interactive: false, env: {}, ...extra });
+    const tide = normaliseProject({ fullName: 'tidepool', name: 'tidepool' });
+    let drawn = 0;
+    const draw = pick => fs.writeFileSync(pick.svgPath, svgFor(tide).replace('</svg>', `<!-- ${++drawn} --></svg>`));
+    const brief = async () => { const out = []; await main(['brief', '--count', '2', '--json'], deps(out)); return JSON.parse(out.join('')).picks; };
+    const check = async (args = [], extra = {}) => { const out = []; await main(['check', '--no-color', ...args], deps(out, extra)); return out.join(''); };
+    const gallery = path.join(directory, 'readme-headers', 'index.html');
+
+    let picks = await brief();
+    draw(picks[0]);
+    assert.match(await check(), /SVG not saved yet/);
+    assert.equal(opened.length, 0, 'half a batch keeps the browser closed');
+    process.exitCode = 0;
+    draw(picks[1]);
+    assert.match(await check(), /BROWSER\s+Opened the gallery/);
+    assert.deepEqual(opened, [gallery]);
+    assert.doesNotMatch(await check(), /BROWSER/);
+    assert.equal(opened.length, 1, 'a finished batch opens once');
+
+    const closed = { openBrowser: () => assert.fail('the browser must stay closed') };
+    for (const [args, extra] of [[['--no-open'], closed], [['--json'], closed], [[], { ...closed, env: { README_NFO_NO_OPEN: '1' } }]]) {
+      picks = await brief(); picks.forEach(draw);
+      await check(args, extra);
+    }
+
+    picks = await brief(); picks.forEach(draw);
+    const failed = await check([], { openBrowser: async () => false });
+    assert.match(failed, /BROWSER\s+Could not open your browser/); assert.match(failed, /GALLERY\s+file:/);
+    assert.notEqual(process.exitCode, 1, 'a browser that fails to open does not fail check');
+  } finally { process.exitCode = 0; cleanup(directory); }
+});
+
+test('README_NFO_NO_OPEN keeps a CLI run from opening the gallery', async () => {
+  const directory = temporary();
+  try {
+    fs.mkdirSync(path.join(directory, '.git', 'info'), { recursive: true });
+    fs.writeFileSync(path.join(directory, 'package.json'), JSON.stringify({ name: 'tidepool', description: 'Tide tables in the terminal.' }));
+    const statuses = { claude: { id: 'claude', label: 'Claude Code', ready: true, installed: true }, codex: { id: 'codex', label: 'Codex', ready: false, installed: true, hint: 'codex login' } };
+    await main(['-1', '--no-color'], { cwd: directory, stream: { write: () => {} }, errStream: { write: () => {} }, detect: async () => statuses,
+      driverFactory: status => fakeDriver({ id: status.id }), interactive: false, env: { README_NFO_NO_OPEN: 'true' },
+      openBrowser: () => assert.fail('README_NFO_NO_OPEN keeps the browser closed') });
   } finally { cleanup(directory); }
 });
