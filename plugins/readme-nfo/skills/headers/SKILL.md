@@ -48,7 +48,15 @@ and styles never repeat.
 3. Run `NFO check --no-color`. Fix every header marked `NEEDS WORK` at its save
    path and re-run until this batch's numbers say `OK` (exit 1 means
    something still fails). Give up on a header after three tries and say so.
-4. Reply with the `GALLERY` link and a numbered list, one line each:
+4. Show the gallery, every batch. The `check` that completes a batch opens
+   it in the user's browser and prints a `BROWSER` line. Open the `GALLERY`
+   link yourself, in your host's browser or file preview, when that line
+   says it could not open, when you gave up on a header (the batch never
+   completes) or when this build's `--capabilities` has no
+   `output.openGallery`; if your host cannot open local files, give the
+   link. Headless (CI, a sandbox with no display): add `--no-open` or set
+   `README_NFO_NO_OPEN=1`.
+5. Reply with the `GALLERY` link and a numbered list, one line each:
    `03  <style name from its brief> - <one-line idea>`. End with:
    say "number N" to install one, or "make 10 more".
 

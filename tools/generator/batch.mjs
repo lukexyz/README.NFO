@@ -231,10 +231,12 @@ export function checkHeaders(project, { directory, catalogue = loadCatalogue(), 
       if (warnings.length) header.warnings = warnings; else delete header.warnings;
       report.push({ number: header.number, id: header.id, status: 'ok', svgPath: file, issues: [], warnings });
     }
-    for (const batch of state.batches) if (!batch.finishedAt && state.headers.filter(h => h.batch === batch.batch).every(h => h.status === 'ok')) batch.finishedAt = new Date().toISOString();
+    // A batch finishes the first time every header in it is OK; `check` opens the gallery at that moment.
+    const finished = [];
+    for (const batch of state.batches) if (!batch.finishedAt && state.headers.filter(h => h.batch === batch.batch).every(h => h.status === 'ok')) { batch.finishedAt = new Date().toISOString(); finished.push(batch.batch); }
     saveState(directory, state);
     writeGallery(directory, state, project, galleryOptions);
-    return { state, report };
+    return { state, report, finished };
   } finally { release(); }
 }
 

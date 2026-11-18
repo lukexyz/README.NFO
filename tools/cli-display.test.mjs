@@ -27,7 +27,7 @@ const fixtureDriver=status=>({id:status.id,label:status.label,modelLabel:'fixtur
     const id=schema.properties.candidates.items.properties.id.enum[0];
     return {candidates:[{id,svg:renderDesign(designs[0],normaliseProject({fullName:'display',name:'display'})),artDecisions:['Fixture emblem','Fixture layout']}]};
   }});
-const fixtureDeps=(directory,stream,extra={})=>({cwd:directory,stream,errStream:capture(),detect:async()=>statuses,driverFactory:fixtureDriver,openBrowser:async()=>true,interactive:false,...extra});
+const fixtureDeps=(directory,stream,extra={})=>({cwd:directory,stream,errStream:capture(),detect:async()=>statuses,driverFactory:fixtureDriver,openBrowser:async()=>true,interactive:false,env:{},...extra});
 
 test('count bounds follow the canonical catalogue and display flags parse',()=>{
   for(const count of [15,16,catalogue.length])assert.equal(parseArguments(['someone/display',`-${count}`]).count,count);

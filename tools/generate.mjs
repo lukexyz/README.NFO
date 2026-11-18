@@ -28,7 +28,7 @@ Options
   --model NAME       agent model (Claude: ${DEFAULT_CLAUDE_MODEL}; Codex: its default at ${CODEX_PINNED_EFFORT} effort)
   --jobs N           headers drawn at once (default 3, up to 8)
   --json             machine-readable output and no prompts, for agents and scripts
-  --no-open          don't open the gallery in your browser
+  --no-open          don't open the gallery in your browser (or set README_NFO_NO_OPEN=1)
   --no-color         plain output (NO_COLOR works too)
   --format TYPE      catalogue treatments: all, svg or text (default all)
   --seed TEXT        repeat a draw
@@ -40,6 +40,7 @@ Options
 Agent mode (for agent plugins that draw the SVGs themselves)
   npx readme-nfo brief --count 3 --json   reserve the next numbers and print their briefs
   npx readme-nfo check --json             validate the SVGs saved for them, rebuild the gallery
+  Without --json, check opens the gallery in your browser when a batch is complete.
 
 Not cloned? npx readme-nfo github.com/owner/repo reads GitHub instead
 (private repos use GH_TOKEN, or your gh sign-in).
@@ -66,7 +67,8 @@ export function capabilities(catalogue = loadCatalogue()) {
     numbering: { continuous: true, state: 'readme-headers/draw.json', fields: ['next', 'usedIds'], moreCommand: 'npx readme-nfo more', noRepeats: true, oneGallery: 'readme-headers/index.html', batchDividers: true },
     install: { command: 'npx readme-nfo use N', svg: `${INSTALL_DIR}/header.svg`, license: `${INSTALL_DIR}/LICENSE`, markers: [START, END], keepsEol: true, keepsBom: true,
       refusesSymlinks: true, commits: false, createsReadmeIfMissing: true, pickPrompt: 'Install which header? [1-10, Enter = later]', pickPromptTtyOnly: true },
-    output: { folder: 'readme-headers/', gitExclude: '.git/info/exclude' },
+    output: { folder: 'readme-headers/', gitExclude: '.git/info/exclude',
+      openGallery: { run: 'when the run starts', check: 'when a batch is complete', off: ['--no-open', '--json', 'README_NFO_NO_OPEN=1'] } },
     commands: ['(default)', ...SUBCOMMANDS],
     json: true, capabilitiesFlag: true,
   };
@@ -99,7 +101,7 @@ async function loadProject(options, { cwd, readLocal, fetcher, warn, preferSaved
 export async function main(args = process.argv.slice(2), {
   stream = process.stdout, errStream = process.stderr, cwd = process.cwd(), detect = detectAgents, driverFactory = createDriver,
   fetcher = fetchProject, readLocal = readLocalProject, openBrowser = openGallery, ask = defaultAsk,
-  interactive = Boolean(process.stdin.isTTY && process.stdout.isTTY), batchOptions = {},
+  interactive = Boolean(process.stdin.isTTY && process.stdout.isTTY), batchOptions = {}, env = process.env,
 } = {}) {
   const catalogue = loadCatalogue();
   const options = parseArguments(args, catalogue.distinct.length);
@@ -109,6 +111,8 @@ export async function main(args = process.argv.slice(2), {
   if (options.version) { write(`${PACKAGE.version}\n`); return { command: 'version' }; }
   if (options.capabilities) { json(capabilities(catalogue)); return { command: 'capabilities' }; }
   interactive = interactive && !options.json;
+  // The gallery opens unless asked not to; --json never launches a browser.
+  const mayOpen = options.open && !options.json && !/^(1|true|yes)$/i.test(String(env.README_NFO_NO_OPEN || ''));
   const extra = options.out ? ` --out ${JSON.stringify(options.out)}` : options.repository ? ` ${options.repository.fullName}` : '';
   const galleryOptions = { extra };
   const warnings = [];
@@ -142,7 +146,7 @@ export async function main(args = process.argv.slice(2), {
     return { command: 'brief', ...result };
   }
   if (options.command === 'check') {
-    const { state, report } = checkHeaders(project, { directory, catalogue, galleryOptions });
+    const { state, report, finished } = checkHeaders(project, { directory, catalogue, galleryOptions });
     const problems = report.filter(item => item.issues.length);
     const ready = state.headers.filter(header => header.status === 'ok').map(header => header.number);
     if (options.json) json({ ok: !problems.length, command: 'check', gallery: galleryUrl, checked: report, ready,
@@ -150,6 +154,10 @@ export async function main(args = process.argv.slice(2), {
     else {
       for (const item of report) write(`  ${pad(item.number)}  ${item.issues.length ? `NEEDS WORK  ${item.issues.join('; ')}` : 'OK'}\n`);
       write(`  GALLERY    ${galleryUrl}\n  INSTALL    ${useCommand('<N>', extra)}\n`);
+      // Once per batch: the check that completes it shows the user the finished gallery.
+      if (finished.length && mayOpen) write(await openBrowser(galleryFile)
+        ? '  BROWSER    Opened the gallery in your default browser.\n'
+        : '  BROWSER    Could not open your browser. Use the gallery link.\n');
     }
     if (problems.length) process.exitCode = 1;
     return { command: 'check', state, report };
@@ -185,7 +193,7 @@ export async function main(args = process.argv.slice(2), {
       terminal.estimate(plan.count, { jobs: options.jobs, agent: driver.id });
       terminal.destination(galleryUrl);
       process.once('SIGINT', onSigint);
-      if (options.open && !options.json) {
+      if (mayOpen) {
         if (!(await openBrowser(galleryFile))) terminal.warning('Could not open your browser. Use the gallery link.');
       }
       if ((options.json ? errStream : stream).isTTY) timer = setInterval(() => terminal.tick(), 1000);
