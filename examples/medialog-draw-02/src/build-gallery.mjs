@@ -7,7 +7,7 @@ const OPTIONS=[['01-vap-06','Poolside liner notes'],['02-trk-11','Your life, on 
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const pitch='Everything you’ve watched, read, played, listened to, on one timeline.';
 const picks=OPTIONS.map(([slug,name])=>{
- const md=fs.readFileSync(path.join(ROOT,slug+'.md'),'utf8');
+ const md=fs.readFileSync(path.join(ROOT,slug+'.md'),'utf8').replace(/\r\n/g,'\n');
  const text=md.match(/```text\n([\s\S]*?)\n```/)?.[1];
  const id=slug.slice(3),family=id.split('-')[0],num=slug.slice(0,2);
  const snippet='<p align="center">\n  <img src="docs/readme-headers/medialog-draw-02/assets/'+slug+'.svg" width="100%" alt="'+esc('MediaLog — '+name)+'">\n</p>\n\n**MediaLog — a media diary you share.**\n\n'+pitch+'\n';

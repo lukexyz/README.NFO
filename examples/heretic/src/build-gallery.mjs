@@ -249,7 +249,7 @@ const DIR=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const esc=value=>String(value).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const cat=pick=>'../../styles/'+pick.family+'.md#'+pick.id;
 const picks=OPTIONS.map(pick=>{
-  const markdown=fs.readFileSync(path.join(DIR,pick.slug+'.md'),'utf8');
+  const markdown=fs.readFileSync(path.join(DIR,pick.slug+'.md'),'utf8').replace(/\r\n/g,'\n');
   const header=markdown.replace(/^<!--[\s\S]*?-->\s*/,'').replace(/^> \*\*Candidate[^\n]*\n?/gm,'').replace(/^\[Generator\][^\n]*\n?/gm,'').trim();
   const image=header.match(/<img[^>]+src="([^"]+)"/)?.[1];
   const text=header.match(/\x60\x60\x60text\n([\s\S]*?)\n\x60\x60\x60/)?.[1];
