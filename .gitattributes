@@ -1,0 +1,4 @@
+# styles/samples.json is compared byte for byte with a fresh build (the samples test and
+# node tools/build-samples.mjs --check) and ships in the npm package. Keep it LF on every
+# checkout, so a Windows clone with core.autocrlf=true matches the build exactly.
+styles/samples.json text eol=lf
